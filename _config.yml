@@ -16,8 +16,7 @@ resume: true
 resume-external: true
 resume-url: /assets/CV.pdf
 
-url: https://koppl.in/indigo
-# your url: http://USERNAME.github.io
+url: https://sylvainmetayer.github.io
 
 permalink: /:title/
 
@@ -64,8 +63,90 @@ authors:
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
-width: normal
+width: large
 
+formations:
+  -
+    name: EPSI Bordeaux
+    url: http://www.epsi.fr/campus/campus-de-bordeaux/
+    logo: /assets/images/epsi.jpg
+    alt: Logo EPSI Bordeaux
+    date_start: 2017
+    date_end: 2019
+    location: Bordeaux (33)
+    more: En alternance à onepoint 
+  -
+    name: Licence Professionnelle DAWIN (Développement en applications web et innovation numérique) 
+    url: https://www.iut.u-bordeaux.fr/info/assets/ressources/20141030LPROIUTBXINFODAWINw.pdf
+    logo: /assets/images/iut_bordeaux.jpg
+    alt: Logo IUT Bordeaux
+    date_start: 2016
+    date_end: 2017
+    location: IUT de Bordeaux (33)
+    more: En alternance à Atos 
+  - 
+    name: DUT Informatique
+    url: https://www.iut.unilim.fr/les-formations/dut/informatique/
+    logo: /assets/images/unilim.jpg
+    alt: Logo IUT du Limousin
+    date_start: 2013
+    date_end: 2016
+    location: IUT du Limousin (87)
+  -
+    name: Baccalauréat Scientifique
+    url: https://lyceeernestperochon.cc-parthenay.fr/
+    logo: /assets/images/perochon.png
+    alt: Logo Lycée Ernest Pérochon
+    date_end: 2013
+    location: Lycée Ernest Pérochon, Parthenay (79)
+
+enterprises:
+  - 
+    name: Onepoint
+    url: https://www.groupeonepoint.com/
+    logo: /assets/images/onepoint.png
+    alt: Logo Onepoint
+    date_start: Octobre 2017
+    date_end: Aujourd'hui 
+    location: Bordeaux
+    more: Alternance dans le cadre de ma formation avec l'EPSI
+    height: 60
+    width: 60
+  - 
+    name: Atos
+    url: https://www.atos.net/
+    logo: /assets/images/atos.jpg
+    alt: Logo Atos
+    date_start: Octobre 2016
+    date_end: Septembre 2017 
+    location: Bordeaux
+    more: Alternance dans le cadre de ma licence professionnelle DAWIN 
+    height: 60
+    width: 60
+  - 
+    name: NextMedia 
+    url: https://www.nextmedia.fr/
+    logo: /assets/images/nextmedia.png
+    alt: Logo NextMedia
+    date_start: Avril 2016
+    date_end: Juillet 2016
+    location: Clermont-Ferrand
+    more: Alternance dans le cadre de ma licence professionnelle DAWIN 
+    height: 60
+    width: 60
+  -
+    name: Animateur Ping Tour
+    url: http://www.fftt.com/site/jouer/les-pratiques/ping-tour
+    logo: /assets/images/pingtour.jpg
+    alt: Logo Ping Tour
+    date_end: Juillet 2013-2014-2015 
+    location: Parthenay (79)
+    more: Animation et promotion du tennis de table 
+    height: 60
+    width: 600
+
+certifications: 
+  - 
 # if you don't need pagination, comment the *paginate* configs below
 # paginate: 5
 # paginate_path: "blog/:num/"

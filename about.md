@@ -1,6 +1,7 @@
 ---
 title: About
 layout: page
+permalink: a-propos
 ---
 ![Profile Image]({{ site.url }}/{{ site.picture }})
 
@@ -12,7 +13,7 @@ Je suis actuellement en école d'ingénierie, à l'EPSI de Bordeaux (33).
 
 J'effectue cette formation en alternance, à [onepoint](https://groupeonepoint.com).
 
-Découvrez ci-dessous mon parcours, consultez mon [CV]() et contactez moi !
+Découvrez sur ce site mon parcours, mes [projets]({{ site.url }}/projets/), consultez mon [CV]({{ site.url }}/assets/CV.pdf) et [contactez moi](mailto:{{site.email}}) !
 
 <h2>Skills</h2>
 
