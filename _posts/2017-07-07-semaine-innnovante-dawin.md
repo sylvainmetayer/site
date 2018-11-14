@@ -7,13 +7,11 @@ tag:
     - php
     - fitbit
     - dawin
-headerImage: true
-projects: true
-hidden: true
+hidden: false
 description: "Semaine innovante faisant partie de la formation DAWIN, durant laquelle le but était de réaliser une application innovante."
 category: projet
 author: sylvainmetayer
-externalLink: false
+
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/semaine-innovante-dawin)

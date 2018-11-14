@@ -1,8 +1,10 @@
 # Personal Website
 
+[![Build Status](https://travis-ci.org/sylvainmetayer/sylvainmetayer.github.io.svg?branch=master)](https://travis-ci.org/sylvainmetayer/sylvainmetayer.github.io)
+
 > Sylvain METAYER
 >
-> Based on a fork of [sergiokopplin](https://github.com/sergiokopplin/indigo)
+> Based on [sergiokopplin](https://github.com/sergiokopplin/indigo)
 
 ## Prerequisite
 

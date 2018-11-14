@@ -4,7 +4,7 @@ bio: Développeur à Bordeaux
 
 sass:
     sass_dir: _sass
-    style: compact # possible values: nested expanded compact compressed
+    style: compressed # possible values: nested expanded compact compressed
 
 # twitter summary info
 description: Portfolio - Sylvain METAYER
@@ -86,7 +86,7 @@ show-tags: true
 related: true
 
 # Display links for next and previous posts for the specified categories
-post-advance-links: [blog, projects]
+post-advance-links: [blog, projet]
 
 # show author block at the end of a post ?
 show-author: true
@@ -99,7 +99,6 @@ plugins:
 - jekyll-gist
 - jekyll-feed
 - jemoji
-- jekyll-admin
 - jekyll-sitemap
 
 jekyll-mentions:

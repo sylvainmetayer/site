@@ -1,7 +1,10 @@
 source 'http://rubygems.org'
 
+gem 'jekyll-sitemap'
+gem 'jekyll-seo-tag'
+gem 'jekyll-gist'
+gem 'jekyll-feed'
+gem 'jemoji'
+gem 'rake'
 gem 'github-pages'
 gem 'html-proofer'
-gem 'jekyll-admin'
-gem 'jekyll-sitemap'
-gem 'rake'

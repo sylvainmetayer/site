@@ -4,13 +4,11 @@ layout: post
 date: 2018-11-01
 tag: 
     - latex
-headerImage: true
-projects: true
-hidden: true
-description: "Ce projet a été réalisé pour disposer d'un modèle lors de la réalisation d'écrits avec LateX."
+hidden: false
+description: "Ce projet personnel a été réalisé pour disposer d'un modèle lors de la réalisation d'écrits avec LateX."
 category: projet
 author: sylvainmetayer
-externalLink: false
+star: true
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/LaTeX-starterkit)

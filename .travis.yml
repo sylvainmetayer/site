@@ -3,7 +3,10 @@ rvm:
   - 2.4.1
 
 install: bundle install
-script: bundle exec rake
+script: 
+  - bundle exec jekyll serve --config _config.yml,_config-dev.yml &
+  - sleep 5
+  - bundle exec rake ci
 
 env:
   global:

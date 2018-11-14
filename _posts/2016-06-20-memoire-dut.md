@@ -5,13 +5,11 @@ date: 2016-06-20
 tag: 
     - rapport
     - DUT Informatique
-headerImage: true
-projects: true
-hidden: true
+hidden: false
 description: "Ce mémoire décrit le projet réalisé durant mon stage de DUT Informatique"
 category: projet
 author: sylvainmetayer
-externalLink: false
+
 ---
 
 [Sources (Gitlab)](https://gitlab.com/ocyhc/memoire-dut-info/tree/master)

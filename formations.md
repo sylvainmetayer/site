@@ -6,13 +6,17 @@ title: Formations
 <h1>Formations, expériences professionnelles et certifications.</h1>
 
 {% if site.formations.size > 0 %}
-<h2>Formations</h2>
 <section class="list">
+    <h2>Formations</h2>
     {% for formation in site.formations reversed %}
             <div class="item">
                 <h3 class="title">{{ formation.name }}</h3>
-                <img class="formation-image" 
-                src="{{ formation.logo }}" alt="{{ formation.alt }}">
+                <aside>
+                    <img
+                    {% if formation.width %} width="{{formation.width}}" {% endif %}
+                    {% if formation.height %} height="{{formation.height}}" {% endif %}
+                    src="{{ formation.logo }}" alt="{{ formation.alt }}"/>
+                </aside>
                 <p>
                     {% if formation.more %} {{ formation.more }}, {% endif %}
                     {% if formation.date_start %} {{ formation.date_start }} - {% endif %}
@@ -32,8 +36,8 @@ title: Formations
 {% endif %}
 
 {% if site.enterprises.size > 0 %}
-<h2>Expériences professionnelles</h2>
 <section class="list">
+    <h2>Expériences professionnelles</h2>
     {% for company in site.enterprises reversed %}
             <div class="item">
                 <h3 class="title">
@@ -45,10 +49,12 @@ title: Formations
                         </a>
                     {% endif %}
                 </h3>
-                <img 
-                {% if company.width %} width="{{company.width}}" {% endif %}
-                {% if company.height %} height="{{company.height}}" {% endif %}
-                class="enterprise-image" src="{{ company.logo }}" alt="{{ company.alt }}">
+                <aside>
+                    <img
+                    {% if company.width %} width="{{company.width}}" {% endif %}
+                    {% if company.height %} height="{{company.height}}" {% endif %}
+                    src="{{ company.logo }}" alt="{{ company.alt }}"/>
+                </aside>
                 <p>
                     {% if company.more %} {{ company.more }} {% endif %} 
                     <br/>
@@ -63,8 +69,8 @@ title: Formations
 {% endif %}
 
 {% if site.certifications.size > 0 %}
-<h2>Certifications</h2>
 <section class="list">
+    <h2>Certifications</h2>
     {% for certification in site.certifications reversed %}
             <div class="item">
                 <h3 class="title">
@@ -76,10 +82,12 @@ title: Formations
                         </a>
                     {% endif %}
                 </h3>
-                <img 
-                {% if certification.width %} width="{{ certification.width}}" {% endif %}
-                {% if certification.height %} height="{{certification.height}}" {% endif %}
-                class="enterprise-image" src="{{ certification.logo }}" alt="{{ certification.alt }}">
+                <aside>
+                    <img
+                    {% if certification.width %} width="{{certification.width}}" {% endif %}
+                    {% if certification.height %} height="{{certification.height}}" {% endif %}
+                    src="{{ certification.logo }}" alt="{{ certification.alt }}"/>
+                </aside>
                 <p>
                     {% if certification.more %} {{ certification.more }} <br/>{% endif %} 
                     {{ certification.date | date: "%B %Y"  }}
