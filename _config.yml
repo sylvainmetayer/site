@@ -99,7 +99,6 @@ plugins:
 - jekyll-gist
 - jekyll-feed
 - jemoji
-- jekyll-admin
 - jekyll-sitemap
 
 jekyll-mentions:
