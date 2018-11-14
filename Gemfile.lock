@@ -281,6 +281,7 @@ DEPENDENCIES
   github-pages
   html-proofer
   jekyll-admin
+  jekyll-sitemap
 
 BUNDLED WITH
    1.16.2
