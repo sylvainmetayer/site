@@ -13,24 +13,16 @@ picture: assets/images/profile.png
 # If you want to include your resume, set to true
 # and specify source (external or local).
 resume: true
-resume-external: true
+resume-external: false
 resume-url: /assets/CV.pdf
 
 url: https://sylvainmetayer.fr
 
 permalink: /:categories/:title/
 
-# To enable google analytics, supply your token below
-# analytics-google: 'UA-MYANALYTICS'
-
 # To enable piwik tracking, supply your url & site ID below
 # analytics-piwik-url: 'piwik.my-host.com'
 # analytics-piwik-id: 1
-
-# if you don't want comments in your posts, leave categories empty
-disqus:
-  shortname: mydisqus # enter this from your disqus account
-  categories: [] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
 facebook: sylvain.metayer
@@ -53,8 +45,8 @@ github: sylvainmetayer
 email: contact@sylvainmetayer.fr
 
 rel_me:
-  - https://github.com/sylvainmetayer
-  - https://twitter.com/sylvain_metayer
+- https://github.com/sylvainmetayer
+- https://twitter.com/sylvain_metayer
 
 authors:
     sylvainmetayer:
@@ -99,12 +91,12 @@ show-author: true
 animation: false
 
 plugins:
-  - jekyll-seo-tag
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
-  - jekyll-admin
-  - jekyll-sitemap
+- jekyll-seo-tag
+- jekyll-gist
+- jekyll-feed
+- jemoji
+- jekyll-admin
+- jekyll-sitemap
 
 jekyll-mentions:
     base_url: https://github.com
@@ -112,6 +104,6 @@ jekyll-mentions:
 exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "FAQ.md", "netlify.toml", "CNAME"]
 
 collections:
-  - formations
-  - enterprises
-  - certifications
+- formations
+- enterprises
+- certifications
