@@ -8,7 +8,6 @@ hidden: false
 description: "Ce projet a été réalisé pour disposer d'un modèle lors de la réalisation d'écrits avec LateX."
 category: projet
 author: sylvainmetayer
-externalLink: false
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/LaTeX-starterkit)

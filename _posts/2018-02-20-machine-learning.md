@@ -9,7 +9,6 @@ hidden: false
 description: "Ce projet, réalisé en binome durant ma formation à l'EPSI avait pour but de découvrir le fonctionnement des algorithmes de machine learning."
 category: projet
 author: sylvainmetayer
-externalLink: false
 ---
 
 [Sources (Github)](https://github.com/EPSIBordeaux/epsi-expert-system)

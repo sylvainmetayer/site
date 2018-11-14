@@ -10,7 +10,7 @@ hidden: false
 description: "J'ai réalisé ce bot afin de permettre un suivi des interruptions des Trams Bordelais."
 category: projet
 author: sylvainmetayer
-externalLink: false
+
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/tbm_interruption_tracker)

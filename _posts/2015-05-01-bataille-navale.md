@@ -10,7 +10,7 @@ hidden: false
 description: "Ce projet universitaire, réalisé en binome entre Mars et Mai 2015, nous a permis de nous familiariser avec Java Swing et de consituer nos premières interfaces graphiques."
 category: projet
 author: sylvainmetayer
-externalLink: false
+
 ---
 
 [Source (Github)](https://github.com/sylvainmetayer/BatailleNavale)
