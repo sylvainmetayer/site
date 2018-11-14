@@ -1,0 +1,8 @@
+# For local testing, run:
+# bundle exec jekyll serve --config _config.yml,_config-dev.yml
+url: ENV_URL
+
+compress_html:
+  ignore:
+    envs: 
+      - development 
