@@ -25,10 +25,7 @@ layout: compress
 
     {% include relation_me.html %}
 
-    <style>
-    {% capture scss_sheet %}{% include style.scss %}{% endcapture %}
-    {{ scss_sheet | scssify }}
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{site.url}}/assets/css/style.css">
 
 </head>
 <body>
