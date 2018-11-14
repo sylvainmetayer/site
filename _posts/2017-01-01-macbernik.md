@@ -7,7 +7,7 @@ tag:
     - jquery
     - agilité
     - dawin
-hidden: true
+hidden: false
 description: "Projet réalisé durant une semaine (Janvier 2017) avec 6 autres étudiants nous a initié au déroulement d'un projet agile, de l'idée à la livraison du projet."
 category: projet
 author: sylvainmetayer

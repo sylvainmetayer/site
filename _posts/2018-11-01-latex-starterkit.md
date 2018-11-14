@@ -4,7 +4,7 @@ layout: post
 date: 2018-11-01
 tag: 
     - latex
-hidden: true
+hidden: false
 description: "Ce projet a été réalisé pour disposer d'un modèle lors de la réalisation d'écrits avec LateX."
 category: projet
 author: sylvainmetayer

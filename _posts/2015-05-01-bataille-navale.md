@@ -6,7 +6,7 @@ tag:
     - java
     - swing
     - DUT Informatique
-hidden: true
+hidden: false
 description: "Ce projet universitaire, réalisé en binome entre Mars et Mai 2015, nous a permis de nous familiariser avec Java Swing et de consituer nos premières interfaces graphiques."
 category: projet
 author: sylvainmetayer

@@ -6,7 +6,7 @@ tag:
     - ruby
     - twitter
     - bot
-hidden: true
+hidden: false
 description: "J'ai réalisé ce bot afin de permettre un suivi des interruptions des Trams Bordelais."
 category: projet
 author: sylvainmetayer

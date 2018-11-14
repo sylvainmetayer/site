@@ -4,7 +4,7 @@ title: Projets
 ---
 <section class="list">
     {% for post in site.posts %}
-        {% if post.category == 'projet' %}
+        {% if post.hidden == false and post.category == 'projet' %}
             <div class="item {% if post.star %}star{% endif %}">
                 <a class="url" href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
                     <aside><time datetime="{{ post.date | date:"%d-%m-%Y" }}">{{ post.date | date: "%b %d %Y" }}</time></aside>
