@@ -4,7 +4,7 @@ bio: Développeur à Bordeaux
 
 sass:
     sass_dir: _sass
-    style: compact # possible values: nested expanded compact compressed
+    style: compressed # possible values: nested expanded compact compressed
 
 # twitter summary info
 description: Portfolio - Sylvain METAYER
