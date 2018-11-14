@@ -18,7 +18,7 @@ resume-url: /assets/CV.pdf
 
 url: https://sylvainmetayer.github.io
 
-permalink: /:title/
+permalink: /:categories/:title/
 
 # To enable google analytics, supply your token below
 # analytics-google: 'UA-MYANALYTICS'
