@@ -16,12 +16,12 @@
 {% if showHeader == true %}
     <header class="header-home {% if site.animation %}animated{% endif %}">
         {% if site.about %}
-            <a class="link" href="/a-propos">
-                <img class="selfie" alt="{{ site.name }}" src="{% unless site.external-image %}/{% endunless %}{{ site.picture }}" />
+            <a class="link" href="{{ site.url }}/a-propos">
+                <img class="selfie" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
             </a>
         {% else %}
             <span class="link">
-                <img class="selfie" alt="{{ site.name }}" src="{% unless site.external-image %}/{% endunless %}{{ site.picture }}" />
+                <img class="selfie" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
             </span>
         {% endif %}
 

@@ -2,20 +2,20 @@
     <ul class="list">
         {% if page.title != "Accueil" %}
             <li class="item">
-                <a class="link" href="/">Accueil</a>
+                <a class="link" href="{{ site.url }}/">Accueil</a>
             </li>
         {% endif %}
 
         {% if page.title != "Formations" %}
             <li class="item">
-                <a class="link" href="/formations">Formations</a>
+                <a class="link" href="{{ site.url }}/formations">Formations</a>
             </li>    
         {% endif %}
         
         {% if site.blog == true %}
             {% if page.title != "Blog" %}
                 <li class="item">
-                    <a class="link" href="/blog">Blog</a>
+                    <a class="link" href="{{ site.url }}/blog">Blog</a>
                 </li>
             {% endif %}
         {% endif %}
@@ -23,7 +23,7 @@
         {% if site.projects == true %}
             {% if page.title != "Projets" %}
                 <li class="item">
-                    <a class="link" href="/projets">Projets</a>
+                    <a class="link" href="{{ site.url }}/projets">Projets</a>
                 </li>
             {% endif %}
         {% endif %}
@@ -31,14 +31,14 @@
         {% if site.about == true %}
             {% if page.title != "a-propos" %}
                 <li class="item">
-                    <a class="link" href="/a-propos">A propos</a>
+                    <a class="link" href="{{ site.url }}/a-propos">A propos</a>
                 </li>
             {% endif %}
         {% endif %}
 
         {% if site.resume == true %}
             <li class="item">
-                <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}/{{ site.resume-url }}{% endif %}">CV</a>
+                <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">CV</a>
             </li>
         {% endif %}
     </ul>

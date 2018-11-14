@@ -10,7 +10,7 @@
   publish = "_site/"
 
   # Default build command.
-  command = "jekyll build --config _config.yml"
+  command = "jekyll build --config _config.yml,_config-netlify.yml"
   environment = { JEKYLL_ENV = "stage" }
 
 # Deploy Preview context: all deploys resulting from a pull/merge request will 
