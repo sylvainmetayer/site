@@ -4,7 +4,6 @@ layout: post
 date: 2018-11-01
 tag: 
     - latex
-projects: true
 hidden: true
 description: "Ce projet a été réalisé pour disposer d'un modèle lors de la réalisation d'écrits avec LateX."
 category: projet
