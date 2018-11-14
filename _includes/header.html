@@ -1,3 +1,11 @@
+{% if jekyll.environment == 'stage' %}
+<p>
+    <a href="https://sylvainmetayer.fr" target="_blank">
+    Ceci est la version de développement du site. Cliquez ici pour voir la version de production.
+    </a>
+</p>
+{% endif %}
+
 {% if page.title == "Accueil"
    or page.title == "Blog"
    or page.title == "Projets"
@@ -25,3 +33,4 @@
 {% endif %}
 
 {% include nav.html %}
+
