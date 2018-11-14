@@ -21,8 +21,8 @@ task :test do
 end
 
 task :ci do
-  # We will test with the Netlify preview URL as it is live.
-  sh "bundle exec jekyll build --config _config.yml,_config-netlify.yml"
+  sh "bundle exec jekyll serve --config _config.yml,_config-dev.yml >/dev/null &2>1 &"
+  sh "sleep 5"
   HTMLProofer.check_directory("./_site", options).run
 end
 
