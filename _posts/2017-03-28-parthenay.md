@@ -10,7 +10,7 @@ tag:
 category: blog
 author: sylvainmetayer
 description: "L'effet Parthenay : Comment une petite ville pourrait bien sauver la civilisation française."
-permalink: /blog/l-effet-parthenay
+permalink: /blog/l-effet-parthenay/
 hidden: false
 # jemoji: '<img class="emoji" title=":ramen:" alt=":ramen:" src="https://assets.github.com/images/icons/emoji/unicode/1f35c.png" height="20" width="20" align="absmiddle">'
 ---
