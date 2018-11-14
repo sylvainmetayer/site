@@ -6,8 +6,9 @@
 
 ## Prerequisite
 
-- `jekyll`
+- `ruby`
+- run `bundle install`
 
 ## Start it locally
 
-bundle exec jekyll serve --config _config.yml,_config-dev.yml
+`bundle exec jekyll serve --config _config.yml,_config-dev.yml`

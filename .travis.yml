@@ -3,7 +3,7 @@ rvm:
   - 2.4.1
 
 install: bundle install
-script: jekyll build && bundle exec htmlproofer ./_site
+script: bundle exec rake test
 
 env:
   global:
