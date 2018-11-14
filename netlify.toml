@@ -14,7 +14,7 @@
 # Deploy Preview context: all deploys resulting from a pull/merge request will 
 # inherit these settings.
 [context.deploy-preview]
-  publish = "dist/"
+  publish = "_site/"
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.

@@ -1,7 +1,7 @@
 ---
 title: "Rapport DUT Informatique"
 layout: post
-date: 2016-06-01
+date: 2016-06-20
 tag: 
     - rapport
     - DUT Informatique
