@@ -4,6 +4,7 @@ layout: post
 date: 2017-01-20
 tag: 
     - jquery
+    - browser game
     - dawin
     - js
 headerImage: true
@@ -17,7 +18,7 @@ externalLink: false
 
 [Sources (Github)](https://github.com/sylvainmetayer/agent-ready/)
 
-[Jouez !](https://sylvainmetayer.github.io/agent-ready/)
+[Voir le jeu](https://sylvainmetayer.github.io/agent-ready/)
 
 {{ page.description }}
 
