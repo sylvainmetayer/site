@@ -16,6 +16,10 @@ layout: compress
     <meta name=description content="{{ site.bio }}">
     <meta name=author content="{{ site.name }}">
 
+    {% if jekyll.environment == 'stage' %}
+    <meta name="robots" content="noindex">
+    {% endif %}
+
     {% seo %}
     
     {% include favicon.html %}
@@ -32,6 +36,14 @@ layout: compress
 
 </head>
 <body>
+
+    {% if jekyll.environment == 'stage' %}
+    <p>
+        <a href="https://sylvainmetayer.fr" target="_blank">
+        Ceci est la version de développement du site. Cliquez ici pour voir la version de production.
+        </a>
+    </p>
+    {% endif %}
 
     <div class="wrapper-{% if site.width == "normal" %}normal{% elsif site.width == "large" %}large{% endif %}">
         {% if page.tag %}
