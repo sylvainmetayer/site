@@ -11,7 +11,7 @@ headerImage: true
 projects: true
 hidden: true
 description: "Le but de ce projet était de réaliser un 'Jeu dont vous êtes le héros' avec diverses actions, tout en utilisant jQuery."
-category: project
+category: projet
 author: sylvainmetayer
 externalLink: false
 ---

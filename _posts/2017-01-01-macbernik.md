@@ -11,7 +11,7 @@ headerImage: true
 projects: true
 hidden: true
 description: "Projet réalisé durant une semaine (Janvier 2017) avec 6 autres étudiants nous a initié au déroulement d'un projet agile, de l'idée à la livraison du projet."
-category: project
+category: projet
 author: sylvainmetayer
 externalLink: false
 ---

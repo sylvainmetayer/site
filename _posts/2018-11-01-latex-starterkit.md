@@ -8,7 +8,7 @@ headerImage: true
 projects: true
 hidden: true
 description: "Ce projet a été réalisé pour disposer d'un modèle lors de la réalisation d'écrits avec LateX."
-category: project
+category: projet
 author: sylvainmetayer
 externalLink: false
 ---

@@ -10,7 +10,7 @@ headerImage: true
 projects: true
 hidden: true
 description: "J'ai réalisé ce bot afin de permettre un suivi des interruptions des Trams Bordelais."
-category: project
+category: projet
 author: sylvainmetayer
 externalLink: false
 ---
