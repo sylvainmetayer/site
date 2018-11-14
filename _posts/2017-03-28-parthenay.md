@@ -3,7 +3,6 @@ title: "L'effet Parthenay"
 layout: post
 date: 2017-03-28
 image: 
-headerImage: false
 tag:
 - traduction
 - parthenay

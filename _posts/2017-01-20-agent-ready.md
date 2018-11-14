@@ -7,7 +7,6 @@ tag:
     - browser game
     - dawin
     - js
-headerImage: true
 projects: true
 hidden: true
 description: "Le but de ce projet était de réaliser un 'Jeu dont vous êtes le héros' avec diverses actions, tout en utilisant jQuery."

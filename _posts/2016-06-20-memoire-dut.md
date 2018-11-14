@@ -5,7 +5,6 @@ date: 2016-06-20
 tag: 
     - rapport
     - DUT Informatique
-headerImage: true
 projects: true
 hidden: true
 description: "Ce mémoire décrit le projet réalisé durant mon stage de DUT Informatique"
