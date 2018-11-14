@@ -15,14 +15,13 @@ hidden: false
 # jemoji: '<img class="emoji" title=":ramen:" alt=":ramen:" src="https://assets.github.com/images/icons/emoji/unicode/1f35c.png" height="20" width="20" align="absmiddle">'
 ---
 
-
-> Traduction de l'article "The Parthenay Effect: How a Small French Town Might Save Civilization" paru le 27/3/2017 sur [The Huffington Post](http://www.huffingtonpost.com/entry/the-parthenay-effect-how-a-small-french-town-might_us_58d810c8e4b0c0980ac0e73f?)
+> Traduction de l'article "The Parthenay Effect: How a Small French Town Might Save Civilization" paru le 27/3/2017 sur [The Huffington Post](https://www.huffingtonpost.com/entry/the-parthenay-effect-how-a-small-french-town-might_us_58d810c8e4b0c0980ac0e73f?)
 
 # Avertissement
 
 >Je ne suis ni traducteur, ni bilingue. Mon objectif est de fournir une traduction de cet article  pour les personnes ayant des difficultés avec l'anglais. Bien qu'ayant tenté de traduire au mieux cet article, je ne peux garantir l'exactitude de ce qui suit.
-
-> Tous les droits sur cet article, ainsi que les photos, reviennent à sa rédactrice [Rebecca Novick](http://www.huffingtonpost.com/author/rebecca-novick).
+>
+> Tous les droits sur cet article, ainsi que les photos, reviennent à sa rédactrice [Rebecca Novick](https://www.huffingtonpost.com/author/rebecca-novick).
 
 ![Rue Saint Jacques](/assets/images/parthenay-1.jpg)
 
