@@ -10,6 +10,7 @@ tag:
 category: blog
 author: sylvainmetayer
 description: "L'effet Parthenay : Comment une petite ville pourrait bien sauver la civilisation française."
+permalink: /blog/l-effet-parthenay
 hidden: false
 # jemoji: '<img class="emoji" title=":ramen:" alt=":ramen:" src="https://assets.github.com/images/icons/emoji/unicode/1f35c.png" height="20" width="20" align="absmiddle">'
 ---
@@ -47,7 +48,7 @@ J'ai vécu une grande partie de ma vie dans les montagnes et je pensais qu'elles
 
 >Le ciel de Parthenay aux aurores.
 
-Parthenay et ses environs ont été en grande partie protégés du développement rongeant le monde moderne. Après avoir échappé à la pollution et à l'architecture sans âme, les [Parthenaisiens](http://www.parthenaisiens.fr/) (habitants de Parthenay) ont aussi surpassé les nombreuses formes de cynismes et narcissismes ravageant le psychisme moderne. Le rythme de vie est simple, respectueux, calme, et cela fournit le cadre parfait pour cette espèce en voie de disparition, le temps.
+Parthenay et ses environs ont été en grande partie protégés du développement rongeant le monde moderne. Après avoir échappé à la pollution et à l'architecture sans âme, les [Parthenaisiens](https://www.parthenaisiens.fr/) (habitants de Parthenay) ont aussi surpassé les nombreuses formes de cynismes et narcissismes ravageant le psychisme moderne. Le rythme de vie est simple, respectueux, calme, et cela fournit le cadre parfait pour cette espèce en voie de disparition, le temps.
 
 Je me promène régulièrement ici, en explorant les passages étroits et les escaliers de pierre qui relient la ville ensemble, tout en jetant un oeil aux vieilles portes en bois qui s'ouvrent sur les vergers de pommiers et les jardins d'herbes médiévales. Je m'allonge dans l'herbe et j'entends les champs des grives et des merles, l'odeur de l'herbe et de la terre dans mes narines. Je me sens comme j'ai autrefois été une enfant. J'ai entrepris des projets photos avec Parthenay comme sujet. Elle est profondément photogénique mais sans la vanité des grandes villes françaises. Je l'étudie sous différentes lumières et différentes saisons, sous beaucoup d'angles,et j'écris à propos d'elle dans mon [blog, le "Projet Parthenay"](https://theparthenayproject.com). La ville a été nommé Ville d'Arts et d'Histoire. De nombreux artistes vivent ici, un nombre impressionnant de professeurs de Yoga et de Qi Gong ainsi qu'une communauté d'invalides indépendante.
 
