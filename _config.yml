@@ -16,7 +16,7 @@ resume: true
 resume-external: true
 resume-url: /assets/CV.pdf
 
-url: https://sylvainmetayer.github.io
+url: https://sylvainmetayer.fr
 
 permalink: /:categories/:title/
 
@@ -56,7 +56,7 @@ rel_me:
   - https://github.com/sylvainmetayer
   - https://twitter.com/sylvain_metayer
   - https://facebook.com/sylvain.metayer
-  - http://linkedin.com/in/sylvainmetayer
+  - https://linkedin.com/in/sylvainmetayer
 
 authors:
     sylvainmetayer:
