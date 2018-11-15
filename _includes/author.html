@@ -9,11 +9,23 @@
 
         <div class="share">
             <a class="twitter" href="https://twitter.com/intent/tweet?text={{ site.url }}{{ page.url }} - {{ page.title }} by @{{ site.authors[page.author].twitter }}">
-                <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg><span class="icon-twitter">Tweet</span>
+                <svg class="icon icon-twitter">
+                    <use xlink:href="#icon-twitter">
+                    </use>
+                </svg>
+                <span class="icon-twitter">
+                    Tweet
+                </span>
             </a>
 
-            <a class="facebook" href="javascript:void(0)" onclick="window.open('https://facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;">
-                <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg><span class="icon-facebook-rect">Share</span>
+            <a class="email" href="mailto:{{ site.email | encode_email }}">
+                <svg class="icon icon-mail">
+                    <use xlink:href="#icon-mail">
+                    </use>
+                </svg>
+                <span class="icon-mail">
+                    Mail
+                </span>
             </a>
         </div>
     </div>
