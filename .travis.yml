@@ -16,6 +16,7 @@ script: |
   sleep 5
   bundle exec rake ci
   kill -9 $SERVER_PID
+  rm -rf _site/
   bundle exec jekyll build --config _config.yml
 
 env:
