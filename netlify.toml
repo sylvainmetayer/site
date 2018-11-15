@@ -42,6 +42,3 @@
     Link = '''
     </assets/css/style.css>; rel=preload; as=style, \
     '''
-
-[[redirects]]
-  https://sylvainmetayer.netlify.com/* https://sylvainmetayer.fr/:splat 301!
