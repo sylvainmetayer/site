@@ -10,11 +10,13 @@ notifications:
 
 install: bundle install
 
-script:
-# Temporary cheat
-- JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml,_config-dev.yml &
-- sleep 5
-- bundle exec rake ci
+script: |
+  # Temporary cheat
+  JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml,_config-dev.yml &
+  SERVER_PID=$!
+  sleep 5
+  bundle exec rake ci
+  kill -9 $SERVER_PID
 
 env:
   global:
