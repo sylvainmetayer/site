@@ -1,6 +1,6 @@
 # Personal Website
 
-[![Build Status](https://travis-ci.org/sylvainmetayer/sylvainmetayer.github.io.svg?branch=master)](https://travis-ci.org/sylvainmetayer/sylvainmetayer.github.io)
+[![Build Status](https://travis-ci.org/sylvainmetayer/sylvainmetayer.svg?branch=master)](https://travis-ci.org/sylvainmetayer/sylvainmetayer)
 
 > Sylvain METAYER
 >
