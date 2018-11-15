@@ -40,7 +40,7 @@ deploy:
   provider: script
   skip_cleanup: false
   script: 
-  - bundle exec jekyll build --config _config.yml
+  - JEKYLL_ENV=production  bundle exec jekyll build --config _config.yml
   - rsync -r --quiet --delete-after _site/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIRECTORY
   on:
     branch: master
