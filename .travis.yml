@@ -11,7 +11,8 @@ notifications:
 install: bundle install
 
 script:
-- bundle exec jekyll serve --config _config.yml,_config-dev.yml &
+# Temporary cheat
+- JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml,_config-dev.yml &
 - sleep 5
 - bundle exec rake ci
 
