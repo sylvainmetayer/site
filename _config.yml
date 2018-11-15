@@ -49,6 +49,7 @@ authors:
         external-image: false
         picture: assets/images/profile.png
         twitter: sylvain_metayer
+        email: contact@sylvainmetayer.fr
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal

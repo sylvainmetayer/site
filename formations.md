@@ -30,6 +30,11 @@ title: Formations
                         </a>
                     {% endif %}
                 </p>
+                {% if formation.project_tag %}
+                    <div class="post-tags">
+                        <a class="item" href="{{ site.url }}/tags/#{{ formation.project_tag | slugify }}">Voir les projets réalisés</a>
+                    </div>
+                {% endif %}
             </div>
     {% endfor %}
 </section>
@@ -63,6 +68,11 @@ title: Formations
                     <br/>
                     {{ company.location }}
                 </p>
+                {% if company.project_tag %}
+                    <div class="post-tags">
+                        <a class="item" href="{{ site.url }}/tags/#{{ company.project_tag | slugify }}">Voir les projets réalisés</a>
+                    </div>
+                {% endif %}
             </div>
     {% endfor %}
 </section>
