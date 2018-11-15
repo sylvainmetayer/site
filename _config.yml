@@ -117,3 +117,5 @@ compress_html:
         envs:
         - development
         - stage
+
+include: ["_redirects"]
