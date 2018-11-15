@@ -90,6 +90,8 @@ plugins:
 - jekyll-feed
 - jemoji
 - jekyll-sitemap
+- jekyll-email-protect
+
 
 jekyll-mentions:
     base_url: https://github.com
