@@ -11,12 +11,12 @@ notifications:
 install: bundle install
 
 script: |
-  # Temporary cheat
   JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml,_config-dev.yml &
   SERVER_PID=$!
   sleep 5
   bundle exec rake ci
   kill -9 $SERVER_PID
+  bundle exec jekyll build --config _config.yml
 
 env:
   global:
@@ -37,13 +37,11 @@ before_deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/traviskey
 - ssh-add /tmp/traviskey
-- bundle install
 
 deploy:
   provider: script
   skip_cleanup: true
   script: 
-  - cd $TRAVIS_BUILD_DIR
-  - JEKYLL_ENV=production  bundle exec jekyll build --config _config.yml && rsync -r --quiet --delete-after _site/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIRECTORY
+  - rsync -r --quiet --delete-after _site/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIRECTORY
   on:
     branch: master
