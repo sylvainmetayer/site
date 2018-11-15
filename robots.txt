@@ -1,2 +1,9 @@
+---
+Required for the file to be processed by Jekyll
+---
 User-agent: *
-Disallow:
+{% if jekyll.environment != 'production' %}
+Disallow: /
+{% else %}
+Disallow: 
+{% endif %}
