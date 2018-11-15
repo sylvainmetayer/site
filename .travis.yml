@@ -1,26 +1,46 @@
 language: ruby
+sudo: false
 rvm:
   - 2.4.1
 
+cache: bundler
+
+notifications:
+  email: false
+
 install: bundle install
-script: 
-  - bundle exec jekyll serve --config _config.yml,_config-dev.yml &
-  - sleep 5
-  - bundle exec rake ci
+
+script:
+- bundle exec jekyll serve --config _config.yml,_config-dev.yml &
+- sleep 5
+- bundle exec rake ci
 
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - secure: GbrbW75ZLiyrH8UTz2SJVvI3FgoloD4HDOGPM6tHQpiyYKAAo/R2F+n7YH01hUrmh/32vZA+VUczxMs30UyT4t5gMZZrpXE6Il08iGK+NEE1P5sciAhsbPaXL9Dy2ESgJn5uyyviDlSEp5csQOK39lB+H4JPjhaklvFzL/tWUE+CXwJwGHeZObdyk38zAbF6J18BJAZ8paLcyvXzhUqC6qNqmqtT7Uc2SKuxt5n1Ne5V/iXo88ReKMg0rLcuJPmZElRXdcVuTls4VWnqGv//9zkyTL3lMl2SRsxpq37as0GgKcqncWZJE85g4CHLwvoAnBwk0N35uz3Pl/8kGB8HFT+PpqIGTBELkbOl441x5C33ne0mPwec3jH4O/ZRZHEqAxVv3r7x0JdbhJ4eysBb/swBuRlBf1cBA6TPcW7PuKA27vYgNoTg4BI0gt/jY0cdUYg9UNihs91gm00PGPAYTH9uQCy6CcAkOgLTMQUihd+41bJUybSaxgQsxZS8gE2bvZKlX0A7U/PYlMvCccIN+WfoRdHdiBZcLQ/5aMjOqfJ4g9sPeasgqOBTlExWlSjQCssgWs84ZYGxAzJ6tFu3ODJ7MhQC6GE8pMMhmNIJ0810wQ6ekU6LlE+a5xmLVDea/jgTK+FAKV44yNEQUVU6slcvHF0wnr4eZK7UcKEcmRg=
+  - secure: iUvREYyoXy6zaqw5LaLvUTYIRHlNIf5lPDY413RRWM3DDiYls6mzOKKg3mWwVQC6LUFG8NRuyz79eL+IGlp8d+Rtvafxfs6IQNHtTs01ZSHUyYCZbHz/I6viENwVjbjVanK/nwy+HxSTvXzmoCLDlljZUXtOwAbCRavXUlwF1756SIwdEE69p2lIpo+XUDR5gGtIP1DXhfwlUIrzDu0K+dYhrJZnOeDqssHEQeF7qlGqkG06kqEPfnNsvnuK9fO9pRSp7wqhjCyotHCyNELvuo/W85XY9zFAFUPxIMowJenT9ajEZzQMOPtTxTAKcC+MkGG11ubs/ijccTlN1cPQzOPn4Q8bwFRdjHOm1AfWP63jhjqXkwtYFb/VJyG/+DB6f0d3NqN5yn5j7snZJ63AeufRkdzcGsb2m4apI/j4Yyznu7a/u7RjKCOfgCcXIAk94Uys8YcQvyDNdo57AjtPTnzmnKQppUwjb9Iyia3iwGZ1jULLJr1Wdcl/PsRVyPBFHS8CKm94XzOdxKiNunclOwLYVppjOIUBIG5OxQVQg1dvEd30yN8O8lfFccK2hxdo+WdaN8E/1gAHIbc5afFRxj/r0eb7E40/PwXrb5RVa5+m0nOgmRFiC8jW9KjxEgeMtSNLsp+rDktgkZXIpTJOwIpT3/4IFpqutZTmGXoV0sU=
+  - secure: dc2yFhFt8nYbXp0GI9EU6A1RL3dOwa3Yogd05uKksNQTcJ1C2j3cIUfRG1TnvBHbH7s7XGagTRZIyMfH3S6ELUmU0MT5XiOrE+cTy/zbT2Ed65+IZTRDh3jXed8dAjNHZrprzxgkqQflt6pcKOfu0hjT0kRNdzAwQOePqxy8xKJZJqDcg1vNu6B0l62DB8hBwBVpaXJW5np4d05H76V7eLIe2iRv7ETA0r6ZywbnN2+JoEgw4+teC7oSqQhOyBMZerMy2plEtagfvwan4EM/M3EjK44325seo7xDQ6Y8UduEVSXluu/aEjUTN3qDM9w7VddlTIFeJKt1TJD9PpGDt4NvTeJRTyE6MsRKhnd7Jz80mDt5+ahITh4fO3qrNLQrFFz6WxbvT7WpoTzgqPQ5vVNCji9ZbFtCZD76avh8R0uL9q4jbO2EcVyruWd3YHwCcabvs/3qQ9CdnrOpUPutO06lTwFXgJqOBx/FU41UM5a4YOKKKK1kVyp2e3EGMwm32X//dCuGgiGi/zbSteYMiDFh6vMHNwW5mGZbayuniyBjV7lRcLl4Z8IjaBm70SkuQusbaXkA/1GMqW7JdSPKG3W8CiWa1/SQ1sTpnlrzudGWEm6NaC7KJqlmgXp+jh+41hmXjuFiAsFK5oU7vMQpIGzEC+d3M9/J2jJ4arQssWI=
 
 addons:
   apt:
     packages:
     - libcurl4-openssl-dev
 
-sudo: false # route your build to the container-based infrastructure for a faster build
+before_deploy:
+- echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- openssl aes-256-cbc -K $encrypted_6e81ab708fb2_key -iv $encrypted_6e81ab708fb2_iv
+  -in github_travis.enc -out /tmp/traviskey -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/traviskey
+- ssh-add /tmp/traviskey
+- bundle install
 
-cache: bundler # caching bundler gem packages will speed up build
-
-# Optional: disable email notifications about the outcome of your builds
-notifications:
-  email: false
+deploy:
+  provider: script
+  skip_cleanup: false
+  script: 
+  - bundle exec jekyll build --config _config.yml
+  - rsync -r --quiet --delete-after _site/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIRECTORY
+  on:
+    branch: master
