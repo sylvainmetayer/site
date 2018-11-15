@@ -1,5 +1,5 @@
 ---
-Required for the file to be processed by Jekyll
+# Required for the file to be processed by Jekyll
 ---
 User-agent: *
 {% if jekyll.environment != 'production' %}
