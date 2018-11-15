@@ -104,7 +104,7 @@ rel_me:
 - https://twitter.com/sylvain_metayer
 
 # BUILD SETTINGS
-exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "FAQ.md", "netlify.toml", "CNAME"]
+exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "FAQ.md", "netlify.toml", "CNAME", "github_travis.enc"]
 
 sass:
     sass_dir: _sass
