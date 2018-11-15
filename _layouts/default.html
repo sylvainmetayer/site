@@ -12,21 +12,19 @@ layout: compress
     <meta name=description content="{{ site.bio }}">
     <meta name=author content="{{ site.name }}">
 
-    {% if jekyll.environment == 'stage' %}
+    {% if jekyll.environment == 'production' %}
+    {% seo %}
+    {% include relation_me.html %}
+    {% else %}
     <meta name="robots" content="noindex">
     {% endif %}
 
-    {% seo %}
-    
     {% include favicon.html %}
 
     <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" />
 
-    {% include relation_me.html %}
-
     <link rel="stylesheet" type="text/css" href="{{site.url}}/assets/css/style.css">
-
 </head>
 <body>
 

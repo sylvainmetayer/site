@@ -1,8 +1,7 @@
 # For local testing, run:
 # bundle exec jekyll serve --config _config.yml,_config-dev.yml
-url: https://sylvainmetayer.netlify.com
+url: https://sylvainmetayer.fr
 
-compress_html:
-    ignore:
-        envs:
-        - development
+sass:
+    sass_dir: _sass
+    style: expanded # possible values: nested expanded compact compressed

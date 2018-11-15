@@ -13,11 +13,19 @@
   command = "jekyll build --config _config.yml,_config-netlify.yml"
   environment = { JEKYLL_ENV = "stage" }
 
-# Deploy Preview context: all deploys resulting from a pull/merge request will 
-# inherit these settings.
-[context.deploy-preview]
-  publish = "_site/"
-  environment = { JEKYLL_ENV = "stage" }
+# Production context: all deploys from the Production branch set in your site's 
+# deploy settings will inherit these settings.
+[context.production]
+  command = "jekyll build --config _config.yml,_config-netlify.yml"
+  environment = { JEKYLL_ENV = "production" }
+  branch = "master"
+
+# Here is another way to define context specific environment variables.
+[context.deploy-preview.environment]
+  JEKYLL_ENV = "stage"
+
+[context.branch-deploy.environment]
+  JEKYLL_ENV = "stage"
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
@@ -29,3 +37,11 @@
     Content-Security-Policy = "frame-ancestors 'none'"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
+
+    # Multi-key header rules are expressed with multi-line strings.
+    Link = '''
+    </assets/css/style.css>; rel=preload; as=style, \
+    '''
+
+[[redirects]]
+  https://sylvainmetayer.netlify.com/* https://sylvainmetayer.fr/:splat 301!

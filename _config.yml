@@ -2,12 +2,8 @@
 name: Sylvain METAYER
 bio: Développeur à Bordeaux
 
-sass:
-    sass_dir: _sass
-    style: compressed # possible values: nested expanded compact compressed
-
 # twitter summary info
-description: Portfolio - Sylvain METAYER
+description: Sylvain METAYER, site personnel
 
 # if it's an external image, update below for true
 # better with square images
@@ -19,8 +15,6 @@ picture: assets/images/profile.png
 resume: true
 resume-external: false
 resume-url: /assets/CV.pdf
-
-url: https://sylvainmetayer.fr
 
 permalink: /:categories/:title/
 
@@ -47,10 +41,6 @@ github: sylvainmetayer
 # vimeo: myvimeo
 # lanyrd: mylanyrd
 email: contact@sylvainmetayer.fr
-
-rel_me:
-- https://github.com/sylvainmetayer
-- https://twitter.com/sylvain_metayer
 
 authors:
     sylvainmetayer:
@@ -104,9 +94,26 @@ plugins:
 jekyll-mentions:
     base_url: https://github.com
 
-exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "FAQ.md", "netlify.toml", "CNAME"]
-
 collections:
 - formations
 - enterprises
 - certifications
+
+rel_me:
+- https://github.com/sylvainmetayer
+- https://twitter.com/sylvain_metayer
+
+# BUILD SETTINGS
+exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "FAQ.md", "netlify.toml", "CNAME"]
+
+sass:
+    sass_dir: _sass
+    style: compressed # possible values: nested expanded compact compressed
+
+url: https://sylvainmetayer.fr
+
+compress_html:
+    ignore:
+        envs:
+        - development
+        - stage
