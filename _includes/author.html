@@ -18,7 +18,7 @@
                 </span>
             </a>
 
-            <a class="email" href="mailto:{{ site.email | encode_email }}">
+            <a class="email" href="mailto:{{ site.authors[page.author].email | encode_email }}">
                 <svg class="icon icon-mail">
                     <use xlink:href="#icon-mail">
                     </use>
