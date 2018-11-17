@@ -106,6 +106,10 @@ rel_me:
 - https://github.com/sylvainmetayer
 - https://twitter.com/sylvain_metayer
 
+isso:
+    url: https://sylvainmetayer.fr/
+    script: https://comments.sylvainmetayer.fr/main/js/embed.min.js
+
 # BUILD SETTINGS
 exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "FAQ.md", "netlify.toml", "CNAME", "github_travis.enc"]
 

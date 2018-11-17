@@ -23,6 +23,13 @@ layout: page
 
 {{content}}
 
+{% if page.enable_comments %}
+<script data-isso="{{site.isso.url}}"
+        src="{{site.isso.script}}"></script>
+
+<section id="isso-thread"></section>
+{% endif %}
+
 {% if site.post-advance-links contains page.category %}
     <div class="blog-navigation">
         {% if page.previous.url %}

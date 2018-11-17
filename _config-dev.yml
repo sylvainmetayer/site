@@ -1,3 +1,7 @@
 # For local testing, run:
 # bundle exec jekyll serve --config _config.yml,_config-dev.yml
 url: http://localhost:4000
+
+isso:
+    url: http://localhost:4000
+    script: https://comments.sylvainmetayer.fr/dev/js/embed.min.js
