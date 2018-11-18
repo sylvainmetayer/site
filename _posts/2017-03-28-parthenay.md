@@ -1,7 +1,6 @@
 ---
 title: "L'effet Parthenay"
 layout: post
-image: 
 tag:
 - traduction
 - parthenay

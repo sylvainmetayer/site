@@ -2,7 +2,6 @@
 title: "Nouvelle version du site :tada:"
 layout: post
 edited_at: 2018-11-18
-image: 
 tag:
 - jekyll
 category: blog
@@ -10,7 +9,6 @@ author: sylvainmetayer
 description: "Après quelques années d'existence, mon ancien site commençait à vieillir."
 hidden: false
 star: true
-# jemoji: '<img class="emoji" title=":ramen:" alt=":ramen:" src="https://assets.github.com/images/icons/emoji/unicode/1f35c.png" height="20" width="20" align="absmiddle">'
 enable_comments: true
 ---
 
@@ -117,11 +115,9 @@ De plus, comme indiqué sur leur site, cet outil s'intègre très bien avec Jeky
 
 Une solution pour parer au problème serait d'auto-héberger le projet avec une clé d'API Github personnelle mais semble beaucoup pour "simplement des commentaires", même si j'aimais beaucoup l'idée de pouvoir avoir des pull request pour chaque commentaire !
 
-{% comment %}
 > Edit : Les commentaires sont maintenant disponible ! :fire:
 >
 > [Voir l'article]({{ site.baseurl }}{% post_url 2018-11-18-ajout-commentaires %})
-{% endcomment %}
 
 ## Conclusion
 
