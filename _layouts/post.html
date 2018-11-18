@@ -24,10 +24,21 @@ layout: page
 {{content}}
 
 {% if page.enable_comments %}
-<script data-isso="{{site.isso.url}}"
-        src="{{site.isso.script}}"></script>
+<hr>
+<h2>Commentaires</h2>
 
-<section id="isso-thread"></section>
+<script defer data-isso="/prefix/"
+data-isso-id="thread-id"
+data-isso-css="true"
+data-isso-lang="fr"
+data-isso-max-comments-top="10"
+data-isso-max-comments-nested="5"
+data-isso-reveal-on-click="10"
+data-isso-feed="false"
+src="{{site.isso.script}}"></script>
+
+<section id="isso-thread" data-title="{{page.title}}"></section>
+<hr>
 {% endif %}
 
 {% if site.post-advance-links contains page.category %}
