@@ -3,8 +3,6 @@ sudo: false
 rvm:
 - 2.4.1
 cache: bundler
-notifications:
-  email: false
 install: bundle install
 script: |
   JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml,_config-dev.yml &

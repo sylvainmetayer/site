@@ -1,7 +1,6 @@
 ---
 title: "Bataille navale"
 layout: post
-date: 2015-05-01
 tag: 
     - java
     - swing

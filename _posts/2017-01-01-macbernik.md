@@ -1,7 +1,6 @@
 ---
 title: "MacBernick"
 layout: post
-date: 2017-01-01
 tag: 
     - browser game
     - jquery

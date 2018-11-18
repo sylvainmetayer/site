@@ -1,6 +1,7 @@
 # main text of home
 name: Sylvain METAYER
 bio: Développeur à Bordeaux
+lang: fr
 
 # twitter summary info
 description: Sylvain METAYER, site personnel
@@ -14,7 +15,7 @@ picture: assets/images/profile.png
 # and specify source (external or local).
 resume: true
 resume-external: false
-resume-url: /assets/CV.pdf
+resume-url: assets/CV.pdf
 
 permalink: /:categories/:title/
 
@@ -106,8 +107,12 @@ rel_me:
 - https://github.com/sylvainmetayer
 - https://twitter.com/sylvain_metayer
 
+isso:
+    url: https://comments.sylvainmetayer.fr/main/
+    script: https://comments.sylvainmetayer.fr/main/js/embed.min.js
+
 # BUILD SETTINGS
-exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "FAQ.md", "netlify.toml", "CNAME", "github_travis.enc"]
+exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "netlify.toml", "github_travis.enc"]
 
 sass:
     sass_dir: _sass
@@ -121,4 +126,4 @@ compress_html:
         - development
         - stage
 
-include: ["_redirects"]
+highlighter: rouge

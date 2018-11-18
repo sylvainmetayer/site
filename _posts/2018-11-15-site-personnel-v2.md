@@ -1,8 +1,7 @@
 ---
 title: "Nouvelle version du site :tada:"
 layout: post
-date: 2018-11-15
-image: 
+edited_at: 2018-11-18
 tag:
 - jekyll
 category: blog
@@ -10,7 +9,7 @@ author: sylvainmetayer
 description: "Après quelques années d'existence, mon ancien site commençait à vieillir."
 hidden: false
 star: true
-# jemoji: '<img class="emoji" title=":ramen:" alt=":ramen:" src="https://assets.github.com/images/icons/emoji/unicode/1f35c.png" height="20" width="20" align="absmiddle">'
+enable_comments: true
 ---
 
 {% include toc.html %}
@@ -71,22 +70,17 @@ Concernant l'hébergement, je me suis tout d'abord dis que j'allais profiter de 
 
 Néanmoins, cela un inconvénient majeur à mon sens : la maîtrise des paramètres du site est impossible, que cela soit au niveau du cache, des headers de sécurité, ... Github empêche toute modification des headers sur les sites hébergés par Github Pages[^1]
 
-[^1]: Ce qui n'est en soit pas une mauvaise chose, si une totale liberté était donné à tous, ils se retrouveraient sûrement avec des sites mal configurés dans certains cas et leur infrastructure pourrait alors être compromise !
-
 Au final, nous ne sommes jamais aussi bien servi que par soi-même, j'ai donc utilisé [Travis CI](https://travis-ci.org/) pour déployer le site généré sur mon petit [Raspberry](https://www.raspberrypi.org/) avec un Rsync : pas besoin de plus compliqué, cela me suffit amplement. Un serveur web devant, un certificat [Let's Encrypt](https://letsencrypt.org) et voilà !
 
-J'ai ainsi pu obtenir une note convenable, selon [l'observatoire Mozilla](https://observatory.mozilla.org/analyze/sylvainmetayer.fr) et [Cryptcheck](https://cryptcheck.fr/https/sylvainmetayer.fr). Il me reste néanmoins un peu de travail à faire sur les [CSP (Content Security Policy)](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP), ce concept n'est pas évident à appréhender :persevere: !
+J'ai ainsi pu obtenir une note convenable, selon [l'observatoire Mozilla](https://observatory.mozilla.org/analyze/sylvainmetayer.fr) et [Cryptcheck](https://cryptcheck.fr/https/sylvainmetayer.fr). Il me reste néanmoins un peu de travail à faire sur les [CSP](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP), ce concept n'est pas évident à appréhender :persevere: !
 
 ### 5. SEO
 
 Il s'agit de ma première réelle expérience SEO[^3] et Jekyll offre de nombreux plugins[^4] permettant de générer des sitemap, un flux [RSS](https://fr.wikipedia.org/wiki/RSS), des métadonnées, ... J'ai donc essayé de tirer profit de cela au maximum.
 
-[^3]: [Définition Wikipédia du SEO](https://fr.wikipedia.org/wiki/Optimisation_pour_les_moteurs_de_recherche)
-[^4]: Pour en citer quelques uns : `jekyll-sitemap`, `jekyll-seo-tag` et `jekyll-feed`
-
 ## Workflow
 
-Mon processus de développement est assez simple : 
+Mon processus de développement est assez simple :
 
 - Je développe en local mes articles et pages.
 - Le code est versionné sur [Github](https://github.com/sylvainmetayer/sylvainmetayer)
@@ -121,8 +115,18 @@ De plus, comme indiqué sur leur site, cet outil s'intègre très bien avec Jeky
 
 Une solution pour parer au problème serait d'auto-héberger le projet avec une clé d'API Github personnelle mais semble beaucoup pour "simplement des commentaires", même si j'aimais beaucoup l'idée de pouvoir avoir des pull request pour chaque commentaire !
 
+> Edit : Les commentaires sont maintenant disponible ! :fire:
+>
+> [Voir l'article]({{ site.baseurl }}{% post_url 2018-11-18-ajout-commentaires %})
+
 ## Conclusion
 
 Merci à tous d'avoir lu cet article, j'espère qu'il vous aura plu.
 
 Si vous avez des remarques, n'hésitez pas à me faire vos retours !
+
+[^1]: Ce qui n'est en soit pas une mauvaise chose, si une totale liberté était donné à tous, ils se retrouveraient sûrement avec des sites mal configurés dans certains cas et leur infrastructure pourrait alors être compromise !
+[^3]: [Définition Wikipédia du SEO](https://fr.wikipedia.org/wiki/Optimisation_pour_les_moteurs_de_recherche)
+[^4]: Pour en citer quelques uns : `jekyll-sitemap`, `jekyll-seo-tag` et `jekyll-feed`
+*[CSP]: Content Security Policy
+*[SVG]: Scalable Vector Graphics

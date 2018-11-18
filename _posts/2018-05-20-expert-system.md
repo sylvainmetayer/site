@@ -1,7 +1,6 @@
 ---
 title: "Système Expert"
 layout: post
-date: 2018-05-20
 tag: 
     - js
     - epsi

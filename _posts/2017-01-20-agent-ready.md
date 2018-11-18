@@ -1,7 +1,6 @@
 ---
 title: "Agent Ready"
 layout: post
-date: 2017-01-20
 tag: 
     - jquery
     - browser game

@@ -9,9 +9,21 @@ layout: page
 <h1 class="title">{{ page.title }}</h1>
 
 <span class="date">
-    <time datetime="{{ page.date | date:"%d-%m-%Y" }}">{{ page.date | date: "%A. %B %d, %Y" }}</time>
-    {% if site.read-time %} - {% include read-time.html %}{% endif %}
+    <time datetime="{{ page.date | date:"%d-%m-%Y" }}">Publié le {% include translated_date.html date=page.date format="%A %d %B %Y" %}</time>
 </span>
+
+{% if site.read-time %}
+<div class="date">
+    {% include read-time.html %}
+</div>
+{% endif %}
+
+{% if page.edited_at %}
+<div class="date">
+    Dernière modification le {% include translated_date.html date=page.edited_at format="%A %d %B %Y" %}
+</div>
+{% endif %}
+
 
 {% if site.show-tags %}
     <div class="post-tags">
@@ -22,6 +34,19 @@ layout: page
 {% endif %}
 
 {{content}}
+
+{% if page.enable_comments %}
+<hr>
+<h2>Commentaires</h2>
+<script async
+data-isso="{{site.isso.url}}"
+data-isso-id="{{page.id}}"
+data-isso-feed="true"
+src="{{site.isso.script}}"></script>
+
+<section id="isso-thread"></section>
+<hr>
+{% endif %}
 
 {% if site.post-advance-links contains page.category %}
     <div class="blog-navigation">

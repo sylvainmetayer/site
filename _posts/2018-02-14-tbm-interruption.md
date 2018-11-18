@@ -1,7 +1,6 @@
 ---
 title: "TBM Interruption Tracker Bot"
 layout: post
-date: 2018-02-14
 tag: 
     - ruby
     - twitter
