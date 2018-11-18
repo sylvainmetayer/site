@@ -107,7 +107,7 @@ rel_me:
 - https://twitter.com/sylvain_metayer
 
 isso:
-    url: https://sylvainmetayer.fr/
+    url: https://comments.sylvainmetayer.fr
     script: https://comments.sylvainmetayer.fr/main/js/embed.min.js
 
 # BUILD SETTINGS
