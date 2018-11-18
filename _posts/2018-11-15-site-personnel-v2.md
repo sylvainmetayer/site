@@ -117,6 +117,12 @@ De plus, comme indiqué sur leur site, cet outil s'intègre très bien avec Jeky
 
 Une solution pour parer au problème serait d'auto-héberger le projet avec une clé d'API Github personnelle mais semble beaucoup pour "simplement des commentaires", même si j'aimais beaucoup l'idée de pouvoir avoir des pull request pour chaque commentaire !
 
+{% comment %}
+> Edit : Les commentaires sont maintenant disponible ! :fire:
+>
+> [Voir l'article]({{ site.baseurl }}{% post_url 2018-11-18-ajout-commentaires %})
+{% endcomment %}
+
 ## Conclusion
 
 Merci à tous d'avoir lu cet article, j'espère qu'il vous aura plu.
