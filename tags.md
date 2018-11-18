@@ -5,7 +5,7 @@ title: Tags
 <section class="list">
     <h1 class="title">Tags</h1>
 
-    {% assign tags_list = site.tags %}
+    {% assign tags_list = site.tags | sort %}
 
     {% if tags_list.first[0] == null %}
         {% for tag in tags_list %}
