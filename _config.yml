@@ -126,3 +126,4 @@ compress_html:
         - development
         - stage
 
+highlighter: rouge
