@@ -26,12 +26,8 @@ layout: page
 {% if page.enable_comments %}
 <hr>
 <h2>Commentaires</h2>
-<script
+<script async
 data-isso="{{site.isso.url}}"
-data-isso-lang="fr"
-data-isso-max-comments-top="10"
-data-isso-max-comments-nested="5"
-data-isso-reveal-on-click="10"
 src="{{site.isso.script}}"></script>
 
 <section id="isso-thread"></section>
