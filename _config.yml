@@ -15,7 +15,7 @@ picture: assets/images/profile.png
 # and specify source (external or local).
 resume: true
 resume-external: false
-resume-url: /assets/CV.pdf
+resume-url: assets/CV.pdf
 
 permalink: /:categories/:title/
 
