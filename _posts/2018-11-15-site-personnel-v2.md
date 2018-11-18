@@ -1,7 +1,7 @@
 ---
 title: "Nouvelle version du site :tada:"
 layout: post
-date: 2018-11-15
+edited_at: 2018-11-18
 image: 
 tag:
 - jekyll

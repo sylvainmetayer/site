@@ -1,7 +1,6 @@
 ---
 title: "Semaine innovante DAWIN"
 layout: post
-date: 2017-07-07
 tag: 
     - js
     - php

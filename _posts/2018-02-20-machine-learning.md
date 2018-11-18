@@ -1,7 +1,6 @@
 ---
 title: "Machine Learning"
 layout: post
-date: 2018-02-20
 tag: 
     - php
     - epsi

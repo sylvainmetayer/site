@@ -1,7 +1,6 @@
 ---
 title: "Latex Starter Kit"
 layout: post
-date: 2018-11-01
 tag: 
     - latex
 hidden: false
