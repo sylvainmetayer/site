@@ -99,8 +99,8 @@ title: Formations
                     src="{{ certification.logo }}" alt="{{ certification.alt }}"/>
                 </aside>
                 <p>
-                    {% if certification.more %} {{ certification.more }} <br/>{% endif %} 
-                    {{ certification.date | date: "%B %Y"  }}
+                    {% if certification.more %} {{ certification.more }} <br/>{% endif %}
+                    {% include translated_date.html date=certification.date format="%B %Y" %}
                 </p>
             </div>
     {% endfor %}

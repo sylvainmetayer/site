@@ -33,7 +33,9 @@ title: Tags
                 {% if group == null or group == post.group %}
                     <li class="item">
                         <a class="url" href="{{ site.url }}{{ post.url }}">
-                            <aside class="date"><time datetime="{{ post.date | date:"%d-%m-%Y" }}">{{ post.date | date: "%b %d %Y" }}</time></aside>
+                            <aside class="date"><time datetime="{{ post.date | date:"%d-%m-%Y" }}">
+                            {% include translated_date.html date=post.date format="%d %b %Y" %}
+                            </time></aside>
                             <h3 class="title">{{ post.title }}</h3>
                         </a>
                     </li>

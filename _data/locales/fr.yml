@@ -1,0 +1,44 @@
+# Strings for dates
+# language French
+abbreviated_weekday:
+  - Dim
+  - Lun
+  - Mar
+  - Mer
+  - Jeu
+  - Ven
+  - Sam
+full_weekday:
+  - Dimanche
+  - Lundi
+  - Mardi
+  - Mercredi
+  - Jeudi
+  - Vendredi
+  - Samedi
+abbreviated_month:
+  - jan.
+  - fév.
+  - mar.
+  - avr.
+  - mai
+  - juin
+  - juil.
+  - août
+  - sept.
+  - oct.
+  - nov.
+  - déc.
+full_month:
+  - Janvier
+  - Février
+  - Mars
+  - Avril
+  - Mai
+  - Juin
+  - Juillet
+  - Août
+  - Septembre
+  - Octobre
+  - Novembre
+  - Décembre
