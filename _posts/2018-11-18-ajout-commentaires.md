@@ -241,6 +241,8 @@ Le script est chargé en asynchrone, afin de ne pas gêner le chargement de la p
 
 Pour plus d'informations que les paramètres disponibles côté client, [voir la documentation sur Github](https://github.com/posativ/isso/blob/master/docs/docs/configuration/client.rst).
 
+:warning: Lorsqu'un fil de commentaire est vide (ce qui est le cas lorsqu'un article ne contient pas encore de commentaire), isso répond avec une erreur HTTP 404, ce qui peut faire croire qu'une page est manquante ou invalide. [Une issue est ouverte sur le dépôt Github](https://github.com/posativ/isso/issues/301) pour renvoyer un code HTTP 204 (no content) à la place.
+
 Et voici le résultat !
 
 ![affichage des commentaires](/assets/images/isso.png)
