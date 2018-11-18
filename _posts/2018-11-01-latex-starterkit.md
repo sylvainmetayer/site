@@ -8,7 +8,6 @@ description: "Ce projet personnel a été réalisé pour disposer d'un modèle l
 category: projet
 author: sylvainmetayer
 star: true
-enable_comments: true
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/LaTeX-starterkit)
