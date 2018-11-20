@@ -23,7 +23,7 @@ title: Tags
 <hr>
 
 <section class="tag-list">
-    {% for tag in site.tags | sort %}
+    {% for tag in site.tags %}
     <h2 class="title" id="{{ tag[0] | slugify }}">#{{ tag[0] }}</h2>
 
     <ul class="list">
