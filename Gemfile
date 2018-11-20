@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'nokogiri', '1.8.5'
 gem 'jekyll-sitemap'
 gem 'jekyll-seo-tag'
 gem 'jekyll-gist'
@@ -9,3 +10,4 @@ gem 'rake'
 gem 'github-pages'
 gem 'html-proofer'
 gem 'jekyll-email-protect'
+gem 'rouge'

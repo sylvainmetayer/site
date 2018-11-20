@@ -112,7 +112,7 @@ isso:
     script: https://comments.sylvainmetayer.fr/main/js/embed.min.js
 
 # BUILD SETTINGS
-exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "netlify.toml", "github_travis.enc"]
+exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "netlify.toml", "github_travis.enc", "vendor"]
 
 sass:
     sass_dir: _sass

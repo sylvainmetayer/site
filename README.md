@@ -8,7 +8,8 @@
 
 ## Prerequisite
 
-- `ruby`
+- `apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev libcurl4-openssl-dev` or `dnf install libcurl-devel gcc ruby-devel zlib-devel`
+- `ruby` and `gem install bundler`
 - run `bundle install`
 
 ## Start it locally

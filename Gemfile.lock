@@ -264,7 +264,9 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   jemoji
+  nokogiri (= 1.8.5)
   rake
+  rouge
 
 BUNDLED WITH
    1.17.1
