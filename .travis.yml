@@ -9,6 +9,7 @@ script: |
   SERVER_PID=$!
   sleep 5
   bundle exec rake ci
+  find . -type f -name *.md -exec cat {} + |  aspell --lang=fr --encoding=utf-8 list
   kill -9 $SERVER_PID
   rm -rf _site/
   JEKYLL_ENV=production bundle exec jekyll build --config _config.yml
@@ -23,6 +24,9 @@ addons:
   apt:
     packages:
     - libcurl4-openssl-dev
+    - aspell
+    - aspell-en
+    - aspell-fr # that corresponds to your language
 before_deploy:
 - echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - openssl aes-256-cbc -K $encrypted_6e81ab708fb2_key -iv $encrypted_6e81ab708fb2_iv
