@@ -7,7 +7,7 @@ module Jekyll
   
       def generate(site)
         if ENV["IS_NETLIFY"]
-            site.config['url'] = ENV['DEPLOY_URL']
+            site.config['url'] = ENV['DEPLOY_PRIME_URL']
             puts "URL is now " + site.config['url']
         end
       end
