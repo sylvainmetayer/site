@@ -86,14 +86,6 @@ show-author: true
 # do you want some animations?
 animation: false
 
-plugins:
-- jekyll-seo-tag
-- jekyll-feed
-- jemoji
-- jekyll-sitemap
-- jekyll-email-protect
-
-
 jekyll-mentions:
     base_url: https://github.com
 
