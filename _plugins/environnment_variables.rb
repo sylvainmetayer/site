@@ -6,7 +6,7 @@ module Jekyll
     class EnvironmentVariablesGenerator < Generator
   
       def generate(site)
-        if ENV["NETLIFY"]
+        if ENV["IS_NETLIFY"]
             site.config['url'] = ENV['DEPLOY_URL'].dup.chomp!("/")
             puts "URL is now " + site.config['url']
         end
