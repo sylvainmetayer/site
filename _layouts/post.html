@@ -12,15 +12,19 @@ layout: page
     <time datetime="{{ page.date | date:"%d-%m-%Y" }}">Publié le {% include translated_date.html date=page.date format="%A %d %B %Y" %}</time>
 </span>
 
+{% capture edited_at %} {{ page.git.last_commit.commit_date }} {% endcapture %}
+{% capture edited_at_date %} {{ page.git.last_commit.commit_date | date: "%A %d %B %Y" }} {% endcapture %}
+{% capture published_at_date %} {{ page.date | date: "%A %d %B %Y"}} {% endcapture %}
+
 {% if site.read-time %}
 <div class="date">
     {% include read-time.html %}
 </div>
 {% endif %}
 
-{% if page.edited_at %}
+{% if published_at_date != edited_at_date %}
 <div class="date">
-    Dernière modification le {% include translated_date.html date=page.edited_at format="%A %d %B %Y" %}
+    Dernière modification le {% include translated_date.html date=edited_at format="%A %d %B %Y" %}
 </div>
 {% endif %}
 
