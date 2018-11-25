@@ -39,7 +39,7 @@ layout: page
 
 {{content}}
 
-{% if page.enable_comments %}
+{% if page.enable_comments and jekyll.environment != "development" %}
 <hr>
 <h2>Commentaires</h2>
 <script async
