@@ -10,7 +10,7 @@ hidden: false
 description: "Le but de ce projet était de réaliser un 'Jeu dont vous êtes le héros' avec diverses actions, tout en utilisant jQuery."
 category: projet
 author: sylvainmetayer
-
+enable_comments: true
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/agent-ready/)

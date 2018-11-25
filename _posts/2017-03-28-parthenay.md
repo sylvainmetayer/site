@@ -9,7 +9,7 @@ author: sylvainmetayer
 description: "L'effet Parthenay : Comment une petite ville pourrait bien sauver la civilisation française."
 permalink: /blog/l-effet-parthenay/
 hidden: false
-# jemoji: '<img class="emoji" title=":ramen:" alt=":ramen:" src="https://assets.github.com/images/icons/emoji/unicode/1f35c.png" height="20" width="20" align="absmiddle">'
+enable_comments: true
 ---
 
 > Traduction de l'article "The Parthenay Effect: How a Small French Town Might Save Civilization" paru le 27/3/2017 sur [The Huffington Post](https://www.huffingtonpost.com/entry/the-parthenay-effect-how-a-small-french-town-might_us_58d810c8e4b0c0980ac0e73f?)

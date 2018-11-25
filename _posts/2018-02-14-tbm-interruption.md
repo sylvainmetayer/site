@@ -10,6 +10,7 @@ description: "J'ai réalisé ce bot afin de permettre un suivi des interruptions
 category: projet
 author: sylvainmetayer
 star: true
+enable_comments: true
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/tbm_interruption_tracker)
