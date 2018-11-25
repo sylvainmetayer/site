@@ -1,11 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'nokogiri', '1.8.5'
-gem 'jekyll-sitemap'
-gem 'jekyll-seo-tag'
-gem 'jekyll-feed'
-gem 'jemoji'
-gem 'rake'
-gem 'html-proofer'
-gem 'jekyll-email-protect'
+group :jekyll_plugins do
+    gem 'jekyll-sitemap'
+    gem 'jekyll-seo-tag'
+    gem 'jekyll-feed'
+    gem 'jemoji'
+    gem 'jekyll-email-protect'
+    gem 'jekyll-git_metadata'
+end
+
+group :test do
+    gem 'rake'
+    gem 'html-proofer'
+end
+
 gem 'rouge'
+gem 'nokogiri', '1.8.5'

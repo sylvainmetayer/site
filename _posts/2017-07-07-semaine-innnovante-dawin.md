@@ -10,7 +10,7 @@ hidden: false
 description: "Semaine innovante faisant partie de la formation DAWIN, durant laquelle le but était de réaliser une application innovante."
 category: projet
 author: sylvainmetayer
-
+enable_comments: true
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/semaine-innovante-dawin)

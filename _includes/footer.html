@@ -2,7 +2,8 @@
     {{ site.name }} © {{ site.time | date: '%Y' }} <a class="link" href="{{ site.url }}/feed.xml" target="_blank"><svg class="icon icon-rss"><use xlink:href="#icon-rss"></use></svg></a>
 
     <p class="extra">
-        <a class="link" href="https://github.com/sylvainmetayer/sylvainmetayer">Sources</a>
+        <a class="link" href="https://github.com/sylvainmetayer/sylvainmetayer">Sources</a> <br/>
+        <a class="link" href="https://github.com/sylvainmetayer/sylvainmetayer/commit/{{ site.git.last_commit.long_sha }}"> Dernier commit le {% include translated_date.html date=site.git.last_commit.commit_date format="%A %d %B %Y" %}</a>
     </p>
 
     <p class="extra">

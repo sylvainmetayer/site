@@ -1,10 +1,10 @@
 # main text of home
 name: Sylvain METAYER
-bio: Développeur à Bordeaux
+bio: Développeur web sur Bordeaux
 lang: fr
 
 # twitter summary info
-description: Sylvain METAYER, site personnel
+description: Sylvain METAYER, étudiant en 5ème année à l'EPSI Bordeaux et développeur web à onepoint. 
 
 # if it's an external image, update below for true
 # better with square images
@@ -46,7 +46,7 @@ email: contact@sylvainmetayer.fr
 authors:
     sylvainmetayer:
         name: Sylvain METAYER
-        bio: Développeur à Bordeaux
+        bio: Développeur web à Bordeaux
         external-image: false
         picture: assets/images/profile.png
         twitter: sylvain_metayer
@@ -85,14 +85,6 @@ show-author: true
 
 # do you want some animations?
 animation: false
-
-plugins:
-- jekyll-seo-tag
-- jekyll-feed
-- jemoji
-- jekyll-sitemap
-- jekyll-email-protect
-
 
 jekyll-mentions:
     base_url: https://github.com

@@ -5,6 +5,7 @@ rvm:
 cache: bundler
 install: bundle install
 script: |
+  bundle exec jekyll doctor
   JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml,_config-dev.yml &
   SERVER_PID=$!
   sleep 5

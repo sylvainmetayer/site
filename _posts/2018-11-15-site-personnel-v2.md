@@ -1,7 +1,6 @@
 ---
 title: "Nouvelle version du site :tada:"
 layout: post
-edited_at: 2018-11-18
 tag:
 - jekyll
 category: blog
