@@ -4,7 +4,7 @@
 
 > Sylvain METAYER
 >
-> Based on [sergiokopplin](https://github.com/sergiokopplin/indigo)
+> Based on a modified version of [indigo theme](https://github.com/sergiokopplin/indigo)
 
 ## Prerequisite
 
@@ -12,6 +12,28 @@
 - `ruby` and `gem install bundler`
 - run `bundle install`
 
+OR
+
+- docker
+- docker-compose
+
 ## Start it locally
 
 `bundle exec jekyll serve --config _config.yml,_config-dev.yml --drafts`
+
+## Start it with docker
+
+- `make`
+
+    > The server need some time to intialize at first, because it will install all dependencies.
+    >
+    > Use `make logs` to check when the server is alive
+
+## Available commands
+
+- Create a draft : `make name=POST_NAME draft`
+- Publish a draft : `make name=./_drafts/FILE.md publish`
+- Show Jekyll commands : `make help`
+- Tests: `make test`
+- Clean environment : `make clean`
+- Logs: `make logs`
