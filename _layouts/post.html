@@ -47,7 +47,6 @@ data-isso="{{site.isso.url}}"
 data-isso-id="{{page.id}}"
 data-isso-feed="true"
 src="{{site.isso.script}}"></script>
-
 <section id="isso-thread"></section>
 <hr>
 {% endif %}
@@ -74,4 +73,4 @@ src="{{site.isso.script}}"></script>
 {% endif %}
 
 <div id="progress-bar"></div>
-<script async type="application/javascript" src="{{site.url}}/assets/js/progress.js"/>
+{% asset progress.js async %}
