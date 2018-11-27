@@ -136,7 +136,6 @@ assets:
         - _assets/images/favicon
         - _assets/images/projets
         - _assets/videos
-        - _assets/video
         - _assets/js
         - _assets/_sass
         - _assets/_sass/base
