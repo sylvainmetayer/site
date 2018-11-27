@@ -20,7 +20,7 @@ enable_comments: true
 >
 > Tous les droits sur cet article, ainsi que les photos, reviennent à sa rédactrice [Rebecca Novick](https://www.huffingtonpost.com/author/rebecca-novick).
 
-![Rue Saint Jacques](/assets/images/parthenay-1.jpg)
+{% asset parthenay-1.jpg alt="Rue Saint Jacques" %}
 
 >Rue Saint Jacques, le passage du pèlerin par Parthenay sur le pèlerinage de Saint Jacques de Compostelle
 
@@ -34,13 +34,13 @@ Parthenay repose dans une courbe de la rivière du Thouet, vieux français pour 
 
 Des méandres amènent sur un moulin abandonné ou sur un ruisseau bouillonnant, des chênes ou encore une église à moitié oubliée. Aucune industrie dans les environs et l'air purifiant des eaux de l'Atlantique, je n'hésite pas à inspirer profondément l'air de Gâtine dans mes poumons. J'ai vécu à Londres, Los Angeles et New Delhi. Ici, je peux respirer d'une façon que j'avais presque oubliée. J'ai un jour été choquée de voir une canette de Coca-Cola flotter dans le Thouet. C'était parce que ce déchet était une aberration que je l'ai remarqué.
 
-![Le Thouet](/assets/images/parthenay-2.jpg)
+{% asset parthenay-2.jpg alt="Le Thouet" %}
 
 > La rivière du Thouet un jour d'été.
 
 J'ai vécu une grande partie de ma vie dans les montagnes et je pensais qu'elles me manqueraient, mais les ciels de Gâtine sont infinis, à tel point que les nuages deviennent ici des montagnes, formant les gammes de la chaine de l'Himalaya. Le soleil prend tellement de temps à se lever que vous pouvez vous amuser des heures durant avec des palettes kaléidoscopiques de violet, vermillon, topaze et mangenta. Une étendue non obstruée vers l'Ouest offre aux habitants de la Gâtine ce que j'appelle "Le second soleil", surtout en été. Alors que le soleil descend, aux alentours de vingt heures, il tombe souvent derrière une nuée de nuages mais comme il n'y a pas de bâtiment bloquant la vue à l'horizon, il ré-émerge une demie heure plus tard, offrant jusqu'à deux heures supplémentaires de sa lumière. Cette topographie explique pourquoi Parthenay enregistre le deuxième plus grand temps d'ensoleillement dans toute la France. Ce ciel spacieux et le peu de pollution lumineuse sont fait pour les amateurs d'astronomie. Une fois, en Aout, un groupe d'amis et moi avons conduit jusqu'à un endroit surnommé la "colline du lapin" et avons regardé en silence les météores des Perséides exécuter leur ballet argenté à travers le firmament 
 
-![Le ciel de Parthenay aux aurores.](/assets/images/parthenay-3.jpg)
+{% asset parthenay-3.jpg alt="Le ciel de Parthenay aux aurores." %}
 
 >Le ciel de Parthenay aux aurores.
 
@@ -54,7 +54,7 @@ Alors que je me promène dans les rues le soir, ma caméra à mes côtés, les c
 
 Mais la ville ne prospère pas. Les enseignes ferment à un rythme alarmant et presque toutes les rus sont à vendre, les vitrines converties en mini galeries d'art. Les anciennes industries textiles ont disparues, ainsi que le train, qui a transporté ses derniers passagers il y a 23 ans. Une zone commerciale à la périphérie de la ville a aspiré la quasi totalité des commerces du centre ville. (*traduction manquante*). Les quelques touristes qui arrivent à cet endroit (au détour d'une sortie en vélo le plus souvent) marchent comme s'ils avaient trébuchés sur leur propre conte de fées. Parthenay est une beauté endormie, attendant d'être réveillée. 
 
-![Porte Saint Jacques](/assets/images/parthenay-4.jpg)
+{% asset parthenay-4.jpg alt="Porte Saint Jacques" %}
 
 >Porte Saint Jacques, sur le Thouet, ancienne porte de pèlerinage de Parthenay
 
@@ -62,7 +62,7 @@ Pourtant, cela n'a pas toujours été le cas. Parthenay était autrefois une vil
 
 Les matins d'automne, la brume recouvrent les rues et les champs. La ville fortifiée de Parthenay est construite sur une légende. Il est dit qu'elle a été créée par la baguette d'une femme magique, nommé Mélusine. Il y a trois couches de fortifications faites à partir de granit. En effet, c'est un endroit digne de protection. Il y a plus une éthique de vie qu'une éthique de travail ici. La seule chose ouverte le dimanche est l'église. Les déjeuner durent deux à trois heures et sont considérés comme un moment sacré. Même les restaurants sont fermés le lundi et beaucoup ne sont ouverts que quelques heures par semaines, avec des écriteaux sur leurs portes disant "Heure d'ouverture 14-17h le mercredi". Oui, il peut être compliqué de faire quelque chose. Mais ça va, puisqu'il y a le temps de le faire ici.
 
-![Le Thouet, vu depuis les murs du chateau](/assets/images/parthenay-5.jpg)
+{% asset parthenay-5.jpg alt="Le Thouet, vu depuis les murs du chateau" %}
 
 >Le Thouet, vu depuis les murs du château.
 

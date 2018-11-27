@@ -12,10 +12,11 @@ title: Formations
             <div class="item">
                 <h3 class="title">{{ formation.name }}</h3>
                 <aside>
-                    <img
-                    {% if formation.width %} width="{{formation.width}}" {% endif %}
-                    {% if formation.height %} height="{{formation.height}}" {% endif %}
-                    src="{{ formation.logo }}" alt="{{ formation.alt }}"/>
+                {% if formation.width and formation.height %}
+                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' height="{{formation.height}}" width="{{formation.width}}" %}
+                {% else %}
+                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' %}
+                {% endif %}
                 </aside>
                 <p>
                     {% if formation.more %} {{ formation.more }}, {% endif %}
@@ -55,10 +56,11 @@ title: Formations
                     {% endif %}
                 </h3>
                 <aside>
-                    <img
-                    {% if company.width %} width="{{company.width}}" {% endif %}
-                    {% if company.height %} height="{{company.height}}" {% endif %}
-                    src="{{ company.logo }}" alt="{{ company.alt }}"/>
+                {% if company.width and company.height %}
+                    {% asset "{{ company.logo }}" alt='{{ company.alt }}' height="{{company.height}}" width="{{company.width}}" %}
+                {% else %}
+                    {% asset "{{ company.logo }}" alt='{{ company.alt }}' %}
+                {% endif %}
                 </aside>
                 <p>
                     {% if company.more %} {{ company.more }} {% endif %} 
@@ -93,10 +95,11 @@ title: Formations
                     {% endif %}
                 </h3>
                 <aside>
-                    <img
-                    {% if certification.width %} width="{{certification.width}}" {% endif %}
-                    {% if certification.height %} height="{{certification.height}}" {% endif %}
-                    src="{{ certification.logo }}" alt="{{ certification.alt }}"/>
+                {% if certification.width and certification.height %}
+                    {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' height="{{certification.height}}" width="{{certification.width}}" %}
+                {% else %}
+                    {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' %}
+                {% endif %}
                 </aside>
                 <p>
                     {% if certification.more %} {{ certification.more }} <br/>{% endif %}

@@ -6,10 +6,8 @@ lang: fr
 # twitter summary info
 description: Sylvain METAYER, étudiant en 5ème année à l'EPSI Bordeaux et développeur web à onepoint. 
 
-# if it's an external image, update below for true
-# better with square images
-external-image: false
-picture: assets/images/profile.png
+# Main picture
+picture: profile.png
 
 # If you want to include your resume, set to true
 # and specify source (external or local).
@@ -47,8 +45,7 @@ authors:
     sylvainmetayer:
         name: Sylvain METAYER
         bio: Développeur web à Bordeaux
-        external-image: false
-        picture: assets/images/profile.png
+        picture: profile.png
         twitter: sylvain_metayer
         email: contact@sylvainmetayer.fr
 
@@ -118,3 +115,32 @@ compress_html:
         - stage
 
 highlighter: rouge
+
+assets:
+    source_maps: true # false on JEKYLL_ENV=production
+    destination: "/assets"
+    compression: true # true on JEKYLL_ENV=production
+    gzip: true
+    defaults:
+        js: { integrity: true } # true on JEKYLL_ENV=production
+        css: { integrity: true } # true on JEKYLL_ENV=production
+        img: { integrity: true } # true on JEKYLL_ENV=production
+    caching:
+        path: ".jekyll-cache/assets"
+        type: file # Possible values: memory, file
+        enabled: true
+    sources:
+        - _assets/css
+        - _assets/fonts
+        - _assets/images
+        - _assets/images/favicon
+        - _assets/images/projets
+        - _assets/videos
+        - _assets/js
+        - _assets/_sass
+        - _assets/_sass/base
+        - _assets/_sass/components
+        - _assets/_sass/pages
+    plugins:
+        css: { autoprefixer: {}}
+        img: { optim: {}}
