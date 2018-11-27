@@ -16,4 +16,4 @@ author: sylvainmetayer
 
 {{ page.description }}
 
-[![Démonstration](/assets/images/projets/machine_learning.gif)](https://machine-learning.epsi-bordeaux.fr/)
+[![Démonstration](projets/machine_learning.gif)](https://machine-learning.epsi-bordeaux.fr/)

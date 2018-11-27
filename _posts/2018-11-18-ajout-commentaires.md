@@ -245,7 +245,7 @@ Pour plus d'informations que les paramètres disponibles côté client, [voir la
 
 Et voici le résultat !
 
-![affichage des commentaires](/assets/images/isso.png)
+![affichage des commentaires](isso.png)
 
 [^1]: [Voici un site répertoriant plusieurs solutions existant](https://lisakov.com/projects/open-source-comments/)
 [^2]: [Ce tutoriel très similaire à cet article m'a été bien utile](https://blog.phusion.nl/2018/08/16/isso-simple-self-hosted-commenting-system/)

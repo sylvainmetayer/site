@@ -8,6 +8,7 @@ group :jekyll_plugins do
     gem 'jekyll-email-protect'
     gem 'jekyll-git_metadata'
     gem 'jekyll-compose'
+    gem 'jekyll-assets'
 end
 
 group :test do

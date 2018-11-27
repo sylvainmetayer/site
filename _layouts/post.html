@@ -3,7 +3,7 @@ layout: page
 ---
 
 {% if page.image %}
-    <img class="title-image" src="{{ page.image }}" alt="{{ page.title }}">
+    {% asset "{{ page.image }}" alt='{{ page.title }}' class='title-image' %}
 {% endif %}
 
 <h1 class="title">{{ page.title }}</h1>

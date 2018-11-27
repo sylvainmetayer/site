@@ -21,4 +21,4 @@ enable_comments: true
 
 Ce projet a été réalisé lors de ma licence professionnelle DAWIN.
 
-[![Page d'accueil du jeu Agent Ready](/assets/images/projets/agent-ready.png)](https://sylvainmetayer.github.io/agent-ready/)
+[![Page d'accueil du jeu Agent Ready](projets/agent-ready.png)](https://sylvainmetayer.github.io/agent-ready/)

@@ -23,4 +23,4 @@ Les informations sont récupérées depuis les comptes officiels twitter de TBM,
 
 Le bot tweete tout les jours, à 18h.
 
-[![Photo de profil du Bot](/assets/images/projets/tbm_tracker_bot.jpg)](https://twitter.com/tbm_issues_bot)
+[![Photo de profil du Bot](projets/tbm_tracker_bot.jpg)](https://twitter.com/tbm_issues_bot)

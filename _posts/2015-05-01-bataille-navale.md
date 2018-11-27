@@ -22,4 +22,4 @@ Le jeu se joue à deux joueurs, avec la possibilité de sauvegarder les parties.
 
 Il était demandé de réaliser une version console et une version graphique du jeu.
 
-![Image de bataille navale](/assets/images/projets/bataille_navale.jpg)
+![Image de bataille navale](projets/bataille_navale.jpg)
