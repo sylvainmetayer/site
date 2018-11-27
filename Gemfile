@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 group :jekyll_plugins do
     gem 'jekyll-sitemap'
@@ -17,3 +17,4 @@ end
 
 gem 'rouge'
 gem 'nokogiri', '1.8.5'
+gem 'bundler-audit'
