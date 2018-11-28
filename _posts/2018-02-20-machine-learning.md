@@ -12,8 +12,10 @@ author: sylvainmetayer
 
 [Sources (Github)](https://github.com/EPSIBordeaux/epsi-expert-system)
 
-[Site de test](https://machine-learning.epsi-bordeaux.fr/)
+[Testez le !](https://machine-learning.epsi-bordeaux.fr/)
 
 {{ page.description }}
 
-[![Démonstration](/assets/images/projets/machine_learning.gif)](https://machine-learning.epsi-bordeaux.fr/)
+Cliquez pour démarrer la lecture de la vidéo.
+
+{% asset machine_learning.mp4 alt="Démonstration" preload=none width=600 height=400 %}

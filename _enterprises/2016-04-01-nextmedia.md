@@ -1,7 +1,7 @@
 ---
 name: NextMedia 
 link: https://www.nextmedia.fr/
-logo: /assets/images/nextmedia.png
+logo: nextmedia.png
 alt: Logo NextMedia
 date_start: Avril 2016
 date_end: Juillet 2016

@@ -21,4 +21,4 @@ Ce projet a été réalisé durant ma licence professionnelle DAWIN.
 
 Il a été réalisé durant une semaine (Janvier 2017) avec 6 autres étudiants nous a initié au déroulement d'un projet agile, de l'idée à la livraison du projet.
 
-[![Macbernik](/assets/images/projets/macbernick.png)](https://mlcdf.github.io/macbernik/)
+[{% asset macbernick.png alt='Macbernik' %}](https://mlcdf.github.io/macbernik/)
