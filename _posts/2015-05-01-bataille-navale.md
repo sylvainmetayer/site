@@ -24,5 +24,5 @@ Il était demandé de réaliser une version console et une version graphique du 
 
 {% asset bataille_navale.jpg alt='Image de bataille navale' %}
 
-{% fa_svg fab fa-dev %}
-{% fa_svg fab fa-facebook %}
+{% fa_svg fab.fa-dev %}
+{% fa_svg fab.fa-facebook %}

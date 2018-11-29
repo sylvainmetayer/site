@@ -1,67 +1,99 @@
 module Jekyll
 
+    class FontAwesomeIcon
+        # faX.fa-dev
+        def initialize(icon)
+            @icon = icon
+        end
+
+        def mapper(type)
+            {
+                "fas" => "solid",
+                "fab" => "brands",
+                "far" => "regular"
+            }[type]
+        end
+
+        # fa-dev
+        def to_icon_name
+            icon = @icon.split('.').last.split('-')
+            icon.shift
+            icon.join('-')
+        end
+
+        # solid / brands / regular
+        def to_brand_name
+            mapper(to_brand_code)
+        end
+
+        # fab / far / fas
+        def to_brand_code
+            @icon.split('.').first.strip
+        end
+
+        # absolute path to file
+        def to_filename
+            base_directory = __dir__ + "/../assets/fa_svgs/"
+            base_directory + to_brand_name + "/" + to_icon_name + ".svg"
+        end
+
+        def to_svg_html
+            file = File.read(to_filename)
+            svg_html = /^.*path d=(.*)" ?\/>.*$/.match(file).captures.first
+            "<symbol id='#{@icon}' viewBox='0 0 1024 1024'>
+                <title>#{to_icon_name}</title>
+                <path class='path1' d='#{svg_html}'></path>
+            </symbol>
+            "
+        end
+
+        def value
+            @icon
+        end
+
+    end
+
     class FontAwesomeSvgItemGenerator < Liquid::Tag
         def initialize(tag_name, faIcon, tokens)
             super
-            @fa_icon = faIcon.strip
-            # @type = faIcon.split.first.strip
+            @icon = FontAwesomeIcon.new(faIcon.strip)
         end
 
         def render(context)
             unless context.environments.first['page']['fa_svg'].is_a?([]::class)
                 context.environments.first['page']['fa_svg'] = []
             end
-            context.environments.first['page']['fa_svg'].push(@fa_icon)
-            "<svg class=\"icon\"><use xlink:href='##{@fa_icon}'></use></svg>"
+            context.environments.first['page']['fa_svg'].push(@icon.value)
+            "<svg class=\"icon\"><use xlink:href='##{@icon.value}'></use></svg>"
         end
     end
 
     class FontAwesomeSvgGenerator < Liquid::Tag
 
-        def mapper(type)
-            {
-                "fas" => "solid/",
-                "fab" => "brands/",
-                "far" => "regular/"
-            }[type]
-        end
-
-        def filename(icon, type)
-            base_directory = __dir__ + "/../assets/fa_svgs/"
-            directory = mapper(type)
-            base_directory + directory + icon + ".svg"
-        end
-
-        def icon_name(icon)
-            icon = icon.split(' ').last.split('-')
-            icon.shift
-            icon = icon.join('-')
-            icon
-        end
-
         def render(context)
+            output = nil
             unless context.environments.first['page']['fa_svg'].nil?
+                output = '
+                <svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                '
+
                 context.environments.first['page']['fa_svg'].each do |icon|
-
-
-                    type = icon.split(' ').first.strip
-                    icon = icon.split(' ').last.strip
-                    icon_svg_name = icon_name(icon)
-                    filename = filename(icon_svg_name, type)
-
-                    puts filename
-
-                    file = File.read(filename)
-
-                    # TODO
-                    # Récupérer la valeur path du fichier
-                    # Générer le HTML avec la déclaration de l'élément
-                    # Render le tout
-
-                    puts file
+                    fa_icon = FontAwesomeIcon.new(icon)
+                    output += fa_icon.to_svg_html
                 end
+
+                output += '
+                    </defs>
+                </svg>
+                '
+            end
+
+            unless output.nil?
+                output
             end
         end
+
 
     end
 end
