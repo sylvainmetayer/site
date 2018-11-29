@@ -39,7 +39,7 @@ module Jekyll
 
         def to_svg_html
             file = File.read(to_filename)
-            svg_html = /^.*path d=(.*)" ?\/>.*$/.match(file).captures.first
+            svg_html = /^.*path d="(.*)" ?\/>.*$/.match(file).captures.first
             "<symbol id='#{@icon}' viewBox='0 0 1024 1024'>
                 <title>#{to_icon_name}</title>
                 <path class='path1' d='#{svg_html}'></path>
@@ -76,6 +76,10 @@ module Jekyll
                 output = '
                 <svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
+                    <!--
+                    Font Awesome Free 5.5.0 by @fontawesome - https://fontawesome.com
+                    License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+                    -->
                 '
 
                 context.environments.first['page']['fa_svg'].each do |icon|
