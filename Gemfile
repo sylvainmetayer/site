@@ -9,6 +9,7 @@ group :jekyll_plugins do
     gem 'jekyll-git_metadata'
     gem 'jekyll-compose'
     gem 'jekyll-assets'
+    gem 'jekyll-fontawesome-svg'
 end
 
 group :test do
