@@ -3,12 +3,12 @@ layout: page
 title: Formations
 ---
 
-<h1>Formations, expériences professionnelles et certifications.</h1>
+# Formation, expériences professionnelles et certifications
 
-{% if site.formations.size > 0 %}
+{% if site.data.formations.size > 0 %}
 <section class="list">
     <h2>Formations</h2>
-    {% for formation in site.formations reversed %}
+    {% for formation in site.data.formations reversed %}
             <div class="item">
                 <h3 class="title">{{ formation.name }}</h3>
                 <aside>
@@ -41,10 +41,10 @@ title: Formations
 </section>
 {% endif %}
 
-{% if site.enterprises.size > 0 %}
+{% if site.data.enterprises.size > 0 %}
 <section class="list">
     <h2>Expériences professionnelles</h2>
-    {% for company in site.enterprises reversed %}
+    {% for company in site.data.enterprises reversed %}
             <div class="item">
                 <h3 class="title">
                     {% if company.link %}
@@ -80,10 +80,10 @@ title: Formations
 </section>
 {% endif %}
 
-{% if site.certifications.size > 0 %}
+{% if site.data.certifications.size > 0 %}
 <section class="list">
     <h2>Certifications</h2>
-    {% for certification in site.certifications reversed %}
+    {% for certification in site.data.certifications %}
             <div class="item">
                 <h3 class="title">
                     {% if certification.link %}
