@@ -9,6 +9,7 @@ category: blog
 author: sylvainmetayer
 description: Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans pour
   autant intégrer toute la librairie, assez lourde.
+hidden: false
 star: true
 enable_comments: true
 ---
