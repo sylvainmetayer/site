@@ -3,6 +3,8 @@ name: Sylvain METAYER
 bio: Développeur web sur Bordeaux
 lang: fr
 
+source: src
+destination: _site
 strict_front_matter: true 
 
 # twitter summary info
@@ -104,6 +106,7 @@ sass:
     style: compressed # possible values: nested expanded compact compressed
 
 url: https://sylvainmetayer.fr
+production_url: https://sylvainmetayer.fr
 
 compress_html:
     ignore:

@@ -6,7 +6,8 @@ group :jekyll_plugins do
     gem 'jekyll-feed'
     gem 'jemoji'
     gem 'jekyll-email-protect'
-    gem 'jekyll-git_metadata'
+    # Waiting for ivantsepp/jekyll-git_metadata#24 to be resolved.
+    #gem 'jekyll-git_metadata'
     gem 'jekyll-compose'
     gem 'jekyll-assets'
     gem 'jekyll-fontawesome-svg', '~> 0.1.1'
