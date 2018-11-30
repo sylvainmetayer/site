@@ -3,7 +3,6 @@
 LABEL = jekyll_docker_sylvainmetayer
 
 CONTAINER_NAME = jekyll_sylvainmetayer
-DEPLOY_HOST = sylvainmetayer.fr
 DEPLOY_DIRECTORY = /var/www/sylvainmetayer.fr
 
 DOCKER_EXEC = docker exec
@@ -33,11 +32,14 @@ help:
 draft:
 	$(DOCKER_EXEC) $(CONTAINER_NAME) jekyll draft $(name)
 
+cleanup:
+	rm -rf _site .jekyll-metadata .sass-cache .git-metadata .jekyll-cache
+
 clean: down
 	docker stop $(containers) || true
 	docker rm -f $(containers) || true
 	docker rmi -f $(images) || true
-	rm -rf _site .jekyll-metadata .sass-cache .git-metadata .bundle vendor
+	rm -rf _site .jekyll-metadata .sass-cache .git-metadata .jekyll-cache
 
 publish: 
 	$(DOCKER_EXEC) $(CONTAINER_NAME) jekyll publish $(name)

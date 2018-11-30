@@ -2,9 +2,7 @@
 # bundle exec jekyll serve --config _config.yml,_config-dev.yml
 url: http://localhost:4000
 show_drafts: true
-
-plugins:
-  - jekyll-admin
+profile: true
 
 assets:
   source_maps: true # false on JEKYLL_ENV=production
