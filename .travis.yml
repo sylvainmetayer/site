@@ -19,7 +19,7 @@ rvm:
 
 cache: bundler
 
-install: bundle install
+install: bundle install --without :development
 
 before_script:
  - chmod +x ./scripts/build_travis.sh
