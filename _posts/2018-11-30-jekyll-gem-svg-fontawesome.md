@@ -1,5 +1,5 @@
 ---
-title: "Ma première Gem"
+title: "Gem : FontAwesome SVG"
 layout: post
 tag:
 - jekyll
