@@ -9,7 +9,7 @@ group :jekyll_plugins do
     gem 'jekyll-git_metadata'
     gem 'jekyll-compose'
     gem 'jekyll-assets'
-    gem 'jekyll-fontawesome-svg'
+    gem 'jekyll-fontawesome-svg', '~> 0.1.1'
     gem 'jekyll-admin'
 end
 
