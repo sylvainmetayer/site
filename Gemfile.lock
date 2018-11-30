@@ -71,6 +71,7 @@ GEM
     jekyll-email-protect (1.1.0)
     jekyll-feed (0.11.0)
       jekyll (~> 3.3)
+    jekyll-fontawesome-svg (0.1.0)
     jekyll-git_metadata (0.2.0)
       jekyll (~> 3.0)
     jekyll-sanity (1.2.0)
@@ -139,6 +140,7 @@ DEPENDENCIES
   jekyll-compose
   jekyll-email-protect
   jekyll-feed
+  jekyll-fontawesome-svg
   jekyll-git_metadata
   jekyll-seo-tag
   jekyll-sitemap

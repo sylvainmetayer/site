@@ -10,20 +10,14 @@
 
         <div class="share">
             <a class="twitter" href="https://twitter.com/intent/tweet?text={{ site.url }}{{ page.url }} - {{ page.title }} by @{{ site.authors[page.author].twitter }}">
-                <svg class="icon icon-twitter">
-                    <use xlink:href="#icon-twitter">
-                    </use>
-                </svg>
+                {% fa_svg fab.fa-twitter %}
                 <span class="icon-twitter">
                     Tweet
                 </span>
             </a>
 
             <a class="email" href="mailto:{{ site.authors[page.author].email | encode_email }}">
-                <svg class="icon icon-mail">
-                    <use xlink:href="#icon-mail">
-                    </use>
-                </svg>
+                {% fa_svg fas.fa-envelope %}
                 <span class="icon-mail">
                     Mail
                 </span>
