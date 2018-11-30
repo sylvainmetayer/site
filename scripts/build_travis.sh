@@ -11,7 +11,7 @@ bundle exec bundle-audit
 
 echo "-----------------------------"
 echo "Start server to make tests"
-JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml,_config-dev.yml &
+JEKYLL_ENV=production bundle exec jekyll serve --config _config.yml,_config-ci.yml &
 SERVER_PID=$!
 
 echo "-----------------------------"

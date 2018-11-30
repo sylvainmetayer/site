@@ -23,4 +23,4 @@ gem 'rouge'
 gem 'nokogiri', '1.8.5'
 
 
-gem 'jekyll-admin', :groups => [:development, :jekyll_plugins]
+gem 'jekyll-admin', :groups => [:development]
