@@ -7,3 +7,4 @@ isso:
     script: https://comments.sylvainmetayer.fr/dev/js/embed.min.js
 
 show_drafts: true
+profile: true

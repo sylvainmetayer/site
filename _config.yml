@@ -3,6 +3,8 @@ name: Sylvain METAYER
 bio: Développeur web sur Bordeaux
 lang: fr
 
+strict_front_matter: true 
+
 # twitter summary info
 description: Sylvain METAYER, étudiant en 5ème année à l'EPSI Bordeaux et développeur web à onepoint. 
 
