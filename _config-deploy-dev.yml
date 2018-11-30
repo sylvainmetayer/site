@@ -5,3 +5,5 @@ url: https://dev.sylvainmetayer.fr
 isso:
     url: https://comments.sylvainmetayer.fr/dev/
     script: https://comments.sylvainmetayer.fr/dev/js/embed.min.js
+
+show_drafts: true

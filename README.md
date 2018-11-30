@@ -20,7 +20,7 @@ OR
 
 ## Start it locally
 
-`bundle exec jekyll serve --config _config.yml,_config-dev.yml --drafts`
+`bundle exec jekyll serve --config _config.yml,_config-dev.yml`
 
 ## Start it with docker
 
