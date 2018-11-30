@@ -86,11 +86,6 @@ animation: false
 jekyll-mentions:
     base_url: https://github.com
 
-collections:
-- formations
-- enterprises
-- certifications
-
 rel_me:
 - https://github.com/sylvainmetayer
 - https://twitter.com/sylvain_metayer
