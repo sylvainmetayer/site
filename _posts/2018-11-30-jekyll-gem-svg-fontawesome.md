@@ -1,5 +1,5 @@
 ---
-title: "Gem : FontAwesome SVG"
+title: 'Gem : FontAwesome SVG'
 layout: post
 tag:
 - jekyll
@@ -7,8 +7,8 @@ tag:
 - ruby
 category: blog
 author: sylvainmetayer
-description: "Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans pour autant intégrer toute la librairie, assez lourde."
-hidden: false
+description: Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans pour
+  autant intégrer toute la librairie, assez lourde.
 star: true
 enable_comments: true
 ---
@@ -17,7 +17,7 @@ enable_comments: true
 
 {{ page.description }}
 
-J'ai donc cherché un moyen de n'inclure que les icônes utilisés, et c'est comme cela que je suis venu à chercher comme créer un plugin Jekyll.
+J'ai donc cherché un moyen de n'inclure que les icônes utilisés, et c'est comme cela que je suis venu à chercher comment créer un plugin Jekyll.
 
 [La documentation](https://jekyllrb.com/docs/plugins/your-first-plugin/) est assez bien fournie, ce qui m'a permis de rapidement prendre en main Jekyll.
 
@@ -33,13 +33,11 @@ C'est lors de l'usage du deuxième tag que je récupère tous les icones utilis�
 
 J'ai tout d'abord réalisé ce plugin très simplement, en utilisant le répertoire `_plugins` de Jekyll. Mais une fois fonctionnel, j'ai souhaité en faire une Gem, mise à disposition sur [RubyGems](https://rubygems.org/), pour qu'elle soit disponible pour tous, si elle venait à être utile à certains :blush:.
 
-La créatio d'une Gem à été assez simple, le guide de [Bundler](https://bundler.io/v1.17/guides/creating_gem.html) étant très bien détaillé.
+La création d'une Gem à été assez simple, le guide de [Bundler](https://bundler.io/v1.17/guides/creating_gem.html) étant très bien détaillé.
 
 J'ai essayé d'être le plus en accord avec les conventions du langage Ruby, mais n'étant pas familier avec ce dernier, je suis ouvert à toute remarques pour améliorer le code !
 
 Il me reste à tester l'application de façon plus détaillée et à gérer les cas d'erreurs, qui sont pour le moment gérés de façon optimiste !
-
-Pour le moment, l'usage de cette gem sur ce site n'est pas encore fait, puisque cela va m'obliger à changer un peu de CSS[^2]. Seule la version de développement utilise donc cette gem, mais cela devrait changer bientôt :)
 
 ## Usage
 
@@ -52,6 +50,10 @@ Lorsque l'on souhaite afficher un icone, il faut utiliser le tag suivant. Le cod
 {% fa_svg fab.fa-twitter %}
 {% endraw %}
 {% endhighlight %}
+
+Voici le résultat :
+
+{% fa_svg fab.fa-twitter %}
 
 Il faut ensuite ajouter à un endroit commun à toutes les pages (en général un footer), le tag de génération de la feuille SVG.
 

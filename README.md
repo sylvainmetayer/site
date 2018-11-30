@@ -1,6 +1,7 @@
 # Personal Website
 
 [![Build Status](https://travis-ci.org/sylvainmetayer/sylvainmetayer.svg?branch=master)](https://travis-ci.org/sylvainmetayer/sylvainmetayer)
+[![Depfu](https://badges.depfu.com/badges/8854fd930f182d7c719d31bc443abd5e/overview.svg)](https://depfu.com/github/sylvainmetayer/sylvainmetayer?project_id=6389)
 
 > Sylvain METAYER
 >
