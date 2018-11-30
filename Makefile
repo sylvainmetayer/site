@@ -3,6 +3,8 @@
 LABEL = jekyll_docker_sylvainmetayer
 
 CONTAINER_NAME = jekyll_sylvainmetayer
+DEPLOY_HOST = sylvainmetayer.fr
+DEPLOY_DIRECTORY = /var/www/sylvainmetayer.fr
 
 DOCKER_EXEC = docker exec
 DOCKER_COMPOSE = docker-compose
@@ -42,3 +44,6 @@ publish:
 
 logs:
 	docker logs $(CONTAINER_NAME) -f 
+
+deploy: 
+	rsync -r --verbose --quiet --delete-after _site/* $(name):$(DEPLOY_DIRECTORY)
