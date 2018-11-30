@@ -10,7 +10,7 @@ group :jekyll_plugins do
     gem 'jekyll-compose'
     gem 'jekyll-assets'
     gem 'jekyll-fontawesome-svg', '~> 0.1.1'
-    
+    gem 'jekyll'
 end
 
 group :test do

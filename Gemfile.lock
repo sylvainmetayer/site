@@ -159,6 +159,7 @@ PLATFORMS
 DEPENDENCIES
   bundler-audit
   html-proofer
+  jekyll
   jekyll-admin
   jekyll-assets
   jekyll-compose
