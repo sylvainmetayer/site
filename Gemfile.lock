@@ -72,7 +72,7 @@ GEM
       nokogiri (~> 1.8)
       pathutil (~> 0.16)
       sprockets (>= 3.3, < 4.1.beta)
-    jekyll-compose (0.8.0)
+    jekyll-compose (0.9.0)
       jekyll (~> 3.0)
     jekyll-email-protect (1.1.0)
     jekyll-feed (0.11.0)
