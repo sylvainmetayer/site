@@ -20,7 +20,7 @@ sleep 10
 
 echo "-----------------------------"
 echo "Run tests"
-bundle exec rake ci
+# bundle exec rake ci
 
 echo "-----------------------------"
 echo "Tests OK, kill server"
