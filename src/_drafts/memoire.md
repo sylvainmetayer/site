@@ -10,6 +10,7 @@ description: Ma dernière année d'étude à l'EPSI Bordeaux signifie également
 hidden: false
 star: true
 enable_comments: true
+
 ---
 
 {{page.description}}
