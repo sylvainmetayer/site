@@ -7,7 +7,7 @@ category: blog
 author: sylvainmetayer
 description: "Après quelques années d'existence, mon ancien site commençait à vieillir."
 hidden: false
-star: true
+star: false
 enable_comments: true
 ---
 

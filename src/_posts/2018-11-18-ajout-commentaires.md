@@ -9,7 +9,7 @@ category: blog
 author: sylvainmetayer
 description: "Les commentaires sont maintenant disponible sur le site"
 hidden: false
-star: true
+star: false
 enable_comments: true
 ---
 
