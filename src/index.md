@@ -12,3 +12,6 @@ Je suis actuellement en dernière annnée d'école d'ingénierie, à l'EPSI de B
 J'effectue cette formation en alternance, à [onepoint](https://groupeonepoint.com).
 
 Découvrez sur ce site mon [parcours]({{site.url}}/formations/), mes [projets]({{ site.url }}/projets/), consultez mon [CV]({{ site.url }}/assets/CV.pdf) et [contactez moi](mailto:{{site.email}}) !
+
+## Dernier article 
+
