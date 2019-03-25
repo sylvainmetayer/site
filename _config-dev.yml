@@ -3,9 +3,6 @@
 url: http://localhost:4000
 show_drafts: true
 
-plugins:
-  - jekyll-admin
-
 assets:
   source_maps: true # false on JEKYLL_ENV=production
   destination: "/assets"
