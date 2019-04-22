@@ -8,6 +8,7 @@ author: sylvainmetayer
 description: "Réinitialiser le mot de passe administrateur de sa machine Linux peut parfois être nécessaire, dans le cas d'un oubli par exemple."
 hidden: false
 star: true
+published: false
 enable_comments: true
 ---
 
