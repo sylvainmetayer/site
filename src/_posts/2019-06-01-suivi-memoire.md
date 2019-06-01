@@ -2,7 +2,7 @@
 layout: post
 title: "Suivi mémoire"
 tag:
-- memoire
+- mémoire
 - epsi
 category: blog
 author: sylvainmetayer
