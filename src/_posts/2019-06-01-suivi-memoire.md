@@ -16,7 +16,7 @@ enable_comments: true
 
 Bien que n'ayant pas communiqué sur le suivi de mon mémoire comme cela était [indiqué ici]({{ site.baseurl }}{% post_url 2019-03-17-memoire %}), j'ai bien avancé sur ce dernier. Je vais lister ici mes avancées et ce qu'il me reste à faire.
 
-Tout d'abord, la génération du PDF final était pour moi quelque chose que je souhaitais de façon automatique. Je voulais pouvoir disposer d'une version dite de "travail", sur laquelle je retrouve toutes mes notes en cours, d'une version numérique, avec des marges assez faible, et d'une version papier avec des marges plus importantes, pour permettre une meilleure lisibilité lors de l'impression. J'ai donc utilisé [Travis CI](https://travis-ci.org/) afin de pouvoir générer ces 3 documents à chaque tag sur mon dépôt. 
+Tout d'abord, la génération du PDF final était pour moi quelque chose que je souhaitais de façon automatique. Je voulais pouvoir disposer à tout moment de 3 versions présentables. Une version dite de "travail", sur laquelle je retrouve toutes mes notes en cours, une version numérique, avec des marges assez faible, et une version papier avec des marges plus importantes, pour permettre une meilleure lisibilité lors de l'impression. J'ai donc utilisé [Travis CI](https://travis-ci.org/) afin de pouvoir générer ces 3 documents à chaque tag sur mon dépôt.
 
 J'ai également cherché à appliquer les bonnes pratiques LaTeX, avec l'utilisation du paquet [nag](https://ctan.org/pkg/nag) qui permet de relever certaines erreurs et propose des corrections pour ces dernières.
 
