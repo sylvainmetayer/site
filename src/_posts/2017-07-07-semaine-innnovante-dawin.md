@@ -10,6 +10,8 @@ description: "Semaine innovante faisant partie de la formation DAWIN, durant laq
 category: projet
 author: sylvainmetayer
 enable_comments: true
+project_type: school
+
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/semaine-innovante-dawin)

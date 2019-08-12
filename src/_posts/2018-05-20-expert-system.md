@@ -8,6 +8,7 @@ hidden: false
 description: "Ce projet, réalisé en binome durant ma formation à l'EPSI avait pour but de concevoir un système expert capable de détecter des formes (rectangle, carré, triangle, ...)."
 category: projet
 author: sylvainmetayer
+project_type: school
 
 ---
 

@@ -5,7 +5,7 @@ tag:
     - epsi
 category: blog
 author: sylvainmetayer
-description: "Réinitialiser le mot de passe administrateur de sa machine Linux peut parfois être nécessaire, dans le cas d'un oubli par exemple."
+description: "Avancée de la réalisation de mon mémoire de fin d'études pour l'EPSI"
 hidden: false
 star: true
 enable_comments: true

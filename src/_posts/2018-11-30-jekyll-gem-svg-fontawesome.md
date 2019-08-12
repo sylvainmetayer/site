@@ -11,6 +11,7 @@ description: Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans 
 hidden: false
 star: false
 enable_comments: true
+project_type: personal
 ---
 
 ## Besoin

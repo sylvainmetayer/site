@@ -9,6 +9,8 @@ description: "Projet réalisé durant une semaine (Janvier 2017) avec 6 autres �
 category: projet
 author: sylvainmetayer
 enable_comments: true
+project_type: school
+
 ---
 
 [Sources (Github)](https://github.com/mlcdf/macbernik/)

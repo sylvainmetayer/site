@@ -11,6 +11,7 @@ category: projet
 author: sylvainmetayer
 star: true
 enable_comments: true
+project_type: personal
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/tbm_interruption_tracker)

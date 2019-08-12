@@ -9,6 +9,8 @@ description: "Le but de ce projet était de réaliser un 'Jeu dont vous êtes le
 category: projet
 author: sylvainmetayer
 enable_comments: true
+project_type: school
+
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/agent-ready/)
