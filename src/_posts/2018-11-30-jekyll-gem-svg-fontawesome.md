@@ -2,9 +2,8 @@
 title: 'Gem : FontAwesome SVG'
 layout: post
 tag:
-- jekyll
-- gem
-- ruby
+  - jekyll
+  - ruby
 category: blog
 author: sylvainmetayer
 description: Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans pour

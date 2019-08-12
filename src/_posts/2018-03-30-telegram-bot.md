@@ -3,7 +3,7 @@ title: "Bot Telegram"
 layout: post
 tag: 
     - epsi
-    - js
+    - javascript
     - bot
 hidden: false
 description: "Ce projet, réalisé en binome durant ma formation à l'EPSI avait pour but de réaliser un chatbot de recrutement."

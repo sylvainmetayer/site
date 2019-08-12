@@ -2,9 +2,8 @@
 title: "Semaine innovante DAWIN"
 layout: post
 tag: 
-    - js
+    - javascript
     - php
-    - fitbit
     - dawin
 hidden: false
 description: "Semaine innovante faisant partie de la formation DAWIN, durant laquelle le but était de réaliser une application innovante."

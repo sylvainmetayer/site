@@ -2,8 +2,7 @@
 layout: post
 title: "Suivi mémoire"
 tag:
-- mémoire
-- epsi
+    - epsi
 category: blog
 author: sylvainmetayer
 description: "Réinitialiser le mot de passe administrateur de sa machine Linux peut parfois être nécessaire, dans le cas d'un oubli par exemple."

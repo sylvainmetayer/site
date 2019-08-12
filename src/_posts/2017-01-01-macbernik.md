@@ -2,9 +2,7 @@
 title: "MacBernick"
 layout: post
 tag: 
-    - browser game
-    - jquery
-    - agilité
+    - javascript
     - dawin
 hidden: false
 description: "Projet réalisé durant une semaine (Janvier 2017) avec 6 autres étudiants nous a initié au déroulement d'un projet agile, de l'idée à la livraison du projet."

@@ -2,8 +2,8 @@
 title: "L'effet Parthenay"
 layout: post
 tag:
-- traduction
-- parthenay
+    - traduction
+    - parthenay
 category: blog
 author: sylvainmetayer
 description: "L'effet Parthenay : Comment une petite ville pourrait bien sauver la civilisation française."

@@ -2,7 +2,6 @@
 title: "Rapport DUT Informatique"
 layout: post
 tag: 
-    - rapport
     - DUT Informatique
 hidden: false
 description: "Ce mémoire décrit le projet réalisé durant mon stage de DUT Informatique"

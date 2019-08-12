@@ -2,10 +2,8 @@
 title: "Agent Ready"
 layout: post
 tag: 
-    - jquery
-    - browser game
+    - javascript
     - dawin
-    - js
 hidden: false
 description: "Le but de ce projet était de réaliser un 'Jeu dont vous êtes le héros' avec diverses actions, tout en utilisant jQuery."
 category: projet

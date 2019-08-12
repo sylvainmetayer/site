@@ -2,7 +2,7 @@
 title: "Nouvelle version du site :tada:"
 layout: post
 tag:
-- jekyll
+    - jekyll
 category: blog
 author: sylvainmetayer
 description: "Après quelques années d'existence, mon ancien site commençait à vieillir."

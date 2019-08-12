@@ -2,9 +2,7 @@
 title: "Ajout des commentaires sur le site"
 layout: post
 tag:
-- jekyll
-- isso
-- commentaires
+    - jekyll
 category: blog
 author: sylvainmetayer
 description: "Les commentaires sont maintenant disponible sur le site"
