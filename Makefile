@@ -58,3 +58,8 @@ logs-prod:  ## Show prod logs
 deploy: ## Manuel deploy. Do not use, their is a CD process
 	rsync -r --verbose --quiet --delete-after _site/* $(name):$(DEPLOY_DIRECTORY)
 
+shell: ## Get a shell inside the container
+	docker exec -it ${CONTAINER_NAME} bash
+
+shell_prod: ## Get a shell inside the production container
+	docker exec -it ${CONTAINER_NAME} bash
