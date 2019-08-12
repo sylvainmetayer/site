@@ -3,43 +3,7 @@ layout: page
 title: Formations
 ---
 
-# Formation, expériences professionnelles et certifications
-
-{% if site.data.formations.size > 0 %}
-<section class="list">
-    <h2>Formations</h2>
-    {% for formation in site.data.formations reversed %}
-            <div class="item">
-                <h3 class="title">{{ formation.name }}</h3>
-                <aside>
-                {% if formation.width and formation.height %}
-                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' height="{{formation.height}}" width="{{formation.width}}" %}
-                {% else %}
-                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' %}
-                {% endif %}
-                </aside>
-                <p>
-                    {% if formation.more %} {{ formation.more }}, {% endif %}
-                    {% if formation.date_start %} {{ formation.date_start }} - {% endif %}
-                    {{ formation.date_end }}
-                    <br>
-                    {% if formation.link %}
-                        <a class="url" href="{{ formation.link }}">  
-                    {% endif %}
-                        {{ formation.location }}
-                    {% if formation.link %}
-                        </a>
-                    {% endif %}
-                </p>
-                {% if formation.project_tag %}
-                    <div class="post-tags">
-                        <a class="item" href="{{ site.url }}/tags/#{{ formation.project_tag | slugify }}">Voir les projets réalisés</a>
-                    </div>
-                {% endif %}
-            </div>
-    {% endfor %}
-</section>
-{% endif %}
+# Expériences professionnelles, certifications et formation
 
 {% if site.data.enterprises.size > 0 %}
 <section class="list">
@@ -105,6 +69,42 @@ title: Formations
                     {% if certification.more %} {{ certification.more }} <br/>{% endif %}
                     {% include translated_date.html date=certification.date format="%B %Y" %}
                 </p>
+            </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+{% if site.data.formations.size > 0 %}
+<section class="list">
+    <h2>Formations</h2>
+    {% for formation in site.data.formations reversed %}
+            <div class="item">
+                <h3 class="title">{{ formation.name }}</h3>
+                <aside>
+                {% if formation.width and formation.height %}
+                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' height="{{formation.height}}" width="{{formation.width}}" %}
+                {% else %}
+                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' %}
+                {% endif %}
+                </aside>
+                <p>
+                    {% if formation.more %} {{ formation.more }}, {% endif %}
+                    {% if formation.date_start %} {{ formation.date_start }} - {% endif %}
+                    {{ formation.date_end }}
+                    <br>
+                    {% if formation.link %}
+                        <a class="url" href="{{ formation.link }}">  
+                    {% endif %}
+                        {{ formation.location }}
+                    {% if formation.link %}
+                        </a>
+                    {% endif %}
+                </p>
+                {% if formation.project_tag %}
+                    <div class="post-tags">
+                        <a class="item" href="{{ site.url }}/tags/#{{ formation.project_tag | slugify }}">Voir les projets réalisés</a>
+                    </div>
+                {% endif %}
             </div>
     {% endfor %}
 </section>
