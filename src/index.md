@@ -9,7 +9,6 @@ Je suis titulaire d'un DUT Informatique obtenu à l'IUT du Limousin (87) ainsi q
 
 Je suis actuellement en dernière annnée d'école d'ingénierie, à l'EPSI de Bordeaux (33).
 
-J'effectue cette formation en alternance, à [onepoint](https://groupeonepoint.com).
+Je suis actuellement développeur au sein de [onepoint](https://groupeonepoint.com) à Bordeaux (33).
 
-Découvrez sur ce site mon [parcours]({{site.url}}/formations/), mes [projets]({{ site.url }}/projets/), consultez mon [CV]({{ site.url }}/assets/CV.pdf) et [contactez moi](mailto:{{site.email}}) !
-
+Découvrez sur ce site mon [parcours]({{site.url}}/formations/), mes [projets]({{ site.url }}/projets/), consultez mon [CV]({{ site.url }}/assets/CV.pdf) et [contactez moi](mailto:{{site.email | encode_email }}) !

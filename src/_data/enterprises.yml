@@ -15,7 +15,7 @@
   alt: Logo NextMedia
   date_start: Avril 2016
   date_end: Juillet 2016
-  location: Clermont-Ferrand
+  location: Clermont-Ferrand (63)
   more: Alternance dans le cadre de ma licence professionnelle DAWIN 
   height: 60
   width: 60
@@ -27,7 +27,7 @@
   alt: Logo Atos
   date_start: Octobre 2016
   date_end: Septembre 2017 
-  location: Bordeaux
+  location: Pessac (33)
   more: Alternance dans le cadre de ma licence professionnelle DAWIN 
   height: 60
   width: 60
@@ -39,9 +39,21 @@
   logo: onepoint.png
   alt: Logo Onepoint
   date_start: Septembre 2017
-  date_end: Aujourd'hui 
-  location: Bordeaux
+  date_end: Juillet 2019 
+  location: Pessac (33)
   more: Alternance dans le cadre de ma formation avec l'EPSI
   height: 60
   width: 100
   date: 2017-09-11
+
+- name: Onepoint
+  link: https://www.groupeonepoint.com/
+  logo: onepoint.png
+  alt: Logo Onepoint
+  date_start: Aout 2019
+  date_end: Aujourd'hui 
+  location: Bordeaux (33)
+  more: Développeur
+  height: 60
+  width: 100
+  date: 2019-08-01
