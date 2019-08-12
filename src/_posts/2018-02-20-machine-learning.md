@@ -14,8 +14,6 @@ project_type: school
 
 [Sources (Github)](https://github.com/EPSIBordeaux/epsi-expert-system)
 
-[Testez le !](https://machine-learning.epsi-bordeaux.fr/)
-
 {{ page.description }}
 
 Cliquez pour démarrer la lecture de la vidéo.

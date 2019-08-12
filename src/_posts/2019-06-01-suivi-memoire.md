@@ -7,7 +7,7 @@ category: blog
 author: sylvainmetayer
 description: "Avancée de la réalisation de mon mémoire de fin d'études pour l'EPSI"
 hidden: false
-star: true
+star: false
 enable_comments: true
 ---
 
@@ -19,7 +19,7 @@ Tout d'abord, la génération du PDF final était pour moi quelque chose que je 
 
 J'ai également cherché à appliquer les bonnes pratiques LaTeX, avec l'utilisation du paquet [nag](https://ctan.org/pkg/nag) qui permet de relever certaines erreurs et propose des corrections pour ces dernières.
 
-Pour faciliter une diffusion plus facile de mon mémoire, j'ai mis en place une redirection vers la dernière version disponible accessible via le lien suivant : [https://memoire.sylvainmetayer.fr](https://memoire.sylvainmetayer.fr)
+Pour faciliter une diffusion plus facile de mon mémoire, j'ai mis en place une redirection vers la dernière version disponible accessible via le lien suivant : [https://memoire.epsi.sylvainmetayer.fr](https://memoire.epsi.sylvainmetayer.fr)
 
 Un changement important à noter est le changement de ma problématique, afin d'éviter un potentiel hors sujet et de me restreindre à un périmètre trop petit. La nouvelle problématique est la suivante : **Comment l’automatisation peut-elle permettre d’améliorer le cycle de vie d’une application ?**. Concernant le travail sur mon mémoire, j'ai finalisé le plan, qui comporte donc 3 parties. 
 
