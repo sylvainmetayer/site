@@ -47,7 +47,7 @@ deploy:
 - provider: script
   skip_cleanup: true
   script:
-  - bundle install --without :development :test && JEKYLL_ENV=stage bundle exec jekyll build --config _config.yml,_config-deploy-dev.yml && rsync -r --quiet
+  - gem update --system && gem install bundler && bundle install --without :development :test && JEKYLL_ENV=stage bundle exec jekyll build --config _config.yml,_config-deploy-dev.yml && rsync -r --quiet
     --delete-after _site/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIRECTORY_DEV
   on:
     branch: develop
