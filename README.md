@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/sylvainmetayer/sylvainmetayer.svg?branch=master)](https://travis-ci.org/sylvainmetayer/sylvainmetayer)
 [![Depfu](https://badges.depfu.com/badges/8854fd930f182d7c719d31bc443abd5e/overview.svg)](https://depfu.com/github/sylvainmetayer/sylvainmetayer?project_id=6389)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsylvainmetayer%2Fsylvainmetayer.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsylvainmetayer%2Fsylvainmetayer?ref=badge_shield)
 
 > Sylvain METAYER
 >
@@ -68,3 +69,7 @@ If you want to use travis, you will have to generate the following variables wit
 - `travis encrypt DEPLOY_DIRECTORY=SOME_REMOTE_PATH --add`
 
     This tells travis where to deploy your application on the remote host.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsylvainmetayer%2Fsylvainmetayer.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsylvainmetayer%2Fsylvainmetayer?ref=badge_large)
