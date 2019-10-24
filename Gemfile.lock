@@ -69,7 +69,7 @@ GEM
     jekyll-email-protect (1.1.0)
     jekyll-feed (0.12.1)
       jekyll (>= 3.7, < 5.0)
-    jekyll-fontawesome-svg (0.1.1)
+    jekyll-fontawesome-svg (0.2.0)
     jekyll-sanity (1.2.0)
       jekyll (~> 3.1)
     jekyll-sass-converter (1.5.2)
@@ -138,7 +138,7 @@ DEPENDENCIES
   jekyll-compose
   jekyll-email-protect
   jekyll-feed
-  jekyll-fontawesome-svg (~> 0.1.1)
+  jekyll-fontawesome-svg (~> 0.2.0)
   jekyll-seo-tag
   jekyll-sitemap
   jemoji
