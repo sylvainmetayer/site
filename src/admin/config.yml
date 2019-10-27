@@ -38,12 +38,3 @@ collections:
         fields:
           - {label: Nom, name: name, widget: string}
           - {label: URL, name: link, widget: string}
-
-#- name: TOEIC
- # link: https://www.ets.org/fr/toeic
- # logo: toeic.png
- # alt: Logo TOEIC
- # height: 60
- # width: 60
- # more: 855/1000
- # date: 2018-02-01
