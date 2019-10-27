@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   repo: sylvainmetayer/sylvainmetayer
   branch: develop
 
@@ -29,31 +29,21 @@ collections:
       - {label: "Star the article", name: "star", widget: "boolean", default: false}
       - {label: "Activate comments on this page", name: "enable_comments", widget: "boolean", default: false}
 
-  - label: "Pages"
-    name: "pages"
+  - label: "Configuration"
+    name: "configuration"
     files:
-      - label: "About Page"
-        name: "about"
-        file: "site/content/about.yml"
+      - label: "Certifications"
+        name: "certifications"
+        file: "src/_data/certifications.yml"
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Intro, name: intro, widget: markdown}
-          - label: Team
-            name: team
-            widget: list
-            fields:
-              - {label: Name, name: name, widget: string}
-              - {label: Position, name: position, widget: string}
-              - {label: Photo, name: photo, widget: image}
-      - label: "Locations Page"
-        name: "locations"
-        file: "site/content/locations.yml"
-        fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Intro, name: intro, widget: markdown}
-          - label: Locations
-            name: locations
-            widget: list
-            fields:
-              - {label: Name, name: name, widget: string}
-              - {label: Address, name: address, widget: string}
+          - {label: Nom, name: name, widget: string}
+          - {label: URL, name: link, widget: string}
+
+#- name: TOEIC
+ # link: https://www.ets.org/fr/toeic
+ # logo: toeic.png
+ # alt: Logo TOEIC
+ # height: 60
+ # width: 60
+ # more: 855/1000
+ # date: 2018-02-01
