@@ -11,9 +11,9 @@ options = {
   :typhoeus => {
       :ssl_verifyhost => 0
   },
-  :file_ignore => ["src/admin/index.html", "src/admin/config.yml", "/_site/admin/*"],
+  :file_ignore => ["src/admin/index.html", "src/admin/config.yml", "/_site/admin/index.html"],
   # Because their is authwall, because HTTP/2 fail nag and because certificate error for eugdpr.org though it seems right
-  :url_ignore => ["http://linkedin.com/in/sylvainmetayer", "https://ctan.org/pkg/nag", "https://eugdpr.org/"]
+  :url_ignore => ["http://linkedin.com/in/sylvainmetayer", "https://ctan.org/pkg/nag", "https://eugdpr.org/", "/_site/admin/index.html"]
 }
 
 task :test do
