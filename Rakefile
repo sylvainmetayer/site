@@ -3,7 +3,7 @@ require 'html-proofer'
 
 options = { 
   :assume_extension => true, 
-  :href_ignore=> ['http://localhost:4000'],
+  :href_ignore => ['http://localhost:4000'],
   :verbose => true,
   :check_opengraph => true,
   :check_html => true,
@@ -11,9 +11,7 @@ options = {
   :typhoeus => {
       :ssl_verifyhost => 0
   },
-  :file_ignore => {
-    ["src/admin/index.html", "src/admin/config.yml"]
-  },
+  :file_ignore => ["src/admin/index.html", "src/admin/config.yml"],
   # Because their is authwall, because HTTP/2 fail nag and because certificate error for eugdpr.org though it seems right
   :url_ignore => ["http://linkedin.com/in/sylvainmetayer", "https://ctan.org/pkg/nag", "https://eugdpr.org/"]
 }
