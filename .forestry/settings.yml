@@ -7,7 +7,6 @@ sections:
 - type: jekyll-posts
   label: Posts
   create: documents
-  match: "**/*"
 - type: document
   path: src/_data/certifications.yml
   label: Certifications

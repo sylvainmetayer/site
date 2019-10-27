@@ -1,0 +1,31 @@
+---
+label: Projet
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: text
+  name: layout
+  label: layout
+- type: list
+  name: tag
+  label: tag
+- type: boolean
+  name: hidden
+  label: hidden
+- type: textarea
+  name: description
+  label: description
+- type: text
+  name: category
+  label: category
+- type: text
+  name: author
+  label: author
+- type: boolean
+  name: enable_comments
+  label: enable_comments
+- type: text
+  name: project_type
+  label: project_type
