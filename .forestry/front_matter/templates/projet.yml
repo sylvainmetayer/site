@@ -8,6 +8,8 @@ fields:
 - type: text
   name: layout
   label: layout
+  hidden: true
+  default: blog
 - type: list
   name: tag
   label: tag
@@ -18,14 +20,39 @@ fields:
   name: description
   label: description
 - type: text
-  name: category
-  label: category
-- type: text
   name: author
   label: author
 - type: boolean
   name: enable_comments
   label: enable_comments
-- type: text
-  name: project_type
-  label: project_type
+- name: project_type
+  type: select
+  default: ''
+  config:
+    required: false
+    options:
+    - company
+    - personal
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Type de projet
+  showOnly:
+    field: category
+    value: projet
+- name: category
+  type: select
+  default: blog
+  config:
+    required: true
+    options:
+    - projet
+    - blog
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Catégorie
