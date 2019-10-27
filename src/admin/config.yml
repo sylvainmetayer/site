@@ -1,0 +1,30 @@
+backend:
+  name: github
+  repo: sylvainmetayer/sylvainmetayer
+  branch: develop
+
+publish_mode: editorial_workflow
+
+media_folder: "src/_assets/images"
+
+public_folder: "/assets"
+
+site_url: https://dev.sylvainmetayer.fr
+
+collections:
+  - name: "Posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields: # The fields for each document, usually in front matter
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Auteur", name: "author", widget: "string", default: "sylvainmetayer"}
+      - {label: "Layout", name: "layout", widget: "string", default: "post"}
+      - {label: "Texte", name: "body", widget: "markdown"}
+      - {label: "Catégorie", name: "category", widget: "select", options: ["blog", "projet"]}
+      - {label: "Type de projet (si catégorie = projet)", name: "project_type", widget: "select", options: ["school", "personal"], required: false}
+      - {label: "Tags", name: "tag", widget: "string", min: 0, max: 3}
+      - {label: "Star the article", name: "star", widget: "boolean", default: false}
+      - {label: "Activate comments on this page", name: "enable_comments", widget: "boolean", default: false}
