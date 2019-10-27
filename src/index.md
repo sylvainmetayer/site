@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Accueil
----
 
-# Bonjour et bienvenue !
+---
+# Bienvenue !
 
 Je suis titulaire d'un DUT Informatique obtenu à l'IUT du Limousin (87) ainsi qu'une Licence Professionnelle DAWIN (Développement en applications web et innovation numérique) à l'IUT de Bordeaux (33), effectuée en alternance. J'ai également effectué un mastère en alternance à l'EPSI de Bordeaux (33).
 

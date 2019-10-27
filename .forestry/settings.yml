@@ -7,7 +7,6 @@ sections:
 - type: document
   path: src/assets/CV.pdf
   label: CV
-  match: "**/*"
 - type: jekyll-pages
   label: Pages
   create: all
