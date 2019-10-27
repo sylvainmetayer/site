@@ -1,7 +1,7 @@
 --- 
 backend: 
   branch: develop
-  name: git-gateway
+  name: github
   repo: sylvainmetayer/sylvainmetayer
 collections: 
   - 
