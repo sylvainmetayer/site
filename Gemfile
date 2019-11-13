@@ -21,4 +21,4 @@ group :test do
 end
 
 gem 'rouge'
-gem 'nokogiri', '1.10.4'
+gem 'nokogiri', '1.10.5'
