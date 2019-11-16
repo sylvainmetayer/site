@@ -6,6 +6,12 @@ source: src
 destination: _site
 strict_front_matter: true 
 
+collections:
+    projects:
+        output: true
+        permalink: /projet/:name
+    
+
 # twitter summary info
 description: Sylvain METAYER, étudiant en 5ème année à l'EPSI Bordeaux et développeur web à onepoint. 
 
