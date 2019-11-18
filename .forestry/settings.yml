@@ -9,7 +9,7 @@ sections:
   create: all
 - type: jekyll-posts
   label: Posts
-  create: documents
+  create: all
 - type: document
   path: src/_data/certifications.yml
   label: Certifications
