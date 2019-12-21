@@ -14,7 +14,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: jekyll serve --config _config.yml,_config-dev.yml --watch --incremental
+    command: jekyll serve --config _config.yml,_config-dev.yml --watch
     ports:
         - 127.0.0.1:4000:4000
     volumes:
@@ -32,7 +32,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: jekyll serve --config _config.yml,_config-prod-local.yml --watch --incremental
+    command: jekyll serve --config _config.yml,_config-prod-local.yml --watch
     ports:
         - 127.0.0.1:4001:4000
     volumes:
