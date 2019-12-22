@@ -11,7 +11,8 @@ group :jekyll_plugins do
     gem 'jekyll-compose'
     gem 'jekyll-assets'
     gem 'jekyll-fontawesome-svg', '~> 0.3.0'
-    gem 'jekyll'
+    gem 'jekyll', '~> 3.8.0', '< 4.0.0'
+    gem 'jekyll-admin', group: :jekyll_plugins
 end
 
 group :test do
