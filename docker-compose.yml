@@ -6,7 +6,7 @@ services:
     environment:
       - JEKYLL_ENV=development
     container_name: jekyll_sylvainmetayer
-    image: jekyll/jekyll:3.8.6
+    build: .
     labels:
       jekyll_docker_sylvainmetayer: true
     healthcheck:
@@ -24,7 +24,7 @@ services:
     environment:
       - JEKYLL_ENV=production
     container_name: jekyll_sylvainmetayer_production
-    image: jekyll/jekyll:3.8.6
+    build: .
     labels:
       jekyll_docker_sylvainmetayer: true
     healthcheck:
