@@ -7,10 +7,18 @@ destination: _site
 strict_front_matter: true 
 
 collections:
-    projects:
+    school_projects:
         output: true
-        permalink: /projet/:name
-    
+        permalink: /ecole/:title/
+        sort_by: date
+    pro_projects:
+        output: true
+        permalink: /entreprise/:title/
+        sort_by: date
+    projects: 
+        output: true
+        permalink: /projet/:title/
+        sort_by: date
 
 # twitter summary info
 description: Sylvain METAYER, étudiant en 5ème année à l'EPSI Bordeaux et développeur web à onepoint. 
@@ -26,12 +34,8 @@ resume-url: assets/CV.pdf
 
 permalink: /:categories/:title/
 
-# To enable piwik tracking, supply your url & site ID below
-# analytics-piwik-url: 'piwik.my-host.com'
-# analytics-piwik-id: 1
-
 # if you don't have any of social below, comment the line
-# facebook: sylvain.metayer
+facebook: sylvain.metayer
 twitter: sylvain_metayer
 # google: mygoogle
 # instagram: myinstagram
@@ -64,17 +68,6 @@ authors:
 # normal = 560px / large = 810px
 width: normal
 
-# if you don't need pagination, comment the *paginate* configs below
-# paginate: 5
-# paginate_path: "blog/:num/"
-
-# if you don't need projects, comment the *projects* configs below
-projects: true
-
-# if you don't need "about" or "blog", comment them out below
-about: false
-blog: true
-
 # do you want to show the "read time" of the posts?
 read-time: true
 
@@ -105,7 +98,17 @@ isso:
     script: https://comments.sylvainmetayer.fr/main/js/embed.min.js
 
 # BUILD SETTINGS
-exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "netlify.toml", "github_travis.enc", "vendor", "Makefile", "docker-compose.yml"]
+exclude: 
+    - "travis.sh"
+    - "Rakefile"
+    - "README.md"
+    - "Gemfile"
+    - "Gemfile.lock"
+    - "netlify.toml"
+    - "github_travis.enc"
+    - "vendor"
+    - "Makefile"
+    - "docker-compose.yml"
 
 sass:
     sass_dir: _sass

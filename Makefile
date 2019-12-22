@@ -45,6 +45,9 @@ clean: down ## Cleanup local data, including containers
 logs: ## Show logs
 	docker logs $(CONTAINER_NAME) -f 
 
+debug: ## Instanciate a new container to debug when things are wrong
+	docker-compose run jekyll bash
+
 logs-prod:  ## Show prod logs
 	docker logs $(CONTAINER_NAME_PROD) -f 
 

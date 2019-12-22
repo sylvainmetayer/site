@@ -1,17 +1,14 @@
 ---
-title: "Semaine innovante DAWIN"
+title: "Semaine innovante"
 layout: post
 tag: 
     - javascript
     - php
-    - dawin
-hidden: false
 description: "Semaine innovante faisant partie de la formation DAWIN, durant laquelle le but était de réaliser une application innovante."
-category: projet
 author: sylvainmetayer
 enable_comments: true
-project_type: school
-
+school: DAWIN
+date: 2017-07-07
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/semaine-innovante-dawin)

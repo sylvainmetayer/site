@@ -9,9 +9,8 @@ group :jekyll_plugins do
     # Waiting for ivantsepp/jekyll-git_metadata#24 to be resolved.
     #gem 'jekyll-git_metadata'
     gem 'jekyll-assets'
-    gem 'jekyll-fontawesome-svg', '~> 0.3.0'
-    gem 'jekyll', '~> 3.8.0', '< 4.0.0'
-    gem 'jekyll-admin', group: :jekyll_plugins
+    gem 'jekyll-fontawesome-svg'
+    gem 'jekyll', '< 4.0.0'
 end
 
 group :test do

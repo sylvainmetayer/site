@@ -1,16 +1,13 @@
 ---
 title: "Bot Telegram"
 layout: post
+date: 2018-03-30
 tag: 
-    - epsi
     - javascript
     - bot
-hidden: false
 description: "Ce projet, réalisé en binome durant ma formation à l'EPSI avait pour but de réaliser un chatbot de recrutement."
-category: projet
 author: sylvainmetayer
-project_type: school
-
+school: EPSI
 ---
 
 [Sources (Github)](https://github.com/EPSIBordeaux/Telegram_Bot)

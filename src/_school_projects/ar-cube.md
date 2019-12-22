@@ -1,15 +1,13 @@
 ---
 title: "Cube en réalité Augmentée"
 layout: post
+date: 2019-02-01
 tag: 
     - javascript
     - webgl
-    - epsi
-hidden: false
 description: "Ce projet, réalisé avec une équipe de 4 personnes avait pour objectif d'être une introduction à la réalité augmentée."
-category: projet
 author: sylvainmetayer
-project_type: school
+school: EPSI
 ---
 
 [Sources (Github)](https://github.com/EPSIBordeaux/ar-cube)

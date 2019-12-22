@@ -3,14 +3,11 @@ title: "Agent Ready"
 layout: post
 tag: 
     - javascript
-    - dawin
-hidden: false
+date: 2017-01-20
 description: "Le but de ce projet était de réaliser un 'Jeu dont vous êtes le héros' avec diverses actions, tout en utilisant jQuery."
-category: projet
 author: sylvainmetayer
 enable_comments: true
-project_type: school
-
+school: DAWIN
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/agent-ready/)

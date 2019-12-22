@@ -4,14 +4,12 @@ layout: post
 tag:
   - jekyll
   - ruby
-category: blog
 author: sylvainmetayer
 description: Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans pour
   autant intégrer toute la librairie, assez lourde.
-hidden: false
 star: false
 enable_comments: true
-project_type: personal
+date: 2018-11-30
 ---
 
 ## Besoin

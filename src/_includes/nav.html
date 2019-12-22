@@ -12,28 +12,16 @@
             </li>    
         {% endif %}
         
-        {% if site.blog == true %}
-            {% if page.title != "Blog" %}
-                <li class="item">
-                    <a class="link" href="{{ site.url }}/blog">Blog</a>
-                </li>
-            {% endif %}
+        {% if page.title != "Blog" %}
+            <li class="item">
+                <a class="link" href="{{ site.url }}/blog">Blog</a>
+            </li>
         {% endif %}
 
-        {% if site.projects == true %}
-            {% if page.title != "Projets" %}
-                <li class="item">
-                    <a class="link" href="{{ site.url }}/projets">Projets</a>
-                </li>
-            {% endif %}
-        {% endif %}
-
-        {% if site.about == true %}
-            {% if page.title != "a-propos" %}
-                <li class="item">
-                    <a class="link" href="{{ site.url }}/a-propos">A propos</a>
-                </li>
-            {% endif %}
+        {% if page.title != "Projets" %}
+            <li class="item">
+                <a class="link" href="{{ site.url }}/projets">Projets</a>
+            </li>
         {% endif %}
 
         {% if site.resume == true %}

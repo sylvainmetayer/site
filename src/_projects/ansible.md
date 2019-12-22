@@ -3,13 +3,11 @@ title: "Configuration d'un serveur avec Ansible"
 layout: post
 tag: 
     - devops
-hidden: false
 description: "J'ai réalisé ce projet personnel afin de me familiariser avec Ansible et pouvoir récréer un serveur à l'identique sans intervention humaine."
-category: projet
 author: sylvainmetayer
 star: false
 enable_comments: true
-project_type: personal
+date: 2018-09-15
 ---
 
 [Sources (Github)](https://github.com/EPSIBordeaux/ansible-deployment)

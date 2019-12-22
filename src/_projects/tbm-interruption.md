@@ -5,13 +5,11 @@ tag:
     - ruby
     - twitter
     - bot
-hidden: false
 description: "J'ai réalisé ce bot afin de permettre un suivi des interruptions des Trams Bordelais."
-category: projet
 author: sylvainmetayer
 star: false
 enable_comments: true
-project_type: personal
+date: 2018-02-14
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/tbm_interruption_tracker)
