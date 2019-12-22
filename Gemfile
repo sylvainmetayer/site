@@ -23,3 +23,8 @@ end
 
 gem 'rouge'
 gem 'nokogiri', '1.10.7'
+gem "sprockets", "~> 3.7"
+
+group :ci do
+    gem 'travis'
+end
