@@ -1,13 +1,10 @@
 ---
 title: "Rapport DUT Informatique"
+date: 2016-06-20
 layout: post
-tag: 
-    - DUT Informatique
-hidden: false
 description: "Ce mémoire décrit le projet réalisé durant mon stage de DUT Informatique"
-category: projet
 author: sylvainmetayer
-project_type: school
+school: DUT Info
 enable_comments: true
 ---
 

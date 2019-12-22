@@ -1,14 +1,12 @@
 ---
 title: "GEMAO"
 layout: post
-tag: 
-    - DUT Informatique
-hidden: false
+tag: []
 description: "GEMAO, ou Gestion d'Ecole de Musique Assistée par Ordinateur est un projet tuteuré qui consistait à réaliser une application permettant la gestion d'une école de musique."
-category: projet
+date: 2016-06-18
 author: sylvainmetayer
 enable_comments: true
-project_type: school
+school: DUT Info
 ---
 
 [Sources (Gitlab)](https://gitlab.com/TheoG/ProjetTuteure/tree/Pedagogie)

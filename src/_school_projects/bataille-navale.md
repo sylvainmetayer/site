@@ -1,15 +1,12 @@
 ---
 title: "Bataille navale"
 layout: post
+date: 2015-05-01
 tag: 
     - java
-    - DUT Informatique
-hidden: false
 description: "Ce projet universitaire, réalisé en binome entre Mars et Mai 2015, nous a permis de nous familiariser avec Java Swing et de consituer nos premières interfaces graphiques."
-category: projet
-project_type: school
+school: DUT Info
 author: sylvainmetayer
-
 ---
 
 [Source (Github)](https://github.com/sylvainmetayer/BatailleNavale)

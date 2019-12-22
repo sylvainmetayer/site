@@ -1,14 +1,12 @@
 ---
 title: "Projet open innovation"
 layout: post
+date: 2019-02-25
 tag: 
     - javascript
-    - epsi
-hidden: false
 description: "Ce projet, réalisé en équipe s'inscrivait dans la démarche Open Innovation de l'EPSI, impliquant plusieurs promotions et nécessitant donc d'être organisé"
-category: projet
 author: sylvainmetayer
-project_type: school
+school: EPSI
 ---
 
 [Sources (Github)](https://github.com/EPSIBordeaux/memoryProject)

@@ -1,14 +1,12 @@
 ---
 title: "Bêtisier de l'IUT "
+date: 2015-12-01
 layout: post
 tag: 
     - php
-    - DUT Informatique
-hidden: false
 description: "Ce projet universitaire constituait une découverte du PHP. Il consistait à réaliser un site rassemblant les perles de profs, permettant leur ajout, notation par des élèves, ..."
-category: projet
 author: sylvainmetayer
-project_type: school
+school: DUT Info
 enable_comments: true
 
 ---

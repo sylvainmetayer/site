@@ -19,6 +19,12 @@ collections:
         output: true
         permalink: /projet/:title/
         sort_by: date
+    formations:
+        order: 
+            - bac.md
+            - dut.md
+            - dawin.md
+            - epsi.md
 
 # twitter summary info
 description: Sylvain METAYER, étudiant en 5ème année à l'EPSI Bordeaux et développeur web à onepoint. 

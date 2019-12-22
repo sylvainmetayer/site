@@ -1,15 +1,12 @@
 ---
 title: "Tetris Android"
 layout: post
+date: 2017-06-30
 tag: 
     - android
-    - dawin
-hidden: false
 description: "Projet universitaire réalisé afin de se familiariser avec le développement d'application Android."
-category: projet
 author: sylvainmetayer
-project_type: school
-
+school: DAWIN
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/tetris)

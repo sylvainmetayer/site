@@ -1,15 +1,12 @@
 ---
 title: "PyGame"
+date: 2016-03-18
 layout: post
 tag: 
     - python
-    - DUT Informatique
-hidden: false
 description: "Ce projet universitaire consistait à réaliser un mini-jeu en réseau, à l'aide des librairies PyGame et PodSixNet."
-category: projet
 author: sylvainmetayer
-project_type: school
-
+school: DUT Info
 ---
 
 [Source (Github)](https://github.com/sylvainmetayer/pygame)

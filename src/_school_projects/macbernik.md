@@ -1,16 +1,13 @@
 ---
 title: "MacBernick"
+date: 2017-01-01
 layout: post
 tag: 
     - javascript
-    - dawin
-hidden: false
 description: "Projet réalisé durant une semaine (Janvier 2017) avec 6 autres étudiants nous a initié au déroulement d'un projet agile, de l'idée à la livraison du projet."
-category: projet
 author: sylvainmetayer
 enable_comments: true
-project_type: school
-
+school: DAWIN
 ---
 
 [Sources (Github)](https://github.com/mlcdf/macbernik/)

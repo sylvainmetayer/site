@@ -74,36 +74,37 @@ title: Formations
 </section>
 {% endif %}
 
-{% if site.data.formations.size > 0 %}
+{% if site.formations.size > 0 %}
 <section class="list">
     <h2>Formations</h2>
-    {% for formation in site.data.formations reversed %}
+    {% for formation in site.formations %}
             <div class="item">
-                <h3 class="title">{{ formation.name }}</h3>
+                <h3 class="title">{{ formation.title }}</h3>
                 <aside>
-                {% if formation.width and formation.height %}
-                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' height="{{formation.height}}" width="{{formation.width}}" %}
-                {% else %}
-                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' %}
-                {% endif %}
+                <!-- {% asset "{{ formation.logo }}" alt='Logo {{ formation.title }}' height="60" width="60" %} -->
+                {% asset "{{ formation.logo }}" alt='Logo {{ formation.title }}' %}
                 </aside>
+                {{ formation.content | markdownify }}
                 <p>
-                    {% if formation.more %} {{ formation.more }}, {% endif %}
                     {% if formation.date_start %} {{ formation.date_start }} - {% endif %}
                     {{ formation.date_end }}
                     <br>
                     {% if formation.link %}
                         <a class="url" href="{{ formation.link }}">  
                     {% endif %}
-                        {{ formation.location }}
+                    {{ formation.location }}
                     {% if formation.link %}
                         </a>
                     {% endif %}
                 </p>
-                {% if formation.project_tag %}
-                    <div class="post-tags">
-                        <a class="item" href="{{ site.url }}/tags/#{{ formation.project_tag | slugify }}">Voir les projets réalisés</a>
-                    </div>
+                {% assign projects = site.school_projects | where: 'school', formation.code %}
+                {% if projects.size > 0 %}
+                <p>Projets réalisés</p>
+                <ul class="post-tags">
+                    {% for project in projects %}
+                        <li><a href="{{site.url}}{{project.url}}">{{project.title}}</a></li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
             </div>
     {% endfor %}
