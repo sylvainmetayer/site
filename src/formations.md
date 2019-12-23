@@ -49,29 +49,24 @@ title: Formations
 </section>
 {% endif %}
 
-{% if site.data.certifications.size > 0 %}
+{% if site.certifications.size > 0 %}
 <section class="list">
     <h2>Certifications</h2>
     {% for certification in site.certifications reversed %}
             <div class="item">
                 <h3 class="title">
                     {% if certification.link %}
-                        <a class="url" href="{{ certification.link }}">  
-                    {% endif %}
-                    {{ certification.name }}
-                    {% if certification.link %}
-                        </a>
+                        <a class="url" href="{{ certification.link }}">{{ certification.name }}</a>
+                    {% else %}
+                        {{ certification.name }}
                     {% endif %}
                 </h3>
                 <aside>
-                {% if certification.width and certification.height %}
-                    {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' height="{{certification.height}}" width="{{certification.width}}" %}
-                {% else %}
-                    {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' %}
-                {% endif %}
+                <!-- {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' height="{{certification.height}}" width="{{certification.width}}" %} -->
+                {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' %}
                 </aside>
+                {{ certification.content | markdownify }}
                 <p>
-                    {% if certification.more %} {{ certification.more }} <br/>{% endif %}
                     {% include translated_date.html date=certification.date format="%B %Y" %}
                 </p>
             </div>
