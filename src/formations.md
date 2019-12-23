@@ -5,41 +5,46 @@ title: Formations
 
 # Expériences professionnelles, certifications et formation
 
-{% if site.data.enterprises.size > 0 %}
+{% if site.companies.size > 0 %}
 <section class="list">
     <h2>Expériences professionnelles</h2>
-    {% for company in site.data.enterprises reversed %}
+    {% for company in site.companies reversed %}
             <div class="item">
                 <h3 class="title">
                     {% if company.link %}
-                        <a class="url" href="{{ company.link }}">  
-                    {% endif %}
-                    {{ company.name }}
-                    {% if company.link %}
-                        </a>
+                        <a class="url" href="{{ company.link }}">{{ company.title }}</a>
+                    {% else %}
+                        {{ company.title }}
                     {% endif %}
                 </h3>
                 <aside>
-                {% if company.width and company.height %}
-                    {% asset "{{ company.logo }}" alt='{{ company.alt }}' height="{{company.height}}" width="{{company.width}}" %}
-                {% else %}
-                    {% asset "{{ company.logo }}" alt='{{ company.alt }}' %}
-                {% endif %}
+                {% asset "{{ company.logo }}" alt='{{ company.alt }}' %}
+                <!-- {% asset "{{ company.logo }}" alt='{{ company.alt }}' height="{{company.height}}" width="{{company.width}}" %} -->
                 </aside>
+                {{ company.content | markdownify }}
                 <p>
                     {% if company.more %} {{ company.more }} {% endif %} 
                     <br/>
-                    {% if company.date_start %} {{ company.date_start }} - {% endif %}
-                    {{ company.date_end }}
+                    Du {{ company.date | date:"%d-%m-%Y" }} 
+                    {% if company.to %}
+                        au {{ company.to | date:"%d-%m-%Y" }}
+                    {% else %}
+                        à Aujourd'hui
+                    {% endif %}
                     <br/>
                     {{ company.location }}
                 </p>
-                {% if company.project_tag %}
-                    <div class="post-tags">
-                        <a class="item" href="{{ site.url }}/tags/#{{ company.project_tag | slugify }}">Voir les projets réalisés</a>
-                    </div>
+                {% assign projects = site.pro_projects | where: 'company', company.code %}
+                {% if projects.size > 0 %}
+                <p>Projets réalisés</p>
+                <ul class="post-tags">
+                    {% for project in projects %}
+                        <li><a href="{{site.url}}{{project.url}}">{{project.title}}</a></li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
             </div>
+            <hr/>
     {% endfor %}
 </section>
 {% endif %}

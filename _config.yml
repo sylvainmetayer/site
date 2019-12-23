@@ -19,6 +19,8 @@ collections:
         output: true
         permalink: /projet/:title/
         sort_by: date
+    companies: 
+        sort_by: date
     formations:
         order: 
             - bac.md
