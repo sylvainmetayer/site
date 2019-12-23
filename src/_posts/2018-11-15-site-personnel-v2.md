@@ -5,17 +5,18 @@ tag:
     - jekyll
 category: blog
 author: sylvainmetayer
-description: "Après quelques années d'existence, mon ancien site commençait à vieillir."
+excerpt: "Après quelques années d'existence, mon ancien site commençait à vieillir."
 hidden: false
 star: false
 enable_comments: true
+repost: dev.to
 ---
 
 {% include toc.html %}
 
 ## Le passage de PHP à Jekyll
 
-{{ page.description }}
+{{ page.excerpt }}
 
 > [Les sources de mon ancien site sont toujours disponibles sur Github](https://github.com/sylvainmetayer/sylvainmetayer-old), mais remontent à l'époque de mon DUT, soyez indulgents ! :grin:
 

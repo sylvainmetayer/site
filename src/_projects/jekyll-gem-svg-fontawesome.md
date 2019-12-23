@@ -5,16 +5,16 @@ tag:
   - jekyll
   - ruby
 author: sylvainmetayer
-description: Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans pour
-  autant intégrer toute la librairie, assez lourde.
 star: false
 enable_comments: true
 date: 2018-11-30
+repost: dev.to
+excerpt: Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans pour autant intégrer toute la librairie, assez lourde.
 ---
 
 ## Besoin
 
-{{ page.description }}
+{{ page.excerpt }}
 
 J'ai donc cherché un moyen de n'inclure que les icônes utilisés, et c'est comme cela que je suis venu à chercher comment créer un plugin Jekyll.
 
