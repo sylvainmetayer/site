@@ -2,8 +2,8 @@
 title: DUT Informatique
 link: https://www.iut.unilim.fr/les-formations/dut/informatique/
 logo: unilim.jpg
-date_start: 2013
-date_end: 2016
+date_start: 2013-09-01
+date: 2016-06-01
 location: IUT du Limousin (87)
 code: DUT Info
 ---

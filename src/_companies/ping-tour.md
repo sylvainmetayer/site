@@ -9,7 +9,7 @@ location: Parthenay (79)
 code: ping-tour
 ---
 
-Chaque été durant 3 ans, à l'occasion du FLIP^2, j'ai eu l'occasion d'animer et de promouvoir le tennis de table via un évènement organisé par le FFTT^1
+Chaque été durant 3 ans, à l'occasion du FLIP[^2], j'ai eu l'occasion d'animer et de promouvoir le tennis de table via un évènement organisé par le FFTT[^1]
 
 [^1]: Fédération Française de Tennis de Table.
 [^2]: Festival Ludique International de Parthenay

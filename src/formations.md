@@ -52,7 +52,7 @@ title: Formations
 {% if site.data.certifications.size > 0 %}
 <section class="list">
     <h2>Certifications</h2>
-    {% for certification in site.data.certifications %}
+    {% for certification in site.certifications reversed %}
             <div class="item">
                 <h3 class="title">
                     {% if certification.link %}
@@ -82,7 +82,7 @@ title: Formations
 {% if site.formations.size > 0 %}
 <section class="list">
     <h2>Formations</h2>
-    {% for formation in site.formations %}
+    {% for formation in site.formations reversed %}
             <div class="item">
                 <h3 class="title">{{ formation.title }}</h3>
                 <aside>
@@ -91,8 +91,10 @@ title: Formations
                 </aside>
                 {{ formation.content | markdownify }}
                 <p>
-                    {% if formation.date_start %} {{ formation.date_start }} - {% endif %}
-                    {{ formation.date_end }}
+                    {% if formation.date_start %} 
+                        {{ formation.date_start | date: '%Y' }} -
+                    {% endif %}
+                    {{ formation.date | date: '%Y' }}
                     <br>
                     {% if formation.link %}
                         <a class="url" href="{{ formation.link }}">  
