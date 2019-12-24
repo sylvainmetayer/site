@@ -16,15 +16,9 @@
 {% if showHeader == true %}
     <header class="header-home {% if site.animation %}animated{% endif %}">
         {% assign site_src = site.picture %}
-        {% if site.about %}
-            <a class="link" href="{{ site.url }}/a-propos">
-                {% asset "{{ site_src }}" alt='{{ site.name }}' class='selfie' %}
-            </a>
-        {% else %}
-            <span class="link">
-                {% asset "{{ site_src }}" alt='{{ site.name }}' class='selfie' %}
-            </span>
-        {% endif %}
+        <span class="link">
+            {% asset "{{ site_src }}" alt='{{ site.name }}' class='selfie' %}
+        </span>
 
         <h1 class="title">{{ site.name }}</h1>
         <h2 class="description">{{ site.bio }}</h2>

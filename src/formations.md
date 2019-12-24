@@ -5,68 +5,68 @@ title: Formations
 
 # Expériences professionnelles, certifications et formation
 
-{% if site.data.enterprises.size > 0 %}
+{% if site.companies.size > 0 %}
 <section class="list">
     <h2>Expériences professionnelles</h2>
-    {% for company in site.data.enterprises reversed %}
+    {% for company in site.companies reversed %}
             <div class="item">
                 <h3 class="title">
                     {% if company.link %}
-                        <a class="url" href="{{ company.link }}">  
-                    {% endif %}
-                    {{ company.name }}
-                    {% if company.link %}
-                        </a>
+                        <a class="url" href="{{ company.link }}">{{ company.title }}</a>
+                    {% else %}
+                        {{ company.title }}
                     {% endif %}
                 </h3>
                 <aside>
-                {% if company.width and company.height %}
-                    {% asset "{{ company.logo }}" alt='{{ company.alt }}' height="{{company.height}}" width="{{company.width}}" %}
-                {% else %}
-                    {% asset "{{ company.logo }}" alt='{{ company.alt }}' %}
-                {% endif %}
+                {% asset "{{ company.logo }}" alt='{{ company.alt }}' %}
+                <!-- {% asset "{{ company.logo }}" alt='{{ company.alt }}' height="{{company.height}}" width="{{company.width}}" %} -->
                 </aside>
+                {{ company.content | markdownify }}
                 <p>
                     {% if company.more %} {{ company.more }} {% endif %} 
                     <br/>
-                    {% if company.date_start %} {{ company.date_start }} - {% endif %}
-                    {{ company.date_end }}
+                    Du {{ company.date | date:"%d-%m-%Y" }} 
+                    {% if company.to %}
+                        au {{ company.to | date:"%d-%m-%Y" }}
+                    {% else %}
+                        à Aujourd'hui
+                    {% endif %}
                     <br/>
                     {{ company.location }}
                 </p>
-                {% if company.project_tag %}
-                    <div class="post-tags">
-                        <a class="item" href="{{ site.url }}/tags/#{{ company.project_tag | slugify }}">Voir les projets réalisés</a>
-                    </div>
+                {% assign projects = site.pro_projects | where: 'company', company.code %}
+                {% if projects.size > 0 %}
+                <p>Projets réalisés</p>
+                <ul class="post-tags">
+                    {% for project in projects %}
+                        <li><a href="{{site.url}}{{project.url}}">{{project.title}}</a></li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
             </div>
+            <hr/>
     {% endfor %}
 </section>
 {% endif %}
 
-{% if site.data.certifications.size > 0 %}
+{% if site.certifications.size > 0 %}
 <section class="list">
     <h2>Certifications</h2>
-    {% for certification in site.data.certifications %}
+    {% for certification in site.certifications reversed %}
             <div class="item">
                 <h3 class="title">
                     {% if certification.link %}
-                        <a class="url" href="{{ certification.link }}">  
-                    {% endif %}
-                    {{ certification.name }}
-                    {% if certification.link %}
-                        </a>
+                        <a class="url" href="{{ certification.link }}">{{ certification.name }}</a>
+                    {% else %}
+                        {{ certification.name }}
                     {% endif %}
                 </h3>
                 <aside>
-                {% if certification.width and certification.height %}
-                    {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' height="{{certification.height}}" width="{{certification.width}}" %}
-                {% else %}
-                    {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' %}
-                {% endif %}
+                <!-- {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' height="{{certification.height}}" width="{{certification.width}}" %} -->
+                {% asset "{{ certification.logo }}" alt='{{ certification.alt }}' %}
                 </aside>
+                {{ certification.content | markdownify }}
                 <p>
-                    {% if certification.more %} {{ certification.more }} <br/>{% endif %}
                     {% include translated_date.html date=certification.date format="%B %Y" %}
                 </p>
             </div>
@@ -74,36 +74,39 @@ title: Formations
 </section>
 {% endif %}
 
-{% if site.data.formations.size > 0 %}
+{% if site.formations.size > 0 %}
 <section class="list">
     <h2>Formations</h2>
-    {% for formation in site.data.formations reversed %}
+    {% for formation in site.formations reversed %}
             <div class="item">
-                <h3 class="title">{{ formation.name }}</h3>
+                <h3 class="title">{{ formation.title }}</h3>
                 <aside>
-                {% if formation.width and formation.height %}
-                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' height="{{formation.height}}" width="{{formation.width}}" %}
-                {% else %}
-                    {% asset "{{ formation.logo }}" alt='{{ formation.alt }}' %}
-                {% endif %}
+                <!-- {% asset "{{ formation.logo }}" alt='Logo {{ formation.title }}' height="60" width="60" %} -->
+                {% asset "{{ formation.logo }}" alt='Logo {{ formation.title }}' %}
                 </aside>
+                {{ formation.content | markdownify }}
                 <p>
-                    {% if formation.more %} {{ formation.more }}, {% endif %}
-                    {% if formation.date_start %} {{ formation.date_start }} - {% endif %}
-                    {{ formation.date_end }}
+                    {% if formation.date_start %} 
+                        {{ formation.date_start | date: '%Y' }} -
+                    {% endif %}
+                    {{ formation.date | date: '%Y' }}
                     <br>
                     {% if formation.link %}
                         <a class="url" href="{{ formation.link }}">  
                     {% endif %}
-                        {{ formation.location }}
+                    {{ formation.location }}
                     {% if formation.link %}
                         </a>
                     {% endif %}
                 </p>
-                {% if formation.project_tag %}
-                    <div class="post-tags">
-                        <a class="item" href="{{ site.url }}/tags/#{{ formation.project_tag | slugify }}">Voir les projets réalisés</a>
-                    </div>
+                {% assign projects = site.school_projects | where: 'school', formation.code %}
+                {% if projects.size > 0 %}
+                <p>Projets réalisés</p>
+                <ul class="post-tags">
+                    {% for project in projects %}
+                        <li><a href="{{site.url}}{{project.url}}">{{project.title}}</a></li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
             </div>
     {% endfor %}

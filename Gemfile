@@ -8,10 +8,9 @@ group :jekyll_plugins do
     gem 'jekyll-email-protect'
     # Waiting for ivantsepp/jekyll-git_metadata#24 to be resolved.
     #gem 'jekyll-git_metadata'
-    gem 'jekyll-compose'
     gem 'jekyll-assets'
-    gem 'jekyll-fontawesome-svg', '~> 0.3.0'
-    gem 'jekyll'
+    gem 'jekyll-fontawesome-svg'
+    gem 'jekyll', '< 4.0.0'
 end
 
 group :test do
@@ -22,3 +21,8 @@ end
 
 gem 'rouge'
 gem 'nokogiri', '1.10.7'
+gem "sprockets", "~> 3.7"
+
+group :ci do
+    gem 'travis'
+end

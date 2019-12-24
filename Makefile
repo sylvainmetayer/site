@@ -4,7 +4,6 @@ LABEL = jekyll_docker_sylvainmetayer
 
 CONTAINER_NAME = jekyll_sylvainmetayer
 CONTAINER_NAME_PROD = jekyll_sylvainmetayer_production
-DEPLOY_DIRECTORY = /var/www/sylvainmetayer.fr
 
 DOCKER_EXEC = docker exec
 DOCKER_COMPOSE = docker-compose
@@ -34,9 +33,6 @@ help: ## Print help
 	# $(DOCKER_EXEC) $(CONTAINER_NAME) jekyll help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-draft: ## Create a new draft
-	$(DOCKER_EXEC) $(CONTAINER_NAME) jekyll draft $(name)
-
 cleanup: ## Erase temporary data
 	rm -rf _site .jekyll-metadata .sass-cache .git-metadata .jekyll-cache
 
@@ -46,17 +42,14 @@ clean: down ## Cleanup local data, including containers
 	docker rmi -f $(images) || true
 	rm -rf _site .jekyll-metadata .sass-cache .git-metadata .jekyll-cache
 
-publish:  ## Publish drafts article
-	$(DOCKER_EXEC) $(CONTAINER_NAME) jekyll publish $(name)
-
 logs: ## Show logs
 	docker logs $(CONTAINER_NAME) -f 
 
+debug: ## Instanciate a new container to debug when things are wrong
+	docker-compose run jekyll bash
+
 logs-prod:  ## Show prod logs
 	docker logs $(CONTAINER_NAME_PROD) -f 
-
-deploy: ## Manuel deploy. Do not use, their is a CD process
-	rsync -r --verbose --quiet --delete-after _site/* $(name):$(DEPLOY_DIRECTORY)
 
 shell: ## Get a shell inside the container
 	docker exec -it ${CONTAINER_NAME} bash

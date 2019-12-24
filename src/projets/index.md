@@ -7,19 +7,11 @@ title: Projets
 	<h2>Projets personnels</h2>
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
-	{% elsif site.paginate %}
-		{% for post in paginator.posts %}
-            {% if post.hidden == false and post.category == 'projet' and post.project_type == 'personal' %}
-				{% include blog-post.html %}
-			{% endif %}
-		{% endfor %}
-
-		{% include pagination.html%}
 	{% else %}
-		{% for post in site.posts %}
-            {% if post.hidden == false and post.category == 'projet' and post.project_type == 'personal' %}
+		{% for post in site.projects %}
+            {% unless post.hidden %}
 				{% include blog-post.html %}
-			{% endif %}
+			{% endunless %}
 		{% endfor %}
 	{% endif %}
 </section>
@@ -28,19 +20,11 @@ title: Projets
 	<h2>Projets professionnels</h2>
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
-	{% elsif site.paginate %}
-		{% for post in paginator.posts %}
-            {% if post.hidden == false and post.category == 'projet' and post.project_type == 'company' %}
-				{% include blog-post.html %}
-			{% endif %}
-		{% endfor %}
-
-		{% include pagination.html%}
 	{% else %}
-		{% for post in site.posts %}
-            {% if post.hidden == false and post.category == 'projet' and post.project_type == 'company' %}
+		{% for post in site.pro_projects %}
+            {% unless post.hidden %}
 				{% include blog-post.html %}
-			{% endif %}
+			{% endunless %}
 		{% endfor %}
 	{% endif %}
 </section>
@@ -49,19 +33,11 @@ title: Projets
 	<h2>Projets réalisés durant ma formation</h2>
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
-	{% elsif site.paginate %}
-		{% for post in paginator.posts %}
-            {% if post.hidden == false and post.category == 'projet' and post.project_type == 'school' %}
-				{% include blog-post.html %}
-			{% endif %}
-		{% endfor %}
-
-		{% include pagination.html%}
 	{% else %}
-		{% for post in site.posts %}
-            {% if post.hidden == false and post.category == 'projet' and post.project_type == 'school' %}
+		{% for post in site.school_projects %}
+            {% unless post.hidden %}
 				{% include blog-post.html %}
-			{% endif %}
+			{% endunless %}
 		{% endfor %}
 	{% endif %}
 </section>
