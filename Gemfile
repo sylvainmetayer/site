@@ -24,7 +24,6 @@ gem 'nokogiri', '1.10.7'
 gem "sprockets", "~> 3.7"
 
 gem 'materialize-sass', '~> 1.0.0'
-gem 'material_icons'
 
 group :ci do
     gem 'travis'
