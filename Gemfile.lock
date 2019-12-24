@@ -7,8 +7,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    autoprefixer-rails (9.7.3)
-      execjs
     backports (3.15.0)
     bundler-audit (0.6.1)
       bundler (>= 1.2.0, < 3)
@@ -109,8 +107,6 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    materialize-sass (1.0.0)
-      autoprefixer-rails (>= 6.0.3)
     mercenary (0.3.6)
     mini_portile2 (2.4.0)
     minitest (5.13.0)
@@ -173,7 +169,6 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   jemoji
-  materialize-sass (~> 1.0.0)
   nokogiri (= 1.10.7)
   rake
   rouge

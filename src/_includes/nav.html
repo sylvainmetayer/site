@@ -4,60 +4,58 @@
         <a id="logo-container" href="{{ site.url }}/" class="brand-logo">Sylvain METAYER</a>
         <ul class="right hide-on-med-and-down">
             {% if page.title != "Formations" %}
-            <li class="item">
-                <a class="link" href="{{ site.url }}/formations">Formations</a>
+            <li>
+                <a href="{{ site.url }}/formations">Formations</a>
             </li>
             {% endif %}
 
             {% if page.title != "Blog" %}
-            <li class="item">
-                <a class="link" href="{{ site.url }}/blog">Blog</a>
+            <li>
+                <a href="{{ site.url }}/blog">Blog</a>
             </li>
             {% endif %}
 
             {% if page.title != "Projets" %}
-            <li class="item">
-                <a class="link" href="{{ site.url }}/projets">Projets</a>
+            <li>
+                <a href="{{ site.url }}/projets">Projets</a>
             </li>
             {% endif %}
 
             {% if site.resume == true %}
-            <li class="item">
-                <a class="link"
-                    href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">CV</a>
+            <li>
+                <a href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">CV</a>
             </li>
             {% endif %}
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
             {% if page.title != "Accueil" %}
-            <li class="item">
-                <a class="link" href="{{ site.url }}/">Accueil</a>
+            <li>
+                <a href="{{ site.url }}/">Accueil</a>
             </li>
             {% endif %}
 
             {% if page.title != "Formations" %}
-            <li class="item">
-                <a class="link" href="{{ site.url }}/formations">Formations</a>
+            <li>
+                <a href="{{ site.url }}/formations">Formations</a>
             </li>
             {% endif %}
 
             {% if page.title != "Blog" %}
-            <li class="item">
-                <a class="link" href="{{ site.url }}/blog">Blog</a>
+            <li>
+                <a href="{{ site.url }}/blog">Blog</a>
             </li>
             {% endif %}
 
             {% if page.title != "Projets" %}
-            <li class="item">
-                <a class="link" href="{{ site.url }}/projets">Projets</a>
+            <li>
+                <a href="{{ site.url }}/projets">Projets</a>
             </li>
             {% endif %}
 
             {% if site.resume == true %}
-            <li class="item">
-                <a class="link"
-                    href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">CV</a>
+            <li>
+                <a href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">CV</a>
             </li>
             {% endif %}
         </ul>
