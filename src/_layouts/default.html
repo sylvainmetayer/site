@@ -3,10 +3,11 @@ layout: compress
 ---
 <!DOCTYPE html>
 <html lang="{{site.lang}}">
+
 <head>
 
     <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name=author content="{{ site.name }}">
 
@@ -24,27 +25,16 @@ layout: compress
 
     {% asset style.css %}
 </head>
+
+
 <body>
 
     {% include nav.html %}
 
-    <div class="wrapper-{% if site.width == "normal" %}normal{% elsif site.width == "large" %}large{% endif %}">
-       
-        {% if page.tag %}
-            <div class="post">
-        {% else %}
-            {% if showHeader != true %}
-                <div class="page {{ page.title | downcase }}">
-            {% else %}
-                <div class="{{ page.title | downcase }}">
-            {% endif %}
-        {% endif %}
-
-            {{ content }}
-        </div>
-    </div>
+    {{ content }}
 
     {% include icons.html %}
-
+    {% include footer.html %}
 </body>
+
 </html>

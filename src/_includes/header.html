@@ -6,14 +6,7 @@
 </p>
 {% endif %}
 
-{% if page.title == "Accueil"
-   or page.title == "Blog"
-   or page.title == "Projets"
-   or page.title == "Tags"
-   or page.title == "Formations"
-%}{% assign showHeader = true %}{% endif %}
-
-{% if showHeader == true %}
+{% if page.header == true %}
     <header class="header-home {% if site.animation %}animated{% endif %}">
         {% assign site_src = site.picture %}
         <span class="link">

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Projets
+header: true
 ---
 
 <section class="list">

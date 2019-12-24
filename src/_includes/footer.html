@@ -1,17 +1,23 @@
-<footer class="footer-main">
-    {{ site.name }} © {{ site.time | date: '%Y' }} 
-    <a class="link" href="{{ site.url }}/feed.xml">
-        {% fa_svg fas.fa-rss %}
-    </a>
-
-    <p class="extra">
-        <a class="link" href="https://github.com/sylvainmetayer/sylvainmetayer">Sources</a> <br/>
-        {% comment %} 
-        <a class="link" href="https://github.com/sylvainmetayer/sylvainmetayer/commit/{{ site.git.last_commit.long_sha }}"> Dernier commit le {% include translated_date.html date=site.git.last_commit.commit_date format="%A %d %B %Y" %}</a>
-        {% endcomment %}
-    </p>
-
-    <p class="extra">
-        Thème - version modifiée de <a class="link" href="https://github.com/sergiokopplin/indigo">Indigo theme</a> - Dernière mise à jour le {% include translated_date.html date=site.time format="%d %B %Y" %} 
-    </p>
+<footer class="page-footer white">
+    <div class="container">
+        <div class="row black-text">
+            <div class="col l4 m4 s6">
+                <a class="link" href="https://github.com/sylvainmetayer/sylvainmetayer">Sources</a> <br />
+            </div>
+            <div class="col l8 s4 m6">
+                Thème - version modifiée de <a class="link" href="https://github.com/sergiokopplin/indigo">Indigo
+                    theme</a>
+                - Dernière mise à jour le {% include translated_date.html date=site.time format="%d %B %Y" %}
+            </div>
+            <div class="col l12 m12 s12">
+                {{ site.name }} © {{ site.time | date: '%Y' }}
+            </div>
+            <div class="col l12 s12 m12">
+                <a href="{{ site.url }}/feed.xml">
+                    {% fa_svg fas.fa-rss %}
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
 </footer>

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Accueil
+header: true
 ---
 # Bienvenue !
 

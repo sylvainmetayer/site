@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Formations
+header: true
 ---
 
 # Expériences professionnelles, certifications et formation
