@@ -2,7 +2,7 @@
 title: "Rapport DUT Informatique"
 date: 2016-06-20
 layout: post
-description: "Ce mémoire décrit le projet réalisé durant mon stage de DUT Informatique"
+excerpt: "Ce mémoire décrit le projet réalisé durant mon stage de DUT Informatique"
 author: sylvainmetayer
 school: DUT Info
 enable_comments: true
@@ -12,7 +12,7 @@ enable_comments: true
 
 [Voir le PDF](https://gitlab.com/ocyhc/memoire-dut-info/blob/master/main.pdf)
 
-{{ page.description }}
+{{ page.excerpt }}
 
 Ce mémoire détaille le travail réalisé durant mon stage au sein de [NextMedia](https://www.nextmedia.fr/), effectué d'avril à Juillet 2016.
 

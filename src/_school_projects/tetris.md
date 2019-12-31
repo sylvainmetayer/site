@@ -4,7 +4,7 @@ layout: post
 date: 2017-06-30
 tag: 
     - android
-description: "Projet universitaire réalisé afin de se familiariser avec le développement d'application Android."
+excerpt: "Projet universitaire réalisé afin de se familiariser avec le développement d'application Android."
 author: sylvainmetayer
 school: DAWIN
 ---
@@ -13,7 +13,7 @@ school: DAWIN
 
 [Télécharger le jeu](https://play.google.com/store/apps/details?id=fr.sylvainmetayer.tetris)
 
-{{ page.description }}
+{{ page.excerpt }}
 
 Le but était de réaliser un Tetris. Le jeu a ensuite été publié sur le PlayStore et est disponible au téléchargement.
 

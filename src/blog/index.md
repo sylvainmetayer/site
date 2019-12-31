@@ -9,10 +9,12 @@ header: true
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% else %}
+		<div class="row">
 		{% for post in site.posts %}
 			{% if post.hidden == false %}
 				{% include blog-post.html %}
 			{% endif %}
 		{% endfor %}
+		</div>
 	{% endif %}
 </section>

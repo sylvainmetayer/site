@@ -1,9 +1,10 @@
-<span class="reading-time" title="Temps de lecture estimé">
+<span title="Temps de lecture estimé">
     {% assign words = content | number_of_words %}
 
+    {% fa_svg fas.fa-book-reader %}
     {% if words < 200 %}
-        1 min
+    1 min
     {% else %}
-        {{ words | divided_by:100 }} mins
+    {{ words | divided_by:100 }} mins
     {% endif %}
 </span>

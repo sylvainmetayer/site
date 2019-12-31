@@ -3,7 +3,11 @@ layout: page
 ---
 
 {% if page.image %}
-    {% asset "{{ page.image }}" alt='{{ page.title }}' class='title-image' %}
+<div class="row">
+    <div class="col l12 m12 s12 center">
+        {% asset "{{ page.image }}" alt='{{ page.title }}' class='responsive-img' %}
+    </div>
+</div>
 {% endif %}
 
 <h1 class="title">
@@ -11,15 +15,21 @@ layout: page
     {% if page.school %}({{page.school}}) {% endif %}
 </h1>
 
-<span class="date">
-    <time datetime="{{ page.date | date:"%d-%m-%Y" }}">Publié le {% include translated_date.html date=page.date format="%A %d %B %Y" %}</time>
-</span>
+<div class="row">
+    <div class="col l4 m4 s6">
+        <time datetime="{{ page.date | date:"%d-%m-%Y" }}">
+            Publié le
+            {% include translated_date.html date=page.date format="%A %d %B %Y" %}
+        </time>
+    </div>
 
-{% if site.read-time %}
-<div class="date">
-    {% include read-time.html %}
+    {% if site.read-time %}
+    <div class="col l4 m4 s6 right orange-text">
+        {% include read-time.html %}
+    </div>
+    {% endif %}
+
 </div>
-{% endif %}
 
 
 {% comment %}
@@ -36,11 +46,15 @@ layout: page
 {% endcomment %}
 
 {% if site.show-tags %}
-    <div class="post-tags">
-        {% for tag in page.tags %}
-            <a class="item" href="{{ site.url }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
-        {% endfor %}
+<div class="row">
+    {% for tag in page.tags %}
+    <div class="col l2 m3 s6">
+        <div class="card-panel yellow lighten-4">
+            <a href="{{ site.url }}/tags/#{{ tag | slugify }}">#{{ tag }}</a>
+        </div>
     </div>
+    {% endfor %}
+</div>
 {% endif %}
 
 {{content}}
@@ -48,16 +62,14 @@ layout: page
 {% if page.enable_comments and jekyll.environment != "development" %}
 <hr>
 <h2>Commentaires</h2>
-<script async
-data-isso="{{site.isso.url}}"
-data-isso-id="{{page.id}}"
-data-isso-feed="true"
-src="{{site.isso.script}}"></script>
-<noscript>Votre navigateur ne supporte pas Javascript, vous ne serez donc pas en mesure de visualiser les commentaires.</noscript>
+<script async data-isso="{{site.isso.url}}" data-isso-id="{{page.id}}" data-isso-feed="true"
+    src="{{site.isso.script}}"></script>
+<noscript>Votre navigateur ne supporte pas Javascript, vous ne serez donc pas en mesure de visualiser les
+    commentaires.</noscript>
 <section id="isso-thread"></section>
 <hr>
 {% endif %}
-
+<!-- 
 {% if site.post-advance-links contains page.category %}
     <div class="blog-navigation">
         {% if page.previous.url %}
@@ -69,14 +81,14 @@ src="{{site.isso.script}}"></script>
             <a class="next" href="{{ site.url }}{{ page.next.url }}">{{ page.next.title }} &raquo;</a>
         {% endif %}
     </div>
-{% endif %}
+{% endif %} -->
 
 {% if site.related %}
-    {% include related.html %}
+{% include related.html %}
 {% endif %}
 
 {% if site.show-author %}
-    {% include author.html %}
+{% include author.html %}
 {% endif %}
 
 <div id="progress-bar"></div>

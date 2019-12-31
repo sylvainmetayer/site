@@ -5,7 +5,7 @@ date: 2019-02-01
 tag: 
     - javascript
     - webgl
-description: "Ce projet, réalisé avec une équipe de 4 personnes avait pour objectif d'être une introduction à la réalité augmentée."
+excerpt: "Ce projet, réalisé avec une équipe de 4 personnes avait pour objectif d'être une introduction à la réalité augmentée."
 author: sylvainmetayer
 school: EPSI
 ---
@@ -14,7 +14,7 @@ school: EPSI
 
 [Testez le sur mobile !](https://epsibordeaux.github.io/ar-cube/)
 
-{{ page.description }}
+{{ page.excerpt }}
 
 A l'aide de la librairie Javascript [AR.js](https://github.com/jeromeetienne/AR.js), il fallait réaliser le dessin d'un cube en réalité virtuelle, lorsque les marqueurs était détécté à l'aide de la caméra du téléphone utilisé. Il fallait également que ce dernier puisse évoluer si l'on venait à bouger le téléphone.
 

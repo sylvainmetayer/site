@@ -5,13 +5,13 @@ tag:
     - jekyll
 category: blog
 author: sylvainmetayer
-description: "Les commentaires sont maintenant disponible sur le site"
+excerpt: "Les commentaires sont maintenant disponible sur le site"
 hidden: false
 star: false
 enable_comments: true
 ---
 
-{{ page.description }}
+{{ page.excerpt }}
 
 Comme indiqué dans [l'article précédent]({{ site.baseurl }}{% post_url 2018-11-15-site-personnel-v2 %}), je cherchais désormais à intégrer une solution de commentaire, tout en évitant les solutions peu respectueuse de notre vie privée.
 

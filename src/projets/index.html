@@ -9,11 +9,13 @@ header: true
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% else %}
-		{% for post in site.projects reversed %}
+	{% for post in site.projects reversed %}
+		<div class="row">
             {% unless post.hidden %}
 				{% include blog-post.html %}
 			{% endunless %}
 		{% endfor %}
+		</div>
 	{% endif %}
 </section>
 
@@ -22,11 +24,13 @@ header: true
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% else %}
+		<div class="row">
 		{% for post in site.pro_projects reversed %}
             {% unless post.hidden %}
 				{% include blog-post.html %}
 			{% endunless %}
 		{% endfor %}
+		<div class="row">
 	{% endif %}
 </section>
 
@@ -35,10 +39,12 @@ header: true
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% else %}
+		<div class="row">
 		{% for post in site.school_projects reversed %}
             {% unless post.hidden %}
 				{% include blog-post.html %}
 			{% endunless %}
 		{% endfor %}
+		</div>
 	{% endif %}
 </section>

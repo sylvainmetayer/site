@@ -1,0 +1,18 @@
+<div class="col l4 m6 s12">
+    {% if item.logo %}
+    <div class="col l4 m4 s4">
+        {% asset "{{ item.logo }}" alt='{{ item.alt }}' class='responsive-img' %}
+    </div>
+    {% endif %}
+    <div class="col l8 m8 s8">
+        <span class="title">
+            {% if item.link %}
+            <a class="url" href="{{ item.link }}">{{ item.name }}</a>
+            {% else %}
+            {{ item.name }}
+            {% endif %}
+        </span>
+        {% include translated_date.html date=item.date format="%B %Y" %}
+        {{ item.content | markdownify }}
+    </div>
+</div>

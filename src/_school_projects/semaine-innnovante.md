@@ -4,7 +4,7 @@ layout: post
 tag: 
     - javascript
     - php
-description: "Semaine innovante faisant partie de la formation DAWIN, durant laquelle le but était de réaliser une application innovante."
+excerpt: "Semaine innovante faisant partie de la formation DAWIN, durant laquelle le but était de réaliser une application innovante."
 author: sylvainmetayer
 enable_comments: true
 school: DAWIN
@@ -13,7 +13,7 @@ date: 2017-07-07
 
 [Sources (Github)](https://github.com/sylvainmetayer/semaine-innovante-dawin)
 
-{{ page.description }}
+{{ page.excerpt }}
 
 Une grande liberté nous a été donné pour réaliser les projets, et nous avons eu à disposition différents outils.
 

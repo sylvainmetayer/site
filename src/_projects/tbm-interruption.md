@@ -5,7 +5,7 @@ tag:
     - ruby
     - twitter
     - bot
-description: "J'ai réalisé ce bot afin de permettre un suivi des interruptions des Trams Bordelais."
+excerpt: "J'ai réalisé ce bot afin de permettre un suivi des interruptions des Trams Bordelais."
 author: sylvainmetayer
 star: false
 enable_comments: true
@@ -16,7 +16,7 @@ date: 2018-02-14
 
 [Compte Twitter : @tbm_issues_bot](https://twitter.com/tbm_issues_bot)
 
-{{ page.description }}
+{{ page.excerpt }}
 
 Les informations sont récupérées depuis les comptes officiels twitter de TBM, et repère des mots clés afin de compter les jours sans interruptions.
 

@@ -3,7 +3,7 @@ title: "Développement d'une solution de recherche de données personnelles"
 layout: post
 tag: 
     - python
-description: "Lors de mon alternance à Atos en Licence Professionnelle DAWIN, j'ai eu l'occasion de développer la première version d'un outil de recherche de données personnelles dans le cadre du [GDPR](https://eugdpr.org/) (General Data Protection Regulation)"
+excerpt: "Lors de mon alternance à Atos en Licence Professionnelle DAWIN, j'ai eu l'occasion de développer la première version d'un outil de recherche de données personnelles dans le cadre du [GDPR](https://eugdpr.org/) (General Data Protection Regulation)"
 author: sylvainmetayer
 star: false
 enable_comments: true
@@ -11,7 +11,7 @@ company: atos
 date: 2017-02-01
 ---
 
-{{ page.description }}
+{{ page.excerpt }}
 
 Le projet a été réalisé en Python avec une équipe de trois personnes.
 

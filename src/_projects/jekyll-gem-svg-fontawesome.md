@@ -5,7 +5,7 @@ tag:
   - jekyll
   - ruby
 author: sylvainmetayer
-star: false
+star: true
 enable_comments: true
 date: 2018-11-30
 repost: dev.to

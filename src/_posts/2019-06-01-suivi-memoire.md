@@ -3,7 +3,7 @@ layout: post
 title: "Suivi mémoire"
 category: blog
 author: sylvainmetayer
-description: "Avancée de la réalisation de mon mémoire de fin d'études pour l'EPSI"
+excerpt: "Avancée de la réalisation de mon mémoire de fin d'études pour l'EPSI"
 hidden: false
 star: false
 enable_comments: true

@@ -4,7 +4,7 @@ date: 2015-12-01
 layout: post
 tag: 
     - php
-description: "Ce projet universitaire constituait une découverte du PHP. Il consistait à réaliser un site rassemblant les perles de profs, permettant leur ajout, notation par des élèves, ..."
+excerpt: "Ce projet universitaire constituait une découverte du PHP. Il consistait à réaliser un site rassemblant les perles de profs, permettant leur ajout, notation par des élèves, ..."
 author: sylvainmetayer
 school: DUT Info
 enable_comments: true

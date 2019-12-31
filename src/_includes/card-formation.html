@@ -1,0 +1,47 @@
+<li class="collection-item avatar">
+    {% if item.logo %}
+    {% asset "{{ item.logo }}" alt='{{ item.alt }}' class='circle' %}
+    {% endif %}
+    <span class="title">
+        {% if item.link %}
+        <a href="{{ item.link }}">
+            {{ item.title }}
+        </a>
+        {% else %}
+        {{ item.title }}
+        {% endif %}
+    </span>
+    {{ item.content | markdownify }}
+    <hr />
+
+    <p>
+        {% if item.date_start %}
+        {{ item.date_start | date: '%Y' }} -
+        {% endif %}
+        {{ item.date | date: '%Y' }} -
+        {% if item.link %}
+        <a class="url" href="{{ item.link }}">
+            {{ item.location }}
+        </a>
+        {% else %}
+        {{ item.location }}
+        {% endif %}
+    </p>
+
+
+    {% if projects.size > 0 %}
+    <hr />
+    <p class="center">Projets réalisés</p>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col s12 m6 l4">
+            <div class="card-panel white-text">
+                <a href="{{site.url}}{{project.url}}">
+                    {{project.title}}
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</li>

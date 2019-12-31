@@ -1,8 +1,25 @@
-<div class="item {% if post.star %}star{% endif %}">
-    <a class="url" href="{{ site.url }}{{ post.url }}">
-        <aside class="date"><time datetime="{{ post.date | date:"%d-%m-%Y" }}">{% include translated_date.html date=post.date format="%d %b %Y" %}</time></aside>
-        <h3 class="title">
-            {{ post.title }} {% if post.school %}({{post.school}}) {% endif %}
-        </h3>
-    </a>
+<div class="col s12 m6 l6">
+    <div class="card small hoverable">
+        <div class="card-content">
+            <span class="card-title">
+                <a href="{{ site.url }}{{ post.url }}">
+                    {{ post.title }} {% if post.school %}({{post.school}}) {% endif %}
+                    {% if post.star %}
+                    <span class="right red-text">
+                        {% fa_svg fas.fa-thermometer-full %}
+                    </span>
+                    {% endif %}
+                </a>
+            </span>
+            <div>
+                {{ post.excerpt  }}
+            </div>
+            <hr />
+            <aside>
+                <time datetime="{{ post.date | date:"%d-%m-%Y" }}">
+                    {% include translated_date.html date=post.date format="%d %b %Y" %}
+                </time>
+            </aside>
+        </div>
+    </div>
 </div>

@@ -3,9 +3,11 @@
 # only Main files contain this front matter, not partials.
 ---
 
-/*
-*= require material_icons
-*/
 @import "base/variables";
 @import "materialize/materialize";
+
+// Override - Custom CSS
+@import "components/social-links";
+@import "components/header";
+@import "components/progress";
 @import "components/footer";

@@ -1,23 +1,29 @@
 {% if jekyll.environment != 'production' %}
-<p>
-    <a href="{{ site.production_url }}" target="_blank">
-    Ceci est la version de développement du site. Cliquez ici pour voir la version de production.
-    </a>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col l12 s12 m12">
+            <a class="black-text" href="{{ site.production_url }}" target="_blank">
+                <div class="card-panel orange">
+                    Ceci est la version de développement du site. Cliquez ici pour voir la version de production.
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 {% endif %}
 
 {% if page.header == true %}
-    <header class="header-home {% if site.animation %}animated{% endif %}">
-        {% assign site_src = site.picture %}
-        <span class="link">
-            {% asset "{{ site_src }}" alt='{{ site.name }}' class='selfie' %}
-        </span>
-
-        <h1 class="title">{{ site.name }}</h1>
-        <h2 class="description">{{ site.bio }}</h2>
-
-        {% include social-links.html %}
-    </header>
+<header class="container">
+    <div class="row">
+        <div class="col offset-l3 offset-s4 offset-m3 l3 m3 s4">
+            {% assign site_src = site.picture %}
+            {% asset "{{ site_src }}" alt='{{ site.name }}' class='responsive-img circle' %}
+        </div>
+        <div class="header-name col l6 m6 s8 offset-s2">
+            <p>{{ site.name }}</p>
+            <p>{{ site.bio }}</p>
+        </div>
+    </div>
+    {% include social-links.html %}
+</header>
 {% endif %}
-
-

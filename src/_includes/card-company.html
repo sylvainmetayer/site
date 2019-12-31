@@ -1,0 +1,41 @@
+<div class="col l12 m12 s12">
+    {% if item.logo %}
+    <div class="col l2 m2 s4">
+        {% asset "{{ company.logo }}" alt='{{ company.alt }}' class='responsive-img' %}
+    </div>
+    {% endif %}
+    <div class="col l8 m8 s8">
+        {% if company.link %}
+        <a class="url" href="{{ company.link }}">{{ company.title }}</a>
+        {% else %}
+        {{ company.title }}
+        {% endif %}
+        Du {{ company.date | date:"%d-%m-%Y" }}
+        {% if company.to %}
+        au {{ company.to | date:"%d-%m-%Y" }}
+        {% else %}
+        à Aujourd'hui
+        {% endif %}
+        <br />
+        {{ company.location }}
+        {{ item.content | markdownify }}
+
+
+        {% if projects.size > 0 %}
+        <hr />
+        <p class="center">Projets réalisés</p>
+        <div class="row">
+            {% for project in projects %}
+            <div class="col s12 m6 l6">
+                <div class="card-panel white-text">
+                    <a href="{{site.url}}{{project.url}}">
+                        {{project.title}}
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="clearfix"></div>

@@ -2,7 +2,7 @@
 title: "GEMAO"
 layout: post
 tag: []
-description: "GEMAO, ou Gestion d'Ecole de Musique Assistée par Ordinateur est un projet tuteuré qui consistait à réaliser une application permettant la gestion d'une école de musique."
+excerpt: "GEMAO, ou Gestion d'Ecole de Musique Assistée par Ordinateur est un projet tuteuré qui consistait à réaliser une application permettant la gestion d'une école de musique."
 date: 2016-06-18
 author: sylvainmetayer
 enable_comments: true

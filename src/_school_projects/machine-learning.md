@@ -4,7 +4,7 @@ layout: post
 date: 2018-02-20
 tag: 
     - php
-description: "Ce projet, réalisé en binome durant ma formation à l'EPSI avait pour but de découvrir le fonctionnement des algorithmes de machine learning."
+excerpt: "Ce projet, réalisé en binome durant ma formation à l'EPSI avait pour but de découvrir le fonctionnement des algorithmes de machine learning."
 author: sylvainmetayer
 school: EPSI
 
@@ -12,7 +12,7 @@ school: EPSI
 
 [Sources (Github)](https://github.com/EPSIBordeaux/epsi-expert-system)
 
-{{ page.description }}
+{{ page.excerpt }}
 
 Cliquez pour démarrer la lecture de la vidéo.
 

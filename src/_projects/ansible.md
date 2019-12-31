@@ -3,7 +3,7 @@ title: "Configuration d'un serveur avec Ansible"
 layout: post
 tag: 
     - devops
-description: "J'ai réalisé ce projet personnel afin de me familiariser avec Ansible et pouvoir récréer un serveur à l'identique sans intervention humaine."
+excerpt: "J'ai réalisé ce projet personnel afin de me familiariser avec Ansible et pouvoir récréer un serveur à l'identique sans intervention humaine."
 author: sylvainmetayer
 star: false
 enable_comments: true
@@ -14,7 +14,7 @@ date: 2018-09-15
 
 [Consulter le site d'Ansible](https://www.ansible.com/)
 
-{{ page.description }}
+{{ page.excerpt }}
 
 Le choix d'Ansible m'a semblé intéressant car il ne nécessite pas l'installation d'un agent sur le serveur cible pour effectuer le déploiement. Seul Python est requis, et la plupart, pour ne pas dire la totalité des serveurs linux dispose de python de base. De plus, la syntaxe pour écrire les playbooks (jeu d'instructions) est du [YAML](http://yaml.org/), simple à lire et à écrire.
 
