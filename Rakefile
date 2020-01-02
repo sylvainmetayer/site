@@ -6,7 +6,7 @@ options = {
   :href_ignore => [
     'http://localhost:4000', 
     "#",
-    ],
+  ],
   :verbose => true,
   :check_opengraph => true,
   :check_html => true,
