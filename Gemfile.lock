@@ -81,7 +81,7 @@ GEM
     jekyll-email-protect (1.1.0)
     jekyll-feed (0.13.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-fontawesome-svg (0.3.0)
+    jekyll-fontawesome-svg (0.3.2)
     jekyll-sanity (1.2.0)
       jekyll (~> 3.1)
     jekyll-sass-converter (1.5.2)
