@@ -1,0 +1,22 @@
+{% if jekyll.environment != 'production' %}
+<p>
+    <a href="{{ site.production_url }}" target="_blank">
+    Ceci est la version de développement du site. Cliquez ici pour voir la version de production.
+    </a>
+</p>
+{% endif %}
+
+{% if page.showHeader %}
+    <header class="header-home {% if site.animation %}animated{% endif %}">
+        <span class="link">
+            {# {% asset "{{ site.picture }}" alt='{{ site.name }}' class='selfie' %} #}
+        </span>
+
+        <h1 class="title">{{ site.name }}</h1>
+        <h2 class="description">{{ site.bio }}</h2>
+
+        {% include social-links.html %}
+    </header>
+{% endif %}
+
+

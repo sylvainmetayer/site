@@ -1,0 +1,27 @@
+<section class="author">
+    <div class="toleft">
+        {% assign author_src = site.authors[page.author].picture %}
+        {% asset "{{ author_src }}" alt='{{ site.authors[page.author].name }}' class='selfie' %}
+    </div>
+
+    <div class="toright">
+        <h4 class="name">{{ site.authors[page.author].name }}</h4>
+        <p class="bio">{{ site.authors[page.author].bio }}</p>
+
+        <div class="share">
+            <a class="twitter" href="https://twitter.com/intent/tweet?text={{ site.url }}{{ page.url }} - {{ page.title }} by @{{ site.authors[page.author].twitter }}">
+                {% fa_svg fab.fa-twitter %}
+                <span class="icon-twitter">
+                    Tweet
+                </span>
+            </a>
+
+            <a class="email" href="mailto:{{ site.authors[page.author].email | encode_email }}">
+                {% fa_svg fas.fa-envelope %}
+                <span class="icon-mail">
+                    Mail
+                </span>
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+<nav class="{% if page.title == "Accueil" %}nav-home{% else %}nav{% endif %}">
+    <ul class="list">
+        {% if page.title != "Accueil" %}
+            <li class="item">
+                <a class="link" href="{{ site.url }}/">Accueil</a>
+            </li>
+        {% endif %}
+
+        {% if page.title != "Formations" %}
+            <li class="item">
+                <a class="link" href="{{ site.url }}/formations">Formations</a>
+            </li>    
+        {% endif %}
+        
+        {% if page.title != "Blog" %}
+            <li class="item">
+                <a class="link" href="{{ site.url }}/blog">Blog</a>
+            </li>
+        {% endif %}
+
+        {% if page.title != "Projets" %}
+            <li class="item">
+                <a class="link" href="{{ site.url }}/projets">Projets</a>
+            </li>
+        {% endif %}
+
+        {% if site.resume == true %}
+            <li class="item">
+                <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">CV</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

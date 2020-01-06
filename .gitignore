@@ -9,3 +9,4 @@ vendor
 .jekyll-cache
 _site_prod
 .jekyll-metadata
+node_modules

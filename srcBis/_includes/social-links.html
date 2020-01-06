@@ -1,0 +1,115 @@
+<div class="social-links">
+    {% if site.facebook %}
+        <a class="link" data-title="facebook.com/{{ site.facebook }}" href="//facebook.com/{{ site.facebook }}" >
+            {% fa_svg fab.fa-facebook %}
+        </a>
+    {% endif %}
+
+    {% if site.twitter %}
+        <a class="link" rel="noreferrer" data-title="twitter.com/{{ site.twitter }}" href="//twitter.com/{{ site.twitter }}" >
+            {% fa_svg fab.fa-twitter %}
+        </a>
+    {% endif %}
+
+    {% if site.devto %}
+        <a class="link" rel="noreferrer" data-title="dev.to/{{site.devto}}" href="//dev.to/{{site.devto}}">
+            {% fa_svg fab.fa-dev %}
+        </a>
+    {% endif %}
+
+    {% if site.google %}
+        <a class="link" rel="noreferrer" data-title="plus.google.com/+{{ site.google }}" href="//plus.google.com/+{{ site.google }}" >
+            {% fa_svg fab.fa-google-plus %}
+        </a>
+    {% endif %}
+
+    {% if site.instagram %}
+        <a class="link" rel="noreferrer" data-title="instagram.com/{{ site.instagram }}" href="//instagram.com/{{ site.instagram }}" >
+            {% fa_svg fab.fa-instagram %}
+        </a>
+    {% endif %}
+
+    {% if site.pinterest %}
+        <a class="link" rel="noreferrer" data-title="pinterest.com/{{ site.pinterest }}" href="//pinterest.com/{{ site.pinterest }}" >
+            {% fa_svg fab.fa-pinterest %}
+        </a>
+    {% endif %}
+
+    {% if site.linkedin %}
+        <a class="link" rel="noreferrer" data-title="linkedin.com/in/{{ site.linkedin }}" href="//linkedin.com/in/{{ site.linkedin }}" >
+            {% fa_svg fab.fa-linkedin %}
+        </a>
+    {% endif %}
+
+    {% if site.youtube %}
+        <a class="link" rel="noreferrer" data-title="youtube.com/{{ site.youtube }}" href="//youtube.com/{{ site.youtube }}" >
+            {% fa_svg fab.fa-youtube %}
+        </a>
+    {% endif %}
+
+    {% if site.spotify %}
+        <a class="link" rel="noreferrer" data-title="Spotify" href="//open.spotify.com/user/{{ site.spotify }}" >
+            {% fa_svg fab.fa-spotify %}
+        </a>
+    {% endif %}
+
+    {% if site.lastfm %}
+        <a class="link" rel="noreferrer" data-title="last.fm/user/{{ site.lastfm }}" href="//last.fm/user/{{ site.lastfm }}" >
+            {% fa_svg fab.fa-lastfm %}
+        </a>
+    {% endif %}
+
+    {% if site.github %}
+        <a class="link" rel="noreferrer" data-title="github.com/{{ site.github }}" href="//github.com/{{ site.github }}" >
+            {% fa_svg fab.fa-github %}
+        </a>
+    {% endif %}
+
+    {% if site.gitlab %}
+        <a class="link" rel="noreferrer" data-title="gitlab.com/{{ site.gitlab }}" href="//gitlab.com/{{ site.gitlab }}" >
+            {% fa_svg fab.fa-gitlab %}
+        </a>
+    {% endif %}
+
+    {% if site.stackoverflow %}
+        <a class="link" rel="noreferrer" data-title="stackoverflow.com/users/{{ site.stackoverflow }}" href="//stackoverflow.com/users/{{ site.stackoverflow }}" >
+            {% fa_svg fab.fa-stack-overflow %}
+        </a>
+    {% endif %}
+
+    {% if site.quora %}
+        <a class="link" rel="noreferrer" data-title="quora.com/profile/{{ site.quora }}" href="//www.quora.com/profile/{{ site.quora }}" >
+            {% fa_svg fab.fa-quora %}
+        </a>
+    {% endif %}
+
+    {% if site.reddit %}
+        <a class="link" rel="noreferrer" data-title="reddit.com/user/{{ site.reddit }}" href="//www.reddit.com/user/{{ site.reddit }}" >
+            {% fa_svg fab.fa-reddit %}
+        </a>
+    {% endif %}
+
+    {% if site.medium %}
+        <a class="link" rel="noreferrer" data-title="medium.com/@{{ site.medium }}" href="//medium.com/@{{ site.medium }}" >
+            {% fa_svg fab.fa-medium %}
+        </a>
+    {% endif %}
+
+    {% if site.vimeo %}
+        <a class="link" rel="noreferrer" data-title="vimeo.com/{{ site.vimeo }}" href="//vimeo.com/{{ site.vimeo }}" >
+            {% fa_svg fab.fa-vimeo %}
+        </a>
+    {% endif %}
+
+    {% if site.lanyrd %}
+        <a class="link" rel="noreferrer" data-title="lanyrd.com/{{ site.lanyrd }}" href="//lanyrd.com/{{ site.lanyrd }}" >
+            {% fa_svg fas.fa-microphone %}
+        </a>
+    {% endif %}
+
+    {% if site.email %}
+        <a class="link" data-title="Envoyer un email" href="mailto:{{ site.email | encode_email }}">
+            {% fa_svg fas.fa-envelope %}
+        </a>
+    {% endif %}
+</div>

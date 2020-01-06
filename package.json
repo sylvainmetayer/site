@@ -1,0 +1,30 @@
+{
+  "name": "@sylvainmetayer/sylvainmetayer",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "index.js",
+  "scripts": {
+    "serve": "eleventy --serve",
+    "build": "eleventy",
+    "test": "@build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sylvainmetayer/sylvainmetayer.git"
+  },
+  "keywords": [
+    "portfolio",
+    "ssg",
+    "eleventy"
+  ],
+  "author": "Sylvain METAYER <contact@sylvainmetayer.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sylvainmetayer/sylvainmetayer/issues"
+  },
+  "homepage": "https://github.com/sylvainmetayer/sylvainmetayer#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.9.0"
+  },
+  "dependencies": {}
+}

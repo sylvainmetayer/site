@@ -1,6 +1,4 @@
-FROM jekyll/jekyll:3.8.6
-ADD Gemfile /srv/jekyll
-ADD Gemfile.lock /srv/jekyll
+FROM node:13-alpine
 
-WORKDIR /srv/jekyll
-RUN bundle install
+RUN mkdir -p /app
+WORKDIR /app

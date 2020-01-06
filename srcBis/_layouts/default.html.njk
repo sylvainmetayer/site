@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{site.lang}}">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="author" content="{{ site.name }}">
+
+        {# TODO SEO #}
+
+        {% include "favicon.html.njk" %}
+
+        {# <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" /> #}
+
+        {# {% asset style.css %} #}
+    </head>
+    <body>
+
+        {% include "nav.html.njk" %}
+        {{ content | safe }}
+        {% include "icons.html.njk" %}
+    </body>
+</html>
