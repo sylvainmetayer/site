@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "eleventy --serve",
     "build": "eleventy",
-    "test": "@build"
+    "test": "eleventy"
   },
   "repository": {
     "type": "git",
