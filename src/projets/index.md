@@ -8,7 +8,7 @@ title: Projets
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% else %}
-		{% for post in site.projects %}
+		{% for post in site.projects reversed %}
             {% unless post.hidden %}
 				{% include blog-post.html %}
 			{% endunless %}
@@ -21,7 +21,7 @@ title: Projets
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% else %}
-		{% for post in site.pro_projects %}
+		{% for post in site.pro_projects reversed %}
             {% unless post.hidden %}
 				{% include blog-post.html %}
 			{% endunless %}
@@ -34,7 +34,7 @@ title: Projets
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% else %}
-		{% for post in site.school_projects %}
+		{% for post in site.school_projects reversed %}
             {% unless post.hidden %}
 				{% include blog-post.html %}
 			{% endunless %}
