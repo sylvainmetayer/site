@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Suivi mémoire"
-tag:
-    - epsi
 category: blog
 author: sylvainmetayer
 description: "Avancée de la réalisation de mon mémoire de fin d'études pour l'EPSI"
@@ -10,8 +8,6 @@ hidden: false
 star: false
 enable_comments: true
 ---
-
-# Suivi mémoire
 
 Bien que n'ayant pas communiqué sur le suivi de mon mémoire comme cela était [indiqué ici]({{ site.baseurl }}{% post_url 2019-03-17-memoire %}), j'ai bien avancé sur ce dernier. Je vais lister ici mes avancées et ce qu'il me reste à faire.
 

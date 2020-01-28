@@ -1,0 +1,29 @@
+---
+layout: compress
+---
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom">
+<channel>
+    <atom:link href="{{ site.url }}/devto.rss.xml" rel="self" type="application/rss+xml" />    
+    <title>{{ site.name }} - dev.to</title>
+    <link>{{ site.url }}</link>
+    <description>Cross post articles on dev.to platform</description>
+    <language>fr-fr</language>
+    <pubDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
+    <lastBuildDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %Z" }}</lastBuildDate>
+    {% assign posts = site.posts | where: 'repost', 'dev.to' %}
+    {% assign posts = site.projects | where: 'repost', 'dev.to' | concat: posts %}
+    {% assign posts = site.school_projects | where: 'repost', 'dev.to' | concat: posts %}
+    {% assign posts = site.pro_projects | where: 'repost', 'dev.to' | concat: posts %}
+    {% for post in posts %}
+        <item>
+          <title>{{ post.title | xml_escape }}</title>
+          <link>{{ site.url }}{{ post.url }}</link>
+          <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
+          <author>{{ site.authors[post.author].email }} ({{ site.authors[post.author].name }})</author>
+          <guid>{{ site.url }}{{ post.url }}</guid>
+          <description>{{ post.excerpt | xml_escape }}</description>
+        </item>
+    {% endfor %}
+  </channel>
+</rss>

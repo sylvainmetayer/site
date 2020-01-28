@@ -11,6 +11,12 @@
         </a>
     {% endif %}
 
+    {% if site.devto %}
+        <a class="link" rel="noreferrer" data-title="dev.to/{{site.devto}}" href="//dev.to/{{site.devto}}">
+            {% fa_svg fab.fa-dev %}
+        </a>
+    {% endif %}
+
     {% if site.google %}
         <a class="link" rel="noreferrer" data-title="plus.google.com/+{{ site.google }}" href="//plus.google.com/+{{ site.google }}" >
             {% fa_svg fab.fa-google-plus %}
