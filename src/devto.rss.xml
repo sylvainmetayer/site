@@ -22,7 +22,6 @@ layout: compress
           <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
           <author>{{ site.authors[post.author].email }} ({{ site.authors[post.author].name }})</author>
           <guid>{{ site.url }}{{ post.url }}</guid>
-          <description>{{ post.excerpt | xml_escape }}</description>
           <content type="html" xml:base="{{ post.url | absolute_url | xml_escape }}">{{ post.content | strip | xml_escape }}</content>
         </item>
     {% endfor %}
