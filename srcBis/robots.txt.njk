@@ -1,0 +1,5 @@
+---
+permalink: robots.txt
+---
+User-agent: *
+{% if site.environment !== "production" %}Disallow: /{% else %}Disallow:{% endif %}

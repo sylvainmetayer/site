@@ -26,26 +26,3 @@ branches:
 sudo: false
 os:
   - linux
-
-before_deploy:
-- echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- openssl aes-256-cbc -K $encrypted_6e81ab708fb2_key -iv $encrypted_6e81ab708fb2_iv
-  -in github_travis.enc -out /tmp/traviskey -d
-- eval "$(ssh-agent -s)"
-- chmod 600 /tmp/traviskey
-- ssh-add /tmp/traviskey
-
-deploy:
-- provider: script
-  skip_cleanup: true
-  script:
-  - rsync -r --quiet --delete-after _site/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIRECTORY
-  on:
-    branch: master
-- provider: script
-  skip_cleanup: true
-  script:
-  - gem update --system && gem install bundler && bundle install --without :development :test && JEKYLL_ENV=stage bundle exec jekyll build --config _config.yml,_config-deploy-dev.yml && rsync -r --quiet
-    --delete-after _site/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIRECTORY_DEV
-  on:
-    branch: develop

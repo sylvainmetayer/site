@@ -1,6 +1,7 @@
 ---
 layout: page.html.njk
 title: Accueil
+showHeader: true
 ---
 
 # Bienvenue !
@@ -9,4 +10,4 @@ Je suis titulaire d'un DUT Informatique obtenu à l'IUT du Limousin (87) ainsi q
 
 Je suis actuellement développeur au sein de [onepoint](https://groupeonepoint.com) à Bordeaux (33).
 
-Découvrez sur ce site mon [parcours]({{site.url}}/formations/), mes [projets]({{ site.url }}/projets/), consultez mon [CV]({{ site.url }}/assets/CV.pdf) et [contactez moi](mailto:{{site.email | encode_email }}) !
+Découvrez sur ce site mon [parcours]({{site.url}}/formations/), mes [projets]({{ site.url }}/projets/), consultez mon [CV]({{ site.url }}/assets/CV.pdf) et [contactez moi](mailto:{{ site.author().networks.email }}) !
