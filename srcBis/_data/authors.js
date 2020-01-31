@@ -2,7 +2,6 @@ module.exports = {
   sylvainmetayer: {
     name: "Sylvain METAYER",
     networks: {
-      twitter: "@sylvainmetayer",
       github: "sylvainmetayer",
       facebook: "sylvain.metayer",
       twitter: "sylvain_metayer",

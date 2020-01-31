@@ -1,4 +1,13 @@
 <div class="social-links">
+
+<h1>toto</h1>
+  {{ socialNetworks | debug }}
+
+    {% for siteName, siteUrl in socialNetworks %}
+      {{ siteName }}
+      {{ siteUrl }}
+    {% endfor %}
+
     {% if site.facebook %}
         <a class="link" data-title="facebook.com/{{ site.facebook }}" href="//facebook.com/{{ site.facebook }}" >
             {% fa_svg fab.fa-facebook %}
