@@ -1,22 +1,17 @@
 ---
 title: "Nouvelle version du site :tada:"
-layout: post
 tag:
     - jekyll
-category: blog
-author: sylvainmetayer
 excerpt: "Après quelques années d'existence, mon ancien site commençait à vieillir."
-hidden: false
-star: false
-enable_comments: true
 repost: dev.to
+date: "2018-11-15"
 ---
 
-{% include toc.html %}
+<!-- {\% include toc.html %\} -->
 
 ## Le passage de PHP à Jekyll
 
-{{ page.excerpt }}
+{{ excerpt }}
 
 > [Les sources de mon ancien site sont toujours disponibles sur Github](https://github.com/sylvainmetayer/sylvainmetayer-old), mais remontent à l'époque de mon DUT, soyez indulgents ! :grin:
 
@@ -38,7 +33,7 @@ J'ai donc commencé à creuser la question des générateurs de sites et en ai t
 
 Voici une illustration des performances actuelles du site, ainsi qu'un rapport [Dareboost](https://www.dareboost.com/fr/report/d_5bec937de967905e05bb64cb). Je suis assez satisfait du résultat, même s'il me reste du travail à faire dessus (mais comme le produit parfait n'existe pas, le site parfait n'existe pas non plus ! :stuck_out_tongue_winking_eye:)
 
-{% asset speed-test.png alt="Google Page Speed résultat" %}
+<!-- {\% asset speed-test.png alt="Google Page Speed résultat" %} -->
 
 ### 2. Le contenu prime sur le design (pour moi)
 
@@ -115,7 +110,7 @@ De plus, comme indiqué sur leur site, cet outil s'intègre très bien avec Jeky
 
 Une solution pour parer au problème serait d'auto-héberger le projet avec une clé d'API Github personnelle mais semble beaucoup pour "simplement des commentaires", même si j'aimais beaucoup l'idée de pouvoir avoir des pull request pour chaque commentaire !
 
-> Edit : Les commentaires sont maintenant disponible ! {% fa_svg fas.fa-fire %}
+> Edit : Les commentaires sont maintenant disponible ! {\% fa_svg fas.fa-fire %}
 >
 > [Voir l'article]({{ site.baseurl }}{\% post_url 2018-11-18-ajout-commentaires %})
 

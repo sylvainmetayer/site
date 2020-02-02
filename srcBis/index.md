@@ -1,5 +1,5 @@
 ---
-layout: page.html.njk
+layout: page.njk
 title: Accueil
 showHeader: true
 ---

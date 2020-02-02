@@ -1,12 +1,7 @@
 ---
 title: Rédaction d'un mémoire
-layout: post
-category: blog
-author: sylvainmetayer
+date: "2019-03-17"
 description: Ma dernière année d'étude à l'EPSI Bordeaux signifie également la rédaction d'un mémoire. Afin d'assurer un suivi efficace des tuteurs EPSI, il est demandé aux étudiants de donner des états d'avancements, à des dates jalons, afin que les tuteurs puissent recadrer l'étudiant s'il part dans une mauvaise direction.
-hidden: false
-star: false
-enable_comments: true
 ---
 
 # Rédaction d'un mémoire de fin d'études

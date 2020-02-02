@@ -1,5 +1,5 @@
 const moment = require("moment");
-
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const srcFolder = "./srcBis";
 module.exports = function (eleventyConfig) {
@@ -14,6 +14,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksFilter("debug", function (variable) {
     console.info(variable);
   });
+
+  eleventyConfig.addPlugin(syntaxHighlight);
+
+  eleventyConfig.setDataDeepMerge(true);
 
   return {
     templateFormats: [

@@ -1,17 +1,12 @@
 ---
 title: "Ajout des commentaires sur le site"
-layout: post
 tag:
     - jekyll
-category: blog
-author: sylvainmetayer
+date: "2018-11-18"
 description: "Les commentaires sont maintenant disponible sur le site"
-hidden: false
-star: false
-enable_comments: true
 ---
 
-{{ page.description }}
+{{ description }}
 
 Comme indiqué dans [l'article précédent]({{ site.baseurl }}{\% post_url 2018-11-15-site-personnel-v2 %}), je cherchais désormais à intégrer une solution de commentaire, tout en évitant les solutions peu respectueuse de notre vie privée.
 
@@ -220,7 +215,7 @@ Il ne reste maintenant plus qu'à configurer notre client ! Voici le code que j'
 
 Le script est chargé en asynchrone, afin de ne pas gêner le chargement de la page.
 
-{% highlight erb %}
+```js
 {% raw %}
 {% if page.enable_comments %}
     <hr>
@@ -235,7 +230,7 @@ Le script est chargé en asynchrone, afin de ne pas gêner le chargement de la p
     <hr>
 {% endif %}
 {% endraw %}
-{% endhighlight %}
+```
 
 Pour plus d'informations que les paramètres disponibles côté client, [voir la documentation sur Github](https://github.com/posativ/isso/blob/master/docs/docs/configuration/client.rst).
 
@@ -243,7 +238,7 @@ Pour plus d'informations que les paramètres disponibles côté client, [voir la
 
 Et voici le résultat !
 
-{% asset isso.png alt="affichage des commentaires" %}
+{\% asset isso.png alt="affichage des commentaires" %}
 
 > Ce n'est qu'une image, les commentaires se trouvent plus bas :wink:
 

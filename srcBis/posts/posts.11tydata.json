@@ -1,0 +1,9 @@
+{
+  "layout": "post.njk",
+  "category": "blog",
+  "hidden": false,
+  "star": false,
+  "enable_comments": true,
+  "author": "sylvainmetayer",
+  "permalink": "/blog/{{ page.fileSlug }}/"
+}

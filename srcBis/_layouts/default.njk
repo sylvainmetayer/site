@@ -9,7 +9,7 @@
 
         {# TODO SEO #}
 
-        {% include "favicon.html.njk" %}
+        {% include "favicon.njk" %}
 
         {# <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" /> #}
@@ -18,8 +18,8 @@
     </head>
     <body>
 
-        {% include "nav.html.njk" %}
+        {% include "nav.njk" %}
         {{ content | safe }}
-        {% include "icons.html.njk" %}
+        {% include "icons.njk" %}
     </body>
 </html>

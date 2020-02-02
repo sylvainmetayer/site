@@ -1,8 +1,8 @@
 ---
-layout: page
+layout: page.njk
 ---
 
-{% if page.image %}
+{# {% if page.image %}
     {% asset "{{ page.image }}" alt='{{ page.title }}' class='title-image' %}
 {% endif %}
 
@@ -12,7 +12,7 @@ layout: page
 </h1>
 
 <span class="date">
-    <time datetime="{{ page.date | date:"%d-%m-%Y" }}">Publié le {% include translated_date.html date=page.date format="%A %d %B %Y" %}</time>
+    <time datetime="{{ date | date('%d-%m-%Y') }}">Publié le {{ date | date("%A %d %B %Y")}}</time>
 </span>
 
 {% if site.read-time %}
@@ -21,31 +21,15 @@ layout: page
 </div>
 {% endif %}
 
-
-{% comment %}
-{% capture edited_at %} {{ page.git.last_commit.commit_date }} {% endcapture %}
-{% capture edited_at_date %} {{ page.git.last_commit.commit_date | date: "%A %d %B %Y" }} {% endcapture %}
-{% capture published_at_date %} {{ page.date | date: "%A %d %B %Y"}} {% endcapture %}
-
-
-{% if published_at_date != edited_at_date %}
-<div class="date">
-    Dernière modification le {% include translated_date.html date=edited_at format="%A %d %B %Y" %}
-</div>
-{% endif %}
-{% endcomment %}
-
-{% if site.show-tags %}
     <div class="post-tags">
         {% for tag in page.tags %}
             <a class="item" href="{{ site.url }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
         {% endfor %}
-    </div>
-{% endif %}
+    </div> #}
 
-{{content}}
+{{ content | safe }}
 
-{% if page.enable_comments and jekyll.environment != "development" %}
+{# {% if page.enable_comments and jekyll.environment != "development" %}
 <hr>
 <h2>Commentaires</h2>
 <script async
@@ -80,4 +64,4 @@ src="{{site.isso.script}}"></script>
 {% endif %}
 
 <div id="progress-bar"></div>
-{% asset progress.js async %}
+{% asset progress.js async %} #}
