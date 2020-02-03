@@ -1,4 +1,6 @@
 const moment = require("moment");
+moment.locale("fr");
+
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const srcFolder = "./srcBis";
