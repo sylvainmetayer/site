@@ -8,6 +8,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("posts", (collections) => {
     return collections.getFilteredByGlob(`${srcFolder}/posts/*.md`)
+      .filter((item) => !item.data.hidden)
       .sort((a, b) => {
         return b.date - a.date;
       });

@@ -1,5 +1,6 @@
 ---
 title: "Nouvelle version du site :tada:"
+hidden: true
 tag:
     - jekyll
 excerpt: "Après quelques années d'existence, mon ancien site commençait à vieillir."

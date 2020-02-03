@@ -9,21 +9,19 @@ showHeader: true
     <p class="text-center">Nothing published yet!</p>
   {% else %}
     {% for post in collections.posts %}
-      {% if post.data.hidden == false %}
-        <div class="item {% if post.star %}star{% endif %}">
-          <a class="url" href="{{ site.url }}{{ post.url }}">
-            <aside class="date">
-              <time datetime="{{ post.date | date('d/M/Y H:m:s') }}">
-                {{ post.date | date('LL') }}
-              </time>
-            </aside>
-            <h3 class="title">
-              {{ post.data.title }}
-              {% if post.data.school %}({{post.data.school}}){% endif %}
-            </h3>
-          </a>
-        </div>
-      {% endif %}
+      <div class="item {% if post.star %}star{% endif %}">
+        <a class="url" href="{{ site.url }}{{ post.url }}">
+          <aside class="date">
+            <time datetime="{{ post.date | date('d/m/y h:m:s') }}">
+              {{ post.date | date('LL') }}
+            </time>
+          </aside>
+          <h3 class="title">
+            {{ post.data.title }}
+            {% if post.data.school %}({{post.data.school}}){% endif %}
+          </h3>
+        </a>
+      </div>
     {% endfor %}
   {% endif %}
 </section>

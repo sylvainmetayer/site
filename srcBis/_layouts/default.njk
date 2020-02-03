@@ -13,7 +13,7 @@
     {% endblock %}
 
     {% block css %}
-      {# {% asset style.css %} #}
+      <link rel="stylesheet" href="/css/main.css"/>
     {% endblock %}
 
   </head>
@@ -21,6 +21,5 @@
 
     {% include "nav.njk" %}
     {{ content | safe }}
-    {% include "icons.njk" %}
   </body>
 </html>
