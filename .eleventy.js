@@ -5,6 +5,14 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const srcFolder = "./srcBis";
 module.exports = function (eleventyConfig) {
+
+  eleventyConfig.addCollection("posts", (collections) => {
+    return collections.getFilteredByGlob(`${srcFolder}/posts/*.md`)
+      .sort((a, b) => {
+        return b.date - a.date;
+      });
+  });
+
   eleventyConfig.addNunjucksFilter("limit", function (array, limit) {
     return array.slice(0, limit);
   });

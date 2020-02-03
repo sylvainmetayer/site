@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="{{site.lang}}">
-    <head>
+  <head>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta name="author" content="{{ site.name }}">
-
-        {# TODO SEO #}
-
-        {% include "favicon.njk" %}
-
-        {# <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
+    {% block meta %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="author" content="{{ site.name }}">
+      {# TODO SEO #}
+      {% include "favicon.njk" %}
+      {# <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" /> #}
+    {% endblock %}
 
-        {# {% asset style.css %} #}
-    </head>
-    <body>
+    {% block css %}
+      {# {% asset style.css %} #}
+    {% endblock %}
 
-        {% include "nav.njk" %}
-        {{ content | safe }}
-        {% include "icons.njk" %}
-    </body>
+  </head>
+  <body>
+
+    {% include "nav.njk" %}
+    {{ content | safe }}
+    {% include "icons.njk" %}
+  </body>
 </html>
