@@ -20,6 +20,8 @@
   <body>
 
     {% include "nav.njk" %}
-    {{ content | safe }}
+    <div class="wrapper-normal">
+      {{ content | safe }}
+    </div>
   </body>
 </html>
