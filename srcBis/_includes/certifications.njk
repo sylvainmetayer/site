@@ -1,0 +1,24 @@
+{% if collections.certifications.length > 0 %}
+  <section class="list">
+    <h2>Certifications</h2>
+    {% for certification in collections.certifications %}
+      <div class="item">
+        <h3 class="title">
+          {% if certification.data.link %}
+            <a class="url" href="{{ certification.data.link }}">{{ certification.data.name }}</a>
+          {% else %}
+            {{ certification.data.name }}
+          {% endif %}
+        </h3>
+        <p>
+          Obtenu le {{ certification.date | date('d/MM/Y')}}
+        </p>
+        {{ certification.templateContent | safe }}
+        <aside>
+          {% image certification.data.image.src,
+          certification.data.image.alt %}
+        </aside>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}

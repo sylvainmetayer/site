@@ -6,7 +6,7 @@
 const { compileSassTargets } = require("../_functions/scss");
 
 const targets = {
-  main: "/_assets/sass/style.scss"
+  main: "/_sass/style.scss"
 };
 
 // Create an object with the compiled CSS for each key in targets

@@ -1,10 +1,12 @@
 ---
 title: Animateur Ping Tour
 link: http://www.fftt.com/site/jouer/les-pratiques/ping-tour
-logo: pingtour.jpg
-alt: Logo Ping Tour
-date: 2013-07-01
-to: 2015-07-31
+image:
+  src: companies/pingtour.jpg
+  alt: Logo Ping tour
+dates:
+  from: 2013-07-01
+  to: 2015-07-31
 location: Parthenay (79)
 code: ping-tour
 ---

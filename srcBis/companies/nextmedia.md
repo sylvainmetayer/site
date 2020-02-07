@@ -1,10 +1,12 @@
 ---
-title: NextMedia 
+title: NextMedia
 link: https://www.nextmedia.fr/
-logo: nextmedia.png
-alt: Logo NextMedia
-date: 2016-04-01
-to: 2016-07-31
+dates:
+  from: 2016-04-01
+  to: 2016-07-31
+image:
+  src: companies/nextmedia.png
+  alt: Logo NextMedia
 location: Clermont-Ferrand (63)
 code: nextmedia
 ---

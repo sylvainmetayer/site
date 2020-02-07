@@ -1,0 +1,32 @@
+{% if collections.companies.length > 0 %}
+  <section class="list">
+    <h2>Expériences professionnelles</h2>
+    {% for company in collections.companies %}
+      <div class="item">
+        <h3 class="title">
+          {% if company.data.link %}
+            <a class="url" href="{{ company.data.link }}">{{ company.data.title }}</a>
+          {% else %}
+            {{ company.data.title }}
+          {% endif %}
+        </h3>
+        <p>
+          Du {{ company.data.dates.from | date("d-m-Y") }}
+          {% if company.data.dates.to %}
+              au {{ company.data.dates.to | date("d-m-Y") }}
+          {% else %}
+              à Aujourd'hui
+          {% endif %}
+          <br/>
+          {{ company.data.location }}
+        </p>
+        <aside>
+          {% image company.data.image.src,
+          company.data.image.alt %}
+        </aside>
+        {{ company.templateContent | safe }}
+      </div>
+      <hr/>
+    {% endfor %}
+  </section>
+{% endif %}

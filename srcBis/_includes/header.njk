@@ -9,7 +9,7 @@
 {% if showHeader %}
   <header class="header-home {% if site.animation %}animated{% endif %}">
     <span class="link">
-      {# {% asset "{{ site.picture }}" alt='{{ site.name }}' class='selfie' %} #}
+      {% image "profile.png", "avatar de profil", ["selfie"] %}
     </span>
 
     <h1 class="title">{{ site.title }}</h1>
