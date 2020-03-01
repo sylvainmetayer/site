@@ -20,7 +20,7 @@ group :test do
 end
 
 gem 'rouge'
-gem 'nokogiri', '1.10.8'
+gem 'nokogiri', '1.10.9'
 gem "sprockets", "~> 3.7"
 
 group :ci do
