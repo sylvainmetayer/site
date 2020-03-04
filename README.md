@@ -19,6 +19,10 @@ WIP :
 
 - `npm start`
 
+## Setup (docker)
+
+- `docker-compose up -d`
+
 <details>
   <summary>Travis configuration</summary>
   If you want to use travis, you will have to generate the following variables with the [Travis CLI (ruby)](https://docs.travis-ci.com/user/encryption-keys/#usage):

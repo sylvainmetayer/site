@@ -19,7 +19,7 @@ cache:
 install:
 - npm ci
 
-script: npm run test
+script: npm run build
 branches:
   except:
     - gh-pages

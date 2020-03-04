@@ -1,40 +1,35 @@
 version: "3.1"
 
 services:
+  app:
+    environment:
+      - ELEVENTY_ENV=dev
+    container_name: sylvainmetayer_dev
+    build: .
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    ports:
+      - 127.0.0.1:8080:8080
+    volumes:
+      - .:/app
+      - /app/node_modules
 
-  jekyll:
+  app_prod:
     environment:
-      - JEKYLL_ENV=development
-    container_name: jekyll_sylvainmetayer
+      - ELEVENTY_ENV=production
+    container_name: sylvainmetayer_production
     build: .
-    labels:
-      jekyll_docker_sylvainmetayer: true
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4000"]
       interval: 30s
       timeout: 10s
       retries: 3
-    command: jekyll serve --config _config.yml,_config-dev.yml --watch
+    command: eleventy --serve --port 4000
     ports:
-        - 127.0.0.1:4000:4000
+      - 127.0.0.1:4000:4000
     volumes:
-        - .:/srv/jekyll
-  
-  jekyll_prod:
-    environment:
-      - JEKYLL_ENV=production
-    container_name: jekyll_sylvainmetayer_production
-    build: .
-    labels:
-      jekyll_docker_sylvainmetayer: true
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4000"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    command: jekyll serve --config _config.yml,_config-prod-local.yml --watch
-    ports:
-        - 127.0.0.1:4001:4000
-    volumes:
-        - .:/srv/jekyll
-  
+      - .:/app
+      - /app/node_modules

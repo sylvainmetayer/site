@@ -4,9 +4,8 @@
   "description": "Personal website",
   "main": "index.js",
   "scripts": {
-    "start": "ELEVENTY_ENV=dev eleventy --serve",
-    "build": "ELEVENTY_ENV=production eleventy",
-    "test": "eleventy"
+    "start": "eleventy --serve",
+    "build": "eleventy"
   },
   "repository": {
     "type": "git",

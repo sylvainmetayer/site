@@ -1,4 +1,5 @@
-FROM node:13-alpine
-
-RUN mkdir -p /app
+FROM node:13
+ADD . /app
 WORKDIR /app
+RUN npm ci
+CMD ["npm", "start"]
