@@ -45,19 +45,6 @@ layout: page
 
 {{content}}
 
-{% if page.enable_comments and jekyll.environment != "development" %}
-<hr>
-<h2>Commentaires</h2>
-<script async
-data-isso="{{site.isso.url}}"
-data-isso-id="{{page.id}}"
-data-isso-feed="true"
-src="{{site.isso.script}}"></script>
-<noscript>Votre navigateur ne supporte pas Javascript, vous ne serez donc pas en mesure de visualiser les commentaires.</noscript>
-<section id="isso-thread"></section>
-<hr>
-{% endif %}
-
 {% if site.post-advance-links contains page.category %}
     <div class="blog-navigation">
         {% if page.previous.url %}
