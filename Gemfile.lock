@@ -116,7 +116,7 @@ GEM
     multipart-post (2.1.1)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
-    nokogiri (1.10.9)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
     pathutil (0.16.2)
@@ -172,7 +172,7 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   jemoji
-  nokogiri (= 1.10.9)
+  nokogiri (= 1.10.10)
   rake
   rouge
   sprockets (~> 3.7)
