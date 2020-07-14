@@ -2,11 +2,14 @@
 command = "npm run production"
 publish = "dist"
 
+[context.production]
+environment = { ELEVENTY_ENV = "production" }
+
 [context.deploy-preview]
-environment = { DEBUG = "*", ELEVENTY_ENV = "preview" }
+environment = { ELEVENTY_ENV = "preview" }
 
 [context.branch-deploy]
-environment = { DEBUG = "*", ELEVENTY_ENV = "branch" }
+environment = { ELEVENTY_ENV = "branch" }
 
 [[headers]]
 for = "/*"
