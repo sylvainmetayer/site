@@ -3,7 +3,7 @@ const markdownItAnchor = require("markdown-it-anchor");
 const markdownIt = require('markdown-it');
 
 /**
- * Markdown config 
+ * Markdown config
  * @see http://dirtystylus.com/2020/06/15/eleventy-markdown-and-footnotes/
  */
 let markdownLibrary = markdownIt({

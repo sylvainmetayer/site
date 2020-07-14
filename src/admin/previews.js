@@ -1,11 +1,14 @@
 const {
   w3DateFilter,
   helpers,
+  dateFilter,
+  markdown
 } = previewUtil;
 
 const env = nunjucks.configure();
 
 env.addFilter('w3DateFilter', w3DateFilter);
+env.addFilter('date', dateFilter);
 
 const Preview = ({ entry, path, context }) => {
   const data = context(entry.get('data').toJS());
@@ -19,18 +22,11 @@ const Home = ({ entry }) => (
     path="layouts/home.njk"
     context={({ title, body, postsHeading, archiveButtonText }) => ({
       title,
-      // TODO Markdown filter
-      content: markdownFilter(body),
+      content: markdown.render(body || ''),
       postsHeading,
       archiveButtonText,
       collections: {
-        postFeed: [{
-          url: 'javascript:void(0)',
-          date: new Date(),
-          data: {
-            title: 'Sample Post',
-          },
-        }],
+        postFeed: [],
       },
     })}
   />
@@ -43,7 +39,7 @@ const Post = ({ entry }) => (
     context={({ title, date, body }) => ({
       title,
       date,
-      content: markdownFilter(body || ''),
+      content: markdown.render(body || ''),
     })}
   />
 );
@@ -54,7 +50,7 @@ const Page = ({ entry }) => (
     path="layouts/page.njk"
     context={({ title, body }) => ({
       title,
-      content: markdownFilter(body || ''),
+      content: markdown.render(body || ''),
     })}
   />
 );

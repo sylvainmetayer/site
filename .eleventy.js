@@ -2,10 +2,9 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const fs = require('fs');
 
-const moment = require('moment');
-
 // Import filters
-const w3DateFilter = require('./src/filters/w3-date-filter.js');
+const w3DateFilter = require('./src/11ty/filters/w3-date-filter.js');
+const dateFilter = require('./src/11ty/filters/date-filter.js');
 
 // Import transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
@@ -93,11 +92,7 @@ module.exports = function (config) {
     console.info(variable);
   });
 
-  config.addFilter("date", function (date, format = 'LL') {
-    moment.locale('fr');
-    return moment(date).format(format);
-  });
-
+  config.addFilter("date", dateFilter);
 
   config.setLibrary("md", markdownConfig)
 

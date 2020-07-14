@@ -5,18 +5,18 @@ permalink: '/feed.xml'
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.name }}</title>
 	<subtitle></subtitle>
-	<link href="{{ global.url() }}{{ permalink }}" rel="self"/>
-	<link href="{{ global.url() }}/"/>
+	<link href="{{ helpers.url() }}{{ permalink }}" rel="self"/>
+	<link href="{{ helpers.url() }}/"/>
 	{% if collections.posts|length %}
 	<updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
 	{% endif %}
-	<id>{{ global.url() }}</id>
+	<id>{{ helpers.url() }}</id>
 	<author>
   <name>{{ site.authorName }}</name>
   <email>{{ site.authorEmail }}</email>
 	</author>
 	{% for post in collections.posts %}
-  {% set absolutePostUrl %}{{ global.url() }}{{ post.url | url }}{% endset %}
+  {% set absolutePostUrl %}{{ helpers.url() }}{{ post.url | url }}{% endset %}
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}"/>
