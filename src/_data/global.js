@@ -1,12 +1,12 @@
 module.exports = {
   url() {
+    if (process.env.ELEVENTY_ENV === "production") {
+      return "https://sylvain.dev";
+    }
+
     // Netlify deploy URL
     if (process.env.DEPLOY_PRIME_URL) {
       return process.env.DEPLOY_PRIME_URL;
-    }
-
-    if (process.env.ELEVENTY_ENV === "production") {
-      return "https://sylvain.dev";
     }
 
     return "http://localhost:8080";

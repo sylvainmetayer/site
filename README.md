@@ -1,6 +1,7 @@
 # Personal Website
 
 [![Depfu](https://badges.depfu.com/badges/8854fd930f182d7c719d31bc443abd5e/overview.svg)](https://depfu.com/github/sylvainmetayer/sylvainmetayer?project_id=6389)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/eea326e0-9c5d-443f-a0e5-ba949add331a/deploy-status)](https://app.netlify.com/sites/wizardly-aryabhata-f4e800/deploys)
 
 > Sylvain METAYER
 >
