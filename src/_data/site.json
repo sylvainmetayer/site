@@ -1,0 +1,15 @@
+{
+  "showThemeCredit": true,
+  "name": "Sylvain",
+  "shortDesc": "Développeur web à Bordeaux",
+  "url": "https://sylvain.dev",
+  "authorEmail": "bonjour@sylvainmetayer.fr",
+  "authorHandle": "@sylvain_metayer",
+  "authorName": "Sylvain METAYER",
+  "enableThirdPartyComments": false,
+  "maxPostsPerPage": 5,
+  "paymentPointer": "",
+  "faviconPath": "/images/favicon.png",
+  "displayWipWarning": true,
+  "displayDevWarning": true
+}

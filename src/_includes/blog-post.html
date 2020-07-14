@@ -1,8 +1,0 @@
-<div class="item {% if post.star %}star{% endif %}">
-    <a class="url" href="{{ site.url }}{{ post.url }}">
-        <aside class="date"><time datetime="{{ post.date | date:"%d-%m-%Y" }}">{% include translated_date.html date=post.date format="%d %b %Y" %}</time></aside>
-        <h3 class="title">
-            {{ post.title }} {% if post.school %}({{post.school}}) {% endif %}
-        </h3>
-    </a>
-</div>

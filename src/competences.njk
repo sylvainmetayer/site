@@ -1,0 +1,20 @@
+---
+title: 'Compétences'
+permalink: '/competences/'
+layout: 'layouts/page.njk'
+---
+
+<p>Vous trouverez ci-dessous la liste de mes compétences.</p>
+
+<blockquote>
+Une étoile à la fin d'une compétence indique que j'ai des connaissance limitées sur ce sujet.
+</blockquote>
+
+{% for key, value in skills %}
+    <h2>{{ key | upper }}</h2>
+    <ul>
+        {% for skill in value %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}

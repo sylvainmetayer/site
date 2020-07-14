@@ -1,15 +1,10 @@
 # Personal Website
 
-[![Build Status](https://travis-ci.org/sylvainmetayer/sylvainmetayer.svg?branch=master)](https://travis-ci.org/sylvainmetayer/sylvainmetayer)
 [![Depfu](https://badges.depfu.com/badges/8854fd930f182d7c719d31bc443abd5e/overview.svg)](https://depfu.com/github/sylvainmetayer/sylvainmetayer?project_id=6389)
-
-WIP :
-
-- Companies : Récupérer les projets liés aux entreprises et faire une page dédiée par entreprise, avec tous les projets réalisés.
 
 > Sylvain METAYER
 >
-> Based on a modified version of [indigo theme](https://github.com/sergiokopplin/indigo)
+> Based on a modified version of [Hylia theme](https://github.com/hankchizljaw/hylia)
 
 ## Setup
 

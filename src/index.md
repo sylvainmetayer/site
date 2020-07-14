@@ -1,12 +1,13 @@
 ---
-layout: page
-title: Accueil
-
+layout: home
+title: Bonjour !
+postsHeading: Derniers articles
+starHeading: Articles mis en avant
+archiveButtonText: Voir tous les articles
+metaDesc: "Diplomé depuis un peu plus d'un an et après 3 années d'alternance, je suis actuellement développeur web au sein de onepoint à Bordeaux"
+socialImage: ''
 ---
-# Bienvenue !
 
-Je suis titulaire d'un DUT Informatique obtenu à l'IUT du Limousin (87) ainsi qu'une Licence Professionnelle DAWIN (Développement en applications web et innovation numérique) à l'IUT de Bordeaux (33), effectuée en alternance. J'ai également effectué un mastère en alternance à l'EPSI de Bordeaux (33).
+Diplomé depuis un peu plus d'un an et après 3 années d'alternance, je suis actuellement développeur web au sein de onepoint à Bordeaux. Vous pouvez consulter mon [CV](/uploads/CV.pdf) et retrouver les articles publiés sur ce site ci-dessous.
 
-Je suis actuellement développeur au sein de [onepoint](https://groupeonepoint.com) à Bordeaux (33).
-
-Découvrez sur ce site mon [parcours]({{site.url}}/formations/), mes [projets]({{ site.url }}/projets/), consultez mon [CV]({{ site.url }}/assets/CV.pdf) et [contactez moi](mailto:{{site.email | encode_email }}) !
+Vous pouvez également me contacter sur [Twitter](https://twitter.com/sylvain_metayer), [DevTo](https://dev.to/sylvainmetayer), [Github](https://github.com/sylvainmetayer) ou par [mail](mailto:{{site.authorEmail}})

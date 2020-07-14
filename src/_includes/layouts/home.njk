@@ -1,0 +1,34 @@
+{% extends 'layouts/base.njk' %}
+
+{# Intro content #}
+{% set introHeading = title %}
+{% set introSummary %}
+  {{ content | safe }}
+{% endset %}
+
+{% block content %}
+  <main id="main-content" tabindex="-1">
+    {% include "partials/components/intro.njk" %}
+
+    {# Starred posts #}
+    {% set postListHeading = starHeading %}
+    {% set postListItems = collections.starFeed %}
+    {% if postListItems.length > 0 %}
+      {% include "partials/components/post-list.njk" %}
+    {% endif %}
+
+    {# Post list content #}
+    {% set postListHeading = postsHeading %}
+    {% set postListItems = collections.postFeed %}
+
+    {# Archive link #}
+    {% if postListItems.length < collections.posts.length %} 
+      {% set paginationNextText = archiveButtonText %}
+      {% set paginationNextUrl = '/articles' %}
+    {% endif %}
+    
+    {% include "partials/components/post-list.njk" %}
+    {% include "partials/components/pagination.njk" %}
+
+  </main>
+{% endblock %}

@@ -1,0 +1,6 @@
+{
+  "layout": "layouts/post.njk",
+  "draft": false,
+  "star": false,
+  "permalink": "/article/{{ page.fileSlug }}/"
+}

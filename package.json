@@ -1,12 +1,9 @@
 {
   "name": "@sylvainmetayer/sylvainmetayer",
   "version": "1.0.0",
+  "private": true,
   "description": "Personal website",
-  "main": "index.js",
-  "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
-  },
+  "main": ".eleventy.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sylvainmetayer/sylvainmetayer.git"
@@ -22,11 +19,41 @@
     "url": "https://github.com/sylvainmetayer/sylvainmetayer/issues"
   },
   "homepage": "https://github.com/sylvainmetayer/sylvainmetayer#readme",
+  "dependencies": {},
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
-    "moment": "^2.26.0",
-    "node-sass": "^4.14.1"
+    "@11ty/eleventy": "^0.10.0",
+    "@11ty/eleventy-plugin-rss": "^1.0.7",
+    "@tbranyen/jsdom": "^13.0.0",
+    "concurrently": "^4.1.2",
+    "html-minifier": "^4.0.0",
+    "image-size": "^0.8.3",
+    "json-to-scss": "^1.5.0",
+    "markdown-it-anchor": "^5.3.0",
+    "markdown-it-footnote": "^3.0.2",
+    "moment": "^2.27.0",
+    "sass": "^1.26.3",
+    "semver": "^6.3.0",
+    "slugify": "^1.4.0",
+    "stalfos": "github:hankchizljaw/stalfos#c8971d22726326cfc04089b2da4d51eeb1ebb0eb",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.3",
+    "@erquhart/rollup-plugin-node-builtins": "^2.1.5",
+    "bl": "^3.0.0",
+    "chokidar-cli": "^2.1.0",
+    "cross-env": "^5.2.1",
+    "make-dir-cli": "^2.0.0",
+    "prettier": "^1.19.1",
+    "rollup": "^1.32.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
-  "dependencies": {}
+  "scripts": {
+    "sass:tokens": "npx json-to-scss src/_data/tokens.json src/scss/_tokens.scss",
+    "sass:process": "npm run sass:tokens && sass src/scss/global.scss src/_includes/assets/css/global.css --style=compressed",
+    "cms:precompile": "make-dir dist/admin && nunjucks-precompile src/_includes > dist/admin/templates.js -i \"\\.(njk|css|svg)$\"",
+    "cms:bundle": "rollup --config",
+    "start": "concurrently \"npm run sass:process -- --watch\" \"npm run cms:bundle -- --watch\" \"chokidar \\\"src/_includes/**\\\" -c \\\"npm run cms:precompile\\\"\" \"npm run serve\"",
+    "serve": "cross-env ELEVENTY_ENV=development npx eleventy --serve",
+    "production": "npm run sass:process && npm run cms:precompile && npm run cms:bundle && npx eleventy"
+  }
 }

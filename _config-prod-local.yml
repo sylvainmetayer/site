@@ -1,9 +1,0 @@
-url: http://localhost:4001
-destination: _site_prod
-compress_html:
-    ignore:
-        envs:
-        - development
-        - stage
-        - production
-

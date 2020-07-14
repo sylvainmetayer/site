@@ -1,9 +1,9 @@
 [build]
-  base = "./"
-  publish = "_site/"
-  command = "eleventy"
-  environment = { IS_NETLIFY="true" }
+  command = "npm run production"
+  publish = "dist"
 
 [context.deploy-preview]
-  publish = "_site/"
-  environment = { DEBUG = "*", IS_NETLIFY="true" }
+  environment = { DEBUG = "*", ELEVENTY_ENV="preview" }
+
+[context.branch-deploy]
+  environment = { DEBUG = "*", ELEVENTY_ENV="branch" }
