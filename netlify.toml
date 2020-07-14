@@ -1,9 +1,22 @@
 [build]
-  command = "npm run production"
-  publish = "dist"
+command = "npm run production"
+publish = "dist"
 
 [context.deploy-preview]
-  environment = { DEBUG = "*", ELEVENTY_ENV="preview" }
+environment = { DEBUG = "*", ELEVENTY_ENV = "preview" }
 
 [context.branch-deploy]
-  environment = { DEBUG = "*", ELEVENTY_ENV="branch" }
+environment = { DEBUG = "*", ELEVENTY_ENV = "branch" }
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+cache-control = '''
+	max-age=0,
+	no-cache,
+	no-store,
+	must-revalidate'''
+Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
