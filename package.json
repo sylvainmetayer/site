@@ -31,7 +31,7 @@
     "markdown-it-anchor": "^5.3.0",
     "markdown-it-footnote": "^3.0.2",
     "moment": "^2.27.0",
-    "sass": "^1.26.3",
+    "sass": "^1.26.10",
     "semver": "^6.3.0",
     "slugify": "^1.4.4",
     "stalfos": "github:hankchizljaw/stalfos#c8971d22726326cfc04089b2da4d51eeb1ebb0eb",
