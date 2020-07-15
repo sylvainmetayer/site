@@ -1,5 +1,4 @@
 ---
-title: "Articles par tag"
 pagination:
   data: collections
   size: 1
@@ -14,6 +13,8 @@ pagination:
     - starFeed
   addAllPagesToCollections: true
 permalink: /tags/{{ tag }}/
+eleventyComputed:
+  title: "Articles ayant le tag '{{ tag }}'"
 ---
 
 {% extends 'layouts/base.njk' %}

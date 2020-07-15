@@ -1,6 +1,6 @@
 const isLive = post => {
   const now = new Date();
-  return !post.draft && post.date && post.date <= now;
+  return !post.draft && post.date && new Date(post.date) <= now;
 }
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
       return isLive(data) ? postPermalink : false;
     },
     eleventyExcludeFromCollections: data => {
-      return isLive(data);
+      return !isLive(data);
     }
   }
 };

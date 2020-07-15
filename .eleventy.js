@@ -80,6 +80,9 @@ module.exports = function (config) {
 
   // 404
   config.setBrowserSyncConfig({
+    ui: false,
+    // Replicate click on all opened tabs
+    ghostMode: false,
     callbacks: {
       ready: function (err, browserSync) {
         const content_404 = fs.readFileSync('dist/404.html');
