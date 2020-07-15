@@ -1,7 +1,7 @@
 ---
 title: "EarthQuake - WebGL"
-date: 2019-02-01
-tags: 
+date: "2019-02-01"
+tags:
     - javascript
     - webgl
     - epsi

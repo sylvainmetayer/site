@@ -1,7 +1,7 @@
 ---
 title: "Projet open innovation"
-date: 2019-02-25
-tags: 
+date: "2019-02-25"
+tags:
     - javascript
     - epsi
 metaDesc: "Ce projet, réalisé en équipe s'inscrivait dans la démarche Open Innovation de l'EPSI, impliquant plusieurs promotions et nécessitant donc d'être organisé"

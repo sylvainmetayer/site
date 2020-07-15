@@ -5,7 +5,7 @@ tags:
   - php
   - dawin
 metaDesc: 'Semaine innovante faisant partie de la formation DAWIN, durant laquelle le but était de réaliser une application innovante.'
-date: 2017-07-07
+date: "2017-07-07"
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/semaine-innovante-dawin)

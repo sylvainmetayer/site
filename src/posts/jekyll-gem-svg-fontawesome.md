@@ -4,7 +4,7 @@ tags:
   - jekyll
   - ruby
   - projet
-date: 2018-11-30
+date: "2018-11-30"
 excerpt: Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans pour autant intégrer toute la librairie, assez lourde.
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "PyGame"
-date: 2016-03-18
-tags: 
+date: "2016-03-18"
+tags:
     - python
     - dut-info
 metaDesc: "Ce projet universitaire consistait à réaliser un mini-jeu en réseau, à l'aide des librairies PyGame et PodSixNet."

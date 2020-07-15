@@ -1,8 +1,8 @@
 ---
 title: "Rapport DUT Informatique"
-date: 2016-06-20
+date: "2016-06-20"
 metaDesc: "Ce mémoire décrit le projet réalisé durant mon stage de DUT Informatique"
-tags: 
+tags:
     - dut-info
 ---
 

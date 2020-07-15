@@ -1,10 +1,10 @@
 ---
 title: "Système Expert"
-tags: 
+tags:
     - javascript
     - epsi
 metaDesc: "Ce projet, réalisé en binome durant ma formation à l'EPSI avait pour but de concevoir un système expert capable de détecter des formes (rectangle, carré, triangle, ...)."
-date: 2018-05-20
+date: "2018-05-20"
 ---
 
 [Sources (Github)](https://github.com/EPSIBordeaux/epsi-expert-system)

@@ -7,15 +7,22 @@ const CACHE_KEYS = {
 const EXCLUDED_URLS = [
   'admin',
   '.netlify',
+  '/browser-sync/socket.io/',
   'https://identity.netlify.com/v1/netlify-identity-widget.js',
   'https://unpkg.com/netlify-cms@^2.9.3/dist/netlify-cms.js'
 ];
 
+const OFFLINE_PAGE = '/offline/index.html';
+
 // URLS that we want to be cached when the worker is installed
-const PRE_CACHE_URLS = ['/', '/fonts/lora-v13-latin-700.woff'];
+const PRE_CACHE_URLS = [
+  OFFLINE_PAGE,
+  '/',
+  '/fonts/lora-v13-latin-700.woff'
+];
 
 // You might want to bypass a certain host
-const IGNORED_HOSTS = ['localhost', 'unpkg.com', ];
+const IGNORED_HOSTS = ['localhost', 'unpkg.com',];
 
 /**
  * Takes an array of strings and puts them in a named cache store
@@ -23,7 +30,7 @@ const IGNORED_HOSTS = ['localhost', 'unpkg.com', ];
  * @param {String} cacheName
  * @param {Array} items=[]
  */
-const addItemsToCache = function(cacheName, items = []) {
+const addItemsToCache = function (cacheName, items = []) {
   caches.open(cacheName).then(cache => cache.addAll(items));
 };
 
@@ -53,7 +60,7 @@ self.addEventListener('activate', evt => {
 });
 
 self.addEventListener('fetch', evt => {
-  const {hostname} = new URL(evt.request.url);
+  const { hostname } = new URL(evt.request.url);
 
   // Check we don't want to ignore this host
   if (IGNORED_HOSTS.indexOf(hostname) >= 0) {
@@ -61,9 +68,7 @@ self.addEventListener('fetch', evt => {
   }
 
   // Check we don't want to ignore this URL
-  if (EXCLUDED_URLS.some(page => evt.request.url.indexOf(page) > -1)) {
-    return;
-  }
+  const isExcluded = EXCLUDED_URLS.some(page => evt.request.url.indexOf(page) > -1);
 
   evt.respondWith(
     caches.match(evt.request).then(cachedResponse => {
@@ -76,13 +81,27 @@ self.addEventListener('fetch', evt => {
       return caches.open(CACHE_KEYS.RUNTIME).then(cache => {
         return fetch(evt.request)
           .then(response => {
-            // Put the new response in cache and return it
+            // URL is excluded, return network response directly
+            // without adding it to the cache first
+            if (isExcluded) {
+              return response;
+            }
+
+            // Otherwise put the new response in cache and return it
             return cache.put(evt.request, response.clone()).then(() => {
               return response;
             });
           })
-          .catch(ex => {
-            return;
+          .catch(async (ex) => {
+            // for failed navigation requests, return 'offline' page
+            if (evt.request.destination === "document") {
+              const preCache = await caches.open(CACHE_KEYS.PRE_CACHE);
+              const offlinePage = await preCache.match(OFFLINE_PAGE);
+              return offlinePage || Response.error();
+            }
+            else {
+              return Response.error();
+            }
           });
       });
     })

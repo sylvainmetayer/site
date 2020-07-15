@@ -1,10 +1,10 @@
 ---
 title: "Configuration d'un serveur avec Ansible"
-tags: 
+tags:
     - devops
     - projet
 metaDesc: "J'ai réalisé ce projet personnel afin de me familiariser avec Ansible et pouvoir récréer un serveur à l'identique sans intervention humaine."
-date: 2018-09-15
+date: "2018-09-15"
 ---
 
 [Sources (Github)](https://github.com/EPSIBordeaux/ansible-deployment)

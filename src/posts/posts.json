@@ -2,5 +2,6 @@
   "layout": "layouts/post.njk",
   "draft": false,
   "star": false,
-  "permalink": "/article/{{ page.fileSlug }}/"
+  "permalink": "/article/{{ page.fileSlug }}/",
+  "eleventyExcludeFromCollections": false
 }

@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning"
-date: 2018-02-20
-tags: 
+date: "2018-02-20"
+tags:
     - php
     - epsi
 metaDesc: "Ce projet, réalisé en binome durant ma formation à l'EPSI avait pour but de découvrir le fonctionnement des algorithmes de machine learning."

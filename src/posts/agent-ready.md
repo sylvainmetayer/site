@@ -1,9 +1,9 @@
 ---
 title: "Agent Ready"
-tags: 
+tags:
     - javascript
     - dawin
-date: 2017-01-20
+date: '2017-01-20'
 metaDesc: "Le but de ce projet était de réaliser un 'Jeu dont vous êtes le héros' avec diverses actions, tout en utilisant jQuery."
 ---
 

@@ -2,9 +2,8 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const fs = require('fs');
 
-// Import filters
-const w3DateFilter = require('./src/11ty/filters/w3-date-filter.js');
-const dateFilter = require('./src/11ty/filters/date-filter.js');
+const filters = require('./src/11ty/filters');
+const filtersMethods = Object.entries(filters);
 
 // Import transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
@@ -17,12 +16,21 @@ const site = require('./src/_data/site.json');
 
 const global = require('./src/_data/global');
 
+const passthroughItems = [
+  "src/fonts",
+  "src/images",
+  "src/js",
+  "src/uploads",
+  "src/admin/config.yml",
+  "src/admin/previews.js",
+  "node_modules/nunjucks/browser/nunjucks-slim.js"
+]
+
 module.exports = function (config) {
   // Filters
-  config.addFilter('w3DateFilter', w3DateFilter);
-
-  // Layout aliases
-  config.addLayoutAlias('home', 'layouts/home.njk');
+  filtersMethods.forEach(([name, filter]) => {
+    config.addFilter(name, filter)
+  });
 
   // Transforms
   if (global.environment === 'production') {
@@ -31,35 +39,32 @@ module.exports = function (config) {
 
   config.addTransform('parse', parseTransform);
 
-  // Passthrough copy
-  config.addPassthroughCopy('src/fonts');
-  config.addPassthroughCopy('src/images');
-  config.addPassthroughCopy('src/js');
-  config.addPassthroughCopy('src/uploads');
-  config.addPassthroughCopy('src/admin/config.yml');
-  config.addPassthroughCopy('src/admin/previews.js');
-  config.addPassthroughCopy('node_modules/nunjucks/browser/nunjucks-slim.js');
+  passthroughItems.forEach(item => {
+    config.addPassthroughCopy(item);
+  })
+
+  config.addWatchTarget("src/_includes/partials/global/service-worker.js");
 
   const now = new Date();
 
   // Custom collections
-  const livePosts = post => post.date <= now && !post.data.draft;
-  const starFeeds = post => post.date <= now && !post.data.draft && post.data.star;
+  const isLivePost = post => post.date <= now && !post.data.draft;
+  const isStarredPost = post => post.date <= now && !post.data.draft && post.data.star;
 
   config.addCollection('posts', collection => {
     return [
-      ...collection.getFilteredByGlob('./src/posts/*.md').filter(livePosts)
+      ...collection.getFilteredByGlob('./src/posts/*.md').filter(isLivePost)
     ].reverse();
   });
 
   config.addCollection('postFeed', collection => {
-    return [...collection.getFilteredByGlob('./src/posts/*.md').filter(livePosts)]
+    return [...collection.getFilteredByGlob('./src/posts/*.md').filter(isLivePost)]
       .reverse()
       .slice(0, site.maxPostsPerPage);
   });
 
   config.addCollection('starFeed', collection => {
-    return [...collection.getFilteredByGlob('./src/posts/*.md').filter(starFeeds)]
+    return [...collection.getFilteredByGlob('./src/posts/*.md').filter(isStarredPost)]
       .reverse()
       .slice(0, site.maxPostsPerPage);
   });
@@ -87,12 +92,6 @@ module.exports = function (config) {
       }
     }
   });
-
-  config.addFilter("debug", function (variable) {
-    console.info(variable);
-  });
-
-  config.addFilter("date", dateFilter);
 
   config.setLibrary("md", markdownConfig)
 

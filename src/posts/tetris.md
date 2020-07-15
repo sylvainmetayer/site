@@ -1,7 +1,7 @@
 ---
 title: "Tetris Android"
-date: 2017-06-30
-tags: 
+date: "2017-06-30"
+tags:
     - android
     - dawin
 metaDesc: "Projet universitaire réalisé afin de se familiariser avec le développement d'application Android."

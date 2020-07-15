@@ -1,11 +1,11 @@
 ---
 title: "TBM Interruption Tracker Bot"
-tags: 
+tags:
     - ruby
     - twitter
     - bot
 metaDesc: "J'ai réalisé ce bot afin de permettre un suivi des interruptions des Trams Bordelais."
-date: 2018-02-14
+date: "2018-02-14"
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/tbm_interruption_tracker)

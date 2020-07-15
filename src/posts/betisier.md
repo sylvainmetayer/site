@@ -1,7 +1,7 @@
 ---
 title: "Bêtisier de l'IUT "
-date: 2015-12-01
-tags: 
+date: "2015-12-01"
+tags:
     - php
     - dut-info
 metaDesc: "Ce projet universitaire constituait une découverte du PHP. Il consistait à réaliser un site rassemblant les perles de profs, permettant leur ajout, notation par des élèves, ..."

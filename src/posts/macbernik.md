@@ -1,7 +1,7 @@
 ---
 title: "MacBernick"
-date: 2017-01-01
-tags: 
+date: "2017-01-01"
+tags:
     - javascript
     - dawin
 metaDesc: "Projet réalisé durant une semaine (Janvier 2017) avec 6 autres étudiants nous a initié au déroulement d'un projet agile, de l'idée à la livraison du projet."

@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: layouts/home.njk
 title: Bonjour !
 postsHeading: Derniers articles
 starHeading: Articles mis en avant
