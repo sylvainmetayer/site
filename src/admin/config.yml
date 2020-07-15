@@ -52,6 +52,20 @@ collections:
       - {label: "Tags", name: "tags", widget: "list", allow_add: true}
       - {label: "Contenu", name: "body", widget: "markdown"}
       - {label: "Brouillon", name: "draft", widget: "boolean", default: false}
+  - name: "work"
+    label: "Expériences"
+    folder: "src/work"
+    editor:
+      preview: false
+    create: true
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Location", name: "location", widget: "string"}
+      - {label: "Link", name: "link", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "string"}
+      - {label: "Start", name: "start", widget: "datetime"}
+      - {label: "End", name: "end", widget: "datetime", required: false}
+      - {label: "Contenu", name: "body", widget: "markdown"}
   - label: "Globals"
     name: "globals"
     files:
@@ -85,6 +99,19 @@ collections:
               - {label: "Text", name: "text", widget: "string"}
               - {label: "Url", name: "url", widget: "string"}
               - {label: "Is url to external site?", name: "external", widget: "boolean", required: false}
+      - label: "Certifications"
+        name: "certification"
+        delete: false
+        file: "src/_data/certifications.json"
+        fields:
+          - label: "Certifications"
+            name: "certifications"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "text", widget: "string"}
+              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Date", name: "date", widget: "date"}
+              - {label: "Description", name: "description", widget: "string"}
       - label: "Theme Settings"
         name: "theme"
         delete: false
