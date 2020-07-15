@@ -102,13 +102,15 @@ collections:
       - label: "Certifications"
         name: "certification"
         delete: false
+        editor:
+          preview: false
         file: "src/_data/certifications.json"
         fields:
           - label: "Certifications"
             name: "certifications"
             widget: "list"
             fields:
-              - {label: "Title", name: "text", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
               - {label: "Link", name: "link", widget: "string"}
               - {label: "Date", name: "date", widget: "date"}
               - {label: "Description", name: "description", widget: "string"}
