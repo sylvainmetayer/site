@@ -13,18 +13,21 @@ environment = { ELEVENTY_ENV = "preview" }
 environment = { ELEVENTY_ENV = "branch" }
 
 [[headers]]
-for = "/*"
-
-[headers.values]
-X-Frame-Options = "DENY"
-X-Content-Type-Options = "nosniff"
-Content-Security-Policy = " default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://identity.netlify.com/v1/netlify-identity-widget.js https://unpkg.com/@babel/standalone/babel.min.js https://unpkg.com/netlify-cms@%5E2.9.3/dist/netlify-cms.js https://unpkg.com/react@16/umd/react.development.js; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'"
-X-UA-Compatible = "IE=edge,chrome=1"
-Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
-X-XSS-Protection = "1; mode=block"
-cache-control = '''
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Content-Security-Policy = " default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://identity.netlify.com/v1/netlify-identity-widget.js https://unpkg.com/@babel/standalone/babel.min.js https://unpkg.com/netlify-cms@%5E2.9.3/dist/netlify-cms.js https://unpkg.com/react@16/umd/react.development.js; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'"
+    X-UA-Compatible = "IE=edge,chrome=1"
+    Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
+    X-XSS-Protection = "1; mode=block"
+    cache-control = '''
 	max-age=0,
 	no-cache,
 	no-store,
 	must-revalidate'''
-Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+  for = "/admin/*"
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'unsafe-eval' 'unsafe-inline' 'self' https://identity.netlify.com/v1/netlify-identity-widget.js https://unpkg.com/@babel/standalone/babel.min.js https://unpkg.com/netlify-cms@%5E2.9.3/dist/netlify-cms.js https://unpkg.com/react@16/umd/react.development.js; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'"
