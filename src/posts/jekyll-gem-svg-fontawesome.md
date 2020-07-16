@@ -42,9 +42,7 @@ L'usage est le suivant :
 Lorsque l'on souhaite afficher un icone, il faut utiliser le tag suivant. Le code ci-dessous va générer l'icone [Twitter](https://fontawesome.com/icons/twitter?style=brands).
 
 ```erb
-{% raw %}
-{% fa_svg fab.fa-twitter %}
-{% endraw %}
+{% raw %}{% fa_svg fab.fa-twitter %}{% endraw %}
 ```
 
 Voici le résultat :
@@ -54,9 +52,7 @@ Voici le résultat :
 Il faut ensuite ajouter à un endroit commun à toutes les pages (en général un footer), le tag de génération de la feuille SVG.
 
 ```erb
-{% raw %}
-{% fa_svg_generate %}
-{% endraw %}
+{% raw %}{% fa_svg_generate %}{% endraw %}
 ```
 
 ## Liens

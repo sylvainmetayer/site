@@ -35,7 +35,7 @@
     }
 
     code {
-      font-size: 1.2em;
+      font-size: 1.0em;
       color: var(--color-theme-primary);
       font-weight: 600;
       margin-left: 0.01ch;
@@ -117,6 +117,16 @@
       background: var(--color-dark);
       padding: get-size(700);
       font-size: get-size(500);
+    }
+
+    pre > code::-moz-selection { /* Code for Firefox */
+      color: red;
+      background: yellow;
+    }
+
+    pre > code::selection {
+      color: red;
+      background: yellow;
     }
   }
 
