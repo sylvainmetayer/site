@@ -30,4 +30,4 @@ environment = { ELEVENTY_ENV = "branch" }
 
   for = "/admin/*"
   [headers.values]
-  Content-Security-Policy = "default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'unsafe-eval' 'unsafe-inline' 'self' https://identity.netlify.com/v1/netlify-identity-widget.js https://unpkg.com/@babel/standalone/babel.min.js https://unpkg.com/netlify-cms@%5E2.9.3/dist/netlify-cms.js https://unpkg.com/react@16/umd/react.development.js; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'"
+    Content-Security-Policy = "default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'unsafe-eval' 'unsafe-inline' 'self' https://identity.netlify.com/v1/netlify-identity-widget.js https://unpkg.com/@babel/standalone/babel.min.js https://unpkg.com/netlify-cms@%5E2.9.3/dist/netlify-cms.js https://unpkg.com/react@16/umd/react.development.js; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'"
