@@ -8,10 +8,11 @@ module.exports = {
     permalink: data => {
       let postPermalink = "/article/{{ page.fileSlug }}/";
 
-      // if (process.env.ELEVENTY_ENV !== "production") return postPermalink;
+      if (process.env.ELEVENTY_ENV !== "production") return postPermalink;
       return isLive(data) ? postPermalink : false;
     },
     eleventyExcludeFromCollections: data => {
+      if (process.env.ELEVENTY_ENV !== "production") return false;
       return !isLive(data);
     }
   }

@@ -1,9 +1,11 @@
 ---
 title: "Réinitialiser un mot de passe administrateur sous linux"
+date: "2020-09-01"
 tags:
     - linux
     - blog
 metaDesc: "Réinitialiser le mot de passe administrateur de sa machine Linux peut parfois être nécessaire, dans le cas d'un oubli de mot de passe par exemple."
+except: "Réinitialiser le mot de passe administrateur de sa machine Linux peut parfois être nécessaire, dans le cas d'un oubli de mot de passe par exemple."
 draft: true
 ---
 

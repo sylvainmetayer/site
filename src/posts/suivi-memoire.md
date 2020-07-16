@@ -1,10 +1,11 @@
 ---
-title: "Suivi mémoire"
-date: "2019-06-01"
-tags: 
-    - epsi
-    - blog
+title: 'Suivi mémoire'
+date: '2019-06-01'
+tags:
+  - epsi
+  - blog
 metaDesc: "Avancée de la réalisation de mon mémoire de fin d'études pour l'EPSI"
+excerpt: "Avancée de la réalisation de mon mémoire de fin d'études pour l'EPSI"
 ---
 
 # Suivi mémoire

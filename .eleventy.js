@@ -18,6 +18,7 @@ const site = require('./src/_data/site.json');
 const global = require('./src/_data/global');
 
 const passthroughItems = [
+  "src/_redirects",
   "src/fonts",
   "src/images",
   "src/js",
@@ -46,20 +47,16 @@ module.exports = function (config) {
 
   config.addWatchTarget("src/_includes/partials/global/service-worker.js");
 
-  const now = new Date();
-
-  // Custom collections
-  const isLivePost = post => post.date <= now && !post.data.draft;
-  const isStarredPost = post => post.date <= now && !post.data.draft && post.data.star;
+  const isStarredPost = post => post.data.star;
 
   config.addCollection('posts', collection => {
     return [
-      ...collection.getFilteredByGlob('./src/posts/*.md').filter(isLivePost)
+      ...collection.getFilteredByGlob('./src/posts/*.md')
     ].reverse();
   });
 
   config.addCollection('postFeed', collection => {
-    return [...collection.getFilteredByGlob('./src/posts/*.md').filter(isLivePost)]
+    return [...collection.getFilteredByGlob('./src/posts/*.md')]
       .reverse()
       .slice(0, site.maxPostsPerPage);
   });

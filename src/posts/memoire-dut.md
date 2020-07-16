@@ -1,16 +1,13 @@
 ---
 title: "Rapport DUT Informatique"
 date: "2016-06-20"
-metaDesc: "Ce mémoire décrit le projet réalisé durant mon stage de DUT Informatique"
+metaDesc: "Ce mémoire détaille le travail réalisé durant mon stage au sein de Nextmedia"
+excerpt: "Ce mémoire détaille le travail réalisé durant mon stage au sein de Nextmedia"
 tags:
     - dut-info
 ---
 
-[Sources (Gitlab)](https://gitlab.com/ocyhc/memoire-dut-info/tree/master)
-
-[Voir le PDF](https://gitlab.com/ocyhc/memoire-dut-info/blob/master/main.pdf)
-
-{{ page.description }}
+[Sources (Gitlab)](https://gitlab.com/ocyhc/memoire-dut-info/tree/master) [Voir le PDF](https://gitlab.com/ocyhc/memoire-dut-info/blob/master/main.pdf)
 
 Ce mémoire détaille le travail réalisé durant mon stage au sein de [NextMedia](https://www.nextmedia.fr/), effectué d'avril à Juillet 2016.
 

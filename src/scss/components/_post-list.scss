@@ -3,6 +3,10 @@
     --flow-space: #{get-size(700)};
   }
 
+  .excerpt {
+    font-style: italic;
+  }
+
   &__link {
     &,
     &:visited {

@@ -15,7 +15,8 @@
   {% if date %}
     <time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date }}</time>
   {% endif %}
-  <span>— {{ helpers.getReadingTime(content) }} minute read</span>
+  {% set readingTime = helpers.getReadingTime(content) %}
+  <span>— Temps de lecture: {{ readingTime }} minute{% if readingTime > 1 %}s{% endif %}</span>
 </p>
 {% endset %}
 

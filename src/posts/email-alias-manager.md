@@ -5,6 +5,7 @@ tags:
   - angular
   - serverless
 date: "2020-01-27"
+metaDesc: Trop de spam ? Marre de donner son addresse email à chaque service ? Les alias mail sont là à la rescousse !
 excerpt: Trop de spam ? Marre de donner son addresse email à chaque service ? Les alias mail sont là à la rescousse !
 ---
 

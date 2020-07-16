@@ -5,11 +5,12 @@ tags:
     - blog
 date: "2018-11-18"
 metaDesc: "Les commentaires sont maintenant disponible sur le site"
+excerpt: "Les commentaires sont maintenant disponible sur le site"
 ---
 
-{{ description }}
+Les commentaires sont maintenant disponible sur le site !
 
-Comme indiqué dans [l'article précédent]({{ site.baseurl }}{\% post_url 2018-11-15-site-personnel-v2 %}), je cherchais désormais à intégrer une solution de commentaire, tout en évitant les solutions peu respectueuse de notre vie privée.
+Comme indiqué dans [l'article précédent](/article/site-personnel-v2), je cherchais désormais à intégrer une solution de commentaire, tout en évitant les solutions peu respectueuse de notre vie privée.
 
 Mon choix s'était alors porté sur [isso](https://posativ.org/isso/), bien qu'il existe de nombreuses alternatives[^1].
 
@@ -235,13 +236,15 @@ Le script est chargé en asynchrone, afin de ne pas gêner le chargement de la p
 
 Pour plus d'informations que les paramètres disponibles côté client, [voir la documentation sur Github](https://github.com/posativ/isso/blob/master/docs/docs/configuration/client.rst).
 
-:warning: Lorsqu'un fil de commentaire est vide (ce qui est le cas lorsqu'un article ne contient pas encore de commentaire), isso répond avec une erreur HTTP 404, ce qui peut faire croire qu'une page est manquante ou invalide. [Une issue est ouverte sur le dépôt Github](https://github.com/posativ/isso/issues/301) pour renvoyer un code HTTP 204 (no content) à la place.
+⚠ Lorsqu'un fil de commentaire est vide (ce qui est le cas lorsqu'un article ne contient pas encore de commentaire), isso répond avec une erreur HTTP 404, ce qui peut faire croire qu'une page est manquante ou invalide. [Une issue est ouverte sur le dépôt Github](https://github.com/posativ/isso/issues/301) pour renvoyer un code HTTP 204 (no content) à la place.
 
 Et voici le résultat !
 
 ![Affichage des commentaires](/images/isso.png)
 
-> Ce n'est qu'une image, les commentaires se trouvent plus bas :wink:
+> Ce n'est qu'une image, les commentaires se trouvent plus bas 😉
+
+> Edit 16.07.2020 : Les commentaires ne sont pour le moment plus disponibles. Migration vers Eleventy en cours, ils devraient être remplacés à l'aide des Webmentions d'ici les prochaines semaines/mois.
 
 [^1]: [Voici un site répertoriant plusieurs solutions existant](https://lisakov.com/projects/open-source-comments/)
 [^2]: [Ce tutoriel très similaire à cet article m'a été bien utile](https://blog.phusion.nl/2018/08/16/isso-simple-self-hosted-commenting-system/)

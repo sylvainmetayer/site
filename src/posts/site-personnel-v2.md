@@ -1,11 +1,10 @@
 ---
-title: "Nouvelle version du site :tada:"
-hidden: true
+title: "Nouvelle version du site 💥"
 tags:
     - jekyll
     - blog
 excerpt: "Après quelques années d'existence, mon ancien site commençait à vieillir."
-repost: dev.to
+metaDesc: "Après quelques années d'existence, mon ancien site commençait à vieillir."
 date: "2018-11-15"
 ---
 
@@ -13,13 +12,13 @@ date: "2018-11-15"
 
 ## Le passage de PHP à Jekyll
 
-{{ excerpt }}
+Après quelques années d'existence, mon ancien site commençait à vieillir.
 
-> [Les sources de mon ancien site sont toujours disponibles sur Github](https://github.com/sylvainmetayer/sylvainmetayer-old), mais remontent à l'époque de mon DUT, soyez indulgents ! :grin:
+([Les sources de mon ancien site sont toujours disponibles sur Github](https://github.com/sylvainmetayer/sylvainmetayer-old), mais remontent à l'époque de mon DUT, soyez indulgents ! 😁)
 
-De plus, [le premier et unique article ]({{ site.baseurl }}{\% post_url 2017-03-28-parthenay %}) présent sur ce site n'était même pas hébergé sur ce site, mais sur un sous-domaine (désormais inexistant) et avec la plateforme [Ghost](https://ghost.org/fr/) (qui est un excellent logiciel libre au passage !).
+De plus, [le premier et unique article](/article/l-effet-parthenay) présent sur ce site n'était même pas hébergé sur ce site, mais sur un sous-domaine (désormais inexistant) et avec la plateforme [Ghost](https://ghost.org/fr/) (qui est un excellent logiciel libre au passage !).
 
-Cela faisait donc deux sites à maintenir, pour un trafic plus que faible :smile: !
+Cela faisait donc deux sites à maintenir, pour un trafic plus que faible 😀 !
 
 Le choix de PHP avait été fait à l'époque car il s'agissait du seul langage que je maitrisais.
 
@@ -33,7 +32,7 @@ Etant donné que j'ai que du contenu statique, pourquoi ne pas envoyer au client
 
 J'ai donc commencé à creuser la question des générateurs de sites et en ai trouvé plusieurs (le très bon site [StaticGen](https://www.staticgen.com/) m'a beaucoup aidé à trouver des ressources et des avis). C'est ainsi que mon choix s'est porté sur [Jekyll](https://jekyllrb.com/).
 
-Voici une illustration des performances actuelles du site, ainsi qu'un rapport [Dareboost](https://www.dareboost.com/fr/report/d_5bec937de967905e05bb64cb). Je suis assez satisfait du résultat, même s'il me reste du travail à faire dessus (mais comme le produit parfait n'existe pas, le site parfait n'existe pas non plus ! :stuck_out_tongue_winking_eye:)
+Voici une illustration des performances actuelles du site, ainsi qu'un rapport [Dareboost](https://www.dareboost.com/fr/report/d_5bec937de967905e05bb64cb). Je suis assez satisfait du résultat, même s'il me reste du travail à faire dessus (mais comme le produit parfait n'existe pas, le site parfait n'existe pas non plus ! 😜)
 
 ![Google page Speed résultat](/images/speed-test.png)
 
@@ -45,11 +44,11 @@ C'est d'ailleurs pour cela que je suis parti d'un template Jekyll que j'ai ensui
 
 > [Le thème de base que j'ai utilisé peut être consulté ici](https://github.com/sergiokopplin/indigo)
 
-Néanmoins, je ne voulais pas d'un thème complexe, qui allait ainsi influer sur les performances du site (plus il y a de CSS et de JS, plus le site sera long à charger pour l'utilisateur). C'est pourquoi le thème que j'ai choisi n'intègre aucun javascript. Ainsi, seule une feuille de style, quelques emojis provenant de Github, et une feuille SVG sont chargées en plus du contenu.
+Néanmoins, je ne voulais pas d'un thème complexe, qui allait ainsi influer sur les performances du site (plus il y a de CSS et de JS, plus le site sera long à charger pour l'utilisateur). C'est pourquoi le thème que j'ai choisi n'intègre aucun javascript. Ainsi, seule une feuille de style, quelques emojis provenant de Github, et une feuille SVG[^5] sont chargées en plus du contenu.
 
 > Je n'exclus pas d'utiliser du javascript lorsque je ferai évoluer le site, mais je vais tenter d'en limiter au maximum l'usage.
 
-Certes, le thème du site semblera au mieux austère à certains, au pire hideux à d'autres, ... Mais au moins, le site est lisible sur (presque, je n'ai pas de montre connectée pour tester !) tous les supports et charge rapidement :smiley:
+Certes, le thème du site semblera au mieux austère à certains, au pire hideux à d'autres, ... Mais au moins, le site est lisible sur (presque, je n'ai pas de montre connectée pour tester !) tous les supports et charge rapidement 😀
 
 ### 3. La rédaction doit se faire en [Markdown](https://fr.wikipedia.org/wiki/Markdown) et une séparation style/contenu doit exister
 
@@ -69,7 +68,7 @@ Néanmoins, cela un inconvénient majeur à mon sens : la maîtrise des paramèt
 
 Au final, nous ne sommes jamais aussi bien servi que par soi-même, j'ai donc utilisé [Travis CI](https://travis-ci.org/) pour déployer le site généré sur mon petit [Raspberry](https://www.raspberrypi.org/) avec un Rsync : pas besoin de plus compliqué, cela me suffit amplement. Un serveur web devant, un certificat [Let's Encrypt](https://letsencrypt.org) et voilà !
 
-J'ai ainsi pu obtenir une note convenable, selon [l'observatoire Mozilla](https://observatory.mozilla.org/analyze/sylvainmetayer.fr) et [Cryptcheck](https://cryptcheck.fr/https/sylvainmetayer.fr). Il me reste néanmoins un peu de travail à faire sur les [CSP](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP), ce concept n'est pas évident à appréhender :persevere: !
+J'ai ainsi pu obtenir une note convenable, selon [l'observatoire Mozilla](https://observatory.mozilla.org/analyze/sylvainmetayer.fr) et [Cryptcheck](https://cryptcheck.fr/https/sylvainmetayer.fr). Il me reste néanmoins un peu de travail à faire sur les [CSP (Content Security Policy)](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP), ce concept n'est pas évident à appréhender 😣 !
 
 ### 5. SEO
 
@@ -112,9 +111,9 @@ De plus, comme indiqué sur leur site, cet outil s'intègre très bien avec Jeky
 
 Une solution pour parer au problème serait d'auto-héberger le projet avec une clé d'API Github personnelle mais semble beaucoup pour "simplement des commentaires", même si j'aimais beaucoup l'idée de pouvoir avoir des pull request pour chaque commentaire !
 
-> Edit : Les commentaires sont maintenant disponible ! {\% fa_svg fas.fa-fire %}
+> Edit : Les commentaires sont maintenant disponible ! 💥
 >
-> [Voir l'article]({{ site.baseurl }}{\% post_url 2018-11-18-ajout-commentaires %})
+> [Voir l'article](/article/ajout-commentaires)
 
 ## Conclusion
 
@@ -125,5 +124,4 @@ Si vous avez des remarques, n'hésitez pas à me faire vos retours !
 [^1]: Ce qui n'est en soit pas une mauvaise chose, si une totale liberté était donné à tous, ils se retrouveraient sûrement avec des sites mal configurés dans certains cas et leur infrastructure pourrait alors être compromise !
 [^3]: [Définition Wikipédia du SEO](https://fr.wikipedia.org/wiki/Optimisation_pour_les_moteurs_de_recherche)
 [^4]: Pour en citer quelques uns : `jekyll-sitemap`, `jekyll-seo-tag` et `jekyll-feed`
-*[CSP]: Content Security Policy
-*[SVG]: Scalable Vector Graphics
+[^5]: Scalable Vector Graphics

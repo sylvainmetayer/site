@@ -2,11 +2,12 @@
 title: "Rédaction d'un mémoire de fin d'étude"
 date: "2019-03-17"
 metaDesc: Ma dernière année d'étude à l'EPSI Bordeaux signifie également la rédaction d'un mémoire. Afin d'assurer un suivi efficace des tuteurs EPSI, il est demandé aux étudiants de donner des états d'avancements, à des dates jalons, afin que les tuteurs puissent recadrer l'étudiant s'il part dans une mauvaise direction.
+excerpt:  Ma dernière année d'étude à l'EPSI Bordeaux signifie également la rédaction d'un mémoire. Afin d'assurer un suivi efficace des tuteurs EPSI, il est demandé aux étudiants de donner des états d'avancements, à des dates jalons, afin que les tuteurs puissent recadrer l'étudiant s'il part dans une mauvaise direction.
 tags:
     - epsi
 ---
 
-{{page.description}}
+Ma dernière année d'étude à l'EPSI Bordeaux signifie également la rédaction d'un mémoire. Afin d'assurer un suivi efficace des tuteurs EPSI, il est demandé aux étudiants de donner des états d'avancements, à des dates jalons, afin que les tuteurs puissent recadrer l'étudiant s'il part dans une mauvaise direction.
 
 J'ai donc décidé de rédiger sur ce blog les avancées de mon mémoire, afin de permettre de garder une trace des étapes de réalisation de ce dernier.
 
@@ -57,7 +58,7 @@ Je compte également parler de l'automatisation au niveau de l'entreprise, sa mi
 
 Ce sujet sera donc assez théorique, mais portera également une partie pratique.
 
-D'une part avec la légère l'expérience personnelle que j'ai avec ce domaine, ou j'ai automatisé certains projets, tel que par exemple [qu'un chatbot réalisé en 4ème année]({{ site.baseurl }}{\% link _school_projects/telegram-bot.md %}), ou encore [ma découverte d'Ansible]({{ site.baseurl }}{\% link _projects/ansible.md %}), avec lequel j'ai automatisé l'installation d'un serveur Debian.
+D'une part avec la légère l'expérience personnelle que j'ai avec ce domaine, ou j'ai automatisé certains projets, tel que par exemple [qu'un chatbot réalisé en 4ème année](/article/projets-epsi/#bot-telegram), ou encore [ma découverte d'Ansible](/article/ansible), avec lequel j'ai automatisé l'installation d'un serveur Debian.
 
 D'autre part avec le projet sur lequel je suis en train de travailler lors de mon alternance à [onepoint](https://groupeonepoint.com). L'objectif est de faire plus ou moins une refonte, ou du moins une amélioration de la chaine d'industrialisation.
 
