@@ -2,6 +2,8 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const fs = require('fs');
 
+const pluginTOC = require('eleventy-plugin-toc')
+
 
 const filters = require('./src/11ty/filters');
 const filtersMethods = Object.entries(filters);
@@ -75,6 +77,11 @@ module.exports = function (config) {
   // Plugins
   config.addPlugin(rssPlugin);
   config.addPlugin(syntaxHighlight);
+  config.addPlugin(pluginTOC, {
+    tags: ['h2', 'h3', 'h4'],
+    wrapper: 'nav',
+    wrapperClass: 'toc'
+  });
 
   // 404
   config.setBrowserSyncConfig({

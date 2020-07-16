@@ -1,4 +1,30 @@
 .post {
+  &__toc {
+    ol {
+      list-style-type: squares;
+      li {
+        padding-bottom: 1.25rem;
+      }
+      font-size: 1.2rem;
+    }
+
+    a:not([class]) {
+      color: var(--color-dark);
+      position: relative;
+      display: inline-block;
+      background: var(--color-theme-highlight);
+      padding: 0.2rem 0.4rem 0.3rem 0.4rem;
+      text-decoration: none;
+      word-break: break-word;
+
+      @include apply-utility('leading', 'tight');
+    }
+
+    a:not([class]):hover {
+      text-decoration: underline;
+    }
+  }
+
   &__body {
     --flow-space: #{get-size(800)};
 
@@ -35,7 +61,7 @@
     }
 
     code {
-      font-size: 1.0em;
+      font-size: 1em;
       color: var(--color-theme-primary);
       font-weight: 600;
       margin-left: 0.01ch;
@@ -119,7 +145,8 @@
       font-size: get-size(500);
     }
 
-    pre > code::-moz-selection { /* Code for Firefox */
+    pre > code::-moz-selection {
+      /* Code for Firefox */
       color: red;
       background: yellow;
     }

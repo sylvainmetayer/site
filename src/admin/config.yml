@@ -56,6 +56,7 @@ collections:
       - {label: "Excerpt", name: "excerpt", widget: "string", required: false}
       - {label: "Sitemap priority", name: "priority", widget: "string", required: false}
       - {label: "Sitemap change frequency", name: "changefreq", widget: "string", required: false}
+      - {label: "Disable TOC", name: "noToc", widget: "boolean", default: false}
       - {label: "Social Image", name: "socialImage", widget: "image", required: false}
       - {label: "Date de publication", name: "date", widget: "datetime"}
       - {label: "Tags", name: "tags", widget: "list", allow_add: true}
