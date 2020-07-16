@@ -18,7 +18,7 @@ for = "/*"
 [headers.values]
 X-Frame-Options = "DENY"
 X-Content-Type-Options = "nosniff"
-Content-Security-Policy = " default-src 'none'; connect-src 'self'; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://identity.netlify.com/v1/netlify-identity-widget.js https://unpkg.com/@babel/standalone/babel.min.js https://unpkg.com/netlify-cms@%5E2.9.3/dist/netlify-cms.js https://unpkg.com/react@16/umd/react.development.js; style-src 'unsafe-inline'; worker-src 'self'"
+Content-Security-Policy = " default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://identity.netlify.com/v1/netlify-identity-widget.js https://unpkg.com/@babel/standalone/babel.min.js https://unpkg.com/netlify-cms@%5E2.9.3/dist/netlify-cms.js https://unpkg.com/react@16/umd/react.development.js; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'"
 X-UA-Compatible = "IE=edge,chrome=1"
 Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
 X-XSS-Protection = "1; mode=block"
