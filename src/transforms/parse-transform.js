@@ -14,6 +14,16 @@ module.exports = function (value, outputPath) {
     const articleImages = [...document.querySelectorAll('main article img, .intro img')];
     const articleEmbeds = [...document.querySelectorAll('main article iframe')];
 
+    // Add class to a element when their is an image as direct child.
+    const imagesWithLink = [...document.querySelectorAll("a:not([class])>img")];
+    if (imagesWithLink.length > 0) {
+      imagesWithLink.forEach(image => {
+        const newLink = image.parentNode;
+        newLink.classList.add("img_link");
+        image.parentNode.replaceWith(newLink);
+      });
+    }
+
     if (articleImages.length) {
       articleImages.forEach(image => {
         image.setAttribute('loading', 'lazy');
