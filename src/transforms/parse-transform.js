@@ -1,7 +1,5 @@
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-const minify = require('../utils/minify.js');
-const slugify = require('slugify');
 const getSize = require('image-size');
 
 module.exports = function (value, outputPath) {
