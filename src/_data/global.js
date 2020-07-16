@@ -1,3 +1,5 @@
+const eleventyPackage = require('../../node_modules/@11ty/eleventy/package.json');
+
 module.exports = {
   random() {
     const segment = () => {
@@ -6,5 +8,6 @@ module.exports = {
     return `${segment()}-${segment()}-${segment()}`;
   },
   now: Date.now(),
-  environment: process.env.ELEVENTY_ENV ? process.env.ELEVENTY_ENV : 'production'
+  environment: process.env.ELEVENTY_ENV ? process.env.ELEVENTY_ENV : 'production',
+  eleventyVersion: eleventyPackage.version
 };

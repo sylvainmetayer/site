@@ -18,10 +18,13 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "SEO Meta Title", name: "metaTitle", widget: "string", required: false}
           - {label: "SEO Meta Description", name: "metaDesc", widget: "string", required: false}
+          - {label: "Excerpt", name: "excerpt", widget: "string", required: false}
           - {label: "Post Feed Heading", name: "postsHeading", widget: "string", default: "Latest posts"}
           - {label: "All posts Link Text", name: "archiveButtonText", widget: "string", default: "Voir tous les articles"}
           - {label: "Social Image", name: "socialImage", widget: "image", required: false}
           - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Sitemap priority", name: "priority", widget: "string", required: false}
+          - {label: "Sitemap change frequency", name: "changefreq", widget: "string", required: false}
   - name: "generic_pages"
     label: "Pages génériques"
     folder: "src/pages"
@@ -34,8 +37,11 @@ collections:
       - {label: "Permalink Override (Pattern: '/your-slug/index.html')", name: "permalink", widget: "string", required: false}
       - {label: "SEO Meta Title", name: "metaTitle", widget: "string", required: false}
       - {label: "SEO Meta Description", name: "metaDesc", widget: "string", required: false}
+      - {label: "Excerpt", name: "excerpt", widget: "string", required: false}
       - {label: "Social Image", name: "socialImage", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Sitemap priority", name: "priority", widget: "string", required: false}
+      - {label: "Sitemap change frequency", name: "changefreq", widget: "string", required: false}
   - name: "posts"
     label: "Articles"
     folder: "src/posts"
@@ -47,6 +53,9 @@ collections:
       - {label: "Titre", name: "title", widget: "string"}
       - {label: "SEO Meta Title", name: "metaTitle", widget: "string", required: false}
       - {label: "SEO Meta Description", name: "metaDesc", widget: "string", required: false}
+      - {label: "Excerpt", name: "excerpt", widget: "string", required: false}
+      - {label: "Sitemap priority", name: "priority", widget: "string", required: false}
+      - {label: "Sitemap change frequency", name: "changefreq", widget: "string", required: false}
       - {label: "Social Image", name: "socialImage", widget: "image", required: false}
       - {label: "Date de publication", name: "date", widget: "datetime"}
       - {label: "Tags", name: "tags", widget: "list", allow_add: true}

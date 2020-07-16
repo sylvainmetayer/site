@@ -1,5 +1,13 @@
 {% extends 'layouts/base.njk' %}
 
+{% block extraMeta %}
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="{{ date | date('') }}"/>
+  {% if tags | length > 0%}
+    <meta property="article:tag" content="{{ tags | join(' ') }}"/>
+  {% endif %}
+{% endblock %}
+
 {# Intro content #}
 {% set introHeading = title %}
 {% set introSummary %}
@@ -19,9 +27,23 @@
         {{ content | safe }}
       </div>
       {% if site.enableThirdPartyComments %}
-        <hr />
+        <hr/>
         <aside class="[ post__body ] [ inner-wrapper ] [ pad-bottom-900 text-500 ]">
           {% include "partials/global/third-party-comments.njk" %}
+        </aside>
+      {% endif %}
+      <hr/>
+      {% set nextPost = collections.posts | getPreviousCollectionItem(page) %}
+      {% set previousPost = collections.posts | getNextCollectionItem(page) %}
+      {% if nextPost or previousPost %}
+        <aside class="[ post__body ] [ inner-wrapper ] [ pad-bottom-900 text-500 ]">
+          {% if previousPost %}
+            <a href="{{ previousPost.url }}">Article précédent</a>
+          {% endif %}
+
+          {% if nextPost %}
+            <a href="{{ nextPost.url }}">Article suivant</a>
+          {% endif %}
         </aside>
       {% endif %}
       {% if tags %}

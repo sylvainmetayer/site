@@ -6,6 +6,9 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ helpers.url() }}/feed.xml"/>
     <link rel="icon" href="{{ site.faviconPath }}" type="image/png"/>
     {% include "partials/global/meta-info.njk" %}
+    {% block extraMeta %}
+      <meta property="og:type" content="website"/>
+    {% endblock %}
     <style>
       {% include "assets/css/global.css" %}
     </style>

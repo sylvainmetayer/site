@@ -1,6 +1,7 @@
 ---
 title: 'Vous êtes hors-ligne'
 permalink: '/offline/index.html'
+eleventyExcludeFromCollections: true
 ---
 
 Il semblerait que vous soyez hors-ligne.

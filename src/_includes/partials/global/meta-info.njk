@@ -12,15 +12,16 @@
 {% endif %}
 
 <title>{{ pageTitle }}</title>
+<meta name="og:locale" content="fr_FR"/>
 <link rel="canonical" href="{{ currentUrl }}"/>
-
+<meta name="author" content="{{ site.authorName }}" />
 <meta property="og:site_name" content="{{ siteTitle }}"/>
 <meta property="og:title" content="{{ pageTitle }}"/>
-<meta property="og:type" content="website"/>
 <meta property="og:url" content="{{ currentUrl }}"/>
 
 {% if site.authorHandle %}
   <meta name="twitter:creator" content="@{{ site.authorHandle | replace('@', '') }}"/>
+  <meta name="twitter:site" content="@{{ site.authorHandle | replace('@', '') }}"/>
 {% endif %}
 
 {% if metaDesc %}
@@ -32,8 +33,8 @@
 {% if socialImage %}
   <meta property="og:image" content="{{ socialImage }}"/>
   <meta name="twitter:image" content="{{ socialImage }}"/>
-  <meta property="og:image:alt" content="Page image for {{ site.name }}"/>
-  <meta name="twitter:image:alt" content="Page image for {{ site.name }}"/>
+  <meta property="og:image:alt" content="Illustration pour '{{ pageTitle }}'"/>
+  <meta name="twitter:image:alt" content="Illustration pour '{{ pageTitle }}'"/>
 {% endif %}
 
 {% if site.paymentPointer %}
@@ -46,9 +47,9 @@
 
 <meta name="color-scheme" content="dark light">
 
-<link type="text/plain" rel="author" href="{{ helpers.url() }}}/humans.txt"/>
+<link type="text/plain" rel="author" href="{{ helpers.url() }}/humans.txt"/>
 
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="manifest" href="/manifest.json">
