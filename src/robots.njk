@@ -2,4 +2,4 @@
 permalink: robots.txt
 ---
 User-agent: *
-{% if site.environment !== "production" %}Disallow: /{% else %}Disallow: /admin{% endif %}
+{% if global.environment != "production" %}Disallow: /{% else %}Disallow: /admin{% endif %}
