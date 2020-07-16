@@ -19,6 +19,15 @@
           </li>
         {% endfor %}
       </ol>
+      {# pagination-list.njk #}
+      <nav aria-labelledby="pagination">
+        {% if pagination.previousPageHref %}
+          <a href="{{ pagination.previousPageHref }}">Précédent</a>
+        {% endif %}
+        {% if pagination.nextPageHref %}
+          <a href="{{ pagination.nextPageHref }}">Suivant</a>
+        {% endif %}
+      </nav>
     </div>
   </section>
 {% endif %}

@@ -1,3 +1,12 @@
+---
+title: Articles
+pagination:
+  data: collections.posts
+  size: 20
+  alias: postListItems
+permalink: "/articles/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/index.html{% endif %}"
+---
+
 {% extends 'layouts/base.njk' %}
 
 {# Intro content #}
@@ -5,7 +14,6 @@
 {% set introSummary %}{{ content | safe }}{% endset %}
 
 {# Post list content #}
-{% set postListItems = collections.posts %}
 
 {% block content %}
   <main id="main-content" tabindex="-1">

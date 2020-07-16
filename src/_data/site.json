@@ -11,5 +11,5 @@
   "paymentPointer": "",
   "faviconPath": "/images/favicon.png",
   "displayWipWarning": true,
-  "displayDevWarning": true
+  "displayDevWarning": false
 }
