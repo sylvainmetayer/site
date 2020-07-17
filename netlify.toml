@@ -22,11 +22,6 @@ Content-Security-Policy = " default-src 'self'; connect-src 'self'; font-src 'se
 X-UA-Compatible = "IE=edge,chrome=1"
 Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
 X-XSS-Protection = "1; mode=block"
-cache-control = '''
-    max-age=0,
-    no-cache,
-    no-store,
-    must-revalidate'''
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
 [[headers]]
