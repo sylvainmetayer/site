@@ -1,6 +1,7 @@
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 const getSize = require('image-size');
+const helpers = require('../_data/helpers');
 
 module.exports = function (value, outputPath) {
   if (outputPath && outputPath.endsWith('.html')) {
@@ -11,6 +12,14 @@ module.exports = function (value, outputPath) {
     const document = DOM.window.document;
     const articleImages = [...document.querySelectorAll('main article img, .intro img')];
     const articleEmbeds = [...document.querySelectorAll('main article iframe')];
+
+    const externalLinks = Array.from(document.querySelectorAll(`a:not([href^="${helpers.url()}"]):not([href^="#"]):not([href^="/"])`));
+
+    externalLinks.forEach(item => {
+      item.setAttribute("rel", "external");
+      item.setAttribute("data-external", "");
+    })
+
 
     // Add class to a element when their is an image as direct child.
     const imagesWithLink = [...document.querySelectorAll("a:not([class])>img")];

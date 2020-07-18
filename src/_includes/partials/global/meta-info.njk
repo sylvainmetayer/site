@@ -31,8 +31,8 @@
 {% endif %}
 
 {% if socialImage %}
-  <meta property="og:image" content="{{ socialImage }}"/>
-  <meta name="twitter:image" content="{{ socialImage }}"/>
+  <meta property="og:image" content="{{helpers.url() }}{{ socialImage }}"/>
+  <meta name="twitter:image" content="{{helpers.url() }}{{ socialImage }}"/>
   <meta property="og:image:alt" content="Illustration pour '{{ pageTitle }}'"/>
   <meta name="twitter:image:alt" content="Illustration pour '{{ pageTitle }}'"/>
 {% endif %}

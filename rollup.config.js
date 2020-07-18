@@ -1,7 +1,6 @@
 const builtins = require('@erquhart/rollup-plugin-node-builtins');
 const commonjs = require('@rollup/plugin-commonjs');
 const nodeResolve = require('@rollup/plugin-node-resolve').default;
-console.log(nodeResolve);
 const json = require('@rollup/plugin-json');
 
 export default {

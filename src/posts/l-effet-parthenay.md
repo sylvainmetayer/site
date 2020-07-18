@@ -6,6 +6,7 @@ tags:
 date: "2017-03-28"
 metaDesc: "L'effet Parthenay : Comment une petite ville pourrait bien sauver la civilisation française."
 excerpt: "L'effet Parthenay : Comment une petite ville pourrait bien sauver la civilisation française."
+socialImage: "/images/parthenay-1.jpg"
 ---
 
 > Traduction de l'article "The Parthenay Effect: How a Small French Town Might Save Civilization" paru le 27/3/2017 sur [The Huffington Post](https://www.huffingtonpost.com/entry/the-parthenay-effect-how-a-small-french-town-might_us_58d810c8e4b0c0980ac0e73f?)
