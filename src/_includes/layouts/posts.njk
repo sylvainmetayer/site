@@ -15,9 +15,18 @@ permalink: "/articles/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber
 
 {# Post list content #}
 
+{% if pagination.previousPageHref %}
+  {% set paginationPrevUrl = pagination.previousPageHref %}
+{% endif %}
+
+{% if pagination.nextPageHref %}
+  {% set paginationNextUrl = pagination.nextPageHref %}
+{% endif %}
+
 {% block content %}
   <main id="main-content" tabindex="-1">
     {% include "partials/components/intro.njk" %}
     {% include "partials/components/post-list.njk" %}
+    {% include "partials/components/pagination.njk" %}
   </main>
 {% endblock %}

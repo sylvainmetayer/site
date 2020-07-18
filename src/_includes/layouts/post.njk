@@ -42,19 +42,6 @@
         </aside>
       {% endif %}
       <hr/>
-      {% set nextPost = collections.posts | getPreviousCollectionItem(page) %}
-      {% set previousPost = collections.posts | getNextCollectionItem(page) %}
-      {% if nextPost or previousPost %}
-        <aside class="[ post__body ] [ inner-wrapper ] [ pad-bottom-900 text-500 ]">
-          {% if previousPost %}
-            <a href="{{ previousPost.url }}">Article précédent</a>
-          {% endif %}
-
-          {% if nextPost %}
-            <a href="{{ nextPost.url }}">Article suivant</a>
-          {% endif %}
-        </aside>
-      {% endif %}
       {% if tags %}
         <footer class="[ post__footer ] [ pad-top-500 pad-bottom-500 ]">
           <div class="inner-wrapper">
@@ -72,5 +59,16 @@
         </footer>
       {% endif %}
     </article>
+    {% set nextPost = collections.posts | getPreviousCollectionItem(page) %}
+    {% set previousPost = collections.posts | getNextCollectionItem(page) %}
+    {% if previousPost %}
+      {% set paginationPrevUrl = previousPost.url %}
+    {% endif %}
+
+    {% if nextPost %}
+      {% set paginationNextUrl = nextPost.url %}
+    {% endif %}
+
+    {% include "partials/components/pagination.njk" %}
   </main>
 {% endblock %}
