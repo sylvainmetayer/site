@@ -36,4 +36,4 @@ package = "netlify-plugin-submit-sitemap"
 [plugins.inputs]
 baseUrl = "https://sylvain.dev"
 sitemapPath = "/sitemap.xml"
-providers = ["google", "bing", "yandex"]
+providers = ["google", "bing"]

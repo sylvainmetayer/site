@@ -3,3 +3,4 @@ permalink: robots.txt
 ---
 User-agent: *
 {% if global.environment != "production" %}Disallow: /{% else %}Disallow: /admin{% endif %}
+Sitemap: {{ helpers.url() }}/sitemap.xml
