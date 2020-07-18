@@ -124,6 +124,21 @@ collections:
               - {label: "Link", name: "link", widget: "string"}
               - {label: "Date", name: "date", widget: "date"}
               - {label: "Description", name: "description", widget: "string"}
+      - label: "Referal"
+        name: "refers"
+        delete: false
+        editor:
+          preview: false
+        file: "src/_data/refers.json"
+        fields:
+          - label: "Referals"
+            name: "refers"
+            widget: "list"
+            fields:
+              - {label: "name", name: "name", widget: "string"}
+              - {label: "link", name: "link", widget: "string"}
+              - {label: "description", name: "description", widget: "string"}
+              - {label: "advantage", name: "advantage", widget: "string"}
       - label: "Theme Settings"
         name: "theme"
         delete: false

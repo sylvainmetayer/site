@@ -1,8 +1,10 @@
-[
+{
+  "refers": [
     {
-        "name": "N26",
-        "link": "#",
-        "description": "Banque en ligne",
-        "advantage": "15€ offert lors du premier usage de la carte"
+      "name": "N26",
+      "link": "https://n26.com/r/sylvainm5653",
+      "description": "Banque en ligne",
+      "advantage": "15€ offert lors du premier usage de la carte"
     }
-]
+  ]
+}
