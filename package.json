@@ -45,7 +45,7 @@
     "rollup": "^2.23.0",
     "sass": "^1.26.10",
     "semver": "^7.0.0",
-    "slugify": "^1.4.4",
+    "slugify": "^1.4.5",
     "stalfos": "github:hankchizljaw/stalfos#c8971d22726326cfc04089b2da4d51eeb1ebb0eb"
   },
   "scripts": {
