@@ -6,6 +6,12 @@
   {% if tags | length > 0%}
     <meta property="article:tag" content="{{ tags | join(' ') }}"/>
   {% endif %}
+  {% if socialImage | length <= 0 %}
+    <meta property="og:image" content="{{helpers.url() }}{{ page.fileSlug | getImagePreview }}"/>
+    <meta name="twitter:image" content="{{helpers.url() }}{{ page.fileSlug | getImagePreview }}"/>
+    <meta property="og:image:alt" content="Illustration pour '{{ title }}'"/>
+    <meta name="twitter:image:alt" content="Illustration pour '{{ title }}'"/>
+  {% endif %}
 {% endblock %}
 
 {# Intro content #}

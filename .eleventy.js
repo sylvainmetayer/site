@@ -2,8 +2,25 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const fs = require('fs');
 
-const pluginTOC = require('eleventy-plugin-toc')
-
+const pluginTOC = require('eleventy-plugin-toc');
+const imageShareLocal = require('../eleventy-plugin-image-share-local')({
+  // Used by moment to configure locale
+  lang: 'en',
+  // This should be valid for social sharing
+  width: 1200,
+  height: 600,
+  backgroundColor: '#173854',
+  textColor: '#fff',
+  domain: 'your-awesome-domain.com',
+  // Moment format
+  dateFormat: 'LL',
+  fontName: 'Calibri',
+  // Where image will be stored
+  outputDir: './dist/images/social-sharing',
+  urlPrefix: '/images',
+  // An image displayed at the bottom.
+  image: './src/images/profile.png',
+});
 
 const filters = require('./src/11ty/filters');
 const filtersMethods = Object.entries(filters);
@@ -36,6 +53,16 @@ module.exports = function (config) {
     config.addFilter(name, filter)
   });
 
+  // Plugins
+  config.addPlugin(rssPlugin);
+  config.addPlugin(syntaxHighlight);
+  config.addPlugin(pluginTOC, {
+    tags: ['h2', 'h3', 'h4'],
+    wrapper: 'nav',
+    wrapperClass: 'toc'
+  });
+  config.addPlugin(imageShareLocal);
+
   // Transforms
   if (global.environment === 'production') {
     config.addTransform('htmlmin', htmlMinTransform);
@@ -51,10 +78,12 @@ module.exports = function (config) {
 
   const isStarredPost = post => post.data.star;
 
-  config.addCollection('posts', collection => {
-    return [
+  config.addCollection('posts', async (collection) => {
+    const posts = [
       ...collection.getFilteredByGlob('./src/posts/*.md')
     ].reverse();
+    posts.forEach(async (item) => imageShareLocal.postImagePreview(item));
+    return posts;
   });
 
   config.addCollection('postFeed', collection => {
@@ -72,15 +101,6 @@ module.exports = function (config) {
   config.addCollection('work', collection => {
     return collection.getFilteredByGlob('./src/work/*.md')
       .sort((a, b) => b.data.start - a.data.start);
-  });
-
-  // Plugins
-  config.addPlugin(rssPlugin);
-  config.addPlugin(syntaxHighlight);
-  config.addPlugin(pluginTOC, {
-    tags: ['h2', 'h3', 'h4'],
-    wrapper: 'nav',
-    wrapperClass: 'toc'
   });
 
   // 404
@@ -101,7 +121,8 @@ module.exports = function (config) {
     }
   });
 
-  config.setLibrary("md", markdownConfig)
+  config.setLibrary("md", markdownConfig);
+  config.setDataDeepMerge(true);
 
   config.setFrontMatterParsingOptions({
     excerpt: true,
