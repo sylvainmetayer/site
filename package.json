@@ -43,7 +43,7 @@
     "moment": "^2.29.1",
     "prettier": "^2.2.1",
     "rollup": "^2.35.1",
-    "sass": "^1.30.0",
+    "sass": "^1.32.0",
     "semver": "^7.3.4",
     "slugify": "^1.4.6",
     "stalfos": "github:hankchizljaw/stalfos#c8971d22726326cfc04089b2da4d51eeb1ebb0eb"
