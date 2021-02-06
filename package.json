@@ -42,7 +42,7 @@
     "markdown-it-footnote": "^3.0.2",
     "moment": "^2.29.1",
     "prettier": "^2.2.1",
-    "rollup": "^2.38.1",
+    "rollup": "^2.38.5",
     "sass": "^1.32.4",
     "semver": "^7.3.4",
     "slugify": "^1.4.6",
