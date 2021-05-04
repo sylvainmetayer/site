@@ -17,7 +17,7 @@ Le présent article liste les différents projets que j'ai pu réaliser durant m
 
 ## Agent Ready
 
-[Sources (Github)](https://github.com/sylvainmetayer/agent-ready/) [Voir le jeu](https://sylvainmetayer.github.io/agent-ready/)
+[Sources (Github)](https://github.com/sylvainmetayer/agent-ready/) [Voir le jeu](https://agent-ready.pages.dev/)
 
 Le but de ce projet était de réaliser un 'Jeu dont vous êtes le héros' avec diverses actions, tout en utilisant jQuery.
 
