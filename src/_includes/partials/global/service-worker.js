@@ -5,11 +5,8 @@ const CACHE_KEYS = {
 
 // URLS that we don’t want to end up in the cache
 const EXCLUDED_URLS = [
-  'admin',
   '.netlify',
-  '/browser-sync/socket.io/',
-  'https://identity.netlify.com/v1/netlify-identity-widget.js',
-  'https://unpkg.com/netlify-cms@^2.9.3/dist/netlify-cms.js'
+  '/browser-sync/socket.io/'
 ];
 
 const OFFLINE_PAGE = '/offline/index.html';
@@ -22,7 +19,7 @@ const PRE_CACHE_URLS = [
 ];
 
 // You might want to bypass a certain host
-const IGNORED_HOSTS = ['localhost', 'unpkg.com',];
+const IGNORED_HOSTS = ['localhost', 'unpkg.com', 'static.cloudflareinsights.com', 'cloudflareinsights.com'];
 
 /**
  * Takes an array of strings and puts them in a named cache store

@@ -9,15 +9,12 @@ const filters = require('./src/11ty/filters');
 const filtersMethods = Object.entries(filters);
 
 // Import transforms
-const htmlMinTransform = require('./src/transforms/html-min-transform.js');
 const parseTransform = require('./src/transforms/parse-transform.js');
 
 const markdownConfig = require('./src/utils/markdown.js');
 
 // Import data files
 const site = require('./src/_data/site.json');
-
-const global = require('./src/_data/global');
 
 const passthroughItems = [
   "src/_redirects",
@@ -37,10 +34,6 @@ module.exports = function (config) {
   });
 
   // Transforms
-  if (global.environment === 'production') {
-    config.addTransform('htmlmin', htmlMinTransform);
-  }
-
   config.addTransform('parse', parseTransform);
 
   passthroughItems.forEach(item => {

@@ -17,18 +17,13 @@ for = "/*"
 
 [headers.values]
 X-Frame-Options = "DENY"
+Access-Control-Allow-Origin = 'https://cloudflareinsights.com'
 X-Content-Type-Options = "nosniff"
-Content-Security-Policy = "default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self'; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'; object-src 'none';"
+Content-Security-Policy = "default-src 'self'; connect-src 'self' https://cloudflareinsights.com; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'; object-src 'none';"
 X-UA-Compatible = "IE=edge,chrome=1"
-Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
+Referrer-Policy = "no-referrer-when-downgrade"
 X-XSS-Protection = "1; mode=block"
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-
-[[headers]]
-for = "/admin/*"
-
-[headers.values]
-Content-Security-Policy = "default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self'; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'; object-src 'none';"
 
 [[plugins]]
 package = "netlify-plugin-submit-sitemap"
