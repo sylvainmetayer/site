@@ -34,6 +34,12 @@
       "link": "https://hetzner.cloud/?ref=TFczZp0mGQ5Z",
       "description": "Hébergement cloud",
       "advantage": "20€ de crédit offert lors de l'inscription"
+    },
+    {
+      "name": "Nalo",
+      "link": "https://nalo.fr/?idpa=2B557",
+      "description": "Assurance vie pilotée",
+      "advantage": "3 mois de frais de gestion offerts"
     }
   ]
 }
