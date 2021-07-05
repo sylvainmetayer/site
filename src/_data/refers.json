@@ -40,6 +40,12 @@
       "link": "https://nalo.fr/?idpa=2B557",
       "description": "Assurance vie pilotée",
       "advantage": "3 mois de frais de gestion offerts"
+    },
+    {
+      "name": "Blablacar Daily",
+      "link": "https://open.blablalines.com/invite/TUMYMG",
+      "advantage": "10€ offert pour le premier trajet en tant que conducteur",
+      "description": "Le covoiturage du quotidien pour se rendre au travail"
     }
   ]
 }
