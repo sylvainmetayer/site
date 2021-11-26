@@ -8,10 +8,16 @@
     },
     {
       "name": "Boursorama",
-      "link": "https://bour.so/efoRVtQUcM ",
+      "link": "https://bour.so/efoRVtQUcM",
       "description": "Banque en ligne",
       "advantage": "Selon les offres du moments, entre 80 et 150€ offert pour toute souscription"
     },
+    {
+      "name": "Fortuneo",
+      "link": "https://mabanque.fortuneo.fr/fr/offres-parrainage/offres-parrainage.jsp?origine=PARRAINAGE&codeParrain=13061272",
+      "description": "Banque en ligne",
+      "advantage": "Selon les offres du moments, entre 30 et 130€ offert pour toute souscription"
+    },    
     {
       "name": "Reddit gifts",
       "link": "http://www.redditgifts.com/?inv=Fj14",
