@@ -1,12 +1,12 @@
 {
-  "name": "@sylvainmetayer/sylvainmetayer",
+  "name": "@sylvainmetayer/site",
   "version": "1.0.0",
   "private": true,
   "description": "Personal website",
-  "main": ".eleventy.js",
+  "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sylvainmetayer/sylvainmetayer.git"
+    "url": "git+https://github.com/sylvainmetayer/site.git"
   },
   "keywords": [
     "portfolio",
@@ -16,46 +16,30 @@
   "author": "Sylvain METAYER <contact@sylvainmetayer.fr>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sylvainmetayer/sylvainmetayer/issues"
+    "url": "https://github.com/sylvainmetayer/site/issues"
   },
-  "homepage": "https://github.com/sylvainmetayer/sylvainmetayer#readme",
+  "homepage": "https://github.com/sylvainmetayer/site#readme",
   "dependencies": {},
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-plugin-rss": "^1.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
-    "@erquhart/rollup-plugin-node-builtins": "^2.1.5",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-json": "^4.0.0",
-    "@rollup/plugin-node-resolve": "^8.0.0",
-    "chokidar-cli": "^2.1.0",
-    "concurrently": "^5.3.0",
-    "cross-env": "^7.0.3",
     "eleventy-plugin-toc": "^1.1.0",
     "html-minifier": "^4.0.0",
     "html-validate": "^6.3.1",
     "image-size": "^0.8.3",
-    "javascript-stringify": "^2.0.1",
     "jsdom": "^16.4.0",
-    "json-to-scss": "^1.6.2",
-    "make-dir-cli": "^2.0.0",
     "markdown-it-anchor": "^5.3.0",
     "markdown-it-footnote": "^3.0.2",
     "moment": "^2.29.1",
     "prettier": "^2.2.1",
-    "rollup": "^2.38.1",
-    "sass": "^1.32.4",
     "semver": "^7.3.4",
-    "slugify": "^1.4.6",
-    "stalfos": "github:hankchizljaw/stalfos#c8971d22726326cfc04089b2da4d51eeb1ebb0eb"
+    "slugify": "^1.4.6"
   },
   "scripts": {
-    "sass:tokens": "npx json-to-scss src/_data/tokens.json src/scss/_tokens.scss",
-    "sass:process": "npm run sass:tokens && sass src/scss/global.scss src/_includes/assets/css/global.css --style=compressed",
-    "cms:precompile": "make-dir dist/admin && nunjucks-precompile src/_includes > dist/admin/templates.js -i \"\\.(njk|css|svg)$\"",
-    "cms:bundle": "rollup --config",
-    "start": "concurrently \"npm run sass:process -- --watch\" \"npm run cms:bundle -- --watch\" \"chokidar \\\"src/_includes/**\\\" -c \\\"npm run cms:precompile\\\"\" \"npm run serve\"",
-    "serve": "cross-env ELEVENTY_ENV=development npx eleventy --serve",
-    "production": "npm run sass:process && npm run cms:precompile && npm run cms:bundle && npx eleventy"
+    "start": "npm run 11ty:serve",
+    "11ty:serve": "ELEVENTY_ENV=development npx eleventy --serve",
+    "11ty:build": "ELEVENTY_ENV=production npx eleventy",
+    "build": "npm run 11ty:build"
   }
 }
