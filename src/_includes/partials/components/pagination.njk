@@ -2,17 +2,17 @@
 
 {% if paginationNextUrl or paginationPrevUrl %}
   <hr />
-  <div class="inner-wrapper">
-    <footer class="[ pagination ] [ pad-bottom-900 ]">
-      <nav class="[ pagination__nav ] [ box-flex space-between align-center ]">
+  <div >
+    <footer >
+      <nav >
         {% if paginationPrevUrl %}
-          <a href="{{ paginationPrevUrl }}" class="{{ paginationLinkTokens }}" data-direction="backwards">
+          <a href="{{ paginationPrevUrl }}" >
             <span>{{ paginationPrevText if paginationPrevText else 'Précédent' }}</span>
             {% include "icons/arrow.svg" %}
           </a>
         {% endif %}
         {% if paginationNextUrl %}
-          <a href="{{ paginationNextUrl }}" class="{{ paginationLinkTokens }}" data-direction="forwards">
+          <a href="{{ paginationNextUrl }}" >
             <span>{{ paginationNextText if paginationNextText else 'Suivant' }}</span>
             {% include "icons/arrow.svg" %}
           </a>

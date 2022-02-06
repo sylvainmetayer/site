@@ -22,11 +22,11 @@
     {% set postListItems = collections.postFeed %}
 
     {# Archive link #}
-    {% if postListItems.length < collections.posts.length %} 
+    {% if postListItems.length < collections.posts.length %}
       {% set paginationNextText = archiveButtonText %}
       {% set paginationNextUrl = '/articles' %}
     {% endif %}
-    
+
     {% include "partials/components/post-list.njk" %}
     {% include "partials/components/pagination.njk" %}
 

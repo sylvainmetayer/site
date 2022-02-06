@@ -9,9 +9,9 @@ const filters = require('./src/11ty/filters');
 const filtersMethods = Object.entries(filters);
 
 // Import transforms
-const parseTransform = require('./src/transforms/parse-transform.js');
+const parseTransform = require('./src/11ty/transforms/parse-transform.js');
 
-const markdownConfig = require('./src/utils/markdown.js');
+const markdownConfig = require('./src/11ty/utils/markdown.js');
 
 // Import data files
 const site = require('./src/_data/site.json');
@@ -22,8 +22,6 @@ const passthroughItems = [
   "src/images",
   "src/js",
   "src/uploads",
-  "src/admin/config.yml",
-  "src/admin/previews.js",
   "node_modules/nunjucks/browser/nunjucks-slim.js"
 ]
 
@@ -40,7 +38,7 @@ module.exports = function (config) {
     config.addPassthroughCopy(item);
   })
 
-  config.addWatchTarget("src/_includes/partials/global/service-worker.js");
+  // config.addWatchTarget("src/_includes/partials/global/service-worker.js");
 
   const isStarredPost = post => post.data.star;
 

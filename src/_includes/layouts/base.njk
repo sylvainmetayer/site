@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html lang="{% if locale %}{{ locale }}{% else %}{{ site.locale }}{% endif %}">
   <head data-env="{{ global.environment }}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ helpers.url() }}/feed.xml"/>
-    <link rel="icon" href="{{ site.faviconPath }}" type="image/png"/>
-    <meta name="google-site-verification" content="XROrcW2Xt6g7cyF4SDNyz08GZeMB90QlstI3SBnUsq0" />
-    {% include "partials/global/meta-info.njk" %}
-    {% block extraMeta %}
-      <meta property="og:type" content="website"/>
-    {% endblock %}
-    <style>
-      {% include "assets/css/global.css" %}
-    </style>
-    {% block head %}{% endblock %}
-  </head>
-  <body>
-    {% include "partials/global/site-head.njk" %}
-
-    {# WIP warning #}
-    {% if site.displayWipWarning %}
-      {% include "partials/components/wip.njk" %}
-    {% endif %}
-
-    {# Dev warning #}
-    {% if site.displayDevWarning and global.environment != 'production' %}
-      {% include "partials/components/dev-warning.njk" %}
-    {% endif %}
-
-    {% block content %}{% endblock content %}
-    {% include "partials/global/site-foot.njk" %}
-    {% block foot %}{% endblock %}
-    <script type="module" src="/js/components/theme-toggle.js" async defer></script>
-    <script src="/js/register-service-worker.js" async defer></script>
-    <noscript>Votre navigateur ne supporte pas Javascript. Vous ne pouvez pas changer le thème du site</noscript>
-    <!-- Cloudflare Web Analytics -->
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b127465eed91464f811fad719b0c0cb7"}'></script>
-    <!-- End Cloudflare Web Analytics -->
-  </body>
-</html>
+    <link rel="icon" href="{{ site.faviconPath }}" type="image/png"/> {% include "partials/global/meta-info.njk" -%}
+    {% block extraMeta -%} <meta property="og:type" content="website"/>
+  {%- endblock %}
+  {% block head -%}
+{%- endblock %}</head><body>
+{%- include "partials/global/site-head.njk" %}
+{% if
+    site.displayWipWarning %}
+  {% include "partials/components/wip.njk" %}
+{% endif %}
+{# Dev warning -#}
+{% if site.displayDevWarning and global.environment != 'production' %}
+  {% include "partials/components/dev-warning.njk" %}
+{% endif %}
+{% block content %}{% endblock content %}
+{% include "partials/global/site-foot.njk" %}
+{% block foot %}{% endblock %}
+<script type="module" src="/js/components/theme-toggle.js" async defer></script>
+<script src="/js/register-service-worker.js" async defer></script>
+<noscript>Votre navigateur ne supporte pas Javascript. Vous ne pouvez pas changer le thème du
+                  site</noscript>
+<!-- Cloudflare Web Analytics -->
+<script
+  defer
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token": "b127465eed91464f811fad719b0c0cb7"}'></script>
+<!-- End Cloudflare Web Analytics --></body></html>

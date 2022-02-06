@@ -4,10 +4,10 @@ title: Bonjour !
 postsHeading: Derniers articles
 starHeading: Articles mis en avant
 archiveButtonText: Voir tous les articles
-metaDesc: "Diplomé depuis un peu plus d'un an et après 3 années d'alternance, je suis actuellement développeur web au sein de onepoint à Bordeaux"
+metaDesc: "Je suis un développeur web basé dans le Sud-Ouest de la France"
 socialImage: ''
 ---
 
-Diplomé depuis le milieu de l'année 2019 et après 3 années d'alternance, je suis actuellement développeur web au sein de onepoint à Bordeaux. Vous pouvez consulter mon [CV](/uploads/CV.pdf) et retrouver les articles publiés sur ce site ci-dessous.
+Je suis un développeur web basé dans le Sud-Ouest de la France. Vous pouvez consulter mon [CV](/uploads/CV.pdf) et retrouver les articles publiés sur ce site ci-dessous.
 
 Vous pouvez également me contacter sur [Twitter](https://twitter.com/sylvain_metayer), [DevTo](https://dev.to/sylvainmetayer), [Github](https://github.com/sylvainmetayer) ou par [mail](mailto:{{site.authorEmail}})
