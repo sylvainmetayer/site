@@ -1,34 +1,56 @@
 [build]
-ignore = "git log -1 --pretty=%B | grep depfu"
 command = "npm run production"
+ignore = "git log -1 --pretty=%B | grep depfu"
 publish = "dist"
 
 [context.production]
-environment = { ELEVENTY_ENV = "production" }
+environment = {ELEVENTY_ENV = "production"}
 
 [context.deploy-preview]
-environment = { ELEVENTY_ENV = "preview" }
+environment = {ELEVENTY_ENV = "preview"}
 
 [context.branch-deploy]
-environment = { ELEVENTY_ENV = "branch" }
+environment = {ELEVENTY_ENV = "branch"}
 
 [[headers]]
 for = "/*"
 
 [headers.values]
-X-Frame-Options = "DENY"
 Access-Control-Allow-Origin = 'https://cloudflareinsights.com'
-X-Content-Type-Options = "nosniff"
 Content-Security-Policy = "default-src 'self'; connect-src 'self' https://cloudflareinsights.com; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'; object-src 'none';"
-X-UA-Compatible = "IE=edge,chrome=1"
 Referrer-Policy = "no-referrer-when-downgrade"
-X-XSS-Protection = "1; mode=block"
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+X-UA-Compatible = "IE=edge,chrome=1"
+X-XSS-Protection = "1; mode=block"
 
 [[plugins]]
 package = "netlify-plugin-submit-sitemap"
 
 [plugins.inputs]
 baseUrl = "https://sylvain.dev"
-sitemapPath = "/sitemap.xml"
 providers = ["google", "bing"]
+sitemapPath = "/sitemap.xml"
+
+[[plugins]]
+package = "netlify-plugin-no-more-404"
+
+[plugins.inputs]
+cacheKey = "production"
+debugMode = false
+on404 = "error"
+
+[[plugins]]
+package = "netlify-plugin-checklinks"
+
+[plugins.inputs]
+entryPoints = [
+  "*.html",
+]
+recursive = true
+pretty = true
+skipPatterns = []
+todoPatterns = []
+checkExternal = false
+followSourceMaps = false

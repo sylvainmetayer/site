@@ -33,6 +33,7 @@
     "cross-env": "^7.0.3",
     "eleventy-plugin-toc": "^1.1.0",
     "html-minifier": "^4.0.0",
+    "html-validate": "^6.3.1",
     "image-size": "^0.8.3",
     "javascript-stringify": "^2.0.1",
     "jsdom": "^16.4.0",
