@@ -39,7 +39,7 @@ package = "netlify-plugin-no-more-404"
 [plugins.inputs]
 cacheKey = "production"
 debugMode = false
-on404 = "error"
+on404 = "warn"
 
 [[plugins]]
 package = "netlify-plugin-checklinks"
