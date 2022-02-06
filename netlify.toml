@@ -1,5 +1,5 @@
 [build]
-command = "npm run production"
+command = "npm run build"
 ignore = "git log -1 --pretty=%B | grep depfu"
 publish = "dist"
 
