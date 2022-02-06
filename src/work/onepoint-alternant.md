@@ -2,7 +2,6 @@
 title: Onepoint - Alternance
 link: https://www.groupeonepoint.com/
 location: Pessac (33)
-tags: onepoint
 start: 2017-09-01
 end: 2019-07-31
 ---

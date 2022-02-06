@@ -4,7 +4,6 @@ link: https://www.nextmedia.fr/
 start: 2016-04-01
 end: 2016-07-31
 location: Clermont-Ferrand (63)
-tags: nextmedia
 ---
 
 Stage dans le cadre de mon stage de DUT Informatique.
