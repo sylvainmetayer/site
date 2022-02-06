@@ -9,7 +9,7 @@
   "authorHandle": "@sylvain_metayer",
   "authorName": "Sylvain METAYER",
   "enableThirdPartyComments": false,
-  "paymentPointer": " ",
+  "paymentPointer": null,
   "faviconPath": "/images/favicon.png",
   "locale": "fr",
   "maxPostsPerPage": 5
