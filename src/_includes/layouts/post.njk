@@ -1,76 +1,46 @@
-{% extends 'layouts/base.njk' %}
-
-{% block extraMeta %}
+{% extends 'layouts/base.njk' -%}
+{% block extraMeta -%}
   <meta property="og:type" content="article"/>
   <meta property="article:published_time" content="{{ date | date('') }}"/>
-  {% if tags | length > 0%}
+  {% if tags | length > 0 -%}
     <meta property="article:tag" content="{{ tags | join(' ') }}"/>
-  {% endif %}
-{% endblock %}
-
-{# Intro content #}
-{% set introHeading = title %}
-{% set introSummary %}
-<p >
-  {% if date %}
-    <time datetime="{{ date | w3DateFilter }}" >{{ date | date }}</time>
-  {% endif %}
-  {% set readingTime = helpers.getReadingTime(content) %}
-  <span>— Temps de lecture:
-    {{ readingTime }}
-    minute{% if readingTime > 1 %}s{% endif %}
-  </span>
-</p>
-{% endset %}
-
-{% block content %}
+  {% endif -%}
+{% endblock -%}
+{% block content -%}
   <main id="main-content" tabindex="-1">
-    <article >
-      {% include "partials/components/intro.njk" %}
-      {% set tocContent = content | toc %}
-      {% if tocContent != '<nav ></nav>' and not noToc %}
-        <aside >
-          <p>Sommaire</p>
-          {{ tocContent | safe }}
-        </aside>
-      {% endif %}
-      <div >
+    <article>
+      <div>
+        <h1>{{ title }}</h1>
+        <p>
+          {% if date -%}
+            <time datetime="{{ date | w3DateFilter }}">{{ date | date }}</time>
+          {% endif -%}
+          {% set readingTime = helpers.getReadingTime(content) -%}
+          <span>— Temps de lecture: {{ readingTime }} minute{% if readingTime > 1 %}s{% endif %}
+          </span>
+        </p>
+      </div>
+      {{ component('toc', {}) }}
+      <div>
         {{ content | safe }}
       </div>
-      {% if site.enableThirdPartyComments %}
-        <hr/>
-        <aside >
-          {% include "partials/global/third-party-comments.njk" %}
-        </aside>
-      {% endif %}
       <hr/>
-      {% if tags %}
-        <footer >
-          <div >
-            <div >
-              <h2 >Tags</h2>
-              <ul >
-                {% for item in tags %}
-                  <li >
-                    <a href="/tags/{{ item }}">{{ item }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </footer>
-      {% endif %}
+      {% if tags -%}
+        <section>
+          <h2>Tags</h2>
+          <ul>
+            {% for item in tags -%}
+              <li>
+                <a href="/tags/{{ item }}">{{ item }}</a>
+              </li>
+            {% endfor -%}
+          </ul>
+        </section>
+      {% endif -%}
     </article>
-    {% set nextPost = collections.posts | getPreviousCollectionItem(page) %}
-    {% set previousPost = collections.posts | getNextCollectionItem(page) %}
-    {% if previousPost %}
-      {% set paginationPrevUrl = previousPost.url %}
-    {% endif %}
-
-    {% if nextPost %}
-      {% set paginationNextUrl = nextPost.url %}
-    {% endif %}
-
-    {% include "partials/components/pagination.njk" %}
+    {{ component('pagination', {
+      previousUrl: (collections.posts | getNextCollectionItem(page)).url,
+      nextUrl: (collections.posts | getPreviousCollectionItem(page)).url
+    }) }}
   </main>
-{% endblock %}
+{% endblock -%}

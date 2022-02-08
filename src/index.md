@@ -1,10 +1,8 @@
 ---
 layout: layouts/home.njk
 title: Bonjour !
-postsHeading: Derniers articles
-starHeading: Articles mis en avant
 archiveButtonText: Voir tous les articles
-metaDesc: "Je suis un développeur web basé dans le Sud-Ouest de la France"
+metaDesc: 'Je suis un développeur web basé dans le Sud-Ouest de la France'
 socialImage: ''
 ---
 

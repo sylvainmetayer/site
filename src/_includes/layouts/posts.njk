@@ -2,31 +2,25 @@
 title: Articles
 pagination:
   data: collections.posts
-  size: 20
+  size: 10
   alias: postListItems
 permalink: "/articles/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/index.html{% endif %}"
 ---
 
 {% extends 'layouts/base.njk' %}
 
-{# Intro content #}
-{% set introHeading = title %}
-{% set introSummary %}{{ content | safe }}{% endset %}
-
-{# Post list content #}
-
-{% if pagination.previousPageHref %}
-  {% set paginationPrevUrl = pagination.previousPageHref %}
-{% endif %}
-
-{% if pagination.nextPageHref %}
-  {% set paginationNextUrl = pagination.nextPageHref %}
-{% endif %}
-
 {% block content %}
   <main id="main-content" tabindex="-1">
-    {% include "partials/components/intro.njk" %}
-    {% include "partials/components/post-list.njk" %}
-    {% include "partials/components/pagination.njk" %}
+        <div>
+      <h1>{{ title }}</h1>
+      {% if content %}
+        <div>{{ content | safe }}</div>
+      {% endif %}
+    </div>
+    {{ component('postList', {title: 'Articles', posts: postListItems}) }}
+    {{ component('pagination', {
+      previousUrl: pagination.previousPageHref,
+      nextUrl: pagination.nextPageHref
+    }) }}
   </main>
 {% endblock %}
