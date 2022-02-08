@@ -38,26 +38,10 @@ module.exports = function (config) {
     config.addPassthroughCopy(item);
   })
 
-  // config.addWatchTarget("src/_includes/partials/global/service-worker.js");
-
-  const isStarredPost = post => post.data.star;
-
   config.addCollection('posts', collection => {
     return [
       ...collection.getFilteredByGlob('./src/posts/*.md')
     ].reverse();
-  });
-
-  config.addCollection('postFeed', collection => {
-    return [...collection.getFilteredByGlob('./src/posts/*.md')]
-      .reverse()
-      .slice(0, site.maxPostsPerPage);
-  });
-
-  config.addCollection('starFeed', collection => {
-    return [...collection.getFilteredByGlob('./src/posts/*.md').filter(isStarredPost)]
-      .reverse()
-      .slice(0, site.maxPostsPerPage);
   });
 
   config.addCollection('work', collection => {

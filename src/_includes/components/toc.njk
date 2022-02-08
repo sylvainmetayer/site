@@ -1,0 +1,10 @@
+<p>TODO</p>
+{#-
+ {% set tocContent = content | toc %}
+      {% if tocContent != '<nav ></nav>' and not noToc %}
+        <aside>
+          <p>Sommaire</p>
+          {{ tocContent | safe }}
+        </aside>
+      {% endif %}
+-#}

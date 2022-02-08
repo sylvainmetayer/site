@@ -6,7 +6,7 @@
 
 > Sylvain METAYER
 >
-> Based on a modified version of [Hylia theme](https://github.com/hankchizljaw/hylia)
+> Inspired from [Hylia theme](https://github.com/hankchizljaw/hylia) and others
 
 ## Setup
 

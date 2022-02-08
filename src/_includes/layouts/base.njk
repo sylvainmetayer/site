@@ -1,33 +1,48 @@
+{%- from "component.njk" import component -%}
 <!DOCTYPE html>
 <html lang="{% if locale %}{{ locale }}{% else %}{{ site.locale }}{% endif %}">
   <head data-env="{{ global.environment }}">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ helpers.url() }}/feed.xml"/>
-    <link rel="icon" href="{{ site.faviconPath }}" type="image/png"/> {% include "partials/global/meta-info.njk" -%}
+    <link rel="icon" href="{{ site.faviconPath }}" type="image/png"/> {{ component('meta', {
+        title: title,
+        page: page,
+        metaTitle: metaTitle,
+        metaDesc: metaDesc,
+        site: site,
+        socialImage: socialImage,
+        relations: relations,
+        helpers:helpers
+      }) }}
     {% block extraMeta -%} <meta property="og:type" content="website"/>
   {%- endblock %}
   {% block head -%}
-{%- endblock %}</head><body>
-{%- include "partials/global/site-head.njk" %}
-{% if
-    site.displayWipWarning %}
-  {% include "partials/components/wip.njk" %}
-{% endif %}
-{# Dev warning -#}
-{% if site.displayDevWarning and global.environment != 'production' %}
-  {% include "partials/components/dev-warning.njk" %}
-{% endif %}
+{%- endblock -%}</head><body>
+<header>
+  {{ component('header', {
+    title: site.name,
+    items: navigation.items
+  }) }}
+</header>
+{% if site.showWipSection -%}
+  <section>
+    <h2>🚧 Site en travaux</h2>
+    <p>Des pages peuvent être cassées</p>
+  </section>
+{% endif -%}
+{% if site.showDevSection and global.environment != 'production' -%}
+  {{ component('dev-warning', {url: site.url}) }}
+{% endif -%}
 {% block content %}{% endblock content %}
-{% include "partials/global/site-foot.njk" %}
-{% block foot %}{% endblock %}
-<script type="module" src="/js/components/theme-toggle.js" async defer></script>
-<script src="/js/register-service-worker.js" async defer></script>
-<noscript>Votre navigateur ne supporte pas Javascript. Vous ne pouvez pas changer le thème du
-                  site</noscript>
-<!-- Cloudflare Web Analytics -->
-<script
+<footer>
+  {{ component('footer', {
+    description: site.shortDesc,
+    title: site.name,
+    date: global.now
+  }) }}
+  {% block foot %}
+{% endblock -%}</footer><script type="module" src="/js/components/theme-toggle.js" async></script><noscript>Votre navigateur ne supporte pas Javascript. Vous ne pouvez pas changer le thème du site</noscript><script
   defer
   src="https://static.cloudflareinsights.com/beacon.min.js"
-  data-cf-beacon='{"token": "b127465eed91464f811fad719b0c0cb7"}'></script>
-<!-- End Cloudflare Web Analytics --></body></html>
+  data-cf-beacon='{"token": "b127465eed91464f811fad719b0c0cb7"}'></script></body></html>
