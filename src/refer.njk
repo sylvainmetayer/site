@@ -8,7 +8,7 @@ metaTitle: "Parrainages proposés par Sylvain METAYER"
 
 <p>Ci-dessous se trouve une liste de sites ou services sur lesquels je suis inscrit et pour lesquels il vous est possible, si vous le souhaitez, de vous inscrire en passant par un lien de parrainage afin de bénéficier d'avantages lors de votre inscription.</p>
 
-{% for refer in refers.refers %}
+{% for refer in refers.refers -%}
   <section id="{{ refer.name | lower | replace(' ', '-') }}">
     <h2>
         <a href="{{ refer.link }}">{{ refer.name }}</a>
@@ -20,4 +20,4 @@ metaTitle: "Parrainages proposés par Sylvain METAYER"
         {%- endif %}
     </p>
   </section>
-{% endfor %}
+{%- endfor %}

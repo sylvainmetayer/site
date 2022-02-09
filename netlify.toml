@@ -37,7 +37,7 @@ sitemapPath = "/sitemap.xml"
 package = "netlify-plugin-no-more-404"
 
 [plugins.inputs]
-cacheKey = "production"
+cacheKey = "rework"
 debugMode = false
 on404 = "warn"
 

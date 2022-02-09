@@ -14,6 +14,9 @@
       }) }}
     {% block extraMeta -%} <meta property="og:type" content="website"/>
   {%- endblock %}
+  {% if css -%}
+    <link href="/css/{{ css }}" rel="stylesheet">
+  {%- endif %}
   {% block head -%}
 {%- endblock -%}</head><body>
 <header>
