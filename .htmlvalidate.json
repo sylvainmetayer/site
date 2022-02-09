@@ -1,5 +1,15 @@
 {
   "extends": [
     "html-validate:recommended"
-  ]
+  ],
+  "rules": {
+    "close-order": "error",
+    "no-trailing-whitespace": "warn",
+    "attribute-boolean-style": [
+      "error",
+      {
+        "style": "empty"
+      }
+    ]
+  }
 }

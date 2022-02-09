@@ -40,6 +40,7 @@
     "start": "npm run 11ty:serve",
     "11ty:serve": "ELEVENTY_ENV=development npx eleventy --serve",
     "11ty:build": "ELEVENTY_ENV=production npx eleventy",
-    "build": "npm run 11ty:build"
+    "build": "npm run 11ty:build",
+    "test:html": "html-validate dist/**/*.html"
   }
 }

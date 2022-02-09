@@ -15,7 +15,9 @@ metaTitle: "Parrainages proposés par Sylvain METAYER"
     <p>
         {{ refer.description }}
     </p>
+    {% if refer.advantage -%}
     <blockquote>
         {{ refer.advantage }}
     </blockquote>
+    {%- endif %}
 {% endfor %}

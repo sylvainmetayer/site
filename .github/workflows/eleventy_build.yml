@@ -25,3 +25,6 @@ jobs:
 
       - name: Build site
         run: npm run build
+
+      - name: Validate output HTML
+        run: npm run test:html

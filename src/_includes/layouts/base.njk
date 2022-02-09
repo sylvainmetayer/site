@@ -2,10 +2,7 @@
 <!DOCTYPE html>
 <html lang="{% if locale %}{{ locale }}{% else %}{{ site.locale }}{% endif %}">
   <head data-env="{{ global.environment }}">
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ helpers.url() }}/feed.xml"/>
-    <link rel="icon" href="{{ site.faviconPath }}" type="image/png"/> {{ component('meta', {
+    {{ component('meta', {
         title: title,
         page: page,
         metaTitle: metaTitle,
