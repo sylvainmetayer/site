@@ -21,6 +21,7 @@ const passthroughItems = [
   "src/fonts",
   "src/images",
   "src/js",
+  "src/css",
   "src/uploads",
   "node_modules/nunjucks/browser/nunjucks-slim.js"
 ]
