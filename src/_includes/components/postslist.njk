@@ -1,7 +1,7 @@
 <section>
-	{% for post in postslist | reverse %}
+  {% for post in postslist | reverse %}
     {% if limit === undefined or loop.index0 < limit %}
-      <article class="article-card" {% if post.url == url %} data-current="current item"{% endif %}>
+      <article class="article-card" {% if post.url == url %} data-current="current item" {% endif %}>
         <h5>
           <a class="article-card__title" href="{{ post.url | url }}">
             {% if post.data.title %}
@@ -11,9 +11,14 @@
             {% endif %}
           </a>
         </h5>
-        {% if post.data.summary %}
+        {% if post.data.date %}
+            {{ post.data.date | readableDate }}
+        {% endif %}
+        {% set readingTime = helpers.getReadingTime(post._templateContent) -%}
+        <span>— Temps de lecture: {{ readingTime }} minute{% if readingTime > 1 %}s{% endif %}</span>
+        {% if post.data.excerpt %}
           <p class="article-card__summary">
-            {{ post.data.summary }}
+            {{ post.data.excerpt }}
           </p>
         {% endif %}
         {% if post.data.tags and show_postslist_tags %}
@@ -21,12 +26,12 @@
             {% for tag in post.data.tags %}
               {%- if tag != "post" -%}
                 {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-              <a class="tag" href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+                <a class="tag" href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
               {%- endif -%}
             {% endfor %}
           </p>
         {% endif %}
       </article>
     {% endif %}
-	{% endfor %}
+  {% endfor %}
 </section>

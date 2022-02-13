@@ -1,12 +1,11 @@
 ---
 layout: layouts/projects.njk
-title: Projects
-date: 2021-01-01
-permalink: /projects/index.html
+title: Projets réalisés
+date: 2022-02-13
+permalink: /projets/index.html
 metaDescription: A sample Projects page
-subtitle: This is the page where all projects will live
 emoji: 💻
 eleventyNavigation:
-  key: Projects
+  key: Projets
   order: 4
 ---

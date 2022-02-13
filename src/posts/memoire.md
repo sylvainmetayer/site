@@ -58,7 +58,7 @@ Je compte également parler de l'automatisation au niveau de l'entreprise, sa mi
 
 Ce sujet sera donc assez théorique, mais portera également une partie pratique.
 
-D'une part avec la légère l'expérience personnelle que j'ai avec ce domaine, ou j'ai automatisé certains projets, tel que par exemple [qu'un chatbot réalisé en 4ème année](/article/projets-epsi/#bot-telegram), ou encore [ma découverte d'Ansible](/article/ansible), avec lequel j'ai automatisé l'installation d'un serveur Debian.
+D'une part avec la légère l'expérience personnelle que j'ai avec ce domaine, ou j'ai automatisé certains projets, tel que par exemple [qu'un chatbot réalisé en 4ème année](/projet/projets-epsi/#bot-telegram), ou encore [ma découverte d'Ansible](/projet/ansible), avec lequel j'ai automatisé l'installation d'un serveur Debian.
 
 D'autre part avec le projet sur lequel je suis en train de travailler lors de mon alternance à [onepoint](https://groupeonepoint.com). L'objectif est de faire plus ou moins une refonte, ou du moins une amélioration de la chaine d'industrialisation.
 

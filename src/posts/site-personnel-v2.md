@@ -2,10 +2,9 @@
 title: "Nouvelle version du site 💥"
 tags:
     - jekyll
-    - blog
 excerpt: "Après quelques années d'existence, mon ancien site commençait à vieillir."
 metaDesc: "Après quelques années d'existence, mon ancien site commençait à vieillir."
-date: "2018-11-15"
+date: 2018-11-15T00:00:00.000Z
 ---
 
 <!-- {\% include toc.html %\} -->
@@ -34,7 +33,7 @@ J'ai donc commencé à creuser la question des générateurs de sites et en ai t
 
 Voici une illustration des performances actuelles du site, ainsi qu'un rapport [Dareboost](https://www.dareboost.com/fr/report/d_5bec937de967905e05bb64cb). Je suis assez satisfait du résultat, même s'il me reste du travail à faire dessus (mais comme le produit parfait n'existe pas, le site parfait n'existe pas non plus ! 😜)
 
-![Google page Speed résultat](/images/speed-test.png)
+![Google page Speed résultat](/static/img/speed-test.png)
 
 ### 2. Le contenu prime sur le design (pour moi)
 
@@ -60,7 +59,7 @@ Concernant la séparation style/contenu, les `layouts` de Jekyll répondent parf
 
 ### 4. Sécurité
 
-Je souhaitais un site qui ne sera pas facilement corrompu. Avec des pages HTML, aucune faille PHP / Node / Java / (mettez le nom de votre langage préféré ic) possible. Avec un générateur de site statique, on génère le contenu une fois, on publie le résultat et on sert le contenu, c'est tout !
+Je souhaitais un site qui ne sera pas facilement corrompu. Avec des pages HTML, aucune faille PHP / Node / Java / (mettez le nom de votre langage préféré ici) possible. Avec un générateur de site statique, on génère le contenu une fois, on publie le résultat et on sert le contenu, c'est tout !
 
 Concernant l'hébergement, je me suis tout d'abord dis que j'allais profiter de l'hébergement avec [Github Pages](https://pages.github.com/). Cela fonctionne très simplement, même avec un domaine personnel, puisqu'il suffit simplement d'utiliser le gestionnaire DNS de son registrar pour faire pointer le domaine sur l'IP de Github Page.
 

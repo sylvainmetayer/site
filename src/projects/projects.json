@@ -1,7 +1,8 @@
 {
   "layout": "layouts/project.njk",
-  "permalink": "projects/{{ title | slug }}/index.html",
+  "permalink": "projet/{{ page.fileSlug }}/index.html",
   "tags": [
     "project"
-  ]
+  ],
+  "author": "Sylvain METAYER"
 }

@@ -7,7 +7,7 @@ section: post
     <h1>{{ title }}</h1>
     <p>
       <small>
-        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time> par <a href="/authors/{{ author | slug }}/">{{ author }}</a>
+        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>
       </small>
     </p>
     <hr>
@@ -28,6 +28,6 @@ section: post
   </article>
 
   <nav>
-    <a href="{{ '/blog/' | url }}">← View All Articles</a>
+    <a href="{{ '/blog/' | url }}">← Voir tous les articles</a>
   </nav>
 </div>

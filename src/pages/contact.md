@@ -1,19 +1,16 @@
 ---
 section: contact
 layout: layouts/contact.njk
-title: Get in touch
-date: 2018-01-01
+title: Contact
+date: 2022-02-15
 permalink: /contact/index.html
-metaDescription: This is a sample meta description. If one is not present in
-  your page/post's front matter, the default metadata.desciption will be used
-  instead.
-subtitle: Contact Subtitle
+metaDescription: Si vous souhaitez me contacter, c'est ici.
+subtitle: Si vous souhaitez me contacter, c'est ici.
 eleventyNavigation:
   key: Contact
-  order: 5
+  order: 4
 ---
 
-The contact form on this page uses [Netlify Forms](https://www.netlify.com/docs/form-handling/) to process submissions,
-and saves them in the connected Netlify account where notifications can
-optionally be configured. Each submission is passed through a spam filter and
-if flagged, will display a CAPTCHA challenge to the user.
+Pour me contacter, vous pouvez utiliser le formulaire ci-dessous. Vos données seront traitées par [Netlify Forms](https://www.netlify.com/products/forms/).
+
+Vous pouvez également me contacter directement par [mail](mailto:bonjour@sylvain.dev)

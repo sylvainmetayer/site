@@ -6,7 +6,7 @@
   /* Background Colors */
   --color-bg: #ffffff;
   --color-bg-secondary: #f7f7f7;
-  --color-bg-accent: #c79191;
+  --color-bg-accent: #0e75eb96;
 
   /* Text and Border Colors */
   --color-text: #222222;
@@ -22,7 +22,7 @@
   --font-family-heading: var(--font-family-base);
 
   /* Sizes */
-  --site-width: 850px;
+  --site-width: 1000px;
 
   /* Other */
   --border-radius: 12px;
