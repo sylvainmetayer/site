@@ -3,7 +3,7 @@ title: "Ajout des commentaires sur le site"
 tags:
     - jekyll
     - blog
-date: "2018-11-18"
+date: 2018-11-18T00:00:00.000Z
 metaDesc: "Les commentaires sont maintenant disponible sur le site"
 excerpt: "Les commentaires sont maintenant disponible sur le site"
 ---

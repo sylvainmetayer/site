@@ -1,6 +1,6 @@
 ---
 title: "Rapport DUT Informatique"
-date: "2016-06-20"
+date: 2016-06-20T00:00:00.000Z
 metaDesc: "Ce mémoire détaille le travail réalisé durant mon stage au sein de Nextmedia"
 excerpt: "Ce mémoire détaille le travail réalisé durant mon stage au sein de Nextmedia"
 tags:

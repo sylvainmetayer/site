@@ -1,56 +1,32 @@
 [build]
-command = "npm run build"
-ignore = "git log -1 --pretty=%B | grep depfu"
-publish = "dist"
+  publish = "_site"
+  command = "eleventy"
 
-[context.production]
-environment = {ELEVENTY_ENV = "production"}
+# REDIRECT and HEADERS examples
 
-[context.deploy-preview]
-environment = {ELEVENTY_ENV = "preview"}
+# Redirect rule example
+# For more information see:- https://www.netlify.com/docs/netlify-toml-reference/
 
-[context.branch-deploy]
-environment = {ELEVENTY_ENV = "branch"}
+#[[redirects]]
+#  from = "/*"
+#  to = "/blog/:splat"
 
-[[headers]]
-for = "/*"
+# The default HTTP status code is 301, but you can define a different one e.g.
+# status = 302
 
-[headers.values]
-Access-Control-Allow-Origin = 'https://cloudflareinsights.com'
-Content-Security-Policy = "default-src 'self'; connect-src 'self' https://cloudflareinsights.com; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'; object-src 'none';"
-Referrer-Policy = "no-referrer-when-downgrade"
-Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-X-Content-Type-Options = "nosniff"
-X-Frame-Options = "DENY"
-X-UA-Compatible = "IE=edge,chrome=1"
-X-XSS-Protection = "1; mode=block"
+# Headers rule example
+# For more information see:- https://www.netlify.com/docs/netlify-toml-reference/
 
-[[plugins]]
-package = "netlify-plugin-submit-sitemap"
+#[[headers]]
+#   Define which paths this specific [[headers]] block will cover.
+#   for = "/*"
 
-[plugins.inputs]
-baseUrl = "https://sylvain.dev"
-providers = ["google", "bing"]
-sitemapPath = "/sitemap.xml"
+#[headers.values]
+#   X-Frame-Options = "DENY"
+#   X-XSS-Protection = "1; mode=block"
+#   Content-Security-Policy = "frame-ancestors https://www.facebook.com"
 
-[[plugins]]
-package = "netlify-plugin-no-more-404"
-
-[plugins.inputs]
-cacheKey = "rework"
-debugMode = false
-on404 = "warn"
-
-[[plugins]]
-package = "netlify-plugin-checklinks"
-
-[plugins.inputs]
-entryPoints = [
-  "*.html",
-]
-recursive = true
-pretty = true
-skipPatterns = []
-todoPatterns = []
-checkExternal = false
-followSourceMaps = false
+# Redirects and headers are GLOBAL for all builds – they do not get scoped to
+# contexts no matter where you define them in the file.
+# For context-specific rules, use _headers or _redirects files, which are
+# applied on a PER-DEPLOY basis.

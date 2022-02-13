@@ -1,8 +1,12 @@
-{% extends 'layouts/base.njk' %}
-{% block content -%}
-<main id="main-content" tabindex="-1">
-  <article>
-    <h1>{{ title }}</h1>
-    <div>{{ content | safe }}</div>
-  </article>
-</main>{%- endblock %}
+---
+layout: layouts/base.njk
+section: page
+---
+<div class="page-container">
+  <h1>{{ title }}</h1>
+  {% if subtitle %}
+    <p>{{ subtitle }}</p>
+  {% endif %}
+  <hr>
+  {{ layoutContent | safe }}
+</div>

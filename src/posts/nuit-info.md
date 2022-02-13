@@ -3,7 +3,7 @@ title: "Nuit de l'info"
 tags:
     - dawin
     - dut-info
-date: "2016-12-02"
+date: 2016-12-02T00:00:00.000Z
 metaDesc: "La nuit de l'info réunit étudiants, enseignants et entreprises afin de réaliser en une nuit une application web sur un thème national donné."
 excerpt: "La nuit de l'info réunit étudiants, enseignants et entreprises afin de réaliser en une nuit une application web sur un thème national donné."
 ---

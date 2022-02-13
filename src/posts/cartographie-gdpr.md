@@ -6,7 +6,7 @@ tags:
     - projet
 metaDesc: "Lors de mon alternance à Atos en Licence Professionnelle DAWIN, j'ai eu l'occasion de développer la première version d'un outil de recherche de données personnelles dans le cadre du GDPR"
 excerpt: "Lors de mon alternance à Atos en Licence Professionnelle DAWIN, j'ai eu l'occasion de développer la première version d'un outil de recherche de données personnelles dans le cadre du GDPR"
-date: "2017-02-01"
+date: 2017-02-01T00:00:00.000Z
 ---
 
 Lors de mon alternance à Atos en Licence Professionnelle DAWIN, j'ai eu l'occasion de développer la première version d'un outil de recherche de données personnelles dans le cadre du [GDPR](https://eugdpr.org/) (General Data Protection Regulation)

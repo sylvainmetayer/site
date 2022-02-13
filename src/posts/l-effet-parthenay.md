@@ -3,7 +3,7 @@ title: "L'effet Parthenay"
 tags:
     - autres
     - parthenay
-date: "2017-03-28"
+date: 2017-03-28T00:00:00.000Z
 metaDesc: "L'effet Parthenay : Comment une petite ville pourrait bien sauver la civilisation française."
 excerpt: "L'effet Parthenay : Comment une petite ville pourrait bien sauver la civilisation française."
 socialImage: "/images/parthenay-1.jpg"

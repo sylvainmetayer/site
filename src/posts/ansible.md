@@ -5,7 +5,7 @@ tags:
     - projet
 metaDesc: "J'ai réalisé ce projet personnel afin de me familiariser avec Ansible et pouvoir récréer un serveur à l'identique sans intervention humaine."
 excerpt: "J'ai réalisé ce projet personnel afin de me familiariser avec Ansible et pouvoir récréer un serveur à l'identique sans intervention humaine."
-date: "2018-09-15"
+date: 2018-09-15T00:00:00.000Z
 ---
 
 [Sources (Github)](https://github.com/EPSIBordeaux/ansible-deployment)
