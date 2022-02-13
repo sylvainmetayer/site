@@ -1,7 +1,9 @@
 {
   "layout": "layouts/post.njk",
-  "permalink": "posts/{{ title | slug }}/index.html",
   "author": "Sylvain METAYER",
+  "draft": false,
+  "permalink": "/article/{{ page.fileSlug }}/",
+  "eleventyExcludeFromCollections": false,
   "tags": [
     "post"
   ]

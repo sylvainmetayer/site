@@ -15,4 +15,4 @@ J'y ai réalisé la refonte de l'administration du site vitrine de la société,
 
 Pour ce projet, j'ai également été amené à générer des miniatures à partir d'un document PowerPoint, pour pouvoir afficher un aperçu du document sur le site.
 
-![Page de garde de mon rapport de stage de DUT Informatique](/images/rapport_dut.png)
+![Page de garde de mon rapport de stage de DUT Informatique](/static/img/rapport_dut.png)

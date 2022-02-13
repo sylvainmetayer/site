@@ -1,31 +1,50 @@
 <head>
   <meta charset="utf-8">
-  <link rel="dns-prefetch" href="https://identity.netlify.com">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" type="image/png">
+  <meta name="google-site-verification" content="XROrcW2Xt6g7cyF4SDNyz08GZeMB90QlstI3SBnUsq0">
+  <meta property="og:type" content="website">
+  <meta name="og:locale" content="fr_FR">
+
+  <link rel="canonical" href="{{ helpers.url() + page.url }}">
+  <meta property="og:url" content="{{ helpers.url() + page.url }}">
+
+  <meta name="author" content="Sylvain METAYER">
+
+  <meta property="og:site_name" content="{{ metadata.title }}">
   <title>{{ renderData.title or title or metadata.title }}</title>
+
   <meta name="description" content="{{ metaDescription or renderData.metaDescription or summary or metadata.description }}">
-  <script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  {% set css %}
-    {% include "assets/css/normalize.css" %}
-    {% include "assets/css/variables.css" %}
-    {% include "assets/css/base-styles.css" %}
-    {% include "assets/css/utilites.css" %}
-    {% include "assets/css/site-header.css" %}
-    {% include "assets/css/site-footer.css" %}
-    {% include "assets/css/blog.css" %}
-    {% include "assets/css/projects.css" %}
+  <meta property="twitter:description" content="{{ metaDescription or renderData.metaDescription or summary or metadata.description }}">
+  <meta property="og:description" content="{{ metaDescription or renderData.metaDescription or summary or metadata.description }}">
 
-    {% if page.url == '/' %}
-      {% include "assets/css/home-page.css" %}
-    {% endif %}
+  <link rel="me" href="https://github.com/sylvainmetayer">
+  <link rel="me" href="https://twitter.com/sylvain_metayer">
+  <link rel="me" href="https://www.linkedin.com/in/sylvainmetayer/">
+  <link rel="me" href="https://dev.to/sylvainmetayer">
+  <link type="text/plain" rel="author" href="{{ helpers.url() }}/humans.txt">
 
-    {% if page.url == '/contact/' %}
-      {% include "assets/css/contact.css" %}
-    {% endif %}
-  {% endset %}
-  <style>{{ css | cssmin | safe }}</style>
-  {% set js %}
-    {% include "assets/js/inline.js" %}
-  {% endset %}
-  <script>{{ js | jsmin | safe }}</script>
+  <meta name="twitter:creator" content="@sylvain_metayer">
+  <meta name="twitter:site" content="@sylvain_metayer">
+
+
+  {# TODO Social image #}
+  {% if page.socialImage -%}
+    <meta property="og:image" content="{{ helpers.url() }}{{ page.socialImage }}">
+    <meta name="twitter:image" content="{{ helpers.url() }}{{ page.socialImage }}">
+    <meta property="og:image:alt" content="Illustration pour '{{ renderData.title or title or metadata.title }}'">
+    <meta name="twitter:image:alt" content="Illustration pour '{{ renderData.title or title or metadata.title }}'">
+  {% endif -%}
+
+  <!--
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="webmention" href="https://webmention.io/{{ helpers.url() }}/webmention">
+  <link rel="pingback" href="https://webmention.io/{{ helpers.url() }}/xmlrpc">
+  -->
+
+  <script async="" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link href="/assets/css/main.css?v={{pkg.version}}" rel="stylesheet">
 </head>

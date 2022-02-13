@@ -2,7 +2,7 @@
 title: "Récupérer les dumps SQL depuis une instance MySQL/Mariadb qui ne démarre plus"
 tags:
     - mysql
-date: "2021-05-04"
+date: 2021-05-04T00:00:00.000Z
 metaDesc: "Suite à une mise à jour de mon raspberry pi qui s'est plus ou moins bien passée, ma base de données MariaDB ne démarrait plus"
 excerpt: "Suite à une mise à jour de mon raspberry pi qui s'est plus ou moins bien passée, ma base de données MariaDB ne démarrait plus"
 noToc: true

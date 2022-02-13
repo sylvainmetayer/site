@@ -8,9 +8,12 @@ section: project
       <span class="project-card__emoji">{{ emoji }}</span>
     {% endif %}
     {{title}}</h1>
+    <p>
+      <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>
+    </p>
   <hr>
   {{ layoutContent | safe }}
   <nav>
-    <a href="{{ '/projects/' | url }}">← View All Projects</a>
+    <a href="{{ '/projets/' | url }}">← Voir tous les projets</a>
   </nav>
 </div>

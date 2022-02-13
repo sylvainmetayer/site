@@ -1,113 +1,75 @@
-const { DateTime } = require("luxon");
-const CleanCSS = require("clean-css");
-const UglifyJS = require("uglify-es");
-const htmlmin = require("html-minifier");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const slugify = require('slugify');
+const eleventyDartSassPlugin = require("eleventy-plugin-dart-sass");
+const path = require('path');
 
-module.exports = function(eleventyConfig) {
+const helpers = require('./src/_data/helpers');
+const markdownConfig = require('./src/11ty/utils/markdown');
+const browserSyncConfig = require('./src/11ty/utils/browsersync');
+const UserConfig = require("@11ty/eleventy/src/UserConfig");
 
-  // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
+const filters = require('./src/11ty/filters');
+const filtersMethods = Object.entries(filters);
+
+const transforms = require('./src/11ty/transforms');
+const transformsMethods = Object.entries(transforms);
+
+const sassConfig = {
+  includePaths: ["**/*.{scss,sass}", "!node_modules/**"],
+  sassIndexFile: 'main.scss',
+  watchSass: true,
+  sassLocation: path.normalize(
+    path.join(__dirname, "src/_includes/assets/scss/")
+  ),
+  outDir: path.normalize(
+    path.join(__dirname, 'dist/')
+  ),
+  outPath: "/assets/css/",
+  domainName: helpers.url(),
+  outFileName: 'main.css',
+  outputStyle: 'compressed'
+};
+
+const passthroughItems = [
+  'src/_redirects',
+  {
+    "src/favicon.ico": "/favicon.ico",
+    "src/static/img": "/static/img",
+    "src/static/CV.pdf": "/static/CV.pdf",
+    "src/_includes/assets/css": "/assets/css",
+    "src/_includes/assets/js": "/assets/js"
+  }
+];
+
+/** @param {UserConfig} eleventyConfig */
+module.exports = function (eleventyConfig) {
+  filtersMethods.forEach(([name, filter]) => {
+    eleventyConfig.addFilter(name, filter)
+  });
+
+  transformsMethods.forEach(([name, filter]) => {
+    eleventyConfig.addTransform(name, filter)
+  });
+
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  eleventyConfig.addPlugin(eleventyDartSassPlugin, sassConfig);
 
-  // Configuration API: use eleventyConfig.addLayoutAlias(from, to) to add
-  // layout aliases! Say you have a bunch of existing content using
-  // layout: post. If you don’t want to rewrite all of those values, just map
-  // post to a new file like this:
-  // eleventyConfig.addLayoutAlias("post", "layouts/my_new_post_layout.njk");
+  passthroughItems.forEach(item => {
+    eleventyConfig.addPassthroughCopy(item);
+  })
 
-  // Merge data instead of overriding
-  // https://www.11ty.dev/docs/data-deep-merge/
+  eleventyConfig.setBrowserSyncConfig(browserSyncConfig);
+  eleventyConfig.setLibrary("md", markdownConfig);
   eleventyConfig.setDataDeepMerge(true);
-
-  // Add support for maintenance-free post authors
-  // Adds an authors collection using the author key in our post frontmatter
-  // Thanks to @pdehaan: https://github.com/pdehaan
-  eleventyConfig.addCollection("authors", collection => {
-    const blogs = collection.getFilteredByGlob("src/posts/*.md");
-    return blogs.reduce((coll, post) => {
-      const author = slugify(post.data.author);
-      if (!author) {
-        return coll;
-      }
-      if (!coll.hasOwnProperty(author)) {
-        coll[author] = [];
-      }
-      coll[author].push(post.data);
-      return coll;
-    }, {});
+  eleventyConfig.setFrontMatterParsingOptions({
+    excerpt: true,
+    excerpt_separator: "---"
   });
-
-  // Date formatting (human readable)
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj).toFormat("dd/MM/yyyy");
-  });
-
-  // Date formatting (machine readable)
-  eleventyConfig.addFilter("machineDate", dateObj => {
-    return DateTime.fromJSDate(dateObj).toFormat("yyyy-MM-dd");
-  });
-
-  // Minify CSS
-  eleventyConfig.addFilter("cssmin", function(code) {
-    return new CleanCSS({}).minify(code).styles;
-  });
-
-  // Minify JS
-  eleventyConfig.addFilter("jsmin", function(code) {
-    let minified = UglifyJS.minify(code);
-    if (minified.error) {
-      console.log("UglifyJS error: ", minified.error);
-      return code;
-    }
-    return minified.code;
-  });
-
-  // Minify HTML output
-  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-    if (outputPath && outputPath.indexOf(".html") > -1) {
-      let minified = htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true
-      });
-      return minified;
-    }
-    return content;
-  });
-
-  // Don't process folders with static assets e.g. images
-  eleventyConfig.addPassthroughCopy("src/favicon.ico");
-  eleventyConfig.addPassthroughCopy("src/static/img");
-  eleventyConfig.addPassthroughCopy("src/admin");
-  eleventyConfig.addPassthroughCopy("src/_includes/assets/");
-
-  /* Markdown Plugins */
-  let markdownIt = require("markdown-it");
-  let markdownItAnchor = require("markdown-it-anchor");
-  let options = {
-    html: true,
-    breaks: true,
-    linkify: true
-  };
-  let opts = {
-    permalink: false
-  };
-
-  eleventyConfig.setLibrary("md", markdownIt(options)
-    .use(markdownItAnchor, opts)
-  );
 
   return {
-    templateFormats: ["md", "njk", "html", "liquid"],
-
-    // If your site lives in a different subdirectory, change this.
-    // Leading or trailing slashes are all normalized away, so don’t worry about it.
-    // If you don’t have a subdirectory, use "" or "/" (they do the same thing)
-    // This is only used for URLs (it does not affect your file structure)
+    templateFormats: ["md", "njk", "html"],
     pathPrefix: "/",
-
-    markdownTemplateEngine: "liquid",
+    passthroughFileCopy: true,
+    markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
     dir: {
