@@ -4,7 +4,7 @@ tags:
   - projet
   - angular
   - serverless
-date: "2020-01-27"
+date: 2020-01-27T00:00:00.000Z
 metaDesc: Trop de spam ? Marre de donner son addresse email à chaque service ? Les alias mail sont là à la rescousse !
 excerpt: Trop de spam ? Marre de donner son addresse email à chaque service ? Les alias mail sont là à la rescousse !
 noToc: false

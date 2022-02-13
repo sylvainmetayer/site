@@ -4,7 +4,7 @@ tags:
   - jekyll
   - ruby
   - projet
-date: "2018-11-30"
+date: 2018-11-30T00:00:00.000Z
 excerpt: Je souhaitais utiliser FontAwesome sans pour autant intégrer toute la librairie, assez lourde.
 metaDesc: Je souhaitais utiliser FontAwesome sans pour autant intégrer toute la librairie, assez lourde.
 ---

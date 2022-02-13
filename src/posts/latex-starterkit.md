@@ -5,7 +5,7 @@ tags:
     - projet
 excerpt: "Ce projet personnel a été réalisé pour disposer d'un modèle lors de la réalisation d'écrits avec LateX."
 metaDesc: "Ce projet personnel a été réalisé pour disposer d'un modèle lors de la réalisation d'écrits avec LateX."
-date: "2018-11-01"
+date: 2018-11-01T00:00:00.000Z
 ---
 
 [Sources (Github)](https://github.com/sylvainmetayer/LaTeX-starterkit)
