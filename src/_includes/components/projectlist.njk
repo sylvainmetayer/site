@@ -15,6 +15,12 @@
               {% endif %}
             </a>
           </h4>
+          {% if post.data.date %}
+            {{ post.data.date | date }}
+          {% endif %}
+          {% if post._templateContent %}
+            <span>{{ post._templateContent | emojiReadTime }} de lecture</span>
+          {% endif %}
           {% if post.data.summary %}
             <p>
               {{ post.data.summary }}
@@ -30,7 +36,7 @@
             </p>
           {% endif %}
         </div>
-        {% endif %}
+      {% endif %}
     {% endfor %}
   </div>
 </section>

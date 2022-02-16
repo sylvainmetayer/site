@@ -1,4 +1,5 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const emojiReadTime = require("@11tyrocks/eleventy-plugin-emoji-readtime");
 const markdownConfig = require('./src/11ty/utils/markdown');
 const browserSyncConfig = require('./src/11ty/utils/browsersync');
 const UserConfig = require("@11ty/eleventy/src/UserConfig");
@@ -30,10 +31,18 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  eleventyConfig.addPlugin(emojiReadTime, {
+    emoji: "🍿",
+    label: "min.",
+    wpm: 250,
+    bucketSize: 3,
+  });
 
   passthroughItems.forEach(item => {
     eleventyConfig.addPassthroughCopy(item);
   })
+
+  eleventyConfig.addWatchTarget("./src/scss/*.scss");
 
   eleventyConfig.setBrowserSyncConfig(browserSyncConfig);
   eleventyConfig.setLibrary("md", markdownConfig);

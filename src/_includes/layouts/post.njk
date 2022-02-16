@@ -6,10 +6,13 @@ section: post
   <article>
     <h1>{{ title }}</h1>
     <p>
-      <small>
-        <time datetime="{{ date | machineDate }}">{{ date | date }}</time>
-      </small>
+      <time datetime="{{ date | machineDate }}">{{ date | date }}</time> par {{ author }}
     </p>
+    {% if layoutContent %}
+    <p>
+      {{ layoutContent | emojiReadTime }} de lecture
+    </p>
+    {% endif %}
     <hr>
 
     {{ layoutContent | safe }}

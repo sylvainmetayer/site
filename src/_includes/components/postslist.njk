@@ -12,10 +12,11 @@
           </a>
         </h5>
         {% if post.data.date %}
-            {{ post.data.date | date }}
+          {{ post.data.date | date }}
         {% endif %}
-        {% set readingTime = helpers.getReadingTime(post._templateContent) -%}
-        <span>— Temps de lecture: {{ readingTime }} minute{% if readingTime > 1 %}s{% endif %}</span>
+        {% if post._templateContent %}
+          <span>{{ post._templateContent | emojiReadTime }} de lecture</span>
+        {% endif %}
         {% if post.data.excerpt %}
           <p class="article-card__summary">
             {{ post.data.excerpt }}

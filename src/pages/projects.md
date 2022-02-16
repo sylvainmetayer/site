@@ -7,5 +7,5 @@ metaDescription: A sample Projects page
 emoji: 💻
 eleventyNavigation:
   key: Projets
-  order: 4
+  order: 2
 ---
