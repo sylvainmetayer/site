@@ -19,8 +19,6 @@ module.exports = class {
 
     const rawCss = sassRenderResult.css.toString();
 
-    // TODO https://github.com/11ty/eleventy/issues/326#issuecomment-444127344
-    // Generate a main-dark.css to handle dark theme with pagination
     return {
       permalink: '/assets/css/main.css',
       rawFilepath: rawFilepath,

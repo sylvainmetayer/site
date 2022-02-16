@@ -1,5 +1,7 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const emojiReadTime = require("@11tyrocks/eleventy-plugin-emoji-readtime");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+
 const markdownConfig = require('./src/11ty/utils/markdown');
 const browserSyncConfig = require('./src/11ty/utils/browsersync');
 const UserConfig = require("@11ty/eleventy/src/UserConfig");
@@ -37,6 +39,7 @@ module.exports = function (eleventyConfig) {
     wpm: 250,
     bucketSize: 3,
   });
+  eleventyConfig.addPlugin(pluginRss);
 
   passthroughItems.forEach(item => {
     eleventyConfig.addPassthroughCopy(item);

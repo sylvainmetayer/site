@@ -18,8 +18,8 @@
           {% if post.data.date %}
             {{ post.data.date | date }}
           {% endif %}
-          {% if post._templateContent %}
-            <span>{{ post._templateContent | emojiReadTime }} de lecture</span>
+          {% if post.templateContent %}
+            <span>{{ post.templateContent | emojiReadTime }} de lecture</span>
           {% endif %}
           {% if post.data.summary %}
             <p>
