@@ -1,9 +1,4 @@
 module.exports = {
-  getReadingTime(text) {
-    const wordsPerMinute = 200;
-    const numberOfWords = text.split(/\s/g).length;
-    return Math.ceil(numberOfWords / wordsPerMinute);
-  },
   url() {
     // TODO Nunjucks configure access to process.env
     if (typeof process === 'undefined') {

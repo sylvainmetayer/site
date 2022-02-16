@@ -9,8 +9,13 @@ section: project
     {% endif %}
     {{title}}</h1>
     <p>
-      <time datetime="{{ date | machineDate }}">{{ date | date }}</time>
+      <time datetime="{{ date | machineDate }}">{{ date | date }}</time> par {{ author }}
     </p>
+    {% if layoutContent %}
+    <p>
+      {{ layoutContent | emojiReadTime }} de lecture
+    </p>
+    {% endif %}
   <hr>
   {{ layoutContent | safe }}
   <nav>

@@ -1,6 +1,4 @@
 {
   "title": "Bonjour, je suis Sylvain",
-  "image": "/static/img/profile.png",
-  "subtitle": "Développeur web à Bordeaux, vous trouverez ici mes articles et projets.",
-  "image_alt": "Avatar de Sylvain"
+  "subtitle": "Développeur web à Bordeaux, vous trouverez ici mes articles et projets."
 }
