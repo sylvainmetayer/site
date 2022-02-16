@@ -1,5 +1,5 @@
 /* https://stackoverflow.com/a/22683624 */
-img[src$='#deploy-netlify'] {
+img[src$="#deploy-netlify"] {
   max-width: none;
   width: 20%;
 }

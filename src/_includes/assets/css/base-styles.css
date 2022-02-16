@@ -20,19 +20,19 @@ body {
 }
 
 main {
-  padding: 13px; 
+  padding: 13px;
 }
 
 @media (max-width: 684px) {
   body {
-    font-size: 1.53rem; 
-  } 
+    font-size: 1.53rem;
+  }
 }
 
 @media (max-width: 382px) {
   body {
-    font-size: 1.35rem; 
-  } 
+    font-size: 1.35rem;
+  }
 }
 
 footer {
@@ -80,12 +80,12 @@ hr {
 
 a {
   text-decoration: none;
-  color: var(--color-secondary); 
+  color: var(--color-secondary);
 }
-  
+
 a:hover {
   color: var(--color-secondary);
-  border-bottom: 2px solid var(--color-secondary); 
+  border-bottom: 2px solid var(--color-secondary);
 }
 
 ul {
@@ -107,7 +107,7 @@ blockquote {
   margin-bottom: 2.5rem;
   background-color: var(--color-bg-secondary); }
 
-blockquote h1, 
+blockquote h1,
 blockquote h2,
 blockquote h3,
 blockquote h4,
@@ -163,7 +163,7 @@ input, textarea {
     border: 1px solid var(--color-primary); }
 
 textarea {
-  width: 100%; 
+  width: 100%;
   max-width: 100%;
   min-height: 35px;
 }
