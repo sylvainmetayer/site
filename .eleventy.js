@@ -1,8 +1,4 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const eleventyDartSassPlugin = require("eleventy-plugin-dart-sass");
-const path = require('path');
-
-const helpers = require('./src/_data/helpers');
 const markdownConfig = require('./src/11ty/utils/markdown');
 const browserSyncConfig = require('./src/11ty/utils/browsersync');
 const UserConfig = require("@11ty/eleventy/src/UserConfig");
@@ -13,29 +9,12 @@ const filtersMethods = Object.entries(filters);
 const transforms = require('./src/11ty/transforms');
 const transformsMethods = Object.entries(transforms);
 
-const sassConfig = {
-  includePaths: ["**/*.{scss,sass}", "!node_modules/**"],
-  sassIndexFile: 'main.scss',
-  watchSass: true,
-  sassLocation: path.normalize(
-    path.join(__dirname, "src/_includes/assets/scss/")
-  ),
-  outDir: path.normalize(
-    path.join(__dirname, 'dist/')
-  ),
-  outPath: "/assets/css/",
-  domainName: helpers.url(),
-  outFileName: 'main.css',
-  outputStyle: 'compressed'
-};
-
 const passthroughItems = [
   'src/_redirects',
   {
     "src/favicon.ico": "/favicon.ico",
     "src/static/img": "/static/img",
     "src/static/CV.pdf": "/static/CV.pdf",
-    "src/_includes/assets/css": "/assets/css",
     "src/_includes/assets/js": "/assets/js"
   }
 ];
@@ -51,7 +30,6 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(eleventyDartSassPlugin, sassConfig);
 
   passthroughItems.forEach(item => {
     eleventyConfig.addPassthroughCopy(item);
@@ -66,7 +44,7 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
-    templateFormats: ["md", "njk", "html"],
+    templateFormats: ["md", "njk", "html", "11ty.js"],
     pathPrefix: "/",
     passthroughFileCopy: true,
     markdownTemplateEngine: "njk",

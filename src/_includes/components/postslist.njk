@@ -12,7 +12,7 @@
           </a>
         </h5>
         {% if post.data.date %}
-            {{ post.data.date | readableDate }}
+            {{ post.data.date | date }}
         {% endif %}
         {% set readingTime = helpers.getReadingTime(post._templateContent) -%}
         <span>— Temps de lecture: {{ readingTime }} minute{% if readingTime > 1 %}s{% endif %}</span>

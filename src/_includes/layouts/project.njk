@@ -9,7 +9,7 @@ section: project
     {% endif %}
     {{title}}</h1>
     <p>
-      <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>
+      <time datetime="{{ date | machineDate }}">{{ date | date }}</time>
     </p>
   <hr>
   {{ layoutContent | safe }}
