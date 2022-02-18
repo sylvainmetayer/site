@@ -8,6 +8,7 @@
 @use "../_includes/assets/css/projects.css";
 @use "../_includes/assets/css/home-page.css";
 @use "../_includes/assets/css/contact.css";
+@use "../../node_modules/prismjs/themes/prism-okaidia.min.css";
 
 $color-blossom: var(--color-primary);
 $color-fade: var(--color-secondary);

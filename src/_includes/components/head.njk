@@ -27,11 +27,9 @@
   <meta name="twitter:creator" content="@sylvain_metayer">
   <meta name="twitter:site" content="@sylvain_metayer">
 
-
-  {# TODO Social image #}
-  {% if page.socialImage -%}
-    <meta property="og:image" content="{{ helpers.url() }}{{ page.socialImage }}">
-    <meta name="twitter:image" content="{{ helpers.url() }}{{ page.socialImage }}">
+  {% if socialImage -%}
+    <meta property="og:image" content="{{ helpers.url() }}{{ socialImage }}">
+    <meta name="twitter:image" content="{{ helpers.url() }}{{ socialImage }}">
     <meta property="og:image:alt" content="Illustration pour '{{ renderData.title or title or metadata.title }}'">
     <meta name="twitter:image:alt" content="Illustration pour '{{ renderData.title or title or metadata.title }}'">
   {% endif -%}
