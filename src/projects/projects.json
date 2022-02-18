@@ -4,5 +4,6 @@
   "tags": [
     "project"
   ],
-  "author": "Sylvain METAYER"
+  "author": "Sylvain METAYER",
+  "generateSocialImage": false
 }

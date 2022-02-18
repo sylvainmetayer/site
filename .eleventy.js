@@ -4,6 +4,7 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const generateSocialImages = require("@manustays/eleventy-plugin-generate-social-images");
 
 const markdownConfig = require('./src/11ty/utils/markdown');
 const browserSyncConfig = require('./src/11ty/utils/browsersync');
@@ -56,6 +57,14 @@ module.exports = function (eleventyConfig) {
     },
   });
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(generateSocialImages, {
+    promoImage: "./src/static/img/profile.png",
+    outputDir: "./dist/img/preview",
+    urlPath: "/img/preview",
+    siteName: "sylvain.dev/",
+    titleColor: "#fedb8b",
+    bgGradient: ['#ABB8C0', '#A0ACB3']
+  });
 
   passthroughItems.forEach(item => {
     eleventyConfig.addPassthroughCopy(item);

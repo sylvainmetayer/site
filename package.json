@@ -35,6 +35,7 @@
     "@11ty/eleventy-plugin-rss": "^1.1.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@11tyrocks/eleventy-plugin-emoji-readtime": "^1.0.1",
+    "@manustays/eleventy-plugin-generate-social-images": "^4.1.0",
     "@quasibit/eleventy-plugin-sitemap": "^2.1.5",
     "autoprefixer": "^10.4.2",
     "beautify": "^0.0.8",

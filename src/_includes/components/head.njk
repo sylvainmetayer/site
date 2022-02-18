@@ -12,11 +12,11 @@
   <meta name="author" content="Sylvain METAYER">
 
   <meta property="og:site_name" content="{{ metadata.title }}">
-  <title>{{ renderData.title or title or metadata.title }}</title>
+  <title>{{ title or metadata.title }}</title>
 
-  <meta name="description" content="{{ metaDescription or renderData.metaDescription or summary or metadata.description }}">
-  <meta property="twitter:description" content="{{ metaDescription or renderData.metaDescription or summary or metadata.description }}">
-  <meta property="og:description" content="{{ metaDescription or renderData.metaDescription or summary or metadata.description }}">
+  <meta name="description" content="{{ metaDescription or summary or metadata.description }}">
+  <meta property="twitter:description" content="{{ metaDescription or summary or metadata.description }}">
+  <meta property="og:description" content="{{ metaDescription or summary or metadata.description }}">
 
   <link rel="me" href="https://github.com/sylvainmetayer">
   <link rel="me" href="https://twitter.com/sylvain_metayer">
@@ -27,12 +27,13 @@
   <meta name="twitter:creator" content="@sylvain_metayer">
   <meta name="twitter:site" content="@sylvain_metayer">
 
-  {% if socialImage -%}
-    <meta property="og:image" content="{{ helpers.url() }}{{ socialImage }}">
-    <meta name="twitter:image" content="{{ helpers.url() }}{{ socialImage }}">
-    <meta property="og:image:alt" content="Illustration pour '{{ renderData.title or title or metadata.title }}'">
-    <meta name="twitter:image:alt" content="Illustration pour '{{ renderData.title or title or metadata.title }}'">
-  {% endif -%}
+  {% if generateSocialImage %}
+    {% set socialTitle = title or metadata.title %}
+    <meta property="og:image" content="{% GenerateSocialImage socialTitle %}" />
+    <meta name="twitter:image" content="{% GenerateSocialImage socialTitle %}" />
+    <meta property="og:image:alt" content="Illustration pour '{{ title or metadata.title }}'">
+    <meta name="twitter:image:alt" content="Illustration pour '{{ title or metadata.title }}'">
+  {% endif %}
 
   <!--
   <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
