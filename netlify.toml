@@ -1,5 +1,5 @@
 [build]
-command = "npm run production"
+command = "npm run build"
 ignore = "git log -1 --pretty=%B | grep depfu"
 publish = "dist"
 
@@ -16,8 +16,9 @@ environment = {ELEVENTY_ENV = "branch"}
 for = "/*"
 
 [headers.values]
-Access-Control-Allow-Origin = 'https://cloudflareinsights.com'
-Content-Security-Policy = "default-src 'self'; connect-src 'self' https://cloudflareinsights.com; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'; object-src 'none';"
+Access-Control-Allow-Origin = 'null'
+# TODO
+Content-Security-Policy = ""
 Referrer-Policy = "no-referrer-when-downgrade"
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 X-Content-Type-Options = "nosniff"
@@ -37,9 +38,9 @@ sitemapPath = "/sitemap.xml"
 package = "netlify-plugin-no-more-404"
 
 [plugins.inputs]
-cacheKey = "production"
+cacheKey = "theme-skip2"
 debugMode = false
-on404 = "error"
+on404 = "warn"
 
 [[plugins]]
 package = "netlify-plugin-checklinks"

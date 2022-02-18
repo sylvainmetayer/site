@@ -1,0 +1,17 @@
+/* https://stackoverflow.com/a/22683624 */
+img[src$="#deploy-netlify"] {
+  max-width: none;
+  width: 20%;
+}
+
+.header-anchor::before {
+  content: "🔗 ";
+}
+
+/**
+* @see https://stackoverflow.com/a/52058198
+*/
+a[data-external]::after {
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+  margin: 0 3px 0 5px;
+}

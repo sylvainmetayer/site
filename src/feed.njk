@@ -1,41 +1,29 @@
 ---
-permalink: '/feed.xml'
+permalink: "feed.xml"
+eleventyExcludeFromCollections: true
+# TODO Style RSS
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <generator uri="https://11ty.dev/" version="{{ global.eleventyVersion }}">Eleventy</generator>
-  <title>{{ site.name }}</title>
-  <subtitle>{{ site.shortDesc }}</subtitle>
-  <link href="{{ helpers.url() }}{{ permalink }}" rel="self"/>
-  <link href="{{ helpers.url() }}/"/>
-  {% if collections.posts | length %}
-    <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
-  {% endif %}
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.description }}</subtitle>
+  <link href="{{ helpers.url() }}"/>
+  <link href="{{ helpers.url() }}{{ page.url }}" rel="self"/>
+  <updated>{{ collections.post | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   <id>{{ helpers.url() }}</id>
   <author>
-    <name>{{ site.authorName }}</name>
-    <email>{{ site.authorEmail }}</email>
+    <name>Sylvain METAYER</name>
+    <email>bonjour@sylvain.dev</email>
   </author>
-  {% for post in collections.posts %}
-    {% set absolutePostUrl %}{{ helpers.url() }}{{ post.url | url }}{% endset %}
-    <entry>
-      <title>{{ post.data.title }}</title>
-      <link href="{{ absolutePostUrl }}"/>
-      <updated>{{ post.date | rssDate }}</updated>
-      <id>{{ absolutePostUrl }}</id>
-      <content type="html">
-        <![CDATA[
-      {{ post.templateContent | safe }}
-    ]]>
-      </content>
-      {% for tag in post.data.tags %}
-        <category term="{{ tag }}"/>
-      {% endfor %}
-      {% if post.data.excerpt %}
-        <summary type="html">
-          {{ post.data.excerpt}}
-        </summary>
-      {% endif %}
-    </entry>
-  {% endfor %}
+  {%- for post in collections.rss | reverse %}
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(helpers.url()) }}{% endset %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+  </entry>
+  {%- endfor %}
 </feed>

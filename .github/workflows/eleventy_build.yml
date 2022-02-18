@@ -18,10 +18,13 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 13
+          node-version: 16
 
       - name: Install packages
         run: npm ci
 
       - name: Build site
-        run: npm run production
+        run: npm run build
+
+      - name: Validate output HTML
+        run: npm run test:html

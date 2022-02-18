@@ -1,15 +1,12 @@
-{% extends 'layouts/base.njk' %}
-
-{# Intro content #}
-{% set introHeading = title %}
-
-{% block content %}
-  <main id="main-content" tabindex="-1">
-    <article class="[ post ] [ h-entry ]">
-      {% include "partials/components/intro.njk" %}
-      <div class="[ post__body ] [ inner-wrapper ] [ leading-loose pad-top-900 pad-bottom-900 text-500 ] [ sf-flow ] [ e-content ]">
-        {{ content | safe }}
-      </div>
-    </article>
-  </main>
-{% endblock %}
+---
+layout: layouts/base.njk
+section: page
+---
+<div class="page-container">
+  <h1>{{ title }}</h1>
+  {% if subtitle %}
+    <p>{{ subtitle }}</p>
+  {% endif %}
+  <hr>
+  {{ layoutContent | safe }}
+</div>

@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+section: home
+---
+<div class="home-page">
+  <div class="hero">
+    <div class="hero__col">
+      <h1 class="hero__title">{{ home.title }}</h1>
+    </div>
+    <div class="hero__col">
+        <h2 class="hero__subtitle">{{ home.subtitle }}</h2>
+    </div>
+  </div>
+
+  <hr>
+  <h2>Projets</h2>
+  {% set limit = 2 %}
+  {% set projectlist = collections.project %}
+  {% include "components/projectlist.njk" %}
+
+  <hr>
+  <h2>Articles</h2>
+  {% set postslist = collections.post %}
+  {% set show_postslist_tags = false %}
+  {% set limit = 3 %}
+  {% include "components/postslist.njk" %}
+</div>

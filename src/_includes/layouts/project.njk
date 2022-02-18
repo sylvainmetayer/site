@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+section: project
+---
+<div class="page-container">
+  <h1>
+    {% if emoji %}
+      <span class="project-card__emoji">{{ emoji }}</span>
+    {% endif %}
+    {{title}}</h1>
+    <p>
+      <time datetime="{{ date | machineDate }}">{{ date | date }}</time> par {{ author }}
+    </p>
+    {% if layoutContent %}
+    <p>
+      {{ layoutContent | emojiReadTime }} de lecture
+    </p>
+    {% endif %}
+  <hr>
+  {{ layoutContent | safe }}
+  <nav>
+    <a href="{{ '/projets/' | url }}">← Voir tous les projets</a>
+  </nav>
+</div>

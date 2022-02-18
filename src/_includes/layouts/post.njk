@@ -1,74 +1,36 @@
-{% extends 'layouts/base.njk' %}
+---
+layout: layouts/base.njk
+section: post
+---
+<div class="page-container">
+  <article>
+    <h1>{{ title }}</h1>
+    <p>
+      <time datetime="{{ date | machineDate }}">{{ date | date }}</time> par {{ author }}
+    </p>
+    {% if layoutContent %}
+    <p>
+      {{ layoutContent | emojiReadTime }} de lecture
+    </p>
+    {% endif %}
+    <hr>
 
-{% block extraMeta %}
-  <meta property="og:type" content="article"/>
-  <meta property="article:published_time" content="{{ date | date('') }}"/>
-  {% if tags | length > 0%}
-    <meta property="article:tag" content="{{ tags | join(' ') }}"/>
-  {% endif %}
-{% endblock %}
+    {{ layoutContent | safe }}
 
-{# Intro content #}
-{% set introHeading = title %}
-{% set introSummary %}
-<p class="[ intro__meta ] [ text-500 leading-tight ]">
-  {% if date %}
-    <time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date }}</time>
-  {% endif %}
-  {% set readingTime = helpers.getReadingTime(content) %}
-  <span>— Temps de lecture: {{ readingTime }} minute{% if readingTime > 1 %}s{% endif %}
-  </span>
-</p>
-{% endset %}
-
-{% block content %}
-  <main id="main-content" tabindex="-1">
-    <article class="[ post ] [ h-entry ]">
-      {% include "partials/components/intro.njk" %}
-      {% set tocContent = content | toc %}
-      {% if tocContent != '<nav class="toc"></nav>' and not noToc %}
-        <aside class="[ post__toc ] [ inner-wrapper ] [ pad-bottom-200 pad-top-900 text-600 ]">
-          <p>Sommaire</p>
-          {{ tocContent | safe }}
-        </aside>
-      {% endif %}
-      <div class="[ post__body ] [ inner-wrapper ] [ leading-loose pad-top-900 {{ 'pad-bottom-900' if not site.enableThirdPartyComments }} text-500 ] [ sf-flow ] [ e-content ]">
-        {{ content | safe }}
-      </div>
-      {% if site.enableThirdPartyComments %}
-        <hr/>
-        <aside class="[ post__body ] [ inner-wrapper ] [ pad-bottom-900 text-500 ]">
-          {% include "partials/global/third-party-comments.njk" %}
-        </aside>
-      {% endif %}
-      <hr/>
-      {% if tags %}
-        <footer class="[ post__footer ] [ pad-top-500 pad-bottom-500 ]">
-          <div class="inner-wrapper">
-            <div class="[ nav ] [ box-flex align-center ]">
-              <h2 class="font-base text-600 weight-mid">Tags</h2>
-              <ul class="[ nav__list ] [ box-flex align-center pad-left-400 ] [ p-category ]">
-                {% for item in tags %}
-                  <li class="nav__item">
-                    <a href="/tags/{{ item }}">{{ item }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </footer>
-      {% endif %}
-    </article>
-    {% set nextPost = collections.posts | getPreviousCollectionItem(page) %}
-    {% set previousPost = collections.posts | getNextCollectionItem(page) %}
-    {% if previousPost %}
-      {% set paginationPrevUrl = previousPost.url %}
+    {% if tags %}
+      <p class="tag-list">
+      {% for tag in tags %}
+        {%- if tag != "post" -%}
+          {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+          <a class="tag" href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+        {%- endif -%}
+      {% endfor %}
+      </p>
     {% endif %}
 
-    {% if nextPost %}
-      {% set paginationNextUrl = nextPost.url %}
-    {% endif %}
+  </article>
 
-    {% include "partials/components/pagination.njk" %}
-  </main>
-{% endblock %}
+  <nav>
+    <a href="{{ '/blog/' | url }}">← Voir tous les articles</a>
+  </nav>
+</div>

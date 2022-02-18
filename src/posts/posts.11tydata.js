@@ -4,6 +4,11 @@ const isLive = post => {
 }
 
 module.exports = {
+  generateSocialImage: false,
+  sitemap: {
+    changefreq: "monthly",
+    priority: 0.8,
+  },
   eleventyComputed: {
     permalink: data => {
       let postPermalink = "/article/{{ page.fileSlug }}/";

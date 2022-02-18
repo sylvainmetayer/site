@@ -1,7 +1,10 @@
 {
   "layout": "layouts/post.njk",
+  "author": "Sylvain METAYER",
   "draft": false,
-  "star": false,
   "permalink": "/article/{{ page.fileSlug }}/",
-  "eleventyExcludeFromCollections": false
+  "eleventyExcludeFromCollections": false,
+  "tags": [
+    "post"
+  ]
 }

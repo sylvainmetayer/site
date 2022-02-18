@@ -1,18 +1,6 @@
 ---
 permalink: /sitemap.xml
+layout: null
 eleventyExcludeFromCollections: true
 ---
-<?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {%- for page in collections.all %}
-    {% if page.url %}
-      {% set absoluteUrl %}{{ helpers.url() }}{{ page.url }}{% endset %}
-      <url>
-        <loc>{{ absoluteUrl }}</loc>
-        <lastmod>{{ page.date | rssDate }}</lastmod>
-        <changefreq>{{ item.data.changefreq or "monthly" }}</changefreq>
-        <priority>{{ item.data.priority or "0.5" }}</priority>
-      </url>
-    {% endif %}
-  {%- endfor %}
-</urlset>
+{% sitemap collections.all %}

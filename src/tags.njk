@@ -8,29 +8,23 @@ pagination:
     - nav
     - post
     - posts
-    - tagList
-    - postFeed
-    - starFeed
-  addAllPagesToCollections: true
 permalink: /tags/{{ tag }}/
+layout: layouts/base.njk
 eleventyComputed:
-  title: "Articles ayant le tag '{{ tag }}'"
+  title: "Tag {{ tag }}"
+  metaDescription: "Tous les articles ayant pour tag {{ tag }}"
 ---
+<div class="page-container">
+  <div class="tag-list tag-list--no-wrap">
+    <h3 class="tag-list__title">Articles avec le tag : "{{ tag | capitalize }}"</h3>
+    <a class="btn btn--danger" href="/blog">Supprimer le tag</a>
+  </div>
 
-{% extends 'layouts/base.njk' %}
+  {% set postslist = collections[tag] %}
+  {% set show_postslist_tags = true %}
+  {% include "components/postslist.njk" %}
 
-{# Intro content #}
-{% set introHeading %}Articles ayant le tag "{{ tag }}"{% endset %}
-{% set introHeadingLevel = '2' %}
-
-{# Post list content #}
-{% set postListHeadingLevel = '2' %}
-{% set postListItems = collections[tag] %}
-
-{% block content %}
-  <main id="main-content" tabindex="-1">
-    {% include "partials/components/intro.njk" %}
-    {% include "partials/components/post-list.njk" %}
-    {% include "partials/components/pagination.njk" %}
-  </main>
-{% endblock %}
+  <nav>
+    <a href="{{ '/blog/' | url }}">← Voir tous les articles</a>
+  </nav>
+</div>

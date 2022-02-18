@@ -1,0 +1,42 @@
+@use "../../node_modules/normalize.css/normalize.css";
+@use "../_includes/assets/css/variables.css";
+
+@use "../_includes/assets/css/utilites.css";
+@use "../_includes/assets/css/site-header.css";
+@use "../_includes/assets/css/site-footer.css";
+@use "../_includes/assets/css/blog.css";
+@use "../_includes/assets/css/projects.css";
+@use "../_includes/assets/css/home-page.css";
+@use "../_includes/assets/css/contact.css";
+@use "../../node_modules/prismjs/themes/prism-okaidia.min.css";
+
+$color-blossom: var(--color-primary);
+$color-fade: var(--color-secondary);
+
+$color-bg: var(--color-bg);
+$color-bg-alt: var(--color-bg-secondary);
+
+$color-text: var(--color-text);
+$font-size-base: 1.8rem;
+
+$font-family-base: var(--font-family-base);
+$font-family-heading: var(--font-family-heading);
+
+@import "../../node_modules/sakura.css/scss/main";
+
+body {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-secondary);
+}
+
+a:hover {
+  color: var(--color-secondary);
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+// Custom overrides
+@import "./custom.scss";

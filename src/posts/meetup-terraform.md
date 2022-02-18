@@ -6,7 +6,7 @@ tags:
   - meetup
 metaDesc: "J'ai eu l'occasion de faire mon premier meetup le 1er février sur Youtube"
 excerpt: "J'ai eu l'occasion de faire mon premier meetup le 1er février sur Youtube"
-date: '2022-02-05'
+date: 2022-02-05T00:00:00.000Z
 ---
 
 J'ai eu l'occasion de faire mon premier meetup live avec onepoint le 1er février sur Youtube. Le sujet était : 'Terraform, REX d'un développeur'. Pour celles et ceux qui souhaiteraient le regarder, je vous invite à le visionner en replay ici : [Lien Youtube](https://www.youtube.com/watch?v=GR_YJIfo8jg&list=PLm-YYS9h2JhWiAZ5QuuJD6jyghWjkK09q&index=27).
