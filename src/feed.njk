@@ -16,18 +16,8 @@ eleventyExcludeFromCollections: true
     <name>Sylvain METAYER</name>
     <email>bonjour@sylvain.dev</email>
   </author>
-  {%- for post in collections.post %}
+  {%- for post in collections.rss | reverse %}
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(helpers.url()) }}{% endset %}
-  <entry>
-    <title>{{ post.data.title }}</title>
-    <link href="{{ absolutePostUrl }}"/>
-    <updated>{{ post.date | dateToRfc3339 }}</updated>
-    <id>{{ absolutePostUrl }}</id>
-    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
-  </entry>
-  {%- endfor %}
-  {%- for post in collections.project %}
-  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}"/>

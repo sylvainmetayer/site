@@ -25,6 +25,12 @@ const passthroughItems = [
 
 /** @param {UserConfig} eleventyConfig */
 module.exports = function (eleventyConfig) {
+
+  eleventyConfig.addCollection('post', (collectionApi) => collectionApi.getFilteredByGlob("src/posts/*.md"));
+  eleventyConfig.addCollection('pages', (collectionApi) => collectionApi.getFilteredByGlob("src/pages/*.md"));
+  eleventyConfig.addCollection('project', (collectionApi) => collectionApi.getFilteredByGlob("src/projects/*.md"));
+  eleventyConfig.addCollection('rss', (collectionApi) => collectionApi.getFilteredByGlob(["src/posts/*.md", "src/projects/*.md"]));
+
   filtersMethods.forEach(([name, filter]) => {
     eleventyConfig.addFilter(name, filter)
   });
