@@ -1,3 +1,7 @@
 {
-  "layout": "layouts/page.njk"
+  "layout": "layouts/page.njk",
+  "sitemap": {
+    "changefreq": "monthly",
+    "priority": 0.6
+  }
 }

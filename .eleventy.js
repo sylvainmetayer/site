@@ -2,6 +2,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const emojiReadTime = require("@11tyrocks/eleventy-plugin-emoji-readtime");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
+const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 const markdownConfig = require('./src/11ty/utils/markdown');
 const browserSyncConfig = require('./src/11ty/utils/browsersync');
@@ -11,6 +12,7 @@ const filters = require('./src/11ty/filters');
 const filtersMethods = Object.entries(filters);
 
 const transforms = require('./src/11ty/transforms');
+const helpers = require('./src/_data/helpers');
 const transformsMethods = Object.entries(transforms);
 
 const passthroughItems = [
@@ -47,6 +49,11 @@ module.exports = function (eleventyConfig) {
     bucketSize: 3,
   });
   eleventyConfig.addPlugin(pluginRss);
+  eleventyConfig.addPlugin(sitemap, {
+    sitemap: {
+      hostname: helpers.url(),
+    },
+  });
 
   passthroughItems.forEach(item => {
     eleventyConfig.addPassthroughCopy(item);

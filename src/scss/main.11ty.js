@@ -22,7 +22,10 @@ module.exports = class {
     return {
       permalink: '/assets/css/main.css',
       rawFilepath: rawFilepath,
-      rawCss: rawCss
+      rawCss: rawCss,
+      sitemap: {
+        ignore: true
+      }
     }
   }
 
