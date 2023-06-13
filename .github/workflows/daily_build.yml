@@ -10,6 +10,7 @@ jobs:
 
     steps:
       - name: curl
-        uses: wei/curl@v1
+        uses: indiesdev/curl@v1.1
         with:
-          args: -X POST ${{ secrets.netlify_webhook }}
+          url: ${{ secrets.netlify_webhook }}
+          method: "POST"
