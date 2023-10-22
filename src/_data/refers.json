@@ -25,7 +25,7 @@
     },
     {
       "name": "YNAB",
-      "link": "https://ynab.com/referral/?ref=VwAQTIQCyScUVgYv&utm_source=customer_referral",
+      "link": "https://ynab.com/referral/?ref=VwAQTIQCyScUVgYv",
       "description": "Vous avez besoin d'un budget, permet de gérer efficacement et simplement son budget",
       "advantage": "1 mois gratuit supplémentaire si vous vous abonnez suite à l'essai de 34 jours pour découvrir le service"
     },
@@ -54,15 +54,9 @@
       "advantage": "3 mois de frais de gestion offerts"
     },
     {
-      "name": "Blablacar Daily",
-      "link": "https://open.blablalines.com/invite/TUMYMG",
-      "advantage": "10€ offert pour le premier trajet en tant que conducteur",
-      "description": "Le covoiturage du quotidien pour se rendre au travail"
-    },
-    {
-      "name": "SwiftDemand",
-      "link": "https://www.swiftdemand.com/?referred_by=sylvain_",
-      "description": "A Basic income attempt"
+      "name": "Horace",
+      "link": "https://hor.ac/sylva635",
+      "description": ""
     }
   ]
 }
