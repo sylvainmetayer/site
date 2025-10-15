@@ -30,7 +30,7 @@
     "@rollup/plugin-node-resolve": "^15.1.0",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^8.2.0",
-    "cross-env": "^7.0.3",
+    "cross-env": "^10.0.0",
     "eleventy-plugin-toc": "^1.1.5",
     "html-minifier": "^4.0.0",
     "html-validate": "^8.0.5",
