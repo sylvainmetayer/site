@@ -9,7 +9,7 @@ permalink: '/feed.xml'
   <link href="{{ helpers.url() }}{{ permalink }}" rel="self"/>
   <link href="{{ helpers.url() }}/"/>
   {% if collections.posts | length %}
-    <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
+    <updated>{{ collections.posts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   {% endif %}
   <id>{{ helpers.url() }}</id>
   <author>
@@ -21,7 +21,7 @@ permalink: '/feed.xml'
     <entry>
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}"/>
-      <updated>{{ post.date | rssDate }}</updated>
+      <updated>{{ post.date | dateToRfc3339 }}</updated>
       <id>{{ absolutePostUrl }}</id>
       <content type="html">
         <![CDATA[
