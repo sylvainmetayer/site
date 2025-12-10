@@ -1,4 +1,4 @@
-FROM node:22
+FROM node:24
 ADD . /app
 WORKDIR /app
 RUN npm ci
