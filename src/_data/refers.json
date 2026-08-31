@@ -1,12 +1,6 @@
 {
   "refers": [
     {
-      "name": "N26",
-      "link": "https://n26.com/r/sylvainm5653",
-      "description": "Banque en ligne",
-      "advantage": "15€ offert lors du premier usage de la carte"
-    },
-    {
       "name": "Boursorama",
       "link": "https://bour.so/efoRVtQUcM",
       "description": "Banque en ligne",
@@ -24,18 +18,6 @@
       "description": "2 mois Premium gratuits"
     },
     {
-      "name": "YNAB",
-      "link": "https://ynab.com/referral/?ref=VwAQTIQCyScUVgYv",
-      "description": "Vous avez besoin d'un budget, permet de gérer efficacement et simplement son budget",
-      "advantage": "1 mois gratuit supplémentaire si vous vous abonnez suite à l'essai de 34 jours pour découvrir le service"
-    },
-    {
-      "name": "Gandi",
-      "link": "https://gandi.link/f/3caebec8",
-      "description": "Gestion de nom de domaines et hébergement web/mails",
-      "advantage": "75% de réduction sur de l’hébergement Web et 20% sur un nom de domaine"
-    },
-    {
       "name": "GetAround",
       "link": "https://fr.getaround.com/r/2158064-543",
       "description": "Location de voitures entre particuliers",
@@ -46,12 +28,6 @@
       "link": "https://hetzner.cloud/?ref=TFczZp0mGQ5Z",
       "description": "Hébergement cloud",
       "advantage": "20€ de crédit offert lors de l'inscription"
-    },
-    {
-      "name": "Nalo",
-      "link": "https://nalo.fr/?idpa=2B557",
-      "description": "Assurance vie pilotée",
-      "advantage": "3 mois de frais de gestion offerts"
     },
     {
       "name": "Horace",
