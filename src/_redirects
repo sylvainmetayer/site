@@ -33,3 +33,5 @@
 /blog/jekyll-gem-svg-fontawesome/ /article/jekyll-gem-svg-fontawesome/
 /blog/ /articles/
 /projet/memoire-dut/ /article/memoire-dut/
+/parrainage https://ref.sylvain.dev/ 301
+/parrainage/* https://ref.sylvain.dev/ 301
