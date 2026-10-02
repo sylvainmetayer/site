@@ -17,7 +17,10 @@ for = "/*"
 
 [headers.values]
 Access-Control-Allow-Origin = 'https://cloudflareinsights.com'
-Content-Security-Policy = "default-src 'self'; connect-src 'self' https://cloudflareinsights.com; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'; object-src 'none';"
+# Sveltia CMS (/admin) needs: the GitHub API (connect-src), its icon fonts on jsDelivr (font-src),
+# blob: previews and worker, and GitHub avatars. A second rule for /admin/* is avoided on purpose:
+# Netlify would send both policies and the browser would enforce their intersection.
+Content-Security-Policy = "default-src 'self'; connect-src 'self' blob: https://cloudflareinsights.com https://api.github.com https://www.githubstatus.com; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: blob: https://www.netlify.com https://avatars.githubusercontent.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self' blob:; object-src 'none';"
 Referrer-Policy = "no-referrer-when-downgrade"
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 X-Content-Type-Options = "nosniff"

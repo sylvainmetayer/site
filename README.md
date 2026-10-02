@@ -4,50 +4,43 @@
 ![Github Eleventy Build](https://github.com/sylvainmetayer/site/workflows/Eleventy%20Build/badge.svg)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/eea326e0-9c5d-443f-a0e5-ba949add331a/deploy-status)](https://app.netlify.com/sites/wizardly-aryabhata-f4e800/deploys)
 
-> Sylvain METAYER
->
-> Based on a modified version of [Hylia theme](https://github.com/hankchizljaw/hylia)
+> Sylvain METAYER — [sylvain.dev](https://sylvain.dev)
+
+Site statique généré avec [Eleventy 3](https://www.11ty.dev/), design « Prompt » : une colonne de lecture, un thème terminal discret, sombre par défaut et clair selon le système (ou via le sélecteur de l'en-tête).
 
 ## Setup
 
-- `npm` is required
-
+- Node.js 22 (voir `.nvmrc`)
 - `npm ci`
+- `npm start` : serveur de développement sur <http://localhost:8080>
+- `npm run production` : build dans `dist/`
+- `npm run validate` : validation HTML du build
 
-- `npm start`
-
-## Setup (docker)
+### Docker
 
 - `docker-compose up -d`
 
-<details>
-  <summary>Travis configuration</summary>
-  If you want to use travis, you will have to generate the following variables with the [Travis CLI (ruby)](https://docs.travis-ci.com/user/encryption-keys/#usage):
+## Organisation
 
-- `travis login` to log in your travis account.
+| Dossier / fichier | Contenu |
+| --- | --- |
+| `src/posts/` | Articles (Markdown) |
+| `src/projets/` | Projets affichés sur `/projets/` et sur l'accueil (`featured: true`) |
+| `src/work/` | Expériences, affichées sur `/cv/` |
+| `src/_data/` | Données du site : `site.json`, `navigation.json`, `social.json`, `formations.json`, `certifications.json`, `skills.json` |
+| `src/_includes/css/site.css` | Toute la feuille de style (CSS natif, injectée dans chaque page) |
+| `src/_includes/layouts/` | Layouts Nunjucks |
+| `src/admin/config.yml` | Configuration de Sveltia CMS |
 
-- a private SSH key, to connect to the deploy server.
+Les polices (JetBrains Mono, IBM Plex Sans) et Sveltia CMS sont installés via npm et copiés dans `dist/` au build, pour respecter la CSP (`font-src 'self'`, `script-src 'self'`).
 
-  To do so, first generate a SSH key and run this command (replacing FILE with the **private** key) : `travis encrypt-file FILE --add`
+## Administration (Sveltia CMS)
 
-  The public key must be added to the user `authorized_keys` ssh config, on the remote host
+L'admin est disponible sur `/admin/`. [Sveltia CMS](https://github.com/sveltia/sveltia-cms) remplace Netlify/Decap CMS et utilise le backend GitHub (Git Gateway n'est pas supporté).
 
-  **Do not version the unencrypted ssh private key !!**
+Deux façons de se connecter :
 
-- `travis encrypt DEPLOY_USER=SOME_USER --add`
+- **Jeton d'accès** : bouton « Sign In Using Access Token », avec un fine-grained token GitHub limité au dépôt `sylvainmetayer/site` (permission *Contents: read & write*, plus *Pull requests: read & write* pour le workflow éditorial).
+- **OAuth GitHub via Netlify** : créer une OAuth App GitHub (callback `https://api.netlify.com/auth/done`), puis l'ajouter dans Netlify, *Site configuration > Access & security > OAuth > Install provider > GitHub*.
 
-  This is used to tell travis which user is used to connect to the remote server.
-
-- `travis encrypt DEPLOY_HOST=DOMAIN.FR --add`
-
-  This tells travis where your SSH server is located (can be an IP or a domain)
-
-- `travis encrypt DEPLOY_DIRECTORY_DEV=/var/www/dev.sylvainmetayer.fr --add`
-
-  This tells travis where to deploy your development application on the remote host.
-
-- `travis encrypt DEPLOY_DIRECTORY=SOME_REMOTE_PATH --add`
-
-  This tells travis where to deploy your application on the remote host.
-
-</details>
+En local, « Work with Local Repository » permet d'éditer directement les fichiers du dépôt cloné (Chrome/Edge).

@@ -1,34 +1,43 @@
 {% extends 'layouts/base.njk' %}
-
-{# Intro content #}
-{% set introHeading = title %}
-{% set introSummary %}
-  {{ content | safe }}
-{% endset %}
+{% from 'partials/macros.njk' import cmd, postList, projectCards %}
 
 {% block content %}
-  <main id="main-content" tabindex="-1">
-    {% include "partials/components/intro.njk" %}
+  <section class="hero" aria-labelledby="hero-title">
+    {{ cmd('whoami') }}
+    <h1 id="hero-title">{{ title }}</h1>
+    <div class="lead">{{ content | safe }}</div>
+    <ul class="links">
+      {% for link in social.links %}
+        <li><a href="{{ link.url }}" rel="me">{{ link.label }}</a></li>
+      {% endfor %}
+      <li><a href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a></li>
+    </ul>
+  </section>
 
-    {# Starred posts #}
-    {% set postListHeading = starHeading %}
-    {% set postListItems = collections.starFeed %}
-    {% if postListItems.length > 0 %}
-      {% include "partials/components/post-list.njk" %}
+  {% if collections.starFeed.length %}
+    <section class="section" aria-labelledby="starred-title">
+      {{ cmd('grep -l "star: true" articles/*') }}
+      <h2 id="starred-title">{{ starHeading }}</h2>
+      {{ postList(collections.starFeed) }}
+    </section>
+  {% endif %}
+
+  <section class="section" aria-labelledby="latest-title">
+    {{ cmd('ls -t articles/ | head -' + collections.postFeed.length) }}
+    <h2 id="latest-title">{{ postsHeading }}</h2>
+    {{ postList(collections.postFeed) }}
+    {% if collections.postFeed.length < collections.posts.length %}
+      <a class="more" href="/articles/">→ {{ archiveButtonText }} ({{ collections.posts.length }})</a>
     {% endif %}
+  </section>
 
-    {# Post list content #}
-    {% set postListHeading = postsHeading %}
-    {% set postListItems = collections.postFeed %}
-
-    {# Archive link #}
-    {% if postListItems.length < collections.posts.length %} 
-      {% set paginationNextText = archiveButtonText %}
-      {% set paginationNextUrl = '/articles' %}
-    {% endif %}
-    
-    {% include "partials/components/post-list.njk" %}
-    {% include "partials/components/pagination.njk" %}
-
-  </main>
+  {% set featured = collections.projets | withData('featured') %}
+  {% if featured.length %}
+    <section class="section" aria-labelledby="projects-title">
+      {{ cmd('ls projets/') }}
+      <h2 id="projects-title">{{ projectsHeading }}</h2>
+      {{ projectCards(featured) }}
+      <a class="more" href="/projets/">→ tous les projets ({{ collections.projets.length }})</a>
+    </section>
+  {% endif %}
 {% endblock %}

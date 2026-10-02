@@ -1,19 +1,16 @@
 {
   "items": [
     {
-      "text": "Articles",
-      "url": "/articles",
-      "external": false
+      "text": "articles/",
+      "url": "/articles/"
     },
     {
-      "text": "CV",
-      "url": "/uploads/CV.pdf",
-      "external": false
+      "text": "projets/",
+      "url": "/projets/"
     },
     {
-      "text": "GitHub",
-      "url": "https://github.com/sylvainmetayer",
-      "external": true
+      "text": "cv",
+      "url": "/cv/"
     }
   ]
 }

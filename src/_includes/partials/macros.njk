@@ -1,0 +1,42 @@
+{# Shared building blocks for the post list and project cards #}
+
+{% macro cmd(text) %}<p class="cmd"><span class="prompt">$</span> {{ text }}</p>{% endmacro %}
+
+{% macro postList(posts, showExcerpt = false) %}
+  <ol class="post-list" reversed>
+    {% for post in posts %}
+      <li class="post-row">
+        <time datetime="{{ post.date | w3DateFilter }}">{{ post.date | date('YYYY-MM-DD') }}</time>
+        <a href="{{ post.url }}" rel="bookmark">{{ post.data.title }}</a>
+        {% if showExcerpt and post.data.excerpt %}
+          <p class="excerpt">{{ post.data.excerpt }}</p>
+        {% endif %}
+        {% if post.data.tags %}
+          <span class="tags">{% for tag in post.data.tags %}#{{ tag }}{% if not loop.last %} {% endif %}{% endfor %}</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+{% endmacro %}
+
+{% macro projectCards(projects) %}
+  <div class="cards">
+    {% for project in projects %}
+      <article class="card">
+        <h3>{{ project.data.title }} <small>{{ project.data.year }}</small></h3>
+        <div class="desc">{{ project.templateContent | safe }}</div>
+        {% if project.data.stack %}
+          <ul class="chips">
+            {% for tech in project.data.stack %}<li>{{ tech }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+        {% if project.data.repo or project.data.article %}
+          <p class="actions">
+            {% if project.data.repo %}<a href="{{ project.data.repo }}">sources ↗</a>{% endif %}
+            {% if project.data.article %}<a href="{{ project.data.article }}">article →</a>{% endif %}
+          </p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+{% endmacro %}

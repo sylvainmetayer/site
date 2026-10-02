@@ -1,0 +1,75 @@
+---
+title: CV
+permalink: /cv/
+layout: layouts/base.njk
+metaTitle: CV · Sylvain Metayer
+metaDesc: "Parcours de Sylvain Metayer : expériences, formations, certifications et compétences."
+---
+{% from 'partials/macros.njk' import cmd %}
+<header class="cv-head">
+  <div>
+    {{ cmd('cat cv.md') }}
+    <h1>{{ site.authorName }}</h1>
+    <p class="role">{{ site.role }} · {{ site.location }} · <a href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a></p>
+  </div>
+  <a class="btn no-print" href="/uploads/CV.pdf">↓ cv.pdf</a>
+</header>
+
+<section class="section" aria-labelledby="xp-title">
+  <h2 id="xp-title">Expérience</h2>
+  <ol class="timeline">
+    {% for work in collections.work %}
+      <li{% if not work.data.end %} class="current"{% endif %}>
+        <span class="when">{{ work.data.start | date('YYYY-MM') }} → {% if work.data.end %}{{ work.data.end | date('YYYY-MM') }}{% else %}aujourd'hui{% endif %}</span>
+        <div>
+          <h3>{% if work.data.link %}<a href="{{ work.data.link }}">{{ work.data.title }}</a>{% else %}{{ work.data.title }}{% endif %}<small>{{ work.data.location }}</small></h3>
+          <div class="body">{{ work.templateContent | safe }}</div>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="section" aria-labelledby="edu-title">
+  <h2 id="edu-title">Formation</h2>
+  <ol class="timeline">
+    {% for formation in formations.formations | reverse %}
+      <li>
+        <span class="when">{% if formation.start %}{{ formation.start }} → {% endif %}{{ formation.end }}</span>
+        <div>
+          <h3>{% if formation.link %}<a href="{{ formation.link }}">{{ formation.title }}</a>{% else %}{{ formation.title }}{% endif %}<small>{{ formation.location }}</small></h3>
+          {% if formation.description %}<div class="body"><p>{{ formation.description }}</p></div>{% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="section" aria-labelledby="cert-title">
+  <h2 id="cert-title">Certifications</h2>
+  <ol class="timeline">
+    {% for cert in certifications.certifications | reverse %}
+      <li>
+        <span class="when">{{ cert.date | date('YYYY-MM') }}</span>
+        <div>
+          <h3>{% if cert.link %}<a href="{{ cert.link }}">{{ cert.title }}</a>{% else %}{{ cert.title }}{% endif %}</h3>
+          {% if cert.description %}<div class="body"><p>{{ cert.description }}</p></div>{% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="section" aria-labelledby="skills-title">
+  <h2 id="skills-title">Compétences</h2>
+  <ul class="chips">
+    {% for skill in skills.skills %}<li>{{ skill }}</li>{% endfor %}
+  </ul>
+</section>
+
+<section class="section no-print" aria-labelledby="links-title">
+  <h2 id="links-title">Ailleurs</h2>
+  <ul class="links">
+    {% for link in social.links %}<li><a href="{{ link.url }}">{{ link.label }}</a></li>{% endfor %}
+  </ul>
+</section>

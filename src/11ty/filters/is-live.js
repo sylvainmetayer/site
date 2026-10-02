@@ -1,4 +1,4 @@
-module.exports = (post) => {
+export default () => {
   const now = new Date();
-  return post => post.date <= now && !post.data.draft
+  return post => post.date <= now && !post.data.draft;
 };
