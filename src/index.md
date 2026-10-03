@@ -1,13 +1,13 @@
 ---
 layout: layouts/home.njk
-title: Bonjour !
+title: Sylvain Metayer
+metaTitle: Sylvain Metayer · développeur backend & DevOps
 postsHeading: Derniers articles
 starHeading: Articles mis en avant
-archiveButtonText: Voir tous les articles
-metaDesc: "Développeur web au sein de onepoint à Bordeaux"
+projectsHeading: Projets
+archiveButtonText: voir tous les articles
+metaDesc: "Développeur chez onepoint à Bordeaux : backend, DevOps, CI et infrastructure."
 socialImage: ''
 ---
 
-Développeur web au sein de onepoint à Bordeaux, j'aime tout ce qui touche aux sujets backend, DevOps, CI et infrastructure.
-
-Vous pouvez me contacter sur [Twitter](https://twitter.com/sylvain_metayer), [LinkedIn](https://www.linkedin.com/in/sylvainmetayer/), [DevTo](https://dev.to/sylvainmetayer), [Github](https://github.com/sylvainmetayer) ou par [mail](mailto:{{site.authorEmail}})
+Développeur chez onepoint à Bordeaux, j'aime tout ce qui touche au backend, au DevOps, à la CI et à l'infrastructure.

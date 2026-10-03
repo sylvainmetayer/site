@@ -1,74 +1,58 @@
 {% extends 'layouts/base.njk' %}
+{% from 'partials/macros.njk' import cmd %}
 
 {% block extraMeta %}
-  <meta property="og:type" content="article"/>
-  <meta property="article:published_time" content="{{ date | date('') }}"/>
-  {% if tags | length > 0%}
-    <meta property="article:tag" content="{{ tags | join(' ') }}"/>
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="{{ date | w3DateFilter }}">
+  {% if tags | length > 0 %}
+    <meta property="article:tag" content="{{ tags | join(' ') }}">
   {% endif %}
 {% endblock %}
 
-{# Intro content #}
-{% set introHeading = title %}
-{% set introSummary %}
-<p class="[ intro__meta ] [ text-500 leading-tight ]">
-  {% if date %}
-    <time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date }}</time>
-  {% endif %}
-  {% set readingTime = helpers.getReadingTime(content) %}
-  <span>— Temps de lecture: {{ readingTime }} minute{% if readingTime > 1 %}s{% endif %}
-  </span>
-</p>
-{% endset %}
-
 {% block content %}
-  <main id="main-content" tabindex="-1">
-    <article class="[ post ] [ h-entry ]">
-      {% include "partials/components/intro.njk" %}
-      {% set tocContent = content | toc %}
-      {% if tocContent != '<nav class="toc"></nav>' and not noToc %}
-        <aside class="[ post__toc ] [ inner-wrapper ] [ pad-bottom-200 pad-top-900 text-600 ]">
-          <p>Sommaire</p>
-          {{ tocContent | safe }}
-        </aside>
-      {% endif %}
-      <div class="[ post__body ] [ inner-wrapper ] [ leading-loose pad-top-900 {{ 'pad-bottom-900' if not site.enableThirdPartyComments }} text-500 ] [ sf-flow ] [ e-content ]">
-        {{ content | safe }}
-      </div>
-      {% if site.enableThirdPartyComments %}
-        <hr/>
-        <aside class="[ post__body ] [ inner-wrapper ] [ pad-bottom-900 text-500 ]">
-          {% include "partials/global/third-party-comments.njk" %}
-        </aside>
-      {% endif %}
-      <hr/>
-      {% if tags %}
-        <footer class="[ post__footer ] [ pad-top-500 pad-bottom-500 ]">
-          <div class="inner-wrapper">
-            <div class="[ nav ] [ box-flex align-center ]">
-              <h2 class="font-base text-600 weight-mid">Tags</h2>
-              <ul class="[ nav__list ] [ box-flex align-center pad-left-400 ] [ p-category ]">
-                {% for item in tags %}
-                  <li class="nav__item">
-                    <a href="/tags/{{ item }}">{{ item }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </footer>
-      {% endif %}
-    </article>
-    {% set nextPost = collections.posts | getPreviousCollectionItem(page) %}
-    {% set previousPost = collections.posts | getNextCollectionItem(page) %}
-    {% if previousPost %}
-      {% set paginationPrevUrl = previousPost.url %}
+  {% set readingTime = helpers.getReadingTime(content) %}
+  <article class="post h-entry" aria-labelledby="post-title">
+    <header class="post-head">
+      <p class="cmd">~/articles/{{ page.fileSlug }}.md</p>
+      <h1 id="post-title" class="p-name">{{ title }}</h1>
+      <ul class="meta">
+        <li><time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date('YYYY-MM-DD') }}</time></li>
+        <li>{{ readingTime }} min de lecture</li>
+        {% for tag in tags %}
+          <li><a href="/tags/{{ tag }}/" class="p-category">#{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    </header>
+
+    {% set tocContent = content | toc %}
+    {% if tocContent and ('<li' in tocContent) and not noToc %}
+      <aside class="toc" aria-label="Sommaire">
+        <p class="cmd"><span class="prompt">$</span> grep "^##" {{ page.fileSlug }}.md</p>
+        {{ tocContent | safe }}
+      </aside>
     {% endif %}
 
-    {% if nextPost %}
-      {% set paginationNextUrl = nextPost.url %}
-    {% endif %}
+    <div class="prose e-content">
+      {{ content | safe }}
+    </div>
 
-    {% include "partials/components/pagination.njk" %}
-  </main>
+    {% if tags %}
+      <ul class="post-tags">
+        {% for tag in tags %}<li><a href="/tags/{{ tag }}/">#{{ tag }}</a></li>{% endfor %}
+      </ul>
+    {% endif %}
+  </article>
+
+  {% set newer = collections.posts | getPreviousCollectionItem(page) %}
+  {% set older = collections.posts | getNextCollectionItem(page) %}
+  {% if newer or older %}
+    <nav class="post-nav" aria-label="Articles voisins">
+      {% if older %}
+        <a href="{{ older.url }}" class="prev" rel="prev"><span>← précédent</span>{{ older.data.title }}</a>
+      {% endif %}
+      {% if newer %}
+        <a href="{{ newer.url }}" class="next" rel="next"><span>suivant →</span>{{ newer.data.title }}</a>
+      {% endif %}
+    </nav>
+  {% endif %}
 {% endblock %}

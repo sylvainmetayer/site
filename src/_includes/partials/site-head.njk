@@ -1,0 +1,23 @@
+<a class="skip-link" href="#main-content">Aller au contenu</a>
+<header class="site-head">
+  <div class="wrap">
+    <a href="/" class="brand"{% if page.url == '/' %} aria-current="page"{% endif %}>
+      <span>~/sylvain.dev</span><span class="prompt" aria-hidden="true">$</span><span class="cursor" aria-hidden="true"></span>
+      <span class="visually-hidden">: accueil</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+        {% for item in navigation.items %}
+          {% set isCurrent = page.url == item.url or (item.url != '/' and page.url.startsWith(item.url)) or (item.url == '/articles/' and (page.url.startsWith('/article/') or page.url.startsWith('/tags/'))) %}
+          <li><a href="{{ item.url }}"{% if isCurrent %} aria-current="page"{% endif %}>{{ item.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <fieldset class="theme-switch" data-theme-switch hidden>
+      <legend class="visually-hidden">Thème</legend>
+      <button type="button" data-theme-value="auto" aria-pressed="true">auto</button>
+      <button type="button" data-theme-value="dark" aria-pressed="false">sombre</button>
+      <button type="button" data-theme-value="light" aria-pressed="false">clair</button>
+    </fieldset>
+  </div>
+</header>

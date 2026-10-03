@@ -1,16 +1,16 @@
 {
   "displayWipWarning": false,
-  "showThemeCredit": true,
   "displayDevWarning": false,
   "name": "Sylvain",
-  "shortDesc": "Développeur web à Bordeaux",
-  "url": "https://sylvain.dev",
+  "shortDesc": "Développeur backend & DevOps à Bordeaux",
+  "url": "https://www.sylvain.dev",
   "authorEmail": "bonjour@sylvain.dev",
   "authorHandle": "@sylvain_metayer",
   "authorName": "Sylvain METAYER",
-  "enableThirdPartyComments": false,
-  "paymentPointer": " ",
   "faviconPath": "/images/favicon.png",
   "locale": "fr",
-  "maxPostsPerPage": 5
+  "maxPostsPerPage": 5,
+  "role": "Développeur backend & DevOps",
+  "location": "Bordeaux",
+  "cfBeaconToken": "b127465eed91464f811fad719b0c0cb7"
 }
