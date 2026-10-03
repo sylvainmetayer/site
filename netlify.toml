@@ -1,0 +1,17 @@
+# Transition uniquement : sylvain.dev est servi par Netlify jusqu'à la bascule
+# de l'apex vers Cloudflare Pages (homelab, tofu/site/README.md). À supprimer
+# avec le site Netlify. En-têtes et redirections viennent de src/_headers et
+# src/_redirects, lus par Netlify comme par Pages.
+[build]
+command = "npm run production"
+ignore = "git log -1 --pretty=%B | grep depfu"
+publish = "dist"
+
+[context.production]
+environment = {ELEVENTY_ENV = "production"}
+
+[context.deploy-preview]
+environment = {ELEVENTY_ENV = "preview"}
+
+[context.branch-deploy]
+environment = {ELEVENTY_ENV = "branch"}

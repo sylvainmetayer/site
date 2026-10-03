@@ -18,9 +18,9 @@ export default {
       return "https://www.sylvain.dev";
     }
 
-    // Cloudflare Pages preview URL (<hash>.<project>.pages.dev)
-    if (process.env.CF_PAGES_URL) {
-      return process.env.CF_PAGES_URL;
+    // Preview URL: Cloudflare Pages (<hash>.<project>.pages.dev), or Netlify during the transition
+    if (process.env.CF_PAGES_URL || process.env.DEPLOY_PRIME_URL) {
+      return process.env.CF_PAGES_URL || process.env.DEPLOY_PRIME_URL;
     }
 
     return "http://localhost:8080";
