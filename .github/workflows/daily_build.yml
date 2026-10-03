@@ -1,16 +1,23 @@
-name: Daily Build - Triggers Netlify
+name: Daily Build - Triggers Cloudflare Pages
 
+# Reconstruit le site chaque matin : publication des articles programmés et
+# date de dernière construction. Le secret est posé par homelab (tofu/site).
 on:
   schedule:
     - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: curl
-        uses: indiesdev/curl@v1.1
-        with:
-          url: ${{ secrets.netlify_webhook }}
-          method: "POST"
+      - name: Trigger Cloudflare Pages deploy hook
+        env:
+          DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "::warning::Secret CLOUDFLARE_PAGES_DEPLOY_HOOK absent, rien à déclencher"
+            exit 0
+          fi
+          curl --fail --silent --show-error -X POST "$DEPLOY_HOOK"

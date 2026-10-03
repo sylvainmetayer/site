@@ -3,7 +3,7 @@
   "displayDevWarning": false,
   "name": "Sylvain",
   "shortDesc": "Développeur backend & DevOps à Bordeaux",
-  "url": "https://sylvain.dev",
+  "url": "https://www.sylvain.dev",
   "authorEmail": "bonjour@sylvain.dev",
   "authorHandle": "@sylvain_metayer",
   "authorName": "Sylvain METAYER",
@@ -11,5 +11,6 @@
   "locale": "fr",
   "maxPostsPerPage": 5,
   "role": "Développeur backend & DevOps",
-  "location": "Bordeaux"
+  "location": "Bordeaux",
+  "cfBeaconToken": "b127465eed91464f811fad719b0c0cb7"
 }

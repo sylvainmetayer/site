@@ -1,37 +1,72 @@
-/blog/l-effet-parthenay/ /article/l-effet-parthenay/
-/formations/ /cv/
-/experiences/ /cv/
-/assets/CV.pdf /uploads/CV.pdf
-/Assets/cv.pdf /uploads/CV.pdf
-/ecole/bataille-navale/ /article/projets-dut-info/#bataille-navale
-/ecole/betisier/ /article/projets-dut-info/#betisier-de-l%E2%80%99iut
-/ecole/pygame/ /article/projets-dut-info/#pygame
-/ecole/gemao/ /article/projets-dut-info/#gemao
-/ecole/memoire-dut/ /article/memoire-dut/
-/ecole/macbernik/ /article/projets-dawin/#macbernick
-/ecole/agent-ready/ /article/projets-dawin/#agent-ready
-/ecole/tetris/ /article/projets-dawin/#tetris
-/ecole/semaine-innnovante/ /article/projets-dawin/#semaine-innovante
-/ecole/machine-learning/ /article/projets-epsi/#machine-learning
-/ecole/telegram-bot/ /article/projets-epsi/#bot-telegram
-/ecole/expert-system/ /article/projets-epsi/#syst%C3%A8me-expert
-/ecole/pong/ /article/projets-epsi/#pong
-/ecole/ar-cube/ /article/projets-epsi/#ar-cube
-/ecole/earthquake/ /article/projets-epsi/#earthquake
-/ecole/open-innovation/ /article/projets-epsi/#open-innovation
-/entreprise/carto-gdpr/ /article/cartographie-gdpr/
-/projet/tbm-interruption/ /article/tbm-interruption/
-/projet/ansible/ /article/ansible/
-/projet/latex-starterkit/ /article/latex-starterkit/
-/projet/jekyll-gem-svg-fontawesome/ /article/jekyll-gem-svg-fontawesome/
-/projet/email-alias-manager/ /article/email-alias-manager/
-/blog/nuit-info/ /article/nuit-info/
-/blog/site-personnel-v2/ /article/site-personnel-v2/
-/blog/ajout-commentaires/ /article/ajout-commentaires/
-/blog/memoire/ /article/memoire/
-/blog/suivi-memoire/ /article/suivi-memoire/
-/blog/jekyll-gem-svg-fontawesome/ /article/jekyll-gem-svg-fontawesome/
-/blog/ /articles/
-/projet/memoire-dut/ /article/memoire-dut/
+# Cloudflare Pages : statut explicite, le défaut est 302 (301 sur Netlify).
+# Pas de normalisation du slash final non plus : chaque source avec slash a sa variante sans.
+/blog/l-effet-parthenay/ /article/l-effet-parthenay/ 301
+/blog/l-effet-parthenay /article/l-effet-parthenay/ 301
+/formations/ /cv/ 301
+/formations /cv/ 301
+/experiences/ /cv/ 301
+/experiences /cv/ 301
+/assets/CV.pdf /uploads/CV.pdf 301
+/Assets/cv.pdf /uploads/CV.pdf 301
+/ecole/bataille-navale/ /article/projets-dut-info/#bataille-navale 301
+/ecole/bataille-navale /article/projets-dut-info/#bataille-navale 301
+/ecole/betisier/ /article/projets-dut-info/#betisier-de-l%E2%80%99iut 301
+/ecole/betisier /article/projets-dut-info/#betisier-de-l%E2%80%99iut 301
+/ecole/pygame/ /article/projets-dut-info/#pygame 301
+/ecole/pygame /article/projets-dut-info/#pygame 301
+/ecole/gemao/ /article/projets-dut-info/#gemao 301
+/ecole/gemao /article/projets-dut-info/#gemao 301
+/ecole/memoire-dut/ /article/memoire-dut/ 301
+/ecole/memoire-dut /article/memoire-dut/ 301
+/ecole/macbernik/ /article/projets-dawin/#macbernick 301
+/ecole/macbernik /article/projets-dawin/#macbernick 301
+/ecole/agent-ready/ /article/projets-dawin/#agent-ready 301
+/ecole/agent-ready /article/projets-dawin/#agent-ready 301
+/ecole/tetris/ /article/projets-dawin/#tetris 301
+/ecole/tetris /article/projets-dawin/#tetris 301
+/ecole/semaine-innnovante/ /article/projets-dawin/#semaine-innovante 301
+/ecole/semaine-innnovante /article/projets-dawin/#semaine-innovante 301
+/ecole/machine-learning/ /article/projets-epsi/#machine-learning 301
+/ecole/machine-learning /article/projets-epsi/#machine-learning 301
+/ecole/telegram-bot/ /article/projets-epsi/#bot-telegram 301
+/ecole/telegram-bot /article/projets-epsi/#bot-telegram 301
+/ecole/expert-system/ /article/projets-epsi/#syst%C3%A8me-expert 301
+/ecole/expert-system /article/projets-epsi/#syst%C3%A8me-expert 301
+/ecole/pong/ /article/projets-epsi/#pong 301
+/ecole/pong /article/projets-epsi/#pong 301
+/ecole/ar-cube/ /article/projets-epsi/#ar-cube 301
+/ecole/ar-cube /article/projets-epsi/#ar-cube 301
+/ecole/earthquake/ /article/projets-epsi/#earthquake 301
+/ecole/earthquake /article/projets-epsi/#earthquake 301
+/ecole/open-innovation/ /article/projets-epsi/#open-innovation 301
+/ecole/open-innovation /article/projets-epsi/#open-innovation 301
+/entreprise/carto-gdpr/ /article/cartographie-gdpr/ 301
+/entreprise/carto-gdpr /article/cartographie-gdpr/ 301
+/projet/tbm-interruption/ /article/tbm-interruption/ 301
+/projet/tbm-interruption /article/tbm-interruption/ 301
+/projet/ansible/ /article/ansible/ 301
+/projet/ansible /article/ansible/ 301
+/projet/latex-starterkit/ /article/latex-starterkit/ 301
+/projet/latex-starterkit /article/latex-starterkit/ 301
+/projet/jekyll-gem-svg-fontawesome/ /article/jekyll-gem-svg-fontawesome/ 301
+/projet/jekyll-gem-svg-fontawesome /article/jekyll-gem-svg-fontawesome/ 301
+/projet/email-alias-manager/ /article/email-alias-manager/ 301
+/projet/email-alias-manager /article/email-alias-manager/ 301
+/blog/nuit-info/ /article/nuit-info/ 301
+/blog/nuit-info /article/nuit-info/ 301
+/blog/site-personnel-v2/ /article/site-personnel-v2/ 301
+/blog/site-personnel-v2 /article/site-personnel-v2/ 301
+/blog/ajout-commentaires/ /article/ajout-commentaires/ 301
+/blog/ajout-commentaires /article/ajout-commentaires/ 301
+/blog/memoire/ /article/memoire/ 301
+/blog/memoire /article/memoire/ 301
+/blog/suivi-memoire/ /article/suivi-memoire/ 301
+/blog/suivi-memoire /article/suivi-memoire/ 301
+/blog/jekyll-gem-svg-fontawesome/ /article/jekyll-gem-svg-fontawesome/ 301
+/blog/jekyll-gem-svg-fontawesome /article/jekyll-gem-svg-fontawesome/ 301
+/blog/ /articles/ 301
+/blog /articles/ 301
+/projet/memoire-dut/ /article/memoire-dut/ 301
+/projet/memoire-dut /article/memoire-dut/ 301
 /parrainage https://ref.sylvain.dev/ 301
 /parrainage/* https://ref.sylvain.dev/ 301

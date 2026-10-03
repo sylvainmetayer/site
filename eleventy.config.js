@@ -9,6 +9,7 @@ import site from './src/_data/site.json' with { type: 'json' };
 
 const passthroughItems = {
   'src/_redirects': '_redirects',
+  'src/_headers': '_headers',
   'src/images': 'images',
   'src/js': 'js',
   'src/uploads': 'uploads',

@@ -37,8 +37,9 @@
 
     {% include "partials/site-foot.njk" %}
     <script src="/js/register-service-worker.js" async defer></script>
-    <!-- Cloudflare Web Analytics -->
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b127465eed91464f811fad719b0c0cb7"}'></script>
-    <!-- End Cloudflare Web Analytics -->
+    {% if site.cfBeaconToken and global.environment == 'production' %}
+      {# Cloudflare Web Analytics: sylvain.dev is not a Cloudflare zone, so the beacon is not injected automatically (homelab tofu/site) #}
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cfBeaconToken }}"}'></script>
+    {% endif %}
   </body>
 </html>

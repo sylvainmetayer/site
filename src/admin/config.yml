@@ -1,15 +1,14 @@
 # Sveltia CMS — https://github.com/sveltia/sveltia-cms
-# Reprend la configuration Decap/Netlify CMS. Git Gateway n'étant pas supporté,
-# l'authentification passe par le backend GitHub (OAuth via Netlify, ou jeton d'accès).
+# Connexion : "Sign In Using Access Token" avec un fine-grained PAT GitHub
+# limité à ce dépôt (Contents et Pull requests : Read and write), comme ref.sylvain.dev.
 backend:
   name: github
   repo: sylvainmetayer/site
   branch: main
-  # base_url par défaut : https://api.netlify.com (fournisseur OAuth GitHub à activer côté Netlify)
 
 publish_mode: editorial_workflow
-site_url: https://sylvain.dev
-display_url: https://sylvain.dev
+site_url: https://www.sylvain.dev
+display_url: https://www.sylvain.dev
 logo_url: /images/icons/android-chrome-192x192.png
 media_folder: src/images
 public_folder: /images

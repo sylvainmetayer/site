@@ -13,13 +13,14 @@ export default {
       return "http://localhost:8080";
     }
 
+    // Canonical host: Cloudflare Pages serves www, the apex redirects to it
     if (process.env.ELEVENTY_ENV === "production") {
-      return "https://sylvain.dev";
+      return "https://www.sylvain.dev";
     }
 
-    // Netlify deploy URL
-    if (process.env.DEPLOY_PRIME_URL) {
-      return process.env.DEPLOY_PRIME_URL;
+    // Cloudflare Pages preview URL (<hash>.<project>.pages.dev)
+    if (process.env.CF_PAGES_URL) {
+      return process.env.CF_PAGES_URL;
     }
 
     return "http://localhost:8080";

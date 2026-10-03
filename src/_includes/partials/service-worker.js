@@ -5,7 +5,6 @@ const CACHE_KEYS = {
 
 // URLS that we don’t want to end up in the cache
 const EXCLUDED_URLS = [
-  '.netlify',
   '/admin/',
   '/.11ty/'
 ];
@@ -28,7 +27,6 @@ const IGNORED_HOSTS = [
   'cloudflareinsights.com',
   // Sveltia CMS (admin) must always talk to the network
   'api.github.com',
-  'api.netlify.com',
   'www.githubstatus.com',
   'cdn.jsdelivr.net'
 ];
