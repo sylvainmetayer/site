@@ -8,7 +8,9 @@
     <nav class="nav" aria-label="Navigation principale">
       <ul>
         {% for item in navigation.items %}
-          {% set isCurrent = page.url == item.url or (item.url != '/' and page.url.startsWith(item.url)) or (item.url == '/articles/' and (page.url.startsWith('/article/') or page.url.startsWith('/tags/'))) %}
+          {# page.url is false for unpublished drafts (permalink: false), which are still rendered #}
+          {% set url = page.url or '' %}
+          {% set isCurrent = url == item.url or (item.url != '/' and url.startsWith(item.url)) or (item.url == '/articles/' and (url.startsWith('/article/') or url.startsWith('/tags/'))) %}
           <li><a href="{{ item.url }}"{% if isCurrent %} aria-current="page"{% endif %}>{{ item.text }}</a></li>
         {% endfor %}
       </ul>

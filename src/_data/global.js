@@ -12,6 +12,7 @@ export default {
     return `${segment()}-${segment()}-${segment()}`;
   },
   now: Date.now(),
-  environment: process.env.ELEVENTY_ENV ? process.env.ELEVENTY_ENV : 'production',
+  // Unset means a local or CI build: no analytics beacon, robots.txt disallows all.
+  environment: process.env.ELEVENTY_ENV || 'development',
   eleventyVersion: eleventyPackage.version
 };

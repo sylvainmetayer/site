@@ -42,7 +42,8 @@
     "start": "npm run serve",
     "serve": "cross-env ELEVENTY_ENV=development eleventy --serve",
     "production": "eleventy",
-    "validate": "html-validate \"dist/**/*.html\""
+    "validate": "html-validate \"dist/**/*.html\"",
+    "check:links": "node scripts/check-links.mjs dist"
   },
   "engines": {
     "node": ">=20"

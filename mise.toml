@@ -18,9 +18,9 @@ depends = ["install", "clean"]
 run = "ELEVENTY_ENV=production npm run production"
 
 [tasks.preview]
-description = "Émulateur Cloudflare Pages sur :8788 (avec _redirects et _headers)"
-depends = ["build"]
-run = "npx -y wrangler@4 pages dev dist --port 8788"
+description = "Émulateur Cloudflare Pages sur :8788 (avec _redirects et _headers), build de preview sans beacon"
+depends = ["install", "clean"]
+run = "ELEVENTY_ENV=preview npm run production && npx -y wrangler@4 pages dev dist --port 8788"
 
 [tasks.validate]
 description = "Validation HTML du build"

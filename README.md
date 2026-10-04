@@ -42,11 +42,14 @@ Les polices (JetBrains Mono, IBM Plex Sans) et Sveltia CMS sont installés via n
 L'infra est décrite dans le dépôt homelab (`tofu/site`, même modèle que ref.sylvain.dev) :
 
 - projet Pages `sylvain-dev`, build `npm run production`, sortie `dist`, Node lu depuis `.nvmrc` ;
-- `ELEVENTY_ENV` vaut `production` sur `main` et `preview` sur les autres branches (brouillons visibles en preview) ;
+- `ELEVENTY_ENV` est déduit de `CF_PAGES_BRANCH` dans `eleventy.config.js` : `production` sur `main`, `preview` ailleurs (brouillons visibles). Sans variable, le build est en `development` : pas de beacon, `robots.txt` interdit tout ;
 - domaine `www.sylvain.dev` (CNAME OVH vers `sylvain-dev.pages.dev`). Pages n'accepte pas un apex hors zone Cloudflare : `sylvain.dev` pointe vers Pangolin, qui redirige en 301 vers www en gardant le chemin ;
 - redirections dans `src/_redirects` (statut explicite, le défaut de Pages est 302), en-têtes et CSP dans `src/_headers` ;
-- build quotidien (articles programmés) : `.github/workflows/daily_build.yml` appelle le deploy hook Pages (secret `CLOUDFLARE_PAGES_DEPLOY_HOOK`, posé par homelab) ;
-- Web Analytics : jeton du beacon dans `src/_data/site.json` (`cfBeaconToken`, sortie `web_analytics_token` de `tofu/site`), injecté en production seulement.
+- build quotidien (articles programmés) : `.github/workflows/daily_build.yml` appelle le deploy hook Pages (secret `CLOUDFLARE_PAGES_DEPLOY_HOOK`, posé par homelab) et, tant qu'il existe, le webhook Netlify ; le job échoue si aucun n'est configuré ;
+- CI : build de production puis `npm run check:links` (liens internes, cibles de `_redirects`, URLs déjà publiées listées dans `scripts/published-urls.txt`). Ajouter une ligne à ce fichier pour chaque nouvelle page publiée ;
+- flux Atom : les `<id>` restent sur `https://sylvain.dev` (`feedIdBase`), pour que les lecteurs ne revoient pas tous les articles comme nouveaux ;
+- `src/service-worker-retired.js` : servi par Pangolin à la place de `/service-worker.js` sur l'apex, il désinstalle l'ancien service worker de l'époque Netlify ;
+- Web Analytics : jeton du beacon dans `src/_data/site.json` (`cfBeaconToken`). C'est celui du site Web Analytics existant, importé dans `tofu/site` pour garder l'historique (sortie `web_analytics_token`). Beacon injecté en production seulement.
 
 ## Administration (Sveltia CMS)
 

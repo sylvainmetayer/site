@@ -11,7 +11,8 @@ permalink: '/feed.xml'
   {% if collections.posts | length %}
     <updated>{{ collections.posts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   {% endif %}
-  <id>{{ helpers.url() }}</id>
+  {# Ids are permanent: they keep the apex used before the move to www, or readers would see every entry as new. #}
+  <id>{{ site.feedIdBase }}</id>
   <author>
     <name>{{ site.authorName }}</name>
     <email>{{ site.authorEmail }}</email>
@@ -22,7 +23,7 @@ permalink: '/feed.xml'
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}"/>
       <updated>{{ post.date | dateToRfc3339 }}</updated>
-      <id>{{ absolutePostUrl }}</id>
+      <id>{{ site.feedIdBase }}{{ post.url }}</id>
       <content type="html">
         <![CDATA[
       {{ post.templateContent | safe }}

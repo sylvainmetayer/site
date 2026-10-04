@@ -12,5 +12,6 @@
   "maxPostsPerPage": 5,
   "role": "Développeur backend & DevOps",
   "location": "Bordeaux",
-  "cfBeaconToken": "b127465eed91464f811fad719b0c0cb7"
+  "cfBeaconToken": "b127465eed91464f811fad719b0c0cb7",
+  "feedIdBase": "https://sylvain.dev"
 }

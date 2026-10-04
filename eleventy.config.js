@@ -7,9 +7,17 @@ import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
 import site from './src/_data/site.json' with { type: 'json' };
 
+// Cloudflare Pages builds: production on main, preview elsewhere. Set here rather
+// than as project env vars (homelab tofu/site), so the repository owns it.
+if (!process.env.ELEVENTY_ENV && process.env.CF_PAGES) {
+  process.env.ELEVENTY_ENV = process.env.CF_PAGES_BRANCH === 'main' ? 'production' : 'preview';
+}
+
 const passthroughItems = {
   'src/_redirects': '_redirects',
   'src/_headers': '_headers',
+  // Served on the old apex origin by Pangolin, see the file header.
+  'src/service-worker-retired.js': 'service-worker-retired.js',
   'src/images': 'images',
   'src/js': 'js',
   'src/uploads': 'uploads',
