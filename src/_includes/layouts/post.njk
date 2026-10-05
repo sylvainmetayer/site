@@ -4,6 +4,9 @@
 {% block extraMeta %}
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="{{ date | w3DateFilter }}">
+  {% if updated %}
+    <meta property="article:modified_time" content="{{ updated | w3DateFilter }}">
+  {% endif %}
   {% if tags | length > 0 %}
     <meta property="article:tag" content="{{ tags | join(' ') }}">
   {% endif %}
@@ -17,6 +20,9 @@
       <h1 id="post-title" class="p-name">{{ title }}</h1>
       <ul class="meta">
         <li><time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date('YYYY-MM-DD') }}</time></li>
+        {% if updated %}
+          <li>{{ 'post.updated' | t({ date: '<time datetime="' + (updated | w3DateFilter) + '" class="dt-updated">' + (updated | date('YYYY-MM-DD')) + '</time>' }) | safe }}</li>
+        {% endif %}
         <li>{{ 'post.readingTime' | t({ minutes: readingTime }) }}</li>
         {% for tag in tags %}
           <li><a href="/tags/{{ tag }}/" class="p-category">#{{ tag }}</a></li>
@@ -35,9 +41,11 @@
     {% if lang == 'fr' and not alternate %}
       <p class="post-notice" data-untranslated="en" lang="en" hidden>{{ 'post.untranslated' | t({ articles: '<a href="/en/articles/">' + ('post.untranslatedLink' | t({}, 'en')) + '</a>' }, 'en') | safe }}</p>
     {% endif %}
-    {# Rebuilt every morning (daily_build.yml), so the age stays current #}
-    {% if (global.now - page.date.getTime()) > 31557600000 %}
-      <p class="post-notice">{{ 'post.old' | t({ year: page.date | date('YYYY') }) }}</p>
+    {# Rebuilt every morning (daily_build.yml), so the age stays current.
+       A review (`updated`) restarts it: the content was checked again then. #}
+    {% set reviewed = updated or page.date %}
+    {% if (global.now - reviewed.getTime()) > 31557600000 %}
+      <p class="post-notice">{{ ('post.oldUpdated' if updated else 'post.old') | t({ year: reviewed | date('YYYY') }) }}</p>
     {% endif %}
 
     {% set tocContent = content | toc %}

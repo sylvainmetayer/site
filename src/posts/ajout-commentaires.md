@@ -70,7 +70,7 @@ sudo mkdir /etc/isso
 
 Il reste maintenant à configurer Isso. Mon cas d'usage est le suivant : je souhaite avoir deux sites, un pour l'environnement de développement, l'autre pour la production. Voici ma configuration (`/etc/isso/isso.cfg` et `/etc/isso/isso.prod.cfg`).
 
-La documentation du site isso ne semble pas à jour, pour des détails sur chaque paramètre, il est préférable de se référer à [la documentation présente sur Github](https://github.com/posativ/isso/blob/master/docs/docs/configuration/server.rst)
+Pour des détails sur chaque paramètre, se référer à [la documentation d'isso](https://isso-comments.de/docs/).
 
 ```ini
 [general]
@@ -234,9 +234,9 @@ Le script est chargé en asynchrone, afin de ne pas gêner le chargement de la p
 {% endraw %}
 ```
 
-Pour plus d'informations sur les paramètres disponibles côté client, [voir la documentation sur Github](https://github.com/posativ/isso/blob/master/docs/docs/configuration/client.rst).
+Pour plus d'informations sur les paramètres disponibles côté client, [voir la documentation d'isso](https://isso-comments.de/docs/).
 
-⚠ Lorsqu'un fil de commentaire est vide (ce qui est le cas lorsqu'un article ne contient pas encore de commentaire), isso répond avec une erreur HTTP 404, ce qui peut faire croire qu'une page est manquante ou invalide. [Une issue est ouverte sur le dépôt Github](https://github.com/posativ/isso/issues/301) pour renvoyer un code HTTP 204 (no content) à la place.
+⚠ Lorsqu'un fil de commentaire est vide (ce qui est le cas lorsqu'un article ne contient pas encore de commentaire), isso répond avec une erreur HTTP 404, ce qui peut faire croire qu'une page est manquante ou invalide. [Une issue est ouverte sur le dépôt Github](https://github.com/isso-comments/isso/issues/301) pour renvoyer un code HTTP 204 (no content) à la place.
 
 Et voici le résultat !
 
@@ -247,4 +247,4 @@ Et voici le résultat !
 > Edit 16.07.2020 : Les commentaires ne sont pour le moment plus disponibles. Migration vers Eleventy en cours, ils devraient être remplacés à l'aide des Webmentions d'ici les prochaines semaines/mois.
 
 [^1]: [Voici un site répertoriant plusieurs solutions existant](https://lisakov.com/projects/open-source-comments/)
-[^2]: [Ce tutoriel très similaire à cet article m'a été bien utile](https://blog.phusion.nl/2018/08/16/isso-simple-self-hosted-commenting-system/)
+[^2]: [Ce tutoriel très similaire à cet article m'a été bien utile](https://blog.phusion.nl/isso-simple-self-hosted-commenting-system/)

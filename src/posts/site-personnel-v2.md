@@ -16,7 +16,7 @@ Après quelques années d'existence, mon ancien site commençait à vieillir.
 
 ([Les sources de mon ancien site sont toujours disponibles sur Github](https://github.com/sylvainmetayer/sylvainmetayer-old), mais remontent à l'époque de mon DUT, soyez indulgents ! 😁)
 
-De plus, [le premier et unique article](/article/l-effet-parthenay) présent sur ce site n'était même pas hébergé sur ce site, mais sur un sous-domaine (désormais inexistant) et avec la plateforme [Ghost](https://ghost.org/fr/) (qui est un excellent logiciel libre au passage !).
+De plus, [le premier et unique article](/article/l-effet-parthenay) présent sur ce site n'était même pas hébergé sur ce site, mais sur un sous-domaine (désormais inexistant) et avec la plateforme [Ghost](https://ghost.org/) (qui est un excellent logiciel libre au passage !).
 
 Cela faisait donc deux sites à maintenir, pour un trafic plus que faible 😀 !
 
@@ -68,7 +68,7 @@ Néanmoins, cela a un inconvénient majeur à mon sens : la maîtrise des param�
 
 Au final, nous ne sommes jamais aussi bien servis que par soi-même, j'ai donc utilisé [Travis CI](https://travis-ci.org/) pour déployer le site généré sur mon petit [Raspberry](https://www.raspberrypi.org/) avec un Rsync : pas besoin de plus compliqué, cela me suffit amplement. Un serveur web devant, un certificat [Let's Encrypt](https://letsencrypt.org) et voilà !
 
-J'ai ainsi pu obtenir une note convenable, selon [l'observatoire Mozilla](https://observatory.mozilla.org/analyze/sylvainmetayer.fr) et [Cryptcheck](https://cryptcheck.fr/https/sylvainmetayer.fr). Il me reste néanmoins un peu de travail à faire sur les [CSP (Content Security Policy)](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP), ce concept n'est pas évident à appréhender 😣 !
+J'ai ainsi pu obtenir une note convenable, selon [l'observatoire Mozilla](https://developer.mozilla.org/fr/observatory/analyze?host=sylvain.dev) et [Cryptcheck](https://cryptcheck.fr/https/sylvain.dev). Il me reste néanmoins un peu de travail à faire sur les [CSP (Content Security Policy)](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP), ce concept n'est pas évident à appréhender 😣 !
 
 ### 5. SEO
 

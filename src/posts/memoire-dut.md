@@ -7,7 +7,7 @@ tags:
     - dut-info
 ---
 
-[Sources (Gitlab)](https://gitlab.com/ocyhc/memoire-dut-info/tree/master) [Voir le PDF](https://gitlab.com/ocyhc/memoire-dut-info/blob/master/main.pdf)
+<a href="https://gitlab.com/ocyhc/memoire-dut-info/tree/master" data-auth title="Accès réservé : nécessite un compte GitLab">Sources (Gitlab)</a> <a href="https://gitlab.com/ocyhc/memoire-dut-info/blob/master/main.pdf" data-auth title="Accès réservé : nécessite un compte GitLab">Voir le PDF</a>
 
 Ce mémoire détaille le travail réalisé durant mon stage au sein de [NextMedia](https://www.nextmedia.fr/), effectué d'avril à juillet 2016.
 
