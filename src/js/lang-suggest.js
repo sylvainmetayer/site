@@ -15,14 +15,9 @@
       .find(function (language) { return language === offered || language === current; });
   }
 
+  // Empty referrer (direct visit, Referrer-Policy): not from the English pages
   function comesFromEnglishPages() {
-    try {
-      var referrer = new URL(document.referrer);
-      return referrer.origin === location.origin && referrer.pathname.startsWith('/en/');
-    } catch (e) {
-      // No referrer (direct visit, Referrer-Policy): not from the English pages
-      return false;
-    }
+    return document.referrer.startsWith(location.origin + '/en/');
   }
 
   var untranslated = document.querySelector('[data-untranslated]');
