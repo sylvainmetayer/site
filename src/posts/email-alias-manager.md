@@ -19,7 +19,7 @@ devtoGuid: https://sylvainmetayer.fr/projet/email-alias-manager/
 
 Trop de spam ? Marre de donner son adresse email à chaque service ? Les alias mail sont là à la rescousse !
 
-Suite à une idée d'[Adrien Chinour](https://adrienchinour.me), j'ai décidé de créer à mon tour un petit gestionnaire d'alias pour mes adresses emails. L'objectif est de pouvoir générer rapidement des alias afin de ne pas donner sa véritable adresse email lors d'inscription sur des sites divers. Ainsi, si l'on constate que le site envoie un peu trop de mail à notre goût, que l'on n'utilise plus le service, ou que réussir à se désinscrire relève du parcours du combattant, on supprime l'alias, et plus de mails indésirables !
+Suite à une idée d'[Adrien Chinour](https://web.archive.org/web/20200814055750/https://adrienchinour.me/), j'ai décidé de créer à mon tour un petit gestionnaire d'alias pour mes adresses emails. L'objectif est de pouvoir générer rapidement des alias afin de ne pas donner sa véritable adresse email lors d'inscription sur des sites divers. Ainsi, si l'on constate que le site envoie un peu trop de mail à notre goût, que l'on n'utilise plus le service, ou que réussir à se désinscrire relève du parcours du combattant, on supprime l'alias, et plus de mails indésirables !
 
 Ayant mes domaines gérés par [Gandi](https://gandi.net), j'ai regardé comment interagir avec mes adresses emails pour créer des alias depuis leur [API](https://api.gandi.net/docs/).
 
@@ -41,7 +41,7 @@ Malheureusement, l'API v5 de Gandi est encore en beta et le fournisseur d'authen
 
 En attendant que cela soit disponible, j'ai laissé mon travail disponible sur une [branche dédiée](https://github.com/sylvainmetayer/alias-gandi-angular/tree/feature/oauth2).
 
-J'ai également ajouté un bouton de déploiement Netlify en un clic pour ceux souhaitant se servir de ce petit projet. Il faudra néanmoins générer sa propre clé d'[API depuis les paramètres de son compte Gandi](https://docs.gandi.net/fr/noms_domaine/utilisateurs_avances/api.html) et renseigner quelques variables d'environnement, décrites ci-dessous.
+J'ai également ajouté un bouton de déploiement Netlify en un clic pour ceux souhaitant se servir de ce petit projet. Il faudra néanmoins générer sa propre clé d'[API depuis les paramètres de son compte Gandi](https://web.archive.org/web/20200110154834/https://docs.gandi.net/fr/noms_domaine/utilisateurs_avances/api.html) et renseigner quelques variables d'environnement, décrites ci-dessous.
 
 |Paramètre|Description|
 |--|--|

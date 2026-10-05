@@ -36,7 +36,7 @@ Chaque personne ayant ses compétences, ses connaissances, ses responsabilités,
 
 Cette api va suffisamment loin pour empiéter largement sur une partie des services offerts par les _service mesh_ (dont le traffic splitting).
 
-[Replay](https://www.youtube.com/watch?v=zaLEpr0)
+<s class="dead-link" title="La vidéo du replay n'est plus disponible">Replay</s>
 
 ## Multi Kubernetes, Multi Régions, Au-secours !
 

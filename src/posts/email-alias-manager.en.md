@@ -16,7 +16,7 @@ noToc: false
 
 Too much spam? Tired of handing out your email address to every service? Email aliases to the rescue!
 
-Following an idea from [Adrien Chinour](https://adrienchinour.me), I decided to build my own small alias manager for my email addresses. The goal is to quickly generate aliases so you don't have to give out your real email address when signing up on random websites. That way, if a site sends a bit too much email for your taste, if you no longer use the service, or if unsubscribing turns into an obstacle course, you just delete the alias, and no more unwanted email!
+Following an idea from [Adrien Chinour](https://web.archive.org/web/20200814055750/https://adrienchinour.me/), I decided to build my own small alias manager for my email addresses. The goal is to quickly generate aliases so you don't have to give out your real email address when signing up on random websites. That way, if a site sends a bit too much email for your taste, if you no longer use the service, or if unsubscribing turns into an obstacle course, you just delete the alias, and no more unwanted email!
 
 Since my domains are managed by [Gandi](https://gandi.net), I looked into how to work with my email addresses and create aliases through their [API](https://api.gandi.net/docs/).
 
@@ -38,7 +38,7 @@ Unfortunately, Gandi's v5 API is still in beta and its authentication provider d
 
 Until that becomes available, I've left my work on a [dedicated branch](https://github.com/sylvainmetayer/alias-gandi-angular/tree/feature/oauth2).
 
-I also added a one-click Netlify deploy button for anyone who wants to use this small project. You will still need to generate your own [API key from your Gandi account settings](https://docs.gandi.net/fr/noms_domaine/utilisateurs_avances/api.html) and fill in a few environment variables, described below.
+I also added a one-click Netlify deploy button for anyone who wants to use this small project. You will still need to generate your own [API key from your Gandi account settings](https://web.archive.org/web/20200110154834/https://docs.gandi.net/fr/noms_domaine/utilisateurs_avances/api.html) and fill in a few environment variables, described below.
 
 |Parameter|Description|
 |--|--|

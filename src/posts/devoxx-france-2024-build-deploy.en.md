@@ -36,7 +36,7 @@ Each person has their own skills, knowledge, responsibilities, and _kind_.
 
 This API goes far enough to overlap significantly with some of the features offered by _service meshes_ (including traffic splitting).
 
-[Replay](https://www.youtube.com/watch?v=zaLEpr0)
+<s class="dead-link" title="The replay video is no longer available">Replay</s>
 
 ## Multi Kubernetes, Multi Régions, Au-secours ! (Multi Kubernetes, Multi Region, Help!)
 
