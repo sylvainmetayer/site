@@ -57,7 +57,13 @@ export default function (value, outputPath) {
           figure.appendChild(image.cloneNode(true));
           figure.appendChild(figCaption);
 
-          image.replaceWith(figure);
+          // Markdown wraps a lone image in <p>, which cannot hold a <figure>: replace the paragraph
+          const parent = image.parentNode;
+          if (parent.tagName === 'P' && parent.textContent.trim() === '' && parent.children.length === 1) {
+            parent.replaceWith(figure);
+          } else {
+            image.replaceWith(figure);
+          }
         }
       });
     }
@@ -76,6 +82,16 @@ export default function (value, outputPath) {
         }
       });
     }
+
+    // Code blocks and tables scroll horizontally: make them reachable with the keyboard
+    document.querySelectorAll('main pre, main .prose table').forEach(block => {
+      block.setAttribute('tabindex', '0');
+    });
+
+    // Header cells of Markdown tables head columns
+    document.querySelectorAll('main thead th:not([scope])').forEach(cell => {
+      cell.setAttribute('scope', 'col');
+    });
 
     return '<!DOCTYPE html>\r\n' + document.documentElement.outerHTML;
   }

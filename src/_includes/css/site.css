@@ -247,12 +247,27 @@ samp {
 }
 
 .brand {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   font: 600 0.95rem/1 var(--mono);
   color: var(--fg);
   text-decoration: none;
+}
+
+/* Invisible 44px-high hit areas for the header controls, without changing their look */
+.brand::after,
+.nav a::after,
+.theme-switch button::after {
+  content: "";
+  position: absolute;
+  inset: calc(50% - 22px) 0;
+}
+
+/* Short labels (cv) also get some width, within half of the 1rem gap */
+.nav a::after {
+  inset-inline: -0.5rem;
 }
 
 .brand .prompt {
@@ -274,6 +289,7 @@ samp {
 }
 
 .nav a {
+  position: relative;
   display: inline-block;
   padding-block: 0.3rem;
   color: var(--muted);
@@ -282,7 +298,7 @@ samp {
 }
 
 .nav a:hover,
-.nav a[aria-current="page"] {
+.nav a[aria-current] {
   color: var(--fg);
   border-bottom-color: var(--accent);
 }
@@ -297,6 +313,7 @@ samp {
 }
 
 .theme-switch button {
+  position: relative;
   padding: 0.3rem 0.4rem;
   border: 0;
   border-radius: 3px;
@@ -315,15 +332,85 @@ samp {
   color: var(--bg);
 }
 
+/* Forced colors drop backgrounds: keep the pressed state visible */
+@media (forced-colors: active) {
+  .theme-switch button[aria-pressed="true"] {
+    outline: 1px solid CanvasText;
+    text-decoration: underline;
+  }
+}
+
+/* Ctrl+K palette trigger */
+.palette-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: none;
+  color: var(--muted);
+  font: 400 0.75rem/1 var(--mono);
+  cursor: pointer;
+}
+
+.palette-trigger::after {
+  content: "";
+  position: absolute;
+  inset: calc(50% - 22px) 0;
+}
+
+.palette-trigger:hover {
+  border-color: var(--muted);
+  color: var(--fg);
+}
+
+.palette-trigger kbd {
+  font-size: 0.72rem;
+}
+
 @media (max-width: 38rem) {
+  /* Wrapped rows: keep the 44px hit areas from overlapping */
+  .site-head .wrap {
+    row-gap: 1.3rem;
+    padding-block: 0.75rem;
+  }
+
   .nav {
     order: 3;
-    width: 100%;
+    flex: 1 1 auto;
     margin-left: 0;
+  }
+
+  /* Icon only, at the end of the navigation row */
+  .palette-trigger {
+    order: 4;
+    padding: 0.35rem 0.55rem;
+  }
+
+  .palette-trigger::after {
+    inset-inline: -0.3rem;
+  }
+
+  .palette-trigger kbd {
+    display: none;
   }
 
   .theme-switch {
     margin-left: auto;
+  }
+}
+
+/* The navigation fills the row on the narrowest phones: the trigger joins the brand instead */
+@media (max-width: 22rem) {
+  .palette-trigger {
+    order: 1;
+    margin-left: auto;
+  }
+
+  .theme-switch {
+    order: 2;
   }
 }
 
@@ -386,6 +473,20 @@ samp {
   font-weight: 600;
 }
 
+.post-notice {
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--warn);
+  background: var(--surface);
+  color: var(--muted);
+  font: 400 0.85rem/1.5 var(--mono);
+}
+
+/* Stacked notices read as one block (.post already spaces its children) */
+.post-notice + .post-notice {
+  margin-top: -1.25rem;
+}
+
 /* ---------- Home hero ---------- */
 
 .hero h1 {
@@ -414,7 +515,16 @@ samp {
 }
 
 .links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   text-decoration: none;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 1.1em;
+  height: 1.1em;
 }
 
 .links a:hover {
@@ -512,7 +622,7 @@ samp {
   border-radius: var(--radius);
 }
 
-.card h3 {
+.card-title {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -522,7 +632,9 @@ samp {
   overflow-wrap: anywhere;
 }
 
-.card h3 small {
+.card-title small {
+  flex-shrink: 0;
+  white-space: nowrap;
   font-weight: 400;
   font-size: 0.78rem;
   color: var(--muted);
@@ -626,7 +738,13 @@ samp {
 }
 
 .toc li {
-  margin-block: 0.15rem;
+  margin-block: 0;
+}
+
+/* 24px high targets (WCAG 2.5.8) with the same rhythm as before */
+.toc a {
+  display: inline-block;
+  padding-block: 0.15rem;
 }
 
 .toc a {
@@ -646,6 +764,15 @@ samp {
 
 .prose > :first-child {
   margin-top: 0;
+}
+
+/* Running text stays around 75 characters per line; code, images and tables keep the full width
+   (browsers without :has() drop the rule and keep the wider column) */
+.prose p:not(:has(img, iframe)),
+.prose li,
+.prose blockquote,
+.prose .footnotes {
+  max-width: 35rem;
 }
 
 .prose p,
@@ -718,6 +845,8 @@ samp {
 
 .prose a[data-external]::after {
   content: "↗";
+  /* Decorative: not read by screen readers where alt text for content is supported */
+  content: "↗" / "";
   margin-left: 0.1em;
   font-size: 0.75em;
 }
@@ -732,6 +861,9 @@ samp {
   border: 1px solid var(--line);
   border-radius: 3px;
   font-size: 0.88em;
+  /* Each line of a wrapped snippet keeps its own box */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .prose pre {
@@ -829,6 +961,15 @@ samp {
   margin: 2rem 0 1rem;
 }
 
+/* Larger target for the small ↩ back link (WCAG 2.5.8) */
+.footnote-backref {
+  display: inline-block;
+  min-width: 24px;
+  min-height: 24px;
+  text-align: center;
+  text-decoration: none;
+}
+
 .post-tags {
   display: flex;
   flex-wrap: wrap;
@@ -887,6 +1028,24 @@ samp {
   .post-nav .next {
     grid-column: 1;
     text-align: left;
+  }
+}
+
+@media (max-width: 34rem) {
+  /* Less indentation, so nested code blocks and quotes keep a usable width */
+  .prose ul,
+  .prose ol {
+    padding-left: 1.4rem;
+  }
+
+  /* Two-column tables fit a phone instead of scrolling sideways */
+  .prose th,
+  .prose td {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .prose td code {
+    overflow-wrap: anywhere;
   }
 }
 
@@ -1008,9 +1167,10 @@ samp {
   font-weight: 600;
 }
 
+/* Underlined: a linked title must not look like plain text (RGAA 10.6) */
 .timeline h3 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration-color: var(--muted);
 }
 
 .timeline h3 a:hover {
@@ -1048,6 +1208,225 @@ samp {
   }
 }
 
+/* Successive roles inside one experience */
+.roles {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roles > li + li {
+  margin-top: 0.6rem;
+}
+
+.role-head {
+  margin: 0;
+  font-size: 0.93rem;
+}
+
+.role-when {
+  margin-left: 0.3rem;
+  font: 400 0.78rem var(--mono);
+  color: var(--muted);
+}
+
+.role-positions {
+  margin: 0.1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.roles ul {
+  margin: 0.2rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.93rem;
+  color: var(--muted);
+}
+
+.skill-groups {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 0.6rem 1.1rem;
+  margin: 0;
+}
+
+.skill-groups dt {
+  font: 400 0.78rem/2 var(--mono);
+  color: var(--muted);
+}
+
+.skill-groups dd {
+  margin: 0;
+}
+
+.skill-groups .chips {
+  padding: 0;
+}
+
+.interests {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+}
+
+.interests li + li {
+  margin-top: 0.3rem;
+}
+
+.interests strong {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+@media (max-width: 34rem) {
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Ctrl+K palette ---------- */
+
+.palette {
+  width: min(38rem, calc(100% - 2rem));
+  max-width: none;
+  max-height: none;
+  margin: 12vh auto auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 0.35);
+}
+
+.palette::backdrop {
+  background: rgb(5 10 16 / 0.6);
+}
+
+.palette-box {
+  display: flex;
+  flex-direction: column;
+  max-height: min(32rem, 76vh);
+}
+
+.palette-field {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--line);
+  font: 400 0.95rem/1.4 var(--mono);
+}
+
+.palette-prompt {
+  flex-shrink: 0;
+  color: var(--ok);
+}
+
+.palette-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--fg);
+  font: inherit;
+}
+
+.palette-input:focus {
+  outline: none;
+}
+
+.palette-input::placeholder {
+  color: var(--muted);
+}
+
+/* The field shows the focus, since the input itself has no outline */
+.palette-field:focus-within {
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.palette-list {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 0.4rem;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.palette-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.palette-option[aria-selected="true"] {
+  background: var(--bg);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.palette-option-title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.palette-option[aria-selected="true"] .palette-option-title {
+  color: var(--accent);
+}
+
+.palette-option-meta {
+  flex-shrink: 0;
+  font: 400 0.75rem var(--mono);
+  color: var(--muted);
+}
+
+.palette-status:empty {
+  display: none;
+}
+
+.palette-status,
+.palette-help {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--line);
+  font: 400 0.72rem/1.4 var(--mono);
+  color: var(--muted);
+}
+
+.palette-help kbd {
+  padding: 0 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+
+@media (max-width: 34rem) {
+  .palette {
+    margin-top: 1rem;
+  }
+
+  .palette-option {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  /* Touch screens have no arrows or Escape key */
+  .palette-help {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .palette-option[aria-selected="true"] {
+    outline: 2px solid Highlight;
+  }
+}
+
 /* ---------- Footer ---------- */
 
 .site-foot {
@@ -1082,6 +1461,36 @@ samp {
   text-decoration: none;
 }
 
+.site-foot a .icon {
+  margin-right: 0.35rem;
+  vertical-align: -0.2em;
+}
+
+/* Icon-only links: a square hit area, the label is read by screen readers */
+.site-foot-social a {
+  padding-inline: 0.35rem;
+}
+
+.site-foot-social a .icon {
+  margin-right: 0;
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.site-foot-social a:hover {
+  color: var(--accent);
+}
+
+/* Taller hit areas for the footer links, same layout */
+.site-foot ul {
+  margin-block: -0.5rem;
+}
+
+.site-foot ul a {
+  display: inline-block;
+  padding-block: 0.5rem;
+}
+
 .site-foot a:hover {
   color: var(--fg);
   text-decoration: underline;
@@ -1090,8 +1499,10 @@ samp {
 /* ---------- Print (CV first) ---------- */
 
 @media print {
+  /* Same specificity as the theme rules, which would otherwise win */
   :root,
-  :root[data-theme] {
+  :root[data-theme],
+  :root:not([data-theme="dark"]) {
     --bg: #ffffff;
     --surface: #ffffff;
     --fg: #000000;
@@ -1109,6 +1520,7 @@ samp {
 
   .site-head,
   .site-foot,
+  .cv-head .cmd,
   .skip-link,
   .no-print,
   .cursor {

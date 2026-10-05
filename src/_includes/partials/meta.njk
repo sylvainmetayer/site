@@ -1,7 +1,8 @@
-{% set pageTitle = title + ' · ' + site.authorName %}
+{% set pageTitle = title + ' · ' + site.name %}
 {% set pageDesc = site.shortDesc %}
 {% set siteTitle = site.name %}
-{% set currentUrl = helpers.url() + page.url %}
+{% set currentUrl = canonical or (helpers.url() + page.url) %}
+{% set socialImage = socialImage or site.socialImage %}
 
 {% if metaTitle %}
   {% set pageTitle = metaTitle %}

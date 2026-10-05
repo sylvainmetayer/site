@@ -1,0 +1,470 @@
+---
+permalink: /cv/pdf/
+eleventyExcludeFromCollections: true
+---
+{#- One-page A4 version of /cv/, printed to src/uploads/CV.pdf by scripts/cv-pdf.mjs,
+    which fails when the content no longer fits on one page. -#}
+{%- from 'partials/macros.njk' import period -%}
+{%- from 'partials/icons.njk' import icon -%}
+{%- set siteHost = site.url | displayUrl -%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>CV · {{ site.authorName }}</title>
+  <link rel="canonical" href="{{ site.url }}/cv/">
+  <style>
+    /* Static weights (not the variable fonts of the site): they embed as real fonts,
+       readable by applicant tracking systems */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 400;
+      src: url('/fonts/cv/ibm-plex-sans-latin-400-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 500;
+      src: url('/fonts/cv/ibm-plex-sans-latin-500-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: url('/fonts/cv/ibm-plex-sans-latin-600-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 700;
+      src: url('/fonts/cv/ibm-plex-sans-latin-700-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 400;
+      src: url('/fonts/cv/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 600;
+      src: url('/fonts/cv/jetbrains-mono-latin-600-normal.woff2') format('woff2');
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    :root {
+      --ink: #17202b;
+      --muted: #5a6575;
+      --accent: #1c5db3;
+      --side: #eef2f7;
+      --line: #d5dce6;
+      --sans: 'IBM Plex Sans', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--ink);
+      font: 400 8.6pt/1.42 var(--sans);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sheet {
+      display: grid;
+      grid-template-columns: 64mm 1fr;
+      width: 210mm;
+      /* Grows past one page instead of clipping: cv-pdf.mjs then refuses the PDF */
+      min-height: 297mm;
+    }
+
+    /* ---------- Side column ---------- */
+
+    /* The main column comes first in the source, so text extraction (applicant tracking
+       systems) starts with the name; the grid still shows the side column on the left */
+    .side {
+      grid-column: 1;
+      grid-row: 1;
+      padding: 13mm 7mm 10mm 9mm;
+      background: var(--side);
+    }
+
+    .side h2,
+    .main h2 {
+      margin: 0 0 2.2mm;
+      /* No letter-spacing: text extraction would split the heading into single letters */
+      font: 600 7.8pt/1 var(--mono);
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .side section + section {
+      margin-top: 5mm;
+    }
+
+    .contact li {
+      display: flex;
+      align-items: center;
+      gap: 1.6mm;
+      font-size: 8.2pt;
+      margin-bottom: 1mm;
+      overflow-wrap: anywhere;
+    }
+
+    .contact a {
+      display: contents;
+    }
+
+    .contact .icon {
+      flex-shrink: 0;
+      width: 3.2mm;
+      height: 3.2mm;
+      color: var(--accent);
+    }
+
+    .contact span {
+      display: block;
+      font: 400 6.6pt var(--mono);
+      color: var(--muted);
+    }
+
+    .skills dt {
+      margin-top: 2mm;
+      font-weight: 600;
+    }
+
+    .skills dt:first-child {
+      margin-top: 0;
+    }
+
+    .skills dd {
+      margin: 0.3mm 0 0;
+      color: var(--muted);
+    }
+
+    .entries li + li {
+      margin-top: 2.2mm;
+    }
+
+    .entries strong {
+      display: block;
+      font-weight: 600;
+    }
+
+    .entries span {
+      display: block;
+      color: var(--muted);
+    }
+
+    .entries time {
+      font: 400 6.8pt var(--mono);
+      color: var(--muted);
+    }
+
+    /* ---------- Main column ---------- */
+
+    .main {
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 14mm 12mm 10mm 10mm;
+    }
+
+    .identity h1 {
+      margin: 0;
+      font: 700 22pt/1.05 var(--sans);
+      letter-spacing: -0.01em;
+    }
+
+    .identity .role {
+      margin: 1.6mm 0 0;
+      font: 500 10.5pt/1.3 var(--sans);
+      color: var(--accent);
+    }
+
+    .identity .pitch {
+      margin: 2.6mm 0 0;
+      max-width: 118mm;
+      color: var(--muted);
+    }
+
+    .main section {
+      margin-top: 7mm;
+    }
+
+    .job + .job {
+      margin-top: 4mm;
+    }
+
+    .job-head,
+    .stage-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 4mm;
+    }
+
+    .job-head h3 {
+      margin: 0;
+      font: 600 10pt/1.25 var(--sans);
+    }
+
+    .job-head h3 small {
+      margin-left: 1.5mm;
+      font: 400 7.4pt var(--sans);
+      color: var(--muted);
+    }
+
+    time.when {
+      flex-shrink: 0;
+      font: 400 7pt var(--mono);
+      color: var(--muted);
+    }
+
+    .stages {
+      margin-top: 1.4mm;
+      padding-left: 3mm;
+      border-left: 1.5px solid var(--line);
+    }
+
+    .stage + .stage {
+      margin-top: 2.4mm;
+    }
+
+    .stage-head p {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .positions {
+      margin: 0.3mm 0 0;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .missions {
+      margin-top: 0.8mm;
+    }
+
+    /* Native markers: positioned bullets get painted in a later pass, which moves the
+       missions to the end of the extracted text */
+    .missions {
+      padding-left: 3.2mm;
+      list-style: disc;
+    }
+
+    .missions li::marker {
+      color: var(--accent);
+    }
+
+    .missions li + li {
+      margin-top: 0.5mm;
+    }
+
+    .talks li + li {
+      margin-top: 1.8mm;
+    }
+
+    .talks strong {
+      font-weight: 600;
+    }
+
+    .talks span {
+      display: block;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: auto;
+      padding-top: 3mm;
+      border-top: 1px solid var(--line);
+      font: 400 6.8pt var(--mono);
+      color: var(--muted);
+    }
+
+    /* Underlined: told apart from the surrounding text without relying on color */
+    .footer a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* On screen, show the sheet like a page */
+    @media screen {
+      html {
+        background: #8792a2;
+      }
+
+      /* Own background: on a narrow screen the sheet overflows the white body */
+      .sheet {
+        background: #ffffff;
+        margin: 10mm auto;
+        box-shadow: 0 4px 24px rgb(0 0 0 / 0.25);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+
+    <main class="main">
+      <header class="identity">
+        <h1>{{ site.authorName }}</h1>
+        <p class="role">{{ site.role }}</p>
+        <p class="pitch">Chez onepoint à Bordeaux depuis 2017. J'aime tout ce qui touche au backend, au DevOps, à la CI et à l'infrastructure, et je partage ce que j'apprends en conférence.</p>
+      </header>
+
+      <section>
+        <h2>Expérience</h2>
+        {% for work in collections.work %}
+          {% if work.data.print != false %}
+            <article class="job">
+              <div class="job-head">
+                <h3>{{ work.data.title }}<small>{{ work.data.location }}</small></h3>
+                <time class="when">{{ period(work.data.start, work.data.end, 'YYYY', '–') }}</time>
+              </div>
+              {% if work.data.roles %}
+                <div class="stages">
+                  {% for role in work.data.roles %}
+                    <div class="stage">
+                      <div class="stage-head">
+                        <p>{{ role.title }}</p>
+                        <time class="when">{{ period(role.start, role.end, 'YYYY', '–') }}</time>
+                      </div>
+                      {% if role.positions %}
+                        <p class="positions">{% for position in role.positions %}{{ position.title }} {% if position.end %}{{ position.start | date('YYYY') }} – {{ position.end | date('YYYY') }}{% else %}depuis {{ position.start | date('YYYY') }}{% endif %}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+                      {% endif %}
+                      <ul class="missions">{% for mission in role.missions %}<li>{{ mission }}</li>{% endfor %}</ul>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </section>
+
+      <section>
+        <h2>Talks</h2>
+        <ul class="talks">
+          {% for talk in talks.talks %}
+            {% set sessions = talk.sessions | sort(true, false, 'date') %}
+            <li><strong>{{ talk.title }}</strong><span>{{ sessions | uniqueValues('event') | join(', ') }}</span></li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <p class="footer">Version détaillée, articles, slides et replays : <a href="{{ site.url }}/cv/">{{ siteHost }}/cv/</a></p>
+    </main>
+
+    <aside class="side">
+      <section>
+        <h2>Contact</h2>
+        <ul class="contact">
+          <li><a href="mailto:{{ site.authorEmail }}">{{ icon('mail') }}{{ site.authorEmail }}</a></li>
+          <li><a href="{{ site.url }}">{{ icon('web') }}{{ siteHost }}</a></li>
+          {% for link in social.links %}
+            {% if link.label == 'github' or link.label == 'linkedin' %}
+              <li><a href="{{ link.url }}">{{ icon(link.icon) }}{{ link.url | displayUrl }}</a></li>
+            {% endif %}
+          {% endfor %}
+          <li>{{ icon('pin') }}{{ site.location }} · {{ site.drivingLicence }}</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Compétences</h2>
+        <dl class="skills">
+          {% for group in skills.groups %}
+            <dt>{{ group.name }}</dt>
+            <dd>{{ group.skills | join(', ') }}</dd>
+          {% endfor %}
+        </dl>
+      </section>
+
+      <section>
+        <h2>Certifications</h2>
+        <ul class="entries">
+          {% for cert in certifications.certifications | reverse %}
+            {% if cert.print != false %}
+              <li><strong>{{ cert.title }}</strong><time>{{ cert.date | date('YYYY') }}</time></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Formation</h2>
+        <ul class="entries">
+          {% for formation in formations.formations | reverse %}
+            {% if formation.print != false %}
+              <li>
+                <strong>{{ formation.shortTitle or formation.title }}</strong>
+                <span>{{ formation.location }}</span>
+                <time>{% if formation.start %}{{ formation.start }} – {% endif %}{{ formation.end }}</time>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Langues</h2>
+        <ul class="entries">
+          {% for language in languages.languages %}
+            <li>
+              <strong>{{ language.label }}</strong>
+              {% if language.certification %}
+                {% for cert in certifications.certifications %}
+                  {% if cert.title == language.certification %}<span>{{ cert.title }} {{ cert.summary }}</span>{% endif %}
+                {% endfor %}
+              {% else %}
+                <span>{{ language.level }}</span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Centres d'intérêt</h2>
+        <ul class="entries">
+          {% for interest in interests.interests %}
+            <li><strong>{{ interest.label }}</strong>{% if interest.detail %}<span>{{ interest.detail }}</span>{% endif %}</li>
+          {% endfor %}
+        </ul>
+      </section>
+    </aside>
+  </div>
+</body>
+</html>

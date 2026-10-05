@@ -1,4 +1,4 @@
-# Cloudflare Pages : statut explicite, le défaut est 302 (301 sur Netlify).
+# Cloudflare Pages : statut explicite, le défaut est 302.
 # Pas de normalisation du slash final non plus : chaque source avec slash a sa variante sans.
 /blog/l-effet-parthenay/ /article/l-effet-parthenay/ 301
 /blog/l-effet-parthenay /article/l-effet-parthenay/ 301
@@ -10,8 +10,8 @@
 /Assets/cv.pdf /uploads/CV.pdf 301
 /ecole/bataille-navale/ /article/projets-dut-info/#bataille-navale 301
 /ecole/bataille-navale /article/projets-dut-info/#bataille-navale 301
-/ecole/betisier/ /article/projets-dut-info/#betisier-de-l%E2%80%99iut 301
-/ecole/betisier /article/projets-dut-info/#betisier-de-l%E2%80%99iut 301
+/ecole/betisier/ /article/projets-dut-info/#b%C3%AAtisier-de-l%E2%80%99iut 301
+/ecole/betisier /article/projets-dut-info/#b%C3%AAtisier-de-l%E2%80%99iut 301
 /ecole/pygame/ /article/projets-dut-info/#pygame 301
 /ecole/pygame /article/projets-dut-info/#pygame 301
 /ecole/gemao/ /article/projets-dut-info/#gemao 301

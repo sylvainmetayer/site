@@ -9,4 +9,4 @@ article: /article/ansible/
 featured: true
 ---
 
-Recréer un serveur à l'identique sans intervention humaine, avec des playbooks modulaires.
+Des playbooks pour recréer un serveur à l'identique sans intervention : SSH et Fail2Ban, Nginx avec Let's Encrypt, supervision avec Monit.

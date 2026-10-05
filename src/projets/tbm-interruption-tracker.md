@@ -9,4 +9,4 @@ article: /article/tbm-interruption/
 featured: true
 ---
 
-Un bot qui suit et publie les interruptions du tram bordelais.
+Un bot Twitter qui compte les jours sans interruption du tram bordelais, d'après les comptes officiels de TBM.

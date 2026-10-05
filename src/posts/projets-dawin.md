@@ -23,7 +23,7 @@ Le but de ce projet était de réaliser un 'Jeu dont vous êtes le héros' avec 
 
 Ce projet a été réalisé lors de ma licence professionnelle DAWIN.
 
-![Page d'accueil du jeu Agent Ready](/images/agent-ready.png)
+![Page d'accueil du jeu « Agent Ready, an Ingress Story » avec le bouton « Commencer l'immersion ! »](/images/agent-ready.png)
 
 ## Macbernick
 
@@ -31,11 +31,11 @@ Ce projet a été réalisé lors de ma licence professionnelle DAWIN.
 
 Ce projet a été réalisé durant ma licence professionnelle DAWIN.
 
-Il a été réalisé durant une semaine (Janvier 2017) avec 6 autres étudiants nous a initié au déroulement d'un projet agile, de l'idée à la livraison du projet.
+Il a été réalisé durant une semaine (janvier 2017) avec 6 autres étudiants et nous a initiés au déroulement d'un projet agile, de l'idée à la livraison du projet.
 
-Il s'agit d'un jeu sur navigateur dans lequel on joue contre l'ordinateur (plusieurs niveaux de difficultés) ou à 2 joueurs (localement) pour obtenir le plus de points possible.
+Il s'agit d'un jeu sur navigateur dans lequel on joue contre l'ordinateur (plusieurs niveaux de difficulté) ou à 2 joueurs (localement) pour obtenir le plus de points possible.
 
-![MacBernick](/images/macbernick.png)
+![Écran d'accueil de MacBernick, « Famille Pirate » : jouer contre un ami, contre Bigorneau (facile), contre Victor (moyen), meilleurs scores](/images/macbernick.png)
 
 ## Tetris
 
@@ -45,7 +45,7 @@ Projet universitaire réalisé afin de se familiariser avec le développement d'
 
 Le but était de réaliser un Tetris. Le jeu a ensuite été publié sur le PlayStore et est disponible au téléchargement.
 
-![Illustration du tetris](/images/tetris.png)
+![Partie perdue du Tetris sur Android : grille de blocs, temps 00:26, score 100 et message « Vous avez perdu ! »](/images/tetris.png)
 
 ## Semaine Innovante
 
@@ -53,6 +53,6 @@ Le but était de réaliser un Tetris. Le jeu a ensuite été publié sur le Play
 
 La semaine innovante fait partie de la formation DAWIN, durant laquelle le but est de réaliser une application innovante.
 
-Une grande liberté nous a été donné pour réaliser les projets et nous avons eu à disposition différents outils.
+Une grande liberté nous a été donnée pour réaliser les projets et nous avons eu à disposition différents outils.
 
 Nous avons travaillé sur le fitbit, et plus particulièrement le [Fitbit Charge 2](https://www.fitbit.com/fr/charge2) qui intègre un capteur cardiaque. Nous avons ainsi réalisé une application permettant d'effectuer un [test de Ruffier](https://fr.wikipedia.org/wiki/Test_de_Ruffier) et d'afficher les résultats en récupérant les données via l'API de Fitbit.

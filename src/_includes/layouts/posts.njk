@@ -15,8 +15,8 @@
 
   {% if pagination.previousPageHref or pagination.nextPageHref %}
     <nav class="post-nav" aria-label="Pagination">
-      {% if pagination.nextPageHref %}<a href="{{ pagination.nextPageHref }}" class="prev"><span>← plus anciens</span>Page {{ pagination.pageNumber + 2 }}</a>{% endif %}
-      {% if pagination.previousPageHref %}<a href="{{ pagination.previousPageHref }}" class="next"><span>plus récents →</span>Page {{ pagination.pageNumber }}</a>{% endif %}
+      {% if pagination.nextPageHref %}<a href="{{ pagination.nextPageHref }}" class="prev"><span><span aria-hidden="true">← </span>plus anciens<span class="visually-hidden"> :</span></span>Page {{ pagination.pageNumber + 2 }}</a>{% endif %}
+      {% if pagination.previousPageHref %}<a href="{{ pagination.previousPageHref }}" class="next"><span>plus récents<span class="visually-hidden"> :</span><span aria-hidden="true"> →</span></span>Page {{ pagination.pageNumber }}</a>{% endif %}
     </nav>
   {% endif %}
 {% endblock %}

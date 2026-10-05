@@ -1,15 +1,51 @@
 {
-  "skills": [
-    "Terraform",
-    "Ansible",
-    "Docker",
-    "CI/CD",
-    "Linux",
-    "Python",
-    "Ruby",
-    "PHP",
-    "Java",
-    "Angular",
-    "MySQL / MariaDB"
+  "groups": [
+    {
+      "name": "Infra & cloud",
+      "skills": [
+        "Kubernetes",
+        "Terraform",
+        "OpenTofu",
+        "Ansible",
+        "Docker",
+        "AWS"
+      ]
+    },
+    {
+      "name": "CI/CD",
+      "skills": [
+        "GitLab CI",
+        "GitHub Actions",
+        "Jenkins",
+        "SonarQube"
+      ]
+    },
+    {
+      "name": "Langages",
+      "skills": [
+        "Python",
+        "PHP",
+        "Java",
+        "Bash",
+        "Node.js"
+      ]
+    },
+    {
+      "name": "Frameworks",
+      "skills": [
+        "Symfony",
+        "Drupal",
+        "NestJS",
+        "Angular"
+      ]
+    },
+    {
+      "name": "Outils",
+      "skills": [
+        "Linux",
+        "Git",
+        "MySQL / MariaDB"
+      ]
+    }
   ]
 }

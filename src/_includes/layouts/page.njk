@@ -1,13 +1,13 @@
 {% extends 'layouts/base.njk' %}
 
 {% block content %}
-  <article class="section" aria-labelledby="page-title">
+  <article class="post" aria-labelledby="page-title">
     <header class="post-head">
-      <p class="cmd">~{{ page.url }}</p>
+      <p class="cmd" aria-hidden="true">~{{ page.url }}</p>
       <h1 id="page-title" class="page-title">{{ title }}</h1>
     </header>
+    <div class="prose">
+      {{ content | safe }}
+    </div>
   </article>
-  <div class="prose">
-    {{ content | safe }}
-  </div>
 {% endblock %}

@@ -5,7 +5,8 @@
       "link": "http://lyceeernestperochon.cc-parthenay.fr/",
       "end": 2013,
       "location": "Lycée Ernest Pérochon, Parthenay (79)",
-      "description": "Option Science de l'Ingénieur"
+      "description": "Option Sciences de l'Ingénieur",
+      "print": false
     },
     {
       "title": "DUT Informatique",
@@ -13,7 +14,7 @@
       "end": 2016,
       "start": 2013,
       "location": "IUT du Limousin (87)",
-      "description": "Cette formation m'a permis d'obtenir de solide bases dans le domaine de la programmation, en ne négligeant pas pour autant les matières générales, tel que l'anglais, comptabilité ou encore les mathématiques. Elle s'est achevée avec un stage de 2 mois au sein de l'ESN NextMedia.",
+      "description": "Cette formation m'a permis d'obtenir de solides bases dans le domaine de la programmation, en ne négligeant pas pour autant les matières générales, telles que l'anglais, la comptabilité ou encore les mathématiques. Elle s'est achevée avec un stage de 2 mois au sein de l'ESN NextMedia.",
       "tag": "dut-info"
     },
     {
@@ -23,7 +24,8 @@
       "start": 2016,
       "location": "IUT de Bordeaux (33)",
       "description": "Cette formation, suivie en alternance au sein d'Atos, m'a permis de me forger une réelle première expérience professionnelle.",
-      "tag": "dawin"
+      "tag": "dawin",
+      "shortTitle": "Licence pro DAWIN"
     },
     {
       "title": "EPSI Bordeaux",

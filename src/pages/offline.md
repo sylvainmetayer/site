@@ -1,9 +1,7 @@
 ---
-title: 'Vous êtes hors-ligne'
+title: 'Vous êtes hors ligne'
 permalink: '/offline/index.html'
 eleventyExcludeFromCollections: true
 ---
 
-Il semblerait que vous soyez hors-ligne.
-
-Veuillez vérifier votre connexion et rafraichir la page.
+La page n'a pas pu être chargée. Vérifiez votre connexion, puis rechargez-la.

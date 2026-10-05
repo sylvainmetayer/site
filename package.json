@@ -14,7 +14,7 @@
     "eleventy"
   ],
   "type": "module",
-  "author": "Sylvain METAYER <contact@sylvainmetayer.fr>",
+  "author": "Sylvain MÉTAYER <bonjour@sylvain.dev>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sylvainmetayer/sylvainmetayer/issues"
@@ -26,9 +26,12 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
     "@fontsource-variable/ibm-plex-sans": "^5.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
     "@sveltia/cms": "^0.227.2",
     "cross-env": "^7.0.3",
     "eleventy-plugin-toc": "^1.1.5",
+    "gray-matter": "^4.0.3",
     "html-validate": "^8.0.5",
     "image-size": "^1.0.2",
     "jsdom": "^22.1.0",
@@ -36,6 +39,7 @@
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-footnote": "^4.0.0",
     "moment": "^2.29.4",
+    "pdfjs-dist": "^6.4.299",
     "prettier": "^2.8.8"
   },
   "scripts": {
@@ -43,7 +47,9 @@
     "serve": "cross-env ELEVENTY_ENV=development eleventy --serve",
     "production": "eleventy",
     "validate": "html-validate \"dist/**/*.html\"",
-    "check:links": "node scripts/check-links.mjs dist"
+    "check:links": "node scripts/check-links.mjs dist",
+    "cv:pdf": "node scripts/cv-pdf.mjs dist",
+    "check:cv": "node scripts/check-cv-ats.mjs src/uploads/CV.pdf"
   },
   "engines": {
     "node": ">=20"

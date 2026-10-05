@@ -1,0 +1,12 @@
+{
+  "languages": [
+    {
+      "label": "Français",
+      "level": "Langue maternelle"
+    },
+    {
+      "label": "Anglais",
+      "certification": "TOEIC"
+    }
+  ]
+}
