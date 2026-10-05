@@ -1,12 +1,20 @@
+{%- set alternate = translationKey | alternateUrl(collections.all) -%}
+{%- set langPrefix = '/en' if lang == 'en' else '' -%}
 <!DOCTYPE html>
-<html lang="{{ locale or site.locale }}">
+<html lang="{{ lang }}">
   <head data-env="{{ global.environment }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/js/theme.js"></script>
     <link rel="preload" href="/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ helpers.url() }}/feed.xml">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ helpers.url() }}{{ langPrefix }}/feed.xml">
+    {% if alternate %}
+      {# Same page in the other language (src/_data/i18n.js, translationKey) #}
+      <link rel="alternate" hreflang="{{ lang }}" href="{{ helpers.url() }}{{ page.url }}">
+      <link rel="alternate" hreflang="{{ 'fr' if lang == 'en' else 'en' }}" href="{{ helpers.url() }}{{ alternate }}">
+      <link rel="alternate" hreflang="x-default" href="{{ helpers.url() }}{{ page.url if lang == 'fr' else alternate }}">
+    {% endif %}
     <link rel="icon" href="{{ site.faviconPath }}" type="image/svg+xml">
     <meta name="google-site-verification" content="XROrcW2Xt6g7cyF4SDNyz08GZeMB90QlstI3SBnUsq0">
     {% include "partials/meta.njk" %}
@@ -22,11 +30,11 @@
     {% include "partials/site-head.njk" %}
 
     {% if site.displayWipWarning %}
-      <div class="notice" role="note"><div class="wrap"><strong>wip:</strong> site en travaux, certaines pages peuvent être cassées.</div></div>
+      <div class="notice" role="note"><div class="wrap"><strong>wip:</strong> {{ 'notice.wip' | t }}</div></div>
     {% endif %}
 
     {% if site.displayDevWarning and global.environment != 'production' %}
-      <div class="notice" role="note"><div class="wrap"><strong>warning:</strong> vous consultez la version de développement. Le site en production est sur <a href="{{ site.url }}">{{ site.url }}</a>.</div></div>
+      <div class="notice" role="note"><div class="wrap"><strong>warning:</strong> {{ 'notice.dev' | t }} <a href="{{ site.url }}">{{ site.url }}</a>.</div></div>
     {% endif %}
 
     <main id="main-content" tabindex="-1">
@@ -37,7 +45,9 @@
 
     {% include "partials/site-foot.njk" %}
     {% include "partials/palette.njk" %}
+    {% include "partials/lang-suggest.njk" %}
     <script src="/js/palette.js" defer></script>
+    <script src="/js/lang-suggest.js" defer></script>
     <script src="/js/register-service-worker.js" async defer></script>
     {% if site.cfBeaconToken and global.environment == 'production' %}
       {# Cloudflare Web Analytics: sylvain.dev is not a Cloudflare zone, so the beacon is not injected automatically (homelab tofu/site) #}

@@ -15,5 +15,24 @@
     {
       "label": "Séries TV"
     }
-  ]
+  ],
+  "en": {
+    "interests": [
+      {
+        "label": "Homelab and self-hosting",
+        "detail": "Proxmox, OpenTofu, Pangolin"
+      },
+      {
+        "label": "Board games"
+      },
+      {
+        "label": "Table tennis",
+        "detail": "Ping Tour host at FLIP (Parthenay), 2013-2015",
+        "link": "http://www.jeux-festival.com/"
+      },
+      {
+        "label": "TV series"
+      }
+    ]
+  }
 }

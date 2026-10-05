@@ -1,5 +1,6 @@
 ---
 layout: layouts/home.njk
+translationKey: home
 title: Sylvain
 metaTitle: Sylvain · développeur backend & DevOps
 postsHeading: Derniers articles

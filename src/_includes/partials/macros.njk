@@ -1,4 +1,5 @@
-{# Shared building blocks for the post list and project cards #}
+{# Shared building blocks for the post list and project cards. Import them
+   `with context`: their strings follow the language of the page (filter `t`). #}
 
 {# Shell lines only imitate a terminal and repeat the heading that follows: hidden from screen readers #}
 {% macro cmd(text) %}<p class="cmd" aria-hidden="true"><span class="prompt">$</span> {{ text }}</p>{% endmacro %}
@@ -7,8 +8,8 @@
 {% macro origin(canonical, publisher, coauthors) -%}
   {%- set host = canonical | siteName -%}
   <a href="{{ canonical }}">{{ host }}</a>
-  {%- if publisher %}, sur le blog de {{ publisher }}{% endif %}
-  {%- if coauthors %}, écrit avec {% for handle in coauthors %}{% if host == 'dev.to' %}<a href="https://dev.to/{{ handle }}">@{{ handle }}</a>{% else %}@{{ handle }}{% endif %}{% if loop.revindex == 2 %} et {% elif not loop.last %}, {% endif %}{% endfor %}{% endif %}
+  {%- if publisher %}{{ 'origin.publisher' | t({ publisher: publisher }) }}{% endif %}
+  {%- if coauthors %}{{ 'origin.with' | t }}{% for handle in coauthors %}{% if host == 'dev.to' %}<a href="https://dev.to/{{ handle }}">@{{ handle }}</a>{% else %}@{{ handle }}{% endif %}{% if loop.revindex == 2 %}{{ 'origin.and' | t }}{% elif not loop.last %}, {% endif %}{% endfor %}{% endif %}
 {%- endmacro %}
 
 {# Years a talk was given: "2023 → 2025", or "2024" when all sessions fall in one year #}
@@ -19,9 +20,9 @@
   {{ firstYear }}{% if lastYear != firstYear %} → {{ lastYear }}{% endif %}
 {%- endmacro %}
 
-{# Start → end of a role, "aujourd'hui" when it is ongoing. The PDF passes "–": its fonts have no arrow #}
+{# Start → end of a role, "aujourd'hui" / "present" when it is ongoing. The PDF passes "–": its fonts have no arrow #}
 {% macro period(start, end, format, separator = '→') -%}
-  {{ start | date(format) }} {{ separator }} {% if end %}{{ end | date(format) }}{% else %}aujourd'hui{% endif %}
+  {{ start | date(format) }} {{ separator }} {% if end %}{{ end | date(format) }}{% else %}{{ 'period.now' | t }}{% endif %}
 {%- endmacro %}
 
 {% macro postList(posts, showExcerpt = false) %}
@@ -29,9 +30,14 @@
     {% for post in posts %}
       <li class="post-row">
         <time datetime="{{ post.date | w3DateFilter }}">{{ post.date | date('YYYY-MM-DD') }}</time>
-        <a href="{{ post.url }}" rel="bookmark">{{ post.data.title }}</a>
+        {# On an English page, an article without translation stays in French #}
+        {% if post.data.lang != lang %}
+          <a href="{{ post.url }}" rel="bookmark" lang="{{ post.data.lang }}" hreflang="{{ post.data.lang }}">{{ post.data.title }}</a> <span class="post-lang">{{ 'lang.inFrench' | t }}</span>
+        {% else %}
+          <a href="{{ post.url }}" rel="bookmark">{{ post.data.title }}</a>
+        {% endif %}
         {% if showExcerpt and post.data.excerpt %}
-          <p class="excerpt">{{ post.data.excerpt }}</p>
+          <p class="excerpt"{% if post.data.lang != lang %} lang="{{ post.data.lang }}"{% endif %}>{{ post.data.excerpt }}</p>
         {% endif %}
         {% if post.data.tags %}
           <span class="tags">{% for tag in post.data.tags %}#{{ tag }}{% if not loop.last %} {% endif %}{% endfor %}</span>
@@ -45,7 +51,7 @@
 {% macro projectCards(projects, level = 3) %}
   <div class="cards">
     {% for project in projects %}
-      <article class="card" id="{{ project.fileSlug }}">
+      <article class="card" id="{{ project.fileSlug | replace('.en', '') }}">
         <h{{ level }} class="card-title">{{ project.data.title }} <small>{{ project.data.year }}</small></h{{ level }}>
         <div class="desc">{{ project.templateContent | safe }}</div>
         {% if project.data.stack %}
@@ -56,8 +62,8 @@
         {% if project.data.repo or project.data.article %}
           <p class="actions">
             {# The project name makes the repeated "sources" / "article" links unambiguous out of context #}
-            {% if project.data.repo %}<a href="{{ project.data.repo }}">sources<span class="visually-hidden"> de {{ project.data.title }}</span> <span aria-hidden="true">↗</span></a>{% endif %}
-            {% if project.data.article %}<a href="{{ project.data.article }}">article<span class="visually-hidden"> sur {{ project.data.title }}</span> <span class="arrow" data-arrow="→" aria-hidden="true"></span></a>{% endif %}
+            {% if project.data.repo %}<a href="{{ project.data.repo }}">{{ 'projects.sources' | t }}<span class="visually-hidden">{{ 'projects.sourcesOf' | t({ title: project.data.title }) }}</span> <span aria-hidden="true">↗</span></a>{% endif %}
+            {% if project.data.article %}<a href="{{ project.data.article }}"{% if lang == 'en' and not project.data.article.startsWith('/en/') %} hreflang="fr"{% endif %}>article<span class="visually-hidden">{{ 'projects.articleOn' | t({ title: project.data.title }) }}</span> <span class="arrow" data-arrow="→" aria-hidden="true"></span></a>{% endif %}
           </p>
         {% endif %}
       </article>

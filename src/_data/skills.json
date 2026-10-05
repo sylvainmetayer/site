@@ -47,5 +47,56 @@
         "MySQL / MariaDB"
       ]
     }
-  ]
+  ],
+  "en": {
+    "groups": [
+      {
+        "name": "Infra & cloud",
+        "skills": [
+          "Kubernetes",
+          "Terraform",
+          "OpenTofu",
+          "Ansible",
+          "Docker",
+          "AWS"
+        ]
+      },
+      {
+        "name": "CI/CD",
+        "skills": [
+          "GitLab CI",
+          "GitHub Actions",
+          "Jenkins",
+          "SonarQube"
+        ]
+      },
+      {
+        "name": "Languages",
+        "skills": [
+          "Python",
+          "PHP",
+          "Java",
+          "Bash",
+          "Node.js"
+        ]
+      },
+      {
+        "name": "Frameworks",
+        "skills": [
+          "Symfony",
+          "Drupal",
+          "NestJS",
+          "Angular"
+        ]
+      },
+      {
+        "name": "Tools",
+        "skills": [
+          "Linux",
+          "Git",
+          "MySQL / MariaDB"
+        ]
+      }
+    ]
+  }
 }

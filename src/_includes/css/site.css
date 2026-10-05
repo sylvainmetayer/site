@@ -242,7 +242,7 @@ samp {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.6rem 1.4rem;
+  gap: 0.6rem 1.1rem;
   padding-block: 1rem;
 }
 
@@ -259,6 +259,7 @@ samp {
 /* Invisible 44px-high hit areas for the header controls, without changing their look */
 .brand::after,
 .nav a::after,
+.lang-switch::after,
 .theme-switch button::after {
   content: "";
   position: absolute;
@@ -301,6 +302,59 @@ samp {
 .nav a[aria-current] {
   color: var(--fg);
   border-bottom-color: var(--accent);
+}
+
+/* Banner offering the translation of the page (src/js/lang-suggest.js) */
+.lang-suggest {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 10;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  font: 400 0.85rem/1.4 var(--mono);
+}
+
+.lang-suggest .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.6rem;
+}
+
+.lang-suggest p {
+  margin: 0;
+}
+
+.lang-suggest button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.lang-suggest button:hover {
+  color: var(--fg);
+}
+
+/* FR / EN: the same page in the other language */
+.lang-switch {
+  position: relative;
+  padding: 0.3rem 0.35rem;
+  color: var(--muted);
+  font: 400 0.75rem/1 var(--mono);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.lang-switch:hover {
+  color: var(--fg);
+  border-color: var(--accent);
 }
 
 .theme-switch {
@@ -366,10 +420,6 @@ samp {
   color: var(--fg);
 }
 
-.palette-trigger kbd {
-  font-size: 0.72rem;
-}
-
 @media (max-width: 38rem) {
   /* Wrapped rows: keep the 44px hit areas from overlapping */
   .site-head .wrap {
@@ -383,9 +433,14 @@ samp {
     margin-left: 0;
   }
 
-  /* Icon only, at the end of the navigation row */
+  /* Three rows: brand, language and palette icon; theme switch; navigation */
+  .lang-switch {
+    order: 1;
+    margin-left: auto;
+  }
+
   .palette-trigger {
-    order: 4;
+    order: 1;
     padding: 0.35rem 0.55rem;
   }
 
@@ -393,26 +448,12 @@ samp {
     inset-inline: -0.3rem;
   }
 
-  .palette-trigger kbd {
-    display: none;
-  }
-
-  .theme-switch {
-    margin-left: auto;
-  }
-}
-
-/* The navigation fills the row on the narrowest phones: the trigger joins the brand instead */
-@media (max-width: 22rem) {
-  .palette-trigger {
-    order: 1;
-    margin-left: auto;
-  }
-
   .theme-switch {
     order: 2;
+    margin-left: auto;
   }
 }
+
 
 /* ---------- Page layout ---------- */
 

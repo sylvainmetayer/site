@@ -1,7 +1,10 @@
 // Checks that the CV PDF reads well in applicant tracking systems (ATS), which parse the
 // text of the PDF in content order, without layout:
 //
-//   node scripts/check-cv-ats.mjs <cv.pdf> [--compare <other.pdf>]
+//   node scripts/check-cv-ats.mjs <cv.pdf> [--lang fr|en] [--compare <other.pdf>]
+//
+// --lang en checks the English CV (src/uploads/CV-en.pdf) against the English
+// data: `en` keys of src/_data, src/work/*.en.md, English section headings.
 //
 // - one page, real embedded fonts (no Type 3 fonts, which many parsers cannot read);
 // - the text starts with the name, contains the e-mail and the profile URLs;
@@ -19,19 +22,31 @@ const args = process.argv.slice(2);
 const file = args[0];
 const compareIndex = args.indexOf('--compare');
 const compareFile = compareIndex === -1 ? null : args[compareIndex + 1];
-if (!file || (compareIndex !== -1 && !compareFile)) {
-  console.error('Usage : node scripts/check-cv-ats.mjs <cv.pdf> [--compare <other.pdf>]');
+const langIndex = args.indexOf('--lang');
+const lang = langIndex === -1 ? 'fr' : args[langIndex + 1];
+if (!file || (compareIndex !== -1 && !compareFile) || !['fr', 'en'].includes(lang)) {
+  console.error('Usage : node scripts/check-cv-ats.mjs <cv.pdf> [--lang fr|en] [--compare <other.pdf>]');
   process.exit(2);
 }
 
-const readJson = name => JSON.parse(readFileSync(join('src/_data', name), 'utf8'));
+const HEADINGS = {
+  fr: ['Expérience', 'Formation', 'Compétences', 'Certifications', 'Langues'],
+  en: ['Experience', 'Education', 'Skills', 'Certifications', 'Languages'],
+};
+
+// Data files hold the English text under an `en` key (src/_data/eleventyComputed.js)
+const localize = data => (lang === 'fr' || !data[lang] ? data : { ...data, ...data[lang] });
+const readJson = name => localize(JSON.parse(readFileSync(join('src/_data', name), 'utf8')));
 const site = readJson('site.json');
 const social = readJson('social.json');
 const skills = readJson('skills.json');
 const certifications = readJson('certifications.json');
 const formations = readJson('formations.json');
-const work = readdirSync('src/work')
-  .filter(name => name.endsWith('.md'))
+// slug.md in French, slug.en.md its English translation (French when missing)
+const workFiles = readdirSync('src/work').filter(name => name.endsWith('.md'));
+const work = workFiles
+  .filter(name => !name.endsWith('.en.md'))
+  .map(name => (lang === 'en' && workFiles.includes(name.replace(/\.md$/, '.en.md')) ? name.replace(/\.md$/, '.en.md') : name))
   .map(name => matter(readFileSync(join('src/work', name), 'utf8')).data)
   .filter(entry => entry.print !== false)
   .sort((a, b) => new Date(b.start) - new Date(a.start));
@@ -84,12 +99,12 @@ for (const link of social.links.filter(link => ['github', 'linkedin'].includes(l
   check(indexOf(url) !== -1, `profil ${link.label} absent (${url})`);
 }
 
-for (const heading of ['Expérience', 'Formation', 'Compétences', 'Certifications', 'Langues']) {
+for (const heading of HEADINGS[lang]) {
   check(lower.includes(heading.toLowerCase()), `section « ${heading} » absente`);
 }
 
 // Experiences in order: company, then its roles and missions, before the next company
-let cursor = Math.max(0, lower.indexOf('expérience'));
+let cursor = Math.max(0, lower.indexOf(HEADINGS[lang][0].toLowerCase()));
 for (const entry of work) {
   const position = text.indexOf(entry.title, cursor);
   check(position !== -1, `expérience « ${entry.title} » absente ou hors de l'ordre de lecture`);

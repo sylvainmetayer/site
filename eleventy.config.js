@@ -6,6 +6,7 @@ import filters from './src/11ty/filters/index.js';
 import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
 import site from './src/_data/site.json' with { type: 'json' };
+import i18n from './src/_data/i18n.js';
 
 // Cloudflare Pages builds: production on main, preview elsewhere. Set here rather
 // than as project env vars (homelab tofu/site), so the repository owns it.
@@ -47,6 +48,10 @@ const passthroughItems = {
 
 const byNewest = (a, b) => b.date - a.date;
 
+// English translations are `*.en.md` files next to the French ones: the French
+// collections leave them out, English pages map items with the `translated` filter
+const isFrench = item => !item.inputPath.endsWith('.en.md');
+
 export default function eleventyConfig(config) {
   Object.entries(filters).forEach(([name, filter]) => {
     config.addFilter(name, filter);
@@ -61,17 +66,35 @@ export default function eleventyConfig(config) {
   const isStarredPost = post => post.data.star;
 
   config.addCollection('posts', collection => {
-    return collection.getFilteredByGlob('./src/posts/*.md').sort(byNewest);
+    return collection.getFilteredByGlob('./src/posts/*.md').filter(isFrench).sort(byNewest);
+  });
+
+  // English translations of the articles, newest first (/en/feed.xml, neighbours)
+  config.addCollection('postsEn', collection => {
+    return collection.getFilteredByGlob('./src/posts/*.en.md').sort(byNewest);
+  });
+
+  // Every article for the English pages: its translation when there is one,
+  // the French original otherwise (/en/articles/, English home page)
+  config.addCollection('postsAllEn', collection => {
+    const translations = new Map(collection.getFilteredByGlob('./src/posts/*.en.md')
+      .map(post => [post.data.translationKey, post]));
+    return collection.getFilteredByGlob('./src/posts/*.md')
+      .filter(isFrench)
+      .sort(byNewest)
+      .map(post => translations.get(post.data.translationKey) || post);
   });
 
   config.addCollection('postFeed', collection => {
     return collection.getFilteredByGlob('./src/posts/*.md')
+      .filter(isFrench)
       .sort(byNewest)
       .slice(0, site.maxPostsPerPage);
   });
 
   config.addCollection('starFeed', collection => {
     return collection.getFilteredByGlob('./src/posts/*.md')
+      .filter(isFrench)
       .filter(isStarredPost)
       .sort(byNewest)
       .slice(0, site.maxPostsPerPage);
@@ -79,11 +102,13 @@ export default function eleventyConfig(config) {
 
   config.addCollection('work', collection => {
     return collection.getFilteredByGlob('./src/work/*.md')
+      .filter(isFrench)
       .sort((a, b) => b.data.start - a.data.start);
   });
 
   config.addCollection('projets', collection => {
     return collection.getFilteredByGlob('./src/projets/*.md')
+      .filter(isFrench)
       .sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
   });
 
@@ -115,8 +140,43 @@ export default function eleventyConfig(config) {
   // Tags used by posts, sorted (the same ones that get a /tags/<tag>/ page)
   config.addFilter('postTags', posts => [...new Set(posts.flatMap(post => post.data.tags || []))].sort((a, b) => a.localeCompare(b)));
 
+  // The first `count` items of a list
+  config.addFilter('head', (items, count) => items.slice(0, count));
+
   // Items whose front matter `key` equals `value`
   config.addFilter('whereData', (items, key, value) => items.filter(item => item.data[key] === value));
+
+  // Interface string of the page language (src/_data/i18n.js), French when the
+  // English one is missing: {{ 'posts.count' | t({ count: 3 }) }}. With a
+  // `count`, a key that has `.one` and `.other` forms takes the matching one.
+  config.addFilter('t', function (key, values = {}, lang) {
+    const language = lang || this.ctx?.lang || 'fr';
+    const plural = `${key}.${values.count === 1 ? 'one' : 'other'}`;
+    const form = 'count' in values && plural in i18n.fr ? plural : key;
+    const text = i18n[language]?.[form] ?? i18n.fr[form];
+    if (text === undefined) throw new Error(`Texte d'interface inconnu : ${form}`);
+    return text.replace(/\{(\w+)\}/g, (match, name) => (name in values ? values[name] : match));
+  });
+
+  // Items (posts, projects, work) in the language of the page: each one is
+  // replaced by its translation when there is one, and kept otherwise
+  config.addFilter('translated', function (items, all, lang) {
+    const language = lang || this.ctx?.lang || 'fr';
+    if (language === 'fr') return items;
+    const translations = new Map(all
+      .filter(item => item.data.lang === language && item.data.translationKey)
+      .map(item => [item.data.translationKey, item]));
+    return items.map(item => translations.get(item.data.translationKey) || item);
+  });
+
+  // URL of the same page in the other language, if it exists:
+  // {{ translationKey | alternateUrl(collections.all) }}
+  config.addFilter('alternateUrl', function (key, all, lang) {
+    if (!key) return null;
+    const language = lang || this.ctx?.lang || 'fr';
+    const other = all.find(item => item.data.translationKey === key && item.data.lang !== language && item.url);
+    return other ? other.url : null;
+  });
 
   // Posts grouped by publication year, newest first: [{ year, posts }]
   config.addFilter('groupByYear', posts => {

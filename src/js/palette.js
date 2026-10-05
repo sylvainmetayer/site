@@ -1,5 +1,7 @@
 // Ctrl+K / ⌘K palette: jump to a page, an article, a talk, a project or a tag, or switch theme.
-// The index (/search.json) is built by src/search-index.njk and fetched on first opening.
+// The index (/search.json, /en/search.json) is built by src/_includes/layouts/search-index.njk
+// and fetched on first opening. Its URL and the status messages come from the dialog
+// (partials/palette.njk), in the language of the page.
 (function () {
   var dialog = document.querySelector('[data-palette]');
   if (!dialog || typeof dialog.showModal !== 'function') return;
@@ -9,6 +11,14 @@
   var status = dialog.querySelector('.palette-status');
   var isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
   var MAX_RESULTS = 40;
+  var text = dialog.dataset;
+
+  // "{count} results": the .one or .other message of the dialog
+  function format(message, values) {
+    return message.replace(/\{(\w+)\}/g, function (match, name) {
+      return name in values ? values[name] : match;
+    });
+  }
 
   var entries = null;
   var results = [];
@@ -20,7 +30,7 @@
 
   function load() {
     if (entries) return Promise.resolve(entries);
-    return fetch('/search.json')
+    return fetch(text.index)
       .then(function (response) {
         if (!response.ok) throw new Error(response.status);
         return response.json();
@@ -96,10 +106,10 @@
       list.appendChild(option);
     });
     select(0);
-    var plural = results.length > 1 ? 's' : '';
+    var count = results.length === 1 ? text.countOne : text.countOther;
     status.textContent = results.length
-      ? results.length + ' résultat' + plural
-      : 'Aucun résultat pour « ' + input.value.trim() + ' »';
+      ? format(count, { count: results.length })
+      : format(text.none, { query: input.value.trim() });
   }
 
   function select(index) {
@@ -138,7 +148,7 @@
     dialog.showModal();
     input.focus();
     load().then(render, function () {
-      status.textContent = 'Index de recherche indisponible.';
+      status.textContent = text.unavailable;
     });
   }
 
@@ -159,7 +169,7 @@
           render();
           if (results[0]) go(results[0], newTab);
         }, function () {
-          status.textContent = 'Index de recherche indisponible.';
+          status.textContent = text.unavailable;
         });
         return;
       }
@@ -181,8 +191,8 @@
   });
 
   document.querySelectorAll('[data-palette-open]').forEach(function (button) {
-    var kbd = button.querySelector('kbd');
-    if (kbd) kbd.textContent = isMac ? '⌘K' : 'ctrl k';
+    // Tooltip of the icon: the shortcut of this platform
+    if (isMac) button.title = button.title.replace('ctrl k', '⌘K');
     button.addEventListener('click', open);
     button.hidden = false;
   });

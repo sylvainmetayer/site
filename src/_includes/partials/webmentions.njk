@@ -7,14 +7,14 @@
   {% set replies = mentions.replies %}
   <section class="webmentions" aria-labelledby="webmentions-title">
     <p class="cmd" aria-hidden="true"><span class="prompt">$</span> curl webmention.io/{{ page.fileSlug }}</p>
-    <h2 id="webmentions-title">Réactions</h2>
+    <h2 id="webmentions-title">{{ 'webmentions.title' | t }}</h2>
     {% if likes.length or reposts.length or bookmarks.length %}
       <ul class="webmentions-counts">
-        {% for group in [[likes, 'j’aime', 'j’aime'], [reposts, 'partage', 'partages'], [bookmarks, 'favori', 'favoris']] %}
+        {% for group in [[likes, 'webmentions.like'], [reposts, 'webmentions.repost'], [bookmarks, 'webmentions.bookmark']] %}
           {% set items = group[0] %}
           {% if items.length %}
             <li>
-              <strong>{{ items.length }}</strong> {{ group[1] if items.length == 1 else group[2] }}<span class="visually-hidden"> :</span>
+              <strong>{{ items.length }}</strong> {{ group[1] | t({ count: items.length }) }}<span class="visually-hidden">{{ ' :' if lang == 'fr' else ':' }}</span>
               <span class="webmentions-authors">
                 {%- for item in items -%}
                   {% if item.authorUrl %}<a href="{{ item.authorUrl }}">{{ item.author }}</a>{% else %}{{ item.author }}{% endif %}{% if not loop.last %}, {% endif %}
@@ -31,9 +31,9 @@
           <li class="h-cite">
             <p class="webmentions-meta">
               {% if reply.authorUrl %}<a href="{{ reply.authorUrl }}" class="p-author">{{ reply.author }}</a>{% else %}<span class="p-author">{{ reply.author }}</span>{% endif %}
-              {{ 'a répondu' if reply.type == 'reply' else 'a mentionné cet article' }}
+              {{ ('webmentions.replied' if reply.type == 'reply' else 'webmentions.mentioned') | t }}
               {% if reply.published %}
-                {% if reply.url %}<a href="{{ reply.url }}" class="u-url">{% endif %}<time datetime="{{ reply.published }}" class="dt-published">le {{ reply.published | date('LL') }}</time>{% if reply.url %}</a>{% endif %}
+                {% if reply.url %}<a href="{{ reply.url }}" class="u-url">{% endif %}<time datetime="{{ reply.published }}" class="dt-published">{{ 'webmentions.on' | t({ date: reply.published | date('LL') }) }}</time>{% if reply.url %}</a>{% endif %}
               {% endif %}
             </p>
             {% if reply.text %}<p class="p-content">{{ reply.text }}</p>{% endif %}

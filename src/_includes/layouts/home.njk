@@ -1,5 +1,5 @@
 {% extends 'layouts/base.njk' %}
-{% from 'partials/macros.njk' import cmd, postList, projectCards %}
+{% from 'partials/macros.njk' import cmd, postList, projectCards with context %}
 {% from 'partials/icons.njk' import icon %}
 
 {% block content %}
@@ -15,30 +15,33 @@
     </ul>
   </section>
 
-  {% if collections.starFeed.length %}
+  {# English home page: the latest articles in their English version when there is one #}
+  {% set latest = (collections.postsAllEn | head(collections.postFeed.length)) if lang == 'en' else collections.postFeed %}
+  {% set starred = collections.starFeed | translated(collections.all) %}
+  {% if starred.length %}
     <section class="section" aria-labelledby="starred-title">
       {{ cmd('grep -l "star: true" articles/*') }}
       <h2 id="starred-title">{{ starHeading }}</h2>
-      {{ postList(collections.starFeed) }}
+      {{ postList(starred) }}
     </section>
   {% endif %}
 
   <section class="section" aria-labelledby="latest-title">
-    {{ cmd('ls -t articles/ | head -' + collections.postFeed.length) }}
+    {{ cmd('ls -t articles/ | head -' + latest.length) }}
     <h2 id="latest-title">{{ postsHeading }}</h2>
-    {{ postList(collections.postFeed) }}
-    {% if collections.postFeed.length < collections.posts.length %}
-      <a class="more" href="/articles/"><span class="arrow" data-arrow="→ " aria-hidden="true"></span>{{ archiveButtonText }} ({{ collections.posts.length }})</a>
+    {{ postList(latest) }}
+    {% if latest.length < collections.posts.length %}
+      <a class="more" href="{{ langPrefix }}/articles/"><span class="arrow" data-arrow="→ " aria-hidden="true"></span>{{ archiveButtonText }} ({{ collections.posts.length }})</a>
     {% endif %}
   </section>
 
-  {% set featured = collections.projets | withData('featured') %}
+  {% set featured = collections.projets | withData('featured') | translated(collections.all) %}
   {% if featured.length %}
     <section class="section" aria-labelledby="projects-title">
       {{ cmd('ls projets/') }}
       <h2 id="projects-title">{{ projectsHeading }}</h2>
       {{ projectCards(featured) }}
-      <a class="more" href="/projets/"><span class="arrow" data-arrow="→ " aria-hidden="true"></span>tous les projets ({{ collections.projets.length }})</a>
+      <a class="more" href="{{ langPrefix }}/{{ 'projects' if lang == 'en' else 'projets' }}/"><span class="arrow" data-arrow="→ " aria-hidden="true"></span>{{ 'home.allProjects' | t({ count: collections.projets.length }) }}</a>
     </section>
   {% endif %}
 {% endblock %}

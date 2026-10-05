@@ -1,10 +1,11 @@
-// Prints the one-page CV (/cv/pdf/, src/cv-pdf.njk) of a build (dist/) to src/uploads/CV.pdf
-// with headless Chromium.
+// Prints the one-page CV of a build (dist/) with headless Chromium: /cv/pdf/ to
+// src/uploads/CV.pdf, or with --lang en /en/cv/pdf/ to src/uploads/CV-en.pdf
+// (layout src/_includes/layouts/cv-pdf.njk).
 //
-//   node scripts/cv-pdf.mjs [dist] [--out <file>]
+//   node scripts/cv-pdf.mjs [dist] [--lang fr|en] [--out <file>]
 //
-// --out writes elsewhere than src/uploads/CV.pdf: CI generates a copy to compare with the
-// committed PDF (scripts/check-cv-ats.mjs --compare).
+// --out writes elsewhere than src/uploads/CV(-en).pdf: CI generates a copy to compare with
+// the committed PDF (scripts/check-cv-ats.mjs --compare).
 // The browser is CHROME_BIN, or the first of chromium-browser, chromium, google-chrome found in
 // the usual system directories (not PATH, which could point to anything).
 // The CV must fit on one A4 page: when the content overflows, the PDF is refused and
@@ -16,8 +17,13 @@ import { extname, join, resolve } from 'node:path';
 import { serveDist } from './lib/serve-dist.mjs';
 
 const args = process.argv.slice(2);
+const langIndex = args.indexOf('--lang');
+const lang = langIndex === -1 ? 'fr' : args[langIndex + 1];
+if (!['fr', 'en'].includes(lang)) throw new Error(`--lang ${lang} : fr ou en`);
+if (langIndex !== -1) args.splice(langIndex, 2);
+const prefix = lang === 'en' ? '/en' : '';
 const outIndex = args.indexOf('--out');
-const output = resolve(outIndex === -1 ? 'src/uploads/CV.pdf' : args[outIndex + 1]);
+const output = resolve(outIndex === -1 ? `src/uploads/CV${lang === 'en' ? '-en' : ''}.pdf` : args[outIndex + 1]);
 if (outIndex !== -1) args.splice(outIndex, 2);
 const dist = resolve(args[0] || 'dist');
 const site = JSON.parse(readFileSync('src/_data/site.json', 'utf8')).url;
@@ -33,8 +39,8 @@ const findBrowser = () => {
   throw new Error('Chromium introuvable : définir CHROME_BIN');
 };
 
-if (!existsSync(join(dist, 'cv/pdf/index.html'))) {
-  throw new Error(`${dist}/cv/pdf/index.html absent : lancer le build avant`);
+if (!existsSync(join(dist, `${prefix.slice(1)}/cv/pdf/index.html`))) {
+  throw new Error(`${dist}${prefix}/cv/pdf/index.html absent : lancer le build avant`);
 }
 
 // Number of pages of a PDF written by Chromium (page objects are not compressed)
@@ -61,7 +67,7 @@ server.listen(0, '127.0.0.1', () => {
     ...(process.env.CI ? ['--no-sandbox'] : []),
     `--user-data-dir=${profile}`,
     `--print-to-pdf=${draft}`,
-    `http://127.0.0.1:${port}/cv/pdf/`,
+    `http://127.0.0.1:${port}${prefix}/cv/pdf/`,
   ], { stdio: ['ignore', 'inherit', 'ignore'] });
   browser.on('exit', code => {
     server.close();
@@ -73,7 +79,7 @@ server.listen(0, '127.0.0.1', () => {
       }
       const pages = countPages(draft);
       if (pages !== 1) {
-        console.error(`Le CV fait ${pages} pages au lieu d'une : raccourcir src/cv-pdf.njk ou ses données. ${output} n'est pas modifié.`);
+        console.error(`Le CV fait ${pages} pages au lieu d'une : raccourcir src/_includes/layouts/cv-pdf.njk ou ses données. ${output} n'est pas modifié.`);
         process.exitCode = 1;
         return;
       }

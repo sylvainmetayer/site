@@ -1,0 +1,12 @@
+{# Projects page, in French (src/projets.njk) and English (src/en/projects.njk) #}
+{% extends 'layouts/base.njk' %}
+{% from 'partials/macros.njk' import cmd, projectCards with context %}
+
+{% block content %}
+  <section class="section" aria-labelledby="page-title">
+    {{ cmd('ls -l ' + ('projects/' if lang == 'en' else 'projets/')) }}
+    <h1 id="page-title" class="page-title">{{ title }}</h1>
+    <p class="page-lead">{{ 'projects.lead' | t | safe }}</p>
+  </section>
+  {{ projectCards(collections.projets | translated(collections.all), 2) }}
+{% endblock %}

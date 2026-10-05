@@ -8,5 +8,17 @@
       "label": "Anglais",
       "certification": "TOEIC"
     }
-  ]
+  ],
+  "en": {
+    "languages": [
+      {
+        "label": "French",
+        "level": "Native"
+      },
+      {
+        "label": "English",
+        "certification": "TOEIC"
+      }
+    ]
+  }
 }

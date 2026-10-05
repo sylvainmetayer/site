@@ -20,7 +20,7 @@ eleventyComputed:
   title: "Articles #{{ tag }}"
   metaDesc: "Articles de Sylvain MÉTAYER avec le tag {{ tag }}."
 ---
-{% from 'partials/macros.njk' import cmd, postList %}
+{% from 'partials/macros.njk' import cmd, postList with context %}
 <section class="section" aria-labelledby="page-title">
   {{ cmd('grep -rl "#' + tag + '" articles/') }}
   <h1 id="page-title" class="page-title">#{{ tag }}</h1>

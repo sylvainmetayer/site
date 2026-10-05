@@ -36,5 +36,45 @@
       "description": "",
       "tag": "epsi"
     }
-  ]
+  ],
+  "en": {
+    "formations": [
+      {
+        "title": "Baccalauréat Scientifique (science-track high school diploma)",
+        "link": "http://lyceeernestperochon.cc-parthenay.fr/",
+        "end": 2013,
+        "location": "Lycée Ernest Pérochon, Parthenay (79)",
+        "description": "Engineering Sciences option",
+        "print": false
+      },
+      {
+        "title": "DUT Informatique (two-year technical degree in Computer Science)",
+        "link": "https://www.iut.unilim.fr/les-formations/dut/informatique/",
+        "end": 2016,
+        "start": 2013,
+        "location": "IUT du Limousin (87)",
+        "description": "This program gave me solid programming foundations without neglecting general subjects such as English, accounting and mathematics. It ended with a 2-month internship at the IT services company NextMedia.",
+        "tag": "dut-info"
+      },
+      {
+        "title": "DAWIN Professional Bachelor's Degree (Web Application Development and Digital Innovation)",
+        "link": "https://www.iut.u-bordeaux.fr/info/#postL2",
+        "end": 2017,
+        "start": 2016,
+        "location": "IUT de Bordeaux (33)",
+        "description": "Completed as a work-study program at Atos, this degree gave me my first real professional experience.",
+        "tag": "dawin",
+        "shortTitle": "DAWIN professional bachelor's"
+      },
+      {
+        "title": "EPSI Bordeaux",
+        "link": "http://www.epsi.fr/campus/campus-de-bordeaux/",
+        "end": 2019,
+        "start": 2017,
+        "location": "Bordeaux (33)",
+        "description": "",
+        "tag": "epsi"
+      }
+    ]
+  }
 }

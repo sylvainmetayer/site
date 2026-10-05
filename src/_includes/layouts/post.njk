@@ -1,5 +1,5 @@
 {% extends 'layouts/base.njk' %}
-{% from 'partials/macros.njk' import cmd, origin %}
+{% from 'partials/macros.njk' import cmd, origin with context %}
 
 {% block extraMeta %}
   <meta property="og:type" content="article">
@@ -17,7 +17,7 @@
       <h1 id="post-title" class="p-name">{{ title }}</h1>
       <ul class="meta">
         <li><time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date('YYYY-MM-DD') }}</time></li>
-        <li>{{ readingTime }} min de lecture</li>
+        <li>{{ 'post.readingTime' | t({ minutes: readingTime }) }}</li>
         {% for tag in tags %}
           <li><a href="/tags/{{ tag }}/" class="p-category">#{{ tag }}</a></li>
         {% endfor %}
@@ -25,16 +25,19 @@
     </header>
 
     {% if canonical %}
-      <p class="post-notice">Article publié à l'origine sur {{ origin(canonical, originalPublisher, coauthors) }}.</p>
+      <p class="post-notice">{{ 'post.origin' | t({ origin: origin(canonical, originalPublisher, coauthors) }) | safe }}</p>
+    {% elif original %}
+      {# English translation of an article first published in French elsewhere #}
+      <p class="post-notice">{{ 'post.translation' | t({ origin: origin(original, originalPublisher, coauthors) }) | safe }}</p>
     {% endif %}
     {# Rebuilt every morning (daily_build.yml), so the age stays current #}
     {% if (global.now - page.date.getTime()) > 31557600000 %}
-      <p class="post-notice">Article de {{ page.date | date('YYYY') }} : certaines informations ont pu changer depuis.</p>
+      <p class="post-notice">{{ 'post.old' | t({ year: page.date | date('YYYY') }) }}</p>
     {% endif %}
 
     {% set tocContent = content | toc %}
     {% if tocContent and ('<li' in tocContent) and not noToc %}
-      <aside class="toc" aria-label="Sommaire">
+      <aside class="toc" aria-label="{{ 'post.toc' | t }}">
         <p class="cmd" aria-hidden="true"><span class="prompt">$</span> grep "^##" {{ page.fileSlug }}.md</p>
         {{ tocContent | safe }}
       </aside>
@@ -53,15 +56,17 @@
 
   {% include 'partials/webmentions.njk' %}
 
-  {% set newer = collections.posts | getPreviousCollectionItem(page) %}
-  {% set older = collections.posts | getNextCollectionItem(page) %}
+  {# Neighbours in the same language: the English articles are only the translated ones #}
+  {% set siblings = collections.postsEn if lang == 'en' else collections.posts %}
+  {% set newer = siblings | getPreviousCollectionItem(page) %}
+  {% set older = siblings | getNextCollectionItem(page) %}
   {% if newer or older %}
-    <nav class="post-nav" aria-label="Articles voisins">
+    <nav class="post-nav" aria-label="{{ 'post.neighbours' | t }}">
       {% if older %}
-        <a href="{{ older.url }}" class="prev" rel="prev"><span><span class="arrow" data-arrow="← " aria-hidden="true"></span>précédent<span class="visually-hidden"> :</span></span>{{ older.data.title }}</a>
+        <a href="{{ older.url }}" class="prev" rel="prev"><span><span class="arrow" data-arrow="← " aria-hidden="true"></span>{{ 'post.previous' | t }}<span class="visually-hidden"> :</span></span>{{ older.data.title }}</a>
       {% endif %}
       {% if newer %}
-        <a href="{{ newer.url }}" class="next" rel="next"><span>suivant<span class="visually-hidden"> :</span><span class="arrow" data-arrow=" →" aria-hidden="true"></span></span>{{ newer.data.title }}</a>
+        <a href="{{ newer.url }}" class="next" rel="next"><span>{{ 'post.next' | t }}<span class="visually-hidden"> :</span><span class="arrow" data-arrow=" →" aria-hidden="true"></span></span>{{ newer.data.title }}</a>
       {% endif %}
     </nav>
   {% endif %}
