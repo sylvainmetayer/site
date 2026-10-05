@@ -1,0 +1,26 @@
+name: Accessibility
+
+# Every page of the sitemap meets WCAG 2 AA for axe and HTML_CodeSniffer
+# (pa11y-ci, .pa11yci.json).
+on:
+  push:
+    branches-ignore: [badges]
+
+permissions:
+  contents: read
+
+jobs:
+  pa11y:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: ./.github/actions/build
+
+      - name: Check accessibility
+        run: npm run check:a11y
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome

@@ -89,7 +89,8 @@ Ce projet, réalisé en binôme durant ma formation à l'EPSI, avait pour but de
 
 <video controls muted preload="none" poster="/images/machine_learning-poster.webp" width="960" height="468" aria-label="Vidéo du projet Machine Learning, sans son, 4 min" aria-describedby="machine-learning-video">
   <source src="/images/machine_learning.mp4" type="video/mp4">
-  Désolé, votre navigateur ne permet pas de lire la vidéo. <a href="/images/machine_learning.mp4">Télécharger la vidéo (MP4, 1,2 Mo)</a>.
+  <track kind="captions" src="/images/machine_learning.fr.vtt" srclang="fr" label="Français">
+  Désolé, votre navigateur ne permet pas de lire la vidéo.
 </video>
 
-<p id="machine-learning-video">Ce que montre la vidéo : le résultat du projet. On fait un dessin dans un canvas, et l'application détecte l'emoji qui lui correspond.</p>
+<p id="machine-learning-video">Ce que montre la vidéo : le résultat du projet. On fait un dessin dans un canvas, et l'application détecte l'emoji qui lui correspond. <a href="/images/machine_learning.mp4">Télécharger la vidéo (MP4, 1,2 Mo)</a>.</p>

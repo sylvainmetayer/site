@@ -58,10 +58,10 @@
   {% if newer or older %}
     <nav class="post-nav" aria-label="Articles voisins">
       {% if older %}
-        <a href="{{ older.url }}" class="prev" rel="prev"><span><span aria-hidden="true">← </span>précédent<span class="visually-hidden"> :</span></span>{{ older.data.title }}</a>
+        <a href="{{ older.url }}" class="prev" rel="prev"><span><span class="arrow" data-arrow="← " aria-hidden="true"></span>précédent<span class="visually-hidden"> :</span></span>{{ older.data.title }}</a>
       {% endif %}
       {% if newer %}
-        <a href="{{ newer.url }}" class="next" rel="next"><span>suivant<span class="visually-hidden"> :</span><span aria-hidden="true"> →</span></span>{{ newer.data.title }}</a>
+        <a href="{{ newer.url }}" class="next" rel="next"><span>suivant<span class="visually-hidden"> :</span><span class="arrow" data-arrow=" →" aria-hidden="true"></span></span>{{ newer.data.title }}</a>
       {% endif %}
     </nav>
   {% endif %}

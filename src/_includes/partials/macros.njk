@@ -57,7 +57,7 @@
           <p class="actions">
             {# The project name makes the repeated "sources" / "article" links unambiguous out of context #}
             {% if project.data.repo %}<a href="{{ project.data.repo }}">sources<span class="visually-hidden"> de {{ project.data.title }}</span> <span aria-hidden="true">↗</span></a>{% endif %}
-            {% if project.data.article %}<a href="{{ project.data.article }}">article<span class="visually-hidden"> sur {{ project.data.title }}</span> <span aria-hidden="true">→</span></a>{% endif %}
+            {% if project.data.article %}<a href="{{ project.data.article }}">article<span class="visually-hidden"> sur {{ project.data.title }}</span> <span class="arrow" data-arrow="→" aria-hidden="true"></span></a>{% endif %}
           </p>
         {% endif %}
       </article>

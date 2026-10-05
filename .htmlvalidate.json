@@ -5,6 +5,7 @@
   "rules": {
     "no-trailing-whitespace": "off",
     "attribute-boolean-style": "off",
-    "attribute-empty-style": "off"
+    "attribute-empty-style": "off",
+    "valid-id": ["error", { "relaxed": true }]
   }
 }
