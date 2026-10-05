@@ -44,7 +44,7 @@
     "markdown-it-anchor": "^10.0.0",
     "markdown-it-footnote": "^4.0.0",
     "moment": "^2.29.4",
-    "pa11y-ci": "^4.1.1",
+    "pa11y-ci": "^5.0.0",
     "pdfjs-dist": "^6.4.299",
     "prettier": "^3.9.9"
   },
