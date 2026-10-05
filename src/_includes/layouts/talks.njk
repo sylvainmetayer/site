@@ -29,7 +29,7 @@
                   {% if session.event_url %}<a href="{{ session.event_url }}">{{ session.event }} {{ session.date | date('YYYY') }}</a>{% else %}{{ session.event }} {{ session.date | date('YYYY') }}{% endif %}{% if session.note %} ({{ session.note }}){% endif %}{{ ' :' if lang == 'fr' else ':' }}
                   {% if session.slides %}<a href="{{ session.slides }}">slides<span class="visually-hidden">{{ 'talks.of' | t({ context: context }) }}</span></a>{% endif %}
                   {% if session.video %}{% if session.slides %} · {% endif %}<a href="{{ session.video }}">{{ 'talks.video' | t }}<span class="visually-hidden">{{ 'talks.of' | t({ context: context }) }}</span></a>{% if session.duration %} ({{ session.duration }} min){% endif %}{% endif %}
-                  {% if session.article %} · <a href="{{ session.article }}">article<span class="visually-hidden">{{ 'talks.on' | t({ context: context }) }}</span></a>{% endif %}
+                  {% if session.article %}{% set article = session.article | localLink(collections.all) %} · <a href="{{ article.url }}"{% if article.lang != lang %} hreflang="{{ article.lang }}"{% endif %}>article<span class="visually-hidden">{{ 'talks.on' | t({ context: context }) }}</span></a>{% if article.lang != lang %} <span class="post-lang">{{ 'lang.inFrench' | t }}</span>{% endif %}{% endif %}
                 </li>
               {% endfor %}
             </ul>

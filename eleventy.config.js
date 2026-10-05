@@ -7,7 +7,7 @@ import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
 import site from './src/_data/site.json' with { type: 'json' };
 import i18n from './src/_data/i18n.js';
-import { DEFAULT_LANG, baseSlug, isEnglishFile, otherLang, translationIndex } from './src/11ty/i18n.js';
+import { DEFAULT_LANG, baseSlug, isEnglishFile, otherLang, translationIndex, urlIndex } from './src/11ty/i18n.js';
 
 // Cloudflare Pages builds: production on main, preview elsewhere. Set here rather
 // than as project env vars (homelab tofu/site), so the repository owns it.
@@ -180,6 +180,17 @@ export default function eleventyConfig(config) {
     const language = lang || this.ctx?.lang || DEFAULT_LANG;
     const other = translationIndex(all).get(key)?.[otherLang(language)];
     return other?.url ? other : null;
+  });
+
+  // A link to a page of the site, in the language of the page: the URL of its
+  // translation when there is one, otherwise the page itself with its language,
+  // so the template can say it is in French. { url, lang }
+  config.addFilter('localLink', function (url, all, lang) {
+    const language = lang || this.ctx?.lang || DEFAULT_LANG;
+    const target = urlIndex(all).get(url);
+    if (!target) return { url, lang: language };
+    const translation = translationIndex(all).get(target.data.translationKey)?.[language];
+    return translation?.url ? { url: translation.url, lang: language } : { url, lang: target.data.lang };
   });
 
   // Slug shared by an entry and its translation: anchors, search index
