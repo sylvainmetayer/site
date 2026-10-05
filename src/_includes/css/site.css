@@ -912,6 +912,13 @@ samp {
   content: none;
 }
 
+/* Link behind a login (title says which): lock instead of the external arrow.
+   Skipped by the weekly link check, see lychee.toml */
+.prose a[data-auth]::after {
+  content: "🔒";
+  content: "🔒" / "";
+}
+
 /* Former link to a site gone for good: kept as plain text so the link check skips it */
 .prose .dead-link {
   color: var(--error);

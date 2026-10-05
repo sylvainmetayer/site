@@ -12,6 +12,8 @@ exclude = [
   '^https://webmention\.io/',
   # LinkedIn répond 999 à tout client non connecté
   '^https://([a-z]+\.)?linkedin\.com/',
+  # Dépôt GitLab privé : 403 sans connexion (liens marqués d'un cadenas, data-auth)
+  '^https://gitlab\.com/ocyhc/memoire-dut-info',
 ]
 
 # 429 : limite de requêtes atteinte, le lien n'est pas cassé pour autant
