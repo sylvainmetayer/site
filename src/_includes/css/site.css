@@ -840,6 +840,15 @@ samp {
   color: var(--accent);
 }
 
+/* Decorative arrows (← → ↓) drawn in CSS: a text node made only of a symbol
+   cannot be checked for contrast by axe (pa11y-ci), and screen readers skip
+   generated content with an empty alternative text */
+.arrow::before {
+  content: attr(data-arrow);
+  content: attr(data-arrow) / "";
+  white-space: pre;
+}
+
 .prose a[data-external]::after {
   content: "↗";
   /* Decorative: not read by screen readers where alt text for content is supported */

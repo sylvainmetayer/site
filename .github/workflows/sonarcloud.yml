@@ -21,10 +21,11 @@ jobs:
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # Historique complet pour attribuer les problèmes (blame) et détecter le nouveau code
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Check for the SonarCloud token
         id: token

@@ -1,5 +1,6 @@
 ---
 title: "Développement d'une solution de recherche de données personnelles"
+metaTitle: "Une solution de recherche de données personnelles · Sylvain"
 tags:
     - atos
     - python

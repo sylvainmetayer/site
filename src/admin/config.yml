@@ -36,7 +36,7 @@ collections:
       - { label: URL canonique, name: canonical, widget: string, required: false, hint: "Article republié depuis une autre plateforme (dev.to, Medium…) : URL de l'original. L'article sort du sitemap." }
       - { label: Publié à l'origine par, name: originalPublisher, widget: string, required: false, hint: "Ex. onepoint" }
       - { label: Co-auteurs (pseudos sur la plateforme d'origine), name: coauthors, widget: list, required: false }
-      - { label: SEO - titre, name: metaTitle, widget: string, required: false }
+      - { label: SEO - titre, name: metaTitle, widget: string, required: false, hint: "Titre complet de l’onglet (suffixe « · Sylvain » compris), 70 caractères au plus : la CI le vérifie (npm run validate)." }
       - { label: SEO - description, name: metaDesc, widget: string, required: false }
       - { label: Image de partage, name: socialImage, widget: image, required: false }
 
@@ -86,7 +86,7 @@ collections:
           - { label: Titre « articles mis en avant », name: starHeading, widget: string }
           - { label: Titre « projets », name: projectsHeading, widget: string }
           - { label: Lien vers tous les articles, name: archiveButtonText, widget: string }
-          - { label: SEO - titre, name: metaTitle, widget: string, required: false }
+          - { label: SEO - titre, name: metaTitle, widget: string, required: false, hint: "Titre complet de l’onglet (suffixe « · Sylvain » compris), 70 caractères au plus : la CI le vérifie (npm run validate)." }
           - { label: SEO - description, name: metaDesc, widget: string, required: false }
           - { label: Image de partage, name: socialImage, widget: image, required: false }
 
@@ -98,7 +98,7 @@ collections:
     fields:
       - { label: Titre, name: title, widget: string }
       - { label: Permalien (ex. /ma-page/index.html), name: permalink, widget: string, required: false }
-      - { label: SEO - titre, name: metaTitle, widget: string, required: false }
+      - { label: SEO - titre, name: metaTitle, widget: string, required: false, hint: "Titre complet de l’onglet (suffixe « · Sylvain » compris), 70 caractères au plus : la CI le vérifie (npm run validate)." }
       - { label: SEO - description, name: metaDesc, widget: string, required: false }
       - { label: Contenu, name: body, widget: markdown }
 

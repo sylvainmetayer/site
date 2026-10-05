@@ -1,0 +1,54 @@
+name: Badges
+
+# Scores Lighthouse et empreinte carbone de la production
+# (scripts/lighthouse-badges.mjs), publiés en fichiers JSON sur la branche
+# `badges`, que les badges shields.io du README lisent. La branche ne contient
+# que ces fichiers ; [skip ci] et [CF-Pages-Skip] évitent tout build (Actions, Pages).
+on:
+  schedule:
+    # Après le build quotidien de 06:00 UTC
+    - cron: '30 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: badges
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install packages
+        run: npm ci --ignore-scripts
+
+      - name: Audit production
+        run: node scripts/lighthouse-badges.mjs "$RUNNER_TEMP/badges"
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+
+      - name: Publish to the badges branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd "$RUNNER_TEMP/badges"
+          git init -q -b badges
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -q -m "Badges du $(date -u +%F) [skip ci] [CF-Pages-Skip]"
+          # Un seul commit, remplacé chaque jour : la branche ne grossit pas
+          git push -q --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" badges

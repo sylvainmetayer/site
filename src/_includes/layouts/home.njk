@@ -28,7 +28,7 @@
     <h2 id="latest-title">{{ postsHeading }}</h2>
     {{ postList(collections.postFeed) }}
     {% if collections.postFeed.length < collections.posts.length %}
-      <a class="more" href="/articles/"><span aria-hidden="true">→ </span>{{ archiveButtonText }} ({{ collections.posts.length }})</a>
+      <a class="more" href="/articles/"><span class="arrow" data-arrow="→ " aria-hidden="true"></span>{{ archiveButtonText }} ({{ collections.posts.length }})</a>
     {% endif %}
   </section>
 
@@ -38,7 +38,7 @@
       {{ cmd('ls projets/') }}
       <h2 id="projects-title">{{ projectsHeading }}</h2>
       {{ projectCards(featured) }}
-      <a class="more" href="/projets/"><span aria-hidden="true">→ </span>tous les projets ({{ collections.projets.length }})</a>
+      <a class="more" href="/projets/"><span class="arrow" data-arrow="→ " aria-hidden="true"></span>tous les projets ({{ collections.projets.length }})</a>
     </section>
   {% endif %}
 {% endblock %}
