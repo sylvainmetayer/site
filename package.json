@@ -40,7 +40,7 @@
     "markdown-it-footnote": "^4.0.0",
     "moment": "^2.29.4",
     "pdfjs-dist": "^6.4.299",
-    "prettier": "^2.8.8"
+    "prettier": "^3.0.0"
   },
   "scripts": {
     "start": "npm run serve",
