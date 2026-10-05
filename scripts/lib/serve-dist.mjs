@@ -3,7 +3,7 @@
 // request only selects an entry of that index and never builds a file path, so
 // nothing outside the build can be read.
 import { createServer } from 'node:http';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { extname, join, relative, sep } from 'node:path';
 
 const TYPES = {
@@ -28,15 +28,16 @@ const TYPES = {
 function indexFiles(dist) {
   const files = new Map();
   (function walk(dir) {
-    for (const entry of readdirSync(dir, { withFileTypes: true })) {
-      const path = join(dir, entry.name);
-      if (entry.isDirectory()) {
+    for (const name of readdirSync(dir)) {
+      const path = join(dir, name);
+      // statSync follows symbolic links: a linked folder is walked, not served
+      if (statSync(path).isDirectory()) {
         walk(path);
         continue;
       }
       const url = `/${relative(dist, path).split(sep).join('/')}`;
       files.set(url, path);
-      if (entry.name === 'index.html') {
+      if (name === 'index.html') {
         const folder = url.slice(0, -'index.html'.length);
         files.set(folder, path);
         if (folder !== '/') files.set(folder.slice(0, -1), path);
@@ -61,7 +62,14 @@ export function serveDist(dist, { transform } = {}) {
       res.writeHead(404).end();
       return;
     }
-    const content = readFileSync(file);
+    let content;
+    try {
+      content = readFileSync(file);
+    } catch {
+      // Removed or unreadable since the server started
+      res.writeHead(500).end();
+      return;
+    }
     res.writeHead(200, { 'Content-Type': TYPES[extname(file)] || 'application/octet-stream' });
     res.end(transform ? transform(file, content) : content);
   });

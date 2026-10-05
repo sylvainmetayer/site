@@ -1,7 +1,8 @@
 name: External links
 
 # Liens externes des pages construites, chaque lundi (lychee.toml). Un lien
-# cassé ouvre une issue, ou la met à jour si elle est encore ouverte.
+# cassé ouvre une issue, ou la met à jour si elle est encore ouverte ; elle est
+# fermée dès que tous les liens répondent de nouveau.
 on:
   schedule:
     - cron: '0 7 * * 1'
@@ -32,8 +33,9 @@ jobs:
           output: lychee/out.md
           fail: false
 
+      # Exit codes of lychee: 0 all good, 2 broken links, anything else an error
+      # of lychee itself (configuration, input), which must not open an issue.
       - name: Find the open issue
-        if: steps.lychee.outputs.exit_code != 0
         id: issue
         env:
           GH_TOKEN: ${{ github.token }}
@@ -42,7 +44,7 @@ jobs:
           echo "number=$number" >> "$GITHUB_OUTPUT"
 
       - name: Open or update the issue
-        if: steps.lychee.outputs.exit_code != 0
+        if: steps.lychee.outputs.exit_code == 2
         uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6.0.0
         with:
           title: Liens externes cassés
@@ -50,7 +52,19 @@ jobs:
           labels: liens-casses
           issue-number: ${{ steps.issue.outputs.number }}
 
-      # Rouge tant que des liens sont cassés : c'est ce statut que montre le badge
-      - name: Fail on broken links
+      - name: Close the issue, all links work again
+        if: steps.lychee.outputs.exit_code == 0 && steps.issue.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ steps.issue.outputs.number }}
+        run: gh issue close "$NUMBER" --repo "$GITHUB_REPOSITORY" --comment "Tous les liens externes répondent de nouveau ($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)."
+
+      # Rouge tant que des liens sont cassés (ou si lychee a échoué) : c'est ce
+      # statut que montre le badge
+      - name: Fail on broken links or lychee errors
         if: steps.lychee.outputs.exit_code != 0
-        run: exit 1
+        env:
+          EXIT_CODE: ${{ steps.lychee.outputs.exit_code }}
+        run: |
+          [ "$EXIT_CODE" = 2 ] || echo "::error::lychee a échoué (code $EXIT_CODE), voir le journal de l'étape Check external links"
+          exit 1

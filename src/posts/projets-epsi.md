@@ -93,4 +93,6 @@ Ce projet, réalisé en binôme durant ma formation à l'EPSI, avait pour but de
   Désolé, votre navigateur ne permet pas de lire la vidéo.
 </video>
 
-<p id="machine-learning-video">Ce que montre la vidéo : le résultat du projet. On fait un dessin dans un canvas, et l'application détecte l'emoji qui lui correspond. <a href="/images/machine_learning.mp4">Télécharger la vidéo (MP4, 1,2 Mo)</a>.</p>
+<p id="machine-learning-video">Ce que montre la vidéo : le résultat du projet. On fait un dessin dans un canvas, et l'application détecte l'emoji qui lui correspond.</p>
+
+<p><a href="/images/machine_learning.mp4">Télécharger la vidéo (MP4, 1,2 Mo)</a></p>
