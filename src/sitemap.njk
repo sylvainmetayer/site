@@ -10,7 +10,7 @@ eleventyExcludeFromCollections: true
       {% set absoluteUrl %}{{ helpers.url() }}{{ item.url }}{% endset %}
       <url>
         <loc>{{ absoluteUrl }}</loc>
-        <lastmod>{{ item.date | dateToRfc3339 }}</lastmod>
+        <lastmod>{{ (item.data.updated or item.date) | dateToRfc3339 }}</lastmod>
         <changefreq>{{ item.data.changefreq or "monthly" }}</changefreq>
         <priority>{{ item.data.priority or "0.5" }}</priority>
       </url>

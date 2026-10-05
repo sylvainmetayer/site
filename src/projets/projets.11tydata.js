@@ -7,5 +7,6 @@ export default {
   eleventyComputed: {
     lang: data => entryData(data, 'projets').lang,
     translationKey: data => entryData(data, 'projets').translationKey,
+    updated: data => data.updated && new Date(data.updated),
   },
 };

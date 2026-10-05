@@ -13,6 +13,8 @@ export default {
     lang: data => entryData(data, 'post').lang,
     // Links a translation to its original (language switcher, hreflang)
     translationKey: data => entryData(data, 'post').translationKey,
+    // Last review (`updated` front matter), a Date even when written as a quoted string
+    updated: data => data.updated && new Date(data.updated),
     // Unpublished posts get no page in production (permalink false)
     permalink: data => {
       const publish = process.env.ELEVENTY_ENV !== "production" || isLive(data);

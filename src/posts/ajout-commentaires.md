@@ -247,4 +247,4 @@ Et voici le résultat !
 > Edit 16.07.2020 : Les commentaires ne sont pour le moment plus disponibles. Migration vers Eleventy en cours, ils devraient être remplacés à l'aide des Webmentions d'ici les prochaines semaines/mois.
 
 [^1]: [Voici un site répertoriant plusieurs solutions existant](https://lisakov.com/projects/open-source-comments/)
-[^2]: [Ce tutoriel très similaire à cet article m'a été bien utile](https://blog.phusion.nl/2018/08/16/isso-simple-self-hosted-commenting-system/)
+[^2]: [Ce tutoriel très similaire à cet article m'a été bien utile](https://blog.phusion.nl/isso-simple-self-hosted-commenting-system/)

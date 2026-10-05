@@ -54,7 +54,7 @@
       <article class="card" id="{{ project.fileSlug | baseSlug }}">
         {# On an English page, a project without translation keeps its French description #}
         {% set untranslated = project.data.lang != lang %}
-        <h{{ level }} class="card-title">{{ project.data.title }} <small>{% if untranslated %}<span class="post-lang">{{ 'lang.inFrench' | t }}</span> · {% endif %}{{ project.data.year }}</small></h{{ level }}>
+        <h{{ level }} class="card-title">{{ project.data.title }} <small>{% if untranslated %}<span class="post-lang">{{ 'lang.inFrench' | t }}</span> · {% endif %}{{ project.data.year }}{% if project.data.updated %} · {{ 'post.updated' | t({ date: '<time datetime="' + (project.data.updated | w3DateFilter) + '">' + (project.data.updated | date('YYYY-MM-DD')) + '</time>' }) | safe }}{% endif %}</small></h{{ level }}>
         <div class="desc"{% if untranslated %} lang="{{ project.data.lang }}"{% endif %}>{{ project.templateContent | safe }}</div>
         {% if project.data.stack %}
           <ul class="chips">
