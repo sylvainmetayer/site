@@ -8,16 +8,20 @@ roles:
     start: 2019-08-01
     location: Bègles (33)
     missions:
-      - Set up CI, AWS deployment and development of a concert venue's website (Kubernetes, Terraform, Jenkins, Angular, PHP, NodeJS).
-      - Set up and documented a software forge for the French National Housing Agency (Anah) (Jenkins, SonarQube, GitLab, GitLab CI).
-      - Web development on various PHP, Symfony and Drupal projects for several clients (BNPPRE, Bureau Veritas).
+      - Ansible, Centreon monitoring, SQL and work with the HDS-certified host for the GIP ORU Occitanie.
+      - Kubernetes infrastructure for Châlons-en-Champagne (Rancher, Ansible).
+      - Managed Kubernetes on OVHcloud (Terraform, ArgoCD, GitLab CI) for the projects of onepoint's publishing unit.
+      - New features for a flex office application (Java, Quarkus, Angular) and mentoring of junior developers.
+      - Concert venue website (Angular, PHP, NestJS) on AWS (Kubernetes, Terraform, Jenkins), handling hundreds of thousands of concurrent connections.
+      - Set up and documented a software forge for the French National Housing Agency (Anah) (Jenkins, Nexus, SonarQube, GitLab CI).
+      - BNPPRE Drupal intranet and a daily import of hundreds of thousands of rows.
   - title: Work-study contract, EPSI Bordeaux
     start: 2017-09-01
     end: 2019-07-31
     location: Pessac (33)
     missions:
-      - Web development on various PHP, Symfony and Drupal projects for several clients (BNPPRE, Bureau Veritas, Nouvelle-Aquitaine).
-      - Built an industrialization pipeline for deploying websites for the Nouvelle-Aquitaine Region (Jenkins, Ansible).
+      - Maintenance and new features for Bureau Veritas' websites, including the Symfony 2 to 3 migration (Symfony, Angular).
+      - Drupal websites for the Nouvelle-Aquitaine Region, shared modules and automated deployment (Jenkins, Ansible).
 ---
 
 Work-study thesis (in French): [How can automation improve an application's lifecycle?](https://memoire.epsi.sylvainmetayer.fr)
