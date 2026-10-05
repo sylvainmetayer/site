@@ -42,6 +42,7 @@ L'infra est décrite dans le dépôt homelab (`tofu/site`, sur le modèle de ref
 - redirections dans `src/_redirects` (statut explicite, Pages renvoie 302 par défaut), en-têtes et CSP dans `src/_headers` ;
 - build quotidien pour les articles programmés : `.github/workflows/daily_build.yml` appelle le deploy hook Pages (secret `CLOUDFLARE_PAGES_DEPLOY_HOOK`, posé par homelab) ;
 - CI : build de production puis `npm run check:links`, qui vérifie les liens internes, les cibles de `_redirects` et les URLs déjà publiées de `scripts/published-urls.txt`. Chaque nouvelle page publiée y ajoute une ligne ;
+- SonarCloud (`.github/workflows/sonarcloud.yml`, `sonar-project.properties`) : analyse de `main` et des PR, informative. Nécessite le secret `SONAR_TOKEN` et l'Automatic Analysis désactivée sur sonarcloud.io ; sans secret, le job est ignoré ;
 - flux Atom : les `<id>` restent sur `https://sylvain.dev` (`feedIdBase`) pour que les lecteurs RSS ne revoient pas tous les articles comme nouveaux ;
 - `src/service-worker-retired.js` : Pangolin le sert à la place de `/service-worker.js` sur l'apex. Il désinstalle le service worker de l'ancien site, qu'un navigateur ne mettrait pas à jour derrière une redirection ;
 - webmentions : reçues par webmention.io pour `www.sylvain.dev` (`webmentionDomain`), récupérées au build par `src/_data/webmentions.js` et affichées sous les articles. Le build lit la variable `WEBMENTION_IO_TOKEN` (production uniquement, à poser dans `tofu/site`) ; sans elle, rien ne s'affiche. Le build quotidien fait apparaître les nouvelles ;
