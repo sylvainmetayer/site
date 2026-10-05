@@ -59,7 +59,7 @@ function normalize(mention) {
   };
 }
 
-export default async function () {
+export default async function webmentions() {
   const token = process.env.WEBMENTION_IO_TOKEN;
   if (!token) {
     return {};
