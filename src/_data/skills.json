@@ -8,7 +8,8 @@
         "OpenTofu",
         "Ansible",
         "Docker",
-        "AWS"
+        "AWS",
+        "OVHcloud"
       ]
     },
     {
@@ -17,7 +18,9 @@
         "GitLab CI",
         "GitHub Actions",
         "Jenkins",
-        "SonarQube"
+        "SonarQube",
+        "ArgoCD",
+        "Nexus"
       ]
     },
     {
@@ -58,7 +61,8 @@
           "OpenTofu",
           "Ansible",
           "Docker",
-          "AWS"
+          "AWS",
+          "OVHcloud"
         ]
       },
       {
@@ -67,7 +71,9 @@
           "GitLab CI",
           "GitHub Actions",
           "Jenkins",
-          "SonarQube"
+          "SonarQube",
+          "ArgoCD",
+          "Nexus"
         ]
       },
       {
