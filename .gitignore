@@ -8,3 +8,5 @@ dist
 .wrangler
 .cache
 badges
+# Worktrees Claude Code (dépôts git embarqués)
+.claude/worktrees/
