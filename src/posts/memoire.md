@@ -42,7 +42,7 @@ Le premier était un projet pour un client qui restera inconnu, pour des clauses
 
 Le second projet est un ensemble de sous-projets, consistant à la refonte des sites de la région Nouvelle-Aquitaine, également sous Drupal 8. Ce choix était une contrainte client, puisque tous les utilisateurs (rédacteurs, traducteurs, ...) sont déjà habitués à l'interface d'administration de Drupal 7, et qu'un changement aurait impliqué des frais de formation à un nouvel outil, pas forcément nécessaire et valable.
 
-Les sites auxquels j'ai participé sont la refonte du [site des transports de la région](https://transports.nouvelle-aquitaine.fr/fr) ainsi que la première version d'une régie publicitaire.
+Les sites auxquels j'ai participé sont la refonte du [site des transports de la région](https://transports.nouvelle-aquitaine.fr/) ainsi que la première version d'une régie publicitaire.
 
 ## Le sujet ou projet d’étude envisagé
 
