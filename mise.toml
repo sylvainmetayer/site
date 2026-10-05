@@ -1,0 +1,32 @@
+[tools]
+node = "22"
+
+[tasks.install]
+description = "Installe les dépendances npm"
+run = "npm install"
+sources = ["package.json", "package-lock.json"]
+outputs = ["node_modules/.package-lock.json"]
+
+[tasks.dev]
+description = "Serveur de dev avec rechargement (sans _redirects ni _headers)"
+depends = ["install"]
+run = "npm start"
+
+[tasks.build]
+description = "Génère le site de production dans dist/"
+depends = ["install", "clean"]
+run = "ELEVENTY_ENV=production npm run production"
+
+[tasks.preview]
+description = "Émulateur Cloudflare Pages sur :8788 (avec _redirects et _headers), build de preview sans beacon"
+depends = ["install", "clean"]
+run = "ELEVENTY_ENV=preview npm run production && npx -y wrangler@4 pages dev dist --port 8788"
+
+[tasks.validate]
+description = "Validation HTML du build"
+depends = ["build"]
+run = "npm run validate"
+
+[tasks.clean]
+description = "Supprime dist/"
+run = "rm -rf dist"

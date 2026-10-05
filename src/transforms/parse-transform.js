@@ -1,9 +1,8 @@
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
-const getSize = require('image-size');
-const helpers = require('../_data/helpers');
+import { JSDOM } from 'jsdom';
+import getSize from 'image-size';
+import helpers from '../_data/helpers.js';
 
-module.exports = function (value, outputPath) {
+export default function (value, outputPath) {
   if (outputPath && outputPath.endsWith('.html')) {
     const DOM = new JSDOM(value, {
       resources: 'usable'
@@ -42,7 +41,7 @@ module.exports = function (value, outputPath) {
           const dimensions = getSize('src' + file);
 
           image.setAttribute('width', dimensions.width);
-          image.setAttribute('height', dimensions.height);;
+          image.setAttribute('height', dimensions.height);
         }
 
         // If an image has a title it means that the user added a caption
@@ -78,7 +77,7 @@ module.exports = function (value, outputPath) {
       });
     }
 
-    return document, '<!DOCTYPE html>\r\n' + document.documentElement.outerHTML;
+    return '<!DOCTYPE html>\r\n' + document.documentElement.outerHTML;
   }
   return value;
 };

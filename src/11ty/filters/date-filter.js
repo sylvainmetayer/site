@@ -1,6 +1,8 @@
-const moment = require('moment');
+import moment from 'moment';
+import 'moment/locale/fr.js';
+
 moment.locale('fr');
 
-module.exports = function (date, format = 'LL') {
+export default function (date, format = 'LL') {
   return moment(date).format(format);
 }

@@ -4,12 +4,12 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {%- for page in collections.all %}
-    {% if page.url %}
-      {% set absoluteUrl %}{{ helpers.url() }}{{ page.url }}{% endset %}
+  {%- for item in collections.all %}
+    {% if item.url and item.url != '/404.html' and not item.url.startsWith('/admin') %}
+      {% set absoluteUrl %}{{ helpers.url() }}{{ item.url }}{% endset %}
       <url>
         <loc>{{ absoluteUrl }}</loc>
-        <lastmod>{{ page.date | rssDate }}</lastmod>
+        <lastmod>{{ item.date | dateToRfc3339 }}</lastmod>
         <changefreq>{{ item.data.changefreq or "monthly" }}</changefreq>
         <priority>{{ item.data.priority or "0.5" }}</priority>
       </url>

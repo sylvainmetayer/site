@@ -1,0 +1,19 @@
+# En-têtes servis par Cloudflare Pages (remplace la section [[headers]] de netlify.toml).
+# La CSP couvre aussi Sveltia CMS (/admin) : API GitHub, polices d'icônes sur
+# jsDelivr, aperçus blob: et avatars GitHub. Une règle séparée pour /admin/*
+# s'ajouterait à celle-ci au lieu de la remplacer. www.netlify.com reste dans
+# img-src pour le bouton « Deploy to Netlify » de l'article email-alias-manager.
+/*
+  Content-Security-Policy: default-src 'self'; connect-src 'self' blob: https://cloudflareinsights.com https://api.github.com https://www.githubstatus.com; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: blob: https://www.netlify.com https://avatars.githubusercontent.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self' blob:; object-src 'none'
+  Access-Control-Allow-Origin: https://cloudflareinsights.com
+  Referrer-Policy: no-referrer-when-downgrade
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-UA-Compatible: IE=edge,chrome=1
+  X-XSS-Protection: 1; mode=block
+
+# Noms de fichiers sans hash (copiés de node_modules) : pas d'immutable, une
+# mise à jour de fontsource doit finir par arriver chez les visiteurs.
+/fonts/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400

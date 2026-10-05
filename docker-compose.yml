@@ -27,7 +27,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    command: eleventy --serve --port 4000
+    command: npx eleventy --serve --port 4000
     ports:
       - 127.0.0.1:4000:4000
     volumes:

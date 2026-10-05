@@ -1,11 +1,9 @@
-const isLive = require("./is-live");
-const w3DateFilter = require("./w3-date-filter");
-const dateFilter = require("./date-filter");
-const console = require("./console");
+import isLive from './is-live.js';
+import w3DateFilter from './w3-date-filter.js';
+import dateFilter from './date-filter.js';
 
-module.exports = {
+export default {
   date: dateFilter,
   w3DateFilter,
-  isLive,
-  console
+  isLive
 };

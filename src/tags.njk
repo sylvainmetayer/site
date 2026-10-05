@@ -11,26 +11,20 @@ pagination:
     - tagList
     - postFeed
     - starFeed
+    - work
+    - projets
   addAllPagesToCollections: true
 permalink: /tags/{{ tag }}/
+layout: layouts/base.njk
 eleventyComputed:
-  title: "Articles ayant le tag '{{ tag }}'"
+  title: "Articles #{{ tag }}"
+  metaDesc: "Articles de Sylvain Metayer avec le tag {{ tag }}."
 ---
-
-{% extends 'layouts/base.njk' %}
-
-{# Intro content #}
-{% set introHeading %}Articles ayant le tag "{{ tag }}"{% endset %}
-{% set introHeadingLevel = '2' %}
-
-{# Post list content #}
-{% set postListHeadingLevel = '2' %}
-{% set postListItems = collections[tag] %}
-
-{% block content %}
-  <main id="main-content" tabindex="-1">
-    {% include "partials/components/intro.njk" %}
-    {% include "partials/components/post-list.njk" %}
-    {% include "partials/components/pagination.njk" %}
-  </main>
-{% endblock %}
+{% from 'partials/macros.njk' import cmd, postList %}
+<section class="section" aria-labelledby="page-title">
+  {{ cmd('grep -rl "#' + tag + '" articles/') }}
+  <h1 id="page-title" class="page-title">#{{ tag }}</h1>
+  {% set count = collections[tag].length %}
+  <p class="page-lead">{{ count }} article{% if count > 1 %}s{% endif %} · <a href="/articles/">tous les articles</a></p>
+</section>
+{{ postList(collections[tag] | reverse, true) }}

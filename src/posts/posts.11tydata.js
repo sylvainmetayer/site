@@ -1,9 +1,9 @@
 const isLive = post => {
   const now = new Date();
   return !post.draft && post.date && new Date(post.date) <= now;
-}
+};
 
-module.exports = {
+export default {
   eleventyComputed: {
     permalink: data => {
       let postPermalink = "/article/{{ page.fileSlug }}/";

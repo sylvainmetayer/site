@@ -1,16 +1,35 @@
-name: Daily Build - Triggers Netlify
+name: Daily Build
 
+# Reconstruit le site chaque matin : publication des articles programmés et
+# date de dernière construction. Pendant la migration, chaque hébergeur dont
+# le secret est présent est déclenché : Netlify (netlify_webhook) tant qu'il
+# sert l'apex, Cloudflare Pages (CLOUDFLARE_PAGES_DEPLOY_HOOK, posé par
+# homelab tofu/site). Aucun secret = échec, pour ne pas sauter un build en silence.
 on:
   schedule:
     - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: curl
-        uses: indiesdev/curl@v1.1
-        with:
-          url: ${{ secrets.netlify_webhook }}
-          method: "POST"
+      - name: Trigger deploy hooks
+        env:
+          CLOUDFLARE_PAGES_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+          NETLIFY_WEBHOOK: ${{ secrets.netlify_webhook }}
+        run: |
+          triggered=0
+          for name in CLOUDFLARE_PAGES_DEPLOY_HOOK NETLIFY_WEBHOOK; do
+            url="${!name}"
+            if [ -n "$url" ]; then
+              echo "Déclenchement de $name"
+              curl --fail --silent --show-error -X POST "$url"
+              triggered=$((triggered + 1))
+            fi
+          done
+          if [ "$triggered" -eq 0 ]; then
+            echo "::error::Aucun deploy hook configuré (CLOUDFLARE_PAGES_DEPLOY_HOOK, netlify_webhook)"
+            exit 1
+          fi

@@ -1,0 +1,25 @@
+<a class="skip-link" href="#main-content">Aller au contenu</a>
+<header class="site-head">
+  <div class="wrap">
+    <a href="/" class="brand"{% if page.url == '/' %} aria-current="page"{% endif %}>
+      <span>~/sylvain.dev</span><span class="prompt" aria-hidden="true">$</span><span class="cursor" aria-hidden="true"></span>
+      <span class="visually-hidden">: accueil</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+        {% for item in navigation.items %}
+          {# page.url is false for unpublished drafts (permalink: false), which are still rendered #}
+          {% set url = page.url or '' %}
+          {% set isCurrent = url == item.url or (item.url != '/' and url.startsWith(item.url)) or (item.url == '/articles/' and (url.startsWith('/article/') or url.startsWith('/tags/'))) %}
+          <li><a href="{{ item.url }}"{% if isCurrent %} aria-current="page"{% endif %}>{{ item.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <fieldset class="theme-switch" data-theme-switch hidden>
+      <legend class="visually-hidden">Thème</legend>
+      <button type="button" data-theme-value="auto" aria-pressed="true">auto</button>
+      <button type="button" data-theme-value="dark" aria-pressed="false">sombre</button>
+      <button type="button" data-theme-value="light" aria-pressed="false">clair</button>
+    </fieldset>
+  </div>
+</header>

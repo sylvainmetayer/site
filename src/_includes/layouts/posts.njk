@@ -1,32 +1,22 @@
----
-title: Articles
-pagination:
-  data: collections.posts
-  size: 20
-  alias: postListItems
-permalink: "/articles/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/index.html{% endif %}"
----
-
 {% extends 'layouts/base.njk' %}
-
-{# Intro content #}
-{% set introHeading = title %}
-{% set introSummary %}{{ content | safe }}{% endset %}
-
-{# Post list content #}
-
-{% if pagination.previousPageHref %}
-  {% set paginationPrevUrl = pagination.previousPageHref %}
-{% endif %}
-
-{% if pagination.nextPageHref %}
-  {% set paginationNextUrl = pagination.nextPageHref %}
-{% endif %}
+{% from 'partials/macros.njk' import cmd, postList %}
 
 {% block content %}
-  <main id="main-content" tabindex="-1">
-    {% include "partials/components/intro.njk" %}
-    {% include "partials/components/post-list.njk" %}
-    {% include "partials/components/pagination.njk" %}
-  </main>
+  <section class="section" aria-labelledby="page-title">
+    {{ cmd('ls -t articles/') }}
+    <h1 id="page-title" class="page-title">{{ title }}</h1>
+    {% if content | trim %}<div class="page-lead">{{ content | safe }}</div>{% endif %}
+
+    {% for group in postListItems | groupByYear %}
+      <h2 class="year">{{ group.year }} <small>{{ group.posts.length }} article{% if group.posts.length > 1 %}s{% endif %}</small></h2>
+      {{ postList(group.posts, true) }}
+    {% endfor %}
+  </section>
+
+  {% if pagination.previousPageHref or pagination.nextPageHref %}
+    <nav class="post-nav" aria-label="Pagination">
+      {% if pagination.nextPageHref %}<a href="{{ pagination.nextPageHref }}" class="prev"><span>← plus anciens</span>Page {{ pagination.pageNumber + 2 }}</a>{% endif %}
+      {% if pagination.previousPageHref %}<a href="{{ pagination.previousPageHref }}" class="next"><span>plus récents →</span>Page {{ pagination.pageNumber }}</a>{% endif %}
+    </nav>
+  {% endif %}
 {% endblock %}
