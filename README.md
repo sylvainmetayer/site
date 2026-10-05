@@ -25,7 +25,7 @@ mise run validate  # validation HTML du build
 mise tasks         # liste des tâches
 ```
 
-mise installe Node 22 (`mise install`, voir aussi `.nvmrc`). Sans mise : `npm ci`, `npm start`, `npm run production`.
+mise installe Node 24 (`mise install`, voir aussi `.nvmrc`). Sans mise : `npm ci`, `npm start`, `npm run production`.
 
 ## Organisation
 
