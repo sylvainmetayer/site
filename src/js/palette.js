@@ -50,12 +50,11 @@
     return entries
       .map(function (entry) {
         var score = 0;
-        for (var i = 0; i < words.length; i++) {
-          var word = words[i];
-          if (entry.haystack.indexOf(word) === -1) return null;
-          if (entry.title.indexOf(word) === 0) score += 4;
-          else if (new RegExp('(^|[^a-z0-9])' + word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).test(entry.title)) score += 2;
-          else if (entry.title.indexOf(word) !== -1) score += 1;
+        for (var word of words) {
+          if (!entry.haystack.includes(word)) return null;
+          if (entry.title.startsWith(word)) score += 4;
+          else if (new RegExp('(^|[^a-z0-9])' + word.replace(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`)).test(entry.title)) score += 2;
+          else if (entry.title.includes(word)) score += 1;
         }
         return { entry: entry, score: score };
       })
@@ -97,8 +96,9 @@
       list.appendChild(option);
     });
     select(0);
+    var plural = results.length > 1 ? 's' : '';
     status.textContent = results.length
-      ? results.length + ' résultat' + (results.length > 1 ? 's' : '')
+      ? results.length + ' résultat' + plural
       : 'Aucun résultat pour « ' + input.value.trim() + ' »';
   }
 
@@ -117,7 +117,7 @@
   }
 
   function go(entry, newTab) {
-    if (entry.a && entry.a.indexOf('theme:') === 0) {
+    if (entry.a?.startsWith('theme:')) {
       dialog.close();
       if (window.siteTheme) window.siteTheme.set(entry.a.slice(6));
       return;
@@ -158,6 +158,8 @@
         load().then(function () {
           render();
           if (results[0]) go(results[0], newTab);
+        }, function () {
+          status.textContent = 'Index de recherche indisponible.';
         });
         return;
       }

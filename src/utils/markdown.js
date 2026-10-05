@@ -7,7 +7,8 @@ import markdownItFootnote from 'markdown-it-footnote';
  * @see http://dirtystylus.com/2020/06/15/eleventy-markdown-and-footnotes/
  */
 const markdownLibrary = markdownIt({
-  html: true,
+  // Raw HTML in posts (<video>, <details>…): the content is written by the site owner only
+  html: true, // NOSONAR
   breaks: true,
   linkify: true,
   typographer: true,

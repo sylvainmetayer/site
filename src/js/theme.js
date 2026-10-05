@@ -14,9 +14,9 @@
 
   function apply(value) {
     if (value === 'light' || value === 'dark') {
-      root.setAttribute('data-theme', value);
+      root.dataset.theme = value;
     } else {
-      root.removeAttribute('data-theme');
+      delete root.dataset.theme;
     }
   }
 

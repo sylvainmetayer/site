@@ -5,11 +5,10 @@ const isLive = post => {
 
 export default {
   eleventyComputed: {
+    // Unpublished posts get no page in production (permalink false)
     permalink: data => {
-      let postPermalink = "/article/{{ page.fileSlug }}/";
-
-      if (process.env.ELEVENTY_ENV !== "production") return postPermalink;
-      return isLive(data) ? postPermalink : false;
+      const publish = process.env.ELEVENTY_ENV !== "production" || isLive(data);
+      return publish && "/article/{{ page.fileSlug }}/";
     },
     eleventyExcludeFromCollections: data => {
       if (process.env.ELEVENTY_ENV !== "production") return false;

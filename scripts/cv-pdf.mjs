@@ -5,14 +5,15 @@
 //
 // --out writes elsewhere than src/uploads/CV.pdf: CI generates a copy to compare with the
 // committed PDF (scripts/check-cv-ats.mjs --compare).
-// The browser is CHROME_BIN, or the first of chromium-browser, chromium, google-chrome found in PATH.
+// The browser is CHROME_BIN, or the first of chromium-browser, chromium, google-chrome found in
+// the usual system directories (not PATH, which could point to anything).
 // The CV must fit on one A4 page: when the content overflows, the PDF is refused and
 // src/uploads/CV.pdf is left untouched.
 import { createServer } from 'node:http';
-import { execFileSync, spawn } from 'node:child_process';
+import { spawn } from 'node:child_process';
 import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { extname, isAbsolute, join, relative, resolve } from 'node:path';
+import { extname, join, resolve, sep } from 'node:path';
 
 const args = process.argv.slice(2);
 const outIndex = args.indexOf('--out');
@@ -31,14 +32,13 @@ const types = {
   '.svg': 'image/svg+xml',
 };
 
+const BROWSER_DIRS = ['/usr/bin', '/usr/local/bin', '/snap/bin', '/opt/homebrew/bin'];
+
 const findBrowser = () => {
   if (process.env.CHROME_BIN) return process.env.CHROME_BIN;
   for (const name of ['chromium-browser', 'chromium', 'google-chrome']) {
-    try {
-      return execFileSync('which', [name], { encoding: 'utf8' }).trim();
-    } catch {
-      // not installed, try the next one
-    }
+    const browser = BROWSER_DIRS.map(dir => join(dir, name)).find(path => existsSync(path));
+    if (browser) return browser;
   }
   throw new Error('Chromium introuvable : définir CHROME_BIN');
 };
@@ -53,14 +53,18 @@ const countPages = file => (readFileSync(file, 'latin1').match(/\/Type\s*\/Page(
 const server = createServer((req, res) => {
   let path;
   try {
-    path = join(dist, decodeURIComponent(new URL(req.url, 'http://localhost').pathname));
+    path = resolve(dist, `.${decodeURIComponent(new URL(req.url, 'http://localhost').pathname)}`);
   } catch {
     res.writeHead(400).end();
     return;
   }
+  // Only files of the build, checked before touching the file system
+  if (path !== dist && !path.startsWith(dist + sep)) {
+    res.writeHead(404).end();
+    return;
+  }
   if (existsSync(path) && statSync(path).isDirectory()) path = join(path, 'index.html');
-  const inside = relative(dist, path);
-  if (inside.startsWith('..') || isAbsolute(inside) || !existsSync(path)) {
+  if (!existsSync(path)) {
     res.writeHead(404).end();
     return;
   }
