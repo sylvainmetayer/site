@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import getSize from 'image-size';
+import { imageSizeFromFile } from 'image-size/fromFile';
 import Image from '@11ty/eleventy-img';
 import helpers from '../_data/helpers.js';
 
@@ -81,18 +81,19 @@ export default async function parseTransform(value, outputPath) {
       });
     }
 
+    // Images left as they are (animated GIFs, SVGs) get their dimensions from
+    // the file; the optimised ones get them from eleventy-img further down
+    await Promise.all(articleImages
+      .filter(image => isLocal(image.getAttribute('src')) && !OPTIMISABLE_IMAGE.test(image.getAttribute('src')))
+      .map(async image => {
+        const { width, height } = await imageSizeFromFile('src' + image.getAttribute('src'));
+        image.setAttribute('width', width);
+        image.setAttribute('height', height);
+      }));
+
     if (articleImages.length) {
       articleImages.forEach(image => {
         image.setAttribute('loading', 'lazy');
-
-        const file = image.getAttribute('src');
-
-        if (isLocal(file) && !OPTIMISABLE_IMAGE.test(file)) {
-          const dimensions = getSize('src' + file);
-
-          image.setAttribute('width', dimensions.width);
-          image.setAttribute('height', dimensions.height);
-        }
 
         // If an image has a title it means that the user added a caption
         // so replace the image with a figure containing that image and a caption

@@ -37,7 +37,7 @@
     "eleventy-plugin-toc": "^1.1.5",
     "gray-matter": "^4.0.3",
     "html-validate": "^8.0.5",
-    "image-size": "^1.0.2",
+    "image-size": "^2.0.4",
     "jsdom": "^22.1.0",
     "lighthouse": "^13.5.0",
     "markdown-it": "^14.1.0",
@@ -60,5 +60,11 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "overrides": {
+    "pa11y-ci": {
+      "pa11y": "^10.0.0",
+      "puppeteer": "^25.9.0"
+    }
   }
 }
