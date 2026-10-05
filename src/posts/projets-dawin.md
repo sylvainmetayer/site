@@ -27,7 +27,7 @@ Ce projet a été réalisé lors de ma licence professionnelle DAWIN.
 
 ## Macbernick
 
-[Sources (Github)](https://github.com/mlcdf/macbernik/) [Voir le jeu](https://mlcdf.github.io/macbernik/)
+[Sources (Github)](https://github.com/mlcdf/macbernik/) [Voir le jeu](https://sylvainmetayer.github.io/macbernik/)
 
 Ce projet a été réalisé durant ma licence professionnelle DAWIN.
 
