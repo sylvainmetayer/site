@@ -149,7 +149,8 @@ export default function eleventyConfig(config) {
   // Interface string of the page language (src/_data/i18n.js), French when the
   // English one is missing: {{ 'posts.count' | t({ count: 3 }) }}. With a
   // `count`, a key that has `.one` and `.other` forms takes the matching one.
-  config.addFilter('t', function (key, values = {}, lang) {
+  config.addFilter('t', function (key, options, lang) {
+    const values = options || {};
     const language = lang || this.ctx?.lang || 'fr';
     const plural = `${key}.${values.count === 1 ? 'one' : 'other'}`;
     const form = 'count' in values && plural in i18n.fr ? plural : key;
