@@ -68,7 +68,7 @@ Néanmoins, cela a un inconvénient majeur à mon sens : la maîtrise des param�
 
 Au final, nous ne sommes jamais aussi bien servis que par soi-même, j'ai donc utilisé [Travis CI](https://travis-ci.org/) pour déployer le site généré sur mon petit [Raspberry](https://www.raspberrypi.org/) avec un Rsync : pas besoin de plus compliqué, cela me suffit amplement. Un serveur web devant, un certificat [Let's Encrypt](https://letsencrypt.org) et voilà !
 
-J'ai ainsi pu obtenir une note convenable, selon [l'observatoire Mozilla](https://observatory.mozilla.org/analyze/sylvainmetayer.fr) et [Cryptcheck](https://cryptcheck.fr/https/sylvain.dev). Il me reste néanmoins un peu de travail à faire sur les [CSP (Content Security Policy)](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP), ce concept n'est pas évident à appréhender 😣 !
+J'ai ainsi pu obtenir une note convenable, selon [l'observatoire Mozilla](https://observatory.mozilla.org/analyze/sylvain.dev) et [Cryptcheck](https://cryptcheck.fr/https/sylvain.dev). Il me reste néanmoins un peu de travail à faire sur les [CSP (Content Security Policy)](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP), ce concept n'est pas évident à appréhender 😣 !
 
 ### 5. SEO
 
