@@ -21,7 +21,7 @@ Le présent article liste une partie des projets que j'ai pu réaliser durant me
 
 Ce projet, réalisé en équipe, s'inscrivait dans la démarche Open Innovation de l'EPSI, impliquant plusieurs promotions et nécessitant donc d'être organisé. L'objectif était de réaliser un jeu de "Jeu dont vous êtes le héros" sur mobile, en laissant la possibilité de personnaliser simplement le parcours de jeu.
 
-Nous avons développé la première version avec [React Native](https://facebook.github.io/react-native/) afin de fournir un support pour Android et iOS.
+Nous avons développé la première version avec [React Native](https://reactnative.dev/) afin de fournir un support pour Android et iOS.
 
 ## AR-Cube
 
