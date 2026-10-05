@@ -1,6 +1,5 @@
 // Checks a production build (dist/) for broken internal links and lost URLs.
-// Replaces the Netlify build plugins netlify-plugin-checklinks and
-// netlify-plugin-no-more-404, which Cloudflare Pages has no equivalent for.
+// Cloudflare Pages has no build plugin for this, so CI runs it after the build.
 //
 //   node scripts/check-links.mjs [dist]
 //

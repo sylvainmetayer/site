@@ -19,6 +19,8 @@ const passthroughItems = {
   // Served on the old apex origin by Pangolin, see the file header.
   'src/service-worker-retired.js': 'service-worker-retired.js',
   'src/images': 'images',
+  // Requested at the root by browsers and feed readers that ignore <link rel="icon">
+  'src/images/icons/favicon.ico': 'favicon.ico',
   'src/js': 'js',
   'src/uploads': 'uploads',
   'src/admin/config.yml': 'admin/config.yml',
@@ -77,6 +79,31 @@ export default function (config) {
 
   // Items whose front matter `key` is truthy
   config.addFilter('withData', (items, key) => items.filter(item => item.data[key]));
+
+  // Display name of the site hosting a URL: "LinkedIn", "dev.to", or the host name
+  // without www or a language subdomain (fr.linkedin.com)
+  const siteNames = { 'linkedin.com': 'LinkedIn', 'medium.com': 'Medium' };
+  config.addFilter('siteName', url => {
+    let labels;
+    try {
+      labels = new URL(url).hostname.split('.');
+    } catch {
+      // Not an absolute URL (typed without https:// in the CMS): show it as is
+      return url;
+    }
+    if (labels.length > 2 && /^(www|[a-z]{2})$/.test(labels[0])) labels.shift();
+    const host = labels.join('.');
+    return siteNames[host] || host;
+  });
+
+  // URL without scheme, www or trailing slash, for display: "github.com/sylvainmetayer"
+  config.addFilter('displayUrl', url => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''));
+
+  // Distinct values of `key` across items, in order of first appearance
+  config.addFilter('uniqueValues', (items, key) => [...new Set(items.map(item => item[key]))]);
+
+  // Items whose front matter `key` equals `value`
+  config.addFilter('whereData', (items, key, value) => items.filter(item => item.data[key] === value));
 
   // Posts grouped by publication year, newest first: [{ year, posts }]
   config.addFilter('groupByYear', posts => {

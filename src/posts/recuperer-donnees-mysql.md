@@ -1,5 +1,5 @@
 ---
-title: "Récupérer les dumps SQL depuis une instance MySQL/Mariadb qui ne démarre plus"
+title: "Récupérer les dumps SQL depuis une instance MySQL/MariaDB qui ne démarre plus"
 tags:
     - mysql
 date: "2021-05-04"
@@ -8,7 +8,7 @@ excerpt: "Suite à une mise à jour de mon raspberry pi qui s'est plus ou moins 
 noToc: true
 ---
 
-Suite à une mise à jour de mon raspberry pi qui s'est plus ou moins bien passée, ma base de données MariaDB ne démarrait plus, indiquant une erreur suite à la mise à jour. J'avais donc un MySQL qui refusait de démarrer, et bien sur, pas de backup !
+Suite à une mise à jour de mon raspberry pi qui s'est plus ou moins bien passée, ma base de données MariaDB ne démarrait plus, indiquant une erreur suite à la mise à jour. J'avais donc un MySQL qui refusait de démarrer, et bien sûr, pas de backup !
 
 Néanmoins, je disposais quand même du dossier `/var/lib/mysql` qui semblait intact. J'ai donc fait un tar.gz du dossier avant de le récupérer en local pour voir ce que je pouvais en faire.
 
@@ -31,7 +31,7 @@ $ mkdir backup
 $ docker run --name restore_mariadb -v $(pwd)/data:/var/lib/mysql -v $(pwd):/backup -e MYSQL_ROOT_PASSWORD=root -d mariadb:10.3
 ```
 
-La variable d'environnement est nécessaire sinon l'image ne démarrera pas, mais il faut bien garder en tête qu'il faudra indiquer le mot de passe de votre instance mySQL telle qu'elle était sur votre serveur.
+La variable d'environnement est nécessaire sinon l'image ne démarrera pas, mais il faut bien garder en tête qu'il faudra indiquer le mot de passe de votre instance MySQL telle qu'elle était sur votre serveur.
 
 Une fois cela fait, il suffit de lancer la commande suivante pour se connecter au conteneur :
 
@@ -50,7 +50,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 MariaDB [(none)]>
 ```
 
-Et enfin, on peut faire des mysqldump et stocker le résultats dans le dossier `/backup` que l'on a également monté pour pouvoir restaurer les données une fois la base de données de nouveau opérationnelle.
+Et enfin, on peut faire des mysqldump et stocker les résultats dans le dossier `/backup` que l'on a également monté pour pouvoir restaurer les données une fois la base de données de nouveau opérationnelle.
 
 ```bash
 mysqldump -u root -p mabase > /backup/mysql.sql

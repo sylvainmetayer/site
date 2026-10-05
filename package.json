@@ -14,7 +14,7 @@
     "eleventy"
   ],
   "type": "module",
-  "author": "Sylvain METAYER <contact@sylvainmetayer.fr>",
+  "author": "Sylvain MÉTAYER <bonjour@sylvain.dev>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sylvainmetayer/sylvainmetayer/issues"
@@ -43,7 +43,8 @@
     "serve": "cross-env ELEVENTY_ENV=development eleventy --serve",
     "production": "eleventy",
     "validate": "html-validate \"dist/**/*.html\"",
-    "check:links": "node scripts/check-links.mjs dist"
+    "check:links": "node scripts/check-links.mjs dist",
+    "cv:pdf": "node scripts/cv-pdf.mjs dist"
   },
   "engines": {
     "node": ">=20"

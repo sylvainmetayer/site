@@ -27,6 +27,11 @@ description = "Validation HTML du build"
 depends = ["build"]
 run = "npm run validate"
 
+[tasks.cv]
+description = "Régénère src/uploads/CV.pdf depuis /cv/pdf/ (Chromium headless)"
+depends = ["build"]
+run = "npm run cv:pdf"
+
 [tasks.clean]
 description = "Supprime dist/"
 run = "rm -rf dist"

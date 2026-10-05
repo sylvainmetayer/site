@@ -1,5 +1,5 @@
 {% extends 'layouts/base.njk' %}
-{% from 'partials/macros.njk' import cmd %}
+{% from 'partials/macros.njk' import cmd, origin %}
 
 {% block extraMeta %}
   <meta property="og:type" content="article">
@@ -23,6 +23,14 @@
         {% endfor %}
       </ul>
     </header>
+
+    {% if canonical %}
+      <p class="post-notice">Article publié à l'origine sur {{ origin(canonical, originalPublisher, coauthors) }}.</p>
+    {% endif %}
+    {# Rebuilt every morning (daily_build.yml), so the age stays current #}
+    {% if (global.now - page.date.getTime()) > 31557600000 %}
+      <p class="post-notice">Article de {{ page.date | date('YYYY') }} : certaines informations ont pu changer depuis.</p>
+    {% endif %}
 
     {% set tocContent = content | toc %}
     {% if tocContent and ('<li' in tocContent) and not noToc %}

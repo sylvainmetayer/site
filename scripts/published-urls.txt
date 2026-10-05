@@ -23,6 +23,7 @@
 /articles/
 /experiences/
 /feed.xml
+/devto.rss.xml
 /humans.txt
 /manifest.json
 /offline/
@@ -54,3 +55,7 @@
 /tags/serverless/
 /tags/terraform/
 /tags/twitter/
+/talks/
+/article/devoxx-france-2023/
+/article/devoxx-france-2024-build-deploy/
+/article/snowcamp-2025/

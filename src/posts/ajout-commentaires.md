@@ -4,17 +4,17 @@ tags:
     - jekyll
     - blog
 date: "2018-11-18"
-metaDesc: "Les commentaires sont maintenant disponible sur le site"
-excerpt: "Les commentaires sont maintenant disponible sur le site"
+metaDesc: "Les commentaires sont maintenant disponibles sur le site"
+excerpt: "Les commentaires sont maintenant disponibles sur le site"
 ---
 
-Les commentaires sont maintenant disponible sur le site !
+Les commentaires sont maintenant disponibles sur le site !
 
-Comme indiqué dans [l'article précédent](/article/site-personnel-v2), je cherchais désormais à intégrer une solution de commentaire, tout en évitant les solutions peu respectueuse de notre vie privée.
+Comme indiqué dans [l'article précédent](/article/site-personnel-v2), je cherchais désormais à intégrer une solution de commentaire, tout en évitant les solutions peu respectueuses de notre vie privée.
 
 Mon choix s'était alors porté sur [isso](https://posativ.org/isso/), bien qu'il existe de nombreuses alternatives[^1].
 
-La chose que j'ai apprécié avec Isso, en plus du fait qu'il est libre et auto-hébergé, est qu'il ne requiert aucune inscription pour commenter. Il est possible d'indiquer son nom, site web et adresse email (qui ne sera jamais publiée), chaque champ étant optionnel. Une modération est également possible (étant donné que j'ai fait le choix de laisser la possibilité de commenter anonymement, j'ai également fait le choix d'activer la modération avant publication).
+La chose que j'ai appréciée avec Isso, en plus du fait qu'il est libre et auto-hébergé, est qu'il ne requiert aucune inscription pour commenter. Il est possible d'indiquer son nom, site web et adresse email (qui ne sera jamais publiée), chaque champ étant optionnel. Une modération est également possible (étant donné que j'ai fait le choix de laisser la possibilité de commenter anonymement, j'ai également fait le choix d'activer la modération avant publication).
 
 ## Installation
 
@@ -35,14 +35,14 @@ Voici les différentes étapes pour installer isso.
     sudo virtualenv /opt/isso
     ```
 
-    On active l'environnemment, en tant que root.
+    On active l'environnement, en tant que root.
 
     ```bash
     sudo su
     source /opt/isso/bin/activate
     ```
 
-    > Etant donné que `/opt` n'est pas accessible en écriture aux utilisateurs, on utilise sudo. Mais rien n'empêche de l'installer dans le répertoire personnel de l'utilisateur.
+    > Étant donné que `/opt` n'est pas accessible en écriture aux utilisateurs, on utilise sudo. Mais rien n'empêche de l'installer dans le répertoire personnel de l'utilisateur.
 
 3. Installation des dépendances
 
@@ -58,7 +58,7 @@ Voici les différentes étapes pour installer isso.
 
 ## Configuration
 
-On ne souhaite pas que isso soit exécuté en tant que root car s'il venait à y avoir une faille, l'attaquant aurait alors tous les droits. On va donc créer un utilisateur dédié et lui donner les droits sur les répertoires nécessaire (log et données). On créé également un répertoire `/etc/isso` qui contiendra les différentes configurations.
+On ne souhaite pas que isso soit exécuté en tant que root car s'il venait à y avoir une faille, l'attaquant aurait alors tous les droits. On va donc créer un utilisateur dédié et lui donner les droits sur les répertoires nécessaires (log et données). On crée également un répertoire `/etc/isso` qui contiendra les différentes configurations.
 
 ```bash
 sudo adduser isso
@@ -129,7 +129,7 @@ salt = SaltDe25Caractère
 algorithm = pbkdf2
 ```
 
-La configuration pour le site de développemnt est identique, il suffit donc de copier/coller le fichier et d'éditer quelques champs.
+La configuration pour le site de développement est identique, il suffit donc de copier/coller le fichier et d'éditer quelques champs.
 
 ```ini
 [general]
@@ -145,7 +145,7 @@ sudo chown root: /etc/isso/isso.prod.cfg
 
 Une fois la configuration terminée, il faut configurer le service pour qu'il démarre au lancement de l'OS.
 
-On créé donc le script de démarrage du service dans `/opt/isso/isso-start.sh`
+On crée donc le script de démarrage du service dans `/opt/isso/isso-start.sh`
 
 ```bash
 #!/bin/bash
@@ -161,7 +161,7 @@ sudo chown root: /opt/isso/isso-start.sh
 sudo chmod 755 /opt/isso/isso-start.sh
 ```
 
-On créé maintenant le service.
+On crée maintenant le service.
 
 ```ini
 [Unit]
@@ -234,7 +234,7 @@ Le script est chargé en asynchrone, afin de ne pas gêner le chargement de la p
 {% endraw %}
 ```
 
-Pour plus d'informations que les paramètres disponibles côté client, [voir la documentation sur Github](https://github.com/posativ/isso/blob/master/docs/docs/configuration/client.rst).
+Pour plus d'informations sur les paramètres disponibles côté client, [voir la documentation sur Github](https://github.com/posativ/isso/blob/master/docs/docs/configuration/client.rst).
 
 ⚠ Lorsqu'un fil de commentaire est vide (ce qui est le cas lorsqu'un article ne contient pas encore de commentaire), isso répond avec une erreur HTTP 404, ce qui peut faire croire qu'une page est manquante ou invalide. [Une issue est ouverte sur le dépôt Github](https://github.com/posativ/isso/issues/301) pour renvoyer un code HTTP 204 (no content) à la place.
 

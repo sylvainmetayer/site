@@ -2,6 +2,27 @@
 
 {% macro cmd(text) %}<p class="cmd"><span class="prompt">$</span> {{ text }}</p>{% endmacro %}
 
+{# Where a republished post first appeared. Co-authors are handles on that platform, linked on dev.to only. #}
+{% macro origin(canonical, publisher, coauthors) -%}
+  {%- set host = canonical | siteName -%}
+  <a href="{{ canonical }}">{{ host }}</a>
+  {%- if publisher %}, sur le blog de {{ publisher }}{% endif %}
+  {%- if coauthors %}, écrit avec {% for handle in coauthors %}{% if host == 'dev.to' %}<a href="https://dev.to/{{ handle }}">@{{ handle }}</a>{% else %}@{{ handle }}{% endif %}{% if loop.revindex == 2 %} et {% elif not loop.last %}, {% endif %}{% endfor %}{% endif %}
+{%- endmacro %}
+
+{# Years a talk was given: "2023 → 2025", or "2024" when all sessions fall in one year #}
+{% macro talkYears(talk) -%}
+  {%- set sessions = talk.sessions | sort(false, false, 'date') -%}
+  {%- set firstYear = (sessions | first).date | date('YYYY') -%}
+  {%- set lastYear = (sessions | last).date | date('YYYY') -%}
+  {{ firstYear }}{% if lastYear != firstYear %} → {{ lastYear }}{% endif %}
+{%- endmacro %}
+
+{# Start → end of a role, "aujourd'hui" when it is ongoing #}
+{% macro period(start, end, format) -%}
+  {{ start | date(format) }} → {% if end %}{{ end | date(format) }}{% else %}aujourd'hui{% endif %}
+{%- endmacro %}
+
 {% macro postList(posts, showExcerpt = false) %}
   <ol class="post-list" reversed>
     {% for post in posts %}

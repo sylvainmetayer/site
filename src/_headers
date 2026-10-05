@@ -1,4 +1,4 @@
-# En-têtes servis par Cloudflare Pages (remplace la section [[headers]] de netlify.toml).
+# En-têtes servis par Cloudflare Pages.
 # La CSP couvre aussi Sveltia CMS (/admin) : API GitHub, polices d'icônes sur
 # jsDelivr, aperçus blob: et avatars GitHub. Une règle séparée pour /admin/*
 # s'ajouterait à celle-ci au lieu de la remplacer. www.netlify.com reste dans

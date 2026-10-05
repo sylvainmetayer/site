@@ -9,4 +9,4 @@ article: /article/jekyll-gem-svg-fontawesome/
 featured: true
 ---
 
-Une gem Jekyll qui n'intègre que les icônes FontAwesome utilisées, en SVG, plutôt que toute la librairie.
+Une gem Jekyll qui intègre en SVG les seules icônes FontAwesome utilisées par le site.

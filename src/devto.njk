@@ -1,0 +1,31 @@
+---
+permalink: /devto.rss.xml
+eleventyExcludeFromCollections: true
+---
+{#- Feed imported by dev.to (Settings > Extensions > Publishing to DEV from RSS): only posts with `repost: dev.to`. -#}
+{%- set reposts = collections.posts | whereData('repost', 'dev.to') -%}
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.name }} · dev.to</title>
+    <link>{{ helpers.url() }}/</link>
+    <atom:link href="{{ helpers.url() }}{{ permalink }}" rel="self" type="application/rss+xml"/>
+    <description>Articles de {{ site.authorName }} republiés sur dev.to</description>
+    <language>fr-fr</language>
+    <lastBuildDate>{{ global.now | dateToRfc822 }}</lastBuildDate>
+    {%- for post in reposts %}
+    {%- set absolutePostUrl = helpers.url() + post.url %}
+    <item>
+      <title>{{ post.data.title }}</title>
+      <link>{{ absolutePostUrl }}</link>
+      {#- devtoGuid keeps the id dev.to already imported, so it does not import the post again -#}
+      <guid isPermaLink="false">{{ post.data.devtoGuid or (site.feedIdBase + post.url) }}</guid>
+      <pubDate>{{ post.date | dateToRfc822 }}</pubDate>
+      {%- for tag in post.data.tags %}
+      <category>{{ tag }}</category>
+      {%- endfor %}
+      <description><![CDATA[{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | safe }}]]></description>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

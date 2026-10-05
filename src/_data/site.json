@@ -6,12 +6,14 @@
   "url": "https://www.sylvain.dev",
   "authorEmail": "bonjour@sylvain.dev",
   "authorHandle": "@sylvain_metayer",
-  "authorName": "Sylvain METAYER",
-  "faviconPath": "/images/favicon.png",
+  "authorName": "Sylvain MÉTAYER",
+  "faviconPath": "/images/icons/favicon.svg",
+  "socialImage": "/images/social-share.png",
   "locale": "fr",
   "maxPostsPerPage": 5,
   "role": "Développeur backend & DevOps",
-  "location": "Bordeaux",
+  "location": "Talence",
+  "drivingLicence": "Permis B",
   "cfBeaconToken": "b127465eed91464f811fad719b0c0cb7",
   "feedIdBase": "https://sylvain.dev"
 }

@@ -5,32 +5,35 @@ tags:
   - angular
   - serverless
 date: "2020-01-27"
-metaDesc: Trop de spam ? Marre de donner son addresse email à chaque service ? Les alias mail sont là à la rescousse !
-excerpt: Trop de spam ? Marre de donner son addresse email à chaque service ? Les alias mail sont là à la rescousse !
+metaDesc: Trop de spam ? Marre de donner son adresse email à chaque service ? Les alias mail sont là à la rescousse !
+excerpt: Trop de spam ? Marre de donner son adresse email à chaque service ? Les alias mail sont là à la rescousse !
 noToc: false
+repost: dev.to
+# Id of this post in the dev.to feed of the Jekyll site, already imported by dev.to
+devtoGuid: https://sylvainmetayer.fr/projet/email-alias-manager/
 ---
 
 [![](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sylvainmetayer/alias-gandi-angular)
 
 ## L'idée
 
-Trop de spam ? Marre de donner son addresse email à chaque service ? Les alias mail sont là à la rescousse !
+Trop de spam ? Marre de donner son adresse email à chaque service ? Les alias mail sont là à la rescousse !
 
-Suite à une idée d'[Adrien Chinour](https://adrienchinour.me), j'ai décidé de créer à mon tour un petit gestionnaire d'alias pour mes adresses emails. L'objectif est de pouvoir générer rapidement des alias afin de ne pas donner sa véritable adresse email lors d'inscription sur des sites divers. Ainsi, si l'on constate que le site envoie un peu trop de mail à notre goût, que l'on utilise plus le service, ou que réussir à se désinscrire relève du parcours du combattant, on supprime l'alias, et plus de mail indésirables !
+Suite à une idée d'[Adrien Chinour](https://adrienchinour.me), j'ai décidé de créer à mon tour un petit gestionnaire d'alias pour mes adresses emails. L'objectif est de pouvoir générer rapidement des alias afin de ne pas donner sa véritable adresse email lors d'inscription sur des sites divers. Ainsi, si l'on constate que le site envoie un peu trop de mail à notre goût, que l'on n'utilise plus le service, ou que réussir à se désinscrire relève du parcours du combattant, on supprime l'alias, et plus de mails indésirables !
 
 Ayant mes domaines gérés par [Gandi](https://gandi.net), j'ai regardé comment interagir avec mes adresses emails pour créer des alias depuis leur [API](https://api.gandi.net/docs/).
 
 Au niveau des technologies utilisées, j'ai utilisé [Angular](https://angular.io) et les fonctions serverless de [Netlify](https://netlify.com) (en NodeJS) afin de gérer les appels à l'API Gandi.
 
-Le principe est très simple: on s'authentifie avec un mot de passe, prédéfini dans les variables d'environnements des fonctions serverless de Netlify, on obtient un JWT Token signé avec un secret connu seulement par les fonctions serverless, et on peut ensuite considéré que l'on est authentifié. N'ayant pas besoin de gérer plusieurs utilisateurs, cela convient à mon cas d'utilisation.
+Le principe est très simple : on s'authentifie avec un mot de passe, prédéfini dans les variables d'environnement des fonctions serverless de Netlify, on obtient un JWT Token signé avec un secret connu seulement par les fonctions serverless, et on peut ensuite considérer que l'on est authentifié. N'ayant pas besoin de gérer plusieurs utilisateurs, cela convient à mon cas d'utilisation.
 
-Une fois authentifé, les fonctions serverless se chargent de récupérer la liste des domaines, ainsi que la listes des boites mails associées à ces domaines et on arrive ensuite sur l'écran suivant, qui nous permet de gérer les alias de chaque boite mail.
+Une fois authentifié, les fonctions serverless se chargent de récupérer la liste des domaines, ainsi que la liste des boites mails associées à ces domaines et on arrive ensuite sur l'écran suivant, qui nous permet de gérer les alias de chaque boite mail.
 
 ![Rendu bureau](/images/alias-email-desktop.png)
 
 ## La suite
 
-Dans le cas ou d'éventuels clients de Gandi souhaiteraient utiliser ce projet, j'ai tenté d'intégrer l'Oauth2, afin de permettre de s'authentifier via Gandi. Cela m'a également permis de comprendre mieux le fonctionnement de l'Oauth2.
+Dans le cas où d'éventuels clients de Gandi souhaiteraient utiliser ce projet, j'ai tenté d'intégrer l'Oauth2, afin de permettre de s'authentifier via Gandi. Cela m'a également permis de comprendre mieux le fonctionnement de l'Oauth2.
 
 J'ai donc demandé la création d'une application, obtenant ainsi un `applicationId` et un `applicationSecret` me permettant de mettre en place l'authentification. Afin de tester cela en local, j'ai utilisé un [mock oauth2 réalisé par le groupe AXA](https://github.com/axa-group/oauth2-mock-server)
 
@@ -38,7 +41,7 @@ Malheureusement, l'API v5 de Gandi est encore en beta et le fournisseur d'authen
 
 En attendant que cela soit disponible, j'ai laissé mon travail disponible sur une [branche dédiée](https://github.com/sylvainmetayer/alias-gandi-angular/tree/feature/oauth2).
 
-J'ai également ajouté un bouton de déploiement Netlify en un clic pour ceux souhaitant se servir de ce petit projet. Il faudra néanmoins générer sa propre clé d'[API depuis les paramètres de son compte Gandi](https://docs.gandi.net/fr/noms_domaine/utilisateurs_avances/api.html) et renseigner quelques variables d'environnement, décrite ci-dessous.
+J'ai également ajouté un bouton de déploiement Netlify en un clic pour ceux souhaitant se servir de ce petit projet. Il faudra néanmoins générer sa propre clé d'[API depuis les paramètres de son compte Gandi](https://docs.gandi.net/fr/noms_domaine/utilisateurs_avances/api.html) et renseigner quelques variables d'environnement, décrites ci-dessous.
 
 |Paramètre|Description|
 |--|--|

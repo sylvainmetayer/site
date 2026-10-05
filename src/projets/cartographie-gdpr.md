@@ -3,9 +3,9 @@ title: cartographie-gdpr
 year: 2017
 stack:
   - Python
-  - Atos
+  - SGBDR
 article: /article/cartographie-gdpr/
 featured: false
 ---
 
-Première version d'un outil de recherche de données personnelles dans le cadre du RGPD, développé pendant mon alternance chez Atos.
+Première version d'un outil qui cherche des données personnelles dans plusieurs bases relationnelles, pour le RGPD. Développé à trois pendant mon alternance chez Atos.

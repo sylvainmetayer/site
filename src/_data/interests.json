@@ -1,0 +1,19 @@
+{
+  "interests": [
+    {
+      "label": "Homelab et auto-hébergement",
+      "detail": "Proxmox, OpenTofu, Pangolin"
+    },
+    {
+      "label": "Jeux de société"
+    },
+    {
+      "label": "Tennis de table",
+      "detail": "Animateur Ping Tour au FLIP (Parthenay), 2013-2015",
+      "link": "http://www.jeux-festival.com/"
+    },
+    {
+      "label": "Séries TV"
+    }
+  ]
+}

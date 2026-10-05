@@ -386,6 +386,15 @@ samp {
   font-weight: 600;
 }
 
+.post-notice {
+  margin: 0 0 1.2rem;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--warn);
+  background: var(--surface);
+  color: var(--muted);
+  font: 400 0.85rem/1.5 var(--mono);
+}
+
 /* ---------- Home hero ---------- */
 
 .hero h1 {
@@ -1048,6 +1057,83 @@ samp {
   }
 }
 
+/* Successive roles inside one experience */
+.roles {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roles > li + li {
+  margin-top: 0.6rem;
+}
+
+.role-head {
+  margin: 0;
+  font-size: 0.93rem;
+}
+
+.role-when {
+  margin-left: 0.3rem;
+  font: 400 0.78rem var(--mono);
+  color: var(--muted);
+}
+
+.role-positions {
+  margin: 0.1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.roles ul {
+  margin: 0.2rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.93rem;
+  color: var(--muted);
+}
+
+.skill-groups {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 0.6rem 1.1rem;
+  margin: 0;
+}
+
+.skill-groups dt {
+  font: 400 0.78rem/2 var(--mono);
+  color: var(--muted);
+}
+
+.skill-groups dd {
+  margin: 0;
+}
+
+.skill-groups .chips {
+  padding: 0;
+}
+
+.interests {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+}
+
+.interests li + li {
+  margin-top: 0.3rem;
+}
+
+.interests strong {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+@media (max-width: 34rem) {
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Footer ---------- */
 
 .site-foot {
@@ -1090,8 +1176,10 @@ samp {
 /* ---------- Print (CV first) ---------- */
 
 @media print {
+  /* Same specificity as the theme rules, which would otherwise win */
   :root,
-  :root[data-theme] {
+  :root[data-theme],
+  :root:not([data-theme="dark"]) {
     --bg: #ffffff;
     --surface: #ffffff;
     --fg: #000000;
@@ -1109,6 +1197,7 @@ samp {
 
   .site-head,
   .site-foot,
+  .cv-head .cmd,
   .skip-link,
   .no-print,
   .cursor {

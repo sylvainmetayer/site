@@ -4,19 +4,35 @@
       "title": "C2i",
       "link": "https://c2i.enseignementsup-recherche.gouv.fr/employeur/faq-employeur",
       "date": "2014-01-01",
-      "description": ""
+      "description": "",
+      "print": false
     },
     {
       "title": "Opquast",
       "date": "2017-07-04",
       "link": "https://certificates.opquast.com/certificate/JYLOBQ/",
-      "description": "Certification passée lors de ma licence professionnelle DAWIN. Score de 900 points."
+      "description": "Certification passée lors de ma licence professionnelle DAWIN. Score de 900 points.",
+      "print": false
     },
     {
       "title": "TOEIC",
       "date": "2018-02-01",
       "link": "https://www.ets.org/fr/toeic",
-      "description": "J'ai passé et obtenu mon TOEIC à 3 reprises au cours de mes études, du fait qu'il était obligatoire d'avoir un TOEIC en cours de validité afin de valider mon diplôme bac+5. Score obtenu au dernier passage : 855 / 1000."
+      "description": "J'ai passé et obtenu mon TOEIC à 3 reprises au cours de mes études, du fait qu'il était obligatoire d'avoir un TOEIC en cours de validité afin de valider mon diplôme bac+5. Score obtenu au dernier passage : 855 / 990.",
+      "summary": "855 / 990",
+      "print": false
+    },
+    {
+      "title": "Opquast",
+      "date": "2024-02-01",
+      "link": "https://directory.opquast.com/fr/certificat/L1OBJQ/",
+      "description": "Intégrer les règles et le vocabulaire assurance qualité web dans sa pratique professionnelle."
+    },
+    {
+      "title": "AWS Certified Solutions Architect – Associate",
+      "date": "2025-11-01",
+      "link": "https://www.credly.com/badges/bbe4baed-4656-4223-a511-5d5eb7261a4f/public_url",
+      "description": "Obtenue en juillet 2021, renouvelée en novembre 2025."
     }
   ]
 }

@@ -32,6 +32,10 @@ collections:
       - { label: Brouillon, name: draft, widget: boolean, default: false, required: false }
       - { label: Mis en avant, name: star, widget: boolean, default: false, required: false }
       - { label: Masquer le sommaire, name: noToc, widget: boolean, default: false, required: false }
+      - { label: Republier sur dev.to, name: repost, widget: select, options: ["dev.to"], required: false, hint: "Ajoute l'article au flux /devto.rss.xml importé par dev.to." }
+      - { label: URL canonique, name: canonical, widget: string, required: false, hint: "Article republié depuis une autre plateforme (dev.to, Medium…) : URL de l'original. L'article sort du sitemap." }
+      - { label: Publié à l'origine par, name: originalPublisher, widget: string, required: false, hint: "Ex. onepoint" }
+      - { label: Co-auteurs (pseudos sur la plateforme d'origine), name: coauthors, widget: list, required: false }
       - { label: SEO - titre, name: metaTitle, widget: string, required: false }
       - { label: SEO - description, name: metaDesc, widget: string, required: false }
       - { label: Image de partage, name: socialImage, widget: image, required: false }

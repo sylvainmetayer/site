@@ -1,0 +1,60 @@
+---
+title: Talks
+permalink: /talks/
+layout: layouts/base.njk
+metaDesc: "Talks de Sylvain MÉTAYER (SOPS, asdf, automatisation du poste de travail, Kubernetes sur deux sites, Terraform) : slides et replays."
+---
+{% from 'partials/macros.njk' import cmd, origin, talkYears %}
+<section class="section" aria-labelledby="page-title">
+  {{ cmd('ls -l talks/') }}
+  <h1 id="page-title" class="page-title">{{ title }}</h1>
+  <p class="page-lead">Talks donnés en conférence et en meetup, avec les slides de chaque édition et les replays quand il y en a. Les vidéos sont aussi dans <a href="{{ talks.playlist }}">une playlist YouTube</a>.</p>
+</section>
+
+<section class="section" aria-label="Liste des talks">
+  <ol class="timeline">
+    {% for talk in talks.talks %}
+      {% set sessions = talk.sessions | sort(true, false, 'date') %}
+      <li>
+        <span class="when">{{ talkYears(talk) }}</span>
+        <div>
+          <h3>{{ talk.title }}<small>{{ talk.sessions.length }} session{% if talk.sessions.length > 1 %}s{% endif %}</small></h3>
+          <div class="body">
+            <p>{% if talk.with %}Avec <a href="{{ talk.with.url }}">{{ talk.with.name }}</a> · {% endif %}<a href="{{ talk.repo }}">sources</a></p>
+            <ul>
+              {% for session in sessions %}
+                <li>
+                  {% if session.event_url %}<a href="{{ session.event_url }}">{{ session.event }} {{ session.date | date('YYYY') }}</a>{% else %}{{ session.event }} {{ session.date | date('YYYY') }}{% endif %}{% if session.note %} ({{ session.note }}){% endif %} :
+                  {% if session.slides %}<a href="{{ session.slides }}">slides</a>{% endif %}
+                  {% if session.video %}{% if session.slides %} · {% endif %}<a href="{{ session.video }}">vidéo</a>{% if session.duration %} ({{ session.duration }} min){% endif %}{% endif %}
+                  {% if session.article %} · <a href="{{ session.article }}">article</a>{% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# Conference recaps: posts tagged "conference" #}
+{% set recaps = (collections.conference or []) | reverse %}
+{% if recaps.length %}
+<section class="section" aria-labelledby="articles-title">
+  <h2 id="articles-title">Retours de conférence</h2>
+  <ol class="timeline">
+    {% for post in recaps %}
+      <li>
+        <span class="when">{{ post.date | date('YYYY-MM') }}</span>
+        <div>
+          <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+          {% if post.data.canonical %}
+            <div class="body"><p>Publié à l'origine sur {{ origin(post.data.canonical, post.data.originalPublisher, post.data.coauthors) }}.</p></div>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}

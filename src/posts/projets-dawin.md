@@ -31,9 +31,9 @@ Ce projet a été réalisé lors de ma licence professionnelle DAWIN.
 
 Ce projet a été réalisé durant ma licence professionnelle DAWIN.
 
-Il a été réalisé durant une semaine (Janvier 2017) avec 6 autres étudiants nous a initié au déroulement d'un projet agile, de l'idée à la livraison du projet.
+Il a été réalisé durant une semaine (janvier 2017) avec 6 autres étudiants et nous a initiés au déroulement d'un projet agile, de l'idée à la livraison du projet.
 
-Il s'agit d'un jeu sur navigateur dans lequel on joue contre l'ordinateur (plusieurs niveaux de difficultés) ou à 2 joueurs (localement) pour obtenir le plus de points possible.
+Il s'agit d'un jeu sur navigateur dans lequel on joue contre l'ordinateur (plusieurs niveaux de difficulté) ou à 2 joueurs (localement) pour obtenir le plus de points possible.
 
 ![MacBernick](/images/macbernick.png)
 
@@ -53,6 +53,6 @@ Le but était de réaliser un Tetris. Le jeu a ensuite été publié sur le Play
 
 La semaine innovante fait partie de la formation DAWIN, durant laquelle le but est de réaliser une application innovante.
 
-Une grande liberté nous a été donné pour réaliser les projets et nous avons eu à disposition différents outils.
+Une grande liberté nous a été donnée pour réaliser les projets et nous avons eu à disposition différents outils.
 
 Nous avons travaillé sur le fitbit, et plus particulièrement le [Fitbit Charge 2](https://www.fitbit.com/fr/charge2) qui intègre un capteur cardiaque. Nous avons ainsi réalisé une application permettant d'effectuer un [test de Ruffier](https://fr.wikipedia.org/wiki/Test_de_Ruffier) et d'afficher les résultats en récupérant les données via l'API de Fitbit.

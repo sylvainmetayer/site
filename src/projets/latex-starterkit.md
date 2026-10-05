@@ -8,4 +8,4 @@ article: /article/latex-starterkit/
 featured: false
 ---
 
-Un modèle prêt à l'emploi pour rédiger rapports et mémoires en LaTeX.
+Un modèle LaTeX pour rédiger rapports et mémoires.
