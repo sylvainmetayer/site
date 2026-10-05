@@ -16,5 +16,25 @@
       "text": "cv",
       "url": "/cv/"
     }
-  ]
+  ],
+  "en": {
+    "items": [
+      {
+        "text": "articles/",
+        "url": "/en/articles/"
+      },
+      {
+        "text": "projects/",
+        "url": "/en/projects/"
+      },
+      {
+        "text": "talks/",
+        "url": "/en/talks/"
+      },
+      {
+        "text": "cv",
+        "url": "/en/cv/"
+      }
+    ]
+  }
 }

@@ -1,14 +1,19 @@
-{# Ctrl+K / ⌘K palette (src/js/palette.js, index /search.json). Hidden until the script runs. #}
-<dialog class="palette" data-palette aria-labelledby="palette-title">
+{# Ctrl+K / ⌘K palette (src/js/palette.js, index search.json of the page language). Hidden until the script runs. #}
+<dialog class="palette" data-palette aria-labelledby="palette-title"
+  data-index="{{ langPrefix }}/search.json"
+  data-count-one="{{ 'palette.count.one' | t }}"
+  data-count-other="{{ 'palette.count.other' | t }}"
+  data-none="{{ 'palette.none' | t }}"
+  data-unavailable="{{ 'palette.unavailable' | t }}">
   <div class="palette-box">
-    <h2 id="palette-title" class="visually-hidden">Aller à une page</h2>
+    <h2 id="palette-title" class="visually-hidden">{{ 'palette.title' | t }}</h2>
     <div class="palette-field" role="search">
-      <label class="palette-prompt" for="palette-input"><span aria-hidden="true">~ $ cd</span><span class="visually-hidden">Rechercher une page, un article, un talk ou un projet</span></label>
-      <input id="palette-input" class="palette-input" type="text" role="combobox" autocomplete="off" autocapitalize="off" spellcheck="false" aria-autocomplete="list" aria-expanded="true" aria-controls="palette-list" placeholder="articles, talks, projets, tags…">
+      <label class="palette-prompt" for="palette-input"><span aria-hidden="true">~ $ cd</span><span class="visually-hidden">{{ 'palette.label' | t }}</span></label>
+      <input id="palette-input" class="palette-input" type="text" role="combobox" autocomplete="off" autocapitalize="off" spellcheck="false" aria-autocomplete="list" aria-expanded="true" aria-controls="palette-list" placeholder="{{ 'palette.placeholder' | t }}">
     </div>
     <!-- [html-validate-disable-next prefer-native-element: listbox of an editable combobox (ARIA APG), a native select cannot filter as you type] -->
-    <ul id="palette-list" class="palette-list" role="listbox" aria-label="Résultats"></ul>
+    <ul id="palette-list" class="palette-list" role="listbox" aria-label="{{ 'palette.results' | t }}"></ul>
     <p class="palette-status" role="status"></p>
-    <p class="palette-help" aria-hidden="true"><kbd>↑</kbd> <kbd>↓</kbd> naviguer · <kbd>↵</kbd> ouvrir · <kbd>échap</kbd> fermer</p>
+    <p class="palette-help" aria-hidden="true">{{ 'palette.help' | t({ up: '<kbd>↑</kbd>', down: '<kbd>↓</kbd>', enter: '<kbd>↵</kbd>', esc: '<kbd>' + ('palette.esc' | t) + '</kbd>' }) | safe }}</p>
   </div>
 </dialog>

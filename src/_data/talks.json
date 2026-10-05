@@ -162,5 +162,171 @@
         }
       ]
     }
-  ]
+  ],
+  "en": {
+    "playlist": "https://www.youtube.com/playlist?list=PLhq8j7vxD8lgLpBTCZ0rILuyfdYmbVKx2",
+    "talks": [
+      {
+        "title": "A Kubernetes cluster across two sites: just a simple matter of availability, right?",
+        "repo": "https://github.com/sylvainmetayer/talk-k8s-2-az",
+        "with": {
+          "name": "Nicolas Trauwaen",
+          "url": "https://github.com/trotro"
+        },
+        "sessions": [
+          {
+            "event": "France DevOps",
+            "date": "2025-06-02",
+            "slides": "https://sylvainmetayer.github.io/talk-k8s-2-az/france-devops-2025/",
+            "video": "https://www.youtube.com/watch?v=w9V7J8dP6qo",
+            "duration": 55,
+            "event_url": "https://www.linkedin.com/events/7333032817636892672/",
+            "note": "online"
+          },
+          {
+            "event": "Cloud Toulouse",
+            "date": "2025-05-15",
+            "slides": "https://sylvainmetayer.github.io/talk-k8s-2-az/cloud-toulouse-2025/"
+          }
+        ]
+      },
+      {
+        "title": "SOPS: clean up your plaintext secrets!",
+        "repo": "https://github.com/sylvainmetayer/talk-sops",
+        "sessions": [
+          {
+            "event": "BDX I/O",
+            "date": "2025-11-05",
+            "slides": "https://sops.talks.sylvain.dev/bdxio-2025/",
+            "video": "https://www.youtube.com/watch?v=hNXHopcpSYc",
+            "duration": 14
+          },
+          {
+            "event": "Touraine Tech",
+            "date": "2025-02-07",
+            "slides": "https://sops.talks.sylvain.dev/tnt-2025/",
+            "video": "https://www.youtube.com/watch?v=L30ZqpJZQgU",
+            "duration": 15
+          },
+          {
+            "event": "SnowCamp",
+            "date": "2025-01-22",
+            "slides": "https://sops.talks.sylvain.dev/snowcamp-2025/"
+          },
+          {
+            "event": "DevFest Toulouse",
+            "date": "2024-11-07",
+            "slides": "https://sops.talks.sylvain.dev/devfest-toulouse-2024/",
+            "video": "https://www.youtube.com/watch?v=oulAQGfdThI",
+            "duration": 15
+          },
+          {
+            "event": "Sunny Tech",
+            "date": "2024-07-04",
+            "slides": "https://sops.talks.sylvain.dev/sunnytech2024/",
+            "video": "https://www.youtube.com/watch?v=-zol8XV1CBU",
+            "duration": 19
+          },
+          {
+            "event": "BreizhCamp",
+            "date": "2024-06-24",
+            "slides": "https://sops.talks.sylvain.dev/breizhcamp2024/",
+            "video": "https://www.youtube.com/watch?v=RD5_FDoqBMc",
+            "duration": 13
+          },
+          {
+            "event": "Devoxx France",
+            "date": "2024-04-16",
+            "slides": "https://sops.talks.sylvain.dev/devoxxfr2024/",
+            "video": "https://www.youtube.com/watch?v=LYmxIvpcqoA",
+            "duration": 14
+          }
+        ]
+      },
+      {
+        "title": "asdf, one tool for all your versions",
+        "repo": "https://github.com/sylvainmetayer/talk-asdf",
+        "sessions": [
+          {
+            "event": "BreizhCamp",
+            "date": "2024-06-27",
+            "slides": "https://asdf.talks.sylvain.dev/breizhcamp2024/",
+            "video": "https://www.youtube.com/watch?v=GNH2BYGkvqM",
+            "duration": 24
+          },
+          {
+            "event": "Devoxx France",
+            "date": "2024-04-16",
+            "slides": "https://asdf.talks.sylvain.dev/devoxxfr2024/",
+            "video": "https://www.youtube.com/watch?v=hoogrBDrAlI",
+            "duration": 28
+          },
+          {
+            "event": "DevFest Nantes",
+            "date": "2023-10-19",
+            "slides": "https://asdf.talks.sylvain.dev/devfest-nantes-2023/",
+            "video": "https://www.youtube.com/watch?v=i2AfuQAaALQ",
+            "duration": 20
+          }
+        ]
+      },
+      {
+        "title": "Automate your workstation setup!",
+        "repo": "https://github.com/sylvainmetayer/talk-workstation-automation",
+        "sessions": [
+          {
+            "event": "Touraine Tech",
+            "date": "2025-02-05",
+            "slides": "https://workstation-automation.talks.sylvain.dev/tnt-2025/"
+          },
+          {
+            "event": "Devoxx UK",
+            "date": "2024-05-10",
+            "slides": "https://workstation-automation.talks.sylvain.dev/devoxxuk-2024/",
+            "video": "https://www.youtube.com/watch?v=KjJf9cQ6NNA",
+            "duration": 15,
+            "note": "in English"
+          },
+          {
+            "event": "Devoxx France",
+            "date": "2024-04-08",
+            "slides": "https://workstation-automation.talks.sylvain.dev/devoxx2024/",
+            "note": "in English"
+          },
+          {
+            "event": "SnowCamp",
+            "date": "2024-02-02",
+            "slides": "https://workstation-automation.talks.sylvain.dev/snowcamp-2024/"
+          },
+          {
+            "event": "BDX I/O",
+            "date": "2023-11-10",
+            "slides": "https://workstation-automation.talks.sylvain.dev/bdxio-2023/",
+            "video": "https://www.youtube.com/watch?v=iCDTtNnBcVQ",
+            "duration": 16
+          },
+          {
+            "event": "Sunny Tech",
+            "date": "2023-06-29",
+            "slides": "https://workstation-automation.talks.sylvain.dev/sunnytech-2023/",
+            "video": "https://www.youtube.com/watch?v=u1Pvdbojl2Q",
+            "duration": 19
+          }
+        ]
+      },
+      {
+        "title": "Terraform: a developer's lessons learned",
+        "repo": "https://github.com/sylvainmetayer/talk-terraform",
+        "sessions": [
+          {
+            "event": "Meetup onepoint",
+            "date": "2022-02-01",
+            "video": "https://www.youtube.com/watch?v=GR_YJIfo8jg&list=PLm-YYS9h2JhWiAZ5QuuJD6jyghWjkK09q&index=27",
+            "duration": 45,
+            "article": "/en/article/meetup-terraform/"
+          }
+        ]
+      }
+    ]
+  }
 }

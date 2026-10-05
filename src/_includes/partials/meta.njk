@@ -15,7 +15,7 @@
 {% endif %}
 
 <title>{{ pageTitle }}</title>
-<meta property="og:locale" content="fr_FR"/>
+<meta property="og:locale" content="{{ 'en_GB' if lang == 'en' else 'fr_FR' }}"/>
 <link rel="canonical" href="{{ currentUrl }}"/>
 <meta name="author" content="{{ site.authorName }}" />
 <meta property="og:site_name" content="{{ siteTitle }}"/>
@@ -34,8 +34,8 @@
 {% if socialImage %}
   <meta property="og:image" content="{{helpers.url() }}{{ socialImage }}"/>
   <meta name="twitter:image" content="{{helpers.url() }}{{ socialImage }}"/>
-  <meta property="og:image:alt" content="Illustration pour '{{ pageTitle }}'"/>
-  <meta name="twitter:image:alt" content="Illustration pour '{{ pageTitle }}'"/>
+  <meta property="og:image:alt" content="{{ 'meta.imageAlt' | t({ title: pageTitle }) }}"/>
+  <meta name="twitter:image:alt" content="{{ 'meta.imageAlt' | t({ title: pageTitle }) }}"/>
 {% endif %}
 
 {% for me in relations.me %}

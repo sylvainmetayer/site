@@ -1,5 +1,5 @@
 {% extends 'layouts/base.njk' %}
-{% from 'partials/macros.njk' import cmd, postList %}
+{% from 'partials/macros.njk' import cmd, postList with context %}
 
 {% block content %}
   <section class="section" aria-labelledby="page-title">
@@ -8,15 +8,15 @@
     {% if content | trim %}<div class="page-lead">{{ content | safe }}</div>{% endif %}
 
     {% for group in postListItems | groupByYear %}
-      <h2 class="year">{{ group.year }} <small>{{ group.posts.length }} article{% if group.posts.length > 1 %}s{% endif %}</small></h2>
+      <h2 class="year">{{ group.year }} <small>{{ 'posts.count' | t({ count: group.posts.length }) }}</small></h2>
       {{ postList(group.posts, true) }}
     {% endfor %}
   </section>
 
   {% if pagination.previousPageHref or pagination.nextPageHref %}
     <nav class="post-nav" aria-label="Pagination">
-      {% if pagination.nextPageHref %}<a href="{{ pagination.nextPageHref }}" class="prev"><span><span class="arrow" data-arrow="← " aria-hidden="true"></span>plus anciens<span class="visually-hidden"> :</span></span>Page {{ pagination.pageNumber + 2 }}</a>{% endif %}
-      {% if pagination.previousPageHref %}<a href="{{ pagination.previousPageHref }}" class="next"><span>plus récents<span class="visually-hidden"> :</span><span class="arrow" data-arrow=" →" aria-hidden="true"></span></span>Page {{ pagination.pageNumber }}</a>{% endif %}
+      {% if pagination.nextPageHref %}<a href="{{ pagination.nextPageHref }}" class="prev"><span><span class="arrow" data-arrow="← " aria-hidden="true"></span>{{ 'posts.older' | t }}<span class="visually-hidden"> :</span></span>Page {{ pagination.pageNumber + 2 }}</a>{% endif %}
+      {% if pagination.previousPageHref %}<a href="{{ pagination.previousPageHref }}" class="next"><span>{{ 'posts.newer' | t }}<span class="visually-hidden"> :</span><span class="arrow" data-arrow=" →" aria-hidden="true"></span></span>Page {{ pagination.pageNumber }}</a>{% endif %}
     </nav>
   {% endif %}
 {% endblock %}

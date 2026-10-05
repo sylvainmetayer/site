@@ -1,0 +1,64 @@
+{# Talks page, in French (src/talks.njk) and English (src/en/talks.njk) #}
+{% extends 'layouts/base.njk' %}
+{% from 'partials/macros.njk' import cmd, origin, talkYears with context %}
+
+{% block content %}
+<section class="section" aria-labelledby="page-title">
+  {{ cmd('ls -l talks/') }}
+  <h1 id="page-title" class="page-title">{{ title }}</h1>
+  <p class="page-lead">{{ 'talks.lead' | t({ playlist: talks.playlist }) | safe }}</p>
+</section>
+
+{# Hidden heading so the talk titles (h3) do not skip a level after the h1 #}
+<section class="section" aria-labelledby="list-title">
+  <h2 id="list-title" class="visually-hidden">{{ 'talks.list' | t }}</h2>
+  <ol class="timeline">
+    {% for talk in talks.talks %}
+      {% set sessions = talk.sessions | sort(true, false, 'date') %}
+      <li id="{{ talk.title | slugify }}">
+        <span class="when">{{ talkYears(talk) }}</span>
+        <div>
+          <h3>{{ talk.title }}<small>{{ 'talks.sessions' | t({ count: talk.sessions.length }) }}</small></h3>
+          <div class="body">
+            <p>{% if talk.with %}{{ 'talks.with' | t }} <a href="{{ talk.with.url }}">{{ talk.with.name }}</a> · {% endif %}<a href="{{ talk.repo }}">{{ 'projects.sources' | t }}<span class="visually-hidden">{{ 'talks.sourcesOf' | t({ title: talk.title }) }}</span></a></p>
+            <ul>
+              {% for session in sessions %}
+                {# Hidden context: these short links repeat for every session #}
+                {% set context = 'talks.context' | t({ event: session.event, year: session.date | date('YYYY'), title: talk.title }) %}
+                <li>
+                  {% if session.event_url %}<a href="{{ session.event_url }}">{{ session.event }} {{ session.date | date('YYYY') }}</a>{% else %}{{ session.event }} {{ session.date | date('YYYY') }}{% endif %}{% if session.note %} ({{ session.note }}){% endif %}{{ ' :' if lang == 'fr' else ':' }}
+                  {% if session.slides %}<a href="{{ session.slides }}">slides<span class="visually-hidden">{{ 'talks.of' | t({ context: context }) }}</span></a>{% endif %}
+                  {% if session.video %}{% if session.slides %} · {% endif %}<a href="{{ session.video }}">{{ 'talks.video' | t }}<span class="visually-hidden">{{ 'talks.of' | t({ context: context }) }}</span></a>{% if session.duration %} ({{ session.duration }} min){% endif %}{% endif %}
+                  {% if session.article %} · <a href="{{ session.article }}">article<span class="visually-hidden">{{ 'talks.on' | t({ context: context }) }}</span></a>{% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# Conference recaps: posts tagged "conference", translated when they can be #}
+{% set recaps = (collections.conference or []) | translated(collections.all) | reverse %}
+{% if recaps.length %}
+<section class="section" aria-labelledby="articles-title">
+  <h2 id="articles-title">{{ 'talks.recaps' | t }}</h2>
+  <ol class="timeline">
+    {% for post in recaps %}
+      <li>
+        <span class="when">{{ post.date | date('YYYY-MM') }}</span>
+        <div>
+          <h3><a href="{{ post.url }}"{% if post.data.lang != lang %} lang="{{ post.data.lang }}" hreflang="{{ post.data.lang }}"{% endif %}>{{ post.data.title }}</a></h3>
+          {% set firstPublished = post.data.canonical or post.data.original %}
+          {% if firstPublished %}
+            <div class="body"><p>{{ ('post.translation' if post.data.original else 'post.origin') | t({ origin: origin(firstPublished, post.data.originalPublisher, post.data.coauthors) }) | safe }}</p></div>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+{% endblock %}

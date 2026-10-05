@@ -16,5 +16,11 @@
   "drivingLicence": "Permis B",
   "cfBeaconToken": "b127465eed91464f811fad719b0c0cb7",
   "feedIdBase": "https://sylvain.dev",
-  "webmentionDomain": "www.sylvain.dev"
+  "webmentionDomain": "www.sylvain.dev",
+  "en": {
+    "shortDesc": "Backend & DevOps developer in Bordeaux",
+    "role": "Backend & DevOps developer",
+    "location": "Talence",
+    "drivingLicence": "Driving licence (B)"
+  }
 }

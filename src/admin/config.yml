@@ -7,9 +7,20 @@ backend:
   branch: main
 
 publish_mode: editorial_workflow
+
+# Français / anglais. Fichiers de données (talks, formations…) : le français à la
+# racine, l'anglais sous une clé `en` (src/_data/eleventyComputed.js).
+# Articles, projets et expériences : `slug.md` en français, `slug.en.md` en anglais.
+# Champ « i18n: true » : traduit ; « duplicate » : même valeur dans les deux langues.
+i18n:
+  structure: single_file_default_root
+  locales: [fr, en]
+  default_locale: fr
+  omit_default_locale_from_file_path: true
 site_url: https://www.sylvain.dev
 display_url: https://www.sylvain.dev
-logo_url: /images/icons/android-chrome-192x192.png
+logo:
+  src: /images/icons/android-chrome-192x192.png
 media_folder: src/images
 public_folder: /images
 
@@ -18,77 +29,88 @@ collections:
     label: Articles
     label_singular: Article
     folder: src/posts
+    i18n:
+      structure: multiple_files
     create: true
     slug: "{{slug}}"
     preview_path: "article/{{slug}}/"
     sortable_fields: [date, title]
     summary: "{{date | date('YYYY-MM-DD')}} · {{title}}"
     fields:
-      - { label: Titre, name: title, widget: string }
-      - { label: Date de publication, name: date, widget: datetime, time_format: false, format: "YYYY-MM-DD" }
-      - { label: Extrait, name: excerpt, widget: text, required: false, hint: "Affiché dans les listes d'articles et utilisé comme description par défaut." }
-      - { label: Tags, name: tags, widget: list, required: false }
-      - { label: Contenu, name: body, widget: markdown }
-      - { label: Brouillon, name: draft, widget: boolean, default: false, required: false }
-      - { label: Mis en avant, name: star, widget: boolean, default: false, required: false }
-      - { label: Masquer le sommaire, name: noToc, widget: boolean, default: false, required: false }
+      - { label: Titre, name: title, widget: string, i18n: true }
+      - { label: Date de publication, name: date, widget: datetime, time_format: false, format: "YYYY-MM-DD", i18n: duplicate }
+      - { label: Extrait, name: excerpt, widget: text, required: false, i18n: true, hint: "Affiché dans les listes d'articles et utilisé comme description par défaut." }
+      - { label: Tags, name: tags, widget: list, required: false, i18n: duplicate }
+      - { label: Contenu, name: body, widget: markdown, i18n: true }
+      - { label: Brouillon, name: draft, widget: boolean, default: false, required: false, i18n: duplicate }
+      - { label: Mis en avant, name: star, widget: boolean, default: false, required: false, i18n: duplicate }
+      - { label: Masquer le sommaire, name: noToc, widget: boolean, default: false, required: false, i18n: duplicate }
       - { label: Republier sur dev.to, name: repost, widget: select, options: ["dev.to"], required: false, hint: "Ajoute l'article au flux /devto.rss.xml importé par dev.to." }
       - { label: URL canonique, name: canonical, widget: string, required: false, hint: "Article republié depuis une autre plateforme (dev.to, Medium…) : URL de l'original. L'article sort du sitemap." }
-      - { label: Publié à l'origine par, name: originalPublisher, widget: string, required: false, hint: "Ex. onepoint" }
-      - { label: Co-auteurs (pseudos sur la plateforme d'origine), name: coauthors, widget: list, required: false }
-      - { label: SEO - titre, name: metaTitle, widget: string, required: false, hint: "Titre complet de l’onglet (suffixe « · Sylvain » compris), 70 caractères au plus : la CI le vérifie (npm run validate)." }
-      - { label: SEO - description, name: metaDesc, widget: string, required: false }
-      - { label: Image de partage, name: socialImage, widget: image, required: false }
+      - { label: Original (traduction), name: original, widget: string, required: false, i18n: true, hint: "Version anglaise d'un article republié : URL de l'original en français (le canonique de la version française). Laisser vide en français." }
+      - { label: Publié à l'origine par, name: originalPublisher, widget: string, required: false, i18n: duplicate, hint: "Ex. onepoint" }
+      - { label: Co-auteurs (pseudos sur la plateforme d'origine), name: coauthors, widget: list, required: false, i18n: duplicate }
+      - { label: SEO - titre, name: metaTitle, widget: string, required: false, i18n: true, hint: "Titre complet de l’onglet (suffixe « · Sylvain » compris), 70 caractères au plus : la CI le vérifie (npm run validate)." }
+      - { label: SEO - description, name: metaDesc, widget: string, required: false, i18n: true }
+      - { label: Image de partage, name: socialImage, widget: image, required: false, i18n: duplicate }
 
   - name: projets
     label: Projets
     label_singular: Projet
     folder: src/projets
+    i18n:
+      structure: multiple_files
     create: true
     slug: "{{slug}}"
     summary: "{{year}} · {{title}}"
     sortable_fields: [year, title]
     fields:
-      - { label: Nom, name: title, widget: string, hint: "Nom court, affiché en police mono (ex. email-alias-manager)." }
-      - { label: Année, name: year, widget: number, value_type: int }
-      - { label: Technologies, name: stack, widget: list, required: false }
-      - { label: Dépôt, name: repo, widget: string, required: false }
-      - { label: Article associé, name: article, widget: string, required: false, hint: "Chemin de l'article, ex. /article/ansible/" }
-      - { label: Afficher sur l'accueil, name: featured, widget: boolean, default: false, required: false }
-      - { label: Description, name: body, widget: markdown }
+      - { label: Nom, name: title, widget: string, i18n: duplicate, hint: "Nom court, affiché en police mono (ex. email-alias-manager)." }
+      - { label: Année, name: year, widget: number, value_type: int, i18n: duplicate }
+      - { label: Technologies, name: stack, widget: list, required: false, i18n: duplicate }
+      - { label: Dépôt, name: repo, widget: string, required: false, i18n: duplicate }
+      - { label: Article associé, name: article, widget: string, required: false, i18n: true, hint: "Chemin de l'article, ex. /article/ansible/ (en anglais /en/article/… s'il est traduit)" }
+      - { label: Afficher sur l'accueil, name: featured, widget: boolean, default: false, required: false, i18n: duplicate }
+      - { label: Description, name: body, widget: markdown, i18n: true }
 
   - name: work
     label: Expériences
     label_singular: Expérience
     folder: src/work
+    i18n:
+      structure: multiple_files
     create: true
     slug: "{{slug}}"
     summary: "{{start | date('YYYY-MM')}} · {{title}}"
     fields:
-      - { label: Titre, name: title, widget: string }
-      - { label: Lieu, name: location, widget: string }
-      - { label: Lien, name: link, widget: string, required: false }
-      - { label: Début, name: start, widget: datetime, time_format: false, format: "YYYY-MM-DD" }
-      - { label: Fin, name: end, widget: datetime, time_format: false, format: "YYYY-MM-DD", required: false }
-      - { label: Contenu, name: body, widget: markdown }
+      - { label: Titre, name: title, widget: string, i18n: duplicate }
+      - { label: Lieu, name: location, widget: string, i18n: duplicate }
+      - { label: Lien, name: link, widget: string, required: false, i18n: duplicate }
+      - { label: Début, name: start, widget: datetime, time_format: false, format: "YYYY-MM-DD", i18n: duplicate }
+      - { label: Fin, name: end, widget: datetime, time_format: false, format: "YYYY-MM-DD", required: false, i18n: duplicate }
+      - { label: Contenu, name: body, widget: markdown, i18n: true }
 
   - name: pages
     label: Pages
+    i18n: true
     files:
       - name: home
         label: Accueil
-        file: src/index.md
+        # src/index.md en français, src/en/index.md en anglais
+        file: src/{{locale}}/index.md
+        i18n: true
         fields:
-          - { label: Layout, name: layout, widget: hidden, default: layouts/home.njk }
-          - { label: Titre (nom affiché), name: title, widget: string }
-          - { label: Présentation, name: body, widget: markdown }
-          - { label: Titre « derniers articles », name: postsHeading, widget: string }
-          - { label: Titre « articles mis en avant », name: starHeading, widget: string }
-          - { label: Titre « projets », name: projectsHeading, widget: string }
-          - { label: Lien vers tous les articles, name: archiveButtonText, widget: string }
-          - { label: SEO - titre, name: metaTitle, widget: string, required: false, hint: "Titre complet de l’onglet (suffixe « · Sylvain » compris), 70 caractères au plus : la CI le vérifie (npm run validate)." }
-          - { label: SEO - description, name: metaDesc, widget: string, required: false }
-          - { label: Image de partage, name: socialImage, widget: image, required: false }
+          - { label: Layout, name: layout, widget: hidden, default: layouts/home.njk, i18n: duplicate }
+          - { label: Clé de traduction, name: translationKey, widget: hidden, default: home, i18n: duplicate }
+          - { label: Titre (nom affiché), name: title, widget: string, i18n: true }
+          - { label: Présentation, name: body, widget: markdown, i18n: true }
+          - { label: Titre « derniers articles », name: postsHeading, widget: string, i18n: true }
+          - { label: Titre « articles mis en avant », name: starHeading, widget: string, i18n: true }
+          - { label: Titre « projets », name: projectsHeading, widget: string, i18n: true }
+          - { label: Lien vers tous les articles, name: archiveButtonText, widget: string, i18n: true }
+          - { label: SEO - titre, name: metaTitle, widget: string, required: false, i18n: true, hint: "Titre complet de l’onglet (suffixe « · Sylvain » compris), 70 caractères au plus : la CI le vérifie (npm run validate)." }
+          - { label: SEO - description, name: metaDesc, widget: string, required: false, i18n: true }
+          - { label: Image de partage, name: socialImage, widget: image, required: false, i18n: duplicate }
 
   - name: generic_pages
     label: Pages génériques
@@ -104,19 +126,22 @@ collections:
 
   - name: data
     label: Données
+    i18n: true
     files:
       - name: site
         label: Site
         file: src/_data/site.json
+        i18n: true
         fields:
           - { label: Nom du site, name: name, widget: string }
           - { label: URL, name: url, widget: string }
           - { label: Nom de l'auteur, name: authorName, widget: string }
-          - { label: Rôle, name: role, widget: string }
-          - { label: Ville, name: location, widget: string }
+          - { label: Rôle, name: role, widget: string, i18n: true }
+          - { label: Ville, name: location, widget: string, i18n: true }
+          - { label: Permis, name: drivingLicence, widget: string, required: false, i18n: true }
           - { label: Email, name: authorEmail, widget: string }
           - { label: Compte Twitter, name: authorHandle, widget: string, required: false }
-          - { label: Description courte, name: shortDesc, widget: string }
+          - { label: Description courte, name: shortDesc, widget: string, i18n: true }
           - { label: Articles sur l'accueil, name: maxPostsPerPage, widget: number, value_type: int, default: 5 }
           - { label: Favicon, name: faviconPath, widget: string }
           - { label: Langue, name: locale, widget: string, default: fr }
@@ -125,13 +150,16 @@ collections:
       - name: navigation
         label: Navigation
         file: src/_data/navigation.json
+        i18n: true
         fields:
           - label: Liens
             name: items
             widget: list
+            i18n: true
+            hint: "En anglais, les URL commencent par /en/."
             fields:
-              - { label: Texte, name: text, widget: string }
-              - { label: URL, name: url, widget: string }
+              - { label: Texte, name: text, widget: string, i18n: true }
+              - { label: URL, name: url, widget: string, i18n: true }
       - name: social
         label: Réseaux
         file: src/_data/social.json
@@ -146,34 +174,46 @@ collections:
       - name: formations
         label: Formations
         file: src/_data/formations.json
+        i18n: true
         fields:
           - label: Formations
             name: formations
             widget: list
+            i18n: true
             summary: "{{end}} · {{title}}"
             fields:
-              - { label: Titre, name: title, widget: string }
-              - { label: Établissement, name: location, widget: string }
-              - { label: Lien, name: link, widget: string, required: false }
-              - { label: Année de début, name: start, widget: number, value_type: int, required: false }
-              - { label: Année de fin, name: end, widget: number, value_type: int }
-              - { label: Description, name: description, widget: text, required: false }
-              - { label: Tag des articles liés, name: tag, widget: string, required: false }
+              - { label: Titre, name: title, widget: string, i18n: true }
+              - { label: Établissement, name: location, widget: string, i18n: duplicate }
+              - { label: Lien, name: link, widget: string, required: false, i18n: duplicate }
+              - { label: Année de début, name: start, widget: number, value_type: int, required: false, i18n: duplicate }
+              - { label: Année de fin, name: end, widget: number, value_type: int, i18n: duplicate }
+              - { label: Description, name: description, widget: text, required: false, i18n: true }
+              - { label: Tag des articles liés, name: tag, widget: string, required: false, i18n: duplicate }
       - name: certifications
         label: Certifications
         file: src/_data/certifications.json
+        i18n: true
         fields:
           - label: Certifications
             name: certifications
             widget: list
+            i18n: true
             summary: "{{date | date('YYYY')}} · {{title}}"
             fields:
-              - { label: Titre, name: title, widget: string }
-              - { label: Lien, name: link, widget: string, required: false }
-              - { label: Date, name: date, widget: datetime, time_format: false, format: "YYYY-MM-DD" }
-              - { label: Description, name: description, widget: text, required: false }
+              - { label: Titre, name: title, widget: string, i18n: duplicate }
+              - { label: Lien, name: link, widget: string, required: false, i18n: duplicate }
+              - { label: Date, name: date, widget: datetime, time_format: false, format: "YYYY-MM-DD", i18n: duplicate }
+              - { label: Description, name: description, widget: text, required: false, i18n: true }
       - name: skills
         label: Compétences
         file: src/_data/skills.json
+        i18n: true
         fields:
-          - { label: Compétences, name: skills, widget: list }
+          - label: Groupes
+            name: groups
+            widget: list
+            i18n: true
+            summary: "{{name}}"
+            fields:
+              - { label: Nom du groupe, name: name, widget: string, i18n: true }
+              - { label: Compétences, name: skills, widget: list, i18n: duplicate }

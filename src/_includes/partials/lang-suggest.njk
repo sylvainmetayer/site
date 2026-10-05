@@ -1,0 +1,11 @@
+{# Offers the translation of this page when the browser prefers its language
+   (src/js/lang-suggest.js). Written in that language, hidden until the script shows it. #}
+{% if alternate %}
+  {%- set otherLang = 'fr' if lang == 'en' else 'en' -%}
+  <aside class="lang-suggest" data-lang-suggest="{{ otherLang }}" lang="{{ otherLang }}" aria-label="{{ 'lang.name' | t({}, otherLang) }}" hidden>
+    <div class="wrap">
+      <p>{{ 'lang.suggest' | t({}, otherLang) }} <a href="{{ alternate }}" hreflang="{{ otherLang }}">{{ 'lang.suggestLink' | t({}, otherLang) }}</a></p>
+      <button type="button" data-lang-suggest-close aria-label="{{ 'lang.suggestClose' | t({}, otherLang) }}">×</button>
+    </div>
+  </aside>
+{% endif %}

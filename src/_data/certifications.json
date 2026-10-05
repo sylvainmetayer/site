@@ -34,5 +34,43 @@
       "link": "https://www.credly.com/badges/bbe4baed-4656-4223-a511-5d5eb7261a4f/public_url",
       "description": "Obtenue en juillet 2021, renouvelée en novembre 2025."
     }
-  ]
+  ],
+  "en": {
+    "certifications": [
+      {
+        "title": "C2i",
+        "link": "https://c2i.enseignementsup-recherche.gouv.fr/employeur/faq-employeur",
+        "date": "2014-01-01",
+        "description": "",
+        "print": false
+      },
+      {
+        "title": "Opquast",
+        "date": "2017-07-04",
+        "link": "https://certificates.opquast.com/certificate/JYLOBQ/",
+        "description": "Earned during my DAWIN professional bachelor's degree. Score: 900 points.",
+        "print": false
+      },
+      {
+        "title": "TOEIC",
+        "date": "2018-02-01",
+        "link": "https://www.ets.org/fr/toeic",
+        "description": "I took and passed the TOEIC three times during my studies, as a valid TOEIC score was required to graduate with my master's-level degree. Score on the latest attempt: 855 / 990.",
+        "summary": "855 / 990",
+        "print": false
+      },
+      {
+        "title": "Opquast",
+        "date": "2024-02-01",
+        "link": "https://directory.opquast.com/fr/certificat/L1OBJQ/",
+        "description": "Applying web quality assurance rules and vocabulary in day-to-day professional practice."
+      },
+      {
+        "title": "AWS Certified Solutions Architect – Associate",
+        "date": "2025-11-01",
+        "link": "https://www.credly.com/badges/bbe4baed-4656-4223-a511-5d5eb7261a4f/public_url",
+        "description": "Earned in July 2021, renewed in November 2025."
+      }
+    ]
+  }
 }

@@ -55,8 +55,8 @@
     "validate": "html-validate \"dist/**/*.html\"",
     "check:links": "node scripts/check-links.mjs dist",
     "check:a11y": "node scripts/check-a11y.mjs dist",
-    "cv:pdf": "node scripts/cv-pdf.mjs dist",
-    "check:cv": "node scripts/check-cv-ats.mjs src/uploads/CV.pdf"
+    "cv:pdf": "node scripts/cv-pdf.mjs dist && node scripts/cv-pdf.mjs dist --lang en",
+    "check:cv": "node scripts/check-cv-ats.mjs src/uploads/CV.pdf && node scripts/check-cv-ats.mjs src/uploads/CV-en.pdf --lang en"
   },
   "engines": {
     "node": ">=24"

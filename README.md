@@ -34,7 +34,8 @@ mise installe Node 24 (`mise install`, voir aussi `.nvmrc`). Sans mise : `npm ci
 | `src/posts/` | Articles (Markdown) |
 | `src/projets/` | Projets de `/projets/`, et de l'accueil avec `featured: true` |
 | `src/work/` | Expériences, affichées sur `/cv/` |
-| `src/_data/` | Données du site : `site.json`, `navigation.json`, `social.json`, `formations.json`, `certifications.json`, `skills.json` |
+| `src/_data/` | Données du site : `site.json`, `navigation.json`, `social.json`, `formations.json`, `certifications.json`, `skills.json`, `talks.json`… ; textes de l'interface dans `i18n.js` |
+| `src/en/` | Pages anglaises (voir « Version anglaise ») |
 | `src/_includes/css/site.css` | Feuille de style (CSS natif, injectée dans chaque page) |
 | `src/_includes/layouts/` | Layouts Nunjucks |
 | `src/admin/config.yml` | Configuration de Sveltia CMS |
@@ -42,6 +43,25 @@ mise installe Node 24 (`mise install`, voir aussi `.nvmrc`). Sans mise : `npm ci
 Les polices (JetBrains Mono, IBM Plex Sans) et Sveltia CMS viennent de npm et sont copiés dans `dist/` au build, à cause de la CSP (`font-src 'self'`, `script-src 'self'`).
 
 Un article avec `repost: dev.to` dans son front matter apparaît dans `/devto.rss.xml`, le flux que dev.to importe.
+
+## Version anglaise
+
+Le français est la langue par défaut, aux URL actuelles ; l'anglais est sous `/en/` (accueil, articles, projets, talks, CV et son PDF, flux Atom, index de la palette).
+
+| Contenu | Français | Anglais |
+| --- | --- | --- |
+| Articles, projets, expériences | `src/posts/slug.md` | `src/posts/slug.en.md` (même nom + `.en`) |
+| Données (`src/_data/*.json`) | à la racine du fichier | sous la clé `en`, version complète |
+| Accueil | `src/index.md` | `src/en/index.md` |
+| Pages (projets, talks, CV…) | `src/*.njk` : front matter seulement | `src/en/*.njk`, même layout |
+| Textes de l'interface | `src/_data/i18n.js`, `fr` | `src/_data/i18n.js`, `en` |
+
+- La langue d'une page est la donnée `lang` (`fr` par défaut, `en` sous `src/en/` et pour les `*.en.md`). `src/_data/eleventyComputed.js` remplace alors chaque fichier de données par sa version anglaise, et le filtre `t` donne les textes de l'interface : `{{ 'posts.title' | t }}`. Les macros de `partials/macros.njk` s'importent `with context` pour suivre la langue.
+- Une page et sa traduction partagent une `translationKey` (calculée pour les articles, les projets et les expériences) : sélecteur FR/EN de l'en-tête, balises `hreflang`, bandeau qui propose la traduction quand le navigateur préfère l'autre langue (`src/js/lang-suggest.js`, fermé une fois pour toutes).
+- Sur les pages anglaises, un article sans traduction reste listé, en français et marqué « in French ». Les pages de tags et `/devto.rss.xml` restent en français.
+- Une traduction d'article republié porte `original:` (l'URL de l'original) au lieu de `canonical:` : la page anglaise est canonique d'elle-même.
+- Le CV anglais est imprimé dans `src/uploads/CV-en.pdf` (`mise run cv` génère et vérifie les deux, la CI compare les deux au build).
+- Sveltia CMS édite les deux langues (bloc `i18n` de `src/admin/config.yml`) : champ « traduit » ou « dupliqué » (même valeur dans les deux langues).
 
 ## Déploiement (Cloudflare Pages)
 
