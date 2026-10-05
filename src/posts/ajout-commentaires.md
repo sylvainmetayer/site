@@ -236,7 +236,7 @@ Le script est chargé en asynchrone, afin de ne pas gêner le chargement de la p
 
 Pour plus d'informations sur les paramètres disponibles côté client, [voir la documentation d'isso](https://isso-comments.de/docs/).
 
-⚠ Lorsqu'un fil de commentaire est vide (ce qui est le cas lorsqu'un article ne contient pas encore de commentaire), isso répond avec une erreur HTTP 404, ce qui peut faire croire qu'une page est manquante ou invalide. [Une issue est ouverte sur le dépôt Github](https://github.com/posativ/isso/issues/301) pour renvoyer un code HTTP 204 (no content) à la place.
+⚠ Lorsqu'un fil de commentaire est vide (ce qui est le cas lorsqu'un article ne contient pas encore de commentaire), isso répond avec une erreur HTTP 404, ce qui peut faire croire qu'une page est manquante ou invalide. [Une issue est ouverte sur le dépôt Github](https://github.com/isso-comments/isso/issues/301) pour renvoyer un code HTTP 204 (no content) à la place.
 
 Et voici le résultat !
 
