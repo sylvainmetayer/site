@@ -39,7 +39,7 @@ Il s'agit d'un jeu sur navigateur dans lequel on joue contre l'ordinateur (plusi
 
 ## Tetris
 
-[Sources (Github)](https://github.com/sylvainmetayer/tetris) [Télécharger le jeu](https://play.google.com/store/apps/details?id=fr.sylvainmetayer.tetris)
+[Sources (Github)](https://github.com/sylvainmetayer/tetris) <s class="dead-link" title="Le jeu n'est plus maintenu ni disponible sur le Play Store">Télécharger le jeu</s> (plus maintenu, plus disponible)
 
 Projet universitaire réalisé afin de se familiariser avec le développement d'application Android.
 

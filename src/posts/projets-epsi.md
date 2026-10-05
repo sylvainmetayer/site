@@ -17,7 +17,7 @@ Le présent article liste une partie des projets que j'ai pu réaliser durant me
 
 > {{ "2019-02-25" | date }}
 
-[Sources (Github)](https://github.com/EPSIBordeaux/memoryProject) [Tester l'application](https://expo.io/@sylvainmetayer/memoryProject)
+[Sources (Github)](https://github.com/EPSIBordeaux/memoryProject) <s class="dead-link" title="L'application n'est plus maintenue ni disponible sur Expo">Tester l'application</s> (plus maintenue, plus disponible)
 
 Ce projet, réalisé en équipe, s'inscrivait dans la démarche Open Innovation de l'EPSI, impliquant plusieurs promotions et nécessitant donc d'être organisé. L'objectif était de réaliser un jeu de "Jeu dont vous êtes le héros" sur mobile, en laissant la possibilité de personnaliser simplement le parcours de jeu.
 
