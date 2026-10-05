@@ -4,7 +4,7 @@
 
 {% block content %}
   <section class="section" aria-labelledby="page-title">
-    {{ cmd('ls -l ' + ('projects/' if lang == 'en' else 'projets/')) }}
+    {{ cmd('ls -l ' + ('projects.dir' | t)) }}
     <h1 id="page-title" class="page-title">{{ title }}</h1>
     <p class="page-lead">{{ 'projects.lead' | t | safe }}</p>
   </section>

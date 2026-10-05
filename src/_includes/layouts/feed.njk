@@ -5,13 +5,13 @@
   <title>{{ site.name }}</title>
   <subtitle>{{ site.shortDesc }}</subtitle>
   <link href="{{ helpers.url() }}{{ permalink }}" rel="self"/>
-  <link href="{{ helpers.url() }}{{ '/en/' if lang == 'en' else '/' }}"/>
+  <link href="{{ helpers.url() }}{{ langPrefix }}/"/>
   {%- set feedPosts = collections.postsEn if lang == 'en' else collections.posts %}
   {% if feedPosts | length %}
     <updated>{{ feedPosts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   {% endif %}
   {# Ids are permanent: they keep the apex used before the move to www, or readers would see every entry as new. #}
-  <id>{{ site.feedIdBase }}{{ '/en/' if lang == 'en' else '' }}</id>
+  <id>{{ site.feedIdBase }}{{ (langPrefix + '/') if langPrefix else '' }}</id>
   <author>
     <name>{{ site.authorName }}</name>
     <email>{{ site.authorEmail }}</email>

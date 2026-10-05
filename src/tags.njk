@@ -1,18 +1,10 @@
 ---
+# One page per tag of the French articles (eleventy.config.js, collection
+# postTagList): not a deny-list of the other collections, which would miss new ones
 pagination:
-  data: collections
+  data: collections.postTagList
   size: 1
   alias: tag
-  filter:
-    - all
-    - nav
-    - post
-    - posts
-    - tagList
-    - postFeed
-    - starFeed
-    - work
-    - projets
   addAllPagesToCollections: true
 permalink: /tags/{{ tag }}/
 layout: layouts/base.njk

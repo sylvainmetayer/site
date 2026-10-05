@@ -1,5 +1,6 @@
-{%- set alternate = translationKey | alternateUrl(collections.all) -%}
-{%- set langPrefix = '/en' if lang == 'en' else '' -%}
+{#- Same page in the other language, if it has one (src/11ty/i18n.js); langPrefix and otherLang come from src/_data/eleventyComputed.js -#}
+{%- set alternatePage = translationKey | alternate(collections.all) -%}
+{%- set alternate = alternatePage.url if alternatePage else null -%}
 <!DOCTYPE html>
 <html lang="{{ lang }}">
   <head data-env="{{ global.environment }}">
@@ -9,10 +10,11 @@
     <link rel="preload" href="/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ helpers.url() }}{{ langPrefix }}/feed.xml">
-    {% if alternate %}
-      {# Same page in the other language (src/_data/i18n.js, translationKey) #}
+    {# No hreflang when either page is canonical elsewhere (article first published on
+       dev.to, LinkedIn…): search engines drop clusters that point to non-canonical URLs #}
+    {% if alternate and not canonical and not alternatePage.data.canonical %}
       <link rel="alternate" hreflang="{{ lang }}" href="{{ helpers.url() }}{{ page.url }}">
-      <link rel="alternate" hreflang="{{ 'fr' if lang == 'en' else 'en' }}" href="{{ helpers.url() }}{{ alternate }}">
+      <link rel="alternate" hreflang="{{ otherLang }}" href="{{ helpers.url() }}{{ alternate }}">
       <link rel="alternate" hreflang="x-default" href="{{ helpers.url() }}{{ page.url if lang == 'fr' else alternate }}">
     {% endif %}
     <link rel="icon" href="{{ site.faviconPath }}" type="image/svg+xml">

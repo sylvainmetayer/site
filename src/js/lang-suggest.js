@@ -1,6 +1,7 @@
 // Shows the banner offering the translation of the page (partials/lang-suggest.njk)
-// when the browser prefers its language to the language of the page. Closing it,
-// or following it, stores the choice: the banner does not come back.
+// when the browser prefers its language to the language of the page. Closing it
+// stores the choice and the banner does not come back; following it does not, so
+// the next untranslated visit still gets the offer.
 (function () {
   var banner = document.querySelector('[data-lang-suggest]');
   if (!banner) return;
@@ -33,6 +34,5 @@
     dismiss();
     banner.hidden = true;
   });
-  banner.querySelector('a').addEventListener('click', dismiss);
   banner.hidden = false;
 })();

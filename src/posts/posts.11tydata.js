@@ -1,22 +1,22 @@
+import { baseSlug, entryData, isEnglishFile } from '../11ty/i18n.js';
+
 const isLive = post => {
   const now = new Date();
   return !post.draft && post.date && new Date(post.date) <= now;
 };
 
 // `slug.md` is the French article, `slug.en.md` its English translation
-// (Sveltia CMS i18n, multiple_files)
-const isEnglish = data => data.page.inputPath.endsWith('.en.md');
-const slugOf = data => data.page.fileSlug.replace(/\.en$/, '');
+const isEnglish = data => isEnglishFile(data.page.inputPath);
 
 export default {
   eleventyComputed: {
-    lang: data => (isEnglish(data) ? 'en' : 'fr'),
+    lang: data => entryData(data, 'post').lang,
     // Links a translation to its original (language switcher, hreflang)
-    translationKey: data => `post:${slugOf(data)}`,
+    translationKey: data => entryData(data, 'post').translationKey,
     // Unpublished posts get no page in production (permalink false)
     permalink: data => {
       const publish = process.env.ELEVENTY_ENV !== "production" || isLive(data);
-      return publish && `${isEnglish(data) ? '/en' : ''}/article/${slugOf(data)}/`;
+      return publish && `${isEnglish(data) ? '/en' : ''}/article/${baseSlug(data.page.fileSlug)}/`;
     },
     // The tag pages and their collections list the French articles only
     eleventyExcludeFromCollections: data => {

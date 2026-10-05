@@ -1,26 +1,24 @@
 {#- Index of the Ctrl+K palette (src/js/palette.js), in French (src/search-index.njk) and
     English (src/en/search-index.njk): t title, u url, k kind, d detail shown on the right, a action -#}
-{%- set en = lang == 'en' -%}
-{%- set prefix = '/en' if en else '' -%}
 {%- set entries = [] -%}
-{%- set entries = (entries.push({ t: 'palette.home' | t, u: prefix + '/', k: 'page', d: site.url | displayUrl }), entries) -%}
+{%- set entries = (entries.push({ t: 'palette.home' | t, u: langPrefix + '/', k: 'page', d: site.url | displayUrl }), entries) -%}
 {%- for item in navigation.items -%}
   {%- set entries = (entries.push({ t: item.text | replace('/', ''), u: item.url, k: 'page' }), entries) -%}
 {%- endfor -%}
-{%- for post in (collections.postsAllEn if en else collections.posts) -%}
+{%- for post in (collections.postsAllEn if lang == 'en' else collections.posts) -%}
   {%- set entries = (entries.push({ t: post.data.title, u: post.url, k: 'article', d: (post.date | date('YYYY')) + ((' · ' + ('lang.inFrench' | t)) if post.data.lang != lang else ''), s: (post.data.tags or []) | join(' ') }), entries) -%}
 {%- endfor -%}
 {%- for talk in talks.talks -%}
-  {%- set entries = (entries.push({ t: talk.title, u: prefix + '/talks/#' + (talk.title | slugify), k: 'talk', d: 'talks.sessions' | t({ count: talk.sessions | length }), s: talk.sessions | uniqueValues('event') | join(' ') }), entries) -%}
+  {%- set entries = (entries.push({ t: talk.title, u: langPrefix + '/talks/#' + (talk.title | slugify), k: 'talk', d: 'talks.sessions' | t({ count: talk.sessions | length }), s: talk.sessions | uniqueValues('event') | join(' ') }), entries) -%}
 {%- endfor -%}
 {%- for project in collections.projets | translated(collections.all) -%}
-  {%- set entries = (entries.push({ t: project.data.title, u: (prefix + '/projects/#' if en else '/projets/#') + (project.fileSlug | replace('.en', '')), k: 'project' if en else 'projet', d: project.data.year, s: (project.data.stack or []) | join(' ') }), entries) -%}
+  {%- set entries = (entries.push({ t: project.data.title, u: ('url.projects' | t) + '#' + (project.fileSlug | baseSlug), k: 'palette.kindProject' | t, d: project.data.year, s: (project.data.stack or []) | join(' ') }), entries) -%}
 {%- endfor -%}
 {%- for tag in collections.posts | postTags -%}
   {%- set entries = (entries.push({ t: '#' + tag, u: '/tags/' + tag + '/', k: 'tag' }), entries) -%}
 {%- endfor -%}
 {%- set entries = (entries.push({ t: 'palette.cv' | t, u: 'cv.pdf' | t, k: 'action', s: 'cv pdf resume' }), entries) -%}
-{%- set entries = (entries.push({ t: 'palette.feed' | t, u: prefix + '/feed.xml', k: 'action', s: 'rss atom feed' }), entries) -%}
+{%- set entries = (entries.push({ t: 'palette.feed' | t, u: langPrefix + '/feed.xml', k: 'action', s: 'rss atom feed' }), entries) -%}
 {%- set entries = (entries.push({ t: 'palette.themeDark' | t, a: 'theme:dark', k: 'action', s: 'theme dark nuit sombre' }), entries) -%}
 {%- set entries = (entries.push({ t: 'palette.themeLight' | t, a: 'theme:light', k: 'action', s: 'theme light jour clair' }), entries) -%}
 {%- set entries = (entries.push({ t: 'palette.themeAuto' | t, a: 'theme:auto', k: 'action', s: 'theme auto systeme system' }), entries) -%}

@@ -15,7 +15,7 @@
 {% endif %}
 
 <title>{{ pageTitle }}</title>
-<meta property="og:locale" content="{{ 'en_GB' if lang == 'en' else 'fr_FR' }}"/>
+<meta property="og:locale" content="{{ 'meta.ogLocale' | t }}"/>
 <link rel="canonical" href="{{ currentUrl }}"/>
 <meta name="author" content="{{ site.authorName }}" />
 <meta property="og:site_name" content="{{ siteTitle }}"/>

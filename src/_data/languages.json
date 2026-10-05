@@ -2,23 +2,14 @@
   "languages": [
     {
       "label": "Français",
-      "level": "Langue maternelle"
+      "label_en": "French",
+      "level": "Langue maternelle",
+      "level_en": "Native"
     },
     {
       "label": "Anglais",
+      "label_en": "English",
       "certification": "TOEIC"
     }
-  ],
-  "en": {
-    "languages": [
-      {
-        "label": "French",
-        "level": "Native"
-      },
-      {
-        "label": "English",
-        "certification": "TOEIC"
-      }
-    ]
-  }
+  ]
 }

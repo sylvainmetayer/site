@@ -51,14 +51,17 @@ Le français est la langue par défaut, aux URL actuelles ; l'anglais est sous `
 | Contenu | Français | Anglais |
 | --- | --- | --- |
 | Articles, projets, expériences | `src/posts/slug.md` | `src/posts/slug.en.md` (même nom + `.en`) |
-| Données (`src/_data/*.json`) | à la racine du fichier | sous la clé `en`, version complète |
+| Données éditées dans le CMS (`site`, `navigation`, `formations`, `certifications`, `skills`) | à la racine du fichier | sous la clé `en`, version complète (format de Sveltia) |
+| Autres données (`talks`, `languages`, `interests`) | champ `title`… | champ voisin `title_en`… : un nouvel élément n'a pas à être recopié |
 | Accueil | `src/index.md` | `src/en/index.md` |
 | Pages (projets, talks, CV…) | `src/*.njk` : front matter seulement | `src/en/*.njk`, même layout |
 | Textes de l'interface | `src/_data/i18n.js`, `fr` | `src/_data/i18n.js`, `en` |
 
-- La langue d'une page est la donnée `lang` (`fr` par défaut, `en` sous `src/en/` et pour les `*.en.md`). `src/_data/eleventyComputed.js` remplace alors chaque fichier de données par sa version anglaise, et le filtre `t` donne les textes de l'interface : `{{ 'posts.title' | t }}`. Les macros de `partials/macros.njk` s'importent `with context` pour suivre la langue.
+- Les conventions sont réunies dans `src/11ty/i18n.js` (fichiers `.en.md`, localisation des données, index des traductions), utilisé par la config, les données et `scripts/check-cv-ats.mjs`.
+- La langue d'une page est la donnée `lang` (`fr` par défaut, `en` sous `src/en/` et pour les `*.en.md`). `src/_data/eleventyComputed.js` remplace alors chaque fichier de données par sa version anglaise et fournit `langPrefix` (`''` ou `/en`) et `otherLang` ; le filtre `t` donne les textes de l'interface : `{{ 'posts.title' | t }}`. Les macros de `partials/macros.njk` s'importent `with context` pour suivre la langue.
 - Une page et sa traduction partagent une `translationKey` (calculée pour les articles, les projets et les expériences) : sélecteur FR/EN de l'en-tête, balises `hreflang`, bandeau qui propose la traduction quand le navigateur préfère l'autre langue (`src/js/lang-suggest.js`, fermé une fois pour toutes).
-- Sur les pages anglaises, un article sans traduction reste listé, en français et marqué « in French ». Les pages de tags et `/devto.rss.xml` restent en français.
+- Sur les pages anglaises, un article sans traduction reste listé, en français et marqué « in French ». Les pages de tags (une par tag des articles publiés) et `/devto.rss.xml` restent en français.
+- Pas de `hreflang` pour un article canonique ailleurs (dev.to, LinkedIn…) : les moteurs ignorent les paires qui pointent vers une URL non canonique.
 - Une traduction d'article republié porte `original:` (l'URL de l'original) au lieu de `canonical:` : la page anglaise est canonique d'elle-même.
 - Le CV anglais est imprimé dans `src/uploads/CV-en.pdf` (`mise run cv` génère et vérifie les deux, la CI compare les deux au build).
 - Sveltia CMS édite les deux langues (bloc `i18n` de `src/admin/config.yml`) : champ « traduit » ou « dupliqué » (même valeur dans les deux langues).
