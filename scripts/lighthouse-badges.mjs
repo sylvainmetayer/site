@@ -1,7 +1,7 @@
 // Audits the production site with Lighthouse and writes shields.io endpoint
 // files (https://shields.io/badges/endpoint-badge) for the README badges.
 //
-//   node scripts/lighthouse-badges.mjs [out dir]
+//   node scripts/lighthouse-badges.mjs    # writes badges/*.json
 //
 // - one badge per Lighthouse category (performance, accessibility, best
 //   practices, SEO): the lowest score of the audited pages, mobile profile;
@@ -17,7 +17,7 @@ import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
 import { co2, hosting } from '@tgwf/co2';
 
-const out = process.argv[2] || 'badges';
+const out = 'badges';
 const site = JSON.parse(readFileSync('src/_data/site.json', 'utf8')).url;
 const pages = ['/', '/articles/', '/cv/', '/projets/'];
 
@@ -49,7 +49,8 @@ const results = [];
 try {
   // One page at a time: Lighthouse measures performance on an idle browser
   for (const page of pages) {
-    const { lhr } = await lighthouse(`${site}${page}`, {
+    // Awaited inside the loop on purpose: the audits must not overlap
+    const { lhr } = await lighthouse(`${site}${page}`, { // NOSONAR
       port: chrome.port,
       output: 'json',
       logLevel: 'error',
