@@ -10,7 +10,7 @@ excerpt: "Lors de mon alternance à Atos en Licence Professionnelle DAWIN, j'ai 
 date: "2017-02-01"
 ---
 
-Lors de mon alternance à Atos en Licence Professionnelle DAWIN, j'ai eu l'occasion de développer la première version d'un outil de recherche de données personnelles dans le cadre du [GDPR](https://eugdpr.org/) (General Data Protection Regulation)
+Lors de mon alternance à Atos en Licence Professionnelle DAWIN, j'ai eu l'occasion de développer la première version d'un outil de recherche de données personnelles dans le cadre du [GDPR](https://web.archive.org/web/20170123025715/http://www.eugdpr.org/) (General Data Protection Regulation)
 
 Le projet a été réalisé en Python avec une équipe de trois personnes.
 

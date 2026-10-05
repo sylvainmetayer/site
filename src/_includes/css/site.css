@@ -39,6 +39,7 @@
   --accent: #62acff;
   --ok: #7ccf8a;
   --warn: #e8b85a;
+  --error: #ff7b72;
 
   /* Code blocks stay dark in both themes */
   --code-bg: #0a111a;
@@ -66,6 +67,7 @@
     --accent: #1c5db3;
     --ok: #2b7a3a;
     --warn: #8a5a00;
+    --error: #b42318;
     color-scheme: light;
   }
 }
@@ -79,6 +81,7 @@
   --accent: #1c5db3;
   --ok: #2b7a3a;
   --warn: #8a5a00;
+  --error: #b42318;
   color-scheme: light;
 }
 
@@ -907,6 +910,11 @@ samp {
 
 .prose a.img_link::after {
   content: none;
+}
+
+/* Former link to a site gone for good: kept as plain text so the link check skips it */
+.prose .dead-link {
+  color: var(--error);
 }
 
 .prose :not(pre) > code {

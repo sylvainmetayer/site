@@ -32,7 +32,7 @@ Il s'agit d'un REX de la mise en place de l'observabilité dans un projet avec p
 
 [Replay Youtube](https://www.youtube.com/watch?v=0xSCUgHxZu0)
 [Lien vers les slides](https://jtama.github.io/alice-au-pays-d-opentelemetry/#/)
-[Lien du CFP](https://cfp.devoxx.fr/2023/talk/ZHL-4882/_Alice_au_pays_d'OpenTelemetry)
+<s class="dead-link" title="Le site du CFP n'est plus en ligne">Lien du CFP</s>
 
 ### Comprendre et utiliser les modèles de langage d'IA
 
@@ -45,7 +45,7 @@ Si vous souhaitez un cours complet, vulgarisé et abordable, avec un historique 
 [Replay Youtube](https://www.youtube.com/watch?v=ZbWL2W53BXY)
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vReIr93Udkzm3S0qn59AyFDYQjuXq0puGNYlFQYqDyoHqio_UgHbqQV1Qm4sUwt0ZeawfvGFdQOCHLc/pub#slide=id.g21f549ddc89_0_0)
 [Dépôt Github](https://github.com/sebastien-collet/talks/blob/master/Devoxx%20FR%202023/Ressources.md)
-[Lien du CFP](https://cfp.devoxx.fr/2023/talk/OOZ-7789/Comprendre_et_utiliser_les_modeles_de_langage_d'IA)
+<s class="dead-link" title="Le site du CFP n'est plus en ligne">Lien du CFP</s>
 
 ### Une Architecture GitOps from scratch : Gitlab, Ansible, Terraform, Kubernetes et AWS
 
@@ -55,7 +55,7 @@ L'utilisation de chaque outil est justifiée par son rôle. Le talk développe p
 
 [Replay Youtube](https://www.youtube.com/watch?v=FyAD_-LAMLo)
 [Lien du dépôt Gitlab](https://gitlab.com/takima-school/takione)
-[Lien du CFP](https://cfp.devoxx.fr/2023/talk/EJI-3118/Une_Architecture_GitOps_from_scratch_:_Gitlab,_Ansible,_Terraform,_Kubernetes_et_AWS)
+<s class="dead-link" title="Le site du CFP n'est plus en ligne">Lien du CFP</s>
 
 ### Géopolitique de la data
 
@@ -64,7 +64,7 @@ Avec cette keynote de 20 minutes, [Benjamin Bayart](https://twitter.com/bayartb)
 Il clôture son discours en passant le message que tout ingénieur informatique fait de la géopolitique de la data.
 
 [Replay Youtube](https://www.youtube.com/watch?v=EOOhYaGGArc)
-[Lien du CFP](https://cfp.devoxx.fr/2023/talk/ITD-6079/Geopolitique_de_la_data)
+<s class="dead-link" title="Le site du CFP n'est plus en ligne">Lien du CFP</s>
 
 ### Démystifions les composants internes de Kubernetes
 
@@ -77,7 +77,7 @@ Si vous souhaitez savoir ce qui se cache derrière un "kubectl apply -f mon-depl
 [Replay Youtube](https://www.youtube.com/watch?v=OCMNA0dSAzc)
 [Slides](https://blog.zwindler.fr/talks/2023-demystifions-kubernetes/index.html)
 [Github contenant la démo](https://github.com/zwindler/demystifions-kubernetes)
-[Lien du CFP](https://cfp.devoxx.fr/2023/talk/NSW-2452/Demystifions_les_composants_internes_de_Kubernetes)
+<s class="dead-link" title="Le site du CFP n'est plus en ligne">Lien du CFP</s>
 
 ### SELECT 'amazing_features' FROM "postgresql"
 
@@ -92,7 +92,7 @@ Que vous utilisiez ou non postgres, ce talk vous montrera ses super pouvoirs et 
 [Replay Youtube](https://www.youtube.com/watch?v=I1rAkNDv1Ws)
 [Slides](https://download.davinkevin.fr/presentations/select-amazing-features-from-postgresql/devoxxfr-2023/select-amazing-features-from-postgresql.pdf)
 [Dépôt Gitlab](https://gitlab.com/davinkevin.fr/presentations/select-amazing_features-from-postgresql)
-[Lien du CFP](https://cfp.devoxx.fr/2023/talk/OFK-3682/SELECT_'amazing_features'_FROM_%22postgresql%22)
+<s class="dead-link" title="Le site du CFP n'est plus en ligne">Lien du CFP</s>
 
 ## Pour finir
 

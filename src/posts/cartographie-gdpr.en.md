@@ -9,7 +9,7 @@ excerpt: "During my work-study placement at Atos, as part of the DAWIN professio
 date: "2017-02-01"
 ---
 
-During my work-study placement at Atos, as part of the DAWIN professional bachelor's degree (Licence Professionnelle DAWIN), I developed the first version of a tool for finding personal data in the context of the [GDPR](https://eugdpr.org/) (General Data Protection Regulation)
+During my work-study placement at Atos, as part of the DAWIN professional bachelor's degree (Licence Professionnelle DAWIN), I developed the first version of a tool for finding personal data in the context of the [GDPR](https://web.archive.org/web/20170123025715/http://www.eugdpr.org/) (General Data Protection Regulation)
 
 The project was built in Python by a team of three.
 
