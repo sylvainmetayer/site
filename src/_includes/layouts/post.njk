@@ -30,6 +30,11 @@
       {# English translation of an article first published in French elsewhere #}
       <p class="post-notice">{{ 'post.translation' | t({ origin: origin(original, originalPublisher, coauthors) }) | safe }}</p>
     {% endif %}
+    {# French article without translation: told to English readers only, in English
+       (shown by src/js/lang-suggest.js: browser in English or coming from /en/) #}
+    {% if lang == 'fr' and not alternate %}
+      <p class="post-notice" data-untranslated="en" lang="en" hidden>{{ 'post.untranslated' | t({ articles: '<a href="/en/articles/">' + ('post.untranslatedLink' | t({}, 'en')) + '</a>' }, 'en') | safe }}</p>
+    {% endif %}
     {# Rebuilt every morning (daily_build.yml), so the age stays current #}
     {% if (global.now - page.date.getTime()) > 31557600000 %}
       <p class="post-notice">{{ 'post.old' | t({ year: page.date | date('YYYY') }) }}</p>

@@ -184,6 +184,8 @@ export default {
     'post.readingTime': '{minutes} min read',
     'post.origin': 'First published on {origin}.',
     'post.translation': 'Translated from the French original, first published on {origin}.',
+    'post.untranslated': 'This article is only available in French. See the {articles}.',
+    'post.untranslatedLink': 'articles in English',
     'post.old': 'Written in {year}: some details may have changed since.',
     'post.toc': 'Contents',
     'post.neighbours': 'Other articles',

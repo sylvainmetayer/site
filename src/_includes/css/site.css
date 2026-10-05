@@ -523,8 +523,9 @@ samp {
   font: 400 0.85rem/1.5 var(--mono);
 }
 
-/* Stacked notices read as one block (.post already spaces its children) */
-.post-notice + .post-notice {
+/* Stacked notices read as one block (.post already spaces its children); a
+   hidden notice (untranslated article, French readers) does not count */
+.post-notice:not([hidden]) + .post-notice {
   margin-top: -1.25rem;
 }
 
@@ -661,6 +662,12 @@ samp {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+}
+
+/* "in French": an item of an English page that has no translation */
+.post-lang {
+  color: var(--muted);
+  font: 400 0.75rem/1.3 var(--mono);
 }
 
 .card-title {

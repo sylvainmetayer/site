@@ -52,8 +52,10 @@
   <div class="cards">
     {% for project in projects %}
       <article class="card" id="{{ project.fileSlug | baseSlug }}">
-        <h{{ level }} class="card-title">{{ project.data.title }} <small>{{ project.data.year }}</small></h{{ level }}>
-        <div class="desc">{{ project.templateContent | safe }}</div>
+        {# On an English page, a project without translation keeps its French description #}
+        {% set untranslated = project.data.lang != lang %}
+        <h{{ level }} class="card-title">{{ project.data.title }} <small>{% if untranslated %}<span class="post-lang">{{ 'lang.inFrench' | t }}</span> · {% endif %}{{ project.data.year }}</small></h{{ level }}>
+        <div class="desc"{% if untranslated %} lang="{{ project.data.lang }}"{% endif %}>{{ project.templateContent | safe }}</div>
         {% if project.data.stack %}
           <ul class="chips">
             {% for tech in project.data.stack %}<li>{{ tech }}</li>{% endfor %}
