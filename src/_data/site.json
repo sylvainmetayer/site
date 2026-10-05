@@ -15,5 +15,6 @@
   "location": "Talence",
   "drivingLicence": "Permis B",
   "cfBeaconToken": "b127465eed91464f811fad719b0c0cb7",
-  "feedIdBase": "https://sylvain.dev"
+  "feedIdBase": "https://sylvain.dev",
+  "webmentionDomain": "www.sylvain.dev"
 }

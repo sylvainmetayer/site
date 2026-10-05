@@ -17,3 +17,8 @@
 # mise à jour de fontsource doit finir par arriver chez les visiteurs.
 /fonts/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# Images optimisées par eleventy-img (parse-transform.js) : le nom contient un
+# hash du contenu, une nouvelle version change d'URL.
+/img/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -51,6 +51,8 @@
     {% endif %}
   </article>
 
+  {% include 'partials/webmentions.njk' %}
+
   {% set newer = collections.posts | getPreviousCollectionItem(page) %}
   {% set older = collections.posts | getNextCollectionItem(page) %}
   {% if newer or older %}

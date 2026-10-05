@@ -44,6 +44,8 @@ L'infra est décrite dans le dépôt homelab (`tofu/site`, sur le modèle de ref
 - CI : build de production puis `npm run check:links`, qui vérifie les liens internes, les cibles de `_redirects` et les URLs déjà publiées de `scripts/published-urls.txt`. Chaque nouvelle page publiée y ajoute une ligne ;
 - flux Atom : les `<id>` restent sur `https://sylvain.dev` (`feedIdBase`) pour que les lecteurs RSS ne revoient pas tous les articles comme nouveaux ;
 - `src/service-worker-retired.js` : Pangolin le sert à la place de `/service-worker.js` sur l'apex. Il désinstalle le service worker de l'ancien site, qu'un navigateur ne mettrait pas à jour derrière une redirection ;
+- webmentions : reçues par webmention.io pour `www.sylvain.dev` (`webmentionDomain`), récupérées au build par `src/_data/webmentions.js` et affichées sous les articles. Le build lit la variable `WEBMENTION_IO_TOKEN` (production uniquement, à poser dans `tofu/site`) ; sans elle, rien ne s'affiche. Le build quotidien fait apparaître les nouvelles ;
+- images des articles : converties au build en AVIF, WebP et format d'origine, en plusieurs largeurs, par `@11ty/eleventy-img` (`src/transforms/parse-transform.js`), servies sous `/img/` avec un cache `immutable` ;
 - Web Analytics : jeton du beacon dans `src/_data/site.json` (`cfBeaconToken`), celui du site Web Analytics existant, importé dans `tofu/site` pour garder l'historique (sortie `web_analytics_token`). Le beacon n'est injecté qu'en production.
 
 ## Administration (Sveltia CMS)
