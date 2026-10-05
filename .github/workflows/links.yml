@@ -33,6 +33,13 @@ jobs:
           output: lychee/out.md
           fail: false
 
+      # Un lien par case à cocher (« * [404] <url> … » → « - [ ] [404] <url> … »),
+      # pour suivre les corrections dans l'issue. Chaque passage repart de cases
+      # vides : un lien encore listé est encore cassé.
+      - name: Turn the broken links into a task list
+        if: steps.lychee.outputs.exit_code == 2
+        run: sed -i -E 's/^\* \[/- [ ] [/' lychee/out.md
+
       # Exit codes of lychee: 0 all good, 2 broken links, anything else an error
       # of lychee itself (configuration, input), which must not open an issue.
       - name: Find the open issue
