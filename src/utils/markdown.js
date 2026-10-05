@@ -6,9 +6,10 @@ import markdownItFootnote from 'markdown-it-footnote';
  * Markdown config
  * @see http://dirtystylus.com/2020/06/15/eleventy-markdown-and-footnotes/
  */
-const markdownLibrary = markdownIt({
-  // Raw HTML in posts (<video>, <details>…): the content is written by the site owner only
-  html: true, // NOSONAR
+// Raw HTML in posts (<video>, <details>…): the content is written by the site owner
+// only. Sonar reports html: true on the call, hence NOSONAR there.
+const markdownLibrary = markdownIt({ // NOSONAR
+  html: true,
   breaks: true,
   linkify: true,
   typographer: true,
