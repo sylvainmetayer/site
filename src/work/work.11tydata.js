@@ -1,11 +1,11 @@
 // Data only, shown by other pages: no page of their own. `slug.en.md` is the
-// English translation of `slug.md` (Sveltia CMS i18n, multiple_files).
-const isEnglish = data => data.page.inputPath.endsWith('.en.md');
+// English translation of `slug.md` (src/11ty/i18n.js).
+import { entryData } from '../11ty/i18n.js';
 
 export default {
   permalink: false,
   eleventyComputed: {
-    lang: data => (isEnglish(data) ? 'en' : 'fr'),
-    translationKey: data => `work:${data.page.fileSlug.replace(/\.en$/, '')}`,
+    lang: data => entryData(data, 'work').lang,
+    translationKey: data => entryData(data, 'work').translationKey,
   },
 };

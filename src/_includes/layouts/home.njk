@@ -41,7 +41,7 @@
       {{ cmd('ls projets/') }}
       <h2 id="projects-title">{{ projectsHeading }}</h2>
       {{ projectCards(featured) }}
-      <a class="more" href="{{ langPrefix }}/{{ 'projects' if lang == 'en' else 'projets' }}/"><span class="arrow" data-arrow="→ " aria-hidden="true"></span>{{ 'home.allProjects' | t({ count: collections.projets.length }) }}</a>
+      <a class="more" href="{{ 'url.projects' | t }}"><span class="arrow" data-arrow="→ " aria-hidden="true"></span>{{ 'home.allProjects' | t({ count: collections.projets.length }) }}</a>
     </section>
   {% endif %}
 {% endblock %}

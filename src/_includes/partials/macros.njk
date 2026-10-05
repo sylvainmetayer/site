@@ -51,7 +51,7 @@
 {% macro projectCards(projects, level = 3) %}
   <div class="cards">
     {% for project in projects %}
-      <article class="card" id="{{ project.fileSlug | replace('.en', '') }}">
+      <article class="card" id="{{ project.fileSlug | baseSlug }}">
         <h{{ level }} class="card-title">{{ project.data.title }} <small>{{ project.data.year }}</small></h{{ level }}>
         <div class="desc">{{ project.templateContent | safe }}</div>
         {% if project.data.stack %}

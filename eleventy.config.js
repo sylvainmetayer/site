@@ -7,6 +7,7 @@ import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
 import site from './src/_data/site.json' with { type: 'json' };
 import i18n from './src/_data/i18n.js';
+import { DEFAULT_LANG, baseSlug, isEnglishFile, otherLang, translationIndex } from './src/11ty/i18n.js';
 
 // Cloudflare Pages builds: production on main, preview elsewhere. Set here rather
 // than as project env vars (homelab tofu/site), so the repository owns it.
@@ -50,7 +51,7 @@ const byNewest = (a, b) => b.date - a.date;
 
 // English translations are `*.en.md` files next to the French ones: the French
 // collections leave them out, English pages map items with the `translated` filter
-const isFrench = item => !item.inputPath.endsWith('.en.md');
+const isFrench = item => !isEnglishFile(item.inputPath);
 
 export default function eleventyConfig(config) {
   Object.entries(filters).forEach(([name, filter]) => {
@@ -138,7 +139,11 @@ export default function eleventyConfig(config) {
   config.addFilter('uniqueValues', (items, key) => [...new Set(items.map(item => item[key]))]);
 
   // Tags used by posts, sorted (the same ones that get a /tags/<tag>/ page)
-  config.addFilter('postTags', posts => [...new Set(posts.flatMap(post => post.data.tags || []))].sort((a, b) => a.localeCompare(b)));
+  const postTags = posts => [...new Set(posts.flatMap(post => post.data.tags || []))].sort((a, b) => a.localeCompare(b));
+  config.addFilter('postTags', postTags);
+
+  // The tags of the French articles, one /tags/<tag>/ page each (src/tags.njk)
+  config.addCollection('postTagList', collection => postTags(collection.getFilteredByGlob('./src/posts/*.md').filter(isFrench)));
 
   // The first `count` items of a list
   config.addFilter('head', (items, count) => items.slice(0, count));
@@ -151,7 +156,7 @@ export default function eleventyConfig(config) {
   // `count`, a key that has `.one` and `.other` forms takes the matching one.
   config.addFilter('t', function (key, options, lang) {
     const values = options || {};
-    const language = lang || this.ctx?.lang || 'fr';
+    const language = lang || this.ctx?.lang || DEFAULT_LANG;
     const plural = `${key}.${values.count === 1 ? 'one' : 'other'}`;
     const form = 'count' in values && plural in i18n.fr ? plural : key;
     const text = i18n[language]?.[form] ?? i18n.fr[form];
@@ -162,22 +167,23 @@ export default function eleventyConfig(config) {
   // Items (posts, projects, work) in the language of the page: each one is
   // replaced by its translation when there is one, and kept otherwise
   config.addFilter('translated', function (items, all, lang) {
-    const language = lang || this.ctx?.lang || 'fr';
-    if (language === 'fr') return items;
-    const translations = new Map(all
-      .filter(item => item.data.lang === language && item.data.translationKey)
-      .map(item => [item.data.translationKey, item]));
-    return items.map(item => translations.get(item.data.translationKey) || item);
+    const language = lang || this.ctx?.lang || DEFAULT_LANG;
+    if (language === DEFAULT_LANG) return items;
+    const index = translationIndex(all);
+    return items.map(item => index.get(item.data.translationKey)?.[language] || item);
   });
 
-  // URL of the same page in the other language, if it exists:
-  // {{ translationKey | alternateUrl(collections.all) }}
-  config.addFilter('alternateUrl', function (key, all, lang) {
+  // The same page in the other language, if it has one (a published page):
+  // {% set alternate = translationKey | alternate(collections.all) %}
+  config.addFilter('alternate', function (key, all, lang) {
     if (!key) return null;
-    const language = lang || this.ctx?.lang || 'fr';
-    const other = all.find(item => item.data.translationKey === key && item.data.lang !== language && item.url);
-    return other ? other.url : null;
+    const language = lang || this.ctx?.lang || DEFAULT_LANG;
+    const other = translationIndex(all).get(key)?.[otherLang(language)];
+    return other?.url ? other : null;
   });
+
+  // Slug shared by an entry and its translation: anchors, search index
+  config.addFilter('baseSlug', baseSlug);
 
   // Posts grouped by publication year, newest first: [{ year, posts }]
   config.addFilter('groupByYear', posts => {

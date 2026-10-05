@@ -16,6 +16,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import matter from 'gray-matter';
+import { isEnglishFile, localize } from '../src/11ty/i18n.js';
 import { getDocument, OPS } from 'pdfjs-dist/legacy/build/pdf.mjs';
 
 const args = process.argv.slice(2);
@@ -34,9 +35,8 @@ const HEADINGS = {
   en: ['Experience', 'Education', 'Skills', 'Certifications', 'Languages'],
 };
 
-// Data files hold the English text under an `en` key (src/_data/eleventyComputed.js)
-const localize = data => (lang === 'fr' || !data[lang] ? data : { ...data, ...data[lang] });
-const readJson = name => localize(JSON.parse(readFileSync(join('src/_data', name), 'utf8')));
+// The data in the language of the CV, as the site renders it (src/11ty/i18n.js)
+const readJson = name => localize(JSON.parse(readFileSync(join('src/_data', name), 'utf8')), lang);
 const site = readJson('site.json');
 const social = readJson('social.json');
 const skills = readJson('skills.json');
@@ -45,7 +45,7 @@ const formations = readJson('formations.json');
 // slug.md in French, slug.en.md its English translation (French when missing)
 const workFiles = readdirSync('src/work').filter(name => name.endsWith('.md'));
 const work = workFiles
-  .filter(name => !name.endsWith('.en.md'))
+  .filter(name => !isEnglishFile(name))
   .map(name => (lang === 'en' && workFiles.includes(name.replace(/\.md$/, '.en.md')) ? name.replace(/\.md$/, '.en.md') : name))
   .map(name => matter(readFileSync(join('src/work', name), 'utf8')).data)
   .filter(entry => entry.print !== false)

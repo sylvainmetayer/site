@@ -2,37 +2,23 @@
   "interests": [
     {
       "label": "Homelab et auto-hébergement",
+      "label_en": "Homelab and self-hosting",
       "detail": "Proxmox, OpenTofu, Pangolin"
     },
     {
-      "label": "Jeux de société"
+      "label": "Jeux de société",
+      "label_en": "Board games"
     },
     {
       "label": "Tennis de table",
+      "label_en": "Table tennis",
       "detail": "Animateur Ping Tour au FLIP (Parthenay), 2013-2015",
+      "detail_en": "Ping Tour host at FLIP (Parthenay), 2013-2015",
       "link": "http://www.jeux-festival.com/"
     },
     {
-      "label": "Séries TV"
+      "label": "Séries TV",
+      "label_en": "TV series"
     }
-  ],
-  "en": {
-    "interests": [
-      {
-        "label": "Homelab and self-hosting",
-        "detail": "Proxmox, OpenTofu, Pangolin"
-      },
-      {
-        "label": "Board games"
-      },
-      {
-        "label": "Table tennis",
-        "detail": "Ping Tour host at FLIP (Parthenay), 2013-2015",
-        "link": "http://www.jeux-festival.com/"
-      },
-      {
-        "label": "TV series"
-      }
-    ]
-  }
+  ]
 }

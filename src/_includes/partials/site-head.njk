@@ -1,5 +1,4 @@
 {%- set home = langPrefix + '/' -%}
-{%- set otherLang = 'fr' if lang == 'en' else 'en' -%}
 <a class="skip-link" href="#main-content">{{ 'a11y.skip' | t }}</a>
 <header class="site-head">
   <div class="wrap">
@@ -19,7 +18,7 @@
       </ul>
     </nav>
     {# Same page in the other language, or its home page when there is no translation #}
-    <a class="lang-switch" href="{{ alternate or ('/' if lang == 'en' else '/en/') }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" aria-label="{{ 'lang.switchLabel' | t }}">{{ otherLang | upper }}</a>
+    <a class="lang-switch" href="{{ alternate or (otherLangPrefix + '/') }}" lang="{{ otherLang }}" hreflang="{{ otherLang }}" aria-label="{{ ('lang.switchLabel' if alternate else 'lang.homeLabel') | t }}">{{ otherLang | upper }}</a>
     <button type="button" class="palette-trigger" data-palette-open hidden aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K" aria-label="{{ 'palette.open' | t }}" title="{{ 'palette.open' | t }} (ctrl k)">
       <svg class="palette-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><circle cx="6.5" cy="6.5" r="4.75" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 10l4.25 4.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
