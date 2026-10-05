@@ -3,21 +3,45 @@ permalink: /manifest.json
 eleventyExcludeFromCollections: true
 ---
 {
-   "name":"{{ site.name }}",
-   "icons":[
-      {
-         "src":"/images/icons/android-chrome-192x192.png",
-         "sizes":"192x192",
-         "type":"image/png"
-      },
-      {
-         "src":"/images/icons/android-chrome-512x512.png",
-         "sizes":"512x512",
-         "type":"image/png"
-      }
-   ],
-   "theme_color":"#0e1621",
-   "background_color":"#0e1621",
-   "display":"standalone",
-   "start_url":"/"
+  "id": "/",
+  "name": "{{ site.authorName }}",
+  "short_name": "{{ site.name }}",
+  "description": "{{ site.shortDesc }}",
+  "lang": "{{ site.locale }}",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0e1621",
+  "background_color": "#0e1621",
+  "icons": [
+    {
+      "src": "/images/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icons/maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Articles", "url": "/articles/" },
+    { "name": "CV", "url": "/cv/" }
+  ]
 }

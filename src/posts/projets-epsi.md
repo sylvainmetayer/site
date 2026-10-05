@@ -87,9 +87,9 @@ Nous avons choisi de réaliser ce bot sur la plateforme [Telegram](https://teleg
 
 Ce projet, réalisé en binôme durant ma formation à l'EPSI, avait pour but de découvrir le fonctionnement des algorithmes de machine learning.
 
-<video controls muted preload="metadata" width="600" height="400" aria-label="Vidéo du projet Machine Learning, sans son, 4 min" aria-describedby="machine-learning-video">
+<video controls muted preload="none" poster="/images/machine_learning-poster.webp" width="960" height="468" aria-label="Vidéo du projet Machine Learning, sans son, 4 min" aria-describedby="machine-learning-video">
   <source src="/images/machine_learning.mp4" type="video/mp4">
-  Désolé, votre navigateur ne permet pas de lire la vidéo. <a href="/images/machine_learning.mp4">Télécharger la vidéo (MP4, 12 Mo)</a>.
+  Désolé, votre navigateur ne permet pas de lire la vidéo. <a href="/images/machine_learning.mp4">Télécharger la vidéo (MP4, 1,2 Mo)</a>.
 </video>
 
 <p id="machine-learning-video">Ce que montre la vidéo : le résultat du projet. On fait un dessin dans un canvas, et l'application détecte l'emoji qui lui correspond.</p>

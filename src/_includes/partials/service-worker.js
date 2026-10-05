@@ -3,6 +3,9 @@ const CACHE_KEYS = {
   RUNTIME: `runtime-${VERSION}`
 };
 
+// Pages and assets kept in the runtime cache, oldest dropped first
+const MAX_RUNTIME_ENTRIES = 80;
+
 // URLS that we don’t want to end up in the cache
 const EXCLUDED_URLS = [
   '/admin/',
@@ -19,32 +22,69 @@ const PRE_CACHE_URLS = [
   '/fonts/ibm-plex-sans-latin-wght-normal.woff2'
 ];
 
-// You might want to bypass a certain host
-const IGNORED_HOSTS = [
-  'localhost',
-  'unpkg.com',
-  'static.cloudflareinsights.com',
-  'cloudflareinsights.com',
-  // Sveltia CMS (admin) must always talk to the network
-  'api.github.com',
-  'www.githubstatus.com',
-  'cdn.jsdelivr.net'
-];
+// Optimised images have hashed file names: a cached copy never goes stale
+const IMMUTABLE_PATH = /^\/img\//;
 
-/**
- * Takes an array of strings and puts them in a named cache store
- *
- * @param {String} cacheName
- * @param {Array} items=[]
- */
-const addItemsToCache = function (cacheName, items = []) {
-  caches.open(cacheName).then(cache => cache.addAll(items));
+const trimCache = async (cacheName, maxEntries) => {
+  const cache = await caches.open(cacheName);
+  const keys = await cache.keys();
+  await Promise.all(keys.slice(0, Math.max(0, keys.length - maxEntries)).map(key => cache.delete(key)));
+};
+
+// Only complete, same-origin responses: no 404, redirect or partial content
+const putInCache = async (request, response) => {
+  if (!response.ok || response.status !== 200 || response.type !== 'basic') {
+    return;
+  }
+  const cache = await caches.open(CACHE_KEYS.RUNTIME);
+  await cache.put(request, response);
+  await trimCache(CACHE_KEYS.RUNTIME, MAX_RUNTIME_ENTRIES);
+};
+
+// Pages: the network first, so a deployment shows up right away, then the
+// cached copy, then the offline page
+const networkFirst = async evt => {
+  try {
+    const response = await fetch(evt.request);
+    evt.waitUntil(putInCache(evt.request, response.clone()));
+    return response;
+  } catch (error) {
+    const cached = await caches.match(evt.request);
+    return cached || (await caches.match(OFFLINE_PAGE)) || Response.error();
+  }
+};
+
+const cacheFirst = async evt => {
+  const cached = await caches.match(evt.request);
+  if (cached) {
+    return cached;
+  }
+  const response = await fetch(evt.request);
+  evt.waitUntil(putInCache(evt.request, response.clone()));
+  return response;
+};
+
+// Other assets (scripts, fonts, original images): the cached copy right away,
+// refreshed in the background for the next visit
+const staleWhileRevalidate = async evt => {
+  const cached = await caches.match(evt.request);
+  const network = fetch(evt.request).then(response => {
+    evt.waitUntil(putInCache(evt.request, response.clone()));
+    return response;
+  });
+  if (cached) {
+    evt.waitUntil(network.catch(() => {}));
+    return cached;
+  }
+  return network;
 };
 
 self.addEventListener('install', evt => {
   self.skipWaiting();
 
-  addItemsToCache(CACHE_KEYS.PRE_CACHE, PRE_CACHE_URLS);
+  evt.waitUntil(
+    caches.open(CACHE_KEYS.PRE_CACHE).then(cache => cache.addAll(PRE_CACHE_URLS))
+  );
 });
 
 self.addEventListener('activate', evt => {
@@ -67,55 +107,34 @@ self.addEventListener('activate', evt => {
 });
 
 self.addEventListener('fetch', evt => {
+  const { request } = evt;
+
   // Only GET requests can be cached
-  if (evt.request.method !== 'GET') {
+  if (request.method !== 'GET') {
     return;
   }
 
-  const { hostname } = new URL(evt.request.url);
-
-  // Check we don't want to ignore this host
-  if (IGNORED_HOSTS.indexOf(hostname) >= 0) {
+  // Third parties (analytics, GitHub API for the CMS) always go to the network.
+  // The dev server must always serve fresh files
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin || url.hostname === 'localhost') {
     return;
   }
 
-  // Check we don't want to ignore this URL
-  const isExcluded = EXCLUDED_URLS.some(page => evt.request.url.indexOf(page) > -1);
+  if (EXCLUDED_URLS.some(page => url.pathname.startsWith(page))) {
+    return;
+  }
 
-  evt.respondWith(
-    caches.match(evt.request).then(cachedResponse => {
-      // Item found in cache so return
-      if (cachedResponse) {
-        return cachedResponse;
-      }
+  // Videos are streamed in ranges (206 responses), which the cache cannot store
+  if (request.headers.has('range') || request.destination === 'video' || request.destination === 'audio') {
+    return;
+  }
 
-      // Nothing found so load up the request from the network
-      return caches.open(CACHE_KEYS.RUNTIME).then(cache => {
-        return fetch(evt.request)
-          .then(response => {
-            // URL is excluded, return network response directly
-            // without adding it to the cache first
-            if (isExcluded) {
-              return response;
-            }
-
-            // Otherwise put the new response in cache and return it
-            return cache.put(evt.request, response.clone()).then(() => {
-              return response;
-            });
-          })
-          .catch(async (ex) => {
-            // for failed navigation requests, return 'offline' page
-            if (evt.request.destination === "document") {
-              const preCache = await caches.open(CACHE_KEYS.PRE_CACHE);
-              const offlinePage = await preCache.match(OFFLINE_PAGE);
-              return offlinePage || Response.error();
-            }
-            else {
-              return Response.error();
-            }
-          });
-      });
-    })
-  );
+  if (request.mode === 'navigate') {
+    evt.respondWith(networkFirst(evt));
+  } else if (IMMUTABLE_PATH.test(url.pathname)) {
+    evt.respondWith(cacheFirst(evt));
+  } else {
+    evt.respondWith(staleWhileRevalidate(evt));
+  }
 });

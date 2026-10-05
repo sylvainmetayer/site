@@ -1,0 +1,45 @@
+{# Webmentions received for this article (src/_data/webmentions.js) #}
+{% set mentions = webmentions[page.url] %}
+{% if mentions %}
+  {% set likes = mentions.likes %}
+  {% set reposts = mentions.reposts %}
+  {% set bookmarks = mentions.bookmarks %}
+  {% set replies = mentions.replies %}
+  <section class="webmentions" aria-labelledby="webmentions-title">
+    <p class="cmd" aria-hidden="true"><span class="prompt">$</span> curl webmention.io/{{ page.fileSlug }}</p>
+    <h2 id="webmentions-title">Réactions</h2>
+    {% if likes.length or reposts.length or bookmarks.length %}
+      <ul class="webmentions-counts">
+        {% for group in [[likes, 'j’aime', 'j’aime'], [reposts, 'partage', 'partages'], [bookmarks, 'favori', 'favoris']] %}
+          {% set items = group[0] %}
+          {% if items.length %}
+            <li>
+              <strong>{{ items.length }}</strong> {{ group[1] if items.length == 1 else group[2] }}<span class="visually-hidden"> :</span>
+              <span class="webmentions-authors">
+                {%- for item in items -%}
+                  {% if item.authorUrl %}<a href="{{ item.authorUrl }}">{{ item.author }}</a>{% else %}{{ item.author }}{% endif %}{% if not loop.last %}, {% endif %}
+                {%- endfor -%}
+              </span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if replies.length %}
+      <ol class="webmentions-replies">
+        {% for reply in replies %}
+          <li class="h-cite">
+            <p class="webmentions-meta">
+              {% if reply.authorUrl %}<a href="{{ reply.authorUrl }}" class="p-author">{{ reply.author }}</a>{% else %}<span class="p-author">{{ reply.author }}</span>{% endif %}
+              {{ 'a répondu' if reply.type == 'reply' else 'a mentionné cet article' }}
+              {% if reply.published %}
+                {% if reply.url %}<a href="{{ reply.url }}" class="u-url">{% endif %}<time datetime="{{ reply.published }}" class="dt-published">le {{ reply.published | date('LL') }}</time>{% if reply.url %}</a>{% endif %}
+              {% endif %}
+            </p>
+            {% if reply.text %}<p class="p-content">{{ reply.text }}</p>{% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+  </section>
+{% endif %}
