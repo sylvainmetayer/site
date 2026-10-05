@@ -64,7 +64,13 @@ try {
 }
 
 for (const [id, label] of Object.entries(CATEGORIES)) {
-  const score = Math.min(...results.map(({ lhr }) => Math.round(lhr.categories[id].score * 100)));
+  const scores = results.map(({ page, lhr }) => {
+    // null when the audits of the category failed (no LCP…): fail rather than
+    // publish a misleading 0, the badges keep their previous values
+    if (lhr.categories[id].score === null) throw new Error(`${page} : pas de score ${label}`);
+    return Math.round(lhr.categories[id].score * 100);
+  });
+  const score = Math.min(...scores);
   badge(`lighthouse-${id}`, label, String(score), scoreColor(score));
 }
 

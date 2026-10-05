@@ -4,19 +4,19 @@
 //   node scripts/check-a11y.mjs [dist]
 //
 // Serves the build on a local port and hands pa11y-ci its sitemap, with the
-// production origin replaced by the local one. The browser is
-// PUPPETEER_EXECUTABLE_PATH (CI: google-chrome), or the one Puppeteer downloaded.
+// origin of its URLs (production, preview or localhost:8080, depending on
+// ELEVENTY_ENV at build time) replaced by the local one. The browser is
+// PUPPETEER_EXECUTABLE_PATH (CI: google-chrome): Puppeteer downloads none
+// (.puppeteerrc.cjs).
 import { spawn } from 'node:child_process';
-import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { resolve, sep } from 'node:path';
+import { resolve } from 'node:path';
 import { serveDist } from './lib/serve-dist.mjs';
 
 const dist = resolve(process.argv[2] || 'dist');
-if (!dist.startsWith(process.cwd() + sep)) {
-  throw new Error(`${dist} : le dossier du build doit être dans le dépôt`);
+if (!process.env.PUPPETEER_EXECUTABLE_PATH) {
+  throw new Error('PUPPETEER_EXECUTABLE_PATH absent : chemin de Chrome ou Chromium, ex. /usr/bin/chromium-browser');
 }
-const site = JSON.parse(readFileSync('src/_data/site.json', 'utf8')).url;
 // Run by absolute path with this Node.js, not looked up in PATH
 const pa11yCi = createRequire(import.meta.url).resolve('pa11y-ci/bin/pa11y-ci.js');
 
@@ -26,7 +26,7 @@ server.listen(0, '127.0.0.1', () => {
   const pa11y = spawn(process.execPath, [
     pa11yCi,
     '--sitemap', `${local}/sitemap.xml`,
-    '--sitemap-find', site,
+    '--sitemap-find', '^https?://[^/]+',
     '--sitemap-replace', local,
   ], { stdio: 'inherit' });
   pa11y.on('exit', code => {

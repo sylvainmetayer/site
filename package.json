@@ -32,6 +32,7 @@
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@sveltia/cms": "^0.227.2",
     "@tgwf/co2": "^0.19.0",
+    "chrome-launcher": "^1.2.2",
     "cross-env": "^7.0.3",
     "eleventy-plugin-toc": "^1.1.5",
     "gray-matter": "^4.0.3",
