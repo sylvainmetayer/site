@@ -9,11 +9,11 @@
 // the usual system directories (not PATH, which could point to anything).
 // The CV must fit on one A4 page: when the content overflows, the PDF is refused and
 // src/uploads/CV.pdf is left untouched.
-import { createServer } from 'node:http';
 import { spawn } from 'node:child_process';
-import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, statSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { extname, join, resolve, sep } from 'node:path';
+import { extname, join, resolve } from 'node:path';
+import { serveDist } from './lib/serve-dist.mjs';
 
 const args = process.argv.slice(2);
 const outIndex = args.indexOf('--out');
@@ -21,16 +21,6 @@ const output = resolve(outIndex === -1 ? 'src/uploads/CV.pdf' : args[outIndex + 
 if (outIndex !== -1) args.splice(outIndex, 2);
 const dist = resolve(args[0] || 'dist');
 const site = JSON.parse(readFileSync('src/_data/site.json', 'utf8')).url;
-
-const types = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css',
-  '.js': 'text/javascript',
-  '.woff2': 'font/woff2',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.svg': 'image/svg+xml',
-};
 
 const BROWSER_DIRS = ['/usr/bin', '/usr/local/bin', '/snap/bin', '/opt/homebrew/bin'];
 
@@ -50,31 +40,11 @@ if (!existsSync(join(dist, 'cv/pdf/index.html'))) {
 // Number of pages of a PDF written by Chromium (page objects are not compressed)
 const countPages = file => (readFileSync(file, 'latin1').match(/\/Type\s*\/Page(?!s)\b/g) || []).length;
 
-const server = createServer((req, res) => {
-  let path;
-  try {
-    path = resolve(dist, `.${decodeURIComponent(new URL(req.url, 'http://localhost').pathname)}`);
-  } catch {
-    res.writeHead(400).end();
-    return;
-  }
-  // Only files of the build, checked before touching the file system
-  if (path !== dist && !path.startsWith(dist + sep)) {
-    res.writeHead(404).end();
-    return;
-  }
-  if (existsSync(path) && statSync(path).isDirectory()) path = join(path, 'index.html');
-  if (!existsSync(path)) {
-    res.writeHead(404).end();
-    return;
-  }
-  res.writeHead(200, { 'Content-Type': types[extname(path)] || 'application/octet-stream' });
-  if (extname(path) === '.html') {
-    // Links in the PDF must point to the live site, not to this local server
-    res.end(readFileSync(path, 'utf8').replace(/(<a\b[^>]*\shref=")\//g, `$1${site}/`));
-  } else {
-    res.end(readFileSync(path));
-  }
+// Links in the PDF must point to the live site, not to this local server
+const server = serveDist(dist, {
+  transform: (file, content) => (extname(file) === '.html'
+    ? content.toString('utf8').replace(/(<a\b[^>]*\shref=")\//g, `$1${site}/`)
+    : content),
 });
 
 // The browser runs asynchronously so this process keeps serving its requests,

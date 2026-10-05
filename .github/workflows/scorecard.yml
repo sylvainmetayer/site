@@ -11,12 +11,15 @@ on:
   branch_protection_rule:
   workflow_dispatch:
 
-permissions: read-all
+permissions: {}
 
 jobs:
   analysis:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
+      actions: read
+      # Envoi des résultats (onglet Security) et publication sur scorecard.dev
       security-events: write
       id-token: write
 

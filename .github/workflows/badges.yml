@@ -36,7 +36,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Audit production
-        run: node scripts/lighthouse-badges.mjs "$RUNNER_TEMP/badges"
+        run: node scripts/lighthouse-badges.mjs
         env:
           CHROME_PATH: /usr/bin/google-chrome
 
@@ -44,7 +44,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cd "$RUNNER_TEMP/badges"
+          cd badges
           git init -q -b badges
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
