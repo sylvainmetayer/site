@@ -1,6 +1,6 @@
 export default {
   getNextHeadingLevel(currentLevel) {
-    return parseInt(currentLevel, 10) + 1;
+    return Number.parseInt(currentLevel, 10) + 1;
   },
   getReadingTime(text) {
     const wordsPerMinute = 200;
@@ -8,7 +8,7 @@ export default {
     return Math.ceil(numberOfWords / wordsPerMinute);
   },
   url() {
-    // TODO Nunjucks configure access to process.env
+    // Not in Node (never during the build): local dev server
     if (typeof process === 'undefined') {
       return "http://localhost:8080";
     }

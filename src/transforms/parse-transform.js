@@ -53,7 +53,8 @@ async function optimiseImage(document, image) {
 }
 
 export default async function parseTransform(value, outputPath) {
-  if (outputPath && outputPath.endsWith('.html')) {
+  // outputPath is false for pages without permalink
+  if (typeof outputPath === 'string' && outputPath.endsWith('.html')) {
     const DOM = new JSDOM(value, {
       resources: 'usable'
     });
@@ -66,7 +67,7 @@ export default async function parseTransform(value, outputPath) {
 
     externalLinks.forEach(item => {
       item.setAttribute("rel", "external");
-      item.setAttribute("data-external", "");
+      item.dataset.external = "";
     })
 
 

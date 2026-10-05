@@ -9,9 +9,13 @@
 // - every URL listed in scripts/published-urls.txt still resolves. Add a line
 //   there when a page goes live; remove one only with a redirect in place.
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { join, relative, resolve, sep } from 'node:path';
 
-const dist = process.argv[2] || 'dist';
+// The build directory must be inside the repository
+const dist = resolve(process.argv[2] || 'dist');
+if (!dist.startsWith(process.cwd() + sep)) {
+  throw new Error(`${dist} : le dossier du build doit être dans le dépôt`);
+}
 const ownOrigins = ['https://www.sylvain.dev', 'https://sylvain.dev'];
 
 const htmlFiles = [];

@@ -47,7 +47,7 @@ const passthroughItems = {
 
 const byNewest = (a, b) => b.date - a.date;
 
-export default function (config) {
+export default function eleventyConfig(config) {
   Object.entries(filters).forEach(([name, filter]) => {
     config.addFilter(name, filter);
   });
@@ -113,7 +113,7 @@ export default function (config) {
   config.addFilter('uniqueValues', (items, key) => [...new Set(items.map(item => item[key]))]);
 
   // Tags used by posts, sorted (the same ones that get a /tags/<tag>/ page)
-  config.addFilter('postTags', posts => [...new Set(posts.flatMap(post => post.data.tags || []))].sort());
+  config.addFilter('postTags', posts => [...new Set(posts.flatMap(post => post.data.tags || []))].sort((a, b) => a.localeCompare(b)));
 
   // Items whose front matter `key` equals `value`
   config.addFilter('whereData', (items, key, value) => items.filter(item => item.data[key] === value));

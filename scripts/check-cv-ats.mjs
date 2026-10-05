@@ -41,23 +41,21 @@ const flatten = text => text.replace(/\s+/g, ' ').trim();
 
 async function read(path) {
   const pdf = await getDocument({ data: new Uint8Array(readFileSync(path)), verbosity: 0 }).promise;
-  const pages = [];
   const fonts = new Map();
-  for (let number = 1; number <= pdf.numPages; number++) {
-    const page = await pdf.getPage(number);
-    const content = await page.getTextContent();
-    pages.push(content.items.map(item => item.str + (item.hasEOL ? '\n' : '')).join(''));
-    // Fonts used by the page, loaded by getOperatorList
-    const operators = await page.getOperatorList();
-    operators.fnArray.forEach((fn, index) => {
+  const pages = await Promise.all(Array.from({ length: pdf.numPages }, async (_, index) => {
+    const page = await pdf.getPage(index + 1);
+    // Fonts used by the page are loaded by getOperatorList
+    const [content, operators] = await Promise.all([page.getTextContent(), page.getOperatorList()]);
+    operators.fnArray.forEach((fn, position) => {
       if (fn !== OPS.setFont) return;
-      const id = operators.argsArray[index][0];
+      const id = operators.argsArray[position][0];
       if (!fonts.has(id) && page.commonObjs.has(id)) {
         const font = page.commonObjs.get(id);
         fonts.set(id, { name: font.name || font.loadedName || id, type3: Boolean(font.isType3Font) });
       }
     });
-  }
+    return content.items.map(item => item.str + (item.hasEOL ? '\n' : '')).join('');
+  }));
   return { pages: pdf.numPages, text: pages.join('\n'), fonts: [...fonts.values()] };
 }
 
@@ -122,8 +120,8 @@ for (const formation of formations.formations.filter(formation => formation.prin
 }
 
 check(!/[�-]/.test(cv.text), 'caractères illisibles (U+FFFD ou zone privée) dans le texte extrait');
-const spaced = cv.text.match(/(?:^|\s)(?:\p{L} ){4,}\p{L}(?=\s|$)/u);
-check(!spaced, `mot aux lettres espacées, illisible pour un ATS : « ${spaced && spaced[0].trim()} »`);
+const spaced = /(?:^|\s)(?:\p{L} ){4,}\p{L}(?=\s|$)/u.exec(cv.text);
+check(!spaced, `mot aux lettres espacées, illisible pour un ATS : « ${spaced?.[0].trim()} »`);
 
 if (compareFile) {
   const other = await read(compareFile);

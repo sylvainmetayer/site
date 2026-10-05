@@ -3,6 +3,6 @@ import 'moment/locale/fr.js';
 
 moment.locale('fr');
 
-export default function (date, format = 'LL') {
+export default function dateFilter(date, format = 'LL') {
   return moment(date).format(format);
 }

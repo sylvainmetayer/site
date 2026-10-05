@@ -745,9 +745,6 @@ samp {
 .toc a {
   display: inline-block;
   padding-block: 0.15rem;
-}
-
-.toc a {
   color: var(--fg);
   text-decoration: none;
 }
@@ -1500,7 +1497,8 @@ samp {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem 1rem;
-  margin: 0;
+  /* Negative margin: offsets the taller hit areas of the links (.site-foot ul a) */
+  margin: -0.5rem 0;
   padding: 0;
   list-style: none;
 }
@@ -1531,10 +1529,6 @@ samp {
 }
 
 /* Taller hit areas for the footer links, same layout */
-.site-foot ul {
-  margin-block: -0.5rem;
-}
-
 .site-foot ul a {
   display: inline-block;
   padding-block: 0.5rem;
