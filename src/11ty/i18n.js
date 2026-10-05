@@ -47,6 +47,13 @@ export const localize = (data, lang) => {
   return localizeFields(base, lang);
 };
 
+// URL → item, built once per collection array
+const byUrl = new WeakMap();
+export const urlIndex = all => {
+  if (!byUrl.has(all)) byUrl.set(all, new Map(all.filter(item => item.url).map(item => [item.url, item])));
+  return byUrl.get(all);
+};
+
 // translationKey → { fr: item, en: item }, built once per collection array
 const indexes = new WeakMap();
 export const translationIndex = all => {

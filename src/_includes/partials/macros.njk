@@ -65,7 +65,11 @@
           <p class="actions">
             {# The project name makes the repeated "sources" / "article" links unambiguous out of context #}
             {% if project.data.repo %}<a href="{{ project.data.repo }}">{{ 'projects.sources' | t }}<span class="visually-hidden">{{ 'projects.sourcesOf' | t({ title: project.data.title }) }}</span> <span aria-hidden="true">↗</span></a>{% endif %}
-            {% if project.data.article %}<a href="{{ project.data.article }}"{% if lang == 'en' and not project.data.article.startsWith('/en/') %} hreflang="fr"{% endif %}>article<span class="visually-hidden">{{ 'projects.articleOn' | t({ title: project.data.title }) }}</span> <span class="arrow" data-arrow="→" aria-hidden="true"></span></a>{% endif %}
+            {% if project.data.article %}
+              {# The article in the language of the page, or marked when it has no translation #}
+              {% set article = project.data.article | localLink(collections.all) %}
+              <a href="{{ article.url }}"{% if article.lang != lang %} hreflang="{{ article.lang }}"{% endif %}>article<span class="visually-hidden">{{ 'projects.articleOn' | t({ title: project.data.title }) }}</span> <span class="arrow" data-arrow="→" aria-hidden="true"></span></a>{% if article.lang != lang %} <span class="post-lang">{{ 'lang.inFrench' | t }}</span>{% endif %}
+            {% endif %}
           </p>
         {% endif %}
       </article>
