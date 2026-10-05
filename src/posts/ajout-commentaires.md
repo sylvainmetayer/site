@@ -70,7 +70,7 @@ sudo mkdir /etc/isso
 
 Il reste maintenant à configurer Isso. Mon cas d'usage est le suivant : je souhaite avoir deux sites, un pour l'environnement de développement, l'autre pour la production. Voici ma configuration (`/etc/isso/isso.cfg` et `/etc/isso/isso.prod.cfg`).
 
-La documentation du site isso ne semble pas à jour, pour des détails sur chaque paramètre, il est préférable de se référer à [la documentation présente sur Github](https://github.com/posativ/isso/blob/master/docs/docs/configuration/server.rst)
+Pour des détails sur chaque paramètre, se référer à [la documentation d'isso](https://isso-comments.de/docs/).
 
 ```ini
 [general]
