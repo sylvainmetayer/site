@@ -20,6 +20,7 @@
       var referrer = new URL(document.referrer);
       return referrer.origin === location.origin && referrer.pathname.startsWith('/en/');
     } catch (e) {
+      // No referrer (direct visit, Referrer-Policy): not from the English pages
       return false;
     }
   }
