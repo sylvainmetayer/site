@@ -15,4 +15,4 @@ J'ai réalisé ce bot afin de permettre un suivi des interruptions des trams bor
 
 Les informations sont récupérées depuis les comptes officiels Twitter de TBM, et repère des mots clés afin de compter les jours sans interruptions.
 
-![Photo de profil du Bot](/images/tbm_tracker_bot.jpg "Le bot tweete tous les jours, à 18h.")
+![Photo de profil du bot : rails de tramway qui se croisent sur des pavés](/images/tbm_tracker_bot.jpg "Le bot tweete tous les jours, à 18h.")

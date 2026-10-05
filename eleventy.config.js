@@ -33,6 +33,16 @@ const passthroughItems = {
     'fonts/ibm-plex-sans-latin-wght-normal.woff2',
   'node_modules/@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-italic.woff2':
     'fonts/ibm-plex-sans-latin-wght-italic.woff2',
+  // Static weights for the CV PDF (/cv/pdf/): Chromium turns variable fonts into Type 3
+  // fonts in PDFs, which applicant tracking systems read badly
+  ...Object.fromEntries([
+    'ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2',
+    'ibm-plex-sans/files/ibm-plex-sans-latin-500-normal.woff2',
+    'ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2',
+    'ibm-plex-sans/files/ibm-plex-sans-latin-700-normal.woff2',
+    'jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2',
+    'jetbrains-mono/files/jetbrains-mono-latin-600-normal.woff2',
+  ].map(file => [`node_modules/@fontsource/${file}`, `fonts/cv/${file.split('/').pop()}`])),
 };
 
 const byNewest = (a, b) => b.date - a.date;
@@ -101,6 +111,9 @@ export default function (config) {
 
   // Distinct values of `key` across items, in order of first appearance
   config.addFilter('uniqueValues', (items, key) => [...new Set(items.map(item => item[key]))]);
+
+  // Tags used by posts, sorted (the same ones that get a /tags/<tag>/ page)
+  config.addFilter('postTags', posts => [...new Set(posts.flatMap(post => post.data.tags || []))].sort());
 
   // Items whose front matter `key` equals `value`
   config.addFilter('whereData', (items, key, value) => items.filter(item => item.data[key] === value));

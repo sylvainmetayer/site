@@ -13,7 +13,7 @@ repost: dev.to
 devtoGuid: https://sylvainmetayer.fr/projet/email-alias-manager/
 ---
 
-[![](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sylvainmetayer/alias-gandi-angular)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sylvainmetayer/alias-gandi-angular)
 
 ## L'idée
 
@@ -29,7 +29,7 @@ Le principe est très simple : on s'authentifie avec un mot de passe, prédéfin
 
 Une fois authentifié, les fonctions serverless se chargent de récupérer la liste des domaines, ainsi que la liste des boites mails associées à ces domaines et on arrive ensuite sur l'écran suivant, qui nous permet de gérer les alias de chaque boite mail.
 
-![Rendu bureau](/images/alias-email-desktop.png)
+![Rendu bureau : pour chaque boîte mail du domaine, la liste de ses alias avec des boutons Copier et Supprimer, et un champ pour en ajouter un](/images/alias-email-desktop.png)
 
 ## La suite
 

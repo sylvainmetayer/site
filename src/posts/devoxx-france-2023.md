@@ -16,7 +16,7 @@ coauthors:
 socialImage: "/images/devoxx-france-2023.jpg"
 ---
 
-![Bannière de l'article](/images/devoxx-france-2023.jpg)
+![Bannière Devoxx France : la tour Eiffel au coucher du soleil, survolée par des drones](/images/devoxx-france-2023.jpg)
 
 Nous sommes (re)venus à [DevoxxFR](https://www.devoxx.fr/) pour cette 11ème édition, et il y avait du choix ! Avec en moyenne 8 conférences/tool-in-action en parallèle, il y en a pour tous les goûts ! Ça tombe bien, ayant tous des préférences différentes, nous avons pu couvrir un bon nombre des conférences sur différents thèmes : front, IA, CI/CD,  Kubernetes...
 

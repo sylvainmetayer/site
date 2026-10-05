@@ -9,7 +9,7 @@ canonical: "https://www.linkedin.com/pulse/snowcamp-2025-sylvain-m%C3%A9tayer--j
 socialImage: "/images/snowcamp-2025.jpg"
 ---
 
-![Bannière de l'article](/images/snowcamp-2025.jpg)
+![Amphithéâtre comble de SnowCamp face à deux orateurs sur scène et leurs slides](/images/snowcamp-2025.jpg)
 
 Une fois n'est pas coutume, commençons par nous mettre à la place des organisateurs des événements tech'. [Snowcamp](https://fr.linkedin.com/company/snowcamp-io), comme beaucoup d'autres salons cette année a eu du mal à trouver des sponsors. Commençons donc par remercier très chaleureusement ceux qui ont pu rester fidèles.
 

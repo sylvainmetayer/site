@@ -1,5 +1,6 @@
 {% extends 'layouts/base.njk' %}
 {% from 'partials/macros.njk' import cmd, postList, projectCards %}
+{% from 'partials/icons.njk' import icon %}
 
 {% block content %}
   <section class="hero" aria-labelledby="hero-title">
@@ -8,9 +9,9 @@
     <div class="lead">{{ content | safe }}</div>
     <ul class="links">
       {% for link in social.links %}
-        <li><a href="{{ link.url }}" rel="me">{{ link.label }}</a></li>
+        <li><a href="{{ link.url }}" rel="me">{{ icon(link.icon) }}{{ link.label }}</a></li>
       {% endfor %}
-      <li><a href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a></li>
+      <li><a href="mailto:{{ site.authorEmail }}">{{ icon('mail') }}{{ site.authorEmail }}</a></li>
     </ul>
   </section>
 
@@ -27,7 +28,7 @@
     <h2 id="latest-title">{{ postsHeading }}</h2>
     {{ postList(collections.postFeed) }}
     {% if collections.postFeed.length < collections.posts.length %}
-      <a class="more" href="/articles/">→ {{ archiveButtonText }} ({{ collections.posts.length }})</a>
+      <a class="more" href="/articles/"><span aria-hidden="true">→ </span>{{ archiveButtonText }} ({{ collections.posts.length }})</a>
     {% endif %}
   </section>
 
@@ -37,7 +38,7 @@
       {{ cmd('ls projets/') }}
       <h2 id="projects-title">{{ projectsHeading }}</h2>
       {{ projectCards(featured) }}
-      <a class="more" href="/projets/">→ tous les projets ({{ collections.projets.length }})</a>
+      <a class="more" href="/projets/"><span aria-hidden="true">→ </span>tous les projets ({{ collections.projets.length }})</a>
     </section>
   {% endif %}
 {% endblock %}

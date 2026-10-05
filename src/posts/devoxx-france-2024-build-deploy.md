@@ -14,7 +14,7 @@ coauthors:
 socialImage: "/images/devoxx-france-2024.jpg"
 ---
 
-![Bannière de l'article](/images/devoxx-france-2024.jpg)
+![Bannière Devoxx France 2024 : un robot humanoïde sprinte sur une piste d'athlétisme](/images/devoxx-france-2024.jpg)
 
 Après les retours de nos collègues, nous allons faire les notres sur la partie Build & Deploy de l'édition 2024 de Devoxx France. 
 

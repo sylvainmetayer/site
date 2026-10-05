@@ -23,7 +23,7 @@ Le but de ce projet était de réaliser un 'Jeu dont vous êtes le héros' avec 
 
 Ce projet a été réalisé lors de ma licence professionnelle DAWIN.
 
-![Page d'accueil du jeu Agent Ready](/images/agent-ready.png)
+![Page d'accueil du jeu « Agent Ready, an Ingress Story » avec le bouton « Commencer l'immersion ! »](/images/agent-ready.png)
 
 ## Macbernick
 
@@ -35,7 +35,7 @@ Il a été réalisé durant une semaine (janvier 2017) avec 6 autres étudiants 
 
 Il s'agit d'un jeu sur navigateur dans lequel on joue contre l'ordinateur (plusieurs niveaux de difficulté) ou à 2 joueurs (localement) pour obtenir le plus de points possible.
 
-![MacBernick](/images/macbernick.png)
+![Écran d'accueil de MacBernick, « Famille Pirate » : jouer contre un ami, contre Bigorneau (facile), contre Victor (moyen), meilleurs scores](/images/macbernick.png)
 
 ## Tetris
 
@@ -45,7 +45,7 @@ Projet universitaire réalisé afin de se familiariser avec le développement d'
 
 Le but était de réaliser un Tetris. Le jeu a ensuite été publié sur le PlayStore et est disponible au téléchargement.
 
-![Illustration du tetris](/images/tetris.png)
+![Partie perdue du Tetris sur Android : grille de blocs, temps 00:26, score 100 et message « Vous avez perdu ! »](/images/tetris.png)
 
 ## Semaine Innovante
 

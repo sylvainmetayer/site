@@ -240,7 +240,7 @@ Pour plus d'informations sur les paramètres disponibles côté client, [voir la
 
 Et voici le résultat !
 
-![Affichage des commentaires](/images/isso.png)
+![Bloc de commentaires Isso : formulaire (commentaire, nom, courriel, site web, boutons Soumettre et Aperçu) suivi de deux commentaires anonymes](/images/isso.png)
 
 > Ce n'est qu'une image, les commentaires se trouvent plus bas 😉
 

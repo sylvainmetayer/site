@@ -2,19 +2,23 @@
   "links": [
     {
       "label": "github",
-      "url": "https://github.com/sylvainmetayer"
+      "url": "https://github.com/sylvainmetayer",
+      "icon": "github"
     },
     {
       "label": "linkedin",
-      "url": "https://www.linkedin.com/in/sylvainmetayer/"
+      "url": "https://www.linkedin.com/in/sylvainmetayer/",
+      "icon": "linkedin"
     },
     {
       "label": "dev.to",
-      "url": "https://dev.to/sylvainmetayer"
+      "url": "https://dev.to/sylvainmetayer",
+      "icon": "devto"
     },
     {
       "label": "twitter",
-      "url": "https://twitter.com/sylvain_metayer"
+      "url": "https://twitter.com/sylvain_metayer",
+      "icon": "twitter"
     }
   ]
 }

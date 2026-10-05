@@ -1,6 +1,7 @@
 {# Shared building blocks for the post list and project cards #}
 
-{% macro cmd(text) %}<p class="cmd"><span class="prompt">$</span> {{ text }}</p>{% endmacro %}
+{# Shell lines only imitate a terminal and repeat the heading that follows: hidden from screen readers #}
+{% macro cmd(text) %}<p class="cmd" aria-hidden="true"><span class="prompt">$</span> {{ text }}</p>{% endmacro %}
 
 {# Where a republished post first appeared. Co-authors are handles on that platform, linked on dev.to only. #}
 {% macro origin(canonical, publisher, coauthors) -%}
@@ -18,9 +19,9 @@
   {{ firstYear }}{% if lastYear != firstYear %} → {{ lastYear }}{% endif %}
 {%- endmacro %}
 
-{# Start → end of a role, "aujourd'hui" when it is ongoing #}
-{% macro period(start, end, format) -%}
-  {{ start | date(format) }} → {% if end %}{{ end | date(format) }}{% else %}aujourd'hui{% endif %}
+{# Start → end of a role, "aujourd'hui" when it is ongoing. The PDF passes "–": its fonts have no arrow #}
+{% macro period(start, end, format, separator = '→') -%}
+  {{ start | date(format) }} {{ separator }} {% if end %}{{ end | date(format) }}{% else %}aujourd'hui{% endif %}
 {%- endmacro %}
 
 {% macro postList(posts, showExcerpt = false) %}
@@ -40,11 +41,12 @@
   </ol>
 {% endmacro %}
 
-{% macro projectCards(projects) %}
+{# level: heading level of the card titles, one below the section heading #}
+{% macro projectCards(projects, level = 3) %}
   <div class="cards">
     {% for project in projects %}
-      <article class="card">
-        <h3>{{ project.data.title }} <small>{{ project.data.year }}</small></h3>
+      <article class="card" id="{{ project.fileSlug }}">
+        <h{{ level }} class="card-title">{{ project.data.title }} <small>{{ project.data.year }}</small></h{{ level }}>
         <div class="desc">{{ project.templateContent | safe }}</div>
         {% if project.data.stack %}
           <ul class="chips">
@@ -53,8 +55,9 @@
         {% endif %}
         {% if project.data.repo or project.data.article %}
           <p class="actions">
-            {% if project.data.repo %}<a href="{{ project.data.repo }}">sources ↗</a>{% endif %}
-            {% if project.data.article %}<a href="{{ project.data.article }}">article →</a>{% endif %}
+            {# The project name makes the repeated "sources" / "article" links unambiguous out of context #}
+            {% if project.data.repo %}<a href="{{ project.data.repo }}">sources<span class="visually-hidden"> de {{ project.data.title }}</span> <span aria-hidden="true">↗</span></a>{% endif %}
+            {% if project.data.article %}<a href="{{ project.data.article }}">article<span class="visually-hidden"> sur {{ project.data.title }}</span> <span aria-hidden="true">→</span></a>{% endif %}
           </p>
         {% endif %}
       </article>

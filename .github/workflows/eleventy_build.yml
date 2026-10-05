@@ -31,3 +31,15 @@ jobs:
 
       - name: Check links, redirects and published URLs
         run: npm run check:links
+
+      # The committed CV must read well in applicant tracking systems and match the
+      # sources: a content change without « mise run cv » fails here.
+      - name: Generate the CV PDF from the build
+        run: node scripts/cv-pdf.mjs dist --out "$RUNNER_TEMP/CV.pdf"
+        env:
+          CHROME_BIN: google-chrome
+
+      - name: Check the CV PDF for applicant tracking systems
+        run: |
+          npm run check:cv
+          node scripts/check-cv-ats.mjs "$RUNNER_TEMP/CV.pdf" --compare src/uploads/CV.pdf

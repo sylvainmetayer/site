@@ -34,7 +34,7 @@ J'ai donc commencé à creuser la question des générateurs de sites et en ai t
 
 Voici une illustration des performances actuelles du site, ainsi qu'un rapport [Dareboost](https://www.dareboost.com/fr/report/d_5bec937de967905e05bb64cb). Je suis assez satisfait du résultat, même s'il me reste du travail à faire dessus (mais comme le produit parfait n'existe pas, le site parfait n'existe pas non plus ! 😜)
 
-![Google page Speed résultat](/images/speed-test.png)
+![Résultat Google PageSpeed : chargement en 2 s, note Excellent, plus rapide que les sites les plus performants du secteur (4,3 s)](/images/speed-test.png)
 
 ### 2. Le contenu prime sur le design (pour moi)
 

@@ -11,12 +11,17 @@
           {# page.url is false for unpublished drafts (permalink: false), which are still rendered #}
           {% set url = page.url or '' %}
           {% set isCurrent = url == item.url or (item.url != '/' and url.startsWith(item.url)) or (item.url == '/articles/' and (url.startsWith('/article/') or url.startsWith('/tags/'))) %}
-          <li><a href="{{ item.url }}"{% if isCurrent %} aria-current="page"{% endif %}>{{ item.text }}</a></li>
+          {# "page" only on the page itself; inside a section (an article, a tag) the item is the current location #}
+          <li><a href="{{ item.url }}"{% if url == item.url %} aria-current="page"{% elif isCurrent %} aria-current="true"{% endif %}>{{ item.text }}</a></li>
         {% endfor %}
       </ul>
     </nav>
+    <button type="button" class="palette-trigger" data-palette-open hidden aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K" aria-label="Chercher une page">
+      <svg class="palette-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><circle cx="6.5" cy="6.5" r="4.75" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 10l4.25 4.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <kbd>ctrl k</kbd>
+    </button>
     <fieldset class="theme-switch" data-theme-switch hidden>
-      <legend class="visually-hidden">Thème</legend>
+      <legend class="visually-hidden">Thème de couleur</legend>
       <button type="button" data-theme-value="auto" aria-pressed="true">auto</button>
       <button type="button" data-theme-value="dark" aria-pressed="false">sombre</button>
       <button type="button" data-theme-value="light" aria-pressed="false">clair</button>

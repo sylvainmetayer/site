@@ -1,11 +1,18 @@
+{% from 'partials/icons.njk' import icon %}
 <footer class="site-foot">
   <div class="wrap">
     <p>© {{ global.now | date('YYYY') }} {{ site.authorName }} · généré par <a href="https://www.11ty.dev/">Eleventy</a> le {{ global.now | date('YYYY-MM-DD') }}</p>
+    <ul class="site-foot-social">
+      {% for link in social.links %}
+        <li><a href="{{ link.url }}" rel="me">{{ icon(link.icon) }}<span class="visually-hidden">{{ link.label }}</span></a></li>
+      {% endfor %}
+      <li><a href="mailto:{{ site.authorEmail }}">{{ icon('mail') }}<span class="visually-hidden">e-mail : {{ site.authorEmail }}</span></a></li>
+    </ul>
     <ul>
-      <li><a href="/feed.xml">rss</a></li>
+      <li><a href="/feed.xml">{{ icon('rss') }}rss</a></li>
       <li><a href="/sitemap.xml">sitemap</a></li>
       <li><a href="/humans.txt">humans.txt</a></li>
-      <li><a href="https://github.com/sylvainmetayer/site">sources</a></li>
+      <li><a href="https://github.com/sylvainmetayer/site">{{ icon('github') }}sources</a></li>
     </ul>
   </div>
 </footer>

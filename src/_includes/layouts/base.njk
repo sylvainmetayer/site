@@ -36,6 +36,8 @@
     </main>
 
     {% include "partials/site-foot.njk" %}
+    {% include "partials/palette.njk" %}
+    <script src="/js/palette.js" defer></script>
     <script src="/js/register-service-worker.js" async defer></script>
     {% if site.cfBeaconToken and global.environment == 'production' %}
       {# Cloudflare Web Analytics: sylvain.dev is not a Cloudflare zone, so the beacon is not injected automatically (homelab tofu/site) #}

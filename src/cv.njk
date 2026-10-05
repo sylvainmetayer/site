@@ -5,13 +5,14 @@ layout: layouts/base.njk
 metaDesc: "Parcours de Sylvain MÉTAYER : expériences, talks, formations, certifications et compétences."
 ---
 {% from 'partials/macros.njk' import cmd, talkYears, period %}
+{% from 'partials/icons.njk' import icon %}
 <header class="cv-head">
   <div>
     {{ cmd('cat cv.md') }}
     <h1>{{ site.authorName }}</h1>
     <p class="role">{{ site.role }} · {{ site.location }} · {{ site.drivingLicence }} · <a href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a></p>
   </div>
-  <a class="btn no-print" href="/uploads/CV.pdf">↓ cv.pdf</a>
+  <a class="btn no-print" href="/uploads/CV.pdf"><span aria-hidden="true">↓ </span>cv.pdf<span class="visually-hidden"> : télécharger le CV au format PDF, une page</span></a>
 </header>
 
 <section class="section" aria-labelledby="xp-title">
@@ -120,6 +121,7 @@ metaDesc: "Parcours de Sylvain MÉTAYER : expériences, talks, formations, certi
 <section class="section no-print" aria-labelledby="links-title">
   <h2 id="links-title">Ailleurs</h2>
   <ul class="links">
-    {% for link in social.links %}<li><a href="{{ link.url }}">{{ link.label }}</a></li>{% endfor %}
+    {% for link in social.links %}<li><a href="{{ link.url }}">{{ icon(link.icon) }}{{ link.label }}</a></li>{% endfor %}
+    <li><a href="mailto:{{ site.authorEmail }}">{{ icon('mail') }}{{ site.authorEmail }}</a></li>
   </ul>
 </section>

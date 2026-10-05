@@ -5,6 +5,7 @@ eleventyExcludeFromCollections: true
 {#- One-page A4 version of /cv/, printed to src/uploads/CV.pdf by scripts/cv-pdf.mjs,
     which fails when the content no longer fits on one page. -#}
 {%- from 'partials/macros.njk' import period -%}
+{%- from 'partials/icons.njk' import icon -%}
 {%- set siteHost = site.url | displayUrl -%}
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,18 +16,48 @@ eleventyExcludeFromCollections: true
   <title>CV · {{ site.authorName }}</title>
   <link rel="canonical" href="{{ site.url }}/cv/">
   <style>
+    /* Static weights (not the variable fonts of the site): they embed as real fonts,
+       readable by applicant tracking systems */
     @font-face {
       font-family: 'IBM Plex Sans';
       font-style: normal;
-      font-weight: 100 700;
-      src: url('/fonts/ibm-plex-sans-latin-wght-normal.woff2') format('woff2');
+      font-weight: 400;
+      src: url('/fonts/cv/ibm-plex-sans-latin-400-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 500;
+      src: url('/fonts/cv/ibm-plex-sans-latin-500-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: url('/fonts/cv/ibm-plex-sans-latin-600-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 700;
+      src: url('/fonts/cv/ibm-plex-sans-latin-700-normal.woff2') format('woff2');
     }
 
     @font-face {
       font-family: 'JetBrains Mono';
       font-style: normal;
-      font-weight: 100 800;
-      src: url('/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2');
+      font-weight: 400;
+      src: url('/fonts/cv/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 600;
+      src: url('/fonts/cv/jetbrains-mono-latin-600-normal.woff2') format('woff2');
     }
 
     @page {
@@ -71,7 +102,7 @@ eleventyExcludeFromCollections: true
 
     .sheet {
       display: grid;
-      grid-template-columns: 62mm 1fr;
+      grid-template-columns: 64mm 1fr;
       width: 210mm;
       /* Grows past one page instead of clipping: cv-pdf.mjs then refuses the PDF */
       min-height: 297mm;
@@ -79,7 +110,11 @@ eleventyExcludeFromCollections: true
 
     /* ---------- Side column ---------- */
 
+    /* The main column comes first in the source, so text extraction (applicant tracking
+       systems) starts with the name; the grid still shows the side column on the left */
     .side {
+      grid-column: 1;
+      grid-row: 1;
       padding: 13mm 7mm 10mm 9mm;
       background: var(--side);
     }
@@ -87,8 +122,8 @@ eleventyExcludeFromCollections: true
     .side h2,
     .main h2 {
       margin: 0 0 2.2mm;
-      font: 600 7.4pt/1 var(--mono);
-      letter-spacing: 0.12em;
+      /* No letter-spacing: text extraction would split the heading into single letters */
+      font: 600 7.8pt/1 var(--mono);
       text-transform: uppercase;
       color: var(--accent);
     }
@@ -98,8 +133,23 @@ eleventyExcludeFromCollections: true
     }
 
     .contact li {
+      display: flex;
+      align-items: center;
+      gap: 1.6mm;
+      font-size: 8.2pt;
       margin-bottom: 1mm;
       overflow-wrap: anywhere;
+    }
+
+    .contact a {
+      display: contents;
+    }
+
+    .contact .icon {
+      flex-shrink: 0;
+      width: 3.2mm;
+      height: 3.2mm;
+      color: var(--accent);
     }
 
     .contact span {
@@ -144,6 +194,8 @@ eleventyExcludeFromCollections: true
     /* ---------- Main column ---------- */
 
     .main {
+      grid-column: 2;
+      grid-row: 1;
       display: flex;
       flex-direction: column;
       padding: 14mm 12mm 10mm 10mm;
@@ -225,24 +277,19 @@ eleventyExcludeFromCollections: true
       margin-top: 0.8mm;
     }
 
-    .missions li {
-      position: relative;
-      padding-left: 3mm;
+    /* Native markers: positioned bullets get painted in a later pass, which moves the
+       missions to the end of the extracted text */
+    .missions {
+      padding-left: 3.2mm;
+      list-style: disc;
+    }
+
+    .missions li::marker {
+      color: var(--accent);
     }
 
     .missions li + li {
       margin-top: 0.5mm;
-    }
-
-    .missions li::before {
-      content: "";
-      position: absolute;
-      left: 0.4mm;
-      top: 0.62em;
-      width: 1.1mm;
-      height: 1.1mm;
-      border-radius: 50%;
-      background: var(--accent);
     }
 
     .talks li + li {
@@ -266,8 +313,10 @@ eleventyExcludeFromCollections: true
       color: var(--muted);
     }
 
+    /* Underlined: told apart from the surrounding text without relying on color */
     .footer a {
       color: var(--accent);
+      text-decoration: underline;
     }
 
     /* On screen, show the sheet like a page */
@@ -276,7 +325,9 @@ eleventyExcludeFromCollections: true
         background: #8792a2;
       }
 
+      /* Own background: on a narrow screen the sheet overflows the white body */
       .sheet {
+        background: #ffffff;
         margin: 10mm auto;
         box-shadow: 0 4px 24px rgb(0 0 0 / 0.25);
       }
@@ -285,18 +336,69 @@ eleventyExcludeFromCollections: true
 </head>
 <body>
   <div class="sheet">
+
+    <main class="main">
+      <header class="identity">
+        <h1>{{ site.authorName }}</h1>
+        <p class="role">{{ site.role }}</p>
+        <p class="pitch">Chez onepoint à Bordeaux depuis 2017. J'aime tout ce qui touche au backend, au DevOps, à la CI et à l'infrastructure, et je partage ce que j'apprends en conférence.</p>
+      </header>
+
+      <section>
+        <h2>Expérience</h2>
+        {% for work in collections.work %}
+          {% if work.data.print != false %}
+            <article class="job">
+              <div class="job-head">
+                <h3>{{ work.data.title }}<small>{{ work.data.location }}</small></h3>
+                <time class="when">{{ period(work.data.start, work.data.end, 'YYYY', '–') }}</time>
+              </div>
+              {% if work.data.roles %}
+                <div class="stages">
+                  {% for role in work.data.roles %}
+                    <div class="stage">
+                      <div class="stage-head">
+                        <p>{{ role.title }}</p>
+                        <time class="when">{{ period(role.start, role.end, 'YYYY', '–') }}</time>
+                      </div>
+                      {% if role.positions %}
+                        <p class="positions">{% for position in role.positions %}{{ position.title }} {% if position.end %}{{ position.start | date('YYYY') }} – {{ position.end | date('YYYY') }}{% else %}depuis {{ position.start | date('YYYY') }}{% endif %}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+                      {% endif %}
+                      <ul class="missions">{% for mission in role.missions %}<li>{{ mission }}</li>{% endfor %}</ul>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </section>
+
+      <section>
+        <h2>Talks</h2>
+        <ul class="talks">
+          {% for talk in talks.talks %}
+            {% set sessions = talk.sessions | sort(true, false, 'date') %}
+            <li><strong>{{ talk.title }}</strong><span>{{ sessions | uniqueValues('event') | join(', ') }}</span></li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <p class="footer">Version détaillée, articles, slides et replays : <a href="{{ site.url }}/cv/">{{ siteHost }}/cv/</a></p>
+    </main>
+
     <aside class="side">
       <section>
         <h2>Contact</h2>
         <ul class="contact">
-          <li><a href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a></li>
-          <li><a href="{{ site.url }}">{{ siteHost }}</a></li>
+          <li><a href="mailto:{{ site.authorEmail }}">{{ icon('mail') }}{{ site.authorEmail }}</a></li>
+          <li><a href="{{ site.url }}">{{ icon('web') }}{{ siteHost }}</a></li>
           {% for link in social.links %}
             {% if link.label == 'github' or link.label == 'linkedin' %}
-              <li><a href="{{ link.url }}">{{ link.url | displayUrl }}</a></li>
+              <li><a href="{{ link.url }}">{{ icon(link.icon) }}{{ link.url | displayUrl }}</a></li>
             {% endif %}
           {% endfor %}
-          <li>{{ site.location }} · {{ site.drivingLicence }}</li>
+          <li>{{ icon('pin') }}{{ site.location }} · {{ site.drivingLicence }}</li>
         </ul>
       </section>
 
@@ -329,7 +431,7 @@ eleventyExcludeFromCollections: true
               <li>
                 <strong>{{ formation.shortTitle or formation.title }}</strong>
                 <span>{{ formation.location }}</span>
-                <time>{% if formation.start %}{{ formation.start }} → {% endif %}{{ formation.end }}</time>
+                <time>{% if formation.start %}{{ formation.start }} – {% endif %}{{ formation.end }}</time>
               </li>
             {% endif %}
           {% endfor %}
@@ -363,56 +465,6 @@ eleventyExcludeFromCollections: true
         </ul>
       </section>
     </aside>
-
-    <main class="main">
-      <header class="identity">
-        <h1>{{ site.authorName }}</h1>
-        <p class="role">{{ site.role }}</p>
-        <p class="pitch">Chez onepoint à Bordeaux depuis 2017. J'aime tout ce qui touche au backend, au DevOps, à la CI et à l'infrastructure, et je partage ce que j'apprends en conférence.</p>
-      </header>
-
-      <section>
-        <h2>Expérience</h2>
-        {% for work in collections.work %}
-          {% if work.data.print != false %}
-            <article class="job">
-              <div class="job-head">
-                <h3>{{ work.data.title }}<small>{{ work.data.location }}</small></h3>
-                <time class="when">{{ period(work.data.start, work.data.end, 'YYYY') }}</time>
-              </div>
-              {% if work.data.roles %}
-                <div class="stages">
-                  {% for role in work.data.roles %}
-                    <div class="stage">
-                      <div class="stage-head">
-                        <p>{{ role.title }}</p>
-                        <time class="when">{{ period(role.start, role.end, 'YYYY') }}</time>
-                      </div>
-                      {% if role.positions %}
-                        <p class="positions">{% for position in role.positions %}{{ position.title }} {% if position.end %}{{ position.start | date('YYYY') }} → {{ position.end | date('YYYY') }}{% else %}depuis {{ position.start | date('YYYY') }}{% endif %}{% if not loop.last %} · {% endif %}{% endfor %}</p>
-                      {% endif %}
-                      <ul class="missions">{% for mission in role.missions %}<li>{{ mission }}</li>{% endfor %}</ul>
-                    </div>
-                  {% endfor %}
-                </div>
-              {% endif %}
-            </article>
-          {% endif %}
-        {% endfor %}
-      </section>
-
-      <section>
-        <h2>Talks</h2>
-        <ul class="talks">
-          {% for talk in talks.talks %}
-            {% set sessions = talk.sessions | sort(true, false, 'date') %}
-            <li><strong>{{ talk.title }}</strong><span>{{ sessions | uniqueValues('event') | join(', ') }}</span></li>
-          {% endfor %}
-        </ul>
-      </section>
-
-      <p class="footer">Version détaillée, articles, slides et replays : <a href="{{ site.url }}/cv/">{{ siteHost }}/cv/</a></p>
-    </main>
   </div>
 </body>
 </html>

@@ -13,7 +13,7 @@
   {% set readingTime = helpers.getReadingTime(content) %}
   <article class="post h-entry" aria-labelledby="post-title">
     <header class="post-head">
-      <p class="cmd">~/articles/{{ page.fileSlug }}.md</p>
+      <p class="cmd" aria-hidden="true">~/articles/{{ page.fileSlug }}.md</p>
       <h1 id="post-title" class="p-name">{{ title }}</h1>
       <ul class="meta">
         <li><time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date('YYYY-MM-DD') }}</time></li>
@@ -35,7 +35,7 @@
     {% set tocContent = content | toc %}
     {% if tocContent and ('<li' in tocContent) and not noToc %}
       <aside class="toc" aria-label="Sommaire">
-        <p class="cmd"><span class="prompt">$</span> grep "^##" {{ page.fileSlug }}.md</p>
+        <p class="cmd" aria-hidden="true"><span class="prompt">$</span> grep "^##" {{ page.fileSlug }}.md</p>
         {{ tocContent | safe }}
       </aside>
     {% endif %}
@@ -56,10 +56,10 @@
   {% if newer or older %}
     <nav class="post-nav" aria-label="Articles voisins">
       {% if older %}
-        <a href="{{ older.url }}" class="prev" rel="prev"><span>← précédent</span>{{ older.data.title }}</a>
+        <a href="{{ older.url }}" class="prev" rel="prev"><span><span aria-hidden="true">← </span>précédent<span class="visually-hidden"> :</span></span>{{ older.data.title }}</a>
       {% endif %}
       {% if newer %}
-        <a href="{{ newer.url }}" class="next" rel="next"><span>suivant →</span>{{ newer.data.title }}</a>
+        <a href="{{ newer.url }}" class="next" rel="next"><span>suivant<span class="visually-hidden"> :</span><span aria-hidden="true"> →</span></span>{{ newer.data.title }}</a>
       {% endif %}
     </nav>
   {% endif %}

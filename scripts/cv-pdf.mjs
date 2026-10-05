@@ -1,8 +1,10 @@
 // Prints the one-page CV (/cv/pdf/, src/cv-pdf.njk) of a build (dist/) to src/uploads/CV.pdf
 // with headless Chromium.
 //
-//   node scripts/cv-pdf.mjs [dist]
+//   node scripts/cv-pdf.mjs [dist] [--out <file>]
 //
+// --out writes elsewhere than src/uploads/CV.pdf: CI generates a copy to compare with the
+// committed PDF (scripts/check-cv-ats.mjs --compare).
 // The browser is CHROME_BIN, or the first of chromium-browser, chromium, google-chrome found in PATH.
 // The CV must fit on one A4 page: when the content overflows, the PDF is refused and
 // src/uploads/CV.pdf is left untouched.
@@ -12,8 +14,11 @@ import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, statSync }
 import { tmpdir } from 'node:os';
 import { extname, isAbsolute, join, relative, resolve } from 'node:path';
 
-const dist = resolve(process.argv[2] || 'dist');
-const output = resolve('src/uploads/CV.pdf');
+const args = process.argv.slice(2);
+const outIndex = args.indexOf('--out');
+const output = resolve(outIndex === -1 ? 'src/uploads/CV.pdf' : args[outIndex + 1]);
+if (outIndex !== -1) args.splice(outIndex, 2);
+const dist = resolve(args[0] || 'dist');
 const site = JSON.parse(readFileSync('src/_data/site.json', 'utf8')).url;
 
 const types = {
@@ -78,6 +83,8 @@ server.listen(0, '127.0.0.1', () => {
     '--headless',
     '--disable-gpu',
     '--no-pdf-header-footer',
+    // CI runners (Ubuntu 24.04) forbid the user namespaces of the Chromium sandbox
+    ...(process.env.CI ? ['--no-sandbox'] : []),
     `--user-data-dir=${profile}`,
     `--print-to-pdf=${draft}`,
     `http://127.0.0.1:${port}/cv/pdf/`,

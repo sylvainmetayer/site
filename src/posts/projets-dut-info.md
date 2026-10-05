@@ -23,7 +23,7 @@ Le jeu se joue à deux joueurs, avec la possibilité de sauvegarder les parties.
 
 Il était demandé de réaliser une version console et une version graphique du jeu.
 
-![Image de bataille navale](/images/bataille_navale.jpg)
+![Illustration de bataille navale : un cuirassé fait feu de nuit sur une mer agitée](/images/bataille_navale.jpg)
 
 <span id="betisier-de-l%E2%80%99iut"></span>
 
@@ -37,7 +37,7 @@ Un module d'administration était également demandé, afin de gérer entre autr
 
 Ce projet a été réalisé entre octobre et décembre 2015.
 
-![Image du Bêtisier de l'IUT du Limousin](/images/betisier.gif)
+![Logo du Bêtisier de l'IUT du Limousin : panneau de danger où un cerveau dévale une pente à 20 %](/images/betisier.gif)
 
 ## GEMAO
 
@@ -49,7 +49,7 @@ Il s'agissait de la continuité d'un projet commencé l'année dernière par un 
 
 Réalisé en groupe (5 étudiants) pour l'école de musique Anacrouse, située à La Chapelle Saint Ursin, de septembre 2015 à avril 2016.
 
-![GEMAO](/images/gemao.png)
+![Logo de L'Anacrouse, école de musique de La Chapelle Saint Ursin](/images/gemao.png)
 
 [^1]: Gestion d'École de Musique Assistée par Ordinateur
 
@@ -61,4 +61,4 @@ Ce projet universitaire consistait à réaliser un mini-jeu en réseau, à l'aid
 
 Il a été réalisé entre février et avril 2016.
 
-![Le jeu Pygame en image](/images/pygame.jpg)
+![Illustration du jeu : un envahisseur en pixel art, à la Space Invaders](/images/pygame.jpg)

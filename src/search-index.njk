@@ -1,0 +1,28 @@
+---
+permalink: /search.json
+eleventyExcludeFromCollections: true
+---
+{#- Index of the Ctrl+K palette (src/js/palette.js): t title, u url, k kind, d detail shown on the right, a action -#}
+{%- set entries = [] -%}
+{%- set entries = (entries.push({ t: 'Accueil', u: '/', k: 'page', d: site.url | displayUrl }), entries) -%}
+{%- for item in navigation.items -%}
+  {%- set entries = (entries.push({ t: item.text | replace('/', ''), u: item.url, k: 'page' }), entries) -%}
+{%- endfor -%}
+{%- for post in collections.posts -%}
+  {%- set entries = (entries.push({ t: post.data.title, u: post.url, k: 'article', d: post.date | date('YYYY'), s: (post.data.tags or []) | join(' ') }), entries) -%}
+{%- endfor -%}
+{%- for talk in talks.talks -%}
+  {%- set entries = (entries.push({ t: talk.title, u: '/talks/#' + (talk.title | slugify), k: 'talk', d: (talk.sessions | length) + ' session' + ('s' if (talk.sessions | length) > 1 else ''), s: talk.sessions | uniqueValues('event') | join(' ') }), entries) -%}
+{%- endfor -%}
+{%- for project in collections.projets -%}
+  {%- set entries = (entries.push({ t: project.data.title, u: '/projets/#' + project.fileSlug, k: 'projet', d: project.data.year, s: (project.data.stack or []) | join(' ') }), entries) -%}
+{%- endfor -%}
+{%- for tag in collections.posts | postTags -%}
+  {%- set entries = (entries.push({ t: '#' + tag, u: '/tags/' + tag + '/', k: 'tag' }), entries) -%}
+{%- endfor -%}
+{%- set entries = (entries.push({ t: 'Télécharger le CV (PDF)', u: '/uploads/CV.pdf', k: 'action', s: 'cv pdf resume' }), entries) -%}
+{%- set entries = (entries.push({ t: 'Flux RSS', u: '/feed.xml', k: 'action', s: 'rss atom feed' }), entries) -%}
+{%- set entries = (entries.push({ t: 'Thème sombre', a: 'theme:dark', k: 'action', s: 'theme dark nuit' }), entries) -%}
+{%- set entries = (entries.push({ t: 'Thème clair', a: 'theme:light', k: 'action', s: 'theme light jour' }), entries) -%}
+{%- set entries = (entries.push({ t: 'Thème automatique', a: 'theme:auto', k: 'action', s: 'theme auto systeme' }), entries) -%}
+{{ entries | dump | safe }}
