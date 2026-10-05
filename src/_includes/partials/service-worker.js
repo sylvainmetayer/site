@@ -23,7 +23,7 @@ const PRE_CACHE_URLS = [
 ];
 
 // Optimised images have hashed file names: a cached copy never goes stale
-const IMMUTABLE_PATH = /^\/img\//;
+const IMMUTABLE_PATH = '/img/';
 
 const trimCache = async (cacheName, maxEntries) => {
   const cache = await caches.open(cacheName);
@@ -48,7 +48,8 @@ const networkFirst = async evt => {
     const response = await fetch(evt.request);
     evt.waitUntil(putInCache(evt.request, response.clone()));
     return response;
-  } catch (error) {
+  } catch {
+    // Offline or network error: fall back to the cache
     const cached = await caches.match(evt.request);
     return cached || (await caches.match(OFFLINE_PAGE)) || Response.error();
   }
@@ -132,7 +133,7 @@ self.addEventListener('fetch', evt => {
 
   if (request.mode === 'navigate') {
     evt.respondWith(networkFirst(evt));
-  } else if (IMMUTABLE_PATH.test(url.pathname)) {
+  } else if (url.pathname.startsWith(IMMUTABLE_PATH)) {
     evt.respondWith(cacheFirst(evt));
   } else {
     evt.respondWith(staleWhileRevalidate(evt));

@@ -52,7 +52,7 @@ async function optimiseImage(document, image) {
   image.replaceWith(picture);
 }
 
-export default async function (value, outputPath) {
+export default async function parseTransform(value, outputPath) {
   if (outputPath && outputPath.endsWith('.html')) {
     const DOM = new JSDOM(value, {
       resources: 'usable'
