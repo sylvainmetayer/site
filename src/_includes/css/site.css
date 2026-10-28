@@ -1474,6 +1474,13 @@ samp {
   }
 }
 
+/* Source of the article on GitHub (layouts/post.njk) */
+.post-source {
+  margin: 0;
+  font: 400 0.82rem/1.5 var(--mono);
+  color: var(--muted);
+}
+
 /* Share links (layouts/post.njk) */
 .share {
   display: flex;

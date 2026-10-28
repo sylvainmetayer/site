@@ -92,6 +92,13 @@
   </article>
 
   {% set backlinkPosts = siblings | backlinks(page.fileSlug | baseSlug) %}
+  {# The Markdown file of the article on GitHub, to read it or suggest a fix #}
+  {% set sourcePath = page.inputPath | replace('./', '') %}
+  <p class="post-source">
+    <a href="{{ global.repository }}/blob/main/{{ sourcePath }}">{{ 'post.source' | t }}</a> ·
+    <a href="{{ global.repository }}/edit/main/{{ sourcePath }}">{{ 'post.suggest' | t }}</a>
+  </p>
+
   {# Printed article: a QR code back to the online version (its short link if any) #}
   {% set printUrl = helpers.url() + ('/s/' + short if short else page.url) %}
   <figure class="print-only print-qr">

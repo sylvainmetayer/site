@@ -76,6 +76,8 @@ export default {
     'post.backlinks': 'Cité dans',
     'post.series': 'Série « {name} »',
     'share.label': 'Partager',
+    'post.source': 'voir la source',
+    'post.suggest': 'proposer une correction',
 
     'notes.all': 'toutes les notes',
     'notes.lead': 'Des notes courtes : ce que j\'apprends au fil des jours, trop petit pour un article.',
@@ -235,6 +237,8 @@ export default {
     'post.backlinks': 'Linked from',
     'post.series': 'Series: {name}',
     'share.label': 'Share',
+    'post.source': 'view source',
+    'post.suggest': 'suggest a fix',
 
     'callout.note': 'Note',
     'callout.tip': 'Tip',
