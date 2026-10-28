@@ -17,7 +17,6 @@ Bègles
 Belkacem
 Bernick
 BNPPRE
-boitier
 Camino
 cartographie
 CASDAL
@@ -25,11 +24,9 @@ cauchemar
 Centreon
 cfarges
 cfrezier
-chaine
 Châlons
 Chinour
 Clermont
-coeur
 cœur
 composants
 Compostela
@@ -52,7 +49,6 @@ Disqus
 d'isso
 Dunand
 effrayante
-entrainant
 equipes
 Feedly
 Ferrand
@@ -103,8 +99,6 @@ linux
 Loic
 Loïc
 Macbernick
-maitrisais
-maitrisée
 mariadb
 Mélissa
 MÉTAYER
@@ -114,12 +108,8 @@ modèles
 mysqldump
 Nextmedia
 nginx
-noeuds
-notres
 Novick
 Occitanie
-oeil
-oeufs
 onepoint
 Onepoint
 onepoint's
@@ -134,10 +124,8 @@ Portmaster
 postgres
 Professionnelle
 projet
-provisionning
 Pygame
 Qube
-quizz
 Quizzbox
 RDBMS
 RDBMSs
@@ -168,7 +156,6 @@ Tetris
 Thibault
 Thouet
 Tintagel
-tracabilité
 tybundle
 ultime
 Ursin
@@ -182,4 +169,3 @@ webmention
 webmentions
 Webmentions
 Yohan
-Youtube

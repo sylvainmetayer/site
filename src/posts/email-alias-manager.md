@@ -46,7 +46,7 @@ J'ai également ajouté un bouton de déploiement Netlify en un clic pour ceux s
 |Paramètre|Description|
 |--|--|
 |GANDI_API_KEY|Clé d'API Gandi|
-|JWT_SECRET|Une chaine de caractères aléatoire utilisée comme secret JWT|
+|JWT_SECRET|Une chaîne de caractères aléatoire utilisée comme secret JWT|
 |LOGIN_PASSWORD|Le mot de passe souhaité pour se connecter|
 |GANDI_API_HOST|La racine de l'URL de l'API Gandi : `api.gandi.net` |
 |GANDI_API_VERSION|La version de l'API Gandi : `/v5`|
