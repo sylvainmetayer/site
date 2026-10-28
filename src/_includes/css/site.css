@@ -250,6 +250,19 @@ samp {
   }
 }
 
+/* Cross-fade between pages of the site (browsers with view transitions;
+   the others navigate as before). Not for people who reduce motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+/* The header stays in place while the page changes */
+.site-head {
+  view-transition-name: site-head;
+}
+
 /* ---------- Header ---------- */
 
 .site-head {
