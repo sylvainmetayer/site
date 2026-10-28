@@ -1,5 +1,10 @@
 // Shiki theme with the colours the site used for Prism: code blocks stay dark
 // in both site themes (--code-bg, --code-fg, --code-muted in site.css).
+// Shiki writes the colours as inline styles, which html-validate forbids
+// (no-inline-style): utils/markdown.js turns each one into a class, styled in
+// site.css (.tok-*). A new colour here needs its class there.
+export const tokenClass = color => `tok-${color.slice(1).toLowerCase()}`;
+
 const scope = (scopes, foreground, fontStyle) => ({ scope: scopes, settings: { foreground, ...(fontStyle && { fontStyle }) } });
 
 export default {

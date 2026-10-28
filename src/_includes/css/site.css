@@ -1396,6 +1396,47 @@ samp {
   }
 }
 
+/* Shiki token colours (utils/shiki-theme.js, turned into classes by utils/markdown.js) */
+.tok-8396ab {
+  color: #8396ab;
+}
+
+.tok-a9b8c8 {
+  color: #a9b8c8;
+}
+
+.tok-c39bff {
+  color: #c39bff;
+}
+
+.tok-9fd88a {
+  color: #9fd88a;
+}
+
+.tok-f2b56b {
+  color: #f2b56b;
+}
+
+.tok-7cc4ff {
+  color: #7cc4ff;
+}
+
+.tok-ff9a8a {
+  color: #ff9a8a;
+}
+
+.tok-6fd6d0 {
+  color: #6fd6d0;
+}
+
+.tok-d6e2ee {
+  color: #d6e2ee;
+}
+
+.tok-italic {
+  font-style: italic;
+}
+
 /* ---------- CV ---------- */
 
 .cv-head {

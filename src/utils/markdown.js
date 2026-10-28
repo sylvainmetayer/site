@@ -3,7 +3,7 @@ import markdownItAnchor from 'markdown-it-anchor';
 import markdownItFootnote from 'markdown-it-footnote';
 import shiki from '@shikijs/markdown-it';
 import { transformerMetaHighlight } from '@shikijs/transformers';
-import shikiTheme from './shiki-theme.js';
+import shikiTheme, { tokenClass } from './shiki-theme.js';
 import i18n from '../_data/i18n.js';
 
 /**
@@ -46,6 +46,15 @@ const markdownLibrary = markdownIt({ // NOSONAR
           delete node.properties.showLineNumbers;
           delete node.properties.showlinenumbers;
           if (this.options.meta?.showLineNumbers) this.addClassToHast(node, 'line-numbers');
+        },
+        // style="color:#C39BFF;font-style:italic" -> class="tok-c39bff tok-italic"
+        span(node) {
+          const style = node.properties.style;
+          if (typeof style !== 'string') return;
+          delete node.properties.style;
+          const color = style.match(/color:(#[0-9a-f]{6})/i)?.[1];
+          if (color) this.addClassToHast(node, tokenClass(color));
+          if (/font-style:italic/.test(style)) this.addClassToHast(node, 'tok-italic');
         },
       },
     ],
