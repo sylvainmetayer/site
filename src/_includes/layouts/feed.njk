@@ -1,5 +1,6 @@
 {#- Atom feed: French articles (/feed.xml), English translations (/en/feed.xml) -#}
 <?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/feed.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ lang }}">
   <generator uri="https://11ty.dev/" version="{{ global.eleventyVersion }}">Eleventy</generator>
   <title>{{ site.name }}</title>
@@ -21,6 +22,7 @@
     <entry>
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}"/>
+      <published>{{ post.date | dateToRfc3339 }}</published>
       <updated>{{ (post.data.updated or post.date) | dateToRfc3339 }}</updated>
       <id>{{ site.feedIdBase }}{{ post.url }}</id>
       <content type="html">

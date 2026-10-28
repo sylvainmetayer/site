@@ -22,3 +22,7 @@
 # hash du contenu, une nouvelle version change d'URL.
 /img/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Feuille XSLT des flux (/feed.xml) : servie comme XML pour que le navigateur l'applique.
+/feed.xsl
+  Content-Type: text/xsl; charset=utf-8
