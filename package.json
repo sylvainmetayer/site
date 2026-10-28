@@ -25,11 +25,12 @@
     "@11ty/eleventy-fetch": "^6.0.0",
     "@11ty/eleventy-img": "^7.0.0",
     "@11ty/eleventy-plugin-rss": "^3.1.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
     "@fontsource-variable/ibm-plex-sans": "^5.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@fontsource/ibm-plex-sans": "^5.3.0",
     "@fontsource/jetbrains-mono": "^5.3.0",
+    "@shikijs/markdown-it": "^4.5.0",
+    "@shikijs/transformers": "^4.5.0",
     "@sveltia/cms": "^0.253.0",
     "@tgwf/co2": "^0.19.0",
     "chrome-launcher": "^1.2.2",
@@ -46,7 +47,8 @@
     "moment": "^2.29.4",
     "pa11y-ci": "^5.0.0",
     "pdfjs-dist": "^6.4.299",
-    "prettier": "^3.9.9"
+    "prettier": "^3.9.9",
+    "shiki": "^4.5.0"
   },
   "scripts": {
     "start": "npm run serve",

@@ -1318,59 +1318,6 @@ samp {
   }
 }
 
-/* Prism tokens (code blocks are always dark) */
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: var(--code-muted);
-  font-style: italic;
-}
-
-.token.punctuation,
-.token.operator {
-  color: #a9b8c8;
-}
-
-.token.keyword,
-.token.atrule,
-.token.important {
-  color: #c39bff;
-}
-
-.token.string,
-.token.char,
-.token.attr-value,
-.token.inserted {
-  color: #9fd88a;
-}
-
-.token.number,
-.token.boolean,
-.token.constant,
-.token.symbol {
-  color: #f2b56b;
-}
-
-.token.function,
-.token.class-name,
-.token.selector {
-  color: #7cc4ff;
-}
-
-.token.tag,
-.token.property,
-.token.attr-name,
-.token.variable,
-.token.deleted {
-  color: #ff9a8a;
-}
-
-.token.builtin,
-.token.url {
-  color: #6fd6d0;
-}
-
 /* ---------- CV ---------- */
 
 .cv-head {

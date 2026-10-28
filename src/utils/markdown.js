@@ -1,6 +1,8 @@
 import markdownIt from 'markdown-it';
 import markdownItAnchor from 'markdown-it-anchor';
 import markdownItFootnote from 'markdown-it-footnote';
+import shiki from '@shikijs/markdown-it';
+import shikiTheme from './shiki-theme.js';
 
 /**
  * Markdown config
@@ -18,7 +20,20 @@ const markdownLibrary = markdownIt({ // NOSONAR
     // The whole heading becomes the link, so the table of contents keeps clean labels.
     permalink: markdownItAnchor.permalink.headerLink({ class: 'heading-link' }),
   })
-  .use(markdownItFootnote);
+  .use(markdownItFootnote)
+  // Highlighted at build time: no client-side script, inline colours (style-src 'unsafe-inline')
+  .use(await shiki({
+    theme: shikiTheme,
+    langs: ['bash', 'shell', 'erb', 'ini', 'js', 'ts', 'json', 'yaml', 'nginx', 'html', 'css', 'python', 'php', 'java', 'sql', 'dockerfile', 'hcl', 'markdown'],
+    fallbackLanguage: 'text',
+    transformers: [{
+      // The background comes from site.css (--code-bg), like the other code blocks
+      pre(node) {
+        delete node.properties.style;
+        delete node.properties.tabindex;
+      },
+    }],
+  }));
 
 markdownLibrary.renderer.rules.footnote_caption = (tokens, idx) => {
   let n = Number(tokens[idx].meta.id + 1).toString();

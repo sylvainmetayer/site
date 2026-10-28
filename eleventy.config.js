@@ -1,7 +1,6 @@
 import { readFileSync } from 'node:fs';
 import matter from 'gray-matter';
 import rssPlugin from '@11ty/eleventy-plugin-rss';
-import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 import pluginTOC from 'eleventy-plugin-toc';
 
 import filters from './src/11ty/filters/index.js';
@@ -255,7 +254,6 @@ export default function eleventyConfig(config) {
   });
 
   config.addPlugin(rssPlugin);
-  config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginTOC, {
     tags: ['h2', 'h3'],
     wrapper: 'div',
