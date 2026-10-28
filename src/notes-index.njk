@@ -1,17 +1,15 @@
----
-title: Notes
-permalink: /notes/
-layout: layouts/base.njk
-metaDesc: "Notes courtes de Sylvain MÉTAYER : ce que j'apprends au fil des jours."
+---js
+// No page until the first published note (src/_data/publishedNotes.js)
+const title = 'Notes';
+const permalink = data => data.publishedNotes > 0 && '/notes/';
+const layout = 'layouts/base.njk';
+const metaDesc = "Notes courtes de Sylvain MÉTAYER : ce que j'apprends au fil des jours.";
 ---
 {% from 'partials/macros.njk' import cmd, postList with context %}
 <section class="section" aria-labelledby="page-title">
   {{ cmd('ls -t notes/') }}
   <h1 id="page-title" class="page-title">Notes</h1>
   <p class="page-lead">{{ 'notes.lead' | t }}</p>
-  {% if collections.notes.length %}
-    {{ postList(collections.notes) }}
-  {% else %}
-    <p>{{ 'notes.none' | t }}</p>
-  {% endif %}
+  <p><a href="/notes/feed.xml">{{ 'notes.feed' | t }}</a></p>
+  {{ postList(collections.notes) }}
 </section>

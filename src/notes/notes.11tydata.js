@@ -1,6 +1,8 @@
 // Short notes (TIL): French only, no tags (tag pages list the articles), no
 // translation. Same publishing rules as the articles (src/posts/posts.11tydata.js).
-const isPublished = data => process.env.ELEVENTY_ENV !== 'production' || (!data.draft && data.page.date <= new Date());
+import { isPublishedNote } from '../11ty/notes.js';
+
+const isPublished = data => isPublishedNote({ draft: data.draft, date: data.page.date });
 
 export default {
   layout: 'layouts/note.njk',
