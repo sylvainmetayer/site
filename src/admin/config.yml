@@ -42,6 +42,7 @@ collections:
       - { label: Date de modification, name: updated, widget: datetime, time_format: false, format: "YYYY-MM-DD", required: false, i18n: duplicate, hint: "Dernière mise à jour du contenu. Affichée sous le titre, elle remplace la date de publication pour l'avertissement « article ancien »." }
       - { label: Extrait, name: excerpt, widget: text, required: false, i18n: true, hint: "Affiché dans les listes d'articles et utilisé comme description par défaut." }
       - { label: Tags, name: tags, widget: list, required: false, i18n: duplicate }
+      - { label: Série, name: series, widget: string, required: false, i18n: true, hint: "Même nom exact sur chaque article de la série : un encadré les liste en tête d'article." }
       - { label: Contenu, name: body, widget: markdown, i18n: true }
       - { label: Brouillon, name: draft, widget: boolean, default: false, required: false, i18n: duplicate }
       - { label: Mis en avant, name: star, widget: boolean, default: false, required: false, i18n: duplicate }

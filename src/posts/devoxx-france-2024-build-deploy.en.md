@@ -12,6 +12,7 @@ coauthors:
   - cfarges
   - jtama
 socialImage: "/images/devoxx-france-2024.jpg"
+series: "Conference recaps"
 ---
 
 ![Devoxx France 2024 banner: a humanoid robot sprinting on a running track](/images/devoxx-france-2024.jpg)

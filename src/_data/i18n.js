@@ -70,6 +70,7 @@ export default {
     'post.neighbours': 'Articles voisins',
     'post.previous': 'précédent',
     'post.next': 'suivant',
+    'post.series': 'Série « {name} »',
 
     'notes.all': 'toutes les notes',
     'notes.lead': 'Des notes courtes : ce que j\'apprends au fil des jours, trop petit pour un article.',
@@ -210,6 +211,7 @@ export default {
     'post.neighbours': 'Other articles',
     'post.previous': 'previous',
     'post.next': 'next',
+    'post.series': 'Series: {name}',
 
     'code.copy': 'copy',
     'code.copied': 'copied',

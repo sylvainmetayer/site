@@ -9,6 +9,7 @@ tags:
   - projet
 metaDesc: "Le présent article liste les différents projets que j'ai pu réaliser durant mes années de DUT Informatique à Limoges"
 excerpt: "Le présent article liste les différents projets que j'ai pu réaliser durant mes années de DUT Informatique à Limoges"
+series: "Projets d'études"
 ---
 
 Le présent article liste les différents projets que j'ai pu réaliser durant mes années de DUT Informatique à Limoges. Ces projets ont été réalisés la plupart du temps en binôme, ou en groupe.

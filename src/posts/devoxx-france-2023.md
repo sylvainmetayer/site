@@ -14,6 +14,7 @@ coauthors:
   - jtama
   - florianallainmat
 socialImage: "/images/devoxx-france-2023.jpg"
+series: "Retours de conférence"
 ---
 
 ![Bannière Devoxx France : la tour Eiffel au coucher du soleil, survolée par des drones](/images/devoxx-france-2023.jpg)

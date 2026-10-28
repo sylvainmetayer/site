@@ -12,6 +12,7 @@ coauthors:
   - cfarges
   - jtama
 socialImage: "/images/devoxx-france-2024.jpg"
+series: "Retours de conférence"
 ---
 
 ![Bannière Devoxx France 2024 : un robot humanoïde sprinte sur une piste d'athlétisme](/images/devoxx-france-2024.jpg)

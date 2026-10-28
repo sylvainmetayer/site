@@ -7,6 +7,7 @@ tags:
 excerpt: "Nos retours sur SnowCamp 2025 : la faille XZ Utils, OpenRewrite, IA générative, environnements de développement avec Coder, Kubernetes en production et fonctionnalités méconnues du web."
 canonical: "https://www.linkedin.com/pulse/snowcamp-2025-sylvain-m%C3%A9tayer--jhqxe"
 socialImage: "/images/snowcamp-2025.jpg"
+series: "Retours de conférence"
 ---
 
 ![Amphithéâtre comble de SnowCamp face à deux orateurs sur scène et leurs slides](/images/snowcamp-2025.jpg)

@@ -9,6 +9,7 @@ tags:
   - projet
 metaDesc: "Le présent article liste les différents projets que j'ai pu réaliser durant mes deux années à l'EPSI Bordeaux"
 excerpt: "Le présent article liste les différents projets que j'ai pu réaliser durant mes deux années à l'EPSI Bordeaux"
+series: "Projets d'études"
 ---
 
 Le présent article liste une partie des projets que j'ai pu réaliser durant mes deux années à l'EPSI Bordeaux. La plupart du code réalisé sur ces deux années est disponible au sein de l'organisation Github [EPSIBordeaux](https://github.com/EPSIBordeaux)

@@ -14,6 +14,7 @@ coauthors:
   - jtama
   - florianallainmat
 socialImage: "/images/devoxx-france-2023.jpg"
+series: "Conference recaps"
 ---
 
 ![Devoxx France banner: the Eiffel Tower at sunset, with drones flying overhead](/images/devoxx-france-2023.jpg)
