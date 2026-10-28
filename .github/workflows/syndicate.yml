@@ -1,0 +1,37 @@
+name: Syndicate
+
+# Après le déploiement quotidien (daily_build.yml, 6 h UTC) : webmentions
+# sortantes et publication des nouveaux articles sur Mastodon et Bluesky
+# (scripts/syndicate.mjs). Sans les secrets d'un réseau, il est ignoré.
+on:
+  schedule:
+    - cron: '30 7 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Afficher sans rien envoyer
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  syndicate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: ./.github/actions/setup
+
+      - name: Send webmentions and post new articles
+        env:
+          MASTODON_INSTANCE: ${{ vars.MASTODON_INSTANCE }}
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+          BLUESKY_HANDLE: ${{ vars.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          DRY_RUN: ${{ inputs.dry_run && '--dry-run' || '' }}
+        run: node scripts/syndicate.mjs --days 2 $DRY_RUN

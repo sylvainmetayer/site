@@ -54,6 +54,8 @@ Dans un article, `{% baseline 'container-queries' %}` affiche le support navigat
 
 Un article avec `repost: dev.to` dans son front matter apparaît dans `/devto.rss.xml`, le flux que dev.to importe.
 
+Chaque matin, `.github/workflows/syndicate.yml` (`scripts/syndicate.mjs`) envoie les webmentions des articles publiés la veille vers les pages qu'ils citent, et publie les nouveaux articles français sur Mastodon (variable `MASTODON_INSTANCE`, secret `MASTODON_TOKEN`) et Bluesky (variable `BLUESKY_HANDLE`, secret `BLUESKY_APP_PASSWORD`, un mot de passe d'application). Un article déjà publié n'est pas republié. Lancé à la main, il est en `--dry-run` par défaut.
+
 ## Version anglaise
 
 Le français est la langue par défaut, aux URL actuelles ; l'anglais est sous `/en/` (accueil, articles, projets, talks, CV et son PDF, flux Atom, index de la palette).
