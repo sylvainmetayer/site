@@ -1370,6 +1370,13 @@ samp {
   margin-top: 0.2rem;
 }
 
+/* GitHub stats of a project card (src/_data/githubRepos.js) */
+.repo-stats {
+  margin: 0;
+  font: 400 0.78rem/1.5 var(--mono);
+  color: var(--muted);
+}
+
 /* Tag index (/tags/) */
 .tag-index {
   border-top: 0;

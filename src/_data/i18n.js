@@ -115,6 +115,10 @@ export default {
     'projects.sources': 'sources',
     'projects.sourcesOf': ' de {title}',
     'projects.articleOn': ' sur {title}',
+    'projects.stars.one': '{count} étoile sur GitHub',
+    'projects.stars.other': '{count} étoiles sur GitHub',
+    'projects.pushed': 'dernier commit {date}',
+    'projects.archived': 'archivé',
 
     'talks.desc': 'Talks de Sylvain MÉTAYER (SOPS, asdf, automatisation du poste de travail, Kubernetes sur deux sites, Terraform) : slides et replays.',
     'talks.lead': 'Talks donnés en conférence et en meetup, avec les slides de chaque édition et les replays quand il y en a. Les vidéos sont aussi dans <a href="{playlist}">une playlist YouTube</a>.',
@@ -272,6 +276,10 @@ export default {
     'projects.sources': 'source',
     'projects.sourcesOf': ' of {title}',
     'projects.articleOn': ' about {title}',
+    'projects.stars.one': '{count} star on GitHub',
+    'projects.stars.other': '{count} stars on GitHub',
+    'projects.pushed': 'last commit {date}',
+    'projects.archived': 'archived',
 
     'talks.desc': 'Talks by Sylvain MÉTAYER (SOPS, asdf, workstation automation, Kubernetes across two sites, Terraform): slides and recordings.',
     'talks.lead': 'Talks given at conferences and meetups, in French, with the slides of each edition and the recordings when there are some. The videos are also in <a href="{playlist}">a YouTube playlist</a>.',
