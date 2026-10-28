@@ -145,6 +145,21 @@ export default async function parseTransform(value, outputPath) {
       });
     }
 
+    // Sidenotes: a copy of each footnote next to its reference, shown in the left
+    // margin on wide screens (site.css). Hidden from assistive technologies,
+    // which keep the footnotes at the end of the article.
+    document.querySelectorAll('main .prose sup.footnote-ref > a[href^="#fn"]').forEach(ref => {
+      const note = document.getElementById(ref.getAttribute('href').slice(1));
+      if (!note) return;
+      const sidenote = document.createElement('span');
+      sidenote.className = 'sidenote';
+      sidenote.setAttribute('aria-hidden', 'true');
+      sidenote.innerHTML = `<span class="sidenote-number">${ref.textContent.replace(/\D/g, '')}</span> ${[...note.children].map(child => child.innerHTML).join(' ')}`;
+      sidenote.querySelectorAll('.footnote-backref').forEach(backref => backref.remove());
+      sidenote.querySelectorAll('a, button').forEach(link => link.setAttribute('tabindex', '-1'));
+      ref.parentNode.after(sidenote);
+    });
+
     // Code blocks and tables scroll horizontally: make them reachable with the keyboard
     document.querySelectorAll('main pre, main .prose table').forEach(block => {
       block.setAttribute('tabindex', '0');

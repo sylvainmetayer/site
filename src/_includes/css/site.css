@@ -989,6 +989,29 @@ samp {
   font-size: inherit;
 }
 
+/* Sidenotes (parse-transform.js): copies of the footnotes, in the left margin
+   on wide screens only; the footnotes stay at the end of the article */
+.sidenote {
+  display: none;
+}
+
+@media (min-width: 82rem) {
+  .sidenote {
+    display: block;
+    float: left;
+    clear: left;
+    width: 14rem;
+    margin: 0.2rem 0 0.8rem -16.5rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .sidenote-number {
+    font: 600 0.75rem/1 var(--mono);
+  }
+}
+
 /* Callouts: > [!NOTE] … (utils/markdown.js) */
 .prose .callout {
   margin: 1.4rem 0;
