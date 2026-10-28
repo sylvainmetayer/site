@@ -29,6 +29,8 @@
       <h1 id="post-title" class="p-name">{{ title }}</h1>
       <ul class="meta">
         <li><time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date('YYYY-MM-DD') }}</time></li>
+        {# Author of the h-entry, for webmention receivers and microformats readers #}
+        <li class="visually-hidden"><a class="p-author h-card" href="{{ helpers.url() }}/">{{ site.authorName }}</a></li>
         {% if updated %}
           <li>{{ 'post.updated' | t({ date: '<time datetime="' + (updated | w3DateFilter) + '" class="dt-updated">' + (updated | date('YYYY-MM-DD')) + '</time>' }) | safe }}</li>
         {% endif %}
