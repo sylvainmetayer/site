@@ -200,7 +200,10 @@ export default function eleventyConfig(config) {
   });
 
   // Body of a Markdown file, without its front matter (src/article-markdown.njk)
-  config.addFilter('rawMarkdown', inputPath => matter(readFileSync(inputPath, 'utf8')).content.trim());
+  // and without the {% raw %} markers, which only exist for Nunjucks.
+  // shortcut: other shortcodes ({% baseline %}) stay as written, render them if an article uses one.
+  config.addFilter('rawMarkdown', inputPath => matter(readFileSync(inputPath, 'utf8')).content
+    .replace(/\{%-?\s*(end)?raw\s*-?%\}/g, '').trim());
 
   // Slug shared by an entry and its translation: anchors, search index
   config.addFilter('baseSlug', baseSlug);

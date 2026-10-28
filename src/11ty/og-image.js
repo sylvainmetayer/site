@@ -28,7 +28,8 @@ export function wrap(text, maxChars = MAX_CHARS, maxLines = MAX_LINES) {
 function svg({ title, path, footer }) {
   const lines = wrap(title);
   const lineHeight = 78;
-  const top = 260 - ((lines.length - 1) * lineHeight) / 2;
+  // Centred lower than the middle: 4 lines must clear the path at y=110
+  const top = 300 - ((lines.length - 1) * lineHeight) / 2;
   const tspans = lines.map((line, i) => `<tspan x="80" y="${top + i * lineHeight}">${escapeXml(line)}</tspan>`).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">
   <rect width="100%" height="100%" fill="#0e1621"/>
