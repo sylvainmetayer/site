@@ -23,6 +23,7 @@ mise run build     # build de production dans dist/
 mise run preview   # http://localhost:8788, émulateur Cloudflare Pages (_redirects, _headers)
 mise run validate  # validation HTML du build
 npm test           # tests unitaires des filtres et du Markdown (node --test, test/)
+npm run check:spelling  # orthographe des contenus (cSpell, mots connus dans cspell-words.txt)
 mise tasks         # liste des tâches
 ```
 

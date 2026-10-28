@@ -30,6 +30,10 @@ jobs:
       - name: Unit tests of the build helpers
         run: npm test
 
+      # Unknown word: fix the typo, or add the word to cspell-words.txt
+      - name: Spelling of the content (French and English)
+        run: npm run check:spelling
+
       - name: Check links, redirects and published URLs
         run: npm run check:links
 
