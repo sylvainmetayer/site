@@ -1,0 +1,8 @@
+---js
+// Bluesky handle on the domain: the DID of site.json `blueskyDid`
+const permalink = data => Boolean(data.site.blueskyDid) && '/.well-known/atproto-did';
+const eleventyExcludeFromCollections = true;
+// No file extension, as the specifications require
+const eleventyAllowMissingExtension = true;
+---
+{{ site.blueskyDid }}
