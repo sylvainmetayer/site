@@ -11,7 +11,7 @@
     <ul>
       <li><a href="{{ 'url.feeds' | t }}">{{ icon('rss') }}rss</a></li>
       <li><a href="{{ langPrefix }}/now/">now</a></li>
-      {% if links.links.length %}<li><a href="/liens/" lang="fr" hreflang="fr">liens</a></li>{% endif %}
+      {% if links.links.length or karakeep.length %}<li><a href="/liens/" lang="fr" hreflang="fr">liens</a></li>{% endif %}
       {% if collections.notes.length %}<li><a href="/notes/" hreflang="fr">notes</a></li>{% endif %}
       <li><a href="{{ langPrefix }}/uses/">uses</a></li>
       <li><a href="{{ langPrefix }}/colophon/">colophon</a></li>

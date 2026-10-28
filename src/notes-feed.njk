@@ -1,0 +1,31 @@
+---js
+// Atom feed of the notes, separate from the articles' one; built once there is a note
+const permalink = data => data.publishedNotes > 0 && '/notes/feed.xml';
+const eleventyExcludeFromCollections = true;
+---
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/feed.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr">
+  <title>{{ site.name }} · notes</title>
+  <subtitle>{{ 'notes.lead' | t }}</subtitle>
+  <link href="{{ helpers.url() }}/notes/feed.xml" rel="self"/>
+  <link href="{{ helpers.url() }}/notes/"/>
+  {% if collections.notes | length %}
+    <updated>{{ collections.notes | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  {% endif %}
+  <id>{{ helpers.url() }}/notes/</id>
+  <author>
+    <name>{{ site.authorName }}</name>
+    <uri>{{ helpers.url() }}/</uri>
+  </author>
+  {%- for note in collections.notes %}
+    <entry>
+      <title>{{ note.data.title }}</title>
+      <link href="{{ helpers.url() }}{{ note.url }}"/>
+      <published>{{ note.date | dateToRfc3339 }}</published>
+      <updated>{{ note.date | dateToRfc3339 }}</updated>
+      <id>{{ helpers.url() }}{{ note.url }}</id>
+      <content type="html"><![CDATA[{{ note.templateContent | safe }}]]></content>
+    </entry>
+  {%- endfor %}
+</feed>
