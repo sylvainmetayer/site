@@ -3,6 +3,7 @@ import { imageSizeFromFile } from 'image-size/fromFile';
 import Image from '@11ty/eleventy-img';
 import helpers from '../_data/helpers.js';
 import site from '../_data/site.json' with { type: 'json' };
+import emojis from '../_data/emojis.json' with { type: 'json' };
 
 // Article images are served as AVIF and WebP, with the original format as a
 // fallback, in widths that cover the text column (--measure: 44rem) up to 2x.
@@ -23,6 +24,44 @@ const isLocal = src => src.startsWith('/') && !src.startsWith('//');
 // scrapers that look for "mailto:" or "@" in the raw HTML do not find it
 const toEntities = text => [...text].map(char => `&#${char.codePointAt(0)};`).join('');
 const MAIL_LINK = 'mailto:' + site.authorEmail;
+
+// An emoji, with its variation selector and ZWJ sequence if any
+const EMOJI = /\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*/gu;
+
+// Emojis in the text become role="img" with a name in the language of the page
+// (src/_data/emojis.json): screen readers name them alike, whatever the platform.
+// Not in code, not twice, not where an aria-label already names the element.
+function labelEmojis(document) {
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+  const walker = document.createTreeWalker(document.querySelector('main') || document.body, 4 /* NodeFilter.SHOW_TEXT */);
+  const nodes = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (EMOJI.test(node.data) && !node.parentElement.closest('pre, code, script, style, [role="img"], [aria-hidden="true"], [aria-label]')) nodes.push(node);
+    EMOJI.lastIndex = 0;
+  }
+  nodes.forEach(node => {
+    const fragment = document.createDocumentFragment();
+    let last = 0;
+    for (const match of node.data.matchAll(EMOJI)) {
+      const name = emojis[match[0].replace(/\uFE0F/g, '')]?.[lang];
+      if (!name) {
+        console.warn(`[emojis] nom manquant pour ${match[0]} dans src/_data/emojis.json`);
+        continue;
+      }
+      fragment.append(node.data.slice(last, match.index));
+      const span = document.createElement('span');
+      span.setAttribute('role', 'img');
+      span.setAttribute('aria-label', name);
+      span.textContent = match[0];
+      fragment.append(span);
+      last = match.index + match[0].length;
+    }
+    if (last === 0) return;
+    fragment.append(node.data.slice(last));
+    node.replaceWith(fragment);
+  });
+}
 
 const srcset = images => images.map(image => image.srcset).join(', ');
 
@@ -168,6 +207,8 @@ export default async function parseTransform(value, outputPath) {
       sidenote.querySelectorAll('a, button').forEach(link => link.setAttribute('tabindex', '-1'));
       ref.parentNode.after(sidenote);
     });
+
+    labelEmojis(document);
 
     // Code blocks and tables scroll horizontally: make them reachable with the keyboard
     document.querySelectorAll('main pre, main .prose table').forEach(block => {
