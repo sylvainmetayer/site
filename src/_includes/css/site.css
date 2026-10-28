@@ -989,6 +989,50 @@ samp {
   font-size: inherit;
 }
 
+/* Code block options (utils/markdown.js): file name, line numbers, highlighted lines */
+.code-title {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.25rem 0.8rem;
+  background: var(--code-bg);
+  color: var(--code-muted);
+  border: 1px solid var(--code-line);
+  border-bottom: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  font: 400 0.78rem/1.5 var(--mono);
+  overflow-wrap: anywhere;
+}
+
+.code-title + pre,
+.code-title + .code-block pre {
+  border-top-left-radius: 0;
+}
+
+.prose pre.line-numbers code {
+  counter-reset: line;
+}
+
+.prose pre.line-numbers .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2ch;
+  margin-right: 1.2ch;
+  color: var(--code-muted);
+  text-align: right;
+  user-select: none;
+}
+
+/* Full width, so the background covers the whole line */
+.prose pre .line.highlighted {
+  display: inline-block;
+  min-width: calc(100% + 2rem);
+  margin: 0 -1rem;
+  padding: 0 1rem;
+  background: rgb(98 172 255 / 0.14);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
 /* Baseline shortcode (11ty/shortcodes/baseline.js): browser support of a web feature */
 .baseline {
   padding: 0.05em 0.4em;

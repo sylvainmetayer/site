@@ -42,6 +42,8 @@ mise installe Node 24 (`mise install`, voir aussi `.nvmrc`). Sans mise : `npm ci
 
 Les polices (JetBrains Mono, IBM Plex Sans) et Sveltia CMS viennent de npm et sont copiés dans `dist/` au build, à cause de la CSP (`font-src 'self'`, `script-src 'self'`).
 
+Les blocs de code sont colorés au build par Shiki (thème `src/utils/shiki-theme.js`). Après le langage : `{2,4-5}` surligne des lignes, `title="fichier.js"` affiche le nom du fichier, `showLineNumbers` numérote les lignes.
+
 Dans un article, `{% baseline 'container-queries' %}` affiche le support navigateur d'une fonctionnalité web (identifiant de l'URL `https://webstatus.dev/features/<id>`), récupéré au build. Pas de « {% » dans `site.css` : la feuille passe par Nunjucks.
 
 Un article avec `repost: dev.to` dans son front matter apparaît dans `/devto.rss.xml`, le flux que dev.to importe.

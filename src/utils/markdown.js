@@ -2,6 +2,7 @@ import markdownIt from 'markdown-it';
 import markdownItAnchor from 'markdown-it-anchor';
 import markdownItFootnote from 'markdown-it-footnote';
 import shiki from '@shikijs/markdown-it';
+import { transformerMetaHighlight } from '@shikijs/transformers';
 import shikiTheme from './shiki-theme.js';
 
 /**
@@ -26,13 +27,27 @@ const markdownLibrary = markdownIt({ // NOSONAR
     theme: shikiTheme,
     langs: ['bash', 'shell', 'erb', 'ini', 'js', 'ts', 'json', 'yaml', 'nginx', 'html', 'css', 'python', 'php', 'java', 'sql', 'dockerfile', 'hcl', 'markdown'],
     fallbackLanguage: 'text',
-    transformers: [{
-      // The background comes from site.css (--code-bg), like the other code blocks
-      pre(node) {
-        delete node.properties.style;
-        delete node.properties.tabindex;
+    // ```js {2,4-5} title="eleventy.config.js" showLineNumbers
+    parseMetaString: meta => ({
+      title: meta.match(/title="([^"]+)"/)?.[1],
+      showLineNumbers: /\bshowLineNumbers\b/.test(meta),
+    }),
+    transformers: [
+      // {2,4-5}: lines with the class "highlighted"
+      transformerMetaHighlight(),
+      {
+        pre(node) {
+          // The background comes from site.css (--code-bg), like the other code blocks
+          delete node.properties.style;
+          delete node.properties.tabindex;
+          // Shiki copies the meta options onto <pre> as attributes
+          delete node.properties.title;
+          delete node.properties.showLineNumbers;
+          delete node.properties.showlinenumbers;
+          if (this.options.meta?.showLineNumbers) this.addClassToHast(node, 'line-numbers');
+        },
       },
-    }],
+    ],
   }));
 
 markdownLibrary.renderer.rules.footnote_caption = (tokens, idx) => {
@@ -62,5 +77,14 @@ rules.footnote_anchor = (tokens, idx, options, env, slf) => {
 
 rules.footnote_block_open = (tokens, idx, options, env, slf) =>
   renderBlockOpen(tokens, idx, options, env, slf).replace('<section class="footnotes">', '<section class="footnotes" aria-label="Notes">');
+
+// title="…" in a fence: the file name, as real text above the block. Added
+// here: markdown-it wraps a highlighted block again if it does not start with <pre
+const renderFence = rules.fence;
+rules.fence = (tokens, idx, options, env, slf) => {
+  const title = tokens[idx].info.match(/title="([^"]+)"/)?.[1];
+  const html = renderFence(tokens, idx, options, env, slf);
+  return title ? `<div class="code-title">${markdownLibrary.utils.escapeHtml(title)}</div>\n${html}` : html;
+};
 
 export default markdownLibrary;
