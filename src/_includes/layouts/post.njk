@@ -12,6 +12,10 @@
   {% endif %}
 {% endblock %}
 
+{% block head %}
+  <script src="/js/copy-code.js" data-label="{{ 'code.copy' | t }}" data-copied="{{ 'code.copied' | t }}" defer></script>
+{% endblock %}
+
 {% block content %}
   {% set readingTime = helpers.getReadingTime(content) %}
   <article class="post h-entry" aria-labelledby="post-title">

@@ -952,6 +952,29 @@ samp {
   font-size: inherit;
 }
 
+/* Copy button added by js/copy-code.js */
+.code-block {
+  position: relative;
+}
+
+.code-copy {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--code-line);
+  border-radius: 3px;
+  background: var(--code-bg);
+  color: var(--code-muted);
+  font: 400 0.72rem/1 var(--mono);
+  cursor: pointer;
+}
+
+.code-copy:hover,
+.code-copy:focus-visible {
+  color: var(--code-fg);
+}
+
 .prose blockquote {
   margin: 1.4rem 0;
   padding: 0.7rem 1rem;

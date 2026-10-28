@@ -70,6 +70,9 @@ export default {
     'post.previous': 'précédent',
     'post.next': 'suivant',
 
+    'code.copy': 'copier',
+    'code.copied': 'copié',
+
     'origin.publisher': ', sur le blog de {publisher}',
     'origin.with': ', écrit avec ',
     'origin.and': ' et ',
@@ -195,6 +198,9 @@ export default {
     'post.neighbours': 'Other articles',
     'post.previous': 'previous',
     'post.next': 'next',
+
+    'code.copy': 'copy',
+    'code.copied': 'copied',
 
     'origin.publisher': ', on the {publisher} blog',
     'origin.with': ', written with ',
