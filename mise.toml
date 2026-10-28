@@ -12,6 +12,11 @@ description = "Serveur de dev avec rechargement (sans _redirects ni _headers)"
 depends = ["install"]
 run = "npm start"
 
+[tasks.naked]
+description = "Serveur de dev en mode CSS Naked Day (site sans CSS, comme le 9 avril)"
+depends = ["install"]
+run = "CSS_NAKED_DAY=1 npm start"
+
 [tasks.build]
 description = "Génère le site de production dans dist/"
 depends = ["install", "clean"]
