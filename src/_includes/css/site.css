@@ -989,6 +989,40 @@ samp {
   font-size: inherit;
 }
 
+/* Callouts: > [!NOTE] … (utils/markdown.js) */
+.prose .callout {
+  margin: 1.4rem 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--callout, var(--accent));
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 0.97rem;
+}
+
+.prose .callout > :last-child {
+  margin-bottom: 0;
+}
+
+.prose .callout-title {
+  margin: 0 0 0.3rem;
+  color: var(--callout, var(--accent));
+  font: 600 0.82rem/1.5 var(--mono);
+  text-transform: uppercase;
+}
+
+.callout-tip {
+  --callout: var(--ok);
+}
+
+.callout-warning {
+  --callout: var(--warn);
+}
+
+.callout-caution {
+  --callout: var(--error);
+}
+
 /* Code block options (utils/markdown.js): file name, line numbers, highlighted lines */
 .code-title {
   width: fit-content;

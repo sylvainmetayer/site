@@ -44,6 +44,8 @@ Les polices (JetBrains Mono, IBM Plex Sans) et Sveltia CMS viennent de npm et so
 
 Les blocs de code sont colorés au build par Shiki (thème `src/utils/shiki-theme.js`). Après le langage : `{2,4-5}` surligne des lignes, `title="fichier.js"` affiche le nom du fichier, `showLineNumbers` numérote les lignes.
 
+Un encadré s'écrit comme sur GitHub : une citation qui commence par `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` ou `[!CAUTION]`.
+
 Dans un article, `{% baseline 'container-queries' %}` affiche le support navigateur d'une fonctionnalité web (identifiant de l'URL `https://webstatus.dev/features/<id>`), récupéré au build. Pas de « {% » dans `site.css` : la feuille passe par Nunjucks.
 
 Un article avec `repost: dev.to` dans son front matter apparaît dans `/devto.rss.xml`, le flux que dev.to importe.

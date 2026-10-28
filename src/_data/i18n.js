@@ -79,6 +79,12 @@ export default {
     'notes.lead': 'Des notes courtes : ce que j\'apprends au fil des jours, trop petit pour un article.',
     'notes.none': 'Pas encore de note.',
 
+    'callout.note': 'Note',
+    'callout.tip': 'Astuce',
+    'callout.important': 'Important',
+    'callout.warning': 'Attention',
+    'callout.caution': 'Danger',
+
     'code.copy': 'copier',
     'code.copied': 'copié',
 
@@ -218,6 +224,12 @@ export default {
     'post.related': 'Related articles',
     'post.backlinks': 'Linked from',
     'post.series': 'Series: {name}',
+
+    'callout.note': 'Note',
+    'callout.tip': 'Tip',
+    'callout.important': 'Important',
+    'callout.warning': 'Warning',
+    'callout.caution': 'Caution',
 
     'code.copy': 'copy',
     'code.copied': 'copied',
