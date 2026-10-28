@@ -29,6 +29,7 @@ export default {
     'theme.light': 'clair',
 
     'notice.wip': 'site en travaux, certaines pages peuvent être cassées.',
+    'notice.naked': 'Pas de mise en page aujourd\'hui : c\'est le <a href="https://css-naked-day.org/">CSS Naked Day</a>, la journée où des sites se montrent sans CSS pour rappeler l\'importance d\'un HTML bien structuré.',
     'notice.dev': 'vous consultez la version de développement. Le site en production est sur',
 
     'foot.generated': 'généré par {eleventy} le {date}',
@@ -195,6 +196,7 @@ export default {
     'theme.light': 'light',
 
     'notice.wip': 'work in progress, some pages may be broken.',
+    'notice.naked': 'No styles today: it is <a href="https://css-naked-day.org/">CSS Naked Day</a>, when websites go without CSS to celebrate well-structured HTML.',
     'notice.dev': 'you are browsing the development version. The live site is at',
 
     'foot.generated': 'built with {eleventy} on {date}',

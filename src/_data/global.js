@@ -11,6 +11,9 @@ export default {
   buildVersion: (process.env.CF_PAGES_COMMIT_SHA || '').slice(0, 12) || String(Date.now()),
   // Unset means a local or CI build: no analytics beacon, robots.txt disallows all.
   environment: process.env.ELEVENTY_ENV || 'development',
+  // CSS Naked Day (https://css-naked-day.org/): built on April 9 by the daily
+  // build, the site has no CSS until the build of April 10. CSS_NAKED_DAY=1 to try it.
+  cssNakedDay: process.env.CSS_NAKED_DAY === '1' || new Date().toISOString().slice(5, 10) === '04-09',
   // Deployed commit, shown in the footer: Cloudflare Pages, then GitHub Actions
   commit: process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA || '',
   repository: 'https://github.com/sylvainmetayer/site',

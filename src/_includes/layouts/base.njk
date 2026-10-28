@@ -27,13 +27,19 @@
     {% block extraMeta %}
       <meta property="og:type" content="website">
     {% endblock %}
+    {% if not global.cssNakedDay %}
     <style>
       {% include "css/site.css" %}
     </style>
+    {% endif %}
     {% block head %}{% endblock %}
   </head>
   <body>
     {% include "partials/site-head.njk" %}
+
+    {% if global.cssNakedDay %}
+      <p role="note">{{ 'notice.naked' | t | safe }}</p>
+    {% endif %}
 
     {% if site.displayWipWarning %}
       <div class="notice" role="note"><div class="wrap"><strong>wip:</strong> {{ 'notice.wip' | t }}</div></div>
