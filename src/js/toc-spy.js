@@ -6,7 +6,8 @@
 
   var byId = {};
   links.forEach(function (link) {
-    byId[decodeURIComponent(link.getAttribute('href').slice(1))] = link;
+    // Not decoded: markdown-it-anchor ids are percent-encoded (une-%C3%A9bauche-de-plan)
+    byId[link.getAttribute('href').slice(1)] = link;
   });
   var headings = Array.prototype.filter.call(document.querySelectorAll('.prose h2[id], .prose h3[id]'), function (heading) {
     return byId[heading.id];
@@ -24,8 +25,9 @@
     if (current) byId[current.id].setAttribute('aria-current', 'location');
   }
 
-  // Recomputed only when a heading crosses the viewport, not on every scroll event
-  var observer = new IntersectionObserver(update);
+  // Recomputed only when a heading crosses the upper quarter of the screen, not on
+  // every scroll event: the root is shrunk to that quarter
+  var observer = new IntersectionObserver(update, { rootMargin: '0px 0px -75% 0px' });
   headings.forEach(function (heading) {
     observer.observe(heading);
   });

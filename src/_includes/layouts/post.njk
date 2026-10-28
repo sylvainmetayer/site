@@ -88,8 +88,8 @@
     {% endif %}
   </article>
 
-  {% set relatedPosts = siblings | related(page.url) %}
   {% set backlinkPosts = siblings | backlinks(page.fileSlug | baseSlug) %}
+  {% set relatedPosts = siblings | related(page.url, backlinkPosts) %}
   {% if relatedPosts.length or backlinkPosts.length %}
     <aside class="post-links" aria-label="{{ 'post.more' | t }}">
       {% if backlinkPosts.length %}
