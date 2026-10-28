@@ -28,3 +28,13 @@ Comment ce site est fait, et pourquoi. Les sources sont [sur GitHub](https://git
 Chaque push passe par [GitHub Actions](https://github.com/sylvainmetayer/site/actions) : validation HTML, accessibilité WCAG 2 AA ([pa11y](https://pa11y.org/)), liens internes et redirections, analyse [SonarCloud](https://sonarcloud.io/) et CodeQL. Les liens externes sont vérifiés chaque semaine avec [lychee](https://lychee.cli.rs/), et [Renovate](https://docs.renovatebot.com/) tient les dépendances à jour.
 
 La [politique de sécurité du contenu](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP) n'autorise aucun script tiers, à part la mesure d'audience.
+
+## Bouton 88x31
+
+Pour faire un lien vers ce site à l'ancienne, avec un bouton de 88 × 31 pixels :
+
+![Bouton sylvain.dev, 88 × 31 pixels](/images/88x31.png)
+
+```html
+<a href="https://www.sylvain.dev/"><img src="https://www.sylvain.dev/images/88x31.png" width="88" height="31" alt="sylvain.dev"></a>
+```
