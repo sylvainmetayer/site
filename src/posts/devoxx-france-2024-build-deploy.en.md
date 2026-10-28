@@ -45,7 +45,9 @@ Through a REX (experience report) built around a fictional company, [Aurélien M
 
 We then learn how to deploy a Kubernetes environment across several regions, and why several clusters are needed to keep latency low, since Kubernetes doesn't like latency when a continent separates its nodes. Their flawlessly executed demo takes us behind the scenes and shows the tools and methods to guarantee quality of service, low latency and data integrity!
 
-[Replay](https://www.youtube.com/watch?v=ADp3fonoDWM)
+
+{% youtube "ADp3fonoDWM", "Multi Kubernetes, Multi Régions, Au-secours ! (Multi Kubernetes, Multi Region, Help!)" %}
+
 
 ## Notre dépendance à l'Open Source est effrayante. SLSA, SBOM et Sigstore à la rescousse (Our dependency on Open Source is scary. SLSA, SBOM and Sigstore to the rescue)
 
@@ -53,13 +55,17 @@ This very interesting talk shows how much we rely on third-party software and de
 
 [Abdellfetah Sghiouar](https://www.linkedin.com/in/sabdelfettah/) then presents tools we can rely on to guarantee the traceability of our applications, such as cosign to sign our images before deploying them to our cluster, or SBOMs to list every package used in our application.
 
-[Replay](https://www.youtube.com/watch?v=MEJ-ae_D8X4)
+
+{% youtube "MEJ-ae_D8X4", "Notre dépendance à l'Open Source est effrayante. SLSA, SBOM et Sigstore à la rescousse (Our dependency on Open Source is scary. SLSA, SBOM and Sigstore to the rescue)" %}
+
 
 ## Au cœur de la ruche eBPF! (Inside the eBPF hive!)
 
 I had heard about eBPF several times without really knowing what it was. So this talk was an opportunity for me to dig into the subject! Although very technical, [Mohammed Aboullaite](https://www.linkedin.com/in/aboullaite/) clearly explained how a kernel module works and how eBPF has evolved. I don't think I'll be writing my own kernel module tomorrow, but I now better understand all the "hype" around it and the value eBPF brings by making it easier to distribute a new module, with native performance and the same level of security.
 
-[Replay](https://www.youtube.com/watch?v=XaBbxb0r0fc)
+
+{% youtube "XaBbxb0r0fc", "Au cœur de la ruche eBPF! (Inside the eBPF hive!)" %}
+
 
 ## Le cauchemar des attaquants : une infrastructure sans secret (An attacker's nightmare: a secretless infrastructure)
 
@@ -73,7 +79,9 @@ Thibault shows us an architecture and the best practices that go with these conc
 
 No more endless password rotations: we have one access, and the rest is handled by the policies defined in our infrastructure's source code.
 
-[Replay](https://www.youtube.com/watch?v=U3AL2pqPg3I)
+
+{% youtube "U3AL2pqPg3I", "Le cauchemar des attaquants : une infrastructure sans secret (An attacker's nightmare: a secretless infrastructure)" %}
+
 
 ## Check-list ultime pour rendre vos app cloud native (The ultimate checklist to make your apps cloud native)
 
@@ -86,7 +94,9 @@ Part methodology, part experience report, Katia's talk is a goldmine of informat
 
 The points she covers are as much about people as about technology, including team onboarding and change management. The main pain points of these projects are addressed: could this be the ultimate recipe?
 
-[Replay](https://www.youtube.com/watch?v=3s-gtziZ3UU)
+
+{% youtube "3s-gtziZ3UU", "Check-list ultime pour rendre vos app cloud native (The ultimate checklist to make your apps cloud native)" %}
+
 
 ## Final words
 
