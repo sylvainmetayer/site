@@ -33,10 +33,10 @@
         <main>
           <xsl:choose>
             <xsl:when test="$en">
-              <p class="note">This is an <strong>RSS feed</strong>. Copy its address into a feed reader to follow new articles: <code><xsl:value-of select="atom:link[@rel='self']/@href"/></code></p>
+              <p class="note">This is an <strong>RSS feed</strong>. Copy its address into a feed reader to follow new articles (<a href="/en/feeds/">how?</a>): <code><xsl:value-of select="atom:link[@rel='self']/@href"/></code></p>
             </xsl:when>
             <xsl:otherwise>
-              <p class="note">Ceci est un <strong>flux RSS</strong>. Copiez son adresse dans un lecteur de flux pour suivre les nouveaux articles : <code><xsl:value-of select="atom:link[@rel='self']/@href"/></code></p>
+              <p class="note">Ceci est un <strong>flux RSS</strong>. Copiez son adresse dans un lecteur de flux pour suivre les nouveaux articles (<a href="/flux/">comment ?</a>) : <code><xsl:value-of select="atom:link[@rel='self']/@href"/></code></p>
             </xsl:otherwise>
           </xsl:choose>
           <h1><a href="{atom:link[not(@rel)]/@href}"><xsl:value-of select="atom:title"/></a></h1>
