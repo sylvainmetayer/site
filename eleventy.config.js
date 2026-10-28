@@ -21,7 +21,6 @@ if (!process.env.ELEVENTY_ENV && process.env.CF_PAGES) {
 }
 
 const passthroughItems = {
-  'src/_redirects': '_redirects',
   'src/_headers': '_headers',
   'src/feed.xsl': 'feed.xsl',
   // Served on the old apex origin by Pangolin, see the file header.

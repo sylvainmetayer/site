@@ -52,6 +52,8 @@ Dans un article, `{% baseline 'container-queries' %}` affiche le support navigat
 
 `/liens/` liste les liens saisis dans le CMS (`src/_data/links.json`) et ceux d'une liste Karakeep, si le build a `KARAKEEP_URL`, `KARAKEEP_API_KEY` et `KARAKEEP_LIST_ID` (la note du favori devient le commentaire). Sans liens, la page n'est pas générée.
 
+`dist/_redirects` est généré (`src/redirects.njk`) : les règles écrites à la main dans `src/_redirects`, puis celles du front matter, `redirect_from: [/ancienne/url/]` et `short: code` (lien court `/s/code`).
+
 Un article avec `repost: dev.to` dans son front matter apparaît dans `/devto.rss.xml`, le flux que dev.to importe.
 
 Chaque matin, `.github/workflows/syndicate.yml` (`scripts/syndicate.mjs`) envoie les webmentions des articles publiés la veille vers les pages qu'ils citent, et publie les nouveaux articles français sur Mastodon (variable `MASTODON_INSTANCE`, secret `MASTODON_TOKEN`) et Bluesky (variable `BLUESKY_HANDLE`, secret `BLUESKY_APP_PASSWORD`, un mot de passe d'application). Un article déjà publié n'est pas republié. Lancé à la main, il est en `--dry-run` par défaut.
