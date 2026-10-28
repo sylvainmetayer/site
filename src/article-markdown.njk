@@ -1,0 +1,17 @@
+---js
+// Each article as Markdown next to its page (/article/<slug>/index.md), for
+// LLMs and readers who want the source. Listed in /llms.txt.
+const pagination = {
+  data: 'collections.all',
+  size: 1,
+  alias: 'post',
+  before: items => items.filter(item => item.inputPath.startsWith('./src/posts/')),
+};
+const permalink = data => `${data.post.url}index.md`;
+const eleventyExcludeFromCollections = true;
+---
+# {{ post.data.title | safe }}
+
+{{ helpers.url() }}{{ post.url }} · {{ post.date | date('YYYY-MM-DD') }}{% if post.data.updated %} ({{ 'post.updated' | t({ date: post.data.updated | date('YYYY-MM-DD') }, post.data.lang) }}){% endif %}
+
+{{ post.inputPath | rawMarkdown | safe }}

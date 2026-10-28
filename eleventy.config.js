@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import matter from 'gray-matter';
 import rssPlugin from '@11ty/eleventy-plugin-rss';
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 import pluginTOC from 'eleventy-plugin-toc';
@@ -196,6 +198,9 @@ export default function eleventyConfig(config) {
     const translation = translationIndex(all).get(target.data.translationKey)?.[language];
     return translation?.url ? { url: translation.url, lang: language } : { url, lang: target.data.lang };
   });
+
+  // Body of a Markdown file, without its front matter (src/article-markdown.njk)
+  config.addFilter('rawMarkdown', inputPath => matter(readFileSync(inputPath, 'utf8')).content.trim());
 
   // Slug shared by an entry and its translation: anchors, search index
   config.addFilter('baseSlug', baseSlug);

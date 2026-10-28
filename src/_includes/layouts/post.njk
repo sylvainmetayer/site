@@ -3,6 +3,7 @@
 
 {% block extraMeta %}
   <meta property="og:type" content="article">
+  <link rel="alternate" type="text/markdown" href="{{ page.url }}index.md">
   <meta property="article:published_time" content="{{ date | w3DateFilter }}">
   {% if updated %}
     <meta property="article:modified_time" content="{{ updated | w3DateFilter }}">
