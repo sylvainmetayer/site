@@ -2,6 +2,7 @@ import { JSDOM } from 'jsdom';
 import { imageSizeFromFile } from 'image-size/fromFile';
 import Image from '@11ty/eleventy-img';
 import helpers from '../_data/helpers.js';
+import site from '../_data/site.json' with { type: 'json' };
 
 // Article images are served as AVIF and WebP, with the original format as a
 // fallback, in widths that cover the text column (--measure: 44rem) up to 2x.
@@ -17,6 +18,11 @@ const IMAGE_SIZES = '(min-width: 46rem) 44rem, 100vw';
 const OPTIMISABLE_IMAGE = /\.(jpe?g|png|webp)$/i;
 
 const isLocal = src => src.startsWith('/') && !src.startsWith('//');
+
+// Every character as a decimal entity: browsers show the address as usual,
+// scrapers that look for "mailto:" or "@" in the raw HTML do not find it
+const toEntities = text => [...text].map(char => `&#${char.codePointAt(0)};`).join('');
+const MAIL_LINK = 'mailto:' + site.authorEmail;
 
 const srcset = images => images.map(image => image.srcset).join(', ');
 
@@ -149,7 +155,11 @@ export default async function parseTransform(value, outputPath) {
       cell.setAttribute('scope', 'col');
     });
 
-    return '<!DOCTYPE html>\r\n' + document.documentElement.outerHTML;
+    // After serialising: JSDOM would write the entities back as characters
+    const html = document.documentElement.outerHTML
+      .replaceAll(MAIL_LINK, toEntities(MAIL_LINK))
+      .replaceAll(site.authorEmail, toEntities(site.authorEmail));
+    return '<!DOCTYPE html>\r\n' + html;
   }
   return value;
 };
