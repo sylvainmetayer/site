@@ -1,6 +1,7 @@
 ---js
 // Atom feed of the notes, separate from the articles' one; built once there is a note
-const permalink = data => data.publishedNotes > 0 && '/notes/feed.xml';
+const pagination = { data: 'collections.notes', size: Infinity };
+const permalink = '/notes/feed.xml';
 const eleventyExcludeFromCollections = true;
 ---
 <?xml version="1.0" encoding="utf-8"?>
@@ -13,7 +14,7 @@ const eleventyExcludeFromCollections = true;
   {% if collections.notes | length %}
     <updated>{{ collections.notes | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   {% endif %}
-  <id>{{ helpers.url() }}/notes/</id>
+  <id>{{ site.feedIdBase }}/notes/</id>
   <author>
     <name>{{ site.authorName }}</name>
     <uri>{{ helpers.url() }}/</uri>
@@ -24,7 +25,7 @@ const eleventyExcludeFromCollections = true;
       <link href="{{ helpers.url() }}{{ note.url }}"/>
       <published>{{ note.date | dateToRfc3339 }}</published>
       <updated>{{ note.date | dateToRfc3339 }}</updated>
-      <id>{{ helpers.url() }}{{ note.url }}</id>
+      <id>{{ site.feedIdBase }}{{ note.url }}</id>
       <content type="html"><![CDATA[{{ note.templateContent | safe }}]]></content>
     </entry>
   {%- endfor %}
