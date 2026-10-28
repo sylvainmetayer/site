@@ -1,5 +1,5 @@
 {% extends 'layouts/base.njk' %}
-{% from 'partials/macros.njk' import cmd, origin with context %}
+{% from 'partials/macros.njk' import cmd, origin, breadcrumb with context %}
 
 {% block extraMeta %}
   <meta property="og:type" content="article">
@@ -25,7 +25,7 @@
   {% set readingTime = helpers.getReadingTime(content) %}
   <article class="post h-entry" aria-labelledby="post-title">
     <header class="post-head">
-      <p class="cmd" aria-hidden="true">~/articles/{{ page.fileSlug }}.md</p>
+      {{ breadcrumb([{ name: 'articles', url: langPrefix + '/articles/' }], page.fileSlug + '.md') }}
       <h1 id="post-title" class="p-name">{{ title }}</h1>
       <ul class="meta">
         <li><time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date('YYYY-MM-DD') }}</time></li>

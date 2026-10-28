@@ -21,6 +21,7 @@ export default {
     'a11y.skip': 'Aller au contenu',
     'a11y.home': 'accueil',
     'a11y.mainNav': 'Navigation principale',
+    'breadcrumb.label': 'Fil d\'Ariane',
 
     'theme.legend': 'Thème de couleur',
     'theme.auto': 'auto',
@@ -177,6 +178,7 @@ export default {
     'a11y.skip': 'Skip to content',
     'a11y.home': 'home',
     'a11y.mainNav': 'Main navigation',
+    'breadcrumb.label': 'Breadcrumb',
 
     'theme.legend': 'Color theme',
     'theme.auto': 'auto',

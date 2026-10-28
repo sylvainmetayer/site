@@ -1,4 +1,5 @@
 {% extends 'layouts/base.njk' %}
+{% from 'partials/macros.njk' import breadcrumb with context %}
 
 {% block extraMeta %}
   <meta property="og:type" content="article">
@@ -8,7 +9,7 @@
 {% block content %}
   <article class="post h-entry" aria-labelledby="post-title">
     <header class="post-head">
-      <p class="cmd" aria-hidden="true">~/notes/{{ page.fileSlug }}.md</p>
+      {{ breadcrumb([{ name: 'notes', url: '/notes/' }], page.fileSlug + '.md') }}
       <h1 id="post-title" class="p-name">{{ title }}</h1>
       <ul class="meta">
         <li><time datetime="{{ page.date | w3DateFilter }}" class="dt-published">{{ page.date | date('YYYY-MM-DD') }}</time></li>

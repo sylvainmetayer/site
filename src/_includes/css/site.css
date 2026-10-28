@@ -210,6 +210,21 @@ samp {
   overflow-wrap: anywhere;
 }
 
+.breadcrumb a {
+  display: inline-block;
+  min-height: 24px;
+  color: inherit;
+}
+
+/* 24px wide target for the one-character home link (WCAG 2.5.8) */
+.breadcrumb a:first-child {
+  min-width: 24px;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
 .cmd .prompt {
   color: var(--ok);
 }
