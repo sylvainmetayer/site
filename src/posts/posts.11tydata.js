@@ -1,5 +1,6 @@
 import { baseSlug, entryData, isEnglishFile } from '../11ty/i18n.js';
 import ogImage from '../11ty/og-image.js';
+import checkPostFrontMatter from '../11ty/front-matter.js';
 
 const isLive = post => {
   const now = new Date();
@@ -13,6 +14,7 @@ const isEnglish = data => isEnglishFile(data.page.inputPath);
 const isPublished = data => process.env.ELEVENTY_ENV !== "production" || isLive(data);
 
 export default {
+  eleventyDataSchema: checkPostFrontMatter,
   eleventyComputed: {
     lang: data => entryData(data, 'post').lang,
     // Links a translation to its original (language switcher, hreflang)

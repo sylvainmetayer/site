@@ -56,3 +56,10 @@ test('markdown: code blocks get classes, no inline style, file name and options'
   assert.match(html, /class="line highlighted"/);
   assert.match(html, /class="tok-[0-9a-f]{6}/);
 });
+
+test('checkPostFrontMatter: names every invalid field', async () => {
+  const { default: check } = await import('../src/11ty/front-matter.js');
+  const page = { date: new Date('2020-01-01') };
+  assert.doesNotThrow(() => check({ title: 'Ok', page, tags: ['devops', 'k8s'], short: 'tf' }));
+  assert.throws(() => check({ title: '', page, tags: ['Bad Tag'], canonical: 'dev.to/x' }), /title.*tags.*canonical/);
+});
