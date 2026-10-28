@@ -55,6 +55,21 @@ collections:
       - { label: SEO - description, name: metaDesc, widget: string, required: false, i18n: true }
       - { label: Image de partage, name: socialImage, widget: image, required: false, i18n: duplicate }
 
+  - name: notes
+    label: Notes
+    label_singular: Note
+    folder: src/notes
+    create: true
+    slug: "{{slug}}"
+    preview_path: "notes/{{slug}}/"
+    sortable_fields: [date, title]
+    summary: "{{date | date('YYYY-MM-DD')}} · {{title}}"
+    fields:
+      - { label: Titre, name: title, widget: string }
+      - { label: Date de publication, name: date, widget: datetime, time_format: false, format: "YYYY-MM-DD" }
+      - { label: Contenu, name: body, widget: markdown }
+      - { label: Brouillon, name: draft, widget: boolean, default: false, required: false }
+
   - name: projets
     label: Projets
     label_singular: Projet

@@ -11,6 +11,7 @@
     <ul>
       <li><a href="{{ 'url.feeds' | t }}">{{ icon('rss') }}rss</a></li>
       <li><a href="{{ langPrefix }}/now/">now</a></li>
+      {% if collections.notes.length %}<li><a href="/notes/">notes</a></li>{% endif %}
       <li><a href="{{ langPrefix }}/uses/">uses</a></li>
       <li><a href="{{ langPrefix }}/colophon/">colophon</a></li>
       <li><a href="/sitemap.xml">sitemap</a></li>

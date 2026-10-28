@@ -108,6 +108,11 @@ export default function eleventyConfig(config) {
       .slice(0, site.maxPostsPerPage);
   });
 
+  // Short notes (src/notes/), newest first: /notes/
+  config.addCollection('notes', collection => {
+    return collection.getFilteredByGlob('./src/notes/*.md').sort(byNewest);
+  });
+
   config.addCollection('work', collection => {
     return collection.getFilteredByGlob('./src/work/*.md')
       .filter(isFrench)

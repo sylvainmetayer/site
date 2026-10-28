@@ -71,6 +71,10 @@ export default {
     'post.previous': 'précédent',
     'post.next': 'suivant',
 
+    'notes.all': 'toutes les notes',
+    'notes.lead': 'Des notes courtes : ce que j\'apprends au fil des jours, trop petit pour un article.',
+    'notes.none': 'Pas encore de note.',
+
     'code.copy': 'copier',
     'code.copied': 'copié',
 
