@@ -5,6 +5,7 @@ import talksCalendar, { fold } from '../src/11ty/ics.js';
 import { wrap } from '../src/11ty/og-image.js';
 import { mastodonAccount } from '../src/11ty/fediverse.js';
 import markdown from '../src/utils/markdown.js';
+import check from '../src/11ty/front-matter.js';
 
 test('fold: lines of at most 75 octets, unfolded back to the original', () => {
   const line = 'DESCRIPTION:' + 'é'.repeat(100);
@@ -57,8 +58,7 @@ test('markdown: code blocks get classes, no inline style, file name and options'
   assert.match(html, /class="tok-[0-9a-f]{6}/);
 });
 
-test('checkPostFrontMatter: names every invalid field', async () => {
-  const { default: check } = await import('../src/11ty/front-matter.js');
+test('checkPostFrontMatter: names every invalid field', () => {
   const page = { date: new Date('2020-01-01') };
   assert.doesNotThrow(() => check({ title: 'Ok', page, tags: ['devops', 'k8s'], short: 'tf' }));
   assert.doesNotThrow(() => check({ title: 'Brouillon', page, socialImage: false }));

@@ -3,7 +3,7 @@
   "version": "0.2",
   "import": ["@cspell/dict-fr-fr/cspell-ext.json"],
   "language": "fr,en",
-  "files": ["src/posts/*.md", "src/notes/*.md", "src/projets/*.md", "src/work/*.md", "src/*.md", "src/en/*.md"],
+  "files": ["src/posts/*.md", "src/notes/*.md", "src/projets/*.md", "src/work/*.md", "src/pages/*.md", "src/*.md", "src/en/*.md"],
   "overrides": [
     { "filename": ["**/*.en.md", "src/en/*.md"], "language": "en" }
   ],

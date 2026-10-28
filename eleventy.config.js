@@ -220,9 +220,12 @@ export default function eleventyConfig(config) {
 
   // /js/x.js -> /js/x.js?v=<hash of the file>: a new version changes the URL,
   // so the scripts can be cached as immutable (src/_headers)
+  // Hashed once per build, not once per page
+  const hashes = new Map();
+  config.on('eleventy.before', () => hashes.clear());
   config.addFilter('hashed', path => {
-    const hash = createHash('sha256').update(readFileSync(`src${path}`)).digest('hex').slice(0, 10);
-    return `${path}?v=${hash}`;
+    if (!hashes.has(path)) hashes.set(path, createHash('sha256').update(readFileSync(`src${path}`)).digest('hex').slice(0, 10));
+    return `${path}?v=${hashes.get(path)}`;
   });
 
   // "https://github.com/me/talk-sops/" -> "talk-sops": name of the QR code of a talk (src/talks-qr.njk)
@@ -260,16 +263,14 @@ export default function eleventyConfig(config) {
       .map(({ post }) => post);
   });
 
-  // The `count` posts most visited (src/_data/popularPaths.js, most visited
-  // first), the French and English versions of an article counting as one
-  config.addFilter('popular', (posts, paths, count = 5) => {
-    const rank = slug => paths.findIndex(path => path.split('/').at(-2) === slug);
+  // The `count` posts most visited (src/_data/popularPaths.js: article slugs,
+  // the French and English views of an article added up, most visited first)
+  config.addFilter('popular', (posts, slugs, count = 5) => {
+    const rank = new Map(slugs.map((slug, index) => [slug, index]));
     return posts
-      .map(post => ({ post, rank: rank(baseSlug(post.fileSlug)) }))
-      .filter(({ rank }) => rank >= 0)
-      .sort((a, b) => a.rank - b.rank)
-      .slice(0, count)
-      .map(({ post }) => post);
+      .filter(post => rank.has(baseSlug(post.fileSlug)))
+      .sort((a, b) => rank.get(baseSlug(a.fileSlug)) - rank.get(baseSlug(b.fileSlug)))
+      .slice(0, count);
   });
 
   // Posts whose Markdown body links to the article `slug` (in either language):
