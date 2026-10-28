@@ -2,7 +2,7 @@
 
 {% block extraMeta %}
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="{{ date | w3DateFilter }}">
+  <meta property="article:published_time" content="{{ page.date | w3DateFilter }}">
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
       <p class="cmd" aria-hidden="true">~/notes/{{ page.fileSlug }}.md</p>
       <h1 id="post-title" class="p-name">{{ title }}</h1>
       <ul class="meta">
-        <li><time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | date('YYYY-MM-DD') }}</time></li>
+        <li><time datetime="{{ page.date | w3DateFilter }}" class="dt-published">{{ page.date | date('YYYY-MM-DD') }}</time></li>
         <li><a href="/notes/">{{ 'notes.all' | t }}</a></li>
       </ul>
     </header>
