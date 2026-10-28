@@ -1102,6 +1102,16 @@ samp {
   text-decoration: underline;
 }
 
+/* Tag index (/tags/) */
+.tag-index {
+  border-top: 0;
+  font-size: 0.95rem;
+}
+
+.tag-count {
+  color: var(--muted);
+}
+
 /* Webmentions: counts, then replies and mentions */
 .webmentions h2 {
   margin: 0.4rem 0 0.8rem;

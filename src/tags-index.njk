@@ -1,0 +1,18 @@
+---
+title: Tags
+permalink: /tags/
+layout: layouts/base.njk
+metaDesc: "Les tags des articles de Sylvain MÉTAYER, avec le nombre d'articles de chacun."
+---
+{# Index of the tag pages (src/tags.njk): French articles only, like them #}
+{% from 'partials/macros.njk' import cmd with context %}
+<section class="section" aria-labelledby="page-title">
+  {{ cmd('ls tags/ | wc -l') }}
+  <h1 id="page-title" class="page-title">Tags</h1>
+  <p class="page-lead">{{ collections.postTagList.length }} tags · <a href="/articles/">tous les articles</a></p>
+</section>
+<ul class="post-tags tag-index">
+  {% for tag in collections.postTagList %}
+    <li><a href="/tags/{{ tag }}/">#{{ tag }} <span class="tag-count">({{ collections[tag].length }})</span></a></li>
+  {% endfor %}
+</ul>
