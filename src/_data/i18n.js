@@ -16,6 +16,7 @@ export default {
     'meta.imageAlt': 'Illustration pour « {title} »',
     'meta.ogLocale': 'fr_FR',
     'url.projects': '/projets/',
+    'url.feeds': '/flux/',
 
     'a11y.skip': 'Aller au contenu',
     'a11y.home': 'accueil',
@@ -147,6 +148,7 @@ export default {
     'meta.imageAlt': 'Illustration for “{title}”',
     'meta.ogLocale': 'en_GB',
     'url.projects': '/en/projects/',
+    'url.feeds': '/en/feeds/',
 
     'a11y.skip': 'Skip to content',
     'a11y.home': 'home',

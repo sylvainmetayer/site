@@ -9,7 +9,7 @@
       <li><a href="mailto:{{ site.authorEmail }}">{{ icon('mail') }}<span class="visually-hidden">{{ 'foot.email' | t({ email: site.authorEmail }) }}</span></a></li>
     </ul>
     <ul>
-      <li><a href="{{ '/en/feeds/' if lang == 'en' else '/flux/' }}">{{ icon('rss') }}rss</a></li>
+      <li><a href="{{ 'url.feeds' | t }}">{{ icon('rss') }}rss</a></li>
       <li><a href="{{ langPrefix }}/now/">now</a></li>
       <li><a href="/sitemap.xml">sitemap</a></li>
       <li><a href="/humans.txt">humans.txt</a></li>
