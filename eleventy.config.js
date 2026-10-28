@@ -217,6 +217,32 @@ export default function eleventyConfig(config) {
   config.addFilter('rawMarkdown', inputPath => matter(readFileSync(inputPath, 'utf8')).content
     .replace(/\{%-?\s*(end)?raw\s*-?%\}/g, '').trim());
 
+  // Up to `count` posts sharing the most tags with the one at `url`, newest first
+  // on a tie; posts without a shared tag are left out
+  config.addFilter('related', (posts, url, count = 3) => {
+    const tags = new Set(posts.find(post => post.url === url)?.data.tags || []);
+    return posts
+      .filter(post => post.url !== url)
+      .map(post => ({ post, shared: (post.data.tags || []).filter(tag => tags.has(tag)).length }))
+      .filter(({ shared }) => shared > 0)
+      .sort((a, b) => b.shared - a.shared || b.post.date - a.post.date)
+      .slice(0, count)
+      .map(({ post }) => post);
+  });
+
+  // Posts whose source links to the article `slug` (in either language):
+  // read from the Markdown files, templateContent is not ready for every page yet
+  const sources = new Map();
+  config.on('eleventy.before', () => sources.clear());
+  const source = post => {
+    if (!sources.has(post.inputPath)) sources.set(post.inputPath, readFileSync(post.inputPath, 'utf8'));
+    return sources.get(post.inputPath);
+  };
+  config.addFilter('backlinks', (posts, slug) => {
+    const link = new RegExp(`/article/${slug}(/|#|\\)|"|$)`, 'm');
+    return posts.filter(post => baseSlug(post.fileSlug) !== slug && link.test(source(post)));
+  });
+
   // Slug shared by an entry and its translation: anchors, search index
   config.addFilter('baseSlug', baseSlug);
 

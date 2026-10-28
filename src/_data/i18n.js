@@ -70,6 +70,9 @@ export default {
     'post.neighbours': 'Articles voisins',
     'post.previous': 'précédent',
     'post.next': 'suivant',
+    'post.more': 'Pour aller plus loin',
+    'post.related': 'Articles liés',
+    'post.backlinks': 'Cité dans',
     'post.series': 'Série « {name} »',
 
     'notes.all': 'toutes les notes',
@@ -211,6 +214,9 @@ export default {
     'post.neighbours': 'Other articles',
     'post.previous': 'previous',
     'post.next': 'next',
+    'post.more': 'Further reading',
+    'post.related': 'Related articles',
+    'post.backlinks': 'Linked from',
     'post.series': 'Series: {name}',
 
     'code.copy': 'copy',

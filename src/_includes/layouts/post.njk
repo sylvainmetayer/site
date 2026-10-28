@@ -87,6 +87,21 @@
     {% endif %}
   </article>
 
+  {% set relatedPosts = siblings | related(page.url) %}
+  {% set backlinkPosts = siblings | backlinks(page.fileSlug | baseSlug) %}
+  {% if relatedPosts.length or backlinkPosts.length %}
+    <aside class="post-links" aria-label="{{ 'post.more' | t }}">
+      {% if backlinkPosts.length %}
+        <h2>{{ 'post.backlinks' | t }}</h2>
+        <ul>{% for post in backlinkPosts %}<li><a href="{{ post.url }}">{{ post.data.title }}</a></li>{% endfor %}</ul>
+      {% endif %}
+      {% if relatedPosts.length %}
+        <h2>{{ 'post.related' | t }}</h2>
+        <ul>{% for post in relatedPosts %}<li><a href="{{ post.url }}">{{ post.data.title }}</a></li>{% endfor %}</ul>
+      {% endif %}
+    </aside>
+  {% endif %}
+
   {% include 'partials/webmentions.njk' %}
 
   {# Neighbours in the same language: the English articles are only the translated ones #}
