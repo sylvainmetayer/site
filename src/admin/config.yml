@@ -128,6 +128,20 @@ collections:
           - { label: SEO - description, name: metaDesc, widget: string, required: false, i18n: true }
           - { label: Contenu, name: body, widget: markdown, i18n: true }
 
+      - name: uses
+        label: Ce que j'utilise (/uses)
+        # src/uses.md en français, src/en/uses.md en anglais
+        file: src/{{locale}}/uses.md
+        i18n: true
+        fields:
+          - { label: Titre, name: title, widget: string, i18n: true }
+          - { label: Permalien, name: permalink, widget: hidden, i18n: true }
+          - { label: Layout, name: layout, widget: hidden, default: layouts/page.njk, i18n: duplicate }
+          - { label: Clé de traduction, name: translationKey, widget: hidden, default: uses, i18n: duplicate }
+          - { label: Mis à jour le, name: updated, widget: datetime, time_format: false, format: "YYYY-MM-DD", i18n: duplicate }
+          - { label: SEO - description, name: metaDesc, widget: string, required: false, i18n: true }
+          - { label: Contenu, name: body, widget: markdown, i18n: true }
+
   - name: generic_pages
     label: Pages génériques
     folder: src/pages
