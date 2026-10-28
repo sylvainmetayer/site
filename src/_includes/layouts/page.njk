@@ -5,6 +5,11 @@
     <header class="post-head">
       <p class="cmd" aria-hidden="true">~{{ page.url }}</p>
       <h1 id="page-title" class="page-title">{{ title }}</h1>
+      {% if updated %}
+        <ul class="meta">
+          <li>{{ 'post.updated' | t({ date: '<time datetime="' + (updated | w3DateFilter) + '">' + (updated | date('YYYY-MM-DD')) + '</time>' }) | safe }}</li>
+        </ul>
+      {% endif %}
     </header>
     <div class="prose">
       {{ content | safe }}

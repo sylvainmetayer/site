@@ -114,6 +114,20 @@ collections:
           - { label: SEO - description, name: metaDesc, widget: string, required: false, i18n: true }
           - { label: Image de partage, name: socialImage, widget: image, required: false, i18n: duplicate }
 
+      - name: now
+        label: Maintenant (/now)
+        # src/now.md en français, src/en/now.md en anglais
+        file: src/{{locale}}/now.md
+        i18n: true
+        fields:
+          - { label: Titre, name: title, widget: string, i18n: true }
+          - { label: Permalien, name: permalink, widget: hidden, i18n: true }
+          - { label: Layout, name: layout, widget: hidden, default: layouts/page.njk, i18n: duplicate }
+          - { label: Clé de traduction, name: translationKey, widget: hidden, default: now, i18n: duplicate }
+          - { label: Mis à jour le, name: updated, widget: datetime, time_format: false, format: "YYYY-MM-DD", i18n: duplicate }
+          - { label: SEO - description, name: metaDesc, widget: string, required: false, i18n: true }
+          - { label: Contenu, name: body, widget: markdown, i18n: true }
+
   - name: generic_pages
     label: Pages génériques
     folder: src/pages
