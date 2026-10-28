@@ -217,6 +217,9 @@ export default function eleventyConfig(config) {
   // cannot close the script element
   config.addFilter('jsonLd', value => JSON.stringify(value).replace(/</g, '\\u003c'));
 
+  // "https://github.com/me/talk-sops/" -> "talk-sops": name of the QR code of a talk (src/talks-qr.njk)
+  config.addFilter('repoName', repo => repo.replace(/\/$/, '').split('/').pop());
+
   // QR code of a URL, as an SVG (print version of the articles, /qr/talks/)
   config.addAsyncFilter('qrSvg', url => QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M' }));
 

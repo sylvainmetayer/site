@@ -5,7 +5,7 @@ pagination:
   data: talks.talks
   size: 1
   alias: talk
-permalink: "/qr/en/talks/{{ talk.repo | replace(r/\\/$/, '') | replace(r/.*\\//, '') }}.svg"
+permalink: "/qr/en/talks/{{ talk.repo | repoName }}.svg"
 eleventyExcludeFromCollections: true
 ---
 {{ (helpers.url() + '/en/talks/#' + ((talk.title_en or talk.title) | slugify)) | qrSvg | safe }}
