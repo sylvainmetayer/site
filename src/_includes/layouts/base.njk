@@ -9,8 +9,11 @@
     <meta name="generator" content="{{ eleventy.generator }}">
     <script src="{{ '/js/theme.js' | hashed }}"></script>
     {% if page.url == '/404.html' %}<script src="{{ '/js/not-found.js' | hashed }}"></script>{% endif %}
+    {# CSS Naked Day: no stylesheet, so no web font to preload #}
+    {% if not global.cssNakedDay %}
     <link rel="preload" href="/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    {% endif %}
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ helpers.url() }}{{ langPrefix }}/feed.xml">
     {# No hreflang when either page is canonical elsewhere (article first published on
        dev.to, LinkedIn…): search engines drop clusters that point to non-canonical URLs #}
