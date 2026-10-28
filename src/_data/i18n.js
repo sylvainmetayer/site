@@ -54,6 +54,7 @@ export default {
     'palette.themeAuto': 'Thème automatique',
 
     'home.allProjects': 'tous les projets ({count})',
+    'home.popular': 'Les plus lus ce mois-ci',
 
     'posts.title': 'Tous les articles',
     'posts.count.one': '{count} article',
@@ -213,6 +214,7 @@ export default {
     'palette.themeAuto': 'Automatic theme',
 
     'home.allProjects': 'all projects ({count})',
+    'home.popular': 'Most read this month',
 
     'posts.title': 'All articles',
     'posts.count.one': '{count} article',

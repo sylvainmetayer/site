@@ -54,6 +54,8 @@ Dans un article, `{% baseline 'container-queries' %}` affiche le support navigat
 
 `dist/_redirects` est généré (`src/redirects.njk`) : les règles écrites à la main dans `src/_redirects`, puis celles du front matter, `redirect_from: [/ancienne/url/]` et `short: code` (lien court `/s/code`).
 
+L'accueil liste les articles les plus lus sur 30 jours si le build a `CF_ANALYTICS_TOKEN` (droit Account Analytics: Read), `CF_ACCOUNT_ID` et `CF_ANALYTICS_SITE_TAG` (Cloudflare Web Analytics).
+
 Un article avec `repost: dev.to` dans son front matter apparaît dans `/devto.rss.xml`, le flux que dev.to importe.
 
 Chaque matin, `.github/workflows/syndicate.yml` (`scripts/syndicate.mjs`) envoie les webmentions des articles publiés la veille vers les pages qu'ils citent, et publie les nouveaux articles français sur Mastodon (variable `MASTODON_INSTANCE`, secret `MASTODON_TOKEN`) et Bluesky (variable `BLUESKY_HANDLE`, secret `BLUESKY_APP_PASSWORD`, un mot de passe d'application). Un article déjà publié n'est pas republié. Lancé à la main, il est en `--dry-run` par défaut.

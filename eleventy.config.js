@@ -257,6 +257,18 @@ export default function eleventyConfig(config) {
       .map(({ post }) => post);
   });
 
+  // The `count` posts most visited (src/_data/popularPaths.js, most visited
+  // first), the French and English versions of an article counting as one
+  config.addFilter('popular', (posts, paths, count = 5) => {
+    const rank = slug => paths.findIndex(path => path.split('/').at(-2) === slug);
+    return posts
+      .map(post => ({ post, rank: rank(baseSlug(post.fileSlug)) }))
+      .filter(({ rank }) => rank >= 0)
+      .sort((a, b) => a.rank - b.rank)
+      .slice(0, count)
+      .map(({ post }) => post);
+  });
+
   // Posts whose Markdown body links to the article `slug` (in either language):
   // rawInput, without front matter, templateContent is not ready for every page yet
   config.addFilter('backlinks', (posts, slug) => {
