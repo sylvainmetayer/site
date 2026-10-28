@@ -22,6 +22,7 @@ mise run dev       # http://localhost:8080, rechargement auto
 mise run build     # build de production dans dist/
 mise run preview   # http://localhost:8788, émulateur Cloudflare Pages (_redirects, _headers)
 mise run validate  # validation HTML du build
+npm test           # tests unitaires des filtres et du Markdown (node --test, test/)
 mise tasks         # liste des tâches
 ```
 

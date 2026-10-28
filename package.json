@@ -55,6 +55,7 @@
     "start": "npm run serve",
     "serve": "cross-env ELEVENTY_ENV=development eleventy --serve",
     "production": "eleventy",
+    "test": "node --test test/*.test.mjs",
     "validate": "html-validate \"dist/**/*.html\"",
     "check:links": "node scripts/check-links.mjs dist",
     "check:a11y": "node scripts/check-a11y.mjs dist",

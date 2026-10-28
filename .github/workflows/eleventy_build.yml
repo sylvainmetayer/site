@@ -27,6 +27,9 @@ jobs:
           path: dist
           retention-days: 1
 
+      - name: Unit tests of the build helpers
+        run: npm test
+
       - name: Check links, redirects and published URLs
         run: npm run check:links
 
