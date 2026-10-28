@@ -792,9 +792,10 @@ samp {
   margin-block: 0;
 }
 
-/* 24px high targets (WCAG 2.5.8) with the same rhythm as before */
+/* 24px high targets (WCAG 2.5.8) with the same rhythm as before. Block, not
+   inline-block: the list number stays on the first line of a long title */
 .toc a {
-  display: inline-block;
+  display: block;
   padding-block: 0.15rem;
   color: var(--fg);
   text-decoration: none;
@@ -802,6 +803,42 @@ samp {
 
 .toc a:hover {
   color: var(--accent);
+}
+
+/* Section being read (js/toc-spy.js) */
+.toc a[aria-current] {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Wide screens: the table of contents sits in the right margin and stays in view */
+@media (min-width: 82rem) {
+  .post {
+    position: relative;
+  }
+
+  .toc {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 2.5rem);
+    width: 14rem;
+    padding: 0;
+    border: 0;
+  }
+
+  .toc > .cmd {
+    display: none;
+  }
+
+  .toc-nav {
+    position: sticky;
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    padding-left: 0.9rem;
+    border-left: 1px dashed var(--line);
+  }
 }
 
 /* Long-form content written in Markdown */
