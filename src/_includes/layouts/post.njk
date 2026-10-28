@@ -14,9 +14,9 @@
 {% endblock %}
 
 {% block head %}
-  <script src="/js/toc-spy.js" defer></script>
-  <script src="/js/youtube.js" defer></script>
-  <script src="/js/copy-code.js" data-label="{{ 'code.copy' | t }}" data-copied="{{ 'code.copied' | t }}" defer></script>
+  <script src="{{ '/js/toc-spy.js' | hashed }}" defer></script>
+  <script src="{{ '/js/youtube.js' | hashed }}" defer></script>
+  <script src="{{ '/js/copy-code.js' | hashed }}" data-label="{{ 'code.copy' | t }}" data-copied="{{ 'code.copied' | t }}" defer></script>
 {% endblock %}
 
 {% block content %}

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="{{ eleventy.generator }}">
-    <script src="/js/theme.js"></script>
+    <script src="{{ '/js/theme.js' | hashed }}"></script>
     <link rel="preload" href="/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ helpers.url() }}{{ langPrefix }}/feed.xml">
@@ -50,9 +50,9 @@
     {% include "partials/site-foot.njk" %}
     {% include "partials/palette.njk" %}
     {% include "partials/lang-suggest.njk" %}
-    <script src="/js/palette.js" defer></script>
-    <script src="/js/lang-suggest.js" defer></script>
-    <script src="/js/register-service-worker.js" async defer></script>
+    <script src="{{ '/js/palette.js' | hashed }}" defer></script>
+    <script src="{{ '/js/lang-suggest.js' | hashed }}" defer></script>
+    <script src="{{ '/js/register-service-worker.js' | hashed }}" async defer></script>
     {% if site.cfBeaconToken and global.environment == 'production' %}
       {# Cloudflare Web Analytics: sylvain.dev is not a Cloudflare zone, so the beacon is not injected automatically (homelab tofu/site) #}
       <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cfBeaconToken }}"}'></script>

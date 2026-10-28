@@ -45,3 +45,8 @@
   Content-Type: application/jrd+json
 /.well-known/atproto-did
   Content-Type: text/plain; charset=utf-8
+
+# Scripts appelés avec ?v=<empreinte du fichier> (filtre hashed) : une nouvelle
+# version change d'URL.
+/js/*
+  Cache-Control: public, max-age=31536000, immutable

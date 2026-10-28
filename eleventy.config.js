@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import matter from 'gray-matter';
 import QRCode from 'qrcode';
@@ -216,6 +217,13 @@ export default function eleventyConfig(config) {
   // JSON for a <script type="application/ld+json">: "<" escaped so a value
   // cannot close the script element
   config.addFilter('jsonLd', value => JSON.stringify(value).replace(/</g, '\\u003c'));
+
+  // /js/x.js -> /js/x.js?v=<hash of the file>: a new version changes the URL,
+  // so the scripts can be cached as immutable (src/_headers)
+  config.addFilter('hashed', path => {
+    const hash = createHash('sha256').update(readFileSync(`src${path}`)).digest('hex').slice(0, 10);
+    return `${path}?v=${hash}`;
+  });
 
   // QR code of a URL, as an SVG (print version of the articles, /qr/talks/)
   config.addAsyncFilter('qrSvg', url => QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M' }));
