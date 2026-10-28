@@ -10,5 +10,8 @@ Un flux RSS permet de suivre les nouveaux articles sans dépendre d'un réseau s
 
 - **Articles en français** : `{{ helpers.url() }}/feed.xml` ([ouvrir](/feed.xml))
 - **Articles traduits en anglais** : `{{ helpers.url() }}/en/feed.xml` ([ouvrir](/en/feed.xml))
+{% if publishedNotes %}
+- **Notes courtes** : `{{ helpers.url() }}/notes/feed.xml` ([ouvrir](/notes/feed.xml))
+{% endif %}
 
 Les flux contiennent le texte complet des articles.

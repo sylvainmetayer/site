@@ -77,7 +77,8 @@ export default {
 
     'notes.all': 'toutes les notes',
     'notes.lead': 'Des notes courtes : ce que j\'apprends au fil des jours, trop petit pour un article.',
-    'notes.none': 'Pas encore de note.',
+    'notes.feed': 'Flux RSS des notes',
+    'palette.kindNote': 'note',
 
     'callout.note': 'Note',
     'callout.tip': 'Astuce',

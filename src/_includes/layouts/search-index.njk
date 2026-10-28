@@ -8,6 +8,10 @@
 {%- for post in (collections.postsAllEn if lang == 'en' else collections.posts) -%}
   {%- set entries = (entries.push({ t: post.data.title, u: post.url, k: 'article', d: (post.date | date('YYYY')) + ((' · ' + ('lang.inFrench' | t)) if post.data.lang != lang else ''), s: (post.data.tags or []) | join(' ') }), entries) -%}
 {%- endfor -%}
+{#- Notes: French only, listed on both palettes like the untranslated articles -#}
+{%- for note in collections.notes -%}
+  {%- set entries = (entries.push({ t: note.data.title, u: note.url, k: 'palette.kindNote' | t, d: (note.date | date('YYYY')) + ((' · ' + ('lang.inFrench' | t)) if lang != 'fr' else '') }), entries) -%}
+{%- endfor -%}
 {%- for talk in talks.talks -%}
   {%- set entries = (entries.push({ t: talk.title, u: langPrefix + '/talks/#' + (talk.title | slugify), k: 'talk', d: 'talks.sessions' | t({ count: talk.sessions | length }), s: talk.sessions | uniqueValues('event') | join(' ') }), entries) -%}
 {%- endfor -%}
