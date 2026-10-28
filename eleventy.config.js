@@ -6,6 +6,7 @@ import pluginTOC from 'eleventy-plugin-toc';
 
 import filters from './src/11ty/filters/index.js';
 import baseline from './src/11ty/shortcodes/baseline.js';
+import talksCalendar from './src/11ty/ics.js';
 import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
 import site from './src/_data/site.json' with { type: 'json' };
@@ -198,6 +199,9 @@ export default function eleventyConfig(config) {
     const translation = translationIndex(all).get(target.data.translationKey)?.[language];
     return translation?.url ? { url: translation.url, lang: language } : { url, lang: target.data.lang };
   });
+
+  // Talk sessions as an iCalendar file (src/talks-ics.njk)
+  config.addFilter('talksCalendar', talksCalendar);
 
   // Body of a Markdown file, without its front matter (src/article-markdown.njk)
   // and without the {% raw %} markers, which only exist for Nunjucks.
