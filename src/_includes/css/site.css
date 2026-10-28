@@ -952,6 +952,27 @@ samp {
   font-size: inherit;
 }
 
+/* Baseline shortcode (11ty/shortcodes/baseline.js): browser support of a web feature */
+.baseline {
+  padding: 0.05em 0.4em;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--muted);
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+
+.baseline-widely {
+  border-left-color: var(--ok);
+}
+
+.baseline-newly {
+  border-left-color: var(--accent);
+}
+
+.baseline-limited {
+  border-left-color: var(--warn);
+}
+
 /* Copy button added by js/copy-code.js */
 .code-block {
   position: relative;

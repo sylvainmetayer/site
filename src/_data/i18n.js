@@ -73,6 +73,10 @@ export default {
     'code.copy': 'copier',
     'code.copied': 'copié',
 
+    'baseline.widely': 'Baseline : largement disponible depuis {date}',
+    'baseline.newly': 'Baseline : nouvellement disponible depuis {date}',
+    'baseline.limited': 'support limité selon les navigateurs',
+
     'origin.publisher': ', sur le blog de {publisher}',
     'origin.with': ', écrit avec ',
     'origin.and': ' et ',
@@ -201,6 +205,10 @@ export default {
 
     'code.copy': 'copy',
     'code.copied': 'copied',
+
+    'baseline.widely': 'Baseline: widely available since {date}',
+    'baseline.newly': 'Baseline: newly available since {date}',
+    'baseline.limited': 'limited availability across browsers',
 
     'origin.publisher': ', on the {publisher} blog',
     'origin.with': ', written with ',
