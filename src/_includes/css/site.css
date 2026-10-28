@@ -856,6 +856,48 @@ samp {
 .prose p:not(:has(img, iframe)),
 .prose li,
 .prose blockquote,
+/* YouTube shortcode (11ty/shortcodes/youtube.js): thumbnail and play button until clicked (js/youtube.js) */
+.youtube-link {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #000;
+}
+
+.youtube-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.youtube-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 68px;
+  height: 48px;
+  margin: -24px 0 0 -34px;
+  border-radius: 12px;
+  background: rgb(0 0 0 / 0.75);
+}
+
+.youtube-play::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 27px;
+  border-style: solid;
+  border-width: 10px 0 10px 17px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.youtube-link:hover .youtube-play,
+.youtube-link:focus-visible .youtube-play {
+  background: #f00;
+}
+
 .prose .footnotes {
   max-width: 35rem;
 }

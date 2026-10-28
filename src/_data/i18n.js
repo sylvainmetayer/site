@@ -85,6 +85,8 @@ export default {
     'callout.warning': 'Attention',
     'callout.caution': 'Danger',
 
+    'youtube.play': 'Lire la vidéo « {title} »',
+
     'code.copy': 'copier',
     'code.copied': 'copié',
 
@@ -230,6 +232,8 @@ export default {
     'callout.important': 'Important',
     'callout.warning': 'Warning',
     'callout.caution': 'Caution',
+
+    'youtube.play': 'Play the video “{title}”',
 
     'code.copy': 'copy',
     'code.copied': 'copied',

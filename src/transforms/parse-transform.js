@@ -105,7 +105,9 @@ export default async function parseTransform(value, outputPath) {
     });
 
     const document = DOM.window.document;
-    const articleImages = [...document.querySelectorAll('main article img, .intro img')];
+    // The thumbnails of {% youtube %} are already optimised
+    const notOptimised = image => !image.closest('.youtube');
+    const articleImages = [...document.querySelectorAll('main article img, .intro img')].filter(notOptimised);
     const articleEmbeds = [...document.querySelectorAll('main article iframe')];
 
     const externalLinks = Array.from(document.querySelectorAll(`a:not([href^="${helpers.url()}"]):not([href^="#"]):not([href^="/"])`));
@@ -175,6 +177,7 @@ export default async function parseTransform(value, outputPath) {
 
     // Run after the captions above, which clone the images
     const optimisableImages = [...document.querySelectorAll('main article img, .intro img')]
+      .filter(notOptimised)
       .filter(image => isLocal(image.getAttribute('src')) && OPTIMISABLE_IMAGE.test(image.getAttribute('src')));
     await Promise.all(optimisableImages.map(image => optimiseImage(document, image)));
 

@@ -46,6 +46,8 @@ Les blocs de code sont colorés au build par Shiki (thème `src/utils/shiki-them
 
 Un encadré s'écrit comme sur GitHub : une citation qui commence par `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` ou `[!CAUTION]`.
 
+`{% youtube 'identifiant', 'Titre' %}` intègre une vidéo YouTube légère : la miniature est téléchargée au build, le lecteur (youtube-nocookie, autorisé par `frame-src` dans `_headers`) ne se charge qu'au clic.
+
 Dans un article, `{% baseline 'container-queries' %}` affiche le support navigateur d'une fonctionnalité web (identifiant de l'URL `https://webstatus.dev/features/<id>`), récupéré au build. Pas de « {% » dans `site.css` : la feuille passe par Nunjucks.
 
 Un article avec `repost: dev.to` dans son front matter apparaît dans `/devto.rss.xml`, le flux que dev.to importe.

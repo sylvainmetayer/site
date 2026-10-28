@@ -5,6 +5,7 @@ import pluginTOC from 'eleventy-plugin-toc';
 
 import filters from './src/11ty/filters/index.js';
 import baseline from './src/11ty/shortcodes/baseline.js';
+import youtube from './src/11ty/shortcodes/youtube.js';
 import talksCalendar from './src/11ty/ics.js';
 import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
@@ -65,6 +66,7 @@ export default function eleventyConfig(config) {
   config.addTransform('parse', parseTransform);
 
   config.addNunjucksAsyncShortcode('baseline', baseline);
+  config.addNunjucksAsyncShortcode('youtube', youtube);
 
   config.addPassthroughCopy(passthroughItems);
 
