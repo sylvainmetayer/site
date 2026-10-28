@@ -18,7 +18,8 @@
       <link rel="alternate" hreflang="{{ otherLang }}" href="{{ helpers.url() }}{{ alternate }}">
       <link rel="alternate" hreflang="x-default" href="{{ helpers.url() }}{{ page.url if lang == 'fr' else alternate }}">
     {% endif %}
-    <link rel="icon" href="{{ site.faviconPath }}" type="image/svg+xml">
+    {# Orange icon outside production (local, previews): tabs are told apart at a glance #}
+    <link rel="icon" href="{{ site.faviconPath if global.environment == 'production' else '/images/icons/favicon-dev.svg' }}" type="image/svg+xml">
     <meta name="google-site-verification" content="XROrcW2Xt6g7cyF4SDNyz08GZeMB90QlstI3SBnUsq0">
     {% include "partials/meta.njk" %}
     {% include "partials/json-ld.njk" %}
