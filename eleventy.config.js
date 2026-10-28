@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import matter from 'gray-matter';
+import QRCode from 'qrcode';
 import rssPlugin from '@11ty/eleventy-plugin-rss';
 import pluginTOC from 'eleventy-plugin-toc';
 
@@ -215,6 +216,9 @@ export default function eleventyConfig(config) {
   // JSON for a <script type="application/ld+json">: "<" escaped so a value
   // cannot close the script element
   config.addFilter('jsonLd', value => JSON.stringify(value).replace(/</g, '\\u003c'));
+
+  // QR code of a URL, as an SVG (print version of the articles, /qr/talks/)
+  config.addAsyncFilter('qrSvg', url => QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M' }));
 
   // Talk sessions as an iCalendar file (src/talks-ics.njk)
   config.addFilter('talksCalendar', talksCalendar);

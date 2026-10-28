@@ -92,6 +92,13 @@
   </article>
 
   {% set backlinkPosts = siblings | backlinks(page.fileSlug | baseSlug) %}
+  {# Printed article: a QR code back to the online version (its short link if any) #}
+  {% set printUrl = helpers.url() + ('/s/' + short if short else page.url) %}
+  <figure class="print-only print-qr">
+    <span aria-hidden="true">{{ printUrl | qrSvg | safe }}</span>
+    <figcaption>{{ printUrl }}</figcaption>
+  </figure>
+
   {# Share links: plain links, no third-party script #}
   {% set shareUrl = helpers.url() + page.url %}
   <nav class="share" aria-label="{{ 'share.label' | t }}">

@@ -1,0 +1,12 @@
+---
+# One QR code per talk, for the last slide: /qr/talks/<repository>.svg leads to
+# the talk on /talks/ (slides of every session, recordings). Named after the
+# repository, the same in both languages; src/en/talks-qr.njk for /en/talks/.
+pagination:
+  data: talks.talks
+  size: 1
+  alias: talk
+permalink: "/qr/talks/{{ talk.repo | replace(r/\\/$/, '') | replace(r/.*\\//, '') }}.svg"
+eleventyExcludeFromCollections: true
+---
+{{ (helpers.url() + '/talks/#' + (talk.title | slugify)) | qrSvg | safe }}

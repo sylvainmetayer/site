@@ -1439,6 +1439,28 @@ samp {
   font-weight: 600;
 }
 
+/* QR code of the printed articles (layouts/post.njk) */
+.print-only {
+  display: none;
+}
+
+@media print {
+  .print-only {
+    display: block;
+  }
+
+  .print-qr {
+    margin: 2rem 0 0;
+    font: 400 0.8rem/1.4 var(--mono);
+  }
+
+  .print-qr svg {
+    display: block;
+    width: 3cm;
+    height: 3cm;
+  }
+}
+
 /* Share links (layouts/post.njk) */
 .share {
   display: flex;
