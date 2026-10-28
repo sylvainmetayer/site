@@ -1163,6 +1163,10 @@ samp {
   text-align: center;
 }
 
+.figure-number {
+  font-weight: 600;
+}
+
 .prose hr {
   margin: 2rem 0;
 }

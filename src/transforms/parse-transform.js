@@ -125,6 +125,15 @@ export default async function parseTransform(value, outputPath) {
       });
     }
 
+    // Captions numbered in reading order: "Figure 2 · …" (the same word in French
+    // and English), so the text can refer to a figure by its number
+    document.querySelectorAll('main article .prose figure > figcaption').forEach((caption, index) => {
+      const number = document.createElement('span');
+      number.className = 'figure-number';
+      number.textContent = `Figure ${index + 1}`;
+      caption.prepend(number, ' · ');
+    });
+
     // Run after the captions above, which clone the images
     const optimisableImages = [...document.querySelectorAll('main article img, .intro img')]
       .filter(image => isLocal(image.getAttribute('src')) && OPTIMISABLE_IMAGE.test(image.getAttribute('src')));
