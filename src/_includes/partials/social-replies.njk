@@ -1,0 +1,30 @@
+{# Replies to the Mastodon and Bluesky posts of this article (src/_data/socialReplies.js) #}
+{% set threads = socialReplies[page.url] %}
+{% if threads %}
+  <section class="webmentions" aria-labelledby="discussion-title">
+    <h2 id="discussion-title">{{ 'discussion.title' | t }}</h2>
+    <p>
+      {%- for thread in threads -%}
+        <a href="{{ thread.url }}">{{ 'discussion.reply' | t({ network: thread.network }) }}</a>{% if not loop.last %} · {% endif %}
+      {%- endfor -%}
+    </p>
+    {% for thread in threads %}
+      {% if thread.replies.length %}
+        <ol class="webmentions-replies">
+          {% for reply in thread.replies %}
+            <li class="h-cite">
+              <p class="webmentions-meta">
+                {% if reply.authorUrl %}<a href="{{ reply.authorUrl }}" class="p-author">{{ reply.author }}</a>{% else %}<span class="p-author">{{ reply.author }}</span>{% endif %}
+                {{ 'discussion.on' | t({ network: thread.network }) }}
+                {% if reply.published %}
+                  {% if reply.url %}<a href="{{ reply.url }}" class="u-url">{% endif %}<time datetime="{{ reply.published }}" class="dt-published">{{ 'webmentions.on' | t({ date: reply.published | date('LL') }) }}</time>{% if reply.url %}</a>{% endif %}
+                {% endif %}
+              </p>
+              {% if reply.text %}<p class="p-content">{{ reply.text }}</p>{% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+    {% endfor %}
+  </section>
+{% endif %}

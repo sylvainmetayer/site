@@ -153,6 +153,10 @@ export default {
     'webmentions.replied': 'a répondu',
     'webmentions.mentioned': 'a mentionné cet article',
     'webmentions.on': 'le {date}',
+
+    'discussion.title': 'Discussion',
+    'discussion.reply': 'Répondre sur {network}',
+    'discussion.on': 'a répondu sur {network}',
   },
 
   en: {
@@ -302,5 +306,9 @@ export default {
     'webmentions.replied': 'replied',
     'webmentions.mentioned': 'mentioned this article',
     'webmentions.on': 'on {date}',
+
+    'discussion.title': 'Discussion',
+    'discussion.reply': 'Reply on {network}',
+    'discussion.on': 'replied on {network}',
   },
 };

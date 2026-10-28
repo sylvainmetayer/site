@@ -118,6 +118,7 @@
   {% endif %}
 
   {% include 'partials/webmentions.njk' %}
+  {% include 'partials/social-replies.njk' %}
 
   {# Neighbours in the same language: the English articles are only the translated ones #}
   {% set newer = siblings | getPreviousCollectionItem(page) %}
