@@ -1,7 +1,8 @@
 ---js
-// No page until the first published note (src/_data/publishedNotes.js)
+// No page until the first published note: paginating an empty collection builds nothing
 const title = 'Notes';
-const permalink = data => data.publishedNotes > 0 && '/notes/';
+const pagination = { data: 'collections.notes', size: Infinity };
+const permalink = '/notes/';
 const layout = 'layouts/base.njk';
 const metaDesc = "Notes courtes de Sylvain MÉTAYER : ce que j'apprends au fil des jours.";
 ---
