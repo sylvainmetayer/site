@@ -59,7 +59,8 @@ async function sendWebmentions(entry) {
   const { document } = new JSDOM(await (await fetchOk(entry.url)).text()).window;
   const targets = new Set([...document.querySelectorAll('.e-content a[href^="http"]')]
     .map(link => link.href.split('#')[0])
-    .filter(href => !href.startsWith(SITE) && !href.startsWith('https://sylvain.dev')));
+    // Compared by host: a prefix test would also skip https://sylvain.dev.example.org
+    .filter(href => ![new URL(SITE).host, 'sylvain.dev', 'www.sylvain.dev'].includes(new URL(href).host)));
   for (const target of targets) {
     try {
       const url = await endpoint(target);
