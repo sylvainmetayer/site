@@ -60,7 +60,7 @@ L'accueil liste les articles les plus lus sur 30 jours si le build a `CF_ANALYTI
 
 Un article avec `repost: dev.to` dans son front matter apparaît dans `/devto.rss.xml`, le flux que dev.to importe.
 
-Chaque matin, `.github/workflows/syndicate.yml` (`scripts/syndicate.mjs`) envoie les webmentions des articles publiés la veille vers les pages qu'ils citent, et publie les nouveaux articles français sur Mastodon (variable `MASTODON_INSTANCE`, secret `MASTODON_TOKEN`) et Bluesky (variable `BLUESKY_HANDLE`, secret `BLUESKY_APP_PASSWORD`, un mot de passe d'application). Un article déjà publié n'est pas republié. Lancé à la main, il est en `--dry-run` par défaut.
+Chaque matin, `.github/workflows/syndicate.yml` (`scripts/syndicate.mjs`) envoie les webmentions des articles publiés la veille vers les pages qu'ils citent, et publie les nouveaux articles français sur Mastodon (variable `MASTODON_INSTANCE`, secret `MASTODON_TOKEN`) et Bluesky (variable `BLUESKY_HANDLE`, secret `BLUESKY_APP_PASSWORD`, un mot de passe d'application). Un article déjà publié n'est pas republié. Chaque post est noté dans `src/_data/syndication.json` (commité par le workflow, ou à la main pour un post partagé autrement) : les commentaires sous l'article viennent des réponses à ces posts. Lancé à la main, il est en `--dry-run` par défaut.
 
 ## Version anglaise
 
