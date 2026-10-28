@@ -74,6 +74,7 @@ export default {
     'post.related': 'Articles liés',
     'post.backlinks': 'Cité dans',
     'post.series': 'Série « {name} »',
+    'share.label': 'Partager',
 
     'notes.all': 'toutes les notes',
     'notes.lead': 'Des notes courtes : ce que j\'apprends au fil des jours, trop petit pour un article.',
@@ -227,6 +228,7 @@ export default {
     'post.related': 'Related articles',
     'post.backlinks': 'Linked from',
     'post.series': 'Series: {name}',
+    'share.label': 'Share',
 
     'callout.note': 'Note',
     'callout.tip': 'Tip',

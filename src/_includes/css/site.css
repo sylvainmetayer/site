@@ -1424,6 +1424,25 @@ samp {
   font-weight: 600;
 }
 
+/* Share links (layouts/post.njk) */
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  align-items: baseline;
+  font: 400 0.82rem/1.5 var(--mono);
+  color: var(--muted);
+}
+
+.share ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 /* Related articles and backlinks (layouts/post.njk) */
 .post-links h2 {
   margin: 1.6rem 0 0.5rem;

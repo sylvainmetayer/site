@@ -92,6 +92,17 @@
   </article>
 
   {% set backlinkPosts = siblings | backlinks(page.fileSlug | baseSlug) %}
+  {# Share links: plain links, no third-party script #}
+  {% set shareUrl = helpers.url() + page.url %}
+  <nav class="share" aria-label="{{ 'share.label' | t }}">
+    <span>{{ 'share.label' | t }}<span class="visually-hidden"> :</span></span>
+    <ul>
+      <li><a href="https://shareopenly.org/share/?url={{ shareUrl | urlencode }}&amp;text={{ title | urlencode }}">Mastodon</a></li>
+      <li><a href="https://bsky.app/intent/compose?text={{ (title + ' ' + shareUrl) | urlencode }}">Bluesky</a></li>
+      <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ shareUrl | urlencode }}">LinkedIn</a></li>
+    </ul>
+  </nav>
+
   {% set relatedPosts = siblings | related(page.url, backlinkPosts) %}
   {% if relatedPosts.length or backlinkPosts.length %}
     <aside class="post-links" aria-label="{{ 'post.more' | t }}">
