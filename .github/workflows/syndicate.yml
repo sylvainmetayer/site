@@ -3,8 +3,10 @@ name: Syndicate
 # Après le déploiement quotidien (daily_build.yml, 6 h UTC) : webmentions
 # sortantes et publication des nouveaux articles sur Mastodon et Bluesky
 # (scripts/syndicate.mjs). Sans les secrets d'un réseau, il est ignoré.
-# Les posts publiés sont notés dans src/_data/syndication.json, commité ici :
-# les commentaires des articles en viennent.
+# Les posts publiés sont notés dans src/_data/syndication.json (les commentaires
+# des articles en viennent). main n'accepte que des PR (ruleset, homelab
+# tofu/site) : le fichier mis à jour est déposé en artefact et une issue
+# demande de le reporter dans une PR.
 on:
   schedule:
     - cron: '30 7 * * *'
@@ -16,7 +18,8 @@ on:
         default: true
 
 permissions:
-  contents: write
+  contents: read
+  issues: write
 
 jobs:
   syndicate:
@@ -25,8 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # Pushes src/_data/syndication.json at the end
-          persist-credentials: true
+          persist-credentials: false
 
       - uses: ./.github/actions/setup
 
@@ -39,11 +41,29 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run && '--dry-run' || '' }}
         run: node scripts/syndicate.mjs --days 2 $DRY_RUN
 
-      - name: Commit the new posts (src/_data/syndication.json)
+      - name: Check for new posts
+        id: changed
         if: ${{ !inputs.dry_run }}
+        run: git diff --quiet -- src/_data/syndication.json || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Keep the updated syndication.json
+        if: steps.changed.outputs.changed == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: syndication
+          path: src/_data/syndication.json
+
+      - name: Ask for a PR with the new posts
+        if: steps.changed.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          git diff --quiet -- src/_data/syndication.json && exit 0
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m "Syndication : nouveaux posts Mastodon/Bluesky" -- src/_data/syndication.json
-          git push
+          {
+            echo "Nouveaux posts Mastodon/Bluesky : reporter ce changement de \`src/_data/syndication.json\` dans une PR (fichier complet dans l'artefact « syndication » de $RUN_URL)."
+            echo
+            echo '```diff'
+            git diff -- src/_data/syndication.json
+            echo '```'
+          } > "$RUNNER_TEMP/body.md"
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "Syndication : posts à reporter dans syndication.json" --body-file "$RUNNER_TEMP/body.md"
