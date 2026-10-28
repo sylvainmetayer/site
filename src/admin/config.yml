@@ -216,6 +216,19 @@ collections:
             fields:
               - { label: Libellé, name: label, widget: string }
               - { label: URL, name: url, widget: string }
+      - name: links
+        label: Liens partagés (/liens/)
+        file: src/_data/links.json
+        fields:
+          - label: Liens
+            name: links
+            widget: list
+            summary: "{{date}} · {{title}}"
+            fields:
+              - { label: Date, name: date, widget: datetime, time_format: false, format: "YYYY-MM-DD" }
+              - { label: Titre, name: title, widget: string }
+              - { label: URL, name: url, widget: string }
+              - { label: Commentaire (Markdown, une ligne), name: comment, widget: string, required: false }
       - name: formations
         label: Formations
         file: src/_data/formations.json

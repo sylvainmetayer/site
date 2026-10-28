@@ -1102,6 +1102,32 @@ samp {
   text-decoration: underline;
 }
 
+/* Shared links (/liens/) */
+.link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-list li {
+  padding: 0.8rem 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.link-list time,
+.link-site {
+  color: var(--muted);
+  font: 400 0.8rem/1.5 var(--mono);
+}
+
+.link-list time {
+  margin-right: 0.6rem;
+}
+
+.link-list .e-content {
+  margin-top: 0.2rem;
+}
+
 /* Tag index (/tags/) */
 .tag-index {
   border-top: 0;

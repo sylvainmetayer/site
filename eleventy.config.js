@@ -205,6 +205,9 @@ export default function eleventyConfig(config) {
     return translation?.url ? { url: translation.url, lang: language } : { url, lang: target.data.lang };
   });
 
+  // One line of Markdown without the <p> (comments of src/_data/links.json)
+  config.addFilter('markdownInline', text => markdownLibrary.renderInline(text));
+
   // Talk sessions as an iCalendar file (src/talks-ics.njk)
   config.addFilter('talksCalendar', talksCalendar);
 
