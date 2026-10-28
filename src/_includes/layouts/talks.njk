@@ -21,7 +21,7 @@
         <div>
           <h3>{{ talk.title }}<small>{{ 'talks.sessions' | t({ count: talk.sessions.length }) }}</small></h3>
           <div class="body">
-            <p>{% if talk.with %}{{ 'talks.with' | t }} <a href="{{ talk.with.url }}">{{ talk.with.name }}</a> · {% endif %}<a href="{{ talk.repo }}">{{ 'projects.sources' | t }}<span class="visually-hidden">{{ 'talks.sourcesOf' | t({ title: talk.title }) }}</span></a> · <a href="/qr{{ langPrefix }}/talks/{{ talk.repo | replace(r/\/$/, '') | replace(r/.*\//, '') }}.svg">QR code<span class="visually-hidden">{{ 'talks.sourcesOf' | t({ title: talk.title }) }}</span></a></p>
+            <p>{% if talk.with %}{{ 'talks.with' | t }} <a href="{{ talk.with.url }}">{{ talk.with.name }}</a> · {% endif %}<a href="{{ talk.repo }}">{{ 'projects.sources' | t }}<span class="visually-hidden">{{ 'talks.sourcesOf' | t({ title: talk.title }) }}</span></a> · <a href="/qr{{ langPrefix }}/talks/{{ talk.repo | repoName }}.svg">QR code<span class="visually-hidden">{{ 'talks.sourcesOf' | t({ title: talk.title }) }}</span></a></p>
             <ul>
               {% for session in sessions %}
                 {# Hidden context: these short links repeat for every session #}

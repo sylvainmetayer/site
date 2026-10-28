@@ -1,5 +1,6 @@
 {#- Structured data (schema.org) for search engines: the author on the home page,
-    the article on the article pages, the breadcrumb on the other pages -#}
+    the article on the article pages, the breadcrumb on the other pages. Included
+    by partials/meta.njk, whose pageDesc, currentUrl and socialImage it reuses -#}
 {%- set base = helpers.url() -%}
 {%- set person = { '@type': 'Person', '@id': base + '/#person', name: site.authorName, url: base + '/', jobTitle: site.role, sameAs: social.links | uniqueValues('url') } -%}
 {%- set isHome = page.url == '/' or page.url == '/en/' -%}
@@ -12,6 +13,8 @@
   {%- set crumbs = [{ name: 'palette.home' | t, url: base + langPrefix + '/' }] -%}
   {%- if isArticle -%}
     {%- set crumbs = (crumbs.push({ name: 'posts.title' | t, url: base + langPrefix + '/articles/' }), crumbs) -%}
+  {%- elif page.url.startsWith('/notes/') and page.url != '/notes/' -%}
+    {%- set crumbs = (crumbs.push({ name: 'Notes', url: base + '/notes/' }), crumbs) -%}
   {%- endif -%}
   {%- set crumbs = (crumbs.push({ name: title, url: base + page.url }), crumbs) -%}
   {%- set items = [] -%}
@@ -24,13 +27,13 @@
   {%- set graph = (graph.push({
     '@type': 'BlogPosting',
     headline: title,
-    description: metaDesc or excerpt or site.shortDesc,
-    url: base + page.url,
-    mainEntityOfPage: base + page.url,
+    description: pageDesc,
+    url: currentUrl,
+    mainEntityOfPage: currentUrl,
     inLanguage: lang,
     datePublished: page.date | w3DateFilter,
     dateModified: (updated or page.date) | w3DateFilter,
-    image: base + (socialImage or site.socialImage),
+    image: base + socialImage,
     keywords: (tags or []) | join(', '),
     author: person
   }), graph) -%}
