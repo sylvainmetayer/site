@@ -15,7 +15,8 @@
   <id>{{ site.feedIdBase }}{{ (langPrefix + '/') if langPrefix else '' }}</id>
   <author>
     <name>{{ site.authorName }}</name>
-    <email>{{ site.authorEmail }}</email>
+    {# No <email>: the pages encode the address against scrapers (parse-transform.js) #}
+    <uri>{{ helpers.url() }}{{ langPrefix }}/</uri>
   </author>
   {% for post in feedPosts %}
     {% set absolutePostUrl %}{{ helpers.url() }}{{ post.url | url }}{% endset %}
