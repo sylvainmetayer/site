@@ -213,6 +213,10 @@ export default function eleventyConfig(config) {
   // "@user@instance" -> { user, instance, url } (src/_data/site.json `mastodon`)
   config.addFilter('mastodonAccount', mastodonAccount);
 
+  // JSON for a <script type="application/ld+json">: "<" escaped so a value
+  // cannot close the script element
+  config.addFilter('jsonLd', value => JSON.stringify(value).replace(/</g, '\\u003c'));
+
   // Talk sessions as an iCalendar file (src/talks-ics.njk)
   config.addFilter('talksCalendar', talksCalendar);
 
