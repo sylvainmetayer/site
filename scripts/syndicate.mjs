@@ -1,7 +1,7 @@
 // After a deploy, for the articles published in the last days (live feeds):
 // - sends a webmention to every external page an article links to;
 // - posts the French articles to Mastodon and Bluesky (POSSE), once each, and
-//   records each post in src/_data/syndication.json (committed by the workflow),
+//   records each post in src/_data/syndication.json (the workflow asks for a PR),
 //   where the comments under the articles come from (src/_data/socialReplies.js).
 // Run every morning by .github/workflows/syndicate.yml, after the daily deploy.
 //
