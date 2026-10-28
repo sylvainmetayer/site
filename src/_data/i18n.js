@@ -55,6 +55,8 @@ export default {
 
     'home.allProjects': 'tous les projets ({count})',
     'home.popular': 'Les plus lus ce mois-ci',
+    'random.lead': 'Direction un article tiré au hasard… Si rien ne se passe, choisissez-en un :',
+    'palette.random': 'Article au hasard',
 
     'posts.title': 'Tous les articles',
     'posts.count.one': '{count} article',
@@ -219,6 +221,7 @@ export default {
 
     'home.allProjects': 'all projects ({count})',
     'home.popular': 'Most read this month',
+    'palette.random': 'Random article',
 
     'posts.title': 'All articles',
     'posts.count.one': '{count} article',

@@ -21,6 +21,7 @@
 {%- for tag in collections.posts | postTags -%}
   {%- set entries = (entries.push({ t: '#' + tag, u: '/tags/' + tag + '/', k: 'tag' }), entries) -%}
 {%- endfor -%}
+{%- set entries = (entries.push({ t: 'palette.random' | t, u: '/hasard/', k: 'action', s: 'hasard random aleatoire surprise' }), entries) -%}
 {%- set entries = (entries.push({ t: 'palette.cv' | t, u: 'cv.pdf' | t, k: 'action', s: 'cv pdf resume' }), entries) -%}
 {%- set entries = (entries.push({ t: 'palette.feed' | t, u: 'url.feeds' | t, k: 'action', s: 'rss atom feed' }), entries) -%}
 {%- set entries = (entries.push({ t: 'palette.themeDark' | t, a: 'theme:dark', k: 'action', s: 'theme dark nuit sombre' }), entries) -%}
