@@ -61,5 +61,6 @@ test('checkPostFrontMatter: names every invalid field', async () => {
   const { default: check } = await import('../src/11ty/front-matter.js');
   const page = { date: new Date('2020-01-01') };
   assert.doesNotThrow(() => check({ title: 'Ok', page, tags: ['devops', 'k8s'], short: 'tf' }));
+  assert.doesNotThrow(() => check({ title: 'Brouillon', page, socialImage: false }));
   assert.throws(() => check({ title: '', page, tags: ['Bad Tag'], canonical: 'dev.to/x' }), /title.*tags.*canonical/);
 });

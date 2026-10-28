@@ -14,7 +14,8 @@ const RULES = {
   series: value => value === undefined || (typeof value === 'string' && value.trim() !== '') || 'texte',
   short: value => value === undefined || /^[a-z0-9-]+$/.test(value) || 'minuscules, chiffres et tirets',
   redirect_from: value => value === undefined || [value].flat().every(isPath) || 'chemin(s) commençant par /',
-  socialImage: value => value === undefined || isPath(value) || 'chemin commençant par /',
+  // false: no generated image (unpublished article, posts.11tydata.js)
+  socialImage: value => value === undefined || value === false || isPath(value) || 'chemin commençant par /',
   canonical: value => value === undefined || isUrl(value) || 'URL complète',
   original: value => value === undefined || isUrl(value) || 'URL complète',
 };
