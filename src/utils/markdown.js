@@ -5,6 +5,7 @@ import shiki from '@shikijs/markdown-it';
 import { transformerMetaHighlight } from '@shikijs/transformers';
 import shikiTheme, { tokenClass } from './shiki-theme.js';
 import i18n from '../_data/i18n.js';
+import { DEFAULT_LANG } from '../11ty/i18n.js';
 
 /**
  * Markdown config
@@ -113,7 +114,7 @@ markdownLibrary.core.ruler.after('inline', 'callouts', state => {
     tokens[i].tag = tokens[close].tag = 'div';
     tokens[i].attrSet('class', `callout callout-${type}`);
     tokens[i].attrSet('role', 'note');
-    const strings = i18n[state.env?.lang] || i18n.fr;
+    const strings = i18n[state.env?.lang] || i18n[DEFAULT_LANG];
     const title = new state.Token('html_block', '', 0);
     title.content = `<p class="callout-title">${strings[`callout.${type}`]}</p>\n`;
     tokens.splice(i + 1, 0, title);

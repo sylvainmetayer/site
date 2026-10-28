@@ -214,9 +214,13 @@ export default function eleventyConfig(config) {
 
   // Body of a Markdown file, without its front matter (src/article-markdown.njk)
   // and without the {% raw %} markers, which only exist for Nunjucks.
+  // {% youtube 'id', 'Titre' %} becomes a link to the video.
   // shortcut: other shortcodes ({% baseline %}) stay as written, render them if an article uses one.
   config.addFilter('rawMarkdown', inputPath => matter(readFileSync(inputPath, 'utf8')).content
-    .replace(/\{%-?\s*(end)?raw\s*-?%\}/g, '').trim());
+    .replace(/\{%-?\s*(end)?raw\s*-?%\}/g, '')
+    .replace(/\{%-?\s*youtube\s+(["'])([\w-]{11})\1\s*,\s*(["'])(.*?)\3\s*-?%\}/g,
+      (_, _q, id, _q2, title) => `[${title.replace(/\\(["'])/g, '$1')}](https://www.youtube.com/watch?v=${id})`)
+    .trim());
 
   // Up to `count` posts sharing the most tags with the one at `url`, newest first
   // on a tie; posts without a shared tag, in `exclude` (backlinks) or in the same

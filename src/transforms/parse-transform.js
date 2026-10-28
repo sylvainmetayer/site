@@ -32,14 +32,15 @@ const EMOJI = /\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic
 
 // Emojis in the text become role="img" with a name in the language of the page
 // (src/_data/emojis.json): screen readers name them alike, whatever the platform.
-// Not in code, not twice, not where an aria-label already names the element.
+// Not in code, not twice, not in a link or button an aria-label already names
+// (an aria-label on a section or landmark does not replace its content).
 function labelEmojis(document) {
   const lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
   const walker = document.createTreeWalker(document.querySelector('main') || document.body, 4 /* NodeFilter.SHOW_TEXT */);
   const nodes = [];
   while (walker.nextNode()) {
     const node = walker.currentNode;
-    if (EMOJI.test(node.data) && !node.parentElement.closest('pre, code, script, style, [role="img"], [aria-hidden="true"], [aria-label]')) nodes.push(node);
+    if (EMOJI.test(node.data) && !node.parentElement.closest('pre, code, script, style, [role="img"], [aria-hidden="true"], a[aria-label], button[aria-label]')) nodes.push(node);
     EMOJI.lastIndex = 0;
   }
   nodes.forEach(node => {
@@ -97,8 +98,14 @@ async function optimiseImage(document, image) {
 
   // Blurred placeholder (LQIP): a 16px wide copy inlined as a data: URI, under
   // the image until it loads. A separate <img>, as html-validate forbids inline styles.
-  // sharp drops the metadata (ICC profile included): about 150 bytes instead of 3 kB
-  const tiny = await sharp('src' + image.getAttribute('src')).resize(16).webp({ quality: 40 }).toBuffer();
+  // sharp drops the metadata (ICC profile included): about 150 bytes instead of 3 kB.
+  // Not under a transparent image: the blur would show through it once loaded.
+  const source = sharp('src' + image.getAttribute('src'));
+  if ((await source.metadata()).hasAlpha) {
+    image.replaceWith(picture);
+    return;
+  }
+  const tiny = await source.resize(16).webp({ quality: 40 }).toBuffer();
   const placeholder = document.createElement('img');
   placeholder.className = 'lqip';
   placeholder.setAttribute('src', `data:image/webp;base64,${tiny.toString('base64')}`);
@@ -220,7 +227,8 @@ export default async function parseTransform(value, outputPath) {
       const sidenote = document.createElement('span');
       sidenote.className = 'sidenote';
       sidenote.setAttribute('aria-hidden', 'true');
-      sidenote.innerHTML = `<span class="sidenote-number">${ref.textContent.replace(/\D/g, '')}</span> ${[...note.children].map(child => child.innerHTML).join(' ')}`;
+      // The number from href="#fn2": the text of a repeated reference is "2:1"
+      sidenote.innerHTML = `<span class="sidenote-number">${note.id.replace(/\D/g, '')}</span> ${[...note.children].map(child => child.innerHTML).join(' ')}`;
       sidenote.querySelectorAll('.footnote-backref').forEach(backref => backref.remove());
       sidenote.querySelectorAll('a, button').forEach(link => link.setAttribute('tabindex', '-1'));
       ref.parentNode.after(sidenote);
