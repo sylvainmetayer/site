@@ -3,18 +3,22 @@
 // subscribed calendar shows the next ones as they are added to talks.json.
 
 // TEXT values escape \ ; , and newlines (RFC 5545 3.3.11)
-const escapeText = text => String(text).replace(/[\;,]/g, '\\$&').replace(/\r?\n/g, '\\n');
+const escapeText = text => String(text).replace(/[\\;,]/g, '\\$&').replace(/\r?\n/g, '\\n');
 
 // Lines longer than 75 octets continue on the next line after a space (3.1)
 export function fold(line) {
   const parts = [];
   let current = '';
+  let bytes = 0;
   for (const char of line) {
-    if (Buffer.byteLength(current + char) > (parts.length ? 74 : 75)) {
+    const size = Buffer.byteLength(char);
+    if (bytes + size > (parts.length ? 74 : 75)) {
       parts.push(current);
       current = '';
+      bytes = 0;
     }
     current += char;
+    bytes += size;
   }
   parts.push(current);
   return parts.join('\r\n ');
@@ -33,7 +37,8 @@ const slug = text => text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f
 export default function talksCalendar(talks, name) {
   const events = talks.flatMap(talk => talk.sessions.map(session => [
     'BEGIN:VEVENT',
-    `UID:${session.date}-${slug(session.event)}@sylvain.dev`,
+    // The talk is part of the UID: two talks can share an event and a day (Devoxx France 2024)
+    `UID:${session.date}-${slug(session.event)}-${slug(talk.title)}@sylvain.dev`,
     `DTSTAMP:${day(session.date)}T000000Z`,
     `DTSTART;VALUE=DATE:${day(session.date)}`,
     `DTEND;VALUE=DATE:${day(nextDay(session.date))}`,
