@@ -1198,6 +1198,30 @@ samp {
   margin-inline: auto;
 }
 
+/* Blurred placeholder under the optimised images (parse-transform.js) */
+.lqip-wrap {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.lqip-wrap > picture img {
+  position: relative;
+}
+
+.lqip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(14px);
+  transform: scale(1.1);
+}
+
 .prose figcaption {
   margin-top: 0.4rem;
   font: 400 0.8rem/1.5 var(--mono);

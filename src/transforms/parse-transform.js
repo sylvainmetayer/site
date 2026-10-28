@@ -1,6 +1,8 @@
 import { JSDOM } from 'jsdom';
 import { imageSizeFromFile } from 'image-size/fromFile';
 import Image from '@11ty/eleventy-img';
+// Installed with eleventy-img: a placeholder needs no file or cache entry
+import sharp from 'sharp';
 import helpers from '../_data/helpers.js';
 import site from '../_data/site.json' with { type: 'json' };
 import emojis from '../_data/emojis.json' with { type: 'json' };
@@ -93,8 +95,21 @@ async function optimiseImage(document, image) {
   img.setAttribute('decoding', 'async');
   picture.appendChild(img);
 
+  // Blurred placeholder (LQIP): a 16px wide copy inlined as a data: URI, under
+  // the image until it loads. A separate <img>, as html-validate forbids inline styles.
+  // sharp drops the metadata (ICC profile included): about 150 bytes instead of 3 kB
+  const tiny = await sharp('src' + image.getAttribute('src')).resize(16).webp({ quality: 40 }).toBuffer();
+  const placeholder = document.createElement('img');
+  placeholder.className = 'lqip';
+  placeholder.setAttribute('src', `data:image/webp;base64,${tiny.toString('base64')}`);
+  placeholder.setAttribute('alt', '');
+  placeholder.setAttribute('aria-hidden', 'true');
+  const wrapper = document.createElement('span');
+  wrapper.className = 'lqip-wrap';
+  wrapper.append(placeholder, picture);
+
   // A linked image keeps pointing to the original file
-  image.replaceWith(picture);
+  image.replaceWith(wrapper);
 }
 
 export default async function parseTransform(value, outputPath) {
