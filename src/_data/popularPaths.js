@@ -4,7 +4,7 @@ import Fetch from '@11ty/eleventy-fetch';
 // (GraphQL API), for the "most read" list of the home page. Needs
 // CF_ANALYTICS_TOKEN (Account Analytics: Read), CF_ACCOUNT_ID and
 // CF_ANALYTICS_SITE_TAG; without them, or if the API fails, the list is empty.
-// ['/article/slug/', …], most visited first
+// ['slug', …]: article slugs, French and English views added up, most visited first
 const { CF_ANALYTICS_TOKEN, CF_ACCOUNT_ID, CF_ANALYTICS_SITE_TAG } = process.env;
 
 const QUERY = `query ($account: String!, $site: String!, $since: Date!) {
@@ -32,9 +32,12 @@ export default async function popularPaths() {
       },
     });
     if (response.errors?.length) throw new Error(response.errors[0].message);
-    return response.data.viewer.accounts[0].rumPageloadEventsAdaptiveGroups
-      .map(group => group.dimensions.requestPath.replace(/\/?$/, '/'))
-      .filter(path => /^\/(en\/)?article\//.test(path));
+    const views = new Map();
+    for (const { count, dimensions } of response.data.viewer.accounts[0].rumPageloadEventsAdaptiveGroups) {
+      const slug = dimensions.requestPath.match(/^\/(?:en\/)?article\/([^/]+)\/?$/)?.[1];
+      if (slug) views.set(slug, (views.get(slug) || 0) + count);
+    }
+    return [...views].sort((a, b) => b[1] - a[1]).map(([slug]) => slug);
   } catch (error) {
     console.warn(`[popularPaths] ${error.message}`);
     return [];

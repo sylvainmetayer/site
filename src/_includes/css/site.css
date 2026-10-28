@@ -258,15 +258,12 @@ samp {
   }
 }
 
-/* The header stays in place while the page changes */
-.site-head {
-  view-transition-name: site-head;
-}
-
 /* ---------- Header ---------- */
 
 .site-head {
   border-bottom: 1px solid var(--line);
+  /* The header stays in place while the page changes */
+  view-transition-name: site-head;
 }
 
 .site-head .wrap {
