@@ -31,6 +31,8 @@
         timer = setTimeout(function () {
           button.textContent = label;
         }, 2000);
+      }).catch(function () {
+        // Permission denied or page not focused: the text stays selectable by hand
       });
     });
   });
