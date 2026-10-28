@@ -6,7 +6,8 @@ import matter from 'gray-matter';
 // matter of src/projets/), shown on their cards. GITHUB_TOKEN raises the API
 // limit (60 requests an hour without it). A repository the API does not
 // answer for is left out.
-// { 'https://github.com/owner/name': { stars, pushedAt, archived } }
+// Last commit: the latest of the default branch, not pushed_at, which moves
+// with any branch (Renovate). { 'https://github.com/owner/name': { stars, lastCommit, archived } }
 const dir = new URL('../projets/', import.meta.url);
 const repos = [...new Set(readdirSync(dir)
   .filter(file => file.endsWith('.md'))
@@ -18,8 +19,10 @@ export default async function githubRepos() {
   const entries = await Promise.all(repos.map(async repo => {
     const name = repo.replace('https://github.com/', '').replace(/\/$/, '');
     try {
-      const data = await Fetch(`https://api.github.com/repos/${name}`, { duration: '1d', type: 'json', fetchOptions: { headers } });
-      return [repo, { stars: data.stargazers_count, pushedAt: data.pushed_at, archived: data.archived }];
+      const get = path => Fetch(`https://api.github.com/repos/${name}${path}`, { duration: '1d', type: 'json', fetchOptions: { headers } });
+      const data = await get('');
+      const [commit] = await get(`/commits?sha=${encodeURIComponent(data.default_branch)}&per_page=1`);
+      return [repo, { stars: data.stargazers_count, lastCommit: commit.commit.committer.date, archived: data.archived }];
     } catch (error) {
       console.warn(`[githubRepos] ${name} : ${error.message}`);
       return null;

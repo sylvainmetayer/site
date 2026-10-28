@@ -65,7 +65,7 @@
         {% if github %}
           <p class="repo-stats">
             <span aria-hidden="true">★ {{ github.stars }}</span><span class="visually-hidden">{{ 'projects.stars' | t({ count: github.stars }) }}</span>
-            · {{ 'projects.pushed' | t({ date: '<time datetime="' + github.pushedAt + '">' + (github.pushedAt | date('YYYY-MM')) + '</time>' }) | safe }}
+            · {{ 'projects.pushed' | t({ date: '<time datetime="' + github.lastCommit + '">' + (github.lastCommit | date('YYYY-MM')) + '</time>' }) | safe }}
             {%- if github.archived %} · {{ 'projects.archived' | t }}{% endif %}
           </p>
         {% endif %}

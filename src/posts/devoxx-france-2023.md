@@ -21,7 +21,7 @@ series: "Retours de conférence"
 
 Nous sommes (re)venus à [DevoxxFR](https://www.devoxx.fr/) pour cette 11ème édition, et il y avait du choix ! Avec en moyenne 8 conférences/tool-in-action en parallèle, il y en a pour tous les goûts ! Ça tombe bien, ayant tous des préférences différentes, nous avons pu couvrir un bon nombre des conférences sur différents thèmes : front, IA, CI/CD,  Kubernetes...
 
-Pour les moments où il y a trop de choix sur un même créneau, il est toujours possible de compter sur la [chaine Youtube de Devoxx](https://www.youtube.com/@DevoxxFRvideos). En effet, la quasi-totalité des talks sont déjà disponibles en replay ! 
+Pour les moments où il y a trop de choix sur un même créneau, il est toujours possible de compter sur la [chaîne YouTube de Devoxx](https://www.youtube.com/@DevoxxFRvideos). En effet, la quasi-totalité des talks sont déjà disponibles en replay ! 
 
 Parmi ce que nous avons eu l'occasion de voir, voici notre top 5 !
 
@@ -56,7 +56,7 @@ Si vous souhaitez un cours complet, vulgarisé et abordable, avec un historique 
 
 Avec cette université de 3 heures, [Loïc Ortola](https://www.twitter.com/@LoicOrtola) et [Aurélien Moreau](https://www.twitter.com/@AurelOps) de [Takima](https://www.takima.fr/), nous propose une plongée dans la mise en place d'un cluster Kubernetes via de l'_Infrastructure as code_.
 
-L'utilisation de chaque outil est justifiée par son rôle. Le talk développe petit à petit la mise en place d'une infrastructure complexe, multi-cluster en partant du provisionning de l'infrastructure jusqu'au déploiement continue des applications dans une approche 100% Gitops.
+L'utilisation de chaque outil est justifiée par son rôle. Le talk développe petit à petit la mise en place d'une infrastructure complexe, multi-cluster en partant du provisioning de l'infrastructure jusqu'au déploiement continue des applications dans une approche 100% Gitops.
 
 
 {% youtube "FyAD_-LAMLo", "Une Architecture GitOps from scratch : Gitlab, Ansible, Terraform, Kubernetes et AWS" %}
@@ -96,7 +96,7 @@ Dans ce Tools in action, [Kevin Davin](https://twitter.com/davinkevin) nous prop
 
 Entre les performances, les sucres syntaxiques et les bonnes pratiques, Kevin nous montre la vaste boite à outil dont dispose postgres pour aider le développeur à proposer des applications plus performantes et maintenables. 
 
-Il nous présente aussi quelques mauvaises pratiques qui sont pourtant monnaie courante lorsque l'on aborde ce SGBD d'un oeil novice. 
+Il nous présente aussi quelques mauvaises pratiques qui sont pourtant monnaie courante lorsque l'on aborde ce SGBD d'un œil novice. 
 
 Que vous utilisiez ou non postgres, ce talk vous montrera ses super pouvoirs et vous invite à l'essayer.
 
