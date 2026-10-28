@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="{{ eleventy.generator }}">
     <script src="{{ '/js/theme.js' | hashed }}"></script>
+    {% if page.url == '/404.html' %}<script src="{{ '/js/not-found.js' | hashed }}"></script>{% endif %}
     <link rel="preload" href="/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ helpers.url() }}{{ langPrefix }}/feed.xml">
