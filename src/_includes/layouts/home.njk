@@ -6,8 +6,8 @@
   {# h-card of the site's author: name, URL, note, other profiles (rel=me) #}
   <section class="hero h-card" aria-labelledby="hero-title">
     {{ cmd('whoami') }}
-    <h1 id="hero-title"><a class="p-name u-url u-uid" href="{{ helpers.url() }}/">{{ title }}</a></h1>
-    <p class="visually-hidden"><span class="p-additional-name">{{ site.authorName }}</span>, <span class="p-job-title">{{ site.role }}</span>, <span class="p-locality">{{ site.location }}</span></p>
+    <h1 id="hero-title"><a class="u-url u-uid" href="{{ helpers.url() }}/">{{ title }}</a></h1>
+    <p class="visually-hidden"><span class="p-name">{{ site.authorName }}</span>, <span class="p-job-title">{{ site.role }}</span>, <span class="p-locality">{{ site.location }}</span></p>
     <div class="lead p-note">{{ content | safe }}</div>
     <ul class="links">
       {% for link in social.links %}

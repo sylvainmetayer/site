@@ -1,7 +1,9 @@
 ---js
 // Mastodon alias: searching any @…@sylvain.dev finds the account of site.json
-// `mastodon` (WebFinger, RFC 7033). Not built without an account.
-const permalink = data => Boolean(data.site.mastodon) && '/.well-known/webfinger';
+// `mastodon` (WebFinger, RFC 7033). Not built without a valid account.
+// Imports resolve from the project root, where Eleventy runs
+import { mastodonAccount } from './src/11ty/fediverse.js';
+const permalink = data => Boolean(mastodonAccount(data.site.mastodon)) && '/.well-known/webfinger';
 const eleventyExcludeFromCollections = true;
 // No file extension, as the specifications require
 const eleventyAllowMissingExtension = true;

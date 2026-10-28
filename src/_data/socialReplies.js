@@ -33,19 +33,26 @@ const reply = ({ author, authorUrl, url, published, text }) => ({
   text: text.length > 500 ? `${text.slice(0, 499)}…` : text,
 });
 
+// The threads of the posts that link an article, fetched in parallel: a post
+// that fails is left out, not the whole network
+async function settled(name, promises) {
+  const results = await Promise.allSettled(promises);
+  results.filter(result => result.status === 'rejected').forEach(({ reason }) => console.warn(`[socialReplies] ${name} : ${reason.message}`));
+  return results.filter(result => result.status === 'fulfilled' && result.value).map(result => result.value);
+}
+
 async function mastodon() {
   const account = mastodonAccount(site.mastodon);
   if (!account) return [];
   const api = path => `https://${account.instance}/api/v1/${path}`;
   const { id } = await getJson(api(`accounts/lookup?acct=${account.user}`));
   const statuses = await getJson(api(`accounts/${id}/statuses?limit=40&exclude_replies=true`));
-  const threads = [];
-  for (const status of statuses) {
+  return settled('mastodon', statuses.map(async status => {
     const links = [status.card?.url, ...[...new JSDOM(status.content).window.document.querySelectorAll('a[href]')].map(link => link.href)];
     const path = links.map(articlePath).find(Boolean);
-    if (!path) continue;
+    if (!path) return null;
     const { descendants } = await getJson(api(`statuses/${status.id}/context`));
-    threads.push({
+    return {
       path,
       network: 'Mastodon',
       url: status.url,
@@ -57,9 +64,8 @@ async function mastodon() {
         // Paragraphs and line breaks kept as spaces, tags dropped
         text: new JSDOM(item.content.replace(/<br\s*\/?>|<\/p>/g, ' ')).window.document.body.textContent.trim(),
       })),
-    });
-  }
-  return threads;
+    };
+  }));
 }
 
 async function bluesky() {
@@ -67,10 +73,10 @@ async function bluesky() {
   const xrpc = method => `https://public.api.bsky.app/xrpc/${method}`;
   const postUrl = post => `https://bsky.app/profile/${post.author.handle}/post/${post.uri.split('/').pop()}`;
   const { feed } = await getJson(xrpc(`app.bsky.feed.getAuthorFeed?actor=${encodeURIComponent(site.bluesky)}&limit=50&filter=posts_no_replies`));
-  const threads = [];
-  for (const { post } of feed) {
-    const path = articlePath(post.record.embed?.external?.uri) || articlePath(post.record.facets?.flatMap(facet => facet.features).find(feature => feature.uri)?.uri);
-    if (!path) continue;
+  return settled('bluesky', feed.map(async ({ post }) => {
+    const uris = [post.record.embed?.external?.uri, ...(post.record.facets || []).flatMap(facet => facet.features).map(feature => feature.uri)];
+    const path = uris.map(articlePath).find(Boolean);
+    if (!path) return null;
     const { thread } = await getJson(xrpc(`app.bsky.feed.getPostThread?uri=${encodeURIComponent(post.uri)}&depth=10`));
     const replies = [];
     (function walk(node) {
@@ -87,9 +93,8 @@ async function bluesky() {
       }
     })(thread);
     replies.sort((a, b) => String(a.published).localeCompare(String(b.published)));
-    threads.push({ path, network: 'Bluesky', url: postUrl(post), replies });
-  }
-  return threads;
+    return { path, network: 'Bluesky', url: postUrl(post), replies };
+  }));
 }
 
 export default async function socialReplies() {
