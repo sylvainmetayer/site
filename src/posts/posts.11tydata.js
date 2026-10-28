@@ -1,4 +1,5 @@
 import { baseSlug, entryData, isEnglishFile } from '../11ty/i18n.js';
+import ogImage from '../11ty/og-image.js';
 
 const isLive = post => {
   const now = new Date();
@@ -15,6 +16,12 @@ export default {
     translationKey: data => entryData(data, 'post').translationKey,
     // Last review (`updated` front matter), a Date even when written as a quoted string
     updated: data => data.updated && new Date(data.updated),
+    // A generated share image with the title, unless the front matter sets one
+    socialImage: data => data.socialImage || ogImage({
+      title: data.title,
+      path: `~/articles/${baseSlug(data.page.fileSlug)}.md`,
+      footer: `sylvain.dev · ${data.page.date.toISOString().slice(0, 10)}`,
+    }),
     // Unpublished posts get no page in production (permalink false)
     permalink: data => {
       const publish = process.env.ELEVENTY_ENV !== "production" || isLive(data);
