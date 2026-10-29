@@ -169,3 +169,13 @@ webmention
 webmentions
 Webmentions
 Yohan
+ASUS
+Beszel
+Datacenter
+Homebox
+Immich
+Jellyfin
+Karakeep
+Nextcloud
+ntfy
+proxmox
