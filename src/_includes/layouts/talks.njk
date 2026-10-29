@@ -7,7 +7,6 @@
   {{ cmd('ls -l talks/') }}
   <h1 id="page-title" class="page-title">{{ title }}</h1>
   <p class="page-lead">{{ 'talks.lead' | t({ playlist: talks.playlist }) | safe }}</p>
-  <p class="page-lead">{{ 'talks.calendar' | t({ link: '<a href="/talks.ics">' + ('talks.calendarLink' | t) + '</a>' }) | safe }}</p>
 </section>
 
 {# Hidden heading so the talk titles (h3) do not skip a level after the h1 #}

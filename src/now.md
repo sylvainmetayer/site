@@ -26,4 +26,4 @@ Je continue de décrire [mon homelab](https://github.com/sylvainmetayer/homelab)
 
 ## Ce site
 
-J'y ajoute des idées repérées sur [11tybundle.dev](https://11tybundle.dev/) : une version Markdown des articles, des séries, des notes en marge, l'agenda des talks… Le détail est dans le [colophon](/colophon/).
+J'y ajoute des idées repérées sur [11tybundle.dev](https://11tybundle.dev/) : une version Markdown des articles, des séries, des notes en marge… Le détail est dans [Sous le capot](/sous-le-capot/).
