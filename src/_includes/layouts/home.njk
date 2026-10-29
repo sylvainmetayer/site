@@ -28,6 +28,16 @@
     </section>
   {% endif %}
 
+  {# Most read over 30 days (Cloudflare Web Analytics), when the build has access to it #}
+  {% set popularPosts = (collections.postsAllEn if lang == 'en' else collections.posts) | popular(popularPaths) %}
+  {% if popularPosts.length %}
+    <section class="section" aria-labelledby="popular-title">
+      {{ cmd('sort -rn views.log | head -' + popularPosts.length) }}
+      <h2 id="popular-title">{{ 'home.popular' | t }}</h2>
+      {{ postList(popularPosts) }}
+    </section>
+  {% endif %}
+
   <section class="section" aria-labelledby="latest-title">
     {{ cmd('ls -t articles/ | head -' + latest.length) }}
     <h2 id="latest-title">{{ postsHeading }}</h2>

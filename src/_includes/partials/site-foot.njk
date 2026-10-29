@@ -1,7 +1,7 @@
 {% from 'partials/icons.njk' import icon %}
 <footer class="site-foot">
   <div class="wrap">
-    <p>© {{ global.now | date('YYYY') }} {{ site.authorName }} · {{ 'foot.generated' | t({ eleventy: '<a href="https://www.11ty.dev/">Eleventy</a>', date: global.now | date('YYYY-MM-DD') }) | safe }}</p>
+    <p>© {{ global.now | date('YYYY') }} {{ site.authorName }} · {{ 'foot.generated' | t({ eleventy: '<a href="https://www.11ty.dev/">Eleventy</a>', date: global.now | date('YYYY-MM-DD') }) | safe }}{% if global.commit %} · <a href="{{ global.repository }}/commit/{{ global.commit }}">commit {{ global.commit | truncate(7, true, '') }}</a>{% endif %}</p>
     <ul class="site-foot-social">
       {% for link in social.links %}
         <li><a href="{{ link.url }}" rel="me">{{ icon(link.icon) }}<span class="visually-hidden">{{ link.label }}</span></a></li>
@@ -17,7 +17,7 @@
       <li><a href="{{ 'url.underTheHood' | t }}">{{ 'foot.underTheHood' | t }}</a></li>
       <li><a href="/sitemap.xml">sitemap</a></li>
       <li><a href="/humans.txt">humans.txt</a></li>
-      <li><a href="https://github.com/sylvainmetayer/site">{{ icon('github') }}sources</a></li>
+      <li><a href="{{ global.repository }}">{{ icon('github') }}sources</a></li>
     </ul>
   </div>
 </footer>

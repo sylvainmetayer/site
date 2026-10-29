@@ -61,6 +61,14 @@
             {% for tech in project.data.stack %}<li>{{ tech }}</li>{% endfor %}
           </ul>
         {% endif %}
+        {% set github = githubRepos[project.data.repo] %}
+        {% if github %}
+          <p class="repo-stats">
+            <span aria-hidden="true">★ {{ github.stars }}</span><span class="visually-hidden">{{ 'projects.stars' | t({ count: github.stars }) }}</span>
+            · {{ 'projects.pushed' | t({ date: '<time datetime="' + github.lastCommit + '">' + (github.lastCommit | date('YYYY-MM')) + '</time>' }) | safe }}
+            {%- if github.archived %} · {{ 'projects.archived' | t }}{% endif %}
+          </p>
+        {% endif %}
         {% if project.data.repo or project.data.article %}
           <p class="actions">
             {# The project name makes the repeated "sources" / "article" links unambiguous out of context #}

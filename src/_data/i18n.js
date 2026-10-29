@@ -56,6 +56,7 @@ export default {
     'palette.themeAuto': 'Thème automatique',
 
     'home.allProjects': 'tous les projets ({count})',
+    'home.popular': 'Les plus lus ce mois-ci',
 
     'posts.title': 'Tous les articles',
     'posts.count.one': '{count} article',
@@ -78,6 +79,8 @@ export default {
     'post.backlinks': 'Cité dans',
     'post.series': 'Série « {name} »',
     'share.label': 'Partager',
+    'post.source': 'voir la source',
+    'post.suggest': 'proposer une correction',
 
     'notes.all': 'toutes les notes',
     'notes.lead': 'Des notes courtes : ce que j\'apprends au fil des jours, trop petit pour un article.',
@@ -114,6 +117,10 @@ export default {
     'projects.sources': 'sources',
     'projects.sourcesOf': ' de {title}',
     'projects.articleOn': ' sur {title}',
+    'projects.stars.one': '{count} étoile sur GitHub',
+    'projects.stars.other': '{count} étoiles sur GitHub',
+    'projects.pushed': 'dernier commit {date}',
+    'projects.archived': 'archivé',
 
     'talks.desc': 'Talks de Sylvain MÉTAYER (SOPS, asdf, automatisation du poste de travail, Kubernetes sur deux sites, Terraform) : slides et replays.',
     'talks.lead': 'Talks donnés en conférence et en meetup, avec les slides de chaque édition et les replays quand il y en a. Les vidéos sont aussi dans <a href="{playlist}">une playlist YouTube</a>.',
@@ -213,6 +220,7 @@ export default {
     'palette.themeAuto': 'Automatic theme',
 
     'home.allProjects': 'all projects ({count})',
+    'home.popular': 'Most read this month',
 
     'posts.title': 'All articles',
     'posts.count.one': '{count} article',
@@ -237,6 +245,8 @@ export default {
     'post.backlinks': 'Linked from',
     'post.series': 'Series: {name}',
     'share.label': 'Share',
+    'post.source': 'view source',
+    'post.suggest': 'suggest a fix',
 
     'callout.note': 'Note',
     'callout.tip': 'Tip',
@@ -268,6 +278,10 @@ export default {
     'projects.sources': 'source',
     'projects.sourcesOf': ' of {title}',
     'projects.articleOn': ' about {title}',
+    'projects.stars.one': '{count} star on GitHub',
+    'projects.stars.other': '{count} stars on GitHub',
+    'projects.pushed': 'last commit {date}',
+    'projects.archived': 'archived',
 
     'talks.desc': 'Talks by Sylvain MÉTAYER (SOPS, asdf, workstation automation, Kubernetes across two sites, Terraform): slides and recordings.',
     'talks.lead': 'Talks given at conferences and meetups, in French, with the slides of each edition and the recordings when there are some. The videos are also in <a href="{playlist}">a YouTube playlist</a>.',

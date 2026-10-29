@@ -39,7 +39,7 @@ J’ai également mis en place un LDAP avec un container Docker dans l’environ
 
 J'ai auparavant travaillé sur 2 projets.
 
-Le premier était un projet pour un client qui restera inconnu, pour des clauses commerciales liées au contrat. Ce projet consistait à la refonte d'un espace membre, avec un système de souscription, d'avantage, de quizz et de campagne email avec l'aide d'Adobe Campaign. Ce projet a été réalisé avec Drupal 8, un CMS[^3] PHP.
+Le premier était un projet pour un client qui restera inconnu, pour des clauses commerciales liées au contrat. Ce projet consistait à la refonte d'un espace membre, avec un système de souscription, d'avantage, de quiz et de campagne email avec l'aide d'Adobe Campaign. Ce projet a été réalisé avec Drupal 8, un CMS[^3] PHP.
 
 Le second projet est un ensemble de sous-projets, consistant à la refonte des sites de la région Nouvelle-Aquitaine, également sous Drupal 8. Ce choix était une contrainte client, puisque tous les utilisateurs (rédacteurs, traducteurs, ...) sont déjà habitués à l'interface d'administration de Drupal 7, et qu'un changement aurait impliqué des frais de formation à un nouvel outil, pas forcément nécessaire et valable.
 
@@ -61,7 +61,7 @@ Ce sujet sera donc assez théorique, mais portera également une partie pratique
 
 D'une part avec la légère expérience personnelle que j'ai avec ce domaine, où j'ai automatisé certains projets, tels que par exemple [un chatbot réalisé en 4ème année](/article/projets-epsi/#bot-telegram), ou encore [ma découverte d'Ansible](/article/ansible), avec lequel j'ai automatisé l'installation d'un serveur Debian.
 
-D'autre part avec le projet sur lequel je suis en train de travailler lors de mon alternance à [onepoint](https://groupeonepoint.com). L'objectif est de faire plus ou moins une refonte, ou du moins une amélioration de la chaine d'industrialisation.
+D'autre part avec le projet sur lequel je suis en train de travailler lors de mon alternance à [onepoint](https://groupeonepoint.com). L'objectif est de faire plus ou moins une refonte, ou du moins une amélioration de la chaîne d'industrialisation.
 
 Ce projet va être pour moi une opportunité de pouvoir me confronter à des problématiques réelles d'entreprises, et monter en compétences sur tous les domaines concernant l'intégration et le déploiement continu. Ce projet devrait être lancé dans les semaines à venir.
 

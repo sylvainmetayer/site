@@ -1,4 +1,5 @@
-import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { copyFileSync, mkdirSync, readFileSync } from 'node:fs';
 import matter from 'gray-matter';
 import QRCode from 'qrcode';
 import rssPlugin from '@11ty/eleventy-plugin-rss';
@@ -216,6 +217,22 @@ export default function eleventyConfig(config) {
   // cannot close the script element
   config.addFilter('jsonLd', value => JSON.stringify(value).replace(/</g, '\\u003c'));
 
+  // /js/x.js -> /js/v/x.<hash>.js: a copy named after its content, written to
+  // dist/js/v/ at the end of the build. Only those names are cached as
+  // immutable (src/_headers); /js/x.js keeps the default cache.
+  const hashes = new Map();
+  config.on('eleventy.before', () => hashes.clear());
+  config.addFilter('hashed', path => {
+    if (!hashes.has(path)) hashes.set(path, createHash('sha256').update(readFileSync(`src${path}`)).digest('hex').slice(0, 10));
+    return path.replace(/^\/js\/(.+)\.js$/, `/js/v/$1.${hashes.get(path)}.js`);
+  });
+  config.on('eleventy.after', ({ directories }) => {
+    mkdirSync(`${directories.output}js/v`, { recursive: true });
+    for (const [path, hash] of hashes) {
+      copyFileSync(`src${path}`, `${directories.output}${path.slice(1).replace(/^js\/(.+)\.js$/, `js/v/$1.${hash}.js`)}`);
+    }
+  });
+
   // QR code of a URL, as an SVG (print version of the articles)
   config.addAsyncFilter('qrSvg', url => QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M' }));
 
@@ -243,6 +260,16 @@ export default function eleventyConfig(config) {
       .sort((a, b) => b.shared - a.shared || b.post.date - a.post.date)
       .slice(0, count)
       .map(({ post }) => post);
+  });
+
+  // The `count` posts most visited (src/_data/popularPaths.js: article slugs,
+  // the French and English views of an article added up, most visited first)
+  config.addFilter('popular', (posts, slugs, count = 5) => {
+    const rank = new Map(slugs.map((slug, index) => [slug, index]));
+    return posts
+      .filter(post => rank.has(baseSlug(post.fileSlug)))
+      .sort((a, b) => rank.get(baseSlug(a.fileSlug)) - rank.get(baseSlug(b.fileSlug)))
+      .slice(0, count);
   });
 
   // Posts whose Markdown body links to the article `slug` (in either language):

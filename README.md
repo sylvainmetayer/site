@@ -22,6 +22,8 @@ mise run dev       # http://localhost:8080, rechargement auto
 mise run build     # build de production dans dist/
 mise run preview   # http://localhost:8788, émulateur Cloudflare Pages (_redirects, _headers)
 mise run validate  # validation HTML du build
+npm test           # tests unitaires des filtres et du Markdown (node --test, test/)
+npm run check:spelling  # orthographe des contenus (cSpell, mots connus dans cspell-words.txt)
 mise tasks         # liste des tâches
 ```
 
@@ -53,6 +55,8 @@ Dans un article, `{% baseline 'container-queries' %}` affiche le support navigat
 `/liens/` liste les liens saisis dans le CMS (`src/_data/links.json`) et ceux d'une liste Karakeep, si le build a `KARAKEEP_URL`, `KARAKEEP_API_KEY` et `KARAKEEP_LIST_ID` (la note du favori devient le commentaire). Sans liens, la page n'est pas générée.
 
 `dist/_redirects` est généré (`src/redirects.njk`) : les règles écrites à la main dans `src/_redirects`, puis celles du front matter, `redirect_from: [/ancienne/url/]` et `short: code` (lien court `/s/code`).
+
+L'accueil liste les articles les plus lus sur 30 jours si le build a `CF_ANALYTICS_TOKEN` (droit Account Analytics: Read), `CF_ACCOUNT_ID` et `CF_ANALYTICS_SITE_TAG` (Cloudflare Web Analytics).
 
 Un article avec `repost: dev.to` dans son front matter apparaît dans `/devto.rss.xml`, le flux que dev.to importe.
 

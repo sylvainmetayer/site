@@ -11,7 +11,7 @@ tags:
 
 Ce mémoire détaille le travail réalisé durant mon stage au sein de [NextMedia](https://www.nextmedia.fr/), effectué d'avril à juillet 2016.
 
-J'y ai réalisé la refonte de l'administration du site vitrine de la société, ainsi qu'un gestionnaire de version pour le produit phare de la société : [un boitier de vote interactif, Quizzbox](https://www.quizzbox.com/fr/). Ce site permet ainsi aux différents clients de Quizzbox de pouvoir télécharger les versions du logiciel sur une plateforme, et d'avoir un suivi des mises à jour disponibles.
+J'y ai réalisé la refonte de l'administration du site vitrine de la société, ainsi qu'un gestionnaire de version pour le produit phare de la société : [un boîtier de vote interactif, Quizzbox](https://www.quizzbox.com/fr/). Ce site permet ainsi aux différents clients de Quizzbox de pouvoir télécharger les versions du logiciel sur une plateforme, et d'avoir un suivi des mises à jour disponibles.
 
 Pour ce projet, j'ai également été amené à générer des miniatures à partir d'un document PowerPoint, pour pouvoir afficher un aperçu du document sur le site.
 

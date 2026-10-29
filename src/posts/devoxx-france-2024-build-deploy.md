@@ -17,7 +17,7 @@ series: "Retours de conférence"
 
 ![Bannière Devoxx France 2024 : un robot humanoïde sprinte sur une piste d'athlétisme](/images/devoxx-france-2024.jpg)
 
-Après les retours de nos collègues, nous allons faire les notres sur la partie Build & Deploy de l'édition 2024 de Devoxx France. 
+Après les retours de nos collègues, nous allons faire les nôtres sur la partie Build & Deploy de l'édition 2024 de Devoxx France. 
 
 Et comme chaque année, le moins que l'on puisse dire, c'est qu'il y avait du choix, avec plusieurs dizaines de conférences sur les façons de packager et déployer nos applications ! Sans plus attendre, voici les sujets qui nous ont marqué avec [@cfarges](https://dev.to/cfarges) et [@jtama](https://dev.to/jtama) dans cette catégorie.
 
@@ -43,7 +43,7 @@ Cette api va suffisamment loin pour empiéter largement sur une partie des servi
 
 [Aurélien Moreau](https://www.linkedin.com/in/aur%C3%A9lien-moreau-32075a105/) et [Nicolas Lavacry](https://www.linkedin.com/in/nicolas-lavacry-13a21415/) présentent, au travers d'un REX avec pour exemple une entreprise fictive, les besoins de leur nouvelle entreprise : CASDAL. Cette dernière a en effet 2 marchés : un marché américain, et un français. Comment gérer l'hébergement de cette application ? 
 
-On découvre alors comment déployer un environnement Kubernetes sur plusieurs régions, et le besoin de créer plusieurs clusters pour assurer une latence faible, Kubernetes n'aimant en effet pas les latences si un continent sépare plusieurs noeuds. Leur démo, parfaitement maitrisée permet de nous montrer l'envers du décor et des outils/méthodes pour garantir qualité de service, latence faible et  l'intégrité de nos données !
+On découvre alors comment déployer un environnement Kubernetes sur plusieurs régions, et le besoin de créer plusieurs clusters pour assurer une latence faible, Kubernetes n'aimant en effet pas les latences si un continent sépare plusieurs nœuds. Leur démo, parfaitement maîtrisée permet de nous montrer l'envers du décor et des outils/méthodes pour garantir qualité de service, latence faible et  l'intégrité de nos données !
 
 
 {% youtube "ADp3fonoDWM", "Multi Kubernetes, Multi Régions, Au-secours !" %}
@@ -53,7 +53,7 @@ On découvre alors comment déployer un environnement Kubernetes sur plusieurs r
 
 Cette conférence, très intéressante, nous montre à quel point nous dépendons de logiciels/dépendances tierces dans nos applications, sur lesquelles nous n'avons pas la main. Cela signifie-t-il pour autant qu'il faut les utiliser sans valider leur intégrité, pour éviter qu'un intermédiaire vienne injecter du code malveillant lors d'une étape de packaging de notre application ?
 
-[Abdellfetah Sghiouar](https://www.linkedin.com/in/sabdelfettah/) nous présente alors des outils sur lesquels nous pouvons nous appuyer pour garantir la tracabilité de nos applications, tel que cosign pour signer nos images avant de les déployer dans notre cluster, ou encore SBOM pour lister tous les paquets utilisés dans notre application.
+[Abdellfetah Sghiouar](https://www.linkedin.com/in/sabdelfettah/) nous présente alors des outils sur lesquels nous pouvons nous appuyer pour garantir la traçabilité de nos applications, tel que cosign pour signer nos images avant de les déployer dans notre cluster, ou encore SBOM pour lister tous les paquets utilisés dans notre application.
 
 
 {% youtube "MEJ-ae_D8X4", "Notre dépendance à l'Open Source est effrayante. SLSA, SBOM et Sigstore à la rescousse" %}

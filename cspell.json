@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "import": ["@cspell/dict-fr-fr/cspell-ext.json"],
+  "language": "fr,en",
+  "files": ["src/posts/*.md", "src/notes/*.md", "src/projets/*.md", "src/work/*.md", "src/pages/*.md", "src/*.md", "src/en/*.md"],
+  "overrides": [
+    { "filename": ["**/*.en.md", "src/en/*.md"], "language": "en" }
+  ],
+  "ignoreRegExpList": ["/\\{%[\\s\\S]*?%\\}/g", "/```[\\s\\S]*?```/g", "/`[^`\\n]*`/g", "/\\]\\([^)]*\\)/g", "/<[^>]+>/g", "/https?:\\/\\/\\S+/g"],
+  "dictionaryDefinitions": [{ "name": "site-words", "path": "./cspell-words.txt", "addWords": true }],
+  "dictionaries": ["site-words"]
+}

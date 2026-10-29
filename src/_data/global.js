@@ -11,5 +11,8 @@ export default {
   buildVersion: (process.env.CF_PAGES_COMMIT_SHA || '').slice(0, 12) || String(Date.now()),
   // Unset means a local or CI build: no analytics beacon, robots.txt disallows all.
   environment: process.env.ELEVENTY_ENV || 'development',
+  // Deployed commit, shown in the footer: Cloudflare Pages, then GitHub Actions
+  commit: process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA || '',
+  repository: 'https://github.com/sylvainmetayer/site',
   eleventyVersion: eleventyPackage.version
 };

@@ -20,7 +20,7 @@ De plus, [le premier et unique article](/article/l-effet-parthenay) présent sur
 
 Cela faisait donc deux sites à maintenir, pour un trafic plus que faible 😀 !
 
-Le choix de PHP avait été fait à l'époque car il s'agissait du seul langage que je maitrisais.
+Le choix de PHP avait été fait à l'époque car il s'agissait du seul langage que je maîtrisais.
 
 En y réfléchissant, pour effectuer une refonte du site, j'ai listé les points que je souhaitais avoir.
 
@@ -109,7 +109,7 @@ Le premier est un serveur de commentaire basique et léger écrit en Python. Je 
 
 Le deuxième semblait très prometteur mais malheureusement victime de son succès. En effet, il s'agit d'un bot Github, interagissant avec le dépôt Github, et qui ajoute les commentaires directement dans la branche `master` ou crée une pull request si une approbation est nécessaire avant la publication des commentaires.
 
-De plus, comme indiqué sur leur site, cet outil s'intègre très bien avec Jekyll et Github. Néanmoins, il utilise l'API Github, et étant un projet public commençant à prendre de l'ampleur, les limitations de l'API Github semblent bloquer/ralentir ce projet, entrainant de nombreuses erreurs.
+De plus, comme indiqué sur leur site, cet outil s'intègre très bien avec Jekyll et Github. Néanmoins, il utilise l'API Github, et étant un projet public commençant à prendre de l'ampleur, les limitations de l'API Github semblent bloquer/ralentir ce projet, entraînant de nombreuses erreurs.
 
 Une solution pour parer au problème serait d'auto-héberger le projet avec une clé d'API Github personnelle mais semble beaucoup pour "simplement des commentaires", même si j'aimais beaucoup l'idée de pouvoir avoir des pull request pour chaque commentaire !
 

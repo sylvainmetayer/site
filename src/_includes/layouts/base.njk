@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="{{ eleventy.generator }}">
-    <script src="/js/theme.js"></script>
+    <script src="{{ '/js/theme.js' | hashed }}"></script>
+    {% if page.url == '/404.html' %}<script src="{{ '/js/not-found.js' | hashed }}"></script>{% endif %}
     <link rel="preload" href="/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ helpers.url() }}{{ langPrefix }}/feed.xml">
@@ -18,7 +19,8 @@
       <link rel="alternate" hreflang="{{ otherLang }}" href="{{ helpers.url() }}{{ alternate }}">
       <link rel="alternate" hreflang="x-default" href="{{ helpers.url() }}{{ page.url if lang == 'fr' else alternate }}">
     {% endif %}
-    <link rel="icon" href="{{ site.faviconPath }}" type="image/svg+xml">
+    {# Orange icon outside production (local, previews): tabs are told apart at a glance #}
+    <link rel="icon" href="{{ site.faviconPath if global.environment == 'production' else '/images/icons/favicon-dev.svg' }}" type="image/svg+xml">
     <meta name="google-site-verification" content="XROrcW2Xt6g7cyF4SDNyz08GZeMB90QlstI3SBnUsq0">
     {% include "partials/meta.njk" %}
     {% block extraMeta %}
@@ -49,9 +51,9 @@
     {% include "partials/site-foot.njk" %}
     {% include "partials/palette.njk" %}
     {% include "partials/lang-suggest.njk" %}
-    <script src="/js/palette.js" defer></script>
-    <script src="/js/lang-suggest.js" defer></script>
-    <script src="/js/register-service-worker.js" async defer></script>
+    <script src="{{ '/js/palette.js' | hashed }}" defer></script>
+    <script src="{{ '/js/lang-suggest.js' | hashed }}" defer></script>
+    <script src="{{ '/js/register-service-worker.js' | hashed }}" async defer></script>
     {% if site.cfBeaconToken and global.environment == 'production' %}
       {# Cloudflare Web Analytics: sylvain.dev is not a Cloudflare zone, so the beacon is not injected automatically (homelab tofu/site) #}
       <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cfBeaconToken }}"}'></script>

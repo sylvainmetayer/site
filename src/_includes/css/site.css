@@ -250,10 +250,20 @@ samp {
   }
 }
 
+/* Cross-fade between pages of the site (browsers with view transitions;
+   the others navigate as before). Not for people who reduce motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
 /* ---------- Header ---------- */
 
 .site-head {
   border-bottom: 1px solid var(--line);
+  /* The header stays in place while the page changes */
+  view-transition-name: site-head;
 }
 
 .site-head .wrap {
@@ -1356,6 +1366,13 @@ samp {
   margin-top: 0.2rem;
 }
 
+/* GitHub stats of a project card (src/_data/githubRepos.js) */
+.repo-stats {
+  margin: 0;
+  font: 400 0.78rem/1.5 var(--mono);
+  color: var(--muted);
+}
+
 /* Tag index (/tags/) */
 .tag-index {
   border-top: 0;
@@ -1458,6 +1475,13 @@ samp {
     width: 3cm;
     height: 3cm;
   }
+}
+
+/* Source of the article on GitHub (layouts/post.njk) */
+.post-source {
+  margin: 0;
+  font: 400 0.82rem/1.5 var(--mono);
+  color: var(--muted);
 }
 
 /* Share links (layouts/post.njk) */
