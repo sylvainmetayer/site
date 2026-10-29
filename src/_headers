@@ -35,3 +35,9 @@
   Content-Type: text/markdown; charset=utf-8
 /llms.txt
   Content-Type: text/plain; charset=utf-8
+
+# Alias Mastodon (src/webfinger.njk) et handle Bluesky (src/atproto-did.njk)
+/.well-known/webfinger
+  Content-Type: application/jrd+json
+/.well-known/atproto-did
+  Content-Type: text/plain; charset=utf-8

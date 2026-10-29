@@ -41,6 +41,15 @@
 {% for me in relations.me %}
   <link rel="me" href="{{ me }}"/>
 {% endfor %}
+{% set mastodon = site.mastodon | mastodonAccount %}
+{% if mastodon %}
+  <link rel="me" href="{{ mastodon.url }}"/>
+  {# Mastodon credits the author under links to the site (fediverse:creator) #}
+  <meta name="fediverse:creator" content="@{{ mastodon.user }}@{{ mastodon.instance }}"/>
+{% endif %}
+{% if site.bluesky %}
+  <link rel="me" href="https://bsky.app/profile/{{ site.bluesky }}"/>
+{% endif %}
 
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0e1621" media="(prefers-color-scheme: dark)">

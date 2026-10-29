@@ -187,6 +187,9 @@ collections:
           - { label: Permis, name: drivingLicence, widget: string, required: false, i18n: true }
           - { label: Email, name: authorEmail, widget: string }
           - { label: Compte Twitter, name: authorHandle, widget: string, required: false }
+          - { label: Compte Mastodon, name: mastodon, widget: string, required: false, pattern: ['^(@[\w.-]+@[\w.-]+)?$', "Format @pseudo@instance"], hint: "@pseudo@instance : balise fediverse:creator, rel=me, alias WebFinger @…@sylvain.dev, publication des articles." }
+          - { label: Compte Bluesky, name: bluesky, widget: string, required: false, hint: "Handle sans @ (ex. pseudo.bsky.social) : rel=me, partage et publication des articles." }
+          - { label: DID Bluesky, name: blueskyDid, widget: string, required: false, hint: "did:plc:… : publié dans /.well-known/atproto-did pour utiliser sylvain.dev comme handle." }
           - { label: Description courte, name: shortDesc, widget: string, i18n: true }
           - { label: Articles sur l'accueil, name: maxPostsPerPage, widget: number, value_type: int, default: 5 }
           - { label: Favicon, name: faviconPath, widget: string }

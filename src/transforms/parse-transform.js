@@ -135,7 +135,8 @@ export default async function parseTransform(value, outputPath) {
     const externalLinks = Array.from(document.querySelectorAll(`a:not([href^="${helpers.url()}"]):not([href^="#"]):not([href^="/"])`));
 
     externalLinks.forEach(item => {
-      item.setAttribute("rel", "external");
+      // Added to rel=me (h-card profiles), not in place of it
+      item.relList.add("external");
       item.dataset.external = "";
     })
 

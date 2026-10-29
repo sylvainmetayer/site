@@ -76,6 +76,7 @@ export default {
     'post.related': 'Articles liés',
     'post.backlinks': 'Cité dans',
     'post.series': 'Série « {name} »',
+    'share.label': 'Partager',
 
     'notes.all': 'toutes les notes',
     'notes.lead': 'Des notes courtes : ce que j\'apprends au fil des jours, trop petit pour un article.',
@@ -152,6 +153,10 @@ export default {
     'webmentions.replied': 'a répondu',
     'webmentions.mentioned': 'a mentionné cet article',
     'webmentions.on': 'le {date}',
+
+    'discussion.title': 'Discussion',
+    'discussion.reply': 'Répondre sur {network}',
+    'discussion.on': 'a répondu sur {network}',
   },
 
   en: {
@@ -229,6 +234,7 @@ export default {
     'post.related': 'Related articles',
     'post.backlinks': 'Linked from',
     'post.series': 'Series: {name}',
+    'share.label': 'Share',
 
     'callout.note': 'Note',
     'callout.tip': 'Tip',
@@ -300,5 +306,9 @@ export default {
     'webmentions.replied': 'replied',
     'webmentions.mentioned': 'mentioned this article',
     'webmentions.on': 'on {date}',
+
+    'discussion.title': 'Discussion',
+    'discussion.reply': 'Reply on {network}',
+    'discussion.on': 'replied on {network}',
   },
 };

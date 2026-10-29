@@ -540,6 +540,12 @@ samp {
   letter-spacing: -0.02em;
 }
 
+/* The name links to the home page for the h-card (u-url), without looking like a link */
+.hero h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .hero .lead {
   max-width: 60ch;
   font-size: 1.15rem;
@@ -1415,6 +1421,25 @@ samp {
 
 .series [aria-current] {
   font-weight: 600;
+}
+
+/* Share links (layouts/post.njk) */
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  align-items: baseline;
+  font: 400 0.82rem/1.5 var(--mono);
+  color: var(--muted);
+}
+
+.share ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Related articles and backlinks (layouts/post.njk) */

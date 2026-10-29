@@ -1,0 +1,20 @@
+---js
+// Mastodon alias: searching any @…@sylvain.dev finds the account of site.json
+// `mastodon` (WebFinger, RFC 7033). Not built without a valid account.
+// Imports resolve from the project root, where Eleventy runs
+import { mastodonAccount } from './src/11ty/fediverse.js';
+const permalink = data => Boolean(mastodonAccount(data.site.mastodon)) && '/.well-known/webfinger';
+const eleventyExcludeFromCollections = true;
+// No file extension, as the specifications require
+const eleventyAllowMissingExtension = true;
+---
+{%- set account = site.mastodon | mastodonAccount -%}
+{{ {
+  subject: 'acct:' + account.user + '@' + account.instance,
+  aliases: [account.url, 'https://' + account.instance + '/users/' + account.user],
+  links: [
+    { rel: 'http://webfinger.net/rel/profile-page', type: 'text/html', href: account.url },
+    { rel: 'self', type: 'application/activity+json', href: 'https://' + account.instance + '/users/' + account.user },
+    { rel: 'http://ostatus.org/schema/1.0/subscribe', template: 'https://' + account.instance + '/authorize_interaction?uri={uri}' }
+  ]
+} | dump | safe }}
