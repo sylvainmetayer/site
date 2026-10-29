@@ -1,8 +1,8 @@
 ---
-title: Colophon
-permalink: /colophon/
+title: Sous le capot
+permalink: /sous-le-capot/
 layout: layouts/page.njk
-translationKey: colophon
+translationKey: under-the-hood
 metaDesc: "Comment sylvain.dev est construit : Eleventy, Cloudflare Pages, GitHub Actions, et les choix derrière."
 ---
 

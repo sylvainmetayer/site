@@ -8,7 +8,6 @@ import pluginTOC from 'eleventy-plugin-toc';
 import filters from './src/11ty/filters/index.js';
 import baseline from './src/11ty/shortcodes/baseline.js';
 import youtube from './src/11ty/shortcodes/youtube.js';
-import talksCalendar from './src/11ty/ics.js';
 import { mastodonAccount } from './src/11ty/fediverse.js';
 import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
@@ -239,9 +238,6 @@ export default function eleventyConfig(config) {
 
   // QR code of a URL, as an SVG (print version of the articles, /qr/talks/)
   config.addAsyncFilter('qrSvg', url => QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M' }));
-
-  // Talk sessions as an iCalendar file (src/talks-ics.njk)
-  config.addFilter('talksCalendar', talksCalendar);
 
   // Body of a Markdown file, without its front matter (src/article-markdown.njk)
   // and without the {% raw %} markers, which only exist for Nunjucks.
