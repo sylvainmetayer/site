@@ -48,6 +48,7 @@
     "pa11y-ci": "^5.0.0",
     "pdfjs-dist": "^6.4.299",
     "prettier": "^3.9.9",
+    "qrcode": "^1.5.4",
     "shiki": "^4.5.0"
   },
   "scripts": {

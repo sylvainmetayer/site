@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import matter from 'gray-matter';
+import QRCode from 'qrcode';
 import rssPlugin from '@11ty/eleventy-plugin-rss';
 import pluginTOC from 'eleventy-plugin-toc';
 
@@ -20,7 +21,6 @@ if (!process.env.ELEVENTY_ENV && process.env.CF_PAGES) {
 }
 
 const passthroughItems = {
-  'src/_redirects': '_redirects',
   'src/_headers': '_headers',
   'src/feed.xsl': 'feed.xsl',
   // Served on the old apex origin by Pangolin, see the file header.
@@ -211,6 +211,13 @@ export default function eleventyConfig(config) {
 
   // "@user@instance" -> { user, instance, url } (src/_data/site.json `mastodon`)
   config.addFilter('mastodonAccount', mastodonAccount);
+
+  // JSON for a <script type="application/ld+json">: "<" escaped so a value
+  // cannot close the script element
+  config.addFilter('jsonLd', value => JSON.stringify(value).replace(/</g, '\\u003c'));
+
+  // QR code of a URL, as an SVG (print version of the articles)
+  config.addAsyncFilter('qrSvg', url => QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M' }));
 
   // Body of a Markdown file, without its front matter (src/article-markdown.njk)
   // and without the {% raw %} markers, which only exist for Nunjucks.

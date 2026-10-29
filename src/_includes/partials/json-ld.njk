@@ -1,0 +1,43 @@
+{#- Structured data (schema.org) for search engines: the author on the home page,
+    the article on the article pages, the breadcrumb on the other pages. Included
+    by partials/meta.njk, whose pageDesc, currentUrl and socialImage it reuses -#}
+{%- set base = helpers.url() -%}
+{%- set person = { '@type': 'Person', '@id': base + '/#person', name: site.authorName, url: base + '/', jobTitle: site.role, sameAs: social.links | uniqueValues('url') } -%}
+{%- set isHome = page.url == '/' or page.url == '/en/' -%}
+{%- set isArticle = page.url and (page.url.startsWith('/article/') or page.url.startsWith('/en/article/')) -%}
+{%- set graph = [] -%}
+{%- if isHome -%}
+  {%- set graph = (graph.push({ '@type': 'WebSite', '@id': base + '/#website', name: site.name, url: base + '/', inLanguage: lang, author: { '@id': base + '/#person' } }), graph) -%}
+  {%- set graph = (graph.push(person), graph) -%}
+{%- elif page.url -%}
+  {%- set crumbs = [{ name: 'palette.home' | t, url: base + langPrefix + '/' }] -%}
+  {%- if isArticle -%}
+    {%- set crumbs = (crumbs.push({ name: 'posts.title' | t, url: base + langPrefix + '/articles/' }), crumbs) -%}
+  {%- elif page.url.startsWith('/notes/') and page.url != '/notes/' -%}
+    {%- set crumbs = (crumbs.push({ name: 'Notes', url: base + '/notes/' }), crumbs) -%}
+  {%- endif -%}
+  {%- set crumbs = (crumbs.push({ name: title, url: base + page.url }), crumbs) -%}
+  {%- set items = [] -%}
+  {%- for crumb in crumbs -%}
+    {%- set items = (items.push({ '@type': 'ListItem', position: loop.index, name: crumb.name, item: crumb.url }), items) -%}
+  {%- endfor -%}
+  {%- set graph = (graph.push({ '@type': 'BreadcrumbList', itemListElement: items }), graph) -%}
+{%- endif -%}
+{%- if isArticle -%}
+  {%- set graph = (graph.push({
+    '@type': 'BlogPosting',
+    headline: title,
+    description: pageDesc,
+    url: currentUrl,
+    mainEntityOfPage: currentUrl,
+    inLanguage: lang,
+    datePublished: page.date | w3DateFilter,
+    dateModified: (updated or page.date) | w3DateFilter,
+    image: base + socialImage,
+    keywords: (tags or []) | join(', '),
+    author: person
+  }), graph) -%}
+{%- endif -%}
+{%- if graph.length %}
+<script type="application/ld+json">{{ { '@context': 'https://schema.org', '@graph': graph } | jsonLd | safe }}</script>
+{%- endif %}

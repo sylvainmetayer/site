@@ -76,3 +76,15 @@
     {% endfor %}
   </div>
 {% endmacro %}
+
+{# Breadcrumb written as the path of the page: ~/articles/slug.md. trail: the
+   links between the home page and the page, [{ name, url }] #}
+{% macro breadcrumb(trail, current) %}
+  <nav class="cmd breadcrumb" aria-label="{{ 'breadcrumb.label' | t }}">
+    <a href="{{ langPrefix }}/" aria-label="{{ 'a11y.home' | t }}">~</a>
+    {%- for step in trail -%}
+      <span aria-hidden="true">/</span><a href="{{ step.url }}">{{ step.name }}</a>
+    {%- endfor -%}
+    <span aria-hidden="true">/</span><span aria-current="page">{{ current }}</span>
+  </nav>
+{% endmacro %}

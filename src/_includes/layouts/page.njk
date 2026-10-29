@@ -1,9 +1,10 @@
 {% extends 'layouts/base.njk' %}
+{% from 'partials/macros.njk' import breadcrumb with context %}
 
 {% block content %}
   <article class="post" aria-labelledby="page-title">
     <header class="post-head">
-      <p class="cmd" aria-hidden="true">~{{ page.url }}</p>
+      {{ breadcrumb([], page.url | replace(langPrefix + '/', '/') | replace(r/^\/|\/$/g, '')) }}
       <h1 id="page-title" class="page-title">{{ title }}</h1>
       {% if updated %}
         <ul class="meta">

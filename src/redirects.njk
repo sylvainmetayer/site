@@ -1,0 +1,23 @@
+---js
+// dist/_redirects (Cloudflare Pages): the hand-written rules of src/_redirects,
+// then the ones from the front matter of the pages:
+//   redirect_from: [/old/url/]  an old URL of the page
+//   short: tf                   a short link, /s/tf
+// Each source with a trailing slash gets its variant without (src/_redirects).
+import { readFileSync } from 'node:fs';
+const permalink = '_redirects';
+const eleventyExcludeFromCollections = true;
+const eleventyAllowMissingExtension = true;
+const manual = readFileSync('src/_redirects', 'utf8');
+---
+{{ manual | safe }}
+# Généré depuis le front matter (redirect_from, short)
+{% for item in collections.all -%}
+  {%- set sources = ([item.data.redirect_from] if item.data.redirect_from is string else (item.data.redirect_from or [])) -%}
+  {%- if item.data.short %}{% set sources = sources.concat(['/s/' + item.data.short]) %}{% endif -%}
+  {%- for source in sources %}
+    {%- set from = source if source.endsWith('/') else source + '/' %}
+{{ from }} {{ item.url }} 301
+{{ from | replace(r/\/$/, '') }} {{ item.url }} 301
+  {%- endfor -%}
+{%- endfor %}
