@@ -17,6 +17,7 @@ export default {
     'meta.ogLocale': 'fr_FR',
     'url.projects': '/projets/',
     'url.feeds': '/flux/',
+    'url.underTheHood': '/sous-le-capot/',
 
     'a11y.skip': 'Aller au contenu',
     'a11y.home': 'accueil',
@@ -32,6 +33,7 @@ export default {
 
     'foot.generated': 'généré par {eleventy} le {date}',
     'foot.email': 'e-mail : {email}',
+    'foot.underTheHood': 'sous le capot',
 
     'palette.open': 'Chercher une page',
     'palette.title': 'Aller à une page',
@@ -154,6 +156,7 @@ export default {
     'meta.ogLocale': 'en_GB',
     'url.projects': '/en/projects/',
     'url.feeds': '/en/feeds/',
+    'url.underTheHood': '/en/under-the-hood/',
 
     'a11y.skip': 'Skip to content',
     'a11y.home': 'home',
@@ -169,6 +172,7 @@ export default {
 
     'foot.generated': 'built with {eleventy} on {date}',
     'foot.email': 'email: {email}',
+    'foot.underTheHood': 'under the hood',
 
     'palette.open': 'Search a page',
     'palette.title': 'Go to a page',
