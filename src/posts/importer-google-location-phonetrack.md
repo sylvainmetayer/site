@@ -4,13 +4,10 @@ tags:
     - google
     - nextcloud
 date: "2021-05-17"
-metaDesc: "N'utilisant plus Google History location depuis plusieurs années, je souhaite néanmoins récupérer les données existantes dans ma nouvelle instance PhoneTrack"
-excerpt: "N'utilisant plus Google History location depuis plusieurs années, je souhaite néanmoins récupérer les données existantes dans ma nouvelle instance PhoneTrack"
+metaDesc: "J'ai utilisé l'historique de localisation de Google de 2011 à 2018. Voici comment j'ai récupéré ces données dans PhoneTrack, sur mon instance Nextcloud."
+excerpt: "J'ai utilisé l'historique de localisation de Google de 2011 à 2018. Voici comment j'ai récupéré ces données dans PhoneTrack, sur mon instance Nextcloud."
 noToc: true
 ---
-
-> [!NOTE]
-> Rédigé en 2021, publié en 2026 : certaines étapes ont pu changer depuis.
 
 Si vous ne le saviez pas déjà, Google possède un historique de localisation de vos différents emplacements : [Google Location History](https://www.google.com/maps/timeline). J'ai utilisé ce service de 2011 à 2018, année à laquelle j'ai commencé à m'éloigner des [services Google](https://degooglisons-internet.org/fr/).
 
@@ -24,25 +21,25 @@ Cet article présente les différentes étapes pour réaliser cet import.
 
 Il faut tout d'abord récupérer l'historique des positions de Google. Pour cela, rendez-vous sur [Google Takeout](https://takeout.google.com/), puis décochez tout, sélectionnez uniquement `Historique des positions`, et précisez le format des données en `JSON` (`Formats multiples` puis `JSON`). L'export peut être long selon le nombre de données présentes.
 
-> À titre indicatif, il m'a fallu environ ~20min pour avoir l'export à disposition
+> À titre indicatif, il m'a fallu environ 20 min pour avoir l'export à disposition
 
 ## Préparer les données
 
 Une fois l'archive ZIP récupérée et extraite, vous trouverez un fichier `Historique des positions.json` dans le dossier `Historique des positions`. C'est ce fichier que nous allons importer dans PhoneTrack :)
 
-Pour ma part, le fichier contient un peu plus d'un million et demi d'enregistrements, pour un poids de ~450 Mo.
+Pour ma part, le fichier contient un peu plus d'un million et demi d'enregistrements, pour un poids de ~470 Mo.
 
 ```bash
 ~/wip
-❯ mv Historique\ des\ positions.json google_locations.json
+❯ mv Historique\ des\ positions.json google.json
 
 ~/wip
-❯ jq '.locations| length' < google_locations.json
+❯ jq '.locations| length' < google.json
 1690273
 
 ~/wip took 14s
-❯ ls -ailh google_locations.json
-2498577 -rw-rw-r--. 1 ocyhc ocyhc 470M 17 mai   13:35 google_locations.json
+❯ ls -ailh google.json
+2498577 -rw-rw-r--. 1 user user 470M 17 mai   13:35 google.json
 ```
 
 Il existe sûrement une meilleure façon de faire, mais lors de mes tests, un import direct du fichier dans PhoneTrack plantait, le fichier étant trop volumineux. Il a donc fallu que je découpe le fichier. Pour cela, j'ai fait un [rapide script](https://gist.github.com/sylvainmetayer/f4374861c79c669271e8734d8e7d9411), qui n'est pas parfait mais qui fait le job :)
@@ -78,7 +75,7 @@ fs.writeFileSync(filename, JSON.stringify({ locations: dataFile }));
 console.log(`Wrote last data file with ${dataFile.length} locations`);
 ```
 
-Pour l'usage, cela se passe comme ça : le script va lire un fichier (`google.json`) et le séparer en fichiers de `100 000` éléments chacun (j'ai renommé le fichier `google_locations.json` en `google.json` au passage).
+Pour l'usage, cela se passe comme ça : le script va lire un fichier (`google.json`) et le séparer en fichiers de `100 000` éléments chacun.
 
 ```bash
 ~/wip via ⬢ v14.15.0
@@ -134,12 +131,12 @@ Je ne vais pas rentrer dans les détails, mais voici la compréhension que j'ai 
 
 Un `device` est un appareil qui envoie des points de localisation (`points`). Chaque `device` appartient à une `session`, et une session peut contenir plusieurs `device`. Vous trouverez des détails ici si cela vous intéresse : [Wiki PhoneTrack - Gitlab](https://gitlab.com/eneiluj/phonetrack-oc/-/wikis/home)
 
-Problème : PhoneTrack ne permet pas de fusionner deux devices depuis l'interface ([une issue](https://gitlab.com/eneiluj/phonetrack-oc/-/issues/377) le demandait d'ailleurs). Or, chaque fichier importé arrive dans son propre device. Le plan est donc le suivant :
+Problème : PhoneTrack ne permet pas de fusionner deux devices depuis l'interface ([une issue](https://gitlab.com/eneiluj/phonetrack-oc/-/issues/377) le demandait d'ailleurs). Or, chaque fichier s'importe comme une nouvelle session, avec son propre device. Le plan est donc le suivant :
 
-1. importer chaque fichier depuis l'interface de PhoneTrack ;
+1. importer chaque fichier depuis l'interface de PhoneTrack (une session par fichier) ;
 2. créer un device dédié, `google_location`, qui accueillera tout l'historique ;
 3. déplacer en base les points de chaque device importé vers ce device ;
-4. supprimer les devices devenus vides.
+4. supprimer les sessions de l'import, devenues vides.
 
 > [!WARNING]
 > On modifie directement la base de Nextcloud : pensez à faire une sauvegarde avant de vous lancer.
@@ -183,7 +180,7 @@ MariaDB [nextcloud]> SELECT COUNT(*) FROM oc_phonetrack_points WHERE deviceid NO
 1 row in set (1.154 sec)
 ```
 
-À deux points près, on retrouve bien tous nos points importés en base. 🎉
+À quelques points près, on retrouve bien tous nos points importés en base. 🎉
 
 Reste maintenant à les regrouper dans un seul device. Voici le nombre de points par device :
 
@@ -254,7 +251,7 @@ MariaDB [nextcloud]> SELECT name, d.id as deviceid, COUNT(p.id) as points FROM o
 19 rows in set, 1 warning (1.820 sec)
 ```
 
-Tous les points sont désormais rattachés à `google_location`. Il ne reste plus qu'à supprimer les devices vides (et leurs sessions) depuis l'interface de PhoneTrack, et à profiter de quelques années d'historique sur sa propre instance :)
+Tous les points sont désormais rattachés à `google_location`. Il ne reste plus qu'à supprimer les sessions de l'import, désormais vides, depuis l'interface de PhoneTrack (en prenant soin de garder celle qui contient `google_location` !), et à profiter de quelques années d'historique sur sa propre instance :)
 
 > [!TIP]
 > Afficher beaucoup de points d'un coup peut faire planter PhoneTrack : pensez à utiliser les filtres (par date notamment) lorsque vous consultez vos données.
