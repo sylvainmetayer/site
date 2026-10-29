@@ -183,3 +183,7 @@ Nextcloud
 ntfy
 proxmox
 ddterm
+kdvc
+ratatui
+clippy
+infomaniak

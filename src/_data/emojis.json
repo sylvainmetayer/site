@@ -10,5 +10,7 @@
   "😣": { "fr": "visage persévérant", "en": "persevering face" },
   "😜": { "fr": "visage qui fait un clin d'œil et tire la langue", "en": "winking face with tongue" },
   "😉": { "fr": "visage qui fait un clin d'œil", "en": "winking face" },
-  "😁": { "fr": "visage rayonnant aux yeux rieurs", "en": "beaming face with smiling eyes" }
+  "😁": { "fr": "visage rayonnant aux yeux rieurs", "en": "beaming face with smiling eyes" },
+  "😩": { "fr": "visage épuisé", "en": "weary face" },
+  "🥲": { "fr": "visage souriant avec une larme", "en": "smiling face with tear" }
 }

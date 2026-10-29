@@ -18,18 +18,12 @@ Developer at onepoint in Bordeaux since 2017, on backend, DevOps, CI and infrast
 - **[planning-equipes](https://github.com/sylvainmetayer/planning-equipes)**: a project trying to make scheduling simpler for events.
 - **[kdrive-version-cleaner](https://github.com/sylvainmetayer/kdrive-version-cleaner)**: a terminal UI to browse and clean up old file versions on a kDrive.
 
-## Homelab
-
-Still describing [my homelab](https://github.com/sylvainmetayer/homelab) as code: Proxmox, OpenTofu, Pangolin.
+I am also still describing [my homelab](https://github.com/sylvainmetayer/homelab) as code: Proxmox, OpenTofu, Pangolin.
 
 ## Learning
 
-Working with AI agents: handing them a whole task (exploring, coding, reviewing) while keeping the choices and the review. This site is my test bed.
-
-## This site
-
-Adding ideas found on [11tybundle.dev](https://11tybundle.dev/): a Markdown version of the articles, series, sidenotes… The details are in [Under the hood](/en/under-the-hood/).
+AI agents: handing them a whole task (exploring, coding, reviewing) while keeping the choices and the review, building agents, and automating some tasks. I am experimenting on various projects to see what works best for me.
 
 ## Elsewhere
 
-Table tennis, in a departmental league.
+Table tennis and board games.
