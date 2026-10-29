@@ -10,5 +10,8 @@ An RSS feed lets you follow new articles without relying on a social network or 
 
 - **Articles translated into English**: `{{ helpers.url() }}/en/feed.xml` ([open](/en/feed.xml))
 - **All articles, in French**: `{{ helpers.url() }}/feed.xml` ([open](/feed.xml))
+{%- if collections.notes.length %}
+- **Short notes, in French**: `{{ helpers.url() }}/notes/feed.xml` ([open](/notes/feed.xml))
+{%- endif %}
 
 The feeds contain the full text of the articles.

@@ -107,6 +107,11 @@ export default function eleventyConfig(config) {
       .slice(0, site.maxPostsPerPage);
   });
 
+  // Short notes (src/notes/), newest first: /notes/
+  config.addCollection('notes', collection => {
+    return collection.getFilteredByGlob('./src/notes/*.md').sort(byNewest);
+  });
+
   config.addCollection('work', collection => {
     return collection.getFilteredByGlob('./src/work/*.md')
       .filter(isFrench)
@@ -198,6 +203,9 @@ export default function eleventyConfig(config) {
     const translation = translationIndex(all).get(target.data.translationKey)?.[language];
     return translation?.url ? { url: translation.url, lang: language } : { url, lang: target.data.lang };
   });
+
+  // One line of Markdown without the <p> (comments of src/_data/links.json)
+  config.addFilter('markdownInline', text => markdownLibrary.renderInline(text));
 
   // Body of a Markdown file, without its front matter (src/article-markdown.njk)
   // and without the {% raw %} markers, which only exist for Nunjucks.

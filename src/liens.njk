@@ -1,0 +1,24 @@
+---js
+// Shared links with a comment: the Karakeep list (src/_data/karakeep.js) and
+// the ones typed in Sveltia CMS (src/_data/links.json), newest first. No page
+// while both are empty.
+const title = 'Liens';
+const permalink = data => data.links.links.length + data.karakeep.length > 0 && '/liens/';
+const layout = 'layouts/base.njk';
+const metaDesc = 'Articles, outils et talks repérés par Sylvain MÉTAYER, avec un mot sur chacun.';
+---
+{% from 'partials/macros.njk' import cmd with context %}
+<section class="section" aria-labelledby="page-title">
+  {{ cmd('cat bookmarks.txt') }}
+  <h1 id="page-title" class="page-title">Liens</h1>
+  <p class="page-lead">Ce que j'ai lu, vu ou utilisé et qui vaut le détour, avec un mot sur chacun.</p>
+</section>
+<ol class="link-list">
+  {% for link in links.links.concat(karakeep) | sort(true, false, 'date') %}
+    <li class="h-entry">
+      <time datetime="{{ link.date }}" class="dt-published">{{ link.date }}</time>
+      <a href="{{ link.url }}" class="u-bookmark-of">{{ link.title }}</a> <span class="link-site">{{ link.url | siteName }}</span>
+      {% if link.comment %}<div class="e-content">{{ link.comment | markdownInline | safe }}</div>{% endif %}
+    </li>
+  {% endfor %}
+</ol>

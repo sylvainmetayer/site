@@ -17,6 +17,6 @@ eleventyComputed:
   {{ cmd('grep -rl "#' + tag + '" articles/') }}
   <h1 id="page-title" class="page-title">#{{ tag }}</h1>
   {% set count = collections[tag].length %}
-  <p class="page-lead">{{ count }} article{% if count > 1 %}s{% endif %} · <a href="/articles/">tous les articles</a></p>
+  <p class="page-lead">{{ count }} article{% if count > 1 %}s{% endif %} · <a href="/articles/">tous les articles</a> · <a href="/tags/">tous les tags</a></p>
 </section>
 {{ postList(collections[tag] | reverse, true) }}
