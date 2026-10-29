@@ -19,22 +19,21 @@ Les outils que j'utilise au quotidien, dans l'esprit des [pages /uses](https://u
 ## Système
 
 - **[Fedora Workstation](https://fedoraproject.org/workstation/)** avec GNOME, sur toutes mes machines.
-- **Terminal** : [ddterm](https://github.com/ddterm/gnome-shell-extension-ddterm), qui descend d'un raccourci clavier, avec [Zellij](https://zellij.dev/) pour les onglets et les panneaux, et l'invite [Starship](https://starship.rs/).
+- **Terminal** : [ddterm](https://github.com/ddterm/gnome-shell-extension-ddterm), qui descend d'un raccourci clavier, avec [Zellij](https://zellij.dev/) pour les onglets et les panneaux, et [Starship](https://starship.rs/).
 - **Navigateur** : [Firefox](https://www.mozilla.org/firefox/).
-- **Mots de passe** : [KeePassXC](https://keepassxc.org/), qui sert aussi d'aide aux identifiants Git.
+- **Mots de passe** : [KeePassXC](https://keepassxc.org/)
 - **Notes** : [Obsidian](https://obsidian.md/).
 - **Fichiers** : [kDrive](https://www.infomaniak.com/fr/kdrive) d'Infomaniak, hébergé en Suisse.
 
 ## Développement
 
 - **Éditeurs** : [VS Code](https://code.visualstudio.com/) à titre perso, [IntelliJ IDEA](https://www.jetbrains.com/idea/) à titre pro.
-- **Versions des outils** : [mise](https://mise.jdx.dev/), après des années d'[asdf](https://asdf-vm.com/) ([talk](https://github.com/sylvainmetayer/talk-asdf)), avec [direnv](https://direnv.net/) pour les variables par projet.
-- **Conteneurs** : [Podman](https://podman.io/) ; [kubectl](https://kubernetes.io/docs/reference/kubectl/) et [k9s](https://k9scli.io/) pour Kubernetes.
+- **Versions des outils** : [mise](https://mise.jdx.dev/), après des années d'[asdf](https://asdf-vm.com/) ([talk](https://github.com/sylvainmetayer/talk-asdf)), j'ai fait la bascule, et ne reviendrai plus en arrière, même si asdf reste un excellent outil.
 - **Secrets** : [SOPS](https://github.com/getsops/sops), pour ne plus rien committer en clair ([talk](https://github.com/sylvainmetayer/talk-sops)).
 
 ## IA
 
-Pour me familiariser avec les agents IA, et tester de petits développements.
+Pour me familiariser avec les agents IA, et tester de petits développements. En général, j'utilise GitHub Copilot et/ou Claude
 
 ## Homelab
 
