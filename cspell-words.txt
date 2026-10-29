@@ -179,3 +179,4 @@ Karakeep
 Nextcloud
 ntfy
 proxmox
+ddterm
