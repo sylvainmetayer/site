@@ -1,35 +1,36 @@
 ---
-title: "Importer ses données Google Location dans Phonetrack"
+title: "Importer ses données Google Location dans PhoneTrack"
 tags:
     - google
     - nextcloud
 date: "2021-05-17"
-metaDesc: "N'utilisant plus Google History location depuis plusieurs années, je souhaite néanmoins récupérer les données existantes dans ma nouvelle instance phonetrack"
-excerpt: "N'utilisant plus Google History location depuis plusieurs années, je souhaite néanmoins récupérer les données existantes dans ma nouvelle instance phonetrack"
+metaDesc: "N'utilisant plus Google History location depuis plusieurs années, je souhaite néanmoins récupérer les données existantes dans ma nouvelle instance PhoneTrack"
+excerpt: "N'utilisant plus Google History location depuis plusieurs années, je souhaite néanmoins récupérer les données existantes dans ma nouvelle instance PhoneTrack"
 noToc: true
 ---
 
-# Importer ses données Google Location dans Phonetrack
+> [!NOTE]
+> Rédigé en 2021, publié en 2026 : certaines étapes ont pu changer depuis.
 
 Si vous ne le saviez pas déjà, Google possède un historique de localisation de vos différents emplacements : [Google Location History](https://www.google.com/maps/timeline). J'ai utilisé ce service de 2011 à 2018, année à laquelle j'ai commencé à m'éloigner des [services Google](https://degooglisons-internet.org/fr/).
 
 > Pour activer ou désactiver ce comportement, rendez-vous sur [les paramètres de votre compte Google](https://myactivity.google.com/activitycontrols?pli=1&settings=location)
 
-Désormais, j'utilise l'application [Phonetrack](https://gitlab.com/eneiluj/phonetrack-oc) sur mon instance [Nextcloud](https://nextcloud.com/). Je souhaitais néanmoins récupérer mes données de 2011 à 2018 (représentant quelques milliers de kms) sur ma nouvelle instance.
+Désormais, j'utilise l'application [PhoneTrack](https://gitlab.com/eneiluj/phonetrack-oc) sur mon instance [Nextcloud](https://nextcloud.com/). Je souhaitais néanmoins récupérer mes données de 2011 à 2018 (représentant quelques milliers de km) sur ma nouvelle instance.
 
-Cet article présentes les différentes étapes pour réaliser cet import.
+Cet article présente les différentes étapes pour réaliser cet import.
 
 ## Récupérer les données de Google
 
-Il faut tout d'abord récupérer l'historique des positions de Google. Pour cela, rendez-vous sur [Google Takeout](https://takeout.google.com/), puis décocher tout et sélectionner uniquement `Historique des positions`, et préciser le format des données en `JSON` (`Formats multiples` puis `JSON`). L'export peut-être long selon le nombre de données présentes.
+Il faut tout d'abord récupérer l'historique des positions de Google. Pour cela, rendez-vous sur [Google Takeout](https://takeout.google.com/), puis décochez tout, sélectionnez uniquement `Historique des positions`, et précisez le format des données en `JSON` (`Formats multiples` puis `JSON`). L'export peut être long selon le nombre de données présentes.
 
 > À titre indicatif, il m'a fallu environ ~20min pour avoir l'export à disposition
 
 ## Préparer les données
 
-Une fois l'archive ZIP récupérée et extraite, vous trouverez un fichier `Historique des positions.json` dans le dossier `Historique des positions`. C'est ce fichier que nous allons importer dans phonetrack :)
+Une fois l'archive ZIP récupérée et extraite, vous trouverez un fichier `Historique des positions.json` dans le dossier `Historique des positions`. C'est ce fichier que nous allons importer dans PhoneTrack :)
 
-Pour ma part, le fichier contient un peu plus d'un million et demi d'enregistrement, pour un poids de ~450Mo
+Pour ma part, le fichier contient un peu plus d'un million et demi d'enregistrements, pour un poids de ~450 Mo.
 
 ```bash
 ~/wip
@@ -44,7 +45,7 @@ Pour ma part, le fichier contient un peu plus d'un million et demi d'enregistrem
 2498577 -rw-rw-r--. 1 ocyhc ocyhc 470M 17 mai   13:35 google_locations.json
 ```
 
-Il existe surement une meilleure façon de faire, mais lors de mes tests, un import direct du fichier dans phonetrack plantait, le fichier étant trop volumineux. Il a donc fallu que je découpe le fichier. Pour cela, j'ai fait un [rapide script](https://gist.github.com/sylvainmetayer/f4374861c79c669271e8734d8e7d9411), qui n'est pas parfait mais qui fait le job :)
+Il existe sûrement une meilleure façon de faire, mais lors de mes tests, un import direct du fichier dans PhoneTrack plantait, le fichier étant trop volumineux. Il a donc fallu que je découpe le fichier. Pour cela, j'ai fait un [rapide script](https://gist.github.com/sylvainmetayer/f4374861c79c669271e8734d8e7d9411), qui n'est pas parfait mais qui fait le job :)
 
 ```js
 const fs = require('fs');
@@ -77,7 +78,7 @@ fs.writeFileSync(filename, JSON.stringify({ locations: dataFile }));
 console.log(`Wrote last data file with ${dataFile.length} locations`);
 ```
 
-Pour l'usage, cela se passe comme ça : Le script va lire un fichier (`google.json`) et le séparer en fichiers de `100 000` éléments chacun
+Pour l'usage, cela se passe comme ça : le script va lire un fichier (`google.json`) et le séparer en fichiers de `100 000` éléments chacun (j'ai renommé le fichier `google_locations.json` en `google.json` au passage).
 
 ```bash
 ~/wip via ⬢ v14.15.0
@@ -106,11 +107,11 @@ Wrote last data file with 90273 locations
 
 On retrouve bien nos données séparées, plus qu'à les importer !
 
-## Import dans phonetrack
+## Import dans PhoneTrack
 
-Pour cette partie, il faut faudra accès à votre instance nextcloud avec l'application phonetrack installée. Il faudra également un accès à un client MySQL.
+Pour cette partie, il vous faudra un accès à votre instance Nextcloud avec l'application PhoneTrack installée, ainsi qu'un accès à sa base de données (client MySQL / MariaDB).
 
-Tout d'abord, voici comment sont organisées les données de phonetrack dans la base de données :
+Tout d'abord, voici comment sont organisées les données de PhoneTrack dans la base de données :
 
 ```sql
 MariaDB [nextcloud]> SHOW TABLES WHERE Tables_in_nextcloud LIKE '%phonetrack%';
@@ -129,19 +130,21 @@ MariaDB [nextcloud]> SHOW TABLES WHERE Tables_in_nextcloud LIKE '%phonetrack%';
 +--------------------------+
 ```
 
-Je ne vais pas rentrer dans les détails, mais voici la compréhension que j'ai de comment sont structurées les données dans phonetrack :
+Je ne vais pas rentrer dans les détails, mais voici la compréhension que j'ai de comment sont structurées les données dans PhoneTrack :
 
-Un `device` est un appareil qui envoie des points de localisation (`points`). Chaque `device` appartient à une `session`, et une session peut contenir plusieurs `device`. Vous trouverez des détails ici si cela vous intéresse : [Wiki Phonetrack - Gitlab](https://gitlab.com/eneiluj/phonetrack-oc/-/wikis/home)
+Un `device` est un appareil qui envoie des points de localisation (`points`). Chaque `device` appartient à une `session`, et une session peut contenir plusieurs `device`. Vous trouverez des détails ici si cela vous intéresse : [Wiki PhoneTrack - Gitlab](https://gitlab.com/eneiluj/phonetrack-oc/-/wikis/home)
 
-https://gitlab.com/eneiluj/phonetrack-oc/-/issues/377
+Problème : PhoneTrack ne permet pas de fusionner deux devices depuis l'interface ([une issue](https://gitlab.com/eneiluj/phonetrack-oc/-/issues/377) le demandait d'ailleurs). Or, chaque fichier importé arrive dans son propre device. Le plan est donc le suivant :
 
-TODO :
+1. importer chaque fichier depuis l'interface de PhoneTrack ;
+2. créer un device dédié, `google_location`, qui accueillera tout l'historique ;
+3. déplacer en base les points de chaque device importé vers ce device ;
+4. supprimer les devices devenus vides.
 
-- savoir devices existantes
-- nombre de points avant
-- réserver device google_location + screenshot
-- import chaque fichiers
-- montrer résultat import
+> [!WARNING]
+> On modifie directement la base de Nextcloud : pensez à faire une sauvegarde avant de vous lancer.
+
+Une fois les imports terminés, voici les devices présents (`myPhone` et `myPhone2` sont mes téléphones, les autres viennent de l'import) :
 
 ```sql
 MariaDB [nextcloud]> SELECT * FROM oc_phonetrack_devices;
@@ -180,9 +183,9 @@ MariaDB [nextcloud]> SELECT COUNT(*) FROM oc_phonetrack_points WHERE deviceid NO
 1 row in set (1.154 sec)
 ```
 
-- on retrouve bien tout nos point importés en base.
+À deux points près, on retrouve bien tous nos points importés en base. 🎉
 
-Reste maintenant à les migrer dans la nouvelle session et dans un seul device.
+Reste maintenant à les regrouper dans un seul device. Voici le nombre de points par device :
 
 ```sql
 MariaDB [nextcloud]> SELECT name, d.id as deviceid, COUNT(p.id) as points FROM oc_phonetrack_points p RIGHT JOIN oc_phonetrack_devices d ON p.deviceid = d.id GROUP BY deviceid, name;
@@ -213,7 +216,7 @@ MariaDB [nextcloud]> SELECT name, d.id as deviceid, COUNT(p.id) as points FROM o
 20 rows in set, 1 warning (1.552 sec)
 ```
 
-Pour chaque `deviceid` de l'import Google séparé, migrer les données des points liés à ce dernier vers le device créé précédemment.
+Pour chaque device de l'import, on rattache ses points au device `google_location` (ici, l'id `26`). Un point appartient à un device, et un device à une session : en changeant le `deviceid` des points, ils rejoignent donc aussi la session de `google_location`.
 
 ```sql
 MariaDB [nextcloud]> UPDATE oc_phonetrack_points SET deviceid=26 WHERE deviceid = 10;
@@ -221,7 +224,7 @@ Query OK, 100000 rows affected (21.417 sec)
 Rows matched: 100000  Changed: 100000  Warnings: 0
 ```
 
-APRES
+Une vingtaine de secondes par device, à répéter pour chacun d'eux. Une fois tous les devices traités :
 
 ```sql
 MariaDB [nextcloud]> SELECT name, d.id as deviceid, COUNT(p.id) as points FROM oc_phonetrack_points p RIGHT JOIN oc_phonetrack_devices d ON p.deviceid = d.id GROUP BY deviceid, name;
@@ -251,9 +254,8 @@ MariaDB [nextcloud]> SELECT name, d.id as deviceid, COUNT(p.id) as points FROM o
 19 rows in set, 1 warning (1.820 sec)
 ```
 
-delele all g session
+Tous les points sont désormais rattachés à `google_location`. Il ne reste plus qu'à supprimer les devices vides (et leurs sessions) depuis l'interface de PhoneTrack, et à profiter de quelques années d'historique sur sa propre instance :)
 
-enjoy :)
-
-> Afficher beaucoup de points d'un coup peut faire bugger phonetrack, pensez à mettre des filtres lorsque vous visionnez vos données
+> [!TIP]
+> Afficher beaucoup de points d'un coup peut faire planter PhoneTrack : pensez à utiliser les filtres (par date notamment) lorsque vous consultez vos données.
 

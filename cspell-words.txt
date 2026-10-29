@@ -180,6 +180,7 @@ Immich
 Jellyfin
 Karakeep
 Nextcloud
+nextcloud
 ntfy
 proxmox
 ddterm
