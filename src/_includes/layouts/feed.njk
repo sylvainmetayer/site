@@ -1,5 +1,6 @@
 {#- Atom feed: French articles (/feed.xml), English translations (/en/feed.xml) -#}
 <?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/feed.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ lang }}">
   <generator uri="https://11ty.dev/" version="{{ global.eleventyVersion }}">Eleventy</generator>
   <title>{{ site.name }}</title>
@@ -14,13 +15,15 @@
   <id>{{ site.feedIdBase }}{{ (langPrefix + '/') if langPrefix else '' }}</id>
   <author>
     <name>{{ site.authorName }}</name>
-    <email>{{ site.authorEmail }}</email>
+    {# No <email>: the pages encode the address against scrapers (parse-transform.js) #}
+    <uri>{{ helpers.url() }}{{ langPrefix }}/</uri>
   </author>
   {% for post in feedPosts %}
     {% set absolutePostUrl %}{{ helpers.url() }}{{ post.url | url }}{% endset %}
     <entry>
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}"/>
+      <published>{{ post.date | dateToRfc3339 }}</published>
       <updated>{{ (post.data.updated or post.date) | dateToRfc3339 }}</updated>
       <id>{{ site.feedIdBase }}{{ post.url }}</id>
       <content type="html">

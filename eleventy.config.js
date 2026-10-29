@@ -1,8 +1,11 @@
+import { readFileSync } from 'node:fs';
+import matter from 'gray-matter';
 import rssPlugin from '@11ty/eleventy-plugin-rss';
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 import pluginTOC from 'eleventy-plugin-toc';
 
 import filters from './src/11ty/filters/index.js';
+import baseline from './src/11ty/shortcodes/baseline.js';
 import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
 import site from './src/_data/site.json' with { type: 'json' };
@@ -18,6 +21,7 @@ if (!process.env.ELEVENTY_ENV && process.env.CF_PAGES) {
 const passthroughItems = {
   'src/_redirects': '_redirects',
   'src/_headers': '_headers',
+  'src/feed.xsl': 'feed.xsl',
   // Served on the old apex origin by Pangolin, see the file header.
   'src/service-worker-retired.js': 'service-worker-retired.js',
   'src/images': 'images',
@@ -59,6 +63,8 @@ export default function eleventyConfig(config) {
   });
 
   config.addTransform('parse', parseTransform);
+
+  config.addNunjucksAsyncShortcode('baseline', baseline);
 
   config.addPassthroughCopy(passthroughItems);
 
@@ -192,6 +198,12 @@ export default function eleventyConfig(config) {
     const translation = translationIndex(all).get(target.data.translationKey)?.[language];
     return translation?.url ? { url: translation.url, lang: language } : { url, lang: target.data.lang };
   });
+
+  // Body of a Markdown file, without its front matter (src/article-markdown.njk)
+  // and without the {% raw %} markers, which only exist for Nunjucks.
+  // shortcut: other shortcodes ({% baseline %}) stay as written, render them if an article uses one.
+  config.addFilter('rawMarkdown', inputPath => matter(readFileSync(inputPath, 'utf8')).content
+    .replace(/\{%-?\s*(end)?raw\s*-?%\}/g, '').trim());
 
   // Slug shared by an entry and its translation: anchors, search index
   config.addFilter('baseSlug', baseSlug);

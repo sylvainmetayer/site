@@ -16,6 +16,7 @@ export default {
     'meta.imageAlt': 'Illustration pour « {title} »',
     'meta.ogLocale': 'fr_FR',
     'url.projects': '/projets/',
+    'url.feeds': '/flux/',
 
     'a11y.skip': 'Aller au contenu',
     'a11y.home': 'accueil',
@@ -69,6 +70,13 @@ export default {
     'post.neighbours': 'Articles voisins',
     'post.previous': 'précédent',
     'post.next': 'suivant',
+
+    'code.copy': 'copier',
+    'code.copied': 'copié',
+
+    'baseline.widely': 'Baseline : largement disponible depuis {date}',
+    'baseline.newly': 'Baseline : nouvellement disponible depuis {date}',
+    'baseline.limited': 'support limité selon les navigateurs',
 
     'origin.publisher': ', sur le blog de {publisher}',
     'origin.with': ', écrit avec ',
@@ -140,6 +148,7 @@ export default {
     'meta.imageAlt': 'Illustration for “{title}”',
     'meta.ogLocale': 'en_GB',
     'url.projects': '/en/projects/',
+    'url.feeds': '/en/feeds/',
 
     'a11y.skip': 'Skip to content',
     'a11y.home': 'home',
@@ -195,6 +204,13 @@ export default {
     'post.neighbours': 'Other articles',
     'post.previous': 'previous',
     'post.next': 'next',
+
+    'code.copy': 'copy',
+    'code.copied': 'copied',
+
+    'baseline.widely': 'Baseline: widely available since {date}',
+    'baseline.newly': 'Baseline: newly available since {date}',
+    'baseline.limited': 'limited availability across browsers',
 
     'origin.publisher': ', on the {publisher} blog',
     'origin.with': ', written with ',

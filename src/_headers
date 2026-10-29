@@ -22,3 +22,15 @@
 # hash du contenu, une nouvelle version change d'URL.
 /img/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Feuille XSLT des flux (/feed.xml) : servie comme XML pour que le navigateur l'applique.
+/feed.xsl
+  Content-Type: text/xsl; charset=utf-8
+
+# Version Markdown des articles (src/article-markdown.njk) et llms.txt
+/article/:slug/index.md
+  Content-Type: text/markdown; charset=utf-8
+/en/article/:slug/index.md
+  Content-Type: text/markdown; charset=utf-8
+/llms.txt
+  Content-Type: text/plain; charset=utf-8

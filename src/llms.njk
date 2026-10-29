@@ -1,0 +1,23 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+{#- https://llmstxt.org: the site for LLMs, with the articles in Markdown (src/article-markdown.njk) -#}
+# {{ site.name }} ({{ site.authorName }})
+
+> {{ site.shortDesc | safe }}. Articles en français, certains traduits en anglais.
+
+- [CV]({{ helpers.url() }}/cv/): parcours, compétences
+- [Projets]({{ helpers.url() }}/projets/)
+- [Talks]({{ helpers.url() }}/talks/): slides et replays
+
+## Articles
+
+{% for post in collections.posts -%}
+- [{{ post.data.title | safe }}]({{ helpers.url() }}{{ post.url }}index.md){% if post.data.excerpt %}: {{ post.data.excerpt | safe }}{% endif %}
+{% endfor %}
+## Articles in English
+
+{% for post in collections.postsEn -%}
+- [{{ post.data.title | safe }}]({{ helpers.url() }}{{ post.url }}index.md){% if post.data.excerpt %}: {{ post.data.excerpt | safe }}{% endif %}
+{% endfor %}
