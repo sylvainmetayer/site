@@ -4,21 +4,19 @@ tags:
   - projet
   - rust
   - infomaniak
-date: "2026-10-15"
-draft: true
+date: "2026-10-29"
 metaDesc: My kDrive kept filling up on its own. The culprit was old file versions, which the web interface can neither measure nor delete in bulk.
 excerpt: My kDrive kept filling up on its own. The culprit was old file versions, which the web interface can neither measure nor delete in bulk.
 noToc: false
 ---
 
-[Sources (Github)](https://github.com/sylvainmetayer/kdrive-version-cleaner) [Latest release](https://github.com/sylvainmetayer/kdrive-version-cleaner/releases/latest)
+[Sources (GitHub)](https://github.com/sylvainmetayer/kdrive-version-cleaner) [Latest release](https://github.com/sylvainmetayer/kdrive-version-cleaner/releases/latest)
 
 ## The idea
 
 My [kDrive](https://www.infomaniak.com/en/kdrive) kept filling up, even though I was hardly adding anything to it. After a bit of digging, the culprit showed up quickly: **old versions** of files. Every time a file changes, kDrive keeps a copy of the previous version. That's very handy to go back in time, much less so when a file edited every day ends up weighing several times its own size.
 
-<!-- TODO Sylvain: real figure -->
-In total, these versions took up XX GB on my drive.
+With the tool described below, I was able to free up 3.2 GB, or 686 old versions.
 
 The problem: Infomaniak's web interface doesn't show which folders are affected, and only lets you delete versions one at a time, file by file. 😩
 
@@ -50,8 +48,9 @@ The API is also limited to 60 requests per minute. The tool spaces out its calls
 
 ## Written with a coding agent
 
-<!-- TODO Sylvain: rephrase with your own take -->
 This project was also an experiment: I built it with a coding agent ([Claude Code](https://www.anthropic.com/claude-code)), in two days. My role was mostly to set the rules, then review.
+
+And it's pretty cool: without an agent, this tool would have stayed an idea, as I wouldn't have taken the time to learn Rust and ratatui for it. The flip side: since I don't know Rust, I'm much less of an expert on the resulting code than if I had written it myself. Hence the importance of the safeguards above, and of the tests and reviews that follow.
 
 The rules live in an [AGENTS.md](https://github.com/sylvainmetayer/kdrive-version-cleaner/blob/main/AGENTS.md) file: architecture, conventions, and above all the safety invariants above, which must never be broken. Any change to the deletion rules must come with tests, and end-to-end runs go against a fake server, never against my real drive.
 
@@ -69,4 +68,4 @@ Binaries for Linux, macOS and Windows are also available on the [releases page](
 
 You'll then need to create an [Infomaniak API token](https://manager.infomaniak.com/v3/ng/profile/user/token/list) with the `drive` scope (and `accounts` so the tool finds your accounts on its own), then export it as `KDRIVE_TOKEN`. The [README](https://github.com/sylvainmetayer/kdrive-version-cleaner#readme) covers the rest. Note that the tool's interface is in French.
 
-The project's sources are available on [Github](https://github.com/sylvainmetayer/kdrive-version-cleaner).
+The project's sources are available on [GitHub](https://github.com/sylvainmetayer/kdrive-version-cleaner).

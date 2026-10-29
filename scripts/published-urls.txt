@@ -78,3 +78,5 @@
 /tags/twitter/
 /talks/
 /uploads/CV-en.pdf
+/article/kdrive-version-cleaner/
+/en/article/kdrive-version-cleaner/

@@ -4,21 +4,19 @@ tags:
   - projet
   - rust
   - infomaniak
-date: "2026-10-15"
-draft: true
+date: "2026-10-29"
 metaDesc: Mon kDrive se remplissait tout seul. La faute aux anciennes versions des fichiers, que l'interface ne permet ni de mesurer, ni de supprimer en masse.
 excerpt: Mon kDrive se remplissait tout seul. La faute aux anciennes versions des fichiers, que l'interface ne permet ni de mesurer, ni de supprimer en masse.
 noToc: false
 ---
 
-[Sources (Github)](https://github.com/sylvainmetayer/kdrive-version-cleaner) [Dernière version](https://github.com/sylvainmetayer/kdrive-version-cleaner/releases/latest)
+[Sources (GitHub)](https://github.com/sylvainmetayer/kdrive-version-cleaner) [Dernière version](https://github.com/sylvainmetayer/kdrive-version-cleaner/releases/latest)
 
 ## L'idée
 
 Mon [kDrive](https://www.infomaniak.com/fr/kdrive) se remplissait, alors que je n'y ajoutais presque rien. En cherchant un peu, le coupable est vite apparu : les **anciennes versions** des fichiers. À chaque modification, kDrive garde une copie de l'ancienne version, ce qui est très pratique pour revenir en arrière, mais beaucoup moins quand un fichier modifié tous les jours finit par peser plusieurs fois sa taille.
 
-<!-- TODO Sylvain : chiffre réel -->
-Au total, ces versions occupaient XX Go sur mon drive.
+Grâce à l'outil présenté plus bas, j'ai pu libérer 3,2 Go, soit 686 anciennes versions.
 
 Problème : l'interface web d'Infomaniak ne montre pas quels dossiers sont concernés, et ne permet de supprimer les versions qu'une par une, fichier par fichier. 😩
 
@@ -38,7 +36,7 @@ Pour faire le ménage, on sélectionne un fichier ou un dossier, et on choisit u
 
 ## Supprimer, oui, mais prudemment
 
-Un outil qui supprime des données en masse, ça mérite quelques garde-fous. Voici ceux que je me suis fixé :
+Un outil qui supprime des données en masse, ça mérite quelques garde-fous. Voici ceux que je me suis fixés :
 
 - **La version courante n'est jamais supprimée.** L'API ne renvoie normalement que les anciennes versions, mais l'outil vérifie que la liste correspond exactement à ce que le scan a vu. Au moindre doute, la plus récente est protégée : au pire, on garde une version de trop.
 - **Les versions marquées « conservées pour toujours » ne sont jamais touchées.**
@@ -50,8 +48,9 @@ L'API est aussi limitée à 60 requêtes par minute. L'outil espace donc ses app
 
 ## Écrit avec un agent de code
 
-<!-- TODO Sylvain : à reformuler avec ton ressenti -->
 Ce projet est aussi l'occasion d'un test : je l'ai développé avec un agent de code ([Claude Code](https://www.anthropic.com/claude-code)), en deux jours. Mon rôle a surtout été de fixer les règles, puis de relire.
+
+Et c'est plutôt cool : sans agent, cet outil serait resté une idée, je n'aurais pas pris le temps d'apprendre Rust et ratatui pour ça. Revers de la médaille : comme je ne connais pas Rust, je suis bien moins expert du code produit que si je l'avais écrit moi-même. D'où l'importance des garde-fous plus haut, et des tests et relectures qui suivent.
 
 Les règles sont écrites dans un fichier [AGENTS.md](https://github.com/sylvainmetayer/kdrive-version-cleaner/blob/main/AGENTS.md) : architecture, conventions, et surtout les invariants de sécurité ci-dessus, qui ne doivent jamais être cassés. Toute modification des règles de suppression doit être accompagnée de tests, et les essais de bout en bout se font contre un faux serveur, jamais contre mon vrai drive.
 
@@ -69,4 +68,4 @@ Des binaires pour Linux, macOS et Windows sont aussi disponibles sur la [page de
 
 Il faudra ensuite créer un [token d'API Infomaniak](https://manager.infomaniak.com/v3/ng/profile/user/token/list) avec le scope `drive` (et `accounts` pour que l'outil trouve vos comptes tout seul), puis l'exporter dans `KDRIVE_TOKEN`. Le [README](https://github.com/sylvainmetayer/kdrive-version-cleaner#readme) détaille le reste.
 
-Les sources du projet sont disponibles sur [Github](https://github.com/sylvainmetayer/kdrive-version-cleaner).
+Les sources du projet sont disponibles sur [GitHub](https://github.com/sylvainmetayer/kdrive-version-cleaner).
