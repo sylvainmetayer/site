@@ -35,7 +35,3 @@
   Content-Type: text/markdown; charset=utf-8
 /llms.txt
   Content-Type: text/plain; charset=utf-8
-
-# Agenda des talks (src/talks-ics.njk), auquel on peut s'abonner
-/talks.ics
-  Content-Type: text/calendar; charset=utf-8
