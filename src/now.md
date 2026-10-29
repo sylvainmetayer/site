@@ -15,10 +15,8 @@ Développeur chez onepoint à Bordeaux depuis 2017, côté backend, DevOps, CI e
 
 ## Projets perso
 
-- **[planning-equipes](https://github.com/sylvainmetayer/planning-equipes)** : l'affectation automatique d'animateurs aux stands d'un festival, sous contraintes légales, de compétences, de disponibilités et d'équité de charge. Un problème de planification sous contraintes, pour le [FLIP](https://www.jeux-festival.com/) de Parthenay.
-- **[terraform-provider-pangolin](https://github.com/sylvainmetayer/terraform-provider-pangolin)** : un provider Terraform/OpenTofu pour gérer les ressources de [Pangolin](https://github.com/fosrl/pangolin) en code.
+- **[planning-equipes](https://github.com/sylvainmetayer/planning-equipes)** : un projet pour tenter de proposer une simplification des plannings pour des évènements.
 - **[kdrive-version-cleaner](https://github.com/sylvainmetayer/kdrive-version-cleaner)** : une interface en terminal pour voir et nettoyer les anciennes versions des fichiers d'un kDrive.
-- **[1y](https://github.com/sylvainmetayer/1y)** : mon raccourcisseur d'URL.
 
 ## Homelab
 
