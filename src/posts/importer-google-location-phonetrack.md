@@ -31,14 +31,14 @@ Pour ma part, le fichier contient un peu plus d'un million et demi d'enregistrem
 
 ```bash
 ~/wip
-❯ mv Historique\ des\ positions.json google.json
+$ mv Historique\ des\ positions.json google.json
 
 ~/wip
-❯ jq '.locations| length' < google.json
+$ jq '.locations| length' < google.json
 1690273
 
 ~/wip took 14s
-❯ ls -ailh google.json
+$ ls -ailh google.json
 2498577 -rw-rw-r--. 1 user user 470M 17 mai   13:35 google.json
 ```
 
@@ -79,7 +79,7 @@ Pour l'usage, cela se passe comme ça : le script va lire un fichier (`google.js
 
 ```bash
 ~/wip via ⬢ v14.15.0
-❯ node split.js
+$ node split.js
 1690273 locations
 Need to write file 0
 Need to write file 1
@@ -98,7 +98,7 @@ Need to write file 13
 Need to write file 14
 Need to write file 15
 Wrote last data file with 90273 locations
-❯ bc <<< 16*100000+90273
+$ bc <<< 16*100000+90273
 1690273
 ```
 
