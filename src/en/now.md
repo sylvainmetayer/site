@@ -3,7 +3,7 @@ title: Now
 permalink: /en/now/
 layout: layouts/page.njk
 translationKey: now
-updated: 2026-10-28
+updated: 2026-10-29
 metaDesc: "What Sylvain MÉTAYER is working on right now: work, side projects, homelab."
 ---
 
@@ -24,6 +24,14 @@ Developer at onepoint in Bordeaux since 2017, on backend, DevOps, CI and infrast
 
 Still describing [my homelab](https://github.com/sylvainmetayer/homelab) as code: Proxmox, OpenTofu, Pangolin.
 
+## Learning
+
+Working with AI agents: handing them a whole task (exploring, coding, reviewing) while keeping the choices and the review. This site is my test bed.
+
 ## This site
 
 Adding ideas found on [11tybundle.dev](https://11tybundle.dev/): a Markdown version of the articles, series, sidenotes… The details are in [Under the hood](/en/under-the-hood/).
+
+## Elsewhere
+
+Table tennis, in a departmental league.
