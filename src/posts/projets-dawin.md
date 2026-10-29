@@ -9,6 +9,7 @@ tags:
   - projet
 metaDesc: "Le présent article liste les différents projets que j'ai pu réaliser durant mon année de licence professionnelle DAWIN à l'IUT de Gradignan"
 excerpt: "Le présent article liste les différents projets que j'ai pu réaliser durant mon année de licence professionnelle DAWIN à l'IUT de Gradignan"
+series: "Projets d'études"
 ---
 
 Le présent article liste les différents projets que j'ai pu réaliser durant mon année de licence professionnelle DAWIN[^1] à l'IUT de Gradignan. Ces projets ont été réalisés la plupart du temps en binôme ou en groupe.

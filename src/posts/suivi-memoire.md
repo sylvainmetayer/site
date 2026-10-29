@@ -6,6 +6,7 @@ tags:
   - blog
 metaDesc: "Avancée de la réalisation de mon mémoire de fin d'études pour l'EPSI"
 excerpt: "Avancée de la réalisation de mon mémoire de fin d'études pour l'EPSI"
+series: "Mémoire EPSI"
 ---
 
 Bien que n'ayant pas communiqué sur le suivi de mon mémoire comme cela était [indiqué ici](/article/memoire/), j'ai bien avancé sur ce dernier. Je vais lister ici mes avancées et ce qu'il me reste à faire.

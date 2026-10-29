@@ -792,9 +792,10 @@ samp {
   margin-block: 0;
 }
 
-/* 24px high targets (WCAG 2.5.8) with the same rhythm as before */
+/* 24px high targets (WCAG 2.5.8) with the same rhythm as before. Block, not
+   inline-block: the list number stays on the first line of a long title */
 .toc a {
-  display: inline-block;
+  display: block;
   padding-block: 0.15rem;
   color: var(--fg);
   text-decoration: none;
@@ -802,6 +803,42 @@ samp {
 
 .toc a:hover {
   color: var(--accent);
+}
+
+/* Section being read (js/toc-spy.js) */
+.toc a[aria-current] {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Wide screens: the table of contents sits in the right margin and stays in view */
+@media (min-width: 82rem) {
+  .post {
+    position: relative;
+  }
+
+  .toc {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 2.5rem);
+    width: 14rem;
+    padding: 0;
+    border: 0;
+  }
+
+  .toc > .cmd {
+    display: none;
+  }
+
+  .toc-nav {
+    position: sticky;
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    padding-left: 0.9rem;
+    border-left: 1px dashed var(--line);
+  }
 }
 
 /* Long-form content written in Markdown */
@@ -1185,6 +1222,40 @@ samp {
 .webmentions-meta + .p-content {
   margin-top: 0.35rem;
   overflow-wrap: anywhere;
+}
+
+/* Series box (layouts/post.njk) */
+.series {
+  margin: 0 0 1.4rem;
+  padding: 0.7rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+}
+
+.series p {
+  margin: 0 0 0.3rem;
+  font: 600 0.82rem/1.5 var(--mono);
+}
+
+.series ol {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.series [aria-current] {
+  font-weight: 600;
+}
+
+/* Related articles and backlinks (layouts/post.njk) */
+.post-links h2 {
+  margin: 1.6rem 0 0.5rem;
+  font: 600 1.05rem/1.3 var(--mono);
+}
+
+.post-links ul {
+  margin: 0;
+  padding-left: 1.2rem;
 }
 
 .post-nav {

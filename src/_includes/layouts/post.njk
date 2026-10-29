@@ -14,10 +14,13 @@
 {% endblock %}
 
 {% block head %}
+  <script src="/js/toc-spy.js" defer></script>
   <script src="/js/copy-code.js" data-label="{{ 'code.copy' | t }}" data-copied="{{ 'code.copied' | t }}" defer></script>
 {% endblock %}
 
 {% block content %}
+  {# The articles in the language of the page: the English ones are only the translated ones #}
+  {% set siblings = collections.postsEn if lang == 'en' else collections.posts %}
   {% set readingTime = helpers.getReadingTime(content) %}
   <article class="post h-entry" aria-labelledby="post-title">
     <header class="post-head">
@@ -53,6 +56,19 @@
       <p class="post-notice">{{ ('post.oldUpdated' if updated else 'post.old') | t({ year: reviewed | date('YYYY') }) }}</p>
     {% endif %}
 
+    {# Articles sharing the `series` front matter, oldest first #}
+    {% if series %}
+      {% set seriesPosts = siblings | whereData('series', series) | reverse %}
+      <nav class="series" aria-label="{{ 'post.series' | t({ name: series }) }}">
+        <p>{{ 'post.series' | t({ name: series }) }} ({{ seriesPosts.length }})</p>
+        <ol>
+          {% for post in seriesPosts %}
+            <li>{% if post.url == page.url %}<span aria-current="page">{{ post.data.title }}</span>{% else %}<a href="{{ post.url }}">{{ post.data.title }}</a>{% endif %}</li>
+          {% endfor %}
+        </ol>
+      </nav>
+    {% endif %}
+
     {% set tocContent = content | toc %}
     {% if tocContent and ('<li' in tocContent) and not noToc %}
       <aside class="toc" aria-label="{{ 'post.toc' | t }}">
@@ -72,10 +88,24 @@
     {% endif %}
   </article>
 
+  {% set backlinkPosts = siblings | backlinks(page.fileSlug | baseSlug) %}
+  {% set relatedPosts = siblings | related(page.url, backlinkPosts) %}
+  {% if relatedPosts.length or backlinkPosts.length %}
+    <aside class="post-links" aria-label="{{ 'post.more' | t }}">
+      {% if backlinkPosts.length %}
+        <h2>{{ 'post.backlinks' | t }}</h2>
+        <ul>{% for post in backlinkPosts %}<li><a href="{{ post.url }}">{{ post.data.title }}</a></li>{% endfor %}</ul>
+      {% endif %}
+      {% if relatedPosts.length %}
+        <h2>{{ 'post.related' | t }}</h2>
+        <ul>{% for post in relatedPosts %}<li><a href="{{ post.url }}">{{ post.data.title }}</a></li>{% endfor %}</ul>
+      {% endif %}
+    </aside>
+  {% endif %}
+
   {% include 'partials/webmentions.njk' %}
 
   {# Neighbours in the same language: the English articles are only the translated ones #}
-  {% set siblings = collections.postsEn if lang == 'en' else collections.posts %}
   {% set newer = siblings | getPreviousCollectionItem(page) %}
   {% set older = siblings | getNextCollectionItem(page) %}
   {% if newer or older %}

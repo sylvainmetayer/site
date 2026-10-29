@@ -7,6 +7,7 @@ tags:
 excerpt: "Our takeaways from SnowCamp 2025: the XZ Utils backdoor, OpenRewrite, generative AI, development environments with Coder, Kubernetes in production and little-known web features."
 original: "https://www.linkedin.com/pulse/snowcamp-2025-sylvain-m%C3%A9tayer--jhqxe"
 socialImage: "/images/snowcamp-2025.jpg"
+series: "Conference recaps"
 ---
 
 ![A packed SnowCamp auditorium facing two speakers on stage and their slides](/images/snowcamp-2025.jpg)

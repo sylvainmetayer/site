@@ -5,6 +5,7 @@ metaDesc: Ma dernière année d'études à l'EPSI Bordeaux signifie également l
 excerpt:  Ma dernière année d'études à l'EPSI Bordeaux signifie également la rédaction d'un mémoire. Afin d'assurer un suivi efficace des tuteurs EPSI, il est demandé aux étudiants de donner des états d'avancement, à des dates jalons, afin que les tuteurs puissent recadrer l'étudiant s'il part dans une mauvaise direction.
 tags:
     - epsi
+series: "Mémoire EPSI"
 ---
 
 Ma dernière année d'études à l'EPSI Bordeaux signifie également la rédaction d'un mémoire. Afin d'assurer un suivi efficace des tuteurs EPSI, il est demandé aux étudiants de donner des états d'avancement, à des dates jalons, afin que les tuteurs puissent recadrer l'étudiant s'il part dans une mauvaise direction.
