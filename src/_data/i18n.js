@@ -82,6 +82,14 @@ export default {
     'notes.feed': 'Flux RSS des notes',
     'palette.kindNote': 'note',
 
+    'callout.note': 'Note',
+    'callout.tip': 'Astuce',
+    'callout.important': 'Important',
+    'callout.warning': 'Attention',
+    'callout.caution': 'Danger',
+
+    'youtube.play': 'Lire la vidéo « {title} »',
+
     'code.copy': 'copier',
     'code.copied': 'copié',
 
@@ -221,6 +229,14 @@ export default {
     'post.related': 'Related articles',
     'post.backlinks': 'Linked from',
     'post.series': 'Series: {name}',
+
+    'callout.note': 'Note',
+    'callout.tip': 'Tip',
+    'callout.important': 'Important',
+    'callout.warning': 'Warning',
+    'callout.caution': 'Caution',
+
+    'youtube.play': 'Play the video “{title}”',
 
     'code.copy': 'copy',
     'code.copied': 'copied',

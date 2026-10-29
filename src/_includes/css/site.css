@@ -989,6 +989,107 @@ samp {
   font-size: inherit;
 }
 
+/* Sidenotes (parse-transform.js): copies of the footnotes, in the left margin
+   on wide screens only; the footnotes stay at the end of the article */
+.sidenote {
+  display: none;
+}
+
+@media (min-width: 82rem) {
+  .sidenote {
+    display: block;
+    float: left;
+    clear: left;
+    width: 14rem;
+    margin: 0.2rem 0 0.8rem -16.5rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .sidenote-number {
+    font: 600 0.75rem/1 var(--mono);
+  }
+}
+
+/* Callouts: > [!NOTE] … (utils/markdown.js) */
+.prose .callout {
+  margin: 1.4rem 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--callout, var(--accent));
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 0.97rem;
+}
+
+.prose .callout > :last-child {
+  margin-bottom: 0;
+}
+
+.prose .callout-title {
+  margin: 0 0 0.3rem;
+  color: var(--callout, var(--accent));
+  font: 600 0.82rem/1.5 var(--mono);
+  text-transform: uppercase;
+}
+
+.callout-tip {
+  --callout: var(--ok);
+}
+
+.callout-warning {
+  --callout: var(--warn);
+}
+
+.callout-caution {
+  --callout: var(--error);
+}
+
+/* Code block options (utils/markdown.js): file name, line numbers, highlighted lines */
+.code-title {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.25rem 0.8rem;
+  background: var(--code-bg);
+  color: var(--code-muted);
+  border: 1px solid var(--code-line);
+  border-bottom: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  font: 400 0.78rem/1.5 var(--mono);
+  overflow-wrap: anywhere;
+}
+
+.code-title + pre,
+.code-title + .code-block pre {
+  border-top-left-radius: 0;
+}
+
+.prose pre.line-numbers code {
+  counter-reset: line;
+}
+
+.prose pre.line-numbers .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2ch;
+  margin-right: 1.2ch;
+  color: var(--code-muted);
+  text-align: right;
+  user-select: none;
+}
+
+/* Full width, so the background covers the whole line */
+.prose pre .line.highlighted {
+  display: inline-block;
+  min-width: calc(100% + 2rem);
+  margin: 0 -1rem;
+  padding: 0 1rem;
+  background: rgb(98 172 255 / 0.14);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
 /* Baseline shortcode (11ty/shortcodes/baseline.js): browser support of a web feature */
 .baseline {
   padding: 0.05em 0.4em;
@@ -1055,11 +1156,38 @@ samp {
   margin-inline: auto;
 }
 
+/* Blurred placeholder under the optimised images (parse-transform.js) */
+.lqip-wrap {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.lqip-wrap > picture img {
+  position: relative;
+}
+
+.lqip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(14px);
+}
+
 .prose figcaption {
   margin-top: 0.4rem;
   font: 400 0.8rem/1.5 var(--mono);
   color: var(--muted);
   text-align: center;
+}
+
+.figure-number {
+  font-weight: 600;
 }
 
 .prose hr {
@@ -1099,6 +1227,48 @@ samp {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* YouTube shortcode (11ty/shortcodes/youtube.js): thumbnail and play button until clicked (js/youtube.js) */
+.youtube-link {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #000;
+}
+
+.youtube-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.youtube-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 68px;
+  height: 48px;
+  margin: -24px 0 0 -34px;
+  border-radius: 12px;
+  background: rgb(0 0 0 / 0.75);
+}
+
+.youtube-play::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 27px;
+  border-style: solid;
+  border-width: 10px 0 10px 17px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.youtube-link:hover .youtube-play,
+.youtube-link:focus-visible .youtube-play {
+  background: #f00;
 }
 
 .prose .footnotes {
@@ -1318,57 +1488,45 @@ samp {
   }
 }
 
-/* Prism tokens (code blocks are always dark) */
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: var(--code-muted);
-  font-style: italic;
+/* Shiki token colours (utils/shiki-theme.js, turned into classes by utils/markdown.js) */
+.tok-8396ab {
+  color: #8396ab;
 }
 
-.token.punctuation,
-.token.operator {
+.tok-a9b8c8 {
   color: #a9b8c8;
 }
 
-.token.keyword,
-.token.atrule,
-.token.important {
+.tok-c39bff {
   color: #c39bff;
 }
 
-.token.string,
-.token.char,
-.token.attr-value,
-.token.inserted {
+.tok-9fd88a {
   color: #9fd88a;
 }
 
-.token.number,
-.token.boolean,
-.token.constant,
-.token.symbol {
+.tok-f2b56b {
   color: #f2b56b;
 }
 
-.token.function,
-.token.class-name,
-.token.selector {
+.tok-7cc4ff {
   color: #7cc4ff;
 }
 
-.token.tag,
-.token.property,
-.token.attr-name,
-.token.variable,
-.token.deleted {
+.tok-ff9a8a {
   color: #ff9a8a;
 }
 
-.token.builtin,
-.token.url {
+.tok-6fd6d0 {
   color: #6fd6d0;
+}
+
+.tok-d6e2ee {
+  color: #d6e2ee;
+}
+
+.tok-italic {
+  font-style: italic;
 }
 
 /* ---------- CV ---------- */

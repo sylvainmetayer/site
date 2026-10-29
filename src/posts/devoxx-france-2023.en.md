@@ -31,7 +31,9 @@ Out of everything we got to see, here is our top 5!
 
 This is an experience report on setting up observability in a project made of several software components. After introducing the concepts of observability and OpenTelemetry, [@jtama](https://dev.to/jtama) iteratively walks us through his experience and the obstacles he ran into while taming this "magic collector" to unify our logs, traces and metrics.
 
-[YouTube replay](https://www.youtube.com/watch?v=0xSCUgHxZu0)
+
+{% youtube "0xSCUgHxZu0", "Alice au pays d’OpenTelemetry (Alice in OpenTelemetry Land)" %}
+
 [Slides](https://jtama.github.io/alice-au-pays-d-opentelemetry/#/)
 <s class="dead-link" title="The CFP website is no longer online">CFP page</s>
 
@@ -43,7 +45,9 @@ It also focuses on predictive language models, which helps understand why models
 
 If you want a complete, accessible course for non-specialists, including a history of AI models, this talk is for you!
 
-[YouTube replay](https://www.youtube.com/watch?v=ZbWL2W53BXY)
+
+{% youtube "ZbWL2W53BXY", "Comprendre et utiliser les modèles de langage d'IA (Understanding and using AI language models)" %}
+
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vReIr93Udkzm3S0qn59AyFDYQjuXq0puGNYlFQYqDyoHqio_UgHbqQV1Qm4sUwt0ZeawfvGFdQOCHLc/pub#slide=id.g21f549ddc89_0_0)
 [GitHub repository](https://github.com/sebastien-collet/talks/blob/master/Devoxx%20FR%202023/Ressources.md)
 <s class="dead-link" title="The CFP website is no longer online">CFP page</s>
@@ -54,7 +58,9 @@ In this 3-hour deep-dive session, [Loïc Ortola](https://www.twitter.com/@LoicOr
 
 Each tool is justified by the role it plays. The talk gradually builds up a complex, multi-cluster infrastructure, from provisioning the infrastructure all the way to continuous deployment of the applications, in a 100% GitOps approach.
 
-[YouTube replay](https://www.youtube.com/watch?v=FyAD_-LAMLo)
+
+{% youtube "FyAD_-LAMLo", "Une Architecture GitOps from scratch : Gitlab, Ansible, Terraform, Kubernetes et AWS (A GitOps architecture from scratch: Gitlab, Ansible, Terraform, Kubernetes and AWS)" %}
+
 [Gitlab repository](https://gitlab.com/takima-school/takione)
 <s class="dead-link" title="The CFP website is no longer online">CFP page</s>
 
@@ -64,7 +70,9 @@ In this 20-minute keynote, [Benjamin Bayart](https://twitter.com/bayartb), co-fo
 
 He closes with the message that every software engineer is involved in the geopolitics of data.
 
-[YouTube replay](https://www.youtube.com/watch?v=EOOhYaGGArc)
+
+{% youtube "EOOhYaGGArc", "Géopolitique de la data (The geopolitics of data)" %}
+
 <s class="dead-link" title="The CFP website is no longer online">CFP page</s>
 
 ### Démystifions les composants internes de Kubernetes (Demystifying Kubernetes internals)
@@ -75,7 +83,9 @@ Through a live demo, [Denis Germain](https://twitter.com/zwindler) presents the 
 
 If you want to know what's behind a "kubectl apply -f mon-deploiement.yaml", or understand how "etcd", "api-server", "controller-manager", "scheduler", "kubelet", "containerd" or "CNI" work together, this talk is for you!
 
-[YouTube replay](https://www.youtube.com/watch?v=OCMNA0dSAzc)
+
+{% youtube "OCMNA0dSAzc", "Démystifions les composants internes de Kubernetes (Demystifying Kubernetes internals)" %}
+
 [Slides](https://blog.zwindler.fr/talks/2023-demystifions-kubernetes/index.html)
 [GitHub repository with the demo](https://github.com/zwindler/demystifions-kubernetes)
 <s class="dead-link" title="The CFP website is no longer online">CFP page</s>
@@ -90,7 +100,9 @@ He also points out a few bad practices that are nonetheless common when approach
 
 Whether or not you use Postgres, this talk will show you its superpowers and make you want to give it a try.
 
-[YouTube replay](https://www.youtube.com/watch?v=I1rAkNDv1Ws)
+
+{% youtube "I1rAkNDv1Ws", "SELECT 'amazing_features' FROM \"postgresql\"" %}
+
 [Slides](https://download.davinkevin.fr/presentations/select-amazing-features-from-postgresql/devoxxfr-2023/select-amazing-features-from-postgresql.pdf)
 [Gitlab repository](https://gitlab.com/davinkevin.fr/presentations/select-amazing_features-from-postgresql)
 <s class="dead-link" title="The CFP website is no longer online">CFP page</s>

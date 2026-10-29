@@ -1,11 +1,11 @@
 import { readFileSync } from 'node:fs';
 import matter from 'gray-matter';
 import rssPlugin from '@11ty/eleventy-plugin-rss';
-import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 import pluginTOC from 'eleventy-plugin-toc';
 
 import filters from './src/11ty/filters/index.js';
 import baseline from './src/11ty/shortcodes/baseline.js';
+import youtube from './src/11ty/shortcodes/youtube.js';
 import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
 import site from './src/_data/site.json' with { type: 'json' };
@@ -65,6 +65,7 @@ export default function eleventyConfig(config) {
   config.addTransform('parse', parseTransform);
 
   config.addNunjucksAsyncShortcode('baseline', baseline);
+  config.addNunjucksAsyncShortcode('youtube', youtube);
 
   config.addPassthroughCopy(passthroughItems);
 
@@ -209,9 +210,13 @@ export default function eleventyConfig(config) {
 
   // Body of a Markdown file, without its front matter (src/article-markdown.njk)
   // and without the {% raw %} markers, which only exist for Nunjucks.
+  // {% youtube 'id', 'Titre' %} becomes a link to the video.
   // shortcut: other shortcodes ({% baseline %}) stay as written, render them if an article uses one.
   config.addFilter('rawMarkdown', inputPath => matter(readFileSync(inputPath, 'utf8')).content
-    .replace(/\{%-?\s*(end)?raw\s*-?%\}/g, '').trim());
+    .replace(/\{%-?\s*(end)?raw\s*-?%\}/g, '')
+    .replace(/\{%-?\s*youtube\s+(["'])([\w-]{11})\1\s*,\s*(["'])(.*?)\3\s*-?%\}/g,
+      (_, _q, id, _q2, title) => `[${title.replace(/\\(["'])/g, '$1')}](https://www.youtube.com/watch?v=${id})`)
+    .trim());
 
   // Up to `count` posts sharing the most tags with the one at `url`, newest first
   // on a tie; posts without a shared tag, in `exclude` (backlinks) or in the same
@@ -251,7 +256,6 @@ export default function eleventyConfig(config) {
   });
 
   config.addPlugin(rssPlugin);
-  config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginTOC, {
     tags: ['h2', 'h3'],
     wrapper: 'div',

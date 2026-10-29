@@ -42,6 +42,12 @@ mise installe Node 24 (`mise install`, voir aussi `.nvmrc`). Sans mise : `npm ci
 
 Les polices (JetBrains Mono, IBM Plex Sans) et Sveltia CMS viennent de npm et sont copiés dans `dist/` au build, à cause de la CSP (`font-src 'self'`, `script-src 'self'`).
 
+Les blocs de code sont colorés au build par Shiki (thème `src/utils/shiki-theme.js`). Après le langage : `{2,4-5}` surligne des lignes, `title="fichier.js"` affiche le nom du fichier, `showLineNumbers` numérote les lignes.
+
+Un encadré s'écrit comme sur GitHub : une citation qui commence par `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` ou `[!CAUTION]`.
+
+`{% youtube 'identifiant', 'Titre' %}` intègre une vidéo YouTube légère : la miniature est téléchargée au build, le lecteur (youtube-nocookie, autorisé par `frame-src` dans `_headers`) ne se charge qu'au clic.
+
 Dans un article, `{% baseline 'container-queries' %}` affiche le support navigateur d'une fonctionnalité web (identifiant de l'URL `https://webstatus.dev/features/<id>`), récupéré au build. Pas de « {% » dans `site.css` : la feuille passe par Nunjucks.
 
 `/liens/` liste les liens saisis dans le CMS (`src/_data/links.json`) et ceux d'une liste Karakeep, si le build a `KARAKEEP_URL`, `KARAKEEP_API_KEY` et `KARAKEEP_LIST_ID` (la note du favori devient le commentaire). Sans liens, la page n'est pas générée.

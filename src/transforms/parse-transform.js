@@ -1,8 +1,11 @@
 import { JSDOM } from 'jsdom';
 import { imageSizeFromFile } from 'image-size/fromFile';
 import Image from '@11ty/eleventy-img';
+// Installed with eleventy-img: a placeholder needs no file or cache entry
+import sharp from 'sharp';
 import helpers from '../_data/helpers.js';
 import site from '../_data/site.json' with { type: 'json' };
+import emojis from '../_data/emojis.json' with { type: 'json' };
 
 // Article images are served as AVIF and WebP, with the original format as a
 // fallback, in widths that cover the text column (--measure: 44rem) up to 2x.
@@ -23,6 +26,45 @@ const isLocal = src => src.startsWith('/') && !src.startsWith('//');
 // scrapers that look for "mailto:" or "@" in the raw HTML do not find it
 const toEntities = text => [...text].map(char => `&#${char.codePointAt(0)};`).join('');
 const MAIL_LINK = 'mailto:' + site.authorEmail;
+
+// An emoji, with its variation selector and ZWJ sequence if any
+const EMOJI = /\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*/gu;
+
+// Emojis in the text become role="img" with a name in the language of the page
+// (src/_data/emojis.json): screen readers name them alike, whatever the platform.
+// Not in code, not twice, not in a link or button an aria-label already names
+// (an aria-label on a section or landmark does not replace its content).
+function labelEmojis(document) {
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+  const walker = document.createTreeWalker(document.querySelector('main') || document.body, 4 /* NodeFilter.SHOW_TEXT */);
+  const nodes = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (EMOJI.test(node.data) && !node.parentElement.closest('pre, code, script, style, [role="img"], [aria-hidden="true"], a[aria-label], button[aria-label]')) nodes.push(node);
+    EMOJI.lastIndex = 0;
+  }
+  nodes.forEach(node => {
+    const fragment = document.createDocumentFragment();
+    let last = 0;
+    for (const match of node.data.matchAll(EMOJI)) {
+      const name = emojis[match[0].replace(/\uFE0F/g, '')]?.[lang];
+      if (!name) {
+        console.warn(`[emojis] nom manquant pour ${match[0]} dans src/_data/emojis.json`);
+        continue;
+      }
+      fragment.append(node.data.slice(last, match.index));
+      const span = document.createElement('span');
+      span.setAttribute('role', 'img');
+      span.setAttribute('aria-label', name);
+      span.textContent = match[0];
+      fragment.append(span);
+      last = match.index + match[0].length;
+    }
+    if (last === 0) return;
+    fragment.append(node.data.slice(last));
+    node.replaceWith(fragment);
+  });
+}
 
 const srcset = images => images.map(image => image.srcset).join(', ');
 
@@ -54,8 +96,27 @@ async function optimiseImage(document, image) {
   img.setAttribute('decoding', 'async');
   picture.appendChild(img);
 
+  // Blurred placeholder (LQIP): a 16px wide copy inlined as a data: URI, under
+  // the image until it loads. A separate <img>, as html-validate forbids inline styles.
+  // sharp drops the metadata (ICC profile included): about 150 bytes instead of 3 kB.
+  // Not under a transparent image: the blur would show through it once loaded.
+  const source = sharp('src' + image.getAttribute('src'));
+  if ((await source.metadata()).hasAlpha) {
+    image.replaceWith(picture);
+    return;
+  }
+  const tiny = await source.resize(16).webp({ quality: 40 }).toBuffer();
+  const placeholder = document.createElement('img');
+  placeholder.className = 'lqip';
+  placeholder.setAttribute('src', `data:image/webp;base64,${tiny.toString('base64')}`);
+  placeholder.setAttribute('alt', '');
+  placeholder.setAttribute('aria-hidden', 'true');
+  const wrapper = document.createElement('span');
+  wrapper.className = 'lqip-wrap';
+  wrapper.append(placeholder, picture);
+
   // A linked image keeps pointing to the original file
-  image.replaceWith(picture);
+  image.replaceWith(wrapper);
 }
 
 export default async function parseTransform(value, outputPath) {
@@ -66,7 +127,9 @@ export default async function parseTransform(value, outputPath) {
     });
 
     const document = DOM.window.document;
-    const articleImages = [...document.querySelectorAll('main article img, .intro img')];
+    // The thumbnails of {% youtube %} are already optimised
+    const notOptimised = image => !image.closest('.youtube');
+    const articleImages = [...document.querySelectorAll('main article img, .intro img')].filter(notOptimised);
     const articleEmbeds = [...document.querySelectorAll('main article iframe')];
 
     const externalLinks = Array.from(document.querySelectorAll(`a:not([href^="${helpers.url()}"]):not([href^="#"]):not([href^="/"])`));
@@ -125,8 +188,18 @@ export default async function parseTransform(value, outputPath) {
       });
     }
 
+    // Captions numbered in reading order: "Figure 2 · …" (the same word in French
+    // and English), so the text can refer to a figure by its number
+    document.querySelectorAll('main article .prose figure > figcaption').forEach((caption, index) => {
+      const number = document.createElement('span');
+      number.className = 'figure-number';
+      number.textContent = `Figure ${index + 1}`;
+      caption.prepend(number, ' · ');
+    });
+
     // Run after the captions above, which clone the images
     const optimisableImages = [...document.querySelectorAll('main article img, .intro img')]
+      .filter(notOptimised)
       .filter(image => isLocal(image.getAttribute('src')) && OPTIMISABLE_IMAGE.test(image.getAttribute('src')));
     await Promise.all(optimisableImages.map(image => optimiseImage(document, image)));
 
@@ -144,6 +217,24 @@ export default async function parseTransform(value, outputPath) {
         }
       });
     }
+
+    // Sidenotes: a copy of each footnote next to its reference, shown in the left
+    // margin on wide screens (site.css). Hidden from assistive technologies,
+    // which keep the footnotes at the end of the article.
+    document.querySelectorAll('main .prose sup.footnote-ref > a[href^="#fn"]').forEach(ref => {
+      const note = document.getElementById(ref.getAttribute('href').slice(1));
+      if (!note) return;
+      const sidenote = document.createElement('span');
+      sidenote.className = 'sidenote';
+      sidenote.setAttribute('aria-hidden', 'true');
+      // The number from href="#fn2": the text of a repeated reference is "2:1"
+      sidenote.innerHTML = `<span class="sidenote-number">${note.id.replace(/\D/g, '')}</span> ${[...note.children].map(child => child.innerHTML).join(' ')}`;
+      sidenote.querySelectorAll('.footnote-backref').forEach(backref => backref.remove());
+      sidenote.querySelectorAll('a, button').forEach(link => link.setAttribute('tabindex', '-1'));
+      ref.parentNode.after(sidenote);
+    });
+
+    labelEmojis(document);
 
     // Code blocks and tables scroll horizontally: make them reachable with the keyboard
     document.querySelectorAll('main pre, main .prose table').forEach(block => {
