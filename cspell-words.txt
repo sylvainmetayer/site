@@ -172,3 +172,13 @@ Yohan
 webstatus
 Shiki
 youtube
+ASUS
+Beszel
+Datacenter
+Homebox
+Immich
+Jellyfin
+Karakeep
+Nextcloud
+ntfy
+proxmox
