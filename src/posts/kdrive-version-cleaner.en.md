@@ -18,7 +18,7 @@ My [kDrive](https://www.infomaniak.com/en/kdrive) usage kept growing, even thoug
 
 With the tool described below, I was able to free up 3.2 GB, or 686 old versions. In the end, I was well within my quota, but I still wanted a way to avoid one day ending up with a kDrive full of old versions.
 
-My first idea was to do it through the kDrive web interface. The problem: Infomaniak's only lets you delete versions one at a time, file by file. 😩
+My first idea was to do it through the kDrive web interface. The problem: Infomaniak's interface only lets you delete versions one at a time, file by file. 😩
 
 However, Infomaniak provides an [API](https://developer.infomaniak.com/docs/api) to list files and their versions, and to delete them. Good enough for a small tool!
 

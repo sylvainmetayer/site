@@ -19,22 +19,21 @@ The tools I use every day, in the spirit of [/uses pages](https://uses.tech/). M
 ## System
 
 - **[Fedora Workstation](https://fedoraproject.org/workstation/)** with GNOME, on all my machines.
-- **Terminal**: [ddterm](https://github.com/ddterm/gnome-shell-extension-ddterm), which drops down on a keyboard shortcut, with [Zellij](https://zellij.dev/) for tabs and panes, and the [Starship](https://starship.rs/) prompt.
+- **Terminal**: [ddterm](https://github.com/ddterm/gnome-shell-extension-ddterm), which drops down on a keyboard shortcut, with [Zellij](https://zellij.dev/) for tabs and panes, and [Starship](https://starship.rs/).
 - **Browser**: [Firefox](https://www.mozilla.org/firefox/).
-- **Passwords**: [KeePassXC](https://keepassxc.org/), which is also my Git credential helper.
+- **Passwords**: [KeePassXC](https://keepassxc.org/).
 - **Notes**: [Obsidian](https://obsidian.md/).
 - **Files**: [kDrive](https://www.infomaniak.com/en/kdrive) by Infomaniak, hosted in Switzerland.
 
 ## Development
 
 - **Editors**: [VS Code](https://code.visualstudio.com/) for personal projects, [IntelliJ IDEA](https://www.jetbrains.com/idea/) at work.
-- **Tool versions**: [mise](https://mise.jdx.dev/), after years of [asdf](https://asdf-vm.com/) ([talk](https://github.com/sylvainmetayer/talk-asdf)), with [direnv](https://direnv.net/) for per-project variables.
-- **Containers**: [Podman](https://podman.io/); [kubectl](https://kubernetes.io/docs/reference/kubectl/) and [k9s](https://k9scli.io/) for Kubernetes.
+- **Tool versions**: [mise](https://mise.jdx.dev/), after years of [asdf](https://asdf-vm.com/) ([talk](https://github.com/sylvainmetayer/talk-asdf)): I made the switch and won't go back, even though asdf remains an excellent tool.
 - **Secrets**: [SOPS](https://github.com/getsops/sops), so nothing is committed in plain text ([talk](https://github.com/sylvainmetayer/talk-sops)).
 
 ## AI
 
-To get familiar with AI agents, and to try out small developments.
+To get familiar with AI agents, and to try out small developments. I usually use GitHub Copilot and/or Claude.
 
 ## Homelab
 

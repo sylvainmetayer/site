@@ -15,7 +15,7 @@ noToc: false
 
 ## Le besoin
 
-Mon quota [kDrive](https://www.infomaniak.com/fr/kdrive) augmentait régulièrement, alors que je n'y ajoutais que peu de fichiers. En cherchant un peu, j'ai trouvé d'où venait cet écart : les **anciennes versions** des fichiers. À chaque modification, kDrive garde une copie de l'ancienne version, ce qui est très pratique pour revenir en arrière, mais beaucoup moins quand un fichier modifié tous les jours finit par peser plusieurs fois sa taille (ma base KeePass par exemple, ou alors un dossier rempli de photos sur lequel on vient changer des métadonnées 🥲).
+L'espace occupé sur mon [kDrive](https://www.infomaniak.com/fr/kdrive) augmentait régulièrement, alors que je n'y ajoutais que peu de fichiers. En cherchant un peu, j'ai trouvé d'où venait cet écart : les **anciennes versions** des fichiers. À chaque modification, kDrive garde une copie de l'ancienne version, ce qui est très pratique pour revenir en arrière, mais beaucoup moins quand un fichier modifié tous les jours finit par peser plusieurs fois sa taille (ma base KeePass par exemple, ou alors un dossier rempli de photos sur lequel on vient changer des métadonnées 🥲).
 
 Grâce à l'outil présenté plus bas, j'ai pu libérer 3,2 Go, soit 686 anciennes versions. Au final, mon quota était largement respecté, mais je souhaitais quand même trouver une solution pour éviter de me retrouver un jour avec un kDrive saturé à cause des anciennes versions.
 

@@ -26,4 +26,4 @@ Les agents IA : leur confier une tâche entière (explorer, coder, relire), gard
 
 ## À côté
 
-Du tennis de table et des jeux de sociétés.
+Du tennis de table et des jeux de société.

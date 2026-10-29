@@ -9,6 +9,7 @@
 /article/devoxx-france-2024-build-deploy/
 /article/email-alias-manager/
 /article/jekyll-gem-svg-fontawesome/
+/article/kdrive-version-cleaner/
 /article/latex-starterkit/
 /article/l-effet-parthenay/
 /article/meetup-terraform/
@@ -32,6 +33,7 @@
 /en/article/devoxx-france-2024-build-deploy/
 /en/article/email-alias-manager/
 /en/article/jekyll-gem-svg-fontawesome/
+/en/article/kdrive-version-cleaner/
 /en/article/latex-starterkit/
 /en/article/meetup-terraform/
 /en/article/recuperer-donnees-mysql/
@@ -61,6 +63,7 @@
 /tags/dut-info/
 /tags/epsi/
 /tags/fitbit/
+/tags/infomaniak/
 /tags/java/
 /tags/javascript/
 /tags/jekyll/
@@ -73,10 +76,9 @@
 /tags/projet/
 /tags/python/
 /tags/ruby/
+/tags/rust/
 /tags/serverless/
 /tags/terraform/
 /tags/twitter/
 /talks/
 /uploads/CV-en.pdf
-/article/kdrive-version-cleaner/
-/en/article/kdrive-version-cleaner/

@@ -21,7 +21,7 @@ Les outils que j'utilise au quotidien, dans l'esprit des [pages /uses](https://u
 - **[Fedora Workstation](https://fedoraproject.org/workstation/)** avec GNOME, sur toutes mes machines.
 - **Terminal** : [ddterm](https://github.com/ddterm/gnome-shell-extension-ddterm), qui descend d'un raccourci clavier, avec [Zellij](https://zellij.dev/) pour les onglets et les panneaux, et [Starship](https://starship.rs/).
 - **Navigateur** : [Firefox](https://www.mozilla.org/firefox/).
-- **Mots de passe** : [KeePassXC](https://keepassxc.org/)
+- **Mots de passe** : [KeePassXC](https://keepassxc.org/).
 - **Notes** : [Obsidian](https://obsidian.md/).
 - **Fichiers** : [kDrive](https://www.infomaniak.com/fr/kdrive) d'Infomaniak, hébergé en Suisse.
 
@@ -33,7 +33,7 @@ Les outils que j'utilise au quotidien, dans l'esprit des [pages /uses](https://u
 
 ## IA
 
-Pour me familiariser avec les agents IA, et tester de petits développements. En général, j'utilise GitHub Copilot et/ou Claude
+Pour me familiariser avec les agents IA, et tester de petits développements. En général, j'utilise GitHub Copilot et/ou Claude.
 
 ## Homelab
 
