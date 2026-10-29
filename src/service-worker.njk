@@ -2,5 +2,7 @@
 permalink: '/service-worker.js'
 eleventyExcludeFromCollections: true
 ---
-const VERSION = '{{ global.buildVersion }}';
+{# The daily build keeps the commit (buildVersion): the naked flag changes the version on
+   April 9 and 10, so the offline page cached without CSS is replaced the next day -#}
+const VERSION = '{{ global.buildVersion }}{{ '-naked' if global.cssNakedDay }}';
 {% include "partials/service-worker.js" %}

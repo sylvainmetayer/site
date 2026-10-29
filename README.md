@@ -19,6 +19,7 @@ Site personnel de Sylvain MÉTAYER, en ligne sur [www.sylvain.dev](https://www.s
 
 ```bash
 mise run dev       # http://localhost:8080, rechargement auto
+mise run naked     # pareil, en mode CSS Naked Day (sans CSS, comme le 9 avril)
 mise run build     # build de production dans dist/
 mise run preview   # http://localhost:8788, émulateur Cloudflare Pages (_redirects, _headers)
 mise run validate  # validation HTML du build

@@ -22,11 +22,14 @@
     <button type="button" class="palette-trigger" data-palette-open hidden aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K" aria-label="{{ 'palette.open' | t }}" title="{{ 'palette.open' | t }} (ctrl k)">
       <svg class="palette-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><circle cx="6.5" cy="6.5" r="4.75" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 10l4.25 4.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
+    {# CSS Naked Day: no theme to switch #}
+    {% if not global.cssNakedDay %}
     <fieldset class="theme-switch" data-theme-switch hidden>
       <legend class="visually-hidden">{{ 'theme.legend' | t }}</legend>
       <button type="button" data-theme-value="auto" aria-pressed="true">{{ 'theme.auto' | t }}</button>
       <button type="button" data-theme-value="dark" aria-pressed="false">{{ 'theme.dark' | t }}</button>
       <button type="button" data-theme-value="light" aria-pressed="false">{{ 'theme.light' | t }}</button>
     </fieldset>
+    {% endif %}
   </div>
 </header>
