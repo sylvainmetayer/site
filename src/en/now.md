@@ -26,4 +26,4 @@ Still describing [my homelab](https://github.com/sylvainmetayer/homelab) as code
 
 ## This site
 
-Adding ideas found on [11tybundle.dev](https://11tybundle.dev/): a Markdown version of the articles, series, sidenotes, a talks calendar… The details are in the [colophon](/en/colophon/).
+Adding ideas found on [11tybundle.dev](https://11tybundle.dev/): a Markdown version of the articles, series, sidenotes… The details are in [Under the hood](/en/under-the-hood/).

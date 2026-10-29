@@ -6,7 +6,6 @@ import pluginTOC from 'eleventy-plugin-toc';
 import filters from './src/11ty/filters/index.js';
 import baseline from './src/11ty/shortcodes/baseline.js';
 import youtube from './src/11ty/shortcodes/youtube.js';
-import talksCalendar from './src/11ty/ics.js';
 import { mastodonAccount } from './src/11ty/fediverse.js';
 import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
@@ -212,9 +211,6 @@ export default function eleventyConfig(config) {
 
   // "@user@instance" -> { user, instance, url } (src/_data/site.json `mastodon`)
   config.addFilter('mastodonAccount', mastodonAccount);
-
-  // Talk sessions as an iCalendar file (src/talks-ics.njk)
-  config.addFilter('talksCalendar', talksCalendar);
 
   // Body of a Markdown file, without its front matter (src/article-markdown.njk)
   // and without the {% raw %} markers, which only exist for Nunjucks.
