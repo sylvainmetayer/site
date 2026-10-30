@@ -247,7 +247,7 @@ export default function eleventyConfig(config) {
     }
   });
 
-  // Size in kilobytes of a file of the site, rounded up: '/uploads/CV.pdf' -> 87
+  // Size in kilobytes of a file of the site, rounded up: '/uploads/CV-Sylvain-Metayer.pdf' -> 87
   config.addFilter('fileSizeKb', path => Math.ceil(statSync(`src${path}`).size / 1024));
 
   // The same stylesheet is inlined in every page: minified once per build

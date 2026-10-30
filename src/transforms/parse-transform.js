@@ -244,7 +244,7 @@ export default async function parseTransform(value, outputPath) {
     // becomes the <caption> of that table
     document.querySelectorAll('main .prose table').forEach(table => {
       const paragraph = table.previousElementSibling;
-      const caption = paragraph?.tagName === 'P' && paragraph.innerHTML.match(/^Table(?:au)?\s?:\s*([\s\S]+)$/);
+      const caption = paragraph?.tagName === 'P' && paragraph.innerHTML.match(/^Table(?:au)?(?:\s|&nbsp;)?:\s*([\s\S]+)$/);
       if (!caption) return;
       table.prepend(Object.assign(document.createElement('caption'), { innerHTML: caption[1].trim() }));
       paragraph.remove();

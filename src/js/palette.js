@@ -157,7 +157,11 @@
   });
 
   input.addEventListener('keydown', function (event) {
-    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+    // type="search" would clear the field on Escape instead of closing the dialog
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      dialog.close();
+    } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault();
       select(active + (event.key === 'ArrowDown' ? 1 : -1));
     } else if (event.key === 'Enter') {

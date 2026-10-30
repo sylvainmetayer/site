@@ -13,8 +13,8 @@
 {% elif excerpt %}
   {% set pageDesc = excerpt %}
 {% elif page.inputPath.startsWith('./src/notes/') and content %}
-  {# Short notes have no description field: the start of their text #}
-  {% set pageDesc = content | striptags(false) | truncate(155) %}
+  {# Short notes have no description field: the start of their text, without code blocks #}
+  {% set pageDesc = content | replace(r/<pre[\s\S]*?<\/pre>/g, ' ') | striptags(false) | truncate(155) %}
 {% endif %}
 
 <title>{{ pageTitle }}</title>

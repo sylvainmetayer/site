@@ -1,8 +1,8 @@
 // The first occurrence of each acronym of src/_data/abbreviations.json in the
 // <main> of a page becomes <abbr title="…">, explained in the language of its
 // text (closest lang attribute). Not in code, nor where the text is hidden or
-// already explained. The same list makes the glossary page (/glossaire/).
-const SKIPPED = 'pre, code, kbd, samp, script, style, abbr, [aria-hidden="true"]';
+// already explained, nor on the terms of the glossary itself. The same list makes the glossary page (/glossaire/).
+const SKIPPED = 'pre, code, kbd, samp, script, style, abbr, [aria-hidden="true"], .visually-hidden, .glossary dt';
 
 const escape = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 

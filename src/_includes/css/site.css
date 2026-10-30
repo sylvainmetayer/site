@@ -1004,12 +1004,13 @@ abbr[title] {
   font-size: 0.75em;
 }
 
-.prose a[data-external]:lang(en)::after {
+/* :where() keeps the specificity of the rule above: .img_link and [data-auth] below still win */
+.prose a[data-external]:where(:lang(en))::after {
   content: "↗" / "(external)";
 }
 
-/* Links already followed, in the text only: the navigation keeps one colour */
-.prose a:visited {
+/* Links already followed, in the text only: the navigation and heading anchors keep one colour */
+.prose a:not(.heading-link):visited {
   color: var(--visited);
 }
 
