@@ -49,8 +49,8 @@ jobs:
       - name: Check the CV PDFs for applicant tracking systems
         run: |
           npm run check:cv
-          node scripts/check-cv-ats.mjs "$RUNNER_TEMP/CV.pdf" --compare src/uploads/CV-Sylvain-Metayer.pdf
-          node scripts/check-cv-ats.mjs "$RUNNER_TEMP/CV-en.pdf" --lang en --compare src/uploads/CV-Sylvain-Metayer-en.pdf
+          node scripts/check-cv-ats.mjs "$RUNNER_TEMP/CV.pdf" --compare src/uploads/CV-METAYER-Sylvain.pdf
+          node scripts/check-cv-ats.mjs "$RUNNER_TEMP/CV-en.pdf" --lang en --compare src/uploads/CV-METAYER-Sylvain-en.pdf
 
   # Every page of the build is valid HTML (html-validate, .htmlvalidate.json)
   html:

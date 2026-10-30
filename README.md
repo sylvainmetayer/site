@@ -86,7 +86,7 @@ Le français est la langue par défaut, aux URL actuelles ; l'anglais est sous `
 - Sur les pages anglaises, un article sans traduction reste listé, en français et marqué « in French ». Les pages de tags (une par tag des articles publiés) et `/devto.rss.xml` restent en français.
 - Pas de `hreflang` pour un article canonique ailleurs (dev.to, LinkedIn…) : les moteurs ignorent les paires qui pointent vers une URL non canonique.
 - Une traduction d'article republié porte `original:` (l'URL de l'original) au lieu de `canonical:` : la page anglaise est canonique d'elle-même.
-- Le CV anglais est imprimé dans `src/uploads/CV-Sylvain-Metayer-en.pdf` (`mise run cv` génère et vérifie les deux, la CI compare les deux au build).
+- Le CV anglais est imprimé dans `src/uploads/CV-METAYER-Sylvain-en.pdf` (`mise run cv` génère et vérifie les deux, la CI compare les deux au build).
 - Sveltia CMS édite les deux langues (bloc `i18n` de `src/admin/config.yml`) : champ « traduit » ou « dupliqué » (même valeur dans les deux langues).
 
 ## Déploiement (Cloudflare Pages)

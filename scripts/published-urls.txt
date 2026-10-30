@@ -86,8 +86,8 @@
 /talks/
 /uploads/CV-en.pdf
 /uploads/CV.pdf
-/uploads/CV-Sylvain-Metayer.pdf
-/uploads/CV-Sylvain-Metayer-en.pdf
+/uploads/CV-METAYER-Sylvain.pdf
+/uploads/CV-METAYER-Sylvain-en.pdf
 /plan/
 /en/sitemap/
 /glossaire/
