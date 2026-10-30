@@ -17,7 +17,7 @@ Cette méthode est uniquement valable si la partition sur laquelle est présent 
 
 Afin de comprendre comment réinitialiser le mot de passe, quelques détails sur le démarrage de Linux.
 
-# TODO
+## TODO
 
 - rd.break et les différents modes de démarrage (classique, dégradé, et dernier recours)
 - monter la partition en lecture/écriture

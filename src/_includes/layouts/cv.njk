@@ -10,7 +10,7 @@
     <h1>{{ site.authorName }}</h1>
     <p class="role">{{ site.role }} · {{ site.location }} · {{ site.drivingLicence }} · <a href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a></p>
   </div>
-  <a class="btn no-print" href="{{ 'cv.pdf' | t }}"><span class="arrow" data-arrow="↓ " aria-hidden="true"></span>cv.pdf<span class="visually-hidden">{{ 'cv.download' | t }}</span></a>
+  <a class="btn no-print" href="{{ 'cv.pdf' | t }}"><span class="arrow" data-arrow="↓ " aria-hidden="true"></span>cv.pdf<span class="visually-hidden">{{ 'cv.download' | t }}</span> <span class="btn-meta">· {{ 'cv.size' | t({ size: 'cv.pdf' | t | fileSizeKb }) }}</span></a>
 </header>
 
 <section class="section" aria-labelledby="xp-title">

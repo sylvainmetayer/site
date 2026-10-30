@@ -7,7 +7,9 @@
 {%- set isArticle = page.url and (page.url.startsWith('/article/') or page.url.startsWith('/en/article/')) -%}
 {%- set graph = [] -%}
 {%- if isHome -%}
-  {%- set graph = (graph.push({ '@type': 'WebSite', '@id': base + '/#website', name: site.name, url: base + '/', inLanguage: lang, author: { '@id': base + '/#person' } }), graph) -%}
+  {#- The palette (src/js/palette.js) opens with the query of a ?q= URL -#}
+  {%- set searchAction = { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: base + langPrefix + '/?q={search_term_string}' }, 'query-input': 'required name=search_term_string' } -%}
+  {%- set graph = (graph.push({ '@type': 'WebSite', '@id': base + '/#website', name: site.name, url: base + '/', inLanguage: lang, author: { '@id': base + '/#person' }, potentialAction: searchAction }), graph) -%}
   {%- set graph = (graph.push(person), graph) -%}
 {%- elif page.url -%}
   {%- set crumbs = [{ name: 'palette.home' | t, url: base + langPrefix + '/' }] -%}

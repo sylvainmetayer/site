@@ -32,7 +32,7 @@ Parmi ce que nous avons eu l'occasion de voir, voici notre top 5 !
 Il s'agit d'un REX de la mise en place de l'observabilité dans un projet avec plusieurs briques logicielles. Après une présentation des concepts de l'observabilité, d'OpenTelemetry, [@jtama](https://dev.to/jtama) nous présente de façon itérative son expérience et les obstacles rencontrés, afin de dompter ce "collecteur magique" et d'unifier nos logs, traces et métriques.
 
 
-{% youtube "0xSCUgHxZu0", "Alice au pays d’OpenTelemetry" %}
+{% youtube "0xSCUgHxZu0", "Alice au pays d’OpenTelemetry", 2768 %}
 
 [Lien vers les slides](https://jtama.github.io/alice-au-pays-d-opentelemetry/#/)
 <s class="dead-link" title="Le site du CFP n'est plus en ligne">Lien du CFP</s>
@@ -46,7 +46,7 @@ Un focus est également fait sur les modèles de langages prédictifs, ce qui pe
 Si vous souhaitez un cours complet, vulgarisé et abordable, avec un historique des modèles d'IA, ce talk est pour vous !
 
 
-{% youtube "ZbWL2W53BXY", "Comprendre et utiliser les modèles de langage d'IA" %}
+{% youtube "ZbWL2W53BXY", "Comprendre et utiliser les modèles de langage d'IA", 10190 %}
 
 [Slides](https://docs.google.com/presentation/d/e/2PACX-1vReIr93Udkzm3S0qn59AyFDYQjuXq0puGNYlFQYqDyoHqio_UgHbqQV1Qm4sUwt0ZeawfvGFdQOCHLc/pub#slide=id.g21f549ddc89_0_0)
 [Dépôt Github](https://github.com/sebastien-collet/talks/blob/master/Devoxx%20FR%202023/Ressources.md)
@@ -59,7 +59,7 @@ Avec cette université de 3 heures, [Loïc Ortola](https://www.twitter.com/@Loic
 L'utilisation de chaque outil est justifiée par son rôle. Le talk développe petit à petit la mise en place d'une infrastructure complexe, multi-cluster en partant du provisioning de l'infrastructure jusqu'au déploiement continue des applications dans une approche 100% Gitops.
 
 
-{% youtube "FyAD_-LAMLo", "Une Architecture GitOps from scratch : Gitlab, Ansible, Terraform, Kubernetes et AWS" %}
+{% youtube "FyAD_-LAMLo", "Une Architecture GitOps from scratch : Gitlab, Ansible, Terraform, Kubernetes et AWS", 10001 %}
 
 [Lien du dépôt Gitlab](https://gitlab.com/takima-school/takione)
 <s class="dead-link" title="Le site du CFP n'est plus en ligne">Lien du CFP</s>
@@ -71,7 +71,7 @@ Avec cette keynote de 20 minutes, [Benjamin Bayart](https://twitter.com/bayartb)
 Il clôture son discours en passant le message que tout ingénieur informatique fait de la géopolitique de la data.
 
 
-{% youtube "EOOhYaGGArc", "Géopolitique de la data" %}
+{% youtube "EOOhYaGGArc", "Géopolitique de la data", 1076 %}
 
 <s class="dead-link" title="Le site du CFP n'est plus en ligne">Lien du CFP</s>
 
@@ -84,7 +84,7 @@ Au travers d'une démonstration live, [Denis Germain](https://twitter.com/zwindl
 Si vous souhaitez savoir ce qui se cache derrière un "kubectl apply -f mon-deploiement.yaml" ou que vous souhaitez comprendre comment les composants "etcd", "api-server", "controller-manager", "scheduler", "kubelet", "containerd" ou "CNI" fonctionnent ensemble, ce talk est pour vous !
 
 
-{% youtube "OCMNA0dSAzc", "Démystifions les composants internes de Kubernetes" %}
+{% youtube "OCMNA0dSAzc", "Démystifions les composants internes de Kubernetes", 2617 %}
 
 [Slides](https://blog.zwindler.fr/talks/2023-demystifions-kubernetes/index.html)
 [Github contenant la démo](https://github.com/zwindler/demystifions-kubernetes)
@@ -101,7 +101,7 @@ Il nous présente aussi quelques mauvaises pratiques qui sont pourtant monnaie c
 Que vous utilisiez ou non postgres, ce talk vous montrera ses super pouvoirs et vous invite à l'essayer.
 
 
-{% youtube "I1rAkNDv1Ws", "SELECT 'amazing_features' FROM \"postgresql\"" %}
+{% youtube "I1rAkNDv1Ws", "SELECT 'amazing_features' FROM \"postgresql\"", 1746 %}
 
 [Slides](https://download.davinkevin.fr/presentations/select-amazing-features-from-postgresql/devoxxfr-2023/select-amazing-features-from-postgresql.pdf)
 [Dépôt Gitlab](https://gitlab.com/davinkevin.fr/presentations/select-amazing_features-from-postgresql)

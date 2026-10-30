@@ -1,10 +1,13 @@
-// Unit tests of the build helpers: npm test (node --test, no dependency)
+// Unit tests of the build helpers: npm test (node --test)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { wrap } from '../src/11ty/og-image.js';
 import { mastodonAccount } from '../src/11ty/fediverse.js';
 import markdown from '../src/utils/markdown.js';
 import check from '../src/11ty/front-matter.js';
+import { JSDOM } from 'jsdom';
+import { videoLength } from '../src/11ty/shortcodes/youtube.js';
+import { markAbbreviations } from '../src/transforms/abbreviations.js';
 
 test('wrap: words kept whole, at most 4 lines, ellipsis when cut', () => {
   assert.deepEqual(wrap('a b c', 3), ['a b', 'c']);
@@ -41,4 +44,22 @@ test('checkPostFrontMatter: names every invalid field', () => {
   assert.doesNotThrow(() => check({ title: 'Ok', page, tags: ['devops', 'k8s'], short: 'tf' }));
   assert.doesNotThrow(() => check({ title: 'Brouillon', page, socialImage: false }));
   assert.throws(() => check({ title: '', page, tags: ['Bad Tag'], canonical: 'dev.to/x' }), /title.*tags.*canonical/);
+});
+
+test('videoLength: clock on the thumbnail, words for screen readers', () => {
+  assert.deepEqual(videoLength(2727), { clock: '45:27', words: '45 min' });
+  assert.deepEqual(videoLength(10190), { clock: '2:49:50', words: '2 h 50 min' });
+  assert.deepEqual(videoLength(20), { clock: '0:20', words: '1 min' });
+});
+
+test('markAbbreviations: first occurrence only, whole words, language of the text, not in code', () => {
+  const { document } = new JSDOM(`<main><p>API et PHP7 MÉTAYER</p><p lang="en">API <code>CSS</code> CSS</p></main>`).window;
+  markAbbreviations(document, {
+    API: { fr: 'interface', en: 'interface (en)' },
+    CSS: { fr: 'feuilles de style', en: 'style sheets' },
+    PHP: { fr: 'php', en: 'php' },
+    TAYER: { fr: 'x', en: 'x' },
+  });
+  const abbrs = [...document.querySelectorAll('abbr')].map(abbr => `${abbr.textContent}=${abbr.title}`);
+  assert.deepEqual(abbrs, ['API=interface', 'CSS=style sheets']);
 });

@@ -9,7 +9,7 @@ excerpt: "L'effet Parthenay : Comment une petite ville pourrait bien sauver la c
 socialImage: "/images/parthenay-1.jpg"
 ---
 
-> Traduction de l'article "The Parthenay Effect: How a Small French Town Might Save Civilization" paru le 27/3/2017 sur [The Huffington Post](https://www.huffingtonpost.com/entry/the-parthenay-effect-how-a-small-french-town-might_us_58d810c8e4b0c0980ac0e73f?)
+> Traduction de l'article "The Parthenay Effect: How a Small French Town Might Save Civilization" paru le 27 mars 2017 sur [The Huffington Post](https://www.huffingtonpost.com/entry/the-parthenay-effect-how-a-small-french-town-might_us_58d810c8e4b0c0980ac0e73f?)
 
 > ⚠ Avertissement
 > Je ne suis ni traducteur, ni bilingue. Mon objectif est de fournir une traduction de cet article pour les personnes ayant des difficultés avec l'anglais. Bien qu'ayant tenté de traduire au mieux cet article, je ne peux garantir l'exactitude de ce qui suit.

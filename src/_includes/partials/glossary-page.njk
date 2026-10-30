@@ -1,0 +1,10 @@
+{#- Glossary (/glossaire/, /en/glossary/): the acronyms of src/_data/abbreviations.json,
+    also explained on their first occurrence in each page (src/transforms/abbreviations.js) -#}
+<dl class="glossary">
+  {% for key, entry in abbreviations | dictsort %}
+    <div>
+      <dt id="{{ key | lower }}">{{ key }}</dt>
+      <dd>{{ entry[lang] }}</dd>
+    </div>
+  {% endfor %}
+</dl>

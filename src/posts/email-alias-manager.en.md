@@ -40,6 +40,8 @@ Until that becomes available, I've left my work on a [dedicated branch](https://
 
 I also added a one-click Netlify deploy button for anyone who wants to use this small project. You will still need to generate your own [API key from your Gandi account settings](https://web.archive.org/web/20200110154834/https://docs.gandi.net/fr/noms_domaine/utilisateurs_avances/api.html) and fill in a few environment variables, described below.
 
+Table: Environment variables to set
+
 |Parameter|Description|
 |--|--|
 |GANDI_API_KEY|Gandi API key|
