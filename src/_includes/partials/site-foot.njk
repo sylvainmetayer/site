@@ -1,7 +1,7 @@
 {% from 'partials/icons.njk' import icon %}
 <footer class="site-foot">
   <div class="wrap">
-    <p>© {{ global.now | date('YYYY') }} {{ site.authorName }} · {{ 'foot.generated' | t({ eleventy: '<a href="https://www.11ty.dev/">Eleventy</a>', date: global.now | date('YYYY-MM-DD') }) | safe }}{% if global.commit %} · <a href="{{ global.repository }}/commit/{{ global.commit }}">commit {{ global.commit | truncate(7, true, '') }}</a>{% endif %}</p>
+    <p>© {{ global.now | date('YYYY') }} {{ site.authorName }} · {{ 'foot.license' | t({ license: '<a rel="license" href="' + ('foot.licenseUrl' | t) + '">CC BY 4.0</a>' }) | safe }} · {{ 'foot.generated' | t({ eleventy: '<a href="https://www.11ty.dev/">Eleventy</a>', date: global.now | date('LL') }) | safe }}{% if global.commit %} · <a href="{{ global.repository }}/commit/{{ global.commit }}">commit {{ global.commit | truncate(7, true, '') }}</a>{% endif %}</p>
     <ul class="site-foot-social">
       {% for link in social.links %}
         <li><a href="{{ link.url }}" rel="me">{{ icon(link.icon) }}<span class="visually-hidden">{{ link.label }}</span></a></li>
@@ -16,7 +16,9 @@
       <li><a href="/hasard/" lang="fr" hreflang="fr">hasard</a></li>
       <li><a href="{{ langPrefix }}/uses/">uses</a></li>
       <li><a href="{{ 'url.underTheHood' | t }}">{{ 'foot.underTheHood' | t }}</a></li>
-      <li><a href="/sitemap.xml">sitemap</a></li>
+      <li><a href="{{ 'url.sitemap' | t }}">{{ 'foot.sitemap' | t }}</a></li>
+      <li><a href="{{ 'url.glossary' | t }}">{{ 'foot.glossary' | t }}</a></li>
+      <li><a href="{{ 'url.legal' | t }}">{{ 'foot.legal' | t }}</a></li>
       <li><a href="/humans.txt">humans.txt</a></li>
       <li><a href="{{ global.repository }}">{{ icon('github') }}sources</a></li>
     </ul>

@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
-import { copyFileSync, mkdirSync, readFileSync } from 'node:fs';
+import { transformSync } from 'esbuild';
+import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import matter from 'gray-matter';
 import QRCode from 'qrcode';
 import rssPlugin from '@11ty/eleventy-plugin-rss';
@@ -52,6 +53,10 @@ const passthroughItems = {
     'jetbrains-mono/files/jetbrains-mono-latin-600-normal.woff2',
   ].map(file => [`node_modules/@fontsource/${file}`, `fonts/cv/${file.split('/').pop()}`])),
 };
+
+// Inline CSS and /js/v/ scripts are minified, except under `eleventy --serve`
+// where they stay readable in the browser tools
+const minify = (code, loader) => (process.env.ELEVENTY_RUN_MODE === 'serve' ? code : transformSync(code, { loader, minify: true }).code);
 
 const byNewest = (a, b) => b.date - a.date;
 
@@ -159,6 +164,15 @@ export default function eleventyConfig(config) {
   // The tags of the French articles, one /tags/<tag>/ page each (src/tags.njk)
   config.addCollection('postTagList', collection => postTags(collection.getFilteredByGlob('./src/posts/*.md').filter(isFrench)));
 
+  // Pages listed on the sitemap page (/plan/, /en/sitemap/): the HTML pages of a
+  // language, without articles, notes and tags (listed apart), the later pages
+  // of a list or the print version of the CV
+  config.addFilter('sitePages', (all, lang) => all
+    .filter(item => typeof item.url === 'string' && item.url.endsWith('/') && item.data.lang === lang && item.data.title)
+    .filter(item => !/^\/(en\/)?article\/|^\/tags\/.|^\/notes\/.|\/pdf\/$/.test(item.url))
+    .filter(item => !item.data.pagination?.pageNumber)
+    .sort((a, b) => a.url.localeCompare(b.url)));
+
   // The first `count` items of a list
   config.addFilter('head', (items, count) => items.slice(0, count));
 
@@ -217,7 +231,7 @@ export default function eleventyConfig(config) {
   // cannot close the script element
   config.addFilter('jsonLd', value => JSON.stringify(value).replace(/</g, '\\u003c'));
 
-  // /js/x.js -> /js/v/x.<hash>.js: a copy named after its content, written to
+  // /js/x.js -> /js/v/x.<hash>.js: a minified copy named after its content, written to
   // dist/js/v/ at the end of the build. Only those names are cached as
   // immutable (src/_headers); /js/x.js keeps the default cache.
   const hashes = new Map();
@@ -229,8 +243,19 @@ export default function eleventyConfig(config) {
   config.on('eleventy.after', ({ directories }) => {
     mkdirSync(`${directories.output}js/v`, { recursive: true });
     for (const [path, hash] of hashes) {
-      copyFileSync(`src${path}`, `${directories.output}${path.slice(1).replace(/^js\/(.+)\.js$/, `js/v/$1.${hash}.js`)}`);
+      writeFileSync(`${directories.output}${path.slice(1).replace(/^js\/(.+)\.js$/, `js/v/$1.${hash}.js`)}`, minify(readFileSync(`src${path}`, 'utf8'), 'js'));
     }
+  });
+
+  // Size in kilobytes of a file of the site, rounded up: '/uploads/CV-METAYER-Sylvain.pdf' -> 87
+  config.addFilter('fileSizeKb', path => Math.ceil(statSync(`src${path}`).size / 1024));
+
+  // The same stylesheet is inlined in every page: minified once per build
+  const minifiedCss = new Map();
+  config.on('eleventy.before', () => minifiedCss.clear());
+  config.addFilter('cssmin', css => {
+    if (!minifiedCss.has(css)) minifiedCss.set(css, minify(css, 'css'));
+    return minifiedCss.get(css);
   });
 
   // QR code of a URL, as an SVG (print version of the articles)
@@ -238,11 +263,11 @@ export default function eleventyConfig(config) {
 
   // Body of a Markdown file, without its front matter (src/article-markdown.njk)
   // and without the {% raw %} markers, which only exist for Nunjucks.
-  // {% youtube 'id', 'Titre' %} becomes a link to the video.
+  // {% youtube 'id', 'Titre', 212 %} becomes a link to the video.
   // shortcut: other shortcodes ({% baseline %}) stay as written, render them if an article uses one.
   config.addFilter('rawMarkdown', inputPath => matter(readFileSync(inputPath, 'utf8')).content
     .replace(/\{%-?\s*(end)?raw\s*-?%\}/g, '')
-    .replace(/\{%-?\s*youtube\s+(["'])([\w-]{11})\1\s*,\s*(["'])(.*?)\3\s*-?%\}/g,
+    .replace(/\{%-?\s*youtube\s+(["'])([\w-]{11})\1\s*,\s*(["'])(.*?)\3(?:\s*,\s*\d+)?\s*-?%\}/g,
       (_, _q, id, _q2, title) => `[${title.replace(/\\(["'])/g, '$1')}](https://www.youtube.com/watch?v=${id})`)
     .trim());
 

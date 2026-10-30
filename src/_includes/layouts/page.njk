@@ -8,7 +8,7 @@
       <h1 id="page-title" class="page-title">{{ title }}</h1>
       {% if updated %}
         <ul class="meta">
-          <li>{{ 'post.updated' | t({ date: '<time datetime="' + (updated | w3DateFilter) + '">' + (updated | date('YYYY-MM-DD')) + '</time>' }) | safe }}</li>
+          <li>{{ 'post.updated' | t({ date: '<time datetime="' + (updated | w3DateFilter) + '">' + (updated | date('LL')) + '</time>' }) | safe }}</li>
         </ul>
       {% endif %}
     </header>

@@ -6,6 +6,8 @@ import sharp from 'sharp';
 import helpers from '../_data/helpers.js';
 import site from '../_data/site.json' with { type: 'json' };
 import emojis from '../_data/emojis.json' with { type: 'json' };
+import abbreviations from '../_data/abbreviations.json' with { type: 'json' };
+import { markAbbreviations } from './abbreviations.js';
 
 // Article images are served as AVIF and WebP, with the original format as a
 // fallback, in widths that cover the text column (--measure: 44rem) up to 2x.
@@ -236,6 +238,17 @@ export default async function parseTransform(value, outputPath) {
     });
 
     labelEmojis(document);
+    markAbbreviations(document, abbreviations);
+
+    // A paragraph "Tableau : …" (or "Table: …" in English) right before a table
+    // becomes the <caption> of that table
+    document.querySelectorAll('main .prose table').forEach(table => {
+      const paragraph = table.previousElementSibling;
+      const caption = paragraph?.tagName === 'P' && paragraph.innerHTML.match(/^Table(?:au)?(?:\s|&nbsp;)?:\s*([\s\S]+)$/);
+      if (!caption) return;
+      table.prepend(Object.assign(document.createElement('caption'), { innerHTML: caption[1].trim() }));
+      paragraph.remove();
+    });
 
     // Code blocks and tables scroll horizontally: make them reachable with the keyboard
     document.querySelectorAll('main pre, main .prose table').forEach(block => {

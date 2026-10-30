@@ -43,6 +43,8 @@ En attendant que cela soit disponible, j'ai laissé mon travail disponible sur u
 
 J'ai également ajouté un bouton de déploiement Netlify en un clic pour ceux souhaitant se servir de ce petit projet. Il faudra néanmoins générer sa propre clé d'[API depuis les paramètres de son compte Gandi](https://web.archive.org/web/20200110154834/https://docs.gandi.net/fr/noms_domaine/utilisateurs_avances/api.html) et renseigner quelques variables d'environnement, décrites ci-dessous.
 
+Tableau : Variables d'environnement à renseigner
+
 |Paramètre|Description|
 |--|--|
 |GANDI_API_KEY|Clé d'API Gandi|

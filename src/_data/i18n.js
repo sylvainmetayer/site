@@ -18,6 +18,9 @@ export default {
     'url.projects': '/projets/',
     'url.feeds': '/flux/',
     'url.underTheHood': '/sous-le-capot/',
+    'url.sitemap': '/plan/',
+    'url.glossary': '/glossaire/',
+    'url.legal': '/mentions-legales/',
 
     'a11y.skip': 'Aller au contenu',
     'a11y.home': 'accueil',
@@ -36,6 +39,15 @@ export default {
     'foot.generated': 'généré par {eleventy} le {date}',
     'foot.email': 'e-mail : {email}',
     'foot.underTheHood': 'sous le capot',
+    'foot.license': 'textes sous licence {license}',
+    'foot.licenseUrl': 'https://creativecommons.org/licenses/by/4.0/deed.fr',
+    'foot.sitemap': 'plan du site',
+    'foot.glossary': 'glossaire',
+    'foot.legal': 'mentions légales et confidentialité',
+    'sitemap.pages': 'Pages',
+    'sitemap.articles': 'Articles',
+    'sitemap.notes': 'Notes',
+    'sitemap.tags': 'Tags',
 
     'palette.open': 'Chercher une page',
     'palette.title': 'Aller à une page',
@@ -44,6 +56,7 @@ export default {
     'palette.results': 'Résultats',
     'palette.help': '{up} {down} naviguer · {enter} ouvrir · {esc} fermer',
     'palette.esc': 'échap',
+    'palette.close': 'Fermer',
     'palette.count.one': '{count} résultat',
     'palette.count.other': '{count} résultats',
     'palette.none': 'Aucun résultat pour « {query} »',
@@ -97,6 +110,7 @@ export default {
     'callout.caution': 'Danger',
 
     'youtube.play': 'Lire la vidéo « {title} »',
+    'youtube.length': ', durée {length}',
 
     'code.copy': 'copier',
     'code.copied': 'copié',
@@ -142,7 +156,8 @@ export default {
 
     'cv.desc': 'Parcours de Sylvain MÉTAYER : expériences, talks, formations, certifications et compétences.',
     'cv.download': ' : télécharger le CV au format PDF, une page',
-    'cv.pdf': '/uploads/CV.pdf',
+    'cv.size': '{size} Ko',
+    'cv.pdf': '/uploads/CV-METAYER-Sylvain.pdf',
     'cv.experience': 'Expérience',
     'cv.education': 'Formation',
     'cv.certifications': 'Certifications',
@@ -185,6 +200,9 @@ export default {
     'url.projects': '/en/projects/',
     'url.feeds': '/en/feeds/',
     'url.underTheHood': '/en/under-the-hood/',
+    'url.sitemap': '/en/sitemap/',
+    'url.glossary': '/en/glossary/',
+    'url.legal': '/en/legal/',
 
     'a11y.skip': 'Skip to content',
     'a11y.home': 'home',
@@ -203,6 +221,15 @@ export default {
     'foot.generated': 'built with {eleventy} on {date}',
     'foot.email': 'email: {email}',
     'foot.underTheHood': 'under the hood',
+    'foot.license': 'text under {license}',
+    'foot.licenseUrl': 'https://creativecommons.org/licenses/by/4.0/deed.en',
+    'foot.sitemap': 'sitemap',
+    'foot.glossary': 'glossary',
+    'foot.legal': 'legal notice and privacy',
+    'sitemap.pages': 'Pages',
+    'sitemap.articles': 'Articles',
+    'sitemap.notes': 'Notes (in French)',
+    'sitemap.tags': 'Tags (French articles)',
 
     'palette.open': 'Search a page',
     'palette.title': 'Go to a page',
@@ -211,6 +238,7 @@ export default {
     'palette.results': 'Results',
     'palette.help': '{up} {down} navigate · {enter} open · {esc} close',
     'palette.esc': 'esc',
+    'palette.close': 'Close',
     'palette.count.one': '{count} result',
     'palette.count.other': '{count} results',
     'palette.none': 'No results for “{query}”',
@@ -260,6 +288,7 @@ export default {
     'callout.caution': 'Caution',
 
     'youtube.play': 'Play the video “{title}”',
+    'youtube.length': ', {length} long',
 
     'code.copy': 'copy',
     'code.copied': 'copied',
@@ -305,7 +334,8 @@ export default {
 
     'cv.desc': 'Career of Sylvain MÉTAYER: experience, talks, education, certifications and skills.',
     'cv.download': ': download the one-page CV as a PDF',
-    'cv.pdf': '/uploads/CV-en.pdf',
+    'cv.size': '{size} kB',
+    'cv.pdf': '/uploads/CV-METAYER-Sylvain-en.pdf',
     'cv.experience': 'Experience',
     'cv.education': 'Education',
     'cv.certifications': 'Certifications',

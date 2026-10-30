@@ -37,6 +37,7 @@
   --muted: #8a9cb0;
   --line: #213148;
   --accent: #62acff;
+  --visited: #c49bff;
   --ok: #7ccf8a;
   --warn: #e8b85a;
   --error: #ff7b72;
@@ -65,6 +66,7 @@
     --muted: #56667c;
     --line: #dbe2ea;
     --accent: #1c5db3;
+    --visited: #6b3fb0;
     --ok: #2b7a3a;
     --warn: #8a5a00;
     --error: #b42318;
@@ -79,6 +81,7 @@
   --muted: #56667c;
   --line: #dbe2ea;
   --accent: #1c5db3;
+  --visited: #6b3fb0;
   --ok: #2b7a3a;
   --warn: #8a5a00;
   --error: #b42318;
@@ -235,7 +238,8 @@ samp {
   height: 1.05em;
   vertical-align: -0.15em;
   background: var(--accent);
-  animation: blink 1.1s steps(1) infinite;
+  /* Stops after about 4.5 s: a blink longer than 5 s must be stoppable (WCAG 2.2.2) */
+  animation: blink 1.1s steps(1) 4;
 }
 
 @keyframes blink {
@@ -905,6 +909,30 @@ samp {
   margin-top: 0.3rem;
 }
 
+/* Acronyms explained on hover (src/transforms/abbreviations.js): no dotted
+   underline, underlines are kept for links */
+abbr[title] {
+  text-decoration: none;
+  cursor: help;
+}
+
+/* Glossary (/glossaire/): acronym, then its meaning */
+.glossary > div {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 0.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.glossary dt {
+  font: 600 0.9rem/1.6 var(--mono);
+}
+
+.glossary dd {
+  margin: 0;
+}
+
 .prose h1,
 .prose h2,
 .prose h3,
@@ -970,10 +998,20 @@ samp {
 
 .prose a[data-external]::after {
   content: "↗";
-  /* Decorative: not read by screen readers where alt text for content is supported */
-  content: "↗" / "";
+  /* Read as "(externe)" where alt text for generated content is supported */
+  content: "↗" / "(externe)";
   margin-left: 0.1em;
   font-size: 0.75em;
+}
+
+/* :where() keeps the specificity of the rule above: .img_link and [data-auth] below still win */
+.prose a[data-external]:where(:lang(en))::after {
+  content: "↗" / "(external)";
+}
+
+/* Links already followed, in the text only: the navigation and heading anchors keep one colour */
+.prose a:not(.heading-link):visited {
+  color: var(--visited);
 }
 
 .prose a.img_link::after {
@@ -1297,6 +1335,19 @@ samp {
   border-color: transparent transparent transparent #fff;
 }
 
+/* Length of the video, bottom right as on YouTube */
+.youtube-length {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  /* Opaque: the contrast does not depend on the thumbnail behind */
+  background: #000;
+  color: #fff;
+  font: 500 0.75rem/1.4 var(--mono);
+}
+
 .youtube-link:hover .youtube-play,
 .youtube-link:focus-visible .youtube-play {
   background: #f00;
@@ -1333,6 +1384,9 @@ samp {
 }
 
 .post-tags a {
+  display: inline-block;
+  /* 24px high targets (WCAG 2.5.8) */
+  padding-block: 0.15rem;
   text-decoration: none;
 }
 
@@ -1650,6 +1704,11 @@ samp {
   color: var(--bg);
 }
 
+/* File size next to a download link: lighter, in the colour of the button */
+.btn-meta {
+  font-weight: 400;
+}
+
 .timeline {
   margin: 0;
   padding: 0;
@@ -1818,9 +1877,30 @@ samp {
 }
 
 .palette-box {
+  position: relative;
   display: flex;
   flex-direction: column;
   max-height: min(32rem, 76vh);
+}
+
+/* Top right, on the search field row (which leaves it room) */
+.palette-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.8rem;
+  min-height: 24px;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: none;
+  color: var(--muted);
+  font: 400 0.75rem/1 var(--mono);
+  cursor: pointer;
+}
+
+.palette-close:hover {
+  color: var(--fg);
+  border-color: var(--accent);
 }
 
 .palette-field {
@@ -1828,6 +1908,7 @@ samp {
   align-items: center;
   gap: 0.6rem;
   padding: 0.8rem 1rem;
+  padding-right: 5.5rem;
   border-bottom: 1px solid var(--line);
   font: 400 0.95rem/1.4 var(--mono);
 }
@@ -1841,6 +1922,8 @@ samp {
   flex: 1;
   min-width: 0;
   padding: 0;
+  /* type="search": no native rounded field */
+  appearance: none;
   border: 0;
   background: none;
   color: var(--fg);
@@ -1849,6 +1932,11 @@ samp {
 
 .palette-input:focus {
   outline: none;
+}
+
+/* The native clear button would sit next to "Fermer" and look like it */
+.palette-input::-webkit-search-cancel-button {
+  display: none;
 }
 
 .palette-input::placeholder {

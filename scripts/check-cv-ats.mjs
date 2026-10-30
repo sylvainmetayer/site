@@ -3,7 +3,7 @@
 //
 //   node scripts/check-cv-ats.mjs <cv.pdf> [--lang fr|en] [--compare <other.pdf>]
 //
-// --lang en checks the English CV (src/uploads/CV-en.pdf) against the English
+// --lang en checks the English CV (src/uploads/CV-METAYER-Sylvain-en.pdf) against the English
 // data: `en` keys of src/_data, src/work/*.en.md, English section headings.
 //
 // - one page, real embedded fonts (no Type 3 fonts, which many parsers cannot read);
@@ -12,7 +12,7 @@
 //   and education of src/_data and src/work, in reading order for the experiences;
 // - no unreadable characters (replacement or private use) nor letter-spaced words.
 // With --compare, the two PDFs must hold the same text: CI uses it to fail when
-// src/uploads/CV.pdf was not regenerated (mise run cv) after a content change.
+// src/uploads/CV-METAYER-Sylvain.pdf was not regenerated (mise run cv) after a content change.
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import matter from 'gray-matter';

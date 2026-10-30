@@ -25,6 +25,6 @@ How this site is made, and why. The source is [on GitHub](https://github.com/syl
 
 ## Checks
 
-Every push goes through [GitHub Actions](https://github.com/sylvainmetayer/site/actions): HTML validation, WCAG 2 AA accessibility ([pa11y](https://pa11y.org/)), internal links and redirects, [SonarCloud](https://sonarcloud.io/) and CodeQL analysis. External links are checked every week with [lychee](https://lychee.cli.rs/), and [Renovate](https://docs.renovatebot.com/) keeps the dependencies up to date.
+Every push goes through [GitHub Actions](https://github.com/sylvainmetayer/site/actions): HTML validation, [WCAG 2](https://www.w3.org/TR/WCAG22/) AA accessibility ([pa11y](https://pa11y.org/)), internal links and redirects, [SonarCloud](https://sonarcloud.io/) and CodeQL analysis. External links are checked every week with [lychee](https://lychee.cli.rs/), and [Renovate](https://docs.renovatebot.com/) keeps the dependencies up to date.
 
-The [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) allows no third-party script, apart from audience measurement.
+The [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) allows no third-party script, apart from audience measurement. That one loads without an integrity check ([SRI](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)): Cloudflare updates the script at the same address, so a fixed hash would block it.

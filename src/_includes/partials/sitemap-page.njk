@@ -1,0 +1,31 @@
+{#- Human-readable sitemap (/plan/, /en/sitemap/): every page, article, note and
+    tag of the language of the page. The XML one for search engines is /sitemap.xml. -#}
+<h2 id="pages">{{ 'sitemap.pages' | t }}</h2>
+<ul>
+  {% for item in collections.all | sitePages(lang) %}
+    <li><a href="{{ item.url }}">{{ item.data.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<h2 id="articles">{{ 'sitemap.articles' | t }}</h2>
+<ul>
+  {% for post in (collections.postsAllEn if lang == 'en' else collections.posts) %}
+    <li><a href="{{ post.url }}"{% if post.data.lang != lang %} lang="{{ post.data.lang }}" hreflang="{{ post.data.lang }}"{% endif %}>{{ post.data.title }}</a></li>
+  {% endfor %}
+</ul>
+
+{% if collections.notes.length %}
+<h2 id="notes">{{ 'sitemap.notes' | t }}</h2>
+<ul>
+  {% for note in collections.notes %}
+    <li><a href="{{ note.url }}" lang="fr" hreflang="fr">{{ note.data.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<h2 id="tags">{{ 'sitemap.tags' | t }}</h2>
+<ul class="post-tags">
+  {% for tag in collections.postTagList %}
+    <li><a href="/tags/{{ tag }}/">#{{ tag }}</a></li>
+  {% endfor %}
+</ul>

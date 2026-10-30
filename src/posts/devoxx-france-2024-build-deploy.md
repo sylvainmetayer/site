@@ -46,7 +46,7 @@ Cette api va suffisamment loin pour empiéter largement sur une partie des servi
 On découvre alors comment déployer un environnement Kubernetes sur plusieurs régions, et le besoin de créer plusieurs clusters pour assurer une latence faible, Kubernetes n'aimant en effet pas les latences si un continent sépare plusieurs nœuds. Leur démo, parfaitement maîtrisée permet de nous montrer l'envers du décor et des outils/méthodes pour garantir qualité de service, latence faible et  l'intégrité de nos données !
 
 
-{% youtube "ADp3fonoDWM", "Multi Kubernetes, Multi Régions, Au-secours !" %}
+{% youtube "ADp3fonoDWM", "Multi Kubernetes, Multi Régions, Au-secours !", 2727 %}
 
 
 ## Notre dépendance à l'Open Source est effrayante. SLSA, SBOM et Sigstore à la rescousse
@@ -56,7 +56,7 @@ Cette conférence, très intéressante, nous montre à quel point nous dépendon
 [Abdellfetah Sghiouar](https://www.linkedin.com/in/sabdelfettah/) nous présente alors des outils sur lesquels nous pouvons nous appuyer pour garantir la traçabilité de nos applications, tel que cosign pour signer nos images avant de les déployer dans notre cluster, ou encore SBOM pour lister tous les paquets utilisés dans notre application.
 
 
-{% youtube "MEJ-ae_D8X4", "Notre dépendance à l'Open Source est effrayante. SLSA, SBOM et Sigstore à la rescousse" %}
+{% youtube "MEJ-ae_D8X4", "Notre dépendance à l'Open Source est effrayante. SLSA, SBOM et Sigstore à la rescousse", 2601 %}
 
 
 ## Au cœur de la ruche eBPF!
@@ -64,7 +64,7 @@ Cette conférence, très intéressante, nous montre à quel point nous dépendon
 J'avais déjà entendu parler plusieurs fois d'eBPF, sans vraiment savoir ce dont il s'agissait. Cette conférence était donc l'opportunité pour moi de creuser un peu le sujet ! Bien que très technique, [Mohammed Aboullaite](https://www.linkedin.com/in/aboullaite/) a bien expliqué le fonctionnement d'un module du kernel et l'évolution d'eBPF. Je ne pense pas avoir l'usage dès demain d'écrire mon propre module kernel, mais je comprends mieux toute la "hype" autour de ça et la plus-value d'eBPF afin de pouvoir simplifier la distribution d'un nouveau module, tout en ayant des performances natives et en gardant la même sécurité.
 
 
-{% youtube "XaBbxb0r0fc", "Au cœur de la ruche eBPF!" %}
+{% youtube "XaBbxb0r0fc", "Au cœur de la ruche eBPF!", 2802 %}
 
 
 ## Le cauchemar des attaquants : une infrastructure sans secret
@@ -80,7 +80,7 @@ Thibault nous montre une solution d'architecture et les bonnes pratiques associ�
 Fini les rotations de mot de passe à n'en plus finir, on a un accès et le reste est géré par les politiques définies dans le code source de notre infrastructure.
  
 
-{% youtube "U3AL2pqPg3I", "Le cauchemar des attaquants : une infrastructure sans secret" %}
+{% youtube "U3AL2pqPg3I", "Le cauchemar des attaquants : une infrastructure sans secret", 2727 %}
 
 
 ## Check-list ultime pour rendre vos app cloud native
@@ -95,7 +95,7 @@ Entre la méthodologie et le REX, la conférence de Katia est une mine d'informa
 Les points présentés se situent autant au niveau de la technique que de l'humain, avec l'onboarding des équipes et la conduite du changement. Les principaux points durs de ces projets sont pris en compte, serait-ce la recette ultime ?
  
 
-{% youtube "3s-gtziZ3UU", "Check-list ultime pour rendre vos app cloud native" %}
+{% youtube "3s-gtziZ3UU", "Check-list ultime pour rendre vos app cloud native", 2725 %}
 
 
 ## Le mot de la fin

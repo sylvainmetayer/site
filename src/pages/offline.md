@@ -2,6 +2,7 @@
 title: 'Vous êtes hors ligne'
 permalink: '/offline/index.html'
 eleventyExcludeFromCollections: true
+metaDesc: "Page affichée hors connexion par le service worker de sylvain.dev."
 ---
 
 La page n'a pas pu être chargée. Vérifiez votre connexion, puis rechargez-la.

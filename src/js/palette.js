@@ -1,7 +1,7 @@
 // Ctrl+K / ⌘K palette: jump to a page, an article, a talk, a project or a tag, or switch theme.
 // The index (/search.json, /en/search.json) is built by src/_includes/layouts/search-index.njk
 // and fetched on first opening. Its URL and the status messages come from the dialog
-// (partials/palette.njk), in the language of the page.
+// (partials/palette.njk), in the language of the page. ?q= in the URL opens it with that query.
 (function () {
   var dialog = document.querySelector('[data-palette]');
   if (!dialog || typeof dialog.showModal !== 'function') return;
@@ -140,9 +140,9 @@
     window.location.href = entry.u;
   }
 
-  function open() {
+  function open(query) {
     if (dialog.open) return;
-    input.value = '';
+    input.value = query || '';
     list.textContent = '';
     status.textContent = 'Chargement…';
     dialog.showModal();
@@ -157,7 +157,11 @@
   });
 
   input.addEventListener('keydown', function (event) {
-    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+    // type="search" would clear the field on Escape instead of closing the dialog
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      dialog.close();
+    } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault();
       select(active + (event.key === 'ArrowDown' ? 1 : -1));
     } else if (event.key === 'Enter') {
@@ -193,7 +197,17 @@
   document.querySelectorAll('[data-palette-open]').forEach(function (button) {
     // Tooltip of the icon: the shortcut of this platform
     if (isMac) button.title = button.title.replace('ctrl k', '⌘K');
-    button.addEventListener('click', open);
+    button.addEventListener('click', function () {
+      open();
+    });
     button.hidden = false;
   });
+
+  dialog.querySelector('[data-palette-close]').addEventListener('click', function () {
+    dialog.close();
+  });
+
+  // A search URL (/?q=terraform) opens the palette with that query
+  var query = new URLSearchParams(window.location.search).get('q');
+  if (query) open(query);
 })();

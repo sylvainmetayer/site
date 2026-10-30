@@ -25,6 +25,6 @@ Comment ce site est fait, et pourquoi. Les sources sont [sur GitHub](https://git
 
 ## Contrôles
 
-Chaque push passe par [GitHub Actions](https://github.com/sylvainmetayer/site/actions) : validation HTML, accessibilité WCAG 2 AA ([pa11y](https://pa11y.org/)), liens internes et redirections, analyse [SonarCloud](https://sonarcloud.io/) et CodeQL. Les liens externes sont vérifiés chaque semaine avec [lychee](https://lychee.cli.rs/), et [Renovate](https://docs.renovatebot.com/) tient les dépendances à jour.
+Chaque push passe par [GitHub Actions](https://github.com/sylvainmetayer/site/actions) : validation HTML, accessibilité [WCAG 2](https://www.w3.org/TR/WCAG22/) AA ([pa11y](https://pa11y.org/)), liens internes et redirections, analyse [SonarCloud](https://sonarcloud.io/) et CodeQL. Les liens externes sont vérifiés chaque semaine avec [lychee](https://lychee.cli.rs/), et [Renovate](https://docs.renovatebot.com/) tient les dépendances à jour.
 
-La [politique de sécurité du contenu](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP) n'autorise aucun script tiers, à part la mesure d'audience.
+La [politique de sécurité du contenu](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP) n'autorise aucun script tiers, à part la mesure d'audience. Celle-ci est chargée sans contrôle d'intégrité ([SRI](https://developer.mozilla.org/fr/docs/Web/Security/Subresource_Integrity)) : Cloudflare met le script à jour sans changer son adresse, une empreinte figée le bloquerait.

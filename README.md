@@ -49,7 +49,11 @@ Les blocs de code sont colorés au build par Shiki (thème `src/utils/shiki-them
 
 Un encadré s'écrit comme sur GitHub : une citation qui commence par `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` ou `[!CAUTION]`.
 
-`{% youtube 'identifiant', 'Titre' %}` intègre une vidéo YouTube légère : la miniature est téléchargée au build, le lecteur (youtube-nocookie, autorisé par `frame-src` dans `_headers`) ne se charge qu'au clic.
+`{% youtube 'identifiant', 'Titre', 2727 %}` intègre une vidéo YouTube légère : la miniature est téléchargée au build, le lecteur (youtube-nocookie, autorisé par `frame-src` dans `_headers`) ne se charge qu'au clic. Le dernier argument, facultatif, est la durée en secondes, affichée sur la miniature.
+
+Un paragraphe `Tableau : …` (`Table: …` en anglais) juste avant un tableau en devient la légende (`<caption>`).
+
+Les sigles de `src/_data/abbreviations.json` sont expliqués (`<abbr title>`) à leur première occurrence dans chaque page, et listés sur [/glossaire/](https://www.sylvain.dev/glossaire/) : ajouter un sigle là, en français et en anglais.
 
 Dans un article, `{% baseline 'container-queries' %}` affiche le support navigateur d'une fonctionnalité web (identifiant de l'URL `https://webstatus.dev/features/<id>`), récupéré au build. Pas de « {% » dans `site.css` : la feuille passe par Nunjucks.
 
@@ -82,7 +86,7 @@ Le français est la langue par défaut, aux URL actuelles ; l'anglais est sous `
 - Sur les pages anglaises, un article sans traduction reste listé, en français et marqué « in French ». Les pages de tags (une par tag des articles publiés) et `/devto.rss.xml` restent en français.
 - Pas de `hreflang` pour un article canonique ailleurs (dev.to, LinkedIn…) : les moteurs ignorent les paires qui pointent vers une URL non canonique.
 - Une traduction d'article republié porte `original:` (l'URL de l'original) au lieu de `canonical:` : la page anglaise est canonique d'elle-même.
-- Le CV anglais est imprimé dans `src/uploads/CV-en.pdf` (`mise run cv` génère et vérifie les deux, la CI compare les deux au build).
+- Le CV anglais est imprimé dans `src/uploads/CV-METAYER-Sylvain-en.pdf` (`mise run cv` génère et vérifie les deux, la CI compare les deux au build).
 - Sveltia CMS édite les deux langues (bloc `i18n` de `src/admin/config.yml`) : champ « traduit » ou « dupliqué » (même valeur dans les deux langues).
 
 ## Déploiement (Cloudflare Pages)

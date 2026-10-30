@@ -107,9 +107,9 @@ Une image sans titre reste une simple image (avec un aperçu flou pendant le cha
 
 ## Vidéos
 
-Une vidéo YouTube, chargée seulement au clic (miniature locale, domaine youtube-nocookie) : `{% raw %}{% youtube 'id', 'Titre' %}{% endraw %}`.
+Une vidéo YouTube, chargée seulement au clic (miniature locale, domaine youtube-nocookie) : `{% raw %}{% youtube 'id', 'Titre', 2727 %}{% endraw %}`, la durée en secondes étant facultative.
 
-{% youtube "ADp3fonoDWM", "Multi Kubernetes, Multi Régions, Au-secours !" %}
+{% youtube "ADp3fonoDWM", "Multi Kubernetes, Multi Régions, Au-secours !", 2727 %}
 
 Une vidéo hébergée sur le site, en HTML :
 

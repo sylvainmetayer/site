@@ -85,3 +85,12 @@
 /tags/twitter/
 /talks/
 /uploads/CV-en.pdf
+/uploads/CV.pdf
+/uploads/CV-METAYER-Sylvain.pdf
+/uploads/CV-METAYER-Sylvain-en.pdf
+/plan/
+/en/sitemap/
+/glossaire/
+/en/glossary/
+/mentions-legales/
+/en/legal/

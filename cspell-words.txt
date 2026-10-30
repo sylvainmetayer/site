@@ -188,3 +188,5 @@ kdvc
 ratatui
 clippy
 infomaniak
+CNIL
+legales

@@ -1,5 +1,5 @@
 // Prints the one-page CV of a build (dist/) with headless Chromium: /cv/pdf/ to
-// src/uploads/CV.pdf, or with --lang en /en/cv/pdf/ to src/uploads/CV-en.pdf
+// src/uploads/CV-METAYER-Sylvain.pdf, or with --lang en /en/cv/pdf/ to src/uploads/CV-METAYER-Sylvain-en.pdf
 // (layout src/_includes/layouts/cv-pdf.njk).
 //
 //   node scripts/cv-pdf.mjs [dist] [--lang fr|en] [--out <file>]
@@ -9,7 +9,7 @@
 // The browser is CHROME_BIN, or the first of chromium-browser, chromium, google-chrome found in
 // the usual system directories (not PATH, which could point to anything).
 // The CV must fit on one A4 page: when the content overflows, the PDF is refused and
-// src/uploads/CV.pdf is left untouched.
+// src/uploads/CV-METAYER-Sylvain.pdf is left untouched.
 import { spawn } from 'node:child_process';
 import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -23,7 +23,7 @@ if (!['fr', 'en'].includes(lang)) throw new Error(`--lang ${lang} : fr ou en`);
 if (langIndex !== -1) args.splice(langIndex, 2);
 const prefix = lang === 'en' ? '/en' : '';
 const outIndex = args.indexOf('--out');
-const defaultOutput = lang === 'en' ? 'src/uploads/CV-en.pdf' : 'src/uploads/CV.pdf';
+const defaultOutput = lang === 'en' ? 'src/uploads/CV-METAYER-Sylvain-en.pdf' : 'src/uploads/CV-METAYER-Sylvain.pdf';
 const output = resolve(outIndex === -1 ? defaultOutput : args[outIndex + 1]);
 if (outIndex !== -1) args.splice(outIndex, 2);
 const dist = resolve(args[0] || 'dist');

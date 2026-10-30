@@ -29,7 +29,7 @@
   <ol class="post-list" reversed>
     {% for post in posts %}
       <li class="post-row">
-        <time datetime="{{ post.date | w3DateFilter }}">{{ post.date | date('YYYY-MM-DD') }}</time>
+        <time datetime="{{ post.date | w3DateFilter }}">{{ post.date | date('ll') }}</time>
         {# On an English page, an article without translation stays in French #}
         {% if post.data.lang != lang %}
           <a href="{{ post.url }}" rel="bookmark" lang="{{ post.data.lang }}" hreflang="{{ post.data.lang }}">{{ post.data.title }}</a> <span class="post-lang">{{ 'lang.inFrench' | t }}</span>
@@ -54,7 +54,7 @@
       <article class="card" id="{{ project.fileSlug | baseSlug }}">
         {# On an English page, a project without translation keeps its French description #}
         {% set untranslated = project.data.lang != lang %}
-        <h{{ level }} class="card-title">{{ project.data.title }} <small>{% if untranslated %}<span class="post-lang">{{ 'lang.inFrench' | t }}</span> · {% endif %}{{ project.data.year }}{% if project.data.updated %} · {{ 'post.updated' | t({ date: '<time datetime="' + (project.data.updated | w3DateFilter) + '">' + (project.data.updated | date('YYYY-MM-DD')) + '</time>' }) | safe }}{% endif %}</small></h{{ level }}>
+        <h{{ level }} class="card-title">{{ project.data.title }} <small>{% if untranslated %}<span class="post-lang">{{ 'lang.inFrench' | t }}</span> · {% endif %}{{ project.data.year }}{% if project.data.updated %} · {{ 'post.updated' | t({ date: '<time datetime="' + (project.data.updated | w3DateFilter) + '">' + (project.data.updated | date('LL')) + '</time>' }) | safe }}{% endif %}</small></h{{ level }}>
         <div class="desc"{% if untranslated %} lang="{{ project.data.lang }}"{% endif %}>{{ project.templateContent | safe }}</div>
         {% if project.data.stack %}
           <ul class="chips">
@@ -65,7 +65,7 @@
         {% if github %}
           <p class="repo-stats">
             <span aria-hidden="true">★ {{ github.stars }}</span><span class="visually-hidden">{{ 'projects.stars' | t({ count: github.stars }) }}</span>
-            · {{ 'projects.pushed' | t({ date: '<time datetime="' + github.lastCommit + '">' + (github.lastCommit | date('YYYY-MM')) + '</time>' }) | safe }}
+            · {{ 'projects.pushed' | t({ date: '<time datetime="' + github.lastCommit + '">' + (github.lastCommit | date('MMMM YYYY')) + '</time>' }) | safe }}
             {%- if github.archived %} · {{ 'projects.archived' | t }}{% endif %}
           </p>
         {% endif %}
