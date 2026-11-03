@@ -17,7 +17,7 @@
     {
       "title": "TOEIC",
       "date": "2018-02-01",
-      "link": "https://www.ets.org/fr/toeic",
+      "link": "https://www.ets.org/toeic.html",
       "description": "J'ai passé et obtenu mon TOEIC à 3 reprises au cours de mes études, du fait qu'il était obligatoire d'avoir un TOEIC en cours de validité afin de valider mon diplôme bac+5. Score obtenu au dernier passage : 855 / 990.",
       "summary": "855 / 990",
       "print": false
@@ -54,7 +54,7 @@
       {
         "title": "TOEIC",
         "date": "2018-02-01",
-        "link": "https://www.ets.org/fr/toeic",
+        "link": "https://www.ets.org/toeic.html",
         "description": "I took and passed the TOEIC three times during my studies, as a valid TOEIC score was required to graduate with my master's-level degree. Score on the latest attempt: 855 / 990.",
         "summary": "855 / 990",
         "print": false

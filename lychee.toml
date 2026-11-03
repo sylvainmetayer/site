@@ -14,6 +14,20 @@ exclude = [
   '^https://([a-z]+\.)?linkedin\.com/',
   # Dépôt GitLab privé : 403 sans connexion (liens marqués d'un cadenas, data-auth)
   '^https://gitlab\.com/ocyhc/memoire-dut-info',
+  # Faux positifs vérifiés le 2026-11-03 (issue #420) :
+  # Bêtisier : règle pays de Pangolin (FR et DE seulement), 401 depuis les
+  # runners et tout autre pays, 200 depuis la France et l'Allemagne.
+  '^https://betisier\.sylvain\.dev/',
+  # Cryptcheck : délai dépassé à chaque passage sur les runners depuis le
+  # 2026-10-12, 200 en moins d'une seconde depuis 15 points de mesure (dont les
+  # États-Unis) et en local. Cause côté runners supposée, pas démontrée.
+  '^https://cryptcheck\.fr/https/sylvain\.dev',
+  # ETS : « HTTP/2 protocol error » avec le client de lychee, en local comme en
+  # CI ; 200 avec curl en HTTP/2 et HTTP/1.1, et depuis 8 pays.
+  '^https://www\.ets\.org/toeic\.html',
+  # Google Timeline : 403 pour lychee, en local comme en CI ; un client ordinaire
+  # est redirigé (302) vers la page de connexion, depuis 12 pays.
+  '^https://www\.google\.com/maps/timeline',
 ]
 
 # 429 : limite de requêtes atteinte, le lien n'est pas cassé pour autant
