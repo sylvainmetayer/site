@@ -30,7 +30,7 @@ Il était demandé de réaliser une version console et une version graphique du 
 
 ## Bêtisier de l'IUT
 
-[Source (Github)](https://github.com/sylvainmetayer/Betisier-TP) [Voir le site](https://betisier.sylvain.dev)
+[Source (Github)](https://github.com/sylvainmetayer/Betisier-TP) [Voir le site](https://betisier.sylvain.dev) (accessible depuis la France et l'Allemagne uniquement)
 
 Ce projet universitaire constituait une découverte du PHP. Il consistait à réaliser un site rassemblant les perles de profs, permettant leur ajout, notation par des élèves, ...
 

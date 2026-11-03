@@ -9,7 +9,7 @@ excerpt: "J'ai utilisé l'historique de localisation de Google de 2011 à 2018. 
 noToc: true
 ---
 
-Si vous ne le saviez pas déjà, Google possède un historique de localisation de vos différents emplacements : [Google Location History](https://www.google.com/maps/timeline). J'ai utilisé ce service de 2011 à 2018, année à laquelle j'ai commencé à m'éloigner des [services Google](https://degooglisons-internet.org/fr/).
+Si vous ne le saviez pas déjà, Google possède un historique de localisation de vos différents emplacements : [Google Location History](https://support.google.com/maps/answer/6258979?hl=fr), aujourd'hui appelé « Vos trajets ». J'ai utilisé ce service de 2011 à 2018, année à laquelle j'ai commencé à m'éloigner des [services Google](https://degooglisons-internet.org/fr/).
 
 > Pour activer ou désactiver ce comportement, rendez-vous sur [les paramètres de votre compte Google](https://myactivity.google.com/activitycontrols?pli=1&settings=location)
 
