@@ -3,7 +3,7 @@ title: Legal notice and privacy
 permalink: /en/legal/
 layout: layouts/page.njk
 translationKey: legal
-updated: 2026-10-30
+updated: 2026-11-03
 metaDesc: "Publisher, host, content licence and personal data of sylvain.dev."
 ---
 
@@ -36,4 +36,4 @@ The site has no account, no form and no cookie. It only collects the following.
 
 ### Your rights
 
-Under the General Data Protection Regulation, you can ask to access, correct or delete the data about you (for instance a mention shown under an article) by writing to [{{ site.authorEmail }}](mailto:{{ site.authorEmail }}). If you are not satisfied with the answer, you can complain to the [CNIL](https://www.cnil.fr/fr/plaintes), the French data protection authority.
+Under the General Data Protection Regulation, you can ask to access, correct or delete the data about you (for instance a mention shown under an article) by writing to [{{ site.authorEmail }}](mailto:{{ site.authorEmail }}). If you are not satisfied with the answer, you can complain to the [CNIL](https://www.cnil.fr/fr/plaintes) (complaint page in French), the French data protection authority.

@@ -25,9 +25,6 @@ exclude = [
   # ETS : « HTTP/2 protocol error » avec le client de lychee, en local comme en
   # CI ; 200 avec curl en HTTP/2 et HTTP/1.1, et depuis 8 pays.
   '^https://www\.ets\.org/toeic\.html',
-  # Google Timeline : 403 pour lychee, en local comme en CI ; un client ordinaire
-  # est redirigé (302) vers la page de connexion, depuis 12 pays.
-  '^https://www\.google\.com/maps/timeline',
 ]
 
 # 429 : limite de requêtes atteinte, le lien n'est pas cassé pour autant
