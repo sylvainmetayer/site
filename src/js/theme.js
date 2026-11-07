@@ -28,7 +28,7 @@
     });
   }
 
-  // 'dark', 'light' or 'auto': stores the choice, applies it and updates the header switch
+  // 'dark', 'light' or 'auto': stores the choice, applies it and updates the switches
   function set(choice) {
     var value = choice === 'light' || choice === 'dark' ? choice : null;
     try {
@@ -43,16 +43,16 @@
   window.siteTheme = { set: set };
 
   document.addEventListener('DOMContentLoaded', function () {
-    var group = document.querySelector('[data-theme-switch]');
-    if (!group) return;
-
-    group.querySelectorAll('button[data-theme-value]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        set(button.dataset.themeValue);
+    // One copy in the header, one in the footer for phones
+    document.querySelectorAll('[data-theme-switch]').forEach(function (group) {
+      group.querySelectorAll('button[data-theme-value]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          set(button.dataset.themeValue);
+        });
       });
+      group.hidden = false;
     });
 
     sync(read());
-    group.hidden = false;
   });
 })();

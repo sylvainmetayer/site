@@ -140,10 +140,10 @@
   {% if newer or older %}
     <nav class="post-nav" aria-label="{{ 'post.neighbours' | t }}">
       {% if older %}
-        <a href="{{ older.url }}" class="prev" rel="prev"><span><span class="arrow" data-arrow="← " aria-hidden="true"></span>{{ 'post.previous' | t }}<span class="visually-hidden"> :</span></span>{{ older.data.title }}</a>
+        <a href="{{ older.url }}" class="prev" rel="prev"><span><span class="arrow" data-arrow="← " aria-hidden="true"></span>{{ 'post.previous' | t }}<span class="visually-hidden"> :</span></span><span>{{ older.data.title }}</span></a>
       {% endif %}
       {% if newer %}
-        <a href="{{ newer.url }}" class="next" rel="next"><span>{{ 'post.next' | t }}<span class="visually-hidden"> :</span><span class="arrow" data-arrow=" →" aria-hidden="true"></span></span>{{ newer.data.title }}</a>
+        <a href="{{ newer.url }}" class="next" rel="next"><span>{{ 'post.next' | t }}<span class="visually-hidden"> :</span><span class="arrow" data-arrow=" →" aria-hidden="true"></span></span><span>{{ newer.data.title }}</span></a>
       {% endif %}
     </nav>
   {% endif %}
