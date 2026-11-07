@@ -1,0 +1,10 @@
+{# In the header, and in the footer on phones (site.css); js/theme.js wires every copy #}
+{# CSS Naked Day: no theme to switch #}
+{% if not global.cssNakedDay %}
+<fieldset class="theme-switch" data-theme-switch hidden>
+  <legend class="visually-hidden">{{ 'theme.legend' | t }}</legend>
+  <button type="button" data-theme-value="auto" aria-pressed="true">{{ 'theme.auto' | t }}</button>
+  <button type="button" data-theme-value="dark" aria-pressed="false">{{ 'theme.dark' | t }}</button>
+  <button type="button" data-theme-value="light" aria-pressed="false">{{ 'theme.light' | t }}</button>
+</fieldset>
+{% endif %}

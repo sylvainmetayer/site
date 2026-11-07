@@ -8,6 +8,7 @@
       {% endfor %}
       <li><a href="mailto:{{ site.authorEmail }}">{{ icon('mail') }}<span class="visually-hidden">{{ 'foot.email' | t({ email: site.authorEmail }) }}</span></a></li>
     </ul>
+    {% include 'partials/theme-switch.njk' %}
     <ul>
       <li><a href="{{ 'url.feeds' | t }}">{{ icon('rss') }}rss</a></li>
       <li><a href="{{ langPrefix }}/now/">now</a></li>
