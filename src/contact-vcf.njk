@@ -1,0 +1,6 @@
+---
+# ContactSpec (https://contactspec.org): public contact card, vCard 4.0 (src/11ty/vcard.js)
+permalink: /.well-known/contact.vcf
+eleventyExcludeFromCollections: true
+---
+{{ site | vcard(social.links) | safe -}}

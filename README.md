@@ -59,6 +59,8 @@ Dans un article, `{% baseline 'container-queries' %}` affiche le support navigat
 
 `/liens/` liste les liens saisis dans le CMS (`src/_data/links.json`) et ceux d'une liste Karakeep, si le build a `KARAKEEP_URL`, `KARAKEEP_API_KEY` et `KARAKEEP_LIST_ID` (la note du favori devient le commentaire). Sans liens, la page n'est pas générée.
 
+[SocialSpec](https://socialspec.org) : `/.well-known/about.md` (bio) et `/.well-known/contact.vcf` (vCard) sont générés depuis `site.json` et `social.json`. `/.well-known/following.opml` reprend l'OPML d'une requête utilisateur FreshRSS partagée en OPML, si le build a `FRESHRSS_OPML_URL` (secret, l'URL contient le jeton FreshRSS) et, pour passer Pangolin, `FRESHRSS_ACCESS_TOKEN_ID` et `FRESHRSS_ACCESS_TOKEN`. Sinon, le fichier n'est pas généré.
+
 `dist/_redirects` est généré (`src/redirects.njk`) : les règles écrites à la main dans `src/_redirects`, puis celles du front matter, `redirect_from: [/ancienne/url/]` et `short: code` (lien court `/s/code`).
 
 L'accueil liste les articles les plus lus sur 30 jours si le build a `CF_ANALYTICS_TOKEN` (droit Account Analytics: Read), `CF_ACCOUNT_ID` et `CF_ANALYTICS_SITE_TAG` (Cloudflare Web Analytics).

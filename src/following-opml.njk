@@ -1,0 +1,6 @@
+---js
+// FollowSpec (https://followspec.org): feeds followed in FreshRSS (_data/freshrss.js)
+const permalink = data => Boolean(data.freshrss) && '/.well-known/following.opml';
+const eleventyExcludeFromCollections = true;
+---
+{{ freshrss | safe }}

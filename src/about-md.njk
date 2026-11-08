@@ -1,0 +1,25 @@
+---js
+// AboutSpec (https://aboutspec.org): the bio, built from site.json and social.json
+const permalink = '/.well-known/about.md';
+const eleventyExcludeFromCollections = true;
+---
+---
+summary: {{ site.shortDesc | dump | safe }}
+---
+
+# {{ site.authorName | safe }}
+
+{{ site.role | safe }} à {{ site.location | safe }}.
+
+- Site : <{{ site.url | safe }}>
+- Email : <{{ site.authorEmail | safe }}>
+{%- set account = site.mastodon | mastodonAccount %}
+{%- if account %}
+- Mastodon : <{{ account.url | safe }}>
+{%- endif %}
+{%- if site.bluesky %}
+- Bluesky : <https://bsky.app/profile/{{ site.bluesky | safe }}>
+{%- endif %}
+{%- for link in social.links %}
+- {{ link.label | safe }} : <{{ link.url | safe }}>
+{%- endfor %}

@@ -63,3 +63,18 @@ test('markAbbreviations: first occurrence only, whole words, language of the tex
   const abbrs = [...document.querySelectorAll('abbr')].map(abbr => `${abbr.textContent}=${abbr.title}`);
   assert.deepEqual(abbrs, ['API=interface', 'CSS=style sheets']);
 });
+
+test('vcard: escaped text, CRLF, social profiles', async () => {
+  const { vcard } = await import('../src/11ty/vcard.js');
+  const card = vcard(
+    { authorName: 'Jo DOE', role: 'Dev, ops; et plus', location: 'Talence', authorEmail: 'a@b.c', url: 'https://x.dev', shortDesc: 'd', mastodon: '@jo@bdx.town', bluesky: 'x.dev' },
+    [{ label: 'dev.to', url: 'https://dev.to/jo' }],
+  );
+  assert.ok(card.startsWith('BEGIN:VCARD\r\nVERSION:4.0\r\n') && card.endsWith('END:VCARD\r\n'));
+  assert.match(card, /\r\nN:DOE;Jo;;;\r\n/);
+  assert.ok(card.includes('\r\nTITLE:Dev\\, ops\\; et plus\r\n'));
+  assert.match(card, /X-SOCIALPROFILE;TYPE=devto:https:\/\/dev.to\/jo/);
+  assert.match(card, /X-SOCIALPROFILE;TYPE=mastodon:https:\/\/bdx.town\/@jo/);
+  const bare = vcard({ authorName: 'Jo DOE', url: 'https://x.dev' });
+  assert.doesNotMatch(bare, /undefined|TITLE|ADR|NOTE|EMAIL/);
+});
