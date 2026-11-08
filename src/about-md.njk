@@ -1,0 +1,21 @@
+---js
+// AboutSpec (https://aboutspec.org): the bio, built from site.json and social.json.
+// In French, the site's language: the spec has one file per domain.
+// Imports resolve from the project root, where Eleventy runs
+import { socialProfiles } from './src/11ty/fediverse.js';
+const permalink = '/.well-known/about.md';
+const eleventyExcludeFromCollections = true;
+---
+---
+summary: {{ site.shortDesc | dump | safe }}
+---
+
+# {{ site.authorName | safe }}
+
+{{ site.role | safe }} à {{ site.location | safe }}.
+
+- Site : <{{ site.url | safe }}>
+- Email : <{{ site.authorEmail | safe }}>
+{%- for profile in socialProfiles(site, social.links) %}
+- {{ profile.label | safe }} : <{{ profile.url | safe }}>
+{%- endfor %}

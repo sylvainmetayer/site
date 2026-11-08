@@ -42,6 +42,22 @@
 /.well-known/atproto-did
   Content-Type: text/plain; charset=utf-8
 
+# SocialSpec (https://socialspec.org) : lisibles depuis n'importe quelle origine.
+# « ! » retire l'Access-Control-Allow-Origin de /* : sinon Cloudflare joint les
+# deux valeurs par une virgule, ce que les navigateurs refusent.
+/.well-known/following.opml
+  Content-Type: text/x-opml; charset=utf-8
+  ! Access-Control-Allow-Origin
+  Access-Control-Allow-Origin: *
+/.well-known/about.md
+  Content-Type: text/markdown; charset=utf-8
+  ! Access-Control-Allow-Origin
+  Access-Control-Allow-Origin: *
+/.well-known/contact.vcf
+  Content-Type: text/vcard; charset=utf-8
+  ! Access-Control-Allow-Origin
+  Access-Control-Allow-Origin: *
+
 # Scripts nommés d'après leur contenu (filtre hashed, /js/v/nom.<empreinte>.js) :
 # une nouvelle version change d'URL.
 /js/v/*

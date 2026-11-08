@@ -1,0 +1,8 @@
+---js
+// ContactSpec (https://contactspec.org): public contact card, vCard 4.0
+// Imports resolve from the project root, where Eleventy runs
+import { vcard } from './src/11ty/vcard.js';
+const permalink = '/.well-known/contact.vcf';
+const eleventyExcludeFromCollections = true;
+---
+{{ vcard(site, social.links) | safe -}}
