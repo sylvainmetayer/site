@@ -73,8 +73,42 @@ test('vcard: escaped text, CRLF, social profiles', async () => {
   assert.ok(card.startsWith('BEGIN:VCARD\r\nVERSION:4.0\r\n') && card.endsWith('END:VCARD\r\n'));
   assert.match(card, /\r\nN:DOE;Jo;;;\r\n/);
   assert.ok(card.includes('\r\nTITLE:Dev\\, ops\\; et plus\r\n'));
-  assert.match(card, /X-SOCIALPROFILE;TYPE=devto:https:\/\/dev.to\/jo/);
-  assert.match(card, /X-SOCIALPROFILE;TYPE=mastodon:https:\/\/bdx.town\/@jo/);
+  assert.match(card, /X-SOCIALPROFILE;TYPE=devto:https:\/\/dev\.to\/jo\r\n/);
+  assert.match(card, /X-SOCIALPROFILE;TYPE=mastodon:https:\/\/bdx\.town\/@jo\r\n/);
+  assert.match(vcard({ authorName: 'Jo', url: 'https://x.dev' }, [{ label: 'é', url: 'https://y.dev' }]), /\r\nX-SOCIALPROFILE:https:\/\/y\.dev\r\n/);
   const bare = vcard({ authorName: 'Jo DOE', url: 'https://x.dev' });
   assert.doesNotMatch(bare, /undefined|TITLE|ADR|NOTE|EMAIL/);
+});
+
+test('socialProfiles: links, then Mastodon and Bluesky when set', async () => {
+  const { socialProfiles } = await import('../src/11ty/fediverse.js');
+  assert.deepEqual(socialProfiles({ mastodon: '@jo@bdx.town', bluesky: 'x.dev' }, [{ label: 'github', url: 'https://github.com/jo', icon: 'github' }]), [
+    { label: 'github', url: 'https://github.com/jo' },
+    { label: 'mastodon', url: 'https://bdx.town/@jo' },
+    { label: 'bluesky', url: 'https://bsky.app/profile/x.dev' },
+  ]);
+  assert.deepEqual(socialProfiles({}), []);
+});
+
+test('freshrss: OPML kept, anything else dropped without logging the URL', async t => {
+  process.env.FRESHRSS_OPML_URL = 'https://rss.example/?t=secret';
+  process.env.FRESHRSS_ACCESS_TOKEN_ID = 'id';
+  process.env.FRESHRSS_ACCESS_TOKEN = 'token';
+  const { default: freshrss } = await import(`../src/_data/freshrss.js?${Date.now()}`);
+  const warnings = [];
+  t.mock.method(console, 'warn', message => warnings.push(message));
+  let sent;
+  const reply = (body, status = 200) => t.mock.method(globalThis, 'fetch', async (url, options) => {
+    sent = options.headers;
+    return new Response(body, { status });
+  });
+  reply('<?xml version="1.0"?><opml version="2.0"><body/></opml>');
+  assert.match(await freshrss(), /<opml version/);
+  assert.deepEqual(sent, { 'P-Access-Token-Id': 'id', 'P-Access-Token': 'token' });
+  reply('<!DOCTYPE html><html>login</html>');
+  assert.equal(await freshrss(), '');
+  reply('<opml/>', 401);
+  assert.equal(await freshrss(), '');
+  assert.deepEqual(warnings, ['[freshrss] not an OPML document', '[freshrss] HTTP 401']);
+  for (const name of ['FRESHRSS_OPML_URL', 'FRESHRSS_ACCESS_TOKEN_ID', 'FRESHRSS_ACCESS_TOKEN']) delete process.env[name];
 });

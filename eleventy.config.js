@@ -10,7 +10,6 @@ import filters from './src/11ty/filters/index.js';
 import baseline from './src/11ty/shortcodes/baseline.js';
 import youtube from './src/11ty/shortcodes/youtube.js';
 import { mastodonAccount } from './src/11ty/fediverse.js';
-import { vcard } from './src/11ty/vcard.js';
 import parseTransform from './src/transforms/parse-transform.js';
 import markdownLibrary from './src/utils/markdown.js';
 import site from './src/_data/site.json' with { type: 'json' };
@@ -227,7 +226,6 @@ export default function eleventyConfig(config) {
 
   // "@user@instance" -> { user, instance, url } (src/_data/site.json `mastodon`)
   config.addFilter('mastodonAccount', mastodonAccount);
-  config.addFilter('vcard', vcard);
 
   // JSON for a <script type="application/ld+json">: "<" escaped so a value
   // cannot close the script element
