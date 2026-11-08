@@ -19,6 +19,11 @@
       "label": "twitter",
       "url": "https://twitter.com/sylvain_metayer",
       "icon": "twitter"
+    },
+    {
+      "label": "signal",
+      "url": "https://r.sylvain.dev/signal",
+      "icon": "signal"
     }
   ]
 }
