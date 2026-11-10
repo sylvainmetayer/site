@@ -1,18 +1,25 @@
 # En-têtes servis par Cloudflare Pages.
-# La CSP couvre aussi Sveltia CMS (/admin) : API GitHub, polices d'icônes sur
-# jsDelivr, aperçus blob: et avatars GitHub. Une règle séparée pour /admin/*
-# s'ajouterait à celle-ci au lieu de la remplacer. www.netlify.com reste dans
-# img-src pour le bouton « Deploy to Netlify » de l'article email-alias-manager.
+# Quand plusieurs règles visent une URL, leurs en-têtes s'additionnent et deux
+# valeurs d'un même en-tête sont jointes par une virgule (deux CSP cumulées =
+# l'intersection des deux) : /admin/* retire donc la CSP de /* avec « ! » avant
+# de poser la sienne. www.netlify.com reste dans img-src pour le bouton « Deploy
+# to Netlify » de l'article email-alias-manager.
 # frame-src : lecteur des vidéos {% youtube %} (js/youtube.js), chargé au clic.
 /*
-  Content-Security-Policy: default-src 'self'; connect-src 'self' blob: https://cloudflareinsights.com https://api.github.com https://www.githubstatus.com; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: blob: https://www.netlify.com https://avatars.githubusercontent.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self' blob:; frame-src https://www.youtube-nocookie.com; object-src 'none'
-  Access-Control-Allow-Origin: https://cloudflareinsights.com
+  Content-Security-Policy: default-src 'self'; connect-src 'self' https://cloudflareinsights.com; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'; frame-src https://www.youtube-nocookie.com; object-src 'none'
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+  # Retire l'Access-Control-Allow-Origin: * que Pages ajoute par défaut.
+  ! Access-Control-Allow-Origin
   Referrer-Policy: no-referrer-when-downgrade
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
-  X-UA-Compatible: IE=edge,chrome=1
-  X-XSS-Protection: 1; mode=block
+
+# Sveltia CMS : API GitHub (et son statut), polices d'icônes sur jsDelivr,
+# aperçus blob: et avatars GitHub. Reprend l'ancienne CSP globale, qui fonctionnait.
+/admin/*
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'self'; connect-src 'self' blob: https://cloudflareinsights.com https://api.github.com https://www.githubstatus.com; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: blob: https://www.netlify.com https://avatars.githubusercontent.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self' blob:; frame-src https://www.youtube-nocookie.com; object-src 'none'
 
 # Noms de fichiers sans hash (copiés de node_modules) : pas d'immutable, une
 # mise à jour de fontsource doit finir par arriver chez les visiteurs.
@@ -43,19 +50,14 @@
   Content-Type: text/plain; charset=utf-8
 
 # SocialSpec (https://socialspec.org) : lisibles depuis n'importe quelle origine.
-# « ! » retire l'Access-Control-Allow-Origin de /* : sinon Cloudflare joint les
-# deux valeurs par une virgule, ce que les navigateurs refusent.
 /.well-known/following.opml
   Content-Type: text/x-opml; charset=utf-8
-  ! Access-Control-Allow-Origin
   Access-Control-Allow-Origin: *
 /.well-known/about.md
   Content-Type: text/markdown; charset=utf-8
-  ! Access-Control-Allow-Origin
   Access-Control-Allow-Origin: *
 /.well-known/contact.vcf
   Content-Type: text/vcard; charset=utf-8
-  ! Access-Control-Allow-Origin
   Access-Control-Allow-Origin: *
 
 # Scripts nommés d'après leur contenu (filtre hashed, /js/v/nom.<empreinte>.js) :
