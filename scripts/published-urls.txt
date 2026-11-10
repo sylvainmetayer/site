@@ -94,3 +94,5 @@
 /en/glossary/
 /mentions-legales/
 /en/legal/
+/carte/
+/en/card/
