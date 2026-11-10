@@ -16,12 +16,15 @@ export function vcard(site, links = []) {
     site.location && `ADR;TYPE=home:;;;${text(site.location)};;;${text(site.country || '')}`,
     site.authorEmail && `EMAIL;PREF=1:${site.authorEmail}`,
     `URL;PREF=1:${site.url}`,
-    `PHOTO:${new URL('/images/profile.png', site.url).href}`,
+    `PHOTO:${new URL('/images/profile.jpg', site.url).href}`,
     site.shortDesc && `NOTE:${text(site.shortDesc)}`,
-    ...socialProfiles(site, links).map(({ label, url }) => {
+    ...socialProfiles(site, links).flatMap(({ label, url }) => {
       // TYPE is a token: "dev.to" -> "devto", dropped if nothing is left
       const type = label.replace(/[^\w-]/g, '');
-      return `X-SOCIALPROFILE${type ? `;TYPE=${type}` : ''}:${url}`;
+      const param = type ? `;TYPE=${type}` : '';
+      // X-SOCIALPROFILE is only read by Apple Contacts: the same link as a plain
+      // URL shows up as a website everywhere else (Android, Google Contacts)
+      return [`X-SOCIALPROFILE${param}:${url}`, `URL${param}:${url}`];
     }),
     'END:VCARD',
   ].filter(Boolean).join('\r\n') + '\r\n';

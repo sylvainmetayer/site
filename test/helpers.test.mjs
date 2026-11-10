@@ -75,6 +75,7 @@ test('vcard: escaped text, CRLF, social profiles', async () => {
   assert.ok(card.includes('\r\nTITLE:Dev\\, ops\\; et plus\r\n'));
   assert.match(card, /X-SOCIALPROFILE;TYPE=devto:https:\/\/dev\.to\/jo\r\n/);
   assert.match(card, /X-SOCIALPROFILE;TYPE=mastodon:https:\/\/bdx\.town\/@jo\r\n/);
+  assert.match(card, /\r\nURL;TYPE=devto:https:\/\/dev\.to\/jo\r\n/);
   assert.match(vcard({ authorName: 'Jo', url: 'https://x.dev' }, [{ label: 'é', url: 'https://y.dev' }]), /\r\nX-SOCIALPROFILE:https:\/\/y\.dev\r\n/);
   const bare = vcard({ authorName: 'Jo DOE', url: 'https://x.dev' });
   assert.doesNotMatch(bare, /undefined|TITLE|ADR|NOTE|EMAIL/);

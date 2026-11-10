@@ -1,0 +1,38 @@
+{# Web business card, in French (src/carte.njk) and English (src/en/card.njk):
+   the h-card of the author, the vCard to add to one's contacts, a QR code to this page #}
+{% extends 'layouts/base.njk' %}
+{% from 'partials/macros.njk' import breadcrumb with context %}
+{% from 'partials/icons.njk' import icon %}
+
+{% block content %}
+  <article class="post" aria-labelledby="page-title">
+    <header class="post-head">
+      {{ breadcrumb([], page.url | replace(langPrefix + '/', '/') | replace(r/^\/|\/$/g, '')) }}
+      <h1 id="page-title" class="page-title">{{ title }}</h1>
+    </header>
+    <div class="bizcard h-card">
+      {# Whole photo, watermark included, and its author named below #}
+      <figure class="bizcard-photo">
+        <img class="u-photo" src="/images/profile-full.jpg" width="1000" height="1500" alt="{{ site.authorName }}">
+        <figcaption>{{ 'card.photoCredit' | t({ author: '<a href="https://brunolavitphotography.com/">Bruno Lavit</a>' }) | safe }}</figcaption>
+      </figure>
+      <div class="bizcard-body">
+        <p class="bizcard-name"><a class="p-name u-url u-uid" href="{{ helpers.url() }}/">{{ site.authorName }}</a></p>
+        <p class="bizcard-role"><span class="p-job-title">{{ site.role }}</span> · <span class="p-locality">{{ site.location }}</span></p>
+        <ul class="links">
+          {% for link in social.links %}
+            <li><a href="{{ link.url }}" rel="me" class="u-url">{{ icon(link.icon) }}{{ link.label }}</a></li>
+          {% endfor %}
+          <li><a href="mailto:{{ site.authorEmail }}" class="u-email">{{ icon('mail') }}{{ site.authorEmail }}</a></li>
+        </ul>
+        {# No download attribute: iOS then opens the "new contact" sheet instead of saving a file #}
+        <p class="no-print"><a class="btn" href="/.well-known/contact.vcf" type="text/vcard"><span class="arrow" data-arrow="+ " aria-hidden="true"></span>{{ 'card.add' | t }}</a></p>
+        {% set cardUrl = helpers.url() + page.url %}
+        <figure class="bizcard-qr">
+          <span aria-hidden="true">{{ cardUrl | qrSvg | safe }}</span>
+          <figcaption>{{ 'card.qr' | t }}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+{% endblock %}

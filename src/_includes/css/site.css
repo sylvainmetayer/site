@@ -622,6 +622,72 @@ samp {
   text-decoration: underline;
 }
 
+/* ---------- Business card (layouts/card.njk) ---------- */
+
+/* Photo beside the contact details when there is room, above them otherwise */
+.bizcard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  align-items: flex-start;
+}
+
+.bizcard-photo {
+  flex: 0 1 16rem;
+  margin: 0;
+}
+
+/* No gap under the image, where the blurred placeholder would show */
+.bizcard-photo img {
+  display: block;
+}
+
+/* The wrapper the image transform adds is centred by default */
+.bizcard .lqip-wrap {
+  margin: 0;
+}
+
+.bizcard figcaption {
+  margin-top: 0.4rem;
+  font: 400 0.8rem/1.4 var(--mono);
+  color: var(--muted);
+}
+
+.bizcard-body {
+  flex: 1 1 18rem;
+}
+
+.bizcard-name {
+  margin: 0;
+  font: 700 1.5rem/1.2 var(--mono);
+}
+
+.bizcard-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bizcard-role {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+
+.bizcard .btn {
+  margin-top: 0.6rem;
+}
+
+.bizcard-qr {
+  width: fit-content;
+  margin: 1.5rem 0 0;
+  text-align: center;
+}
+
+.bizcard-qr svg {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+}
+
 /* ---------- Post list ---------- */
 
 .post-list {
