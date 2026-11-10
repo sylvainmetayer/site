@@ -8,6 +8,8 @@
 /*
   Content-Security-Policy: default-src 'self'; connect-src 'self' https://cloudflareinsights.com; font-src 'self'; img-src 'self' data: https://www.netlify.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self'; frame-src https://www.youtube-nocookie.com; object-src 'none'
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+  # Retire l'Access-Control-Allow-Origin: * que Pages ajoute par défaut.
+  ! Access-Control-Allow-Origin
   Referrer-Policy: no-referrer-when-downgrade
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
