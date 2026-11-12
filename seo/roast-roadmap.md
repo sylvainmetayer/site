@@ -25,19 +25,18 @@ Non mesuré : autorité et domaines référents (pas d'accès Ahrefs ou DataForS
 
 ## Titres (seo-title-optimization, 2026-11-12)
 
-Sur www, seul le `<title>` change, via `metaTitle` : les H1, les slugs et les flux gardent le titre d'origine. Même traitement pour les versions anglaises.
+Sur www (6 articles), seul le `<title>` change, via `metaTitle` : les H1, les slugs et les flux gardent le titre d'origine. Même traitement pour les versions anglaises.
 
 | Page | Titre actuel | Nouveau `<title>` | Pourquoi |
 |---|---|---|---|
 | `/article/kdrive-version-cleaner/` | kdvc : faire le ménage dans les versions d'un kDrive | Supprimer les anciennes versions d'un kDrive (kdvc) | La requête d'abord, le nom de l'outil ensuite |
-| `/article/recuperer-donnees-mysql/` | Dumps SQL d'un MySQL/MariaDB qui ne démarre plus | MySQL/MariaDB ne démarre plus : récupérer ses données | On cherche le symptôme, pas « dumps SQL » |
 | `/article/meetup-terraform/` | Premier Meetup | Terraform, REX d'un développeur : mon premier meetup | Le sujet du talk était absent |
 | `/article/email-alias-manager/` | Gestionnaire d'alias d'emails | Gestionnaire d'alias email pour Gandi (Angular) | Précise le fournisseur et la techno |
 | `/article/jekyll-gem-svg-fontawesome/` | Gem : FontAwesome SVG | Gem Jekyll : icônes FontAwesome en SVG | « Jekyll » manquait |
 | `/article/latex-starterkit/` | Latex Starter Kit | LaTeX Starter Kit : un modèle pour rédiger en LaTeX | Dit ce que c'est |
 | `/article/tbm-interruption/` | TBM Interruption Tracker Bot | Bot de suivi des interruptions du tram TBM | Titre anglais sur un article français |
 
-Laissés tels quels : les articles d'études (mémoires, projets DUT, DAWIN, EPSI), les deux articles sur le site lui-même et les retours de conférence, dont la canonique pointe vers dev.to ou LinkedIn.
+Laissés tels quels : l'article MySQL/MariaDB (vieil article, choix de Sylvain), les articles d'études (mémoires, projets DUT, DAWIN, EPSI), les deux articles sur le site lui-même et les retours de conférence, dont la canonique pointe vers dev.to ou LinkedIn.
 
 À arbitrer : le nom de famille n'apparaît dans aucun `<title>` de www (« Sylvain · développeur backend & DevOps », « CV · Sylvain »). Pour une recherche « Sylvain Métayer », seuls le JSON-LD et `llms.txt` le portent.
 

@@ -1,6 +1,6 @@
 ---
 title: "Récupérer les dumps SQL depuis une instance MySQL/MariaDB qui ne démarre plus"
-metaTitle: "MySQL/MariaDB ne démarre plus : récupérer ses données · Sylvain"
+metaTitle: "Dumps SQL d'un MySQL/MariaDB qui ne démarre plus · Sylvain"
 tags:
     - mysql
 date: "2021-05-04"
