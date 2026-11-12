@@ -19,7 +19,7 @@ L'espace occupé sur mon [kDrive](https://www.infomaniak.com/fr/kdrive) augmenta
 
 Grâce à l'outil présenté plus bas, j'ai pu libérer 3,2 Go, soit 686 anciennes versions. Au final, mon quota était largement respecté, mais je souhaitais quand même trouver une solution pour éviter de me retrouver un jour avec un kDrive saturé à cause des anciennes versions.
 
-Ma première idée a été de faire cela via l'interface web de kDrive. Problème : celle d'Infomaniak ne permet de supprimer les versions qu'une par une, fichier par fichier. 😩
+Ma première idée a été de faire cela via l'interface web de kDrive. Problème : celle d'[Infomaniak](https://ref.sylvain.dev/infomaniak/) ne permet de supprimer les versions qu'une par une, fichier par fichier. 😩
 
 En revanche, Infomaniak propose une [API](https://developer.infomaniak.com/docs/api) qui permet de lister les fichiers, leurs versions, et de les supprimer. De quoi se faire un petit outil !
 

@@ -23,7 +23,7 @@ Les outils que j'utilise au quotidien, dans l'esprit des [pages /uses](https://u
 - **Navigateur** : [Firefox](https://www.mozilla.org/firefox/).
 - **Mots de passe** : [KeePassXC](https://keepassxc.org/).
 - **Notes** : [Obsidian](https://obsidian.md/).
-- **Fichiers** : [kDrive](https://www.infomaniak.com/fr/kdrive) d'Infomaniak, hébergé en Suisse.
+- **Fichiers** : [kDrive](https://www.infomaniak.com/fr/kdrive) d'[Infomaniak](https://ref.sylvain.dev/infomaniak/), hébergé en Suisse.
 
 ## Développement
 
