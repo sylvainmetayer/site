@@ -1,5 +1,6 @@
 ---
 title: "Latex Starter Kit"
+metaTitle: "LaTeX Starter Kit: a template for writing in LaTeX · Sylvain"
 tags:
     - latex
     - projet

@@ -1,5 +1,6 @@
 ---
 title: 'Premier Meetup'
+metaTitle: "Terraform, REX d'un développeur : mon premier meetup · Sylvain"
 tags:
   - onepoint
   - terraform

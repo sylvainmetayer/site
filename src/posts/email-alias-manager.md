@@ -1,5 +1,6 @@
 ---
 title: 'Gestionnaire d''alias d''emails'
+metaTitle: "Gestionnaire d'alias email pour Gandi (Angular) · Sylvain"
 tags:
   - projet
   - angular
