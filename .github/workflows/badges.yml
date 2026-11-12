@@ -27,7 +27,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: ./.github/actions/setup
+      - uses: $/.github/actions/setup
 
       - name: Audit production
         run: node scripts/lighthouse-badges.mjs

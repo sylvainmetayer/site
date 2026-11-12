@@ -1,7 +1,8 @@
 # Échoue si .github/workflows/actions.lock ne correspond plus aux workflows
 # ou si un commit verrouillé n'existe plus en amont.
-# Régénérer à la main : gh actions-lock --no-narrow --ignore-local-actions
-# (sans --no-narrow, l'outil réécrit les SHA en tags ; --ignore-local-actions pour ./.github/actions/*).
+# Régénérer à la main : gh actions-lock --no-narrow
+# (sans --no-narrow, l'outil réécrit les SHA en tags). Actions locales : uses: $/.github/actions/x,
+# jamais ./.github/actions/x (le verrou ne couvrirait pas leurs actions distantes).
 name: verify-lockfile
 
 on:
@@ -23,4 +24,4 @@ jobs:
         with:
           persist-credentials: false
       - run: gh extension install github/gh-actions-lock --pin v0.4.1
-      - run: gh actions-lock --verify --ignore-local-actions
+      - run: gh actions-lock --verify
