@@ -6,5 +6,22 @@
   ],
   "lockFileMaintenance": {
     "enabled": true
-  }
+  },
+  "customManagers": [
+    {
+      "description": "Extension gh-actions-lock du workflow verify-lockfile.yml (--pin vX.Y.Z)",
+      "customType": "regex",
+      "managerFilePatterns": ["/^\\.github/workflows/verify-lockfile\\.yml$/"],
+      "matchStrings": ["--pin (?<currentValue>v[0-9]+\\.[0-9]+\\.[0-9]+)"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "github/gh-actions-lock"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Extension gh-actions-lock (0.x, format du verrou encore mouvant) : jamais d'automerge",
+      "matchDepNames": ["github/gh-actions-lock"],
+      "automerge": false
+    }
+  ]
 }
