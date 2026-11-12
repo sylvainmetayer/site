@@ -26,6 +26,8 @@
     <link rel="icon" href="{{ site.faviconPath if global.environment == 'production' else '/images/icons/favicon-dev.svg' }}" type="image/svg+xml">
     <meta name="google-site-verification" content="XROrcW2Xt6g7cyF4SDNyz08GZeMB90QlstI3SBnUsq0">
     {% include "partials/meta.njk" %}
+    {# A tag with fewer than 3 articles is a thin copy of the article list: kept out of the index (and of sitemap.njk), links still followed #}
+    {% if tag and collections[tag].length < 3 %}<meta name="robots" content="noindex, follow">{% endif %}
     {% block extraMeta %}
       <meta property="og:type" content="website">
     {% endblock %}

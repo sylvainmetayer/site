@@ -5,8 +5,8 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {%- for item in collections.all %}
-    {# A page with a `canonical` front matter points to its original elsewhere (dev.to, LinkedIn…): keep it out of the sitemap #}
-    {% if item.url and item.url != '/404.html' and not item.url.startsWith('/admin') and not item.data.canonical %}
+    {# A page with a `canonical` front matter points to its original elsewhere (dev.to, LinkedIn…): keep it out of the sitemap, like the tag pages with fewer than 3 articles (noindex in base.njk) #}
+    {% if item.url and item.url != '/404.html' and not item.url.startsWith('/admin') and not item.data.canonical and not (item.data.tag and collections[item.data.tag].length < 3) %}
       {% set absoluteUrl %}{{ helpers.url() }}{{ item.url }}{% endset %}
       <url>
         <loc>{{ absoluteUrl }}</loc>
