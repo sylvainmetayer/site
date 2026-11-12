@@ -23,7 +23,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: ./.github/actions/build
+      - uses: $/.github/actions/build
 
       - name: Check external links
         id: lychee

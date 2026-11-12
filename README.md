@@ -36,11 +36,11 @@ Les actions sont épinglées par SHA dans les workflows **et** verrouillées dan
 
 ```bash
 gh extension install github/gh-actions-lock --pin v0.4.1
-gh actions-lock --no-narrow --ignore-local-actions   # sans --no-narrow, les SHA sont réécrits en tags
-gh actions-lock --verify --ignore-local-actions      # lecture seule, comme la CI
+gh actions-lock --no-narrow   # sans --no-narrow, les SHA sont réécrits en tags
+gh actions-lock --verify      # lecture seule, comme la CI
 ```
 
-Ne pas éditer le verrou à la main : Renovate le régénère à chaque mise à jour d'action. Non couverts : les images de conteneur sans `@sha256`, les actions locales `./.github/actions/*` et les actions distantes qu'elles appellent (`actions/setup-node` dans `setup`), les workflows réutilisables d'un autre dépôt.
+Ne pas éditer le verrou à la main : Renovate le régénère à chaque mise à jour d'action. Les actions locales s'appellent `uses: $/.github/actions/setup` (forme verrouillée, résolue au commit du workflow), jamais `./.github/actions/setup` : sinon le runner refuse `actions/setup-node`, absent du verrou (`gh actions-lock --migrate-local-actions` réécrit les anciens `./`). Non couvert : les images de conteneur sans `@sha256` et les workflows réutilisables d'un autre dépôt.
 
 ## Organisation
 
