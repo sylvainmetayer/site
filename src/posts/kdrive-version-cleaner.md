@@ -1,5 +1,6 @@
 ---
 title: 'kdvc : faire le ménage dans les versions d''un kDrive'
+metaTitle: "Supprimer les anciennes versions d'un kDrive (kdvc) · Sylvain"
 tags:
   - projet
   - rust

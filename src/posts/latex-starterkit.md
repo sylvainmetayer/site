@@ -1,5 +1,6 @@
 ---
 title: "Latex Starter Kit"
+metaTitle: "LaTeX Starter Kit : un modèle pour rédiger en LaTeX · Sylvain"
 tags:
     - latex
     - projet

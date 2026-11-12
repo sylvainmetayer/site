@@ -1,5 +1,6 @@
 ---
 title: 'kdvc: cleaning up old versions on a kDrive'
+metaTitle: "Delete old file versions on a kDrive in bulk (kdvc) · Sylvain"
 tags:
   - projet
   - rust

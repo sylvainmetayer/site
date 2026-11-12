@@ -22,3 +22,46 @@ Non mesuré : autorité et domaines référents (pas d'accès Ahrefs ou DataForS
 - Sitemap de ref sans `lastmod`.
 - `changefreq` et `priority` dans le sitemap de www : ignorés par Google.
 - `SearchAction` dans le JSON-LD de www : Google n'affiche plus le champ de recherche associé.
+
+## Titres (seo-title-optimization, 2026-11-12)
+
+Sur www, seul le `<title>` change, via `metaTitle` : les H1, les slugs et les flux gardent le titre d'origine. Même traitement pour les versions anglaises.
+
+| Page | Titre actuel | Nouveau `<title>` | Pourquoi |
+|---|---|---|---|
+| `/article/kdrive-version-cleaner/` | kdvc : faire le ménage dans les versions d'un kDrive | Supprimer les anciennes versions d'un kDrive (kdvc) | La requête d'abord, le nom de l'outil ensuite |
+| `/article/recuperer-donnees-mysql/` | Dumps SQL d'un MySQL/MariaDB qui ne démarre plus | MySQL/MariaDB ne démarre plus : récupérer ses données | On cherche le symptôme, pas « dumps SQL » |
+| `/article/meetup-terraform/` | Premier Meetup | Terraform, REX d'un développeur : mon premier meetup | Le sujet du talk était absent |
+| `/article/email-alias-manager/` | Gestionnaire d'alias d'emails | Gestionnaire d'alias email pour Gandi (Angular) | Précise le fournisseur et la techno |
+| `/article/jekyll-gem-svg-fontawesome/` | Gem : FontAwesome SVG | Gem Jekyll : icônes FontAwesome en SVG | « Jekyll » manquait |
+| `/article/latex-starterkit/` | Latex Starter Kit | LaTeX Starter Kit : un modèle pour rédiger en LaTeX | Dit ce que c'est |
+| `/article/tbm-interruption/` | TBM Interruption Tracker Bot | Bot de suivi des interruptions du tram TBM | Titre anglais sur un article français |
+
+Laissés tels quels : les articles d'études (mémoires, projets DUT, DAWIN, EPSI), les deux articles sur le site lui-même et les retours de conférence, dont la canonique pointe vers dev.to ou LinkedIn.
+
+À arbitrer : le nom de famille n'apparaît dans aucun `<title>` de www (« Sylvain · développeur backend & DevOps », « CV · Sylvain »). Pour une recherche « Sylvain Métayer », seuls le JSON-LD et `llms.txt` le portent.
+
+Sur ref, les titres sont déjà construits sur la requête (« Code parrainage X : avantage »). Suggestions seulement, non appliquées : les textes de ref passent par le skill humanizer.
+
+| Fiche | Titre actuel | Suggestion | Pourquoi |
+|---|---|---|---|
+| `/boursorama/` | Parrainage Boursorama (BoursoBank) : prime selon l'offre en cours · Sylvain (75 c.) | Parrainage Boursorama (BoursoBank) : prime en cours | Coupé dans Google au-delà de 60 caractères environ |
+| `/infomaniak/` | Infomaniak : mon lien d'affiliation (kDrive, mail, hébergement) · Sylvain (73 c.) | Lien affilié Infomaniak : kDrive, mail, hébergement | Plus court, aligné sur le H1 |
+| `/fever/` | Code parrainage Fever : 5 € 1er événement | Code parrainage Fever : 5 € sur ton 1er événement | `gainLabel` illisible une fois collé au montant |
+| `/horace/` | Lien de parrainage Horace : -20 % 1re commande | Lien de parrainage Horace : -20 % sur ta 1re commande | Idem |
+| `/philibert/` | Lien de parrainage Philibert | Ajouter l'avantage quand il est connu | Seule fiche sans bénéfice dans le titre |
+
+## Maillage (internal-linking, 2026-11-12)
+
+Le script du skill n'a pas été copié : il suppose des routes Next.js ou Astro et un seul domaine, alors qu'ici les pages cibles sont sur ref et les sources sur www.
+
+| Cible | Liens contextuels avant | Après | Ancres | Sources |
+|---|---|---|---|---|
+| `ref.sylvain.dev/infomaniak/` | 0 | 2 | « Infomaniak » (×2) | `/uses/`, `/article/kdrive-version-cleaner/` |
+| Les 17 autres fiches | 0 | 0 | | Aucun article de www ne parle de ces services |
+
+Candidats restants, non appliqués :
+
+- L'article kdvc cite Claude Code avec un lien vers le site officiel : une phrase vers `ref.sylvain.dev/claude-code/` est possible, à toi de voir si un parrainage a sa place dans cet article.
+- Dans l'autre sens, l'avis de la fiche Infomaniak sur ref peut renvoyer vers l'article kdvc (texte de ref, donc humanizer).
+- Les fiches orphelines ne se débloqueront qu'avec de nouveaux articles (ligne 5 du tableau principal).

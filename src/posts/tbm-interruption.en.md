@@ -1,5 +1,6 @@
 ---
 title: "TBM Interruption Tracker Bot"
+metaTitle: "A bot tracking Bordeaux tram (TBM) disruptions · Sylvain"
 tags:
   - ruby
   - twitter

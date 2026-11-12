@@ -1,6 +1,6 @@
 ---
 title: "Recovering SQL dumps from a MySQL/MariaDB instance that won't start"
-metaTitle: "SQL dumps from a MySQL/MariaDB that won't start · Sylvain"
+metaTitle: "MySQL/MariaDB won't start: recover your data · Sylvain"
 tags:
     - mysql
 date: "2021-05-04"

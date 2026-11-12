@@ -1,5 +1,6 @@
 ---
 title: 'Gem : FontAwesome SVG'
+metaTitle: "Gem Jekyll : icônes FontAwesome en SVG · Sylvain"
 tags:
   - jekyll
   - ruby

@@ -1,5 +1,6 @@
 ---
 title: "My First Meetup"
+metaTitle: "My first meetup: a developer's take on Terraform · Sylvain"
 tags:
   - onepoint
   - terraform

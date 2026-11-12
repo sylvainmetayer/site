@@ -1,5 +1,6 @@
 ---
 title: "Gem: FontAwesome SVG"
+metaTitle: "Jekyll gem for FontAwesome SVG icons · Sylvain"
 tags:
   - jekyll
   - ruby

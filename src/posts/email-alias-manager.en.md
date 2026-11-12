@@ -1,5 +1,6 @@
 ---
 title: "Email alias manager"
+metaTitle: "Email alias manager for Gandi (Angular) · Sylvain"
 tags:
   - projet
   - angular
