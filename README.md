@@ -30,6 +30,18 @@ mise tasks         # liste des tâches
 
 mise installe Node 24 (`mise install`, voir aussi `.nvmrc`). Sans mise : `npm ci`, `npm start`, `npm run production`.
 
+### Verrou des actions GitHub
+
+Les actions sont épinglées par SHA dans les workflows **et** verrouillées dans `.github/workflows/actions.lock` ([github/gh-actions-lock](https://github.com/github/gh-actions-lock), vérifié par `verify-lockfile.yml`). Après tout ajout ou changement d'un `uses:` :
+
+```bash
+gh extension install github/gh-actions-lock --pin v0.4.1
+gh actions-lock --no-narrow --ignore-local-actions   # sans --no-narrow, les SHA sont réécrits en tags
+gh actions-lock --verify --ignore-local-actions      # lecture seule, comme la CI
+```
+
+Ne pas éditer le verrou à la main : Renovate le régénère à chaque mise à jour d'action. Non couverts : les images de conteneur sans `@sha256`, les actions locales `./.github/actions/*` et les actions distantes qu'elles appellent (`actions/setup-node` dans `setup`), les workflows réutilisables d'un autre dépôt.
+
 ## Organisation
 
 | Dossier / fichier | Contenu |
