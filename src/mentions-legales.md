@@ -3,6 +3,7 @@ title: Mentions légales et confidentialité
 permalink: /mentions-legales/
 layout: layouts/page.njk
 translationKey: legal
+redirect_from: /privacy/
 updated: 2026-10-30
 metaDesc: "Éditeur, hébergeur, licence des contenus et données personnelles de sylvain.dev."
 ---

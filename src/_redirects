@@ -81,6 +81,10 @@
 /self-hosting/ /uses/#homelab 301
 /self-hosted /uses/#homelab 301
 /self-hosted/ /uses/#homelab 301
+/archive /articles/ 301
+/archive/ /articles/ 301
+/random /hasard/ 301
+/random/ /hasard/ 301
 /hosted /uses/#homelab 301
 /hosted/ /uses/#homelab 301
 /save https://ref.sylvain.dev/ 301
