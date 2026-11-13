@@ -26,7 +26,7 @@ workflows:
         - 'ossf/scorecard-action@fa7117db83c52d787ae5a89f350999701505d78e'
     '.github/workflows/sonarcloud.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
-        - 'sonarsource/sonarqube-scan-action@e805d875275f728fac1885b413934be6d7c63f65'
+        - 'sonarsource/sonarqube-scan-action@59202af334b4ba7b5db01b701b8e79f8b3bef0f4'
     '.github/workflows/syndicate.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
         - 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1'
@@ -74,8 +74,8 @@ dependencies:
         commit: 'sha1-fca9117c27cdc29c6c4db3b86c48e4115a786710'
         owner_id: 18365890
         repo_id: 195505864
-    'sonarsource/sonarqube-scan-action@e805d875275f728fac1885b413934be6d7c63f65':
-        ref: 'v8.4.1'
-        commit: 'sha1-e805d875275f728fac1885b413934be6d7c63f65'
+    'sonarsource/sonarqube-scan-action@59202af334b4ba7b5db01b701b8e79f8b3bef0f4':
+        ref: 'v8.5.0'
+        commit: 'sha1-59202af334b4ba7b5db01b701b8e79f8b3bef0f4'
         owner_id: 545988
         repo_id: 366408409
