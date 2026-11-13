@@ -1,0 +1,13 @@
+---
+title: Languages
+permalink: /en/languages/
+layout: layouts/page.njk
+translationKey: languages
+metaDesc: "The languages Sylvain MÉTAYER speaks."
+---
+{# Same data and wording as the CV (layouts/cv.njk) #}
+<ul>
+  {% for language in languages.languages %}
+    <li><strong>{{ language.label }}</strong> · {% if language.certification %}{% for cert in certifications.certifications %}{% if cert.title == language.certification %}{{ cert.title }} {{ cert.summary }}{% endif %}{% endfor %}{% else %}{{ language.level }}{% endif %}</li>
+  {% endfor %}
+</ul>

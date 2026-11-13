@@ -2,6 +2,7 @@
 title: Par défaut
 permalink: /defaults/
 layout: layouts/page.njk
+translationKey: defaults
 updated: 2026-11-13
 metaDesc: "Les applications que Sylvain MÉTAYER utilise par défaut pour chaque usage : navigateur, notes, mots de passe, photos…"
 ---

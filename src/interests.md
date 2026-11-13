@@ -2,6 +2,7 @@
 title: Centres d'intérêt
 permalink: /interests/
 layout: layouts/page.njk
+translationKey: interests
 updated: 2026-11-13
 metaDesc: "Ce qui occupe Sylvain MÉTAYER en dehors du travail : homelab, jeux de société, tennis de table, séries."
 ---

@@ -2,6 +2,7 @@
 title: Domaines
 permalink: /domains/
 layout: layouts/page.njk
+translationKey: domains
 metaDesc: "Les noms de domaine de Sylvain MÉTAYER et ce à quoi ils servent."
 ---
 

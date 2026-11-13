@@ -5,6 +5,7 @@ import { socialProfiles } from './src/11ty/fediverse.js';
 const title = 'Vérifier';
 const permalink = '/verify/';
 const layout = 'layouts/page.njk';
+const translationKey = 'verify';
 const metaDesc = 'Les comptes en ligne de Sylvain MÉTAYER, et comment vérifier qu\'ils sont bien les siens.';
 const eleventyComputed = { profiles: data => socialProfiles(data.site, data.social.links) };
 ---

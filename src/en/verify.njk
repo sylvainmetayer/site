@@ -1,0 +1,18 @@
+---js
+// My identities, with rel="me" (https://indieweb.org/rel-me): the same profile
+// list as about.md and contact.vcf
+import { socialProfiles } from './src/11ty/fediverse.js';
+const title = 'Verify';
+const permalink = '/en/verify/';
+const layout = 'layouts/page.njk';
+const translationKey = 'verify';
+const metaDesc = "Sylvain MÉTAYER's online accounts, and how to check that they really are his.";
+const eleventyComputed = { profiles: data => socialProfiles(data.site, data.social.links) };
+---
+<p>My accounts elsewhere. An account really is mine when its profile links back to <a href="{{ helpers.url() }}/">{{ helpers.url() | replace('https://', '') }}</a>: that is the principle of <a href="https://indieweb.org/rel-me"><code>rel="me"</code></a>, which Mastodon shows as a green tick.</p>
+<ul>
+  {% for profile in profiles %}
+    <li><a href="{{ profile.url }}" rel="me">{{ profile.label }}</a> <span class="link-site">{{ profile.url | replace('https://', '') }}</span></li>
+  {% endfor %}
+</ul>
+<p>On Bluesky, my handle is the domain name itself, <code>{{ site.bluesky }}</code>: only the owner of the domain can claim it.</p>
