@@ -1,5 +1,5 @@
 ---
-title: "Extension Firefox muette derrière un proxy SSO : c'est le preflight"
+title: "Extension Firefox et proxy SSO : le preflight"
 date: 2026-11-13
 ---
 
