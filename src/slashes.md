@@ -19,6 +19,7 @@ Les [slash pages](https://slashpages.net/) de ce site : des pages à l'adresse c
 {% endif -%}
 - [/contact](/carte/) : ma carte de visite, mes profils et mon e-mail.
 - [/defaults](/defaults/) : mes applications par défaut.
+- [/domains](/domains/) : mes noms de domaine.
 - [/elsewhere](/elsewhere/) : ce que je publie ailleurs.
 - [/feeds](/flux/) : les flux RSS du site.
 - [/glossary](/glossaire/) : les sigles employés ici.
@@ -40,5 +41,6 @@ Les [slash pages](https://slashpages.net/) de ce site : des pages à l'adresse c
 - [/uses](/uses/) : le matériel et les logiciels que j'utilise.
 - [/verify](/verify/) : mes comptes en ligne, et comment les vérifier.
 - [/where](/where/) : où je suis.
+- [/why](/why/) : pourquoi ce site existe.
 
 Les noms anglais d'usage redirigent vers la page : [/colophon](/colophon), [/feeds](/feeds), [/sitemap](/sitemap)…
