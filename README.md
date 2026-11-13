@@ -71,7 +71,7 @@ Dans un article, `{% baseline 'container-queries' %}` affiche le support navigat
 
 `/liens/` liste les liens saisis dans le CMS (`src/_data/links.json`) et ceux d'une liste Karakeep, si le build a `KARAKEEP_URL`, `KARAKEEP_API_KEY` et `KARAKEEP_LIST_ID` (la note du favori devient le commentaire). Sans liens, la page n'est pas générée.
 
-`/concerts/` liste les concerts marqués « I was there » sur un compte setlist.fm, si le build a `SETLISTFM_API_KEY` et `SETLISTFM_USER` (l'identifiant du compte). Un concert regroupe les groupes du même jour dans la même salle ; chacun pointe vers sa setlist. Sans concert marqué, la page n'est pas générée.
+`/concerts/` liste les concerts marqués « I was there » sur un compte setlist.fm, si le build a `SETLISTFM_API_KEY` et `SETLISTFM_USER` (l'identifiant du compte). Un concert regroupe les groupes du même jour dans la même ville ; chacun pointe vers sa setlist. Sans concert marqué, la page n'est pas générée.
 
 [SocialSpec](https://socialspec.org) : `/.well-known/about.md` (bio) et `/.well-known/contact.vcf` (vCard) sont générés depuis `site.json` et `social.json`. `/.well-known/following.opml` reprend l'OPML d'une requête utilisateur FreshRSS partagée en OPML, si le build a `FRESHRSS_OPML_URL` (secret, l'URL contient le jeton FreshRSS) et, pour passer Pangolin, `FRESHRSS_ACCESS_TOKEN_ID` et `FRESHRSS_ACCESS_TOKEN`. Sinon, le fichier n'est pas généré.
 
