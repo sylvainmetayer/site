@@ -22,7 +22,9 @@ Les [slash pages](https://slashpages.net/) de ce site : des pages à l'adresse c
 - [/elsewhere](/elsewhere/) : ce que je publie ailleurs.
 - [/feeds](/flux/) : les flux RSS du site.
 - [/glossary](/glossaire/) : les sigles employés ici.
+- [/green](/green/) : l'empreinte de ce site.
 - [/interests](/interests/) : ce qui m'occupe en dehors du travail.
+- [/languages](/languages/) : les langues que je parle.
 {% if links.links.length or karakeep.length -%}
 - [/links](/liens/) : ce que j'ai lu, vu ou utilisé et qui vaut le détour.
 {% endif -%}
@@ -30,7 +32,13 @@ Les [slash pages](https://slashpages.net/) de ce site : des pages à l'adresse c
 - [/posse](/posse/) : publier ici d'abord, relayer ensuite.
 - [/save](https://ref.sylvain.dev/) : mes liens de parrainage.
 - [/self-hosting](/uses/#homelab) : les services que j'héberge moi-même.
+- [/since](/since/) : depuis combien de temps.
 - [/sitemap](/plan/) : toutes les pages du site.
+{% if collections.notes.length -%}
+- [/til](/notes/) : des notes courtes, ce que j'apprends au fil des jours.
+{% endif -%}
 - [/uses](/uses/) : le matériel et les logiciels que j'utilise.
+- [/verify](/verify/) : mes comptes en ligne, et comment les vérifier.
+- [/where](/where/) : où je suis.
 
 Les noms anglais d'usage redirigent vers la page : [/colophon](/colophon), [/feeds](/feeds), [/sitemap](/sitemap)…

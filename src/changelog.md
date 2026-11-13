@@ -3,6 +3,7 @@ title: Changelog
 permalink: /changelog/
 layout: layouts/page.njk
 updated: 2026-11-13
+redirect_from: /log/
 metaDesc: "Les grands changements de sylvain.dev, des plus récents aux plus anciens."
 ---
 

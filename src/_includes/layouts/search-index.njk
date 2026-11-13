@@ -5,6 +5,14 @@
 {%- for item in navigation.items -%}
   {%- set entries = (entries.push({ t: item.text | replace('/', ''), u: item.url, k: 'page' }), entries) -%}
 {%- endfor -%}
+{#- Every other page of the language (the list of the sitemap), slash pages included: also found by its path and its aliases -#}
+{%- set listed = [langPrefix + '/'] -%}
+{%- for item in navigation.items %}{% set listed = (listed.push(item.url), listed) %}{% endfor -%}
+{%- for item in collections.all | sitePages(lang) -%}
+  {%- if item.url not in listed -%}
+    {%- set entries = (entries.push({ t: item.data.title, u: item.url, k: 'page', s: [item.url].concat(item.data.redirect_from or []) | join(' ') }), entries) -%}
+  {%- endif -%}
+{%- endfor -%}
 {%- for post in (collections.postsAllEn if lang == 'en' else collections.posts) -%}
   {%- set entries = (entries.push({ t: post.data.title, u: post.url, k: 'article', d: (post.date | date('YYYY')) + ((' · ' + ('lang.inFrench' | t)) if post.data.lang != lang else ''), s: (post.data.tags or []) | join(' ') }), entries) -%}
 {%- endfor -%}
