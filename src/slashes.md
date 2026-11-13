@@ -32,6 +32,7 @@ Les [slash pages](https://slashpages.net/) de ce site : des pages à l'adresse c
 - [/links](/liens/) : ce que j'ai lu, vu ou utilisé et qui vaut le détour.
 {% endif -%}
 - [/now](/now/) : ce que je fais en ce moment.
+- [/pfp](/pfp/) : mes photos de profil au fil des années.
 - [/posse](/posse/) : publier ici d'abord, relayer ensuite.
 - [/save](https://ref.sylvain.dev/) : mes liens de parrainage.
 - [/self-hosting](/uses/#homelab) : les services que j'héberge moi-même.

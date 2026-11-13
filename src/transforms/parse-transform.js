@@ -78,6 +78,8 @@ async function optimiseImage(document, image) {
     .map(([, images]) => images);
   const largest = (fallback || metadata.webp).at(-1);
 
+  // An image shown smaller than the text column says so with its own `sizes`
+  const sizes = image.getAttribute('sizes') || IMAGE_SIZES;
   const picture = document.createElement('picture');
   ['avif', 'webp'].forEach(format => {
     // A WebP original has no other fallback than its WebP versions, set on <img>
@@ -85,14 +87,14 @@ async function optimiseImage(document, image) {
     const source = document.createElement('source');
     source.setAttribute('type', metadata[format][0].sourceType);
     source.setAttribute('srcset', srcset(metadata[format]));
-    source.setAttribute('sizes', IMAGE_SIZES);
+    source.setAttribute('sizes', sizes);
     picture.appendChild(source);
   });
 
   const img = image.cloneNode(true);
   img.setAttribute('src', largest.url);
   img.setAttribute('srcset', srcset(fallback || metadata.webp));
-  img.setAttribute('sizes', IMAGE_SIZES);
+  img.setAttribute('sizes', sizes);
   img.setAttribute('width', largest.width);
   img.setAttribute('height', largest.height);
   img.setAttribute('decoding', 'async');
