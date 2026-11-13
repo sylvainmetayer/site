@@ -5,6 +5,7 @@ import { wrap } from '../src/11ty/og-image.js';
 import { mastodonAccount } from '../src/11ty/fediverse.js';
 import markdown from '../src/utils/markdown.js';
 import check from '../src/11ty/front-matter.js';
+import { concerts } from '../src/11ty/concerts.js';
 import { JSDOM } from 'jsdom';
 import { videoLength } from '../src/11ty/shortcodes/youtube.js';
 import { markAbbreviations } from '../src/transforms/abbreviations.js';
@@ -112,4 +113,25 @@ test('freshrss: OPML kept, anything else dropped without logging the URL', async
   assert.equal(await freshrss(), '');
   assert.deepEqual(warnings, ['[freshrss] not an OPML document', '[freshrss] HTTP 401']);
   for (const name of ['FRESHRSS_OPML_URL', 'FRESHRSS_ACCESS_TOKEN_ID', 'FRESHRSS_ACCESS_TOKEN']) delete process.env[name];
+});
+
+test('concerts: one show per day and city, newest first, headliner first, tapes not counted', () => {
+  const setlist = (eventDate, artist, songs) => ({
+    eventDate,
+    url: `https://www.setlist.fm/${artist}`,
+    artist: { name: artist },
+    venue: { id: 'v1', name: 'Le Zénith', city: { name: 'Toulouse' } },
+    sets: { set: [{ song: songs }] },
+  });
+  const shows = concerts([
+    setlist('05-09-2019', 'Old', [{ name: 'a' }]),
+    setlist('23-05-2023', 'Opener', [{ name: 'a' }, { name: 'intro', tape: true }, { name: 'outro', tape: true }]),
+    setlist('23-05-2023', 'Headliner', [{ name: 'a' }, { name: 'b' }]),
+    { ...setlist('23-05-2023', 'Empty', []), sets: {}, venue: { id: 'v2', name: 'Scène 2', city: { name: 'Toulouse' } } },
+  ]);
+  assert.equal(shows[0].venue, 'Le Zénith / Scène 2');
+  assert.deepEqual(shows.map(show => [show.date, show.year, show.artists.map(artist => artist.name)]), [
+    ['2023-05-23', '2023', ['Headliner', 'Opener', 'Empty']],
+    ['2019-09-05', '2019', ['Old']],
+  ]);
 });
