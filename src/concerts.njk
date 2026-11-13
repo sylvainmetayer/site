@@ -1,0 +1,26 @@
+---js
+// Concerts I went to, from my setlist.fm account (src/_data/setlistfm.js),
+// newest first. No page while there are none.
+const title = 'Concerts';
+const permalink = data => data.setlistfm.length > 0 && '/concerts/';
+const layout = 'layouts/base.njk';
+const metaDesc = 'Les concerts auxquels Sylvain MÉTAYER a assisté, avec la setlist de chaque groupe.';
+---
+{% from 'partials/macros.njk' import cmd with context %}
+<section class="section" aria-labelledby="page-title">
+  {{ cmd('ls concerts/') }}
+  <h1 id="page-title" class="page-title">Concerts</h1>
+  <p class="page-lead">Les {{ setlistfm.length }} concerts où j'étais, avec la setlist de chaque groupe sur <a href="https://www.setlist.fm/">setlist.fm</a>.</p>
+</section>
+{% for year, shows in setlistfm | groupby('year') | dictsort | reverse %}
+  <h2>{{ year }}</h2>
+  <ol class="link-list">
+    {% for show in shows %}
+      <li>
+        <time datetime="{{ show.date }}">{{ show.date }}</time>
+        {% for artist in show.artists %}<a href="{{ artist.url }}">{{ artist.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+        <span class="link-site">{{ show.venue }}, {{ show.city }}</span>
+      </li>
+    {% endfor %}
+  </ol>
+{% endfor %}
