@@ -9,4 +9,4 @@ Pourquoi ce site existe.
 
 - **Posséder mon contenu.** Ce que j'écris est publié ici d'abord, sur mon nom de domaine. Les réseaux et les plateformes n'en reçoivent qu'un lien ou une copie ([comment](/posse/)).
 - **Un terrain de jeu.** C'est l'endroit où j'essaie des techniques web, des outils et des idées, sans enjeu ([sous le capot](/sous-le-capot/)).
-- **Une vitrine.** Mon [CV](/cv/), mes [talks](/talks/) et mes [projets](/projets/) sont rassemblés au même endroit.
+- **Un point d'entrée.** Mon [CV](/cv/), mes [talks](/talks/) et mes [projets](/projets/) sont rassemblés au même endroit.

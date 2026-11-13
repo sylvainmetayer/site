@@ -14,8 +14,12 @@ Un homelab sous Proxmox, décrit en code avec OpenTofu et exposé avec Pangolin.
 
 ## Jeux de société
 
+Des petits jeux d'ambiance, et le [FLIP](https://www.jeux-festival.com/) de Parthenay chaque été.
+
 ## Tennis de table
 
-J'ai été animateur du Ping Tour au [FLIP](https://www.jeux-festival.com/), le festival des jeux de Parthenay, de 2013 à 2015.
+J'ai été animateur du Ping Tour au FLIP, de 2013 à 2015.
 
 ## Séries TV
+
+Beaucoup de comédies (The Office, Parks and Recreation, The Good Place, Parlement), des enquêtes (Sherlock, Person of Interest) et de la science-fiction. Le suivi complet est sur [BetaSeries](https://www.betaseries.com/membre/ocyhc).

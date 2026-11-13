@@ -17,6 +17,9 @@ L'application que j'ouvre pour chaque usage, dans l'esprit des [pages /defaults]
 - **Flux RSS** : FreshRSS
 - **Favoris** : Karakeep
 - **Films et séries** : Jellyfin
+- **Suivi des séries** : BetaSeries
+- **Concerts** : setlist.fm
+- **Voyages** : TREK
 - **Courses et recettes** : KitchenOwl
 - **Messagerie** : Signal
 - **Terminal** : ddterm, avec Zellij et Starship

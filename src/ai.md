@@ -18,4 +18,4 @@ Ce que j'explore en ce moment : confier une tâche entière à un agent (explore
 
 Une partie du code de ce site est écrite avec Claude Code. Je relis chaque changement avant de le publier, et les contrôles de la CI s'appliquent comme pour le reste ([sous le capot](/sous-le-capot/)).
 
-Les articles et les notes sont de moi.
+Les articles et les notes sont de moi. L'IA m'aide parfois à relire : orthographe, tournures, liens cassés.
