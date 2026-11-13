@@ -9,6 +9,7 @@ metaDesc: "Les slash pages de sylvain.dev : now, uses, colophon, blogroll, liens
 Les [slash pages](https://slashpages.net/) de ce site : des pages à l'adresse convenue, que l'on retrouve d'un site personnel à l'autre.
 
 - [/ai](/ai/) : comment j'utilise l'IA.
+- [/blank](/blank/) : une page laissée blanche.
 {% if freshrss -%}
 - [/blogroll](/blogroll/) : les sites que je suis.
 {% endif -%}
@@ -18,6 +19,7 @@ Les [slash pages](https://slashpages.net/) de ce site : des pages à l'adresse c
 - [/concerts](/concerts/) : les concerts auxquels j'ai assisté.
 {% endif -%}
 - [/contact](/carte/) : ma carte de visite, mes profils et mon e-mail.
+- [/death](/death/) : mes consignes en cas de décès (en cours de rédaction).
 - [/defaults](/defaults/) : mes applications par défaut.
 - [/domains](/domains/) : mes noms de domaine.
 - [/elsewhere](/elsewhere/) : ce que je publie ailleurs.
