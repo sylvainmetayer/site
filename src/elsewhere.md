@@ -13,5 +13,7 @@ Ce que je publie en dehors de ce site.
 - **Articles repris** : [dev.to](https://dev.to/sylvainmetayer) ([comment](/posse/)).
 - **Réseaux** : [Mastodon](https://bdx.town/@sylvain), [Bluesky](https://bsky.app/profile/sylvain.dev), [LinkedIn](https://www.linkedin.com/in/sylvainmetayer/).
 - **Séries** : [BetaSeries](https://www.betaseries.com/membre/ocyhc).
+{% if setlistfm.length -%}
 - **Concerts** : setlist.fm, repris sur [/concerts](/concerts/).
+{% endif -%}
 - **Parrainages** : [ref.sylvain.dev](https://ref.sylvain.dev/).
