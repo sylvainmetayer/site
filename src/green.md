@@ -2,6 +2,7 @@
 title: Empreinte
 permalink: /green/
 layout: layouts/page.njk
+translationKey: green
 metaDesc: "L'empreinte carbone de sylvain.dev et les choix qui la gardent basse."
 ---
 

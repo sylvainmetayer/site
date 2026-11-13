@@ -2,6 +2,7 @@
 title: Depuis
 permalink: /since/
 layout: layouts/page.njk
+translationKey: since
 metaDesc: "Depuis combien de temps Sylvain MÉTAYER fait ce qu'il fait."
 ---
 

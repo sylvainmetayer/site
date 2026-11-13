@@ -2,6 +2,7 @@
 title: Après ma mort
 permalink: /death/
 layout: layouts/page.njk
+translationKey: death
 metaDesc: "Les consignes de Sylvain MÉTAYER pour ses proches en cas de décès."
 ---
 

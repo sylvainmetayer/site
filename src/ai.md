@@ -2,6 +2,7 @@
 title: IA
 permalink: /ai/
 layout: layouts/page.njk
+translationKey: ai
 updated: 2026-11-13
 metaDesc: "Comment Sylvain MÉTAYER utilise l'IA : pour coder, sur ce site, et ce qu'il garde pour lui."
 ---

@@ -2,6 +2,7 @@
 title: Pourquoi
 permalink: /why/
 layout: layouts/page.njk
+translationKey: why
 metaDesc: "Pourquoi sylvain.dev existe : posséder son contenu, essayer des choses, tout rassembler au même endroit."
 ---
 

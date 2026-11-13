@@ -2,6 +2,7 @@
 title: POSSE
 permalink: /posse/
 layout: layouts/page.njk
+translationKey: posse
 updated: 2026-11-13
 metaDesc: "Comment les articles de sylvain.dev sont publiés ici d'abord, puis relayés sur Mastodon, Bluesky et dev.to."
 ---

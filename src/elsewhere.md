@@ -2,6 +2,7 @@
 title: Ailleurs
 permalink: /elsewhere/
 layout: layouts/page.njk
+translationKey: elsewhere
 updated: 2026-11-13
 metaDesc: "Où trouver Sylvain MÉTAYER en dehors de ce site : talks, code, articles repris et réseaux."
 ---
