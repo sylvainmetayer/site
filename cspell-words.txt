@@ -192,3 +192,6 @@ clippy
 infomaniak
 CNIL
 legales
+blogroll
+Opquast
+setlist

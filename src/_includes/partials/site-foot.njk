@@ -11,16 +11,13 @@
     {% include 'partials/theme-switch.njk' %}
     <ul>
       <li><a href="{{ 'url.feeds' | t }}">{{ icon('rss') }}rss</a></li>
-      <li><a href="{{ langPrefix }}/now/">now</a></li>
       {% if links.links.length or karakeep.length %}<li><a href="/liens/" lang="fr" hreflang="fr">liens</a></li>{% endif %}
       {% if setlistfm.length %}<li><a href="/concerts/" lang="fr" hreflang="fr">concerts</a></li>{% endif %}
       {% if collections.notes.length %}<li><a href="/notes/" hreflang="fr">notes</a></li>{% endif %}
       <li><a href="/hasard/" lang="fr" hreflang="fr">hasard</a></li>
-      <li><a href="{{ langPrefix }}/uses/">uses</a></li>
+      <li><a href="{{ langPrefix }}/slashes/">slashes</a></li>
       <li><a href="{{ 'url.card' | t }}">{{ 'foot.card' | t }}</a></li>
-      <li><a href="{{ 'url.underTheHood' | t }}">{{ 'foot.underTheHood' | t }}</a></li>
       <li><a href="{{ 'url.sitemap' | t }}">{{ 'foot.sitemap' | t }}</a></li>
-      <li><a href="{{ 'url.glossary' | t }}">{{ 'foot.glossary' | t }}</a></li>
       <li><a href="{{ 'url.legal' | t }}">{{ 'foot.legal' | t }}</a></li>
       <li><a href="/humans.txt">humans.txt</a></li>
       <li><a href="{{ global.repository }}">{{ icon('github') }}sources</a></li>

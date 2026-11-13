@@ -73,3 +73,15 @@
 /projet/memoire-dut /article/memoire-dut/ 301
 /parrainage https://ref.sylvain.dev/ 301
 /parrainage/* https://ref.sylvain.dev/ 301
+# Slash pages (https://slashpages.net) sans page à ce nom ; les autres alias sont
+# dans le front matter des pages (redirect_from)
+/about / 301
+/about/ / 301
+/self-hosting /uses/#homelab 301
+/self-hosting/ /uses/#homelab 301
+/self-hosted /uses/#homelab 301
+/self-hosted/ /uses/#homelab 301
+/save https://ref.sylvain.dev/ 301
+/save/ https://ref.sylvain.dev/ 301
+/referrals https://ref.sylvain.dev/ 301
+/referrals/ https://ref.sylvain.dev/ 301

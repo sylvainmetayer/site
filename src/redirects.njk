@@ -15,7 +15,7 @@ const manual = readFileSync('src/_redirects', 'utf8');
 {% for item in collections.all -%}
   {%- set sources = ([item.data.redirect_from] if item.data.redirect_from is string else (item.data.redirect_from or [])) -%}
   {%- if item.data.short %}{% set sources = sources.concat(['/s/' + item.data.short]) %}{% endif -%}
-  {%- for source in sources %}
+  {%- for source in (sources if item.url else []) %}
     {%- set from = source if source.endsWith('/') else source + '/' %}
 {{ from }} {{ item.url }} 301
 {{ from | replace(r/\/$/, '') }} {{ item.url }} 301

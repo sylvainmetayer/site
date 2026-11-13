@@ -96,3 +96,5 @@
 /en/legal/
 /carte/
 /en/card/
+/slashes/
+/en/slashes/

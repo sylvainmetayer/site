@@ -1,0 +1,22 @@
+---js
+// The sites I follow, from the FreshRSS OPML (src/_data/freshrss.js) that also
+// feeds /.well-known/following.opml. No page without it (local and preview builds).
+import { blogroll } from './src/11ty/blogroll.js';
+const title = 'Blogroll';
+const permalink = data => Boolean(data.freshrss) && '/blogroll/';
+// base.njk like /liens/: page.njk needs a URL, and there is none without the OPML
+const layout = 'layouts/base.njk';
+const metaDesc = 'Les blogs et sites que Sylvain MÉTAYER suit dans son lecteur de flux RSS.';
+const eleventyComputed = { feeds: data => blogroll(data.freshrss) };
+---
+{% from 'partials/macros.njk' import cmd with context %}
+<section class="section" aria-labelledby="page-title">
+  {{ cmd('cat blogroll.opml') }}
+  <h1 id="page-title" class="page-title">Blogroll</h1>
+  <p class="page-lead">Les sites que je suis dans <a href="https://freshrss.org/">FreshRSS</a>, mon lecteur de flux. La même liste existe en <a href="/.well-known/following.opml">OPML</a>, à importer dans le vôtre.</p>
+</section>
+<ul class="link-list">
+  {% for item in feeds %}
+    <li><a href="{{ item.url }}">{{ item.title }}</a> <span class="link-site">(<a href="{{ item.feed }}">flux</a>)</span></li>
+  {% endfor %}
+</ul>
