@@ -9,6 +9,7 @@ metaDesc: "Les slash pages de sylvain.dev : now, uses, colophon, blogroll, liens
 Les [slash pages](https://slashpages.net/) de ce site : des pages à l'adresse convenue, que l'on retrouve d'un site personnel à l'autre.
 
 - [/ai](/ai/) : comment j'utilise l'IA.
+- [/archive](/articles/) : tous les articles.
 - [/blank](/blank/) : une page laissée blanche.
 {% if freshrss -%}
 - [/blogroll](/blogroll/) : les sites que je suis.
@@ -34,10 +35,15 @@ Les [slash pages](https://slashpages.net/) de ce site : des pages à l'adresse c
 - [/now](/now/) : ce que je fais en ce moment.
 - [/pfp](/pfp/) : mes photos de profil au fil des années.
 - [/posse](/posse/) : publier ici d'abord, relayer ensuite.
+- [/privacy](/mentions-legales/) : mentions légales et confidentialité.
+- [/projects](/projets/) : mes projets.
+- [/random](/hasard/) : un article tiré au hasard.
+- [/resume](/cv/) : mon CV.
 - [/save](https://ref.sylvain.dev/) : mes liens de parrainage.
 - [/self-hosting](/uses/#homelab) : les services que j'héberge moi-même.
 - [/since](/since/) : depuis combien de temps.
 - [/sitemap](/plan/) : toutes les pages du site.
+- [/speaking](/talks/) : mes talks.
 {% if collections.notes.length -%}
 - [/til](/notes/) : des notes courtes, ce que j'apprends au fil des jours.
 {% endif -%}
