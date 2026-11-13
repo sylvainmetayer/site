@@ -9,7 +9,7 @@ const metaDesc = 'Les concerts auxquels Sylvain MÉTAYER a assisté, avec la set
 {% from 'partials/macros.njk' import cmd with context %}
 <section class="section" aria-labelledby="page-title">
   {{ cmd('ls concerts/') }}
-  <h1 id="page-title" class="page-title">Concerts</h1>
+  <h1 id="page-title" class="page-title">Les concerts auxquels j'ai assisté</h1>
   <p class="page-lead">Les {{ setlistfm.length }} concerts où j'étais, avec la setlist de chaque groupe sur <a href="https://www.setlist.fm/">setlist.fm</a>.</p>
 </section>
 {% for year, shows in setlistfm | groupby('year') | dictsort | reverse %}
