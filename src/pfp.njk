@@ -1,0 +1,27 @@
+---js
+// Profile pictures, newest first: `when` is shown as is, `datetime` only when the date is known
+const title = 'Photos de profil';
+const permalink = '/pfp/';
+const layout = 'layouts/page.njk';
+const metaDesc = "Les photos de profil de Sylvain MÉTAYER au fil des années, de 2013 à aujourd'hui.";
+const pictures = [
+  { when: "Aujourd'hui", src: '/images/profile.jpg', alt: 'Portrait de Sylvain sur fond clair, barbe, t-shirt noir, micro-casque', where: 'Sur ce site. Photo : Bruno Lavit.' },
+  { when: "Aujourd'hui", src: '/images/pfp/github.jpg', alt: 'Portrait en noir et blanc de Sylvain, souriant, en polo', where: 'Sur GitHub.' },
+  { when: 'Septembre 2025', datetime: '2025-09', src: '/images/pfp/2025.jpg', alt: 'Sylvain en sweat noir sur une plage de rochers, au coucher du soleil', where: 'Sur Facebook.' },
+  { when: 'Mars 2017', datetime: '2017-03', src: '/images/pfp/2017.jpg', alt: 'Sylvain en gros plan, de trois quarts', where: 'Sur Facebook : un selfie à Toulouse, recadré.' },
+  { when: 'Avril 2016', datetime: '2016-04', src: '/images/pfp/2016.jpg', alt: 'Sylvain en chemise bleue', where: 'Sur Facebook.' },
+  { when: 'Juin 2013', datetime: '2013-06', src: '/images/pfp/2013.jpg', alt: 'Sylvain, plus jeune, en polo bleu marine', where: 'Sur Facebook.' },
+];
+---
+<p>Mes photos de profil au fil des années, dans l'esprit des <a href="https://slashpages.net/#pfp">pages /pfp</a>. Les plus récentes d'abord.</p>
+<ol class="timeline pfp">
+  {% for picture in pictures %}
+    <li>
+      <span class="when">{% if picture.datetime %}<time datetime="{{ picture.datetime }}">{{ picture.when }}</time>{% else %}{{ picture.when }}{% endif %}</span>
+      <div>
+        <img src="{{ picture.src }}" alt="{{ picture.alt }}" sizes="10rem">
+        <div class="body"><p>{{ picture.where }}</p></div>
+      </div>
+    </li>
+  {% endfor %}
+</ol>

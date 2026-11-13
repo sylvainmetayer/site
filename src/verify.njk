@@ -1,0 +1,17 @@
+---js
+// My identities, with rel="me" (https://indieweb.org/rel-me): the same profile
+// list as about.md and contact.vcf
+import { socialProfiles } from './src/11ty/fediverse.js';
+const title = 'Vérifier';
+const permalink = '/verify/';
+const layout = 'layouts/page.njk';
+const metaDesc = 'Les comptes en ligne de Sylvain MÉTAYER, et comment vérifier qu\'ils sont bien les siens.';
+const eleventyComputed = { profiles: data => socialProfiles(data.site, data.social.links) };
+---
+<p>Mes comptes ailleurs. Un compte est bien le mien quand son profil renvoie vers <a href="{{ helpers.url() }}/">{{ helpers.url() | replace('https://', '') }}</a> : c'est le principe de <a href="https://indieweb.org/rel-me"><code>rel="me"</code></a>, que Mastodon affiche par une coche verte.</p>
+<ul>
+  {% for profile in profiles %}
+    <li><a href="{{ profile.url }}" rel="me">{{ profile.label }}</a> <span class="link-site">{{ profile.url | replace('https://', '') }}</span></li>
+  {% endfor %}
+</ul>
+<p>Sur Bluesky, mon identifiant est le nom de domaine lui-même, <code>{{ site.bluesky }}</code> : seul le propriétaire du domaine peut le déclarer.</p>

@@ -1861,6 +1861,22 @@ abbr[title] {
   }
 }
 
+/* Profile pictures over the years (/pfp/): all shown at the same size */
+/* Over the phone indent of the lists of an article */
+.prose .pfp {
+  padding-left: 0;
+}
+
+.pfp .lqip-wrap {
+  margin-inline: 0;
+}
+
+.pfp img:not(.lqip) {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+}
+
 /* Successive roles inside one experience */
 .roles {
   margin: 0.4rem 0 0;

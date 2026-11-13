@@ -5,6 +5,7 @@
 const title = 'Liens';
 const permalink = data => data.links.links.length + data.karakeep.length > 0 && '/liens/';
 const layout = 'layouts/base.njk';
+const redirect_from = ['/links/', '/bookmarks/'];
 const metaDesc = 'Articles, outils et talks repérés par Sylvain MÉTAYER, avec un mot sur chacun.';
 ---
 {% from 'partials/macros.njk' import cmd with context %}

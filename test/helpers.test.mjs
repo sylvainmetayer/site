@@ -135,3 +135,17 @@ test('concerts: one show per day and city, newest first, headliner first, tapes 
     ['2019-09-05', '2019', ['Old']],
   ]);
 });
+
+test('blogroll: feeds of an OPML, sorted, web links only', async () => {
+  const { blogroll } = await import('../src/11ty/blogroll.js');
+  const opml = `<?xml version="1.0"?><opml version="2.0"><body><outline text="IT">
+    <outline text="Zed" type="rss" xmlUrl="https://z.example/feed?a=1&amp;b=2" htmlUrl="https://z.example/"/>
+    <outline text="Alpha" type="rss" xmlUrl="https://a.example/feed"/>
+    <outline text="Evil" type="rss" xmlUrl="https://e.example/feed" htmlUrl="javascript:alert(1)"/>
+  </outline></body></opml>`;
+  assert.deepEqual(blogroll(opml), [
+    { title: 'Alpha', url: 'https://a.example/feed', feed: 'https://a.example/feed' },
+    { title: 'Zed', url: 'https://z.example/', feed: 'https://z.example/feed?a=1&b=2' },
+  ]);
+  assert.deepEqual(blogroll(''), []);
+});

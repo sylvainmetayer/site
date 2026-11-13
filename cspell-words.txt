@@ -192,3 +192,10 @@ clippy
 infomaniak
 CNIL
 legales
+blogroll
+Opquast
+setlist
+sylvainmetayer
+Wayback
+betisier
+memoire

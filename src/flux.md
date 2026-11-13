@@ -3,6 +3,7 @@ title: Flux RSS
 permalink: /flux/
 layout: layouts/page.njk
 translationKey: feeds
+redirect_from: [/feeds/, /follow/, /subscribe/]
 metaDesc: "S'abonner aux articles de Sylvain MÉTAYER avec un lecteur de flux RSS."
 ---
 

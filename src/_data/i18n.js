@@ -17,9 +17,7 @@ export default {
     'meta.ogLocale': 'fr_FR',
     'url.projects': '/projets/',
     'url.feeds': '/flux/',
-    'url.underTheHood': '/sous-le-capot/',
     'url.sitemap': '/plan/',
-    'url.glossary': '/glossaire/',
     'url.legal': '/mentions-legales/',
     'url.card': '/carte/',
 
@@ -39,11 +37,9 @@ export default {
 
     'foot.generated': 'généré par {eleventy} le {date}',
     'foot.email': 'e-mail : {email}',
-    'foot.underTheHood': 'sous le capot',
     'foot.license': 'textes sous licence {license}',
     'foot.licenseUrl': 'https://creativecommons.org/licenses/by/4.0/deed.fr',
     'foot.sitemap': 'plan du site',
-    'foot.glossary': 'glossaire',
     'foot.legal': 'mentions légales et confidentialité',
     'foot.card': 'carte de visite',
     'card.add': 'Ajouter aux contacts',
@@ -204,9 +200,7 @@ export default {
     'meta.ogLocale': 'en_GB',
     'url.projects': '/en/projects/',
     'url.feeds': '/en/feeds/',
-    'url.underTheHood': '/en/under-the-hood/',
     'url.sitemap': '/en/sitemap/',
-    'url.glossary': '/en/glossary/',
     'url.legal': '/en/legal/',
     'url.card': '/en/card/',
 
@@ -226,11 +220,9 @@ export default {
 
     'foot.generated': 'built with {eleventy} on {date}',
     'foot.email': 'email: {email}',
-    'foot.underTheHood': 'under the hood',
     'foot.license': 'text under {license}',
     'foot.licenseUrl': 'https://creativecommons.org/licenses/by/4.0/deed.en',
     'foot.sitemap': 'sitemap',
-    'foot.glossary': 'glossary',
     'foot.legal': 'legal notice and privacy',
     'foot.card': 'business card',
     'card.add': 'Add to contacts',
