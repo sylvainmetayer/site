@@ -2,10 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "helpers:pinGitHubActionDigests"
+    "helpers:pinGitHubActionDigests",
+    "group:allNonMajor"
   ],
   "lockFileMaintenance": {
-    "enabled": true
+    "enabled": true,
+    "automerge": true
   },
   "customManagers": [
     {
@@ -19,8 +21,14 @@
   ],
   "packageRules": [
     {
-      "description": "Extension gh-actions-lock (0.x, format du verrou encore mouvant) : jamais d'automerge",
+      "description": "Tout sauf les majeures : fusion automatique une fois la CI verte",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "description": "Extension gh-actions-lock (0.x, format du verrou encore mouvant) : jamais d'automerge, donc hors du groupe",
       "matchDepNames": ["github/gh-actions-lock"],
+      "groupName": null,
       "automerge": false
     }
   ]
