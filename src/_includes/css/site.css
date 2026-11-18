@@ -972,6 +972,26 @@ samp {
   max-width: 35rem;
 }
 
+/* Wide screens: a wider column and longer lines (about 90 characters, the top of
+   the comfortable range), same type size. Starts at 86rem: below, the column plus
+   the side table of contents and sidenotes (82rem rules) would no longer fit. */
+@media (min-width: 86rem) {
+  :root {
+    --measure: 50rem;
+  }
+
+  .prose {
+    max-width: none;
+  }
+
+  .prose p:not(:has(img, iframe)),
+  .prose li,
+  .prose blockquote,
+  .prose .footnotes {
+    max-width: 42rem;
+  }
+}
+
 .prose p,
 .prose ul,
 .prose ol,
