@@ -16,11 +16,14 @@
       {% if collections.notes.length %}<li><a href="/notes/" hreflang="fr">notes</a></li>{% endif %}
       <li><a href="/hasard/" lang="fr" hreflang="fr">hasard</a></li>
       <li><a href="{{ langPrefix }}/slashes/">slashes</a></li>
+      <li><a href="https://ref.sylvain.dev/" lang="fr" hreflang="fr">parrainages</a></li>
       <li><a href="{{ 'url.card' | t }}">{{ 'foot.card' | t }}</a></li>
       <li><a href="{{ 'url.sitemap' | t }}">{{ 'foot.sitemap' | t }}</a></li>
       <li><a href="{{ 'url.legal' | t }}">{{ 'foot.legal' | t }}</a></li>
       <li><a href="/humans.txt">humans.txt</a></li>
       <li><a href="{{ global.repository }}">{{ icon('github') }}sources</a></li>
+      {# IndieWeb Webring: the ring rescans the home page for these three links, keep the hrefs as given #}
+      <li><a href="https://xn--sr8hvo.ws/previous">← {{ 'foot.webringPrev' | t }}</a> <a href="https://xn--sr8hvo.ws">IndieWeb Webring</a> <a href="https://xn--sr8hvo.ws/next">{{ 'foot.webringNext' | t }} →</a></li>
     </ul>
   </div>
 </footer>
