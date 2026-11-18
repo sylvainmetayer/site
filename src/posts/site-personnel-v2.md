@@ -14,7 +14,7 @@ date: "2018-11-15"
 
 Après quelques années d'existence, mon ancien site commençait à vieillir.
 
-([Les sources de mon ancien site sont toujours disponibles sur Github](https://github.com/sylvainmetayer/sylvainmetayer-old), mais remontent à l'époque de mon DUT, soyez indulgents ! 😁)
+(Les sources de mon ancien site sont toujours disponibles sur Github, mais remontent à l'époque de mon DUT, soyez indulgents ! 😁)
 
 De plus, [le premier et unique article](/article/l-effet-parthenay) présent sur ce site n'était même pas hébergé sur ce site, mais sur un sous-domaine (désormais inexistant) et avec la plateforme [Ghost](https://ghost.org/) (qui est un excellent logiciel libre au passage !).
 

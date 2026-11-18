@@ -25,6 +25,9 @@ exclude = [
   # ETS : « HTTP/2 protocol error » avec le client de lychee, en local comme en
   # CI ; 200 avec curl en HTTP/2 et HTTP/1.1, et depuis 8 pays.
   '^https://www\.ets\.org/toeic\.html',
+  # claude.ai : 403 (protection anti-robots) pour tout client automatisé,
+  # 200 dans un navigateur (issue #489).
+  '^https://claude\.ai/',
 ]
 
 # 429 : limite de requêtes atteinte, le lien n'est pas cassé pour autant
