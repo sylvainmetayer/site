@@ -26,4 +26,4 @@ Les grands changements du site. Le détail est dans [l'historique git]({{ global
 
 ## 2017
 
-- **3 mai** : [premier commit](https://github.com/sylvainmetayer/sylvainmetayer-old/commit/4d52b31b0d1868faa1270ef0e8c98b9556f8b883) de la première version du site, alors sur sylvainmetayer.fr ([capture du 6 mai 2017](https://web.archive.org/web/20170506092959/https://sylvainmetayer.fr/)).
+- **3 mai** : premier commit de la première version du site, alors sur sylvainmetayer.fr ([capture du 6 mai 2017](https://web.archive.org/web/20170506092959/https://sylvainmetayer.fr/)).
