@@ -114,26 +114,6 @@ html {
   scroll-padding-top: 1rem;
 }
 
-/* Wide screens: a wider column and slightly larger type, so the page fills more
-   of the window while lines keep the same length in characters. Starts at 92rem:
-   below, the column plus the side table of contents and sidenotes (82rem rules)
-   would no longer fit. */
-@media (min-width: 92rem) {
-  :root {
-    --measure: 50rem;
-  }
-
-  html {
-    font-size: 106.25%;
-  }
-}
-
-@media (min-width: 108rem) {
-  html {
-    font-size: 112.5%;
-  }
-}
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -990,6 +970,26 @@ samp {
 .prose blockquote,
 .prose .footnotes {
   max-width: 35rem;
+}
+
+/* Wide screens: a wider column and longer lines (about 90 characters, the top of
+   the comfortable range), same type size. Starts at 86rem: below, the column plus
+   the side table of contents and sidenotes (82rem rules) would no longer fit. */
+@media (min-width: 86rem) {
+  :root {
+    --measure: 50rem;
+  }
+
+  .prose {
+    max-width: none;
+  }
+
+  .prose p:not(:has(img, iframe)),
+  .prose li,
+  .prose blockquote,
+  .prose .footnotes {
+    max-width: 42rem;
+  }
 }
 
 .prose p,
