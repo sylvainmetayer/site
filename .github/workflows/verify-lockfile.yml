@@ -23,5 +23,5 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - run: gh extension install github/gh-actions-lock --pin v0.4.1
+      - run: gh extension install github/gh-actions-lock --pin v0.5.1
       - run: gh actions-lock --verify
