@@ -32,9 +32,6 @@ const passthroughItems = {
   'src/images/icons/favicon.ico': 'favicon.ico',
   'src/js': 'js',
   'src/uploads': 'uploads',
-  'src/admin/config.yml': 'admin/config.yml',
-  // Sveltia CMS is self-hosted so the admin works with `script-src 'self'`.
-  'node_modules/@sveltia/cms/dist/sveltia-cms.js': 'admin/sveltia-cms.js',
   // Fonts are self-hosted to respect `font-src 'self'`.
   'node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2':
     'fonts/jetbrains-mono-latin-wght-normal.woff2',

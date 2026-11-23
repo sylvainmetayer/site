@@ -1,8 +1,7 @@
 # En-têtes servis par Cloudflare Pages.
 # Quand plusieurs règles visent une URL, leurs en-têtes s'additionnent et deux
 # valeurs d'un même en-tête sont jointes par une virgule (deux CSP cumulées =
-# l'intersection des deux) : /admin/* retire donc la CSP de /* avec « ! » avant
-# de poser la sienne. www.netlify.com reste dans img-src pour le bouton « Deploy
+# l'intersection des deux). www.netlify.com reste dans img-src pour le bouton « Deploy
 # to Netlify » de l'article email-alias-manager.
 # frame-src : lecteur des vidéos {% youtube %} (js/youtube.js), chargé au clic.
 /*
@@ -14,12 +13,6 @@
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
-
-# Sveltia CMS : API GitHub (et son statut), polices d'icônes sur jsDelivr,
-# aperçus blob: et avatars GitHub. Reprend l'ancienne CSP globale, qui fonctionnait.
-/admin/*
-  ! Content-Security-Policy
-  Content-Security-Policy: default-src 'self'; connect-src 'self' blob: https://cloudflareinsights.com https://api.github.com https://www.githubstatus.com; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: blob: https://www.netlify.com https://avatars.githubusercontent.com; script-src 'self' https://static.cloudflareinsights.com; style-src 'unsafe-inline'; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; media-src 'self' blob:; frame-src https://www.youtube-nocookie.com; object-src 'none'
 
 # Noms de fichiers sans hash (copiés de node_modules) : pas d'immutable, une
 # mise à jour de fontsource doit finir par arriver chez les visiteurs.

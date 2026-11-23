@@ -5,8 +5,8 @@
 export const LANGS = ['fr', 'en'];
 export const DEFAULT_LANG = 'fr';
 
-// `slug.md` is French, `slug.en.md` its English translation (Sveltia CMS i18n,
-// structure multiple_files)
+// `slug.md` is French, `slug.en.md` its English translation (listed side by side
+// in Pages CMS)
 export const isEnglishFile = path => path.endsWith('.en.md');
 
 // The slug shared by an entry and its translation: "ansible" for ansible.en.md
@@ -25,7 +25,7 @@ export const entryData = (data, prefix) => ({
 });
 
 // A data file in the language of the page. Two conventions:
-// - files edited in Sveltia CMS (structure single_file_default_root): the
+// - files edited in Pages CMS (.pages.yml): the
 //   French text at the root, the English version under the `en` key;
 // - other files (talks, languages, interests): a `field_en` next to each
 //   translated `field`, so that a new item needs no copy in the other language.

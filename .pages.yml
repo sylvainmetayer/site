@@ -1,0 +1,350 @@
+# Pages CMS — https://pagescms.org/docs/configuration/
+# Connexion sur https://app.pagescms.org avec GitHub (app Pages CMS installée sur ce dépôt).
+# Les modifications sont commitées sur la branche choisie dans l'interface (main par défaut).
+#
+# Français / anglais : pas d'i18n dans Pages CMS.
+# - Articles, projets, expériences : `slug.md` en français, `slug.en.md` en anglais,
+#   listés côte à côte ; pour une traduction, nommer le fichier `slug.en` à la création.
+# - Fichiers de données (site, navigation, formations…) : le français à la racine,
+#   l'anglais dans l'objet « English » (clé `en`, src/_data/eleventyComputed.js).
+# - Accueil, /now, /uses : une entrée par langue.
+
+media:
+  input: src/images
+  output: /images
+
+settings:
+  # Garde les clés absentes du schéma (layout, translationKey, permalink, feedIdBase…).
+  content:
+    merge: true
+  commit:
+    templates:
+      create: "content: ajoute {path}"
+      update: "content: modifie {path}"
+      delete: "content: supprime {path}"
+      rename: "content: renomme {oldPath} en {newPath}"
+
+components:
+  # Markdown brut : un éditeur WYSIWYG réécrirait les shortcodes Nunjucks et les notes.
+  body:
+    label: Contenu
+    type: code
+    options:
+      format: markdown
+  date:
+    label: Date de publication
+    type: date
+    options:
+      format: yyyy-MM-dd
+  updated:
+    label: Date de modification
+    type: date
+    default: ""
+    options:
+      format: yyyy-MM-dd
+  metaTitle:
+    label: SEO - titre
+    type: string
+    description: "Titre complet de l’onglet (suffixe « · Sylvain » compris), 70 caractères au plus : la CI le vérifie (npm run validate)."
+    options:
+      maxlength: 70
+  metaDesc:
+    label: SEO - description
+    type: string
+  socialImage:
+    label: Image de partage
+    type: image
+
+content:
+  - name: posts
+    label: Articles
+    type: collection
+    path: src/posts
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, date, draft]
+      primary: title
+      sort: [date, title]
+      search: [title, tags]
+      default: { sort: date, order: desc }
+    fields:
+      - { name: title, label: Titre, type: string, required: true }
+      - { name: date, component: date, required: true }
+      - { name: updated, component: updated, description: "Dernière mise à jour du contenu. Affichée sous le titre, elle remplace la date de publication pour l'avertissement « article ancien »." }
+      - { name: excerpt, label: Extrait, type: text, description: "Affiché dans les listes d'articles et utilisé comme description par défaut." }
+      - { name: tags, label: Tags, type: string, list: true }
+      - { name: redirect_from, label: Anciennes URL, type: string, list: true, description: "Chemins qui redirigent vers cet article (301), ex. /blog/mon-article/." }
+      - { name: short, label: Lien court, type: string, pattern: { regex: "^[a-z0-9-]*$", message: "Minuscules, chiffres et tirets" }, description: "Code du lien court /s/<code> (QR codes, slides)." }
+      - { name: series, label: Série, type: string, description: "Même nom exact sur chaque article de la série : un encadré les liste en tête d'article." }
+      - { name: body, component: body }
+      - { name: draft, label: Brouillon, type: boolean, default: false }
+      - { name: star, label: Mis en avant, type: boolean, default: false }
+      - { name: noToc, label: Masquer le sommaire, type: boolean, default: false }
+      - { name: repost, label: Republier sur dev.to, type: select, options: { values: ["dev.to"] }, description: "Ajoute l'article au flux /devto.rss.xml importé par dev.to." }
+      - { name: canonical, label: URL canonique, type: string, description: "Article republié depuis une autre plateforme (dev.to, Medium…) : URL de l'original. L'article sort du sitemap." }
+      - { name: original, label: Original (traduction), type: string, description: "Version anglaise d'un article republié : URL de l'original en français (le canonique de la version française). Laisser vide en français." }
+      - { name: originalPublisher, label: Publié à l'origine par, type: string, description: "Ex. onepoint" }
+      - { name: coauthors, label: Co-auteurs (pseudos sur la plateforme d'origine), type: string, list: true }
+      - { name: metaTitle, component: metaTitle }
+      - { name: metaDesc, component: metaDesc }
+      - { name: socialImage, component: socialImage }
+
+  - name: notes
+    label: Notes
+    type: collection
+    path: src/notes
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, date, draft]
+      primary: title
+      sort: [date, title]
+      default: { sort: date, order: desc }
+    fields:
+      - { name: title, label: Titre, type: string, required: true }
+      - { name: date, component: date, required: true }
+      - { name: body, component: body }
+      - { name: draft, label: Brouillon, type: boolean, default: false }
+
+  - name: projets
+    label: Projets
+    type: collection
+    path: src/projets
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, year, featured]
+      primary: title
+      sort: [year, title]
+      default: { sort: year, order: desc }
+    fields:
+      - { name: title, label: Nom, type: string, required: true, description: "Nom court, affiché en police mono (ex. email-alias-manager)." }
+      - { name: year, label: Année, type: number, required: true }
+      - { name: updated, component: updated, description: "Dernière mise à jour du projet, affichée à côté de l'année." }
+      - { name: stack, label: Technologies, type: string, list: true }
+      - { name: repo, label: Dépôt, type: string }
+      - { name: article, label: Article associé, type: string, description: "Chemin de l'article, ex. /article/ansible/ (en anglais /en/article/… s'il est traduit)" }
+      - { name: featured, label: Afficher sur l'accueil, type: boolean, default: false }
+      - { name: body, component: body, label: Description }
+
+  - name: work
+    label: Expériences
+    type: collection
+    path: src/work
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, start, end]
+      primary: title
+      sort: [start, title]
+      default: { sort: start, order: desc }
+    fields:
+      - { name: title, label: Titre, type: string, required: true }
+      - { name: location, label: Lieu, type: string, required: true }
+      - { name: link, label: Lien, type: string }
+      - { name: start, component: date, label: Début, required: true }
+      - { name: end, component: updated, label: Fin }
+      - { name: body, component: body }
+
+  - name: pages
+    label: Pages
+    type: group
+    items:
+      - name: home
+        label: Accueil
+        type: file
+        path: src/index.md
+        format: yaml-frontmatter
+        fields: &home
+          - { name: title, label: Titre (nom affiché), type: string, required: true }
+          - { name: body, component: body, label: Présentation }
+          - { name: postsHeading, label: Titre « derniers articles », type: string }
+          - { name: starHeading, label: Titre « articles mis en avant », type: string }
+          - { name: projectsHeading, label: Titre « projets », type: string }
+          - { name: archiveButtonText, label: Lien vers tous les articles, type: string }
+          - { name: metaTitle, component: metaTitle }
+          - { name: metaDesc, component: metaDesc }
+          - { name: socialImage, component: socialImage }
+      - { name: home_en, label: Accueil (en), type: file, path: src/en/index.md, format: yaml-frontmatter, fields: *home }
+      - name: now
+        label: Maintenant (/now)
+        type: file
+        path: src/now.md
+        format: yaml-frontmatter
+        fields: &page
+          - { name: title, label: Titre, type: string, required: true }
+          - { name: updated, component: updated, label: Mis à jour le }
+          - { name: metaDesc, component: metaDesc }
+          - { name: body, component: body }
+      - { name: now_en, label: Maintenant (/en/now), type: file, path: src/en/now.md, format: yaml-frontmatter, fields: *page }
+      - { name: uses, label: Ce que j'utilise (/uses), type: file, path: src/uses.md, format: yaml-frontmatter, fields: *page }
+      - { name: uses_en, label: Ce que j'utilise (/en/uses), type: file, path: src/en/uses.md, format: yaml-frontmatter, fields: *page }
+
+  - name: generic_pages
+    label: Pages génériques
+    type: collection
+    path: src/pages
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    fields:
+      - { name: title, label: Titre, type: string, required: true }
+      - { name: permalink, label: Permalien (ex. /ma-page/index.html), type: string }
+      - { name: metaTitle, component: metaTitle }
+      - { name: metaDesc, component: metaDesc }
+      - { name: body, component: body }
+
+  - name: data
+    label: Données
+    type: group
+    items:
+      - name: site
+        label: Site
+        type: file
+        path: src/_data/site.json
+        format: json
+        fields:
+          - { name: name, label: Nom du site, type: string, required: true }
+          - { name: url, label: URL, type: string, required: true }
+          - { name: authorName, label: Nom de l'auteur, type: string, required: true }
+          - { name: role, label: Rôle, type: string, required: true }
+          - { name: location, label: Ville, type: string, required: true }
+          - { name: country, label: Pays, type: string, description: "Pays de l'adresse du vCard (/.well-known/contact.vcf)." }
+          - { name: drivingLicence, label: Permis, type: string }
+          - { name: authorEmail, label: Email, type: string, required: true }
+          - { name: authorHandle, label: Compte Twitter, type: string }
+          - { name: mastodon, label: Compte Mastodon, type: string, pattern: { regex: "^(@[\\w.-]+@[\\w.-]+)?$", message: "Format @pseudo@instance" }, description: "@pseudo@instance : balise fediverse:creator, rel=me, alias WebFinger @…@sylvain.dev, publication des articles." }
+          - { name: bluesky, label: Compte Bluesky, type: string, description: "Handle sans @ (ex. pseudo.bsky.social) : rel=me, partage et publication des articles." }
+          - { name: blueskyDid, label: DID Bluesky, type: string, description: "did:plc:… : publié dans /.well-known/atproto-did pour utiliser sylvain.dev comme handle." }
+          - { name: shortDesc, label: Description courte, type: string, required: true }
+          - { name: maxPostsPerPage, label: Articles sur l'accueil, type: number, default: 5 }
+          - { name: faviconPath, label: Favicon, type: string }
+          - { name: locale, label: Langue, type: string, default: fr }
+          - { name: displayDevWarning, label: Bandeau « version de développement », type: boolean, default: false }
+          - { name: displayWipWarning, label: Bandeau « site en travaux », type: boolean, default: false }
+          - name: en
+            label: English
+            type: object
+            fields:
+              - { name: role, label: Rôle, type: string }
+              - { name: location, label: Ville, type: string }
+              - { name: drivingLicence, label: Permis, type: string }
+              - { name: shortDesc, label: Description courte, type: string }
+
+      - name: navigation
+        label: Navigation
+        type: file
+        path: src/_data/navigation.json
+        format: json
+        fields:
+          - &navItems
+            name: items
+            label: Liens
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{text}" } }
+            fields:
+              - { name: text, label: Texte, type: string, required: true }
+              - { name: url, label: URL, type: string, required: true }
+          - name: en
+            label: English
+            type: object
+            description: "En anglais, les URL commencent par /en/."
+            fields: [*navItems]
+
+      - name: social
+        label: Réseaux
+        type: file
+        path: src/_data/social.json
+        format: json
+        fields:
+          - name: links
+            label: Liens
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{label}" } }
+            fields:
+              - { name: label, label: Libellé, type: string, required: true }
+              - { name: url, label: URL, type: string, required: true }
+              - { name: icon, label: Icône, type: string }
+
+      - name: links
+        label: Liens partagés (/liens/)
+        type: file
+        path: src/_data/links.json
+        format: json
+        fields:
+          - name: links
+            label: Liens
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{date} · {title}" } }
+            fields:
+              - { name: date, component: date, label: Date, required: true }
+              - { name: title, label: Titre, type: string, required: true }
+              - { name: url, label: URL, type: string, required: true, pattern: { regex: "^https?://", message: "URL complète, avec https://" } }
+              - { name: comment, label: Commentaire (Markdown, une ligne), type: string }
+
+      - name: formations
+        label: Formations
+        type: file
+        path: src/_data/formations.json
+        format: json
+        fields:
+          - &formations
+            name: formations
+            label: Formations
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{end} · {title}" } }
+            fields:
+              - { name: title, label: Titre, type: string, required: true }
+              - { name: location, label: Établissement, type: string, required: true }
+              - { name: link, label: Lien, type: string }
+              - { name: start, label: Année de début, type: number }
+              - { name: end, label: Année de fin, type: number, required: true }
+              - { name: description, label: Description, type: text }
+              - { name: tag, label: Tag des articles liés, type: string }
+              - { name: print, label: Sur le CV imprimé, type: boolean }
+          - { name: en, label: English, type: object, fields: [*formations] }
+
+      - name: certifications
+        label: Certifications
+        type: file
+        path: src/_data/certifications.json
+        format: json
+        fields:
+          - &certifications
+            name: certifications
+            label: Certifications
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{date} · {title}" } }
+            fields:
+              - { name: title, label: Titre, type: string, required: true }
+              - { name: link, label: Lien, type: string }
+              - { name: date, component: date, label: Date, required: true }
+              - { name: description, label: Description, type: text }
+              - { name: print, label: Sur le CV imprimé, type: boolean }
+          - { name: en, label: English, type: object, fields: [*certifications] }
+
+      - name: skills
+        label: Compétences
+        type: file
+        path: src/_data/skills.json
+        format: json
+        fields:
+          - &skills
+            name: groups
+            label: Groupes
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{name}" } }
+            fields:
+              - { name: name, label: Nom du groupe, type: string, required: true }
+              - { name: skills, label: Compétences, type: string, list: true }
+          - { name: en, label: English, type: object, fields: [*skills] }

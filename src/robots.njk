@@ -3,5 +3,5 @@ permalink: robots.txt
 eleventyExcludeFromCollections: true
 ---
 User-agent: *
-{% if global.environment != "production" %}Disallow: /{% else %}Disallow: /admin{% endif %}
+{% if global.environment != "production" %}Disallow: /{% else %}Disallow:{% endif %}
 Sitemap: {{ helpers.url() }}/sitemap.xml

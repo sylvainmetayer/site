@@ -53,9 +53,9 @@ Ne pas éditer le verrou à la main : Renovate le régénère à chaque mise à 
 | `src/en/` | Pages anglaises (voir « Version anglaise ») |
 | `src/_includes/css/site.css` | Feuille de style (CSS natif, injectée dans chaque page) |
 | `src/_includes/layouts/` | Layouts Nunjucks |
-| `src/admin/config.yml` | Configuration de Sveltia CMS |
+| `.pages.yml` | Configuration de Pages CMS |
 
-Les polices (JetBrains Mono, IBM Plex Sans) et Sveltia CMS viennent de npm et sont copiés dans `dist/` au build, à cause de la CSP (`font-src 'self'`, `script-src 'self'`).
+Les polices (JetBrains Mono, IBM Plex Sans) viennent de npm et sont copiées dans `dist/` au build, à cause de la CSP (`font-src 'self'`).
 
 Les blocs de code sont colorés au build par Shiki (thème `src/utils/shiki-theme.js`). Après le langage : `{2,4-5}` surligne des lignes, `title="fichier.js"` affiche le nom du fichier, `showLineNumbers` numérote les lignes.
 
@@ -90,7 +90,7 @@ Le français est la langue par défaut, aux URL actuelles ; l'anglais est sous `
 | Contenu | Français | Anglais |
 | --- | --- | --- |
 | Articles, projets, expériences | `src/posts/slug.md` | `src/posts/slug.en.md` (même nom + `.en`) |
-| Données éditées dans le CMS (`site`, `navigation`, `formations`, `certifications`, `skills`) | à la racine du fichier | sous la clé `en`, version complète (format de Sveltia) |
+| Données éditées dans le CMS (`site`, `navigation`, `formations`, `certifications`, `skills`) | à la racine du fichier | sous la clé `en`, version complète |
 | Autres données (`talks`, `languages`, `interests`) | champ `title`… | champ voisin `title_en`… : un nouvel élément n'a pas à être recopié |
 | Accueil | `src/index.md` | `src/en/index.md` |
 | Pages (projets, talks, CV…) | `src/*.njk` : front matter seulement | `src/en/*.njk`, même layout |
@@ -103,7 +103,7 @@ Le français est la langue par défaut, aux URL actuelles ; l'anglais est sous `
 - Pas de `hreflang` pour un article canonique ailleurs (dev.to, LinkedIn…) : les moteurs ignorent les paires qui pointent vers une URL non canonique.
 - Une traduction d'article republié porte `original:` (l'URL de l'original) au lieu de `canonical:` : la page anglaise est canonique d'elle-même.
 - Le CV anglais est imprimé dans `src/uploads/CV-METAYER-Sylvain-en.pdf` (`mise run cv` génère et vérifie les deux, la CI compare les deux au build).
-- Sveltia CMS édite les deux langues (bloc `i18n` de `src/admin/config.yml`) : champ « traduit » ou « dupliqué » (même valeur dans les deux langues).
+- Pages CMS n'a pas d'i18n : les `.en.md` sont listés à côté des `.md`, et l'anglais des données est dans l'objet « English » (clé `en`), à remplir à la main.
 
 ## Déploiement (Cloudflare Pages)
 
@@ -124,10 +124,8 @@ L'infra est décrite dans le dépôt homelab (`tofu/site`, sur le modèle de ref
 - images des articles : converties au build en AVIF, WebP et format d'origine, en plusieurs largeurs, par `@11ty/eleventy-img` (`src/transforms/parse-transform.js`), servies sous `/img/` avec un cache `immutable` ;
 - Web Analytics : jeton du beacon dans `src/_data/site.json` (`cfBeaconToken`), celui du site Web Analytics existant, importé dans `tofu/site` pour garder l'historique (sortie `web_analytics_token`). Le beacon n'est injecté qu'en production.
 
-## Administration (Sveltia CMS)
+## Administration (Pages CMS)
 
-L'admin est sur `/admin/`. [Sveltia CMS](https://github.com/sveltia/sveltia-cms) utilise le backend GitHub, et chaque modification passe par le workflow éditorial (une PR par contenu).
+[Pages CMS](https://pagescms.org) est hébergé sur [app.pagescms.org](https://app.pagescms.org) : connexion avec GitHub, l'app Pages CMS doit être installée sur le dépôt `sylvainmetayer/site`. La configuration est dans `.pages.yml`, à la racine.
 
-Connexion par jeton, comme pour ref.sylvain.dev : créer un [fine-grained PAT GitHub](https://github.com/settings/personal-access-tokens/new) limité au dépôt `sylvainmetayer/site`, avec les permissions Contents et Pull requests en Read and write, puis choisir « Sign In Using Access Token ».
-
-En local, « Work with Local Repository » édite directement les fichiers du dépôt cloné (Chrome et Edge).
+Chaque modification est commitée directement sur la branche choisie dans l'interface (pas de workflow éditorial) : passer sur une branche pour faire relire par une PR. Les clés absentes du schéma sont conservées (`settings.content.merge`). Le corps des contenus s'édite en Markdown brut, pour ne pas réécrire les shortcodes Nunjucks.
