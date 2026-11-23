@@ -79,7 +79,7 @@ for (const file of htmlFiles) {
   for (const [, raw] of html.matchAll(attribute)) {
     const url = raw.replaceAll('&amp;', '&');
     const path = toPath(url);
-    if (path === null || path.startsWith('/admin/')) continue;
+    if (path === null) continue;
     if (!resolves(path)) errors.push(`${relative(dist, file)}: lien cassé ${url}`);
   }
 }

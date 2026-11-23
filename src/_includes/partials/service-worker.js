@@ -8,7 +8,6 @@ const MAX_RUNTIME_ENTRIES = 80;
 
 // URLS that we don’t want to end up in the cache
 const EXCLUDED_URLS = [
-  '/admin/',
   '/.11ty/'
 ];
 

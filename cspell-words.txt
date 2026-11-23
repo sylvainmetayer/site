@@ -149,7 +149,6 @@ Sigstore
 snowcamp
 Snowcamp
 starterkit
-Sveltia
 Sylvain
 Symfony
 Takima
@@ -200,3 +199,4 @@ Wayback
 betisier
 memoire
 Parlement
+pagescms

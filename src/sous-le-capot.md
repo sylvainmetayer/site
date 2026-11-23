@@ -21,7 +21,7 @@ Comment ce site est fait, et pourquoi. Les sources sont [sur GitHub](https://git
 
 - **[Cloudflare Pages](https://pages.cloudflare.com/)** construit et sert le site à chaque push sur `main`, avec une préversion pour chaque branche.
 - Un **build quotidien** ramène les nouvelles [webmentions](https://indieweb.org/Webmention) (reçues par [webmention.io](https://webmention.io/)) et tient à jour l'âge affiché des articles.
-- **[Sveltia CMS](https://github.com/sveltia/sveltia-cms)** permet d'écrire depuis le navigateur : il commite directement dans le dépôt.
+- **[Pages CMS](https://pagescms.org)** permet d'écrire depuis le navigateur : il commite directement dans le dépôt.
 - Mesure d'audience par **Cloudflare Web Analytics**, sans cookie.
 
 ## Contrôles

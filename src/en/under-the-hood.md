@@ -20,7 +20,7 @@ How this site is made, and why. The source is [on GitHub](https://github.com/syl
 
 - **[Cloudflare Pages](https://pages.cloudflare.com/)** builds and serves the site on every push to `main`, with a preview for each branch.
 - A **daily build** brings in new [webmentions](https://indieweb.org/Webmention) (received by [webmention.io](https://webmention.io/)) and keeps the age shown on articles current.
-- **[Sveltia CMS](https://github.com/sveltia/sveltia-cms)** lets me write from the browser: it commits straight to the repository.
+- **[Pages CMS](https://pagescms.org)** lets me write from the browser: it commits straight to the repository.
 - Audience measurement by **Cloudflare Web Analytics**, without cookies.
 
 ## Checks
