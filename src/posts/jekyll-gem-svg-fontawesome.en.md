@@ -14,7 +14,7 @@ metaDesc: "I wanted to use FontAwesome without bundling the whole library, which
 
 I wanted to use [FontAwesome](http://fontawesome.com/) without bundling the whole library, which is rather heavy.
 
-So I looked for a way to include only the icons I actually use, and that's how I ended up figuring out how to write a Jekyll plugin.
+So I looked for a way to include only the icons I actually use, and that's how I ended up figuring out how to [write a Jekyll plugin](/en/projects/#jekyll-fontawesome-svg).
 
 [The documentation](https://jekyllrb.com/docs/plugins/your-first-plugin/) is quite thorough, which helped me get up to speed with Jekyll quickly.
 

@@ -22,7 +22,7 @@ Grâce à l'outil présenté plus bas, j'ai pu libérer 3,2 Go, soit 686 ancienn
 
 Ma première idée a été de faire cela via l'interface web de kDrive. Problème : celle d'[Infomaniak](https://ref.sylvain.dev/infomaniak/) ne permet de supprimer les versions qu'une par une, fichier par fichier. 😩
 
-En revanche, Infomaniak propose une [API](https://developer.infomaniak.com/docs/api) qui permet de lister les fichiers, leurs versions, et de les supprimer. De quoi se faire un petit outil !
+En revanche, Infomaniak propose une [API](https://developer.infomaniak.com/docs/api) qui permet de lister les fichiers, leurs versions, et de les supprimer. De quoi [se faire un petit outil](/projets/#kdrive-version-cleaner) !
 
 ## kdvc
 

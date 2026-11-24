@@ -12,7 +12,7 @@ date: "2018-09-15"
 
 [Visit the Ansible website](https://www.ansible.com/)
 
-I built this personal project to get familiar with Ansible and be able to recreate an identical server without any human intervention.
+I built this personal project to get familiar with Ansible and be able to [recreate an identical server](/en/projects/#ansible-deployment) without any human intervention.
 
 Ansible seemed like an interesting choice because it doesn't require installing an agent on the target server to deploy to it. Only Python is required, and most Linux servers, if not all of them, ship with Python out of the box. On top of that, playbooks (sets of instructions) are written in [YAML](http://yaml.org/), which is easy to read and write.
 

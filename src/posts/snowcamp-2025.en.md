@@ -26,7 +26,7 @@ Next up is [Jérôme Tama](https://fr.linkedin.com/in/jerome-tama), who invites 
 
 In the same slot, [Paul Vulliemin](https://fr.linkedin.com/in/pvulliemin-platform-engineer/fr) and [Mélissa Pinon](https://fr.linkedin.com/in/m%C3%A9lissa-pinon) share how they manage their teams' development environments with a cloud solution, focusing on resource elasticity and fast onboarding for developers. After comparing the options they considered, they show us the one they picked, Coder, and how they rolled it out, with a demo of the tool's features and its IDE integrations.
 
-After these talks, it's my turn to give my own talk, on SOPS, where I show how this tool can help you store your secrets securely in your Git repositories, even without access to an external Secret Manager or Vault.
+After these talks, it's my turn to give [my own talk, on SOPS](/en/talks/#sops-passez-un-savon-a-vos-secrets-en-clair), where I show how this tool can help you store your secrets securely in your Git repositories, even without access to an external Secret Manager or Vault.
 
 After lunch, [Léo Gatellier](https://fr.linkedin.com/in/leogatellier) and [🚀 Tim Ghibaudo](https://fr.linkedin.com/in/tim-ghibaudo-27401853) give us an unfiltered account of their 3 years spent maintaining their Kubernetes cluster: what worked well and what still needs improving. With the goal of making development teams autonomous, they explain how they automated recurring tasks with scripts, CLIs and/or APIs to reduce manual work, while still meeting the ops team's security requirements. Léo and Tim also stress that the biggest change isn't just technical but organizational, and therefore needs proper support to succeed.
 
