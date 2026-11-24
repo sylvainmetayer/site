@@ -17,7 +17,7 @@ noToc: false
 
 Too much spam? Tired of handing out your email address to every service? Email aliases to the rescue!
 
-Following an idea from [Adrien Chinour](https://web.archive.org/web/20200814055750/https://adrienchinour.me/), I decided to build my own small alias manager for my email addresses. The goal is to quickly generate aliases so you don't have to give out your real email address when signing up on random websites. That way, if a site sends a bit too much email for your taste, if you no longer use the service, or if unsubscribing turns into an obstacle course, you just delete the alias, and no more unwanted email!
+Following an idea from [Adrien Chinour](https://web.archive.org/web/20200814055750/https://adrienchinour.me/), I decided to build [my own small alias manager](/en/projects/#email-alias-manager) for my email addresses. The goal is to quickly generate aliases so you don't have to give out your real email address when signing up on random websites. That way, if a site sends a bit too much email for your taste, if you no longer use the service, or if unsubscribing turns into an obstacle course, you just delete the alias, and no more unwanted email!
 
 Since my domains are managed by [Gandi](https://gandi.net), I looked into how to work with my email addresses and create aliases through their [API](https://api.gandi.net/docs/).
 

@@ -20,7 +20,7 @@ devtoGuid: https://sylvainmetayer.fr/projet/email-alias-manager/
 
 Trop de spam ? Marre de donner son adresse email à chaque service ? Les alias mail sont là à la rescousse !
 
-Suite à une idée d'[Adrien Chinour](https://web.archive.org/web/20200814055750/https://adrienchinour.me/), j'ai décidé de créer à mon tour un petit gestionnaire d'alias pour mes adresses emails. L'objectif est de pouvoir générer rapidement des alias afin de ne pas donner sa véritable adresse email lors d'inscription sur des sites divers. Ainsi, si l'on constate que le site envoie un peu trop de mail à notre goût, que l'on n'utilise plus le service, ou que réussir à se désinscrire relève du parcours du combattant, on supprime l'alias, et plus de mails indésirables !
+Suite à une idée d'[Adrien Chinour](https://web.archive.org/web/20200814055750/https://adrienchinour.me/), j'ai décidé de créer à mon tour [un petit gestionnaire d'alias](/projets/#email-alias-manager) pour mes adresses emails. L'objectif est de pouvoir générer rapidement des alias afin de ne pas donner sa véritable adresse email lors d'inscription sur des sites divers. Ainsi, si l'on constate que le site envoie un peu trop de mail à notre goût, que l'on n'utilise plus le service, ou que réussir à se désinscrire relève du parcours du combattant, on supprime l'alias, et plus de mails indésirables !
 
 Ayant mes domaines gérés par [Gandi](https://gandi.net), j'ai regardé comment interagir avec mes adresses emails pour créer des alias depuis leur [API](https://api.gandi.net/docs/).
 

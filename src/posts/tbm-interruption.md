@@ -12,7 +12,7 @@ date: '2018-02-14'
 
 [Sources (Github)](https://github.com/sylvainmetayer/tbm_interruption_tracker) [Compte Twitter : @tbm_issues_bot](https://twitter.com/tbm_issues_bot)
 
-J'ai réalisé ce bot afin de permettre un suivi des interruptions des trams bordelais.
+J'ai réalisé ce bot afin de permettre un [suivi des interruptions des trams bordelais](/projets/#tbm-interruption-tracker).
 
 Les informations sont récupérées depuis les comptes officiels Twitter de TBM, et repère des mots clés afin de compter les jours sans interruptions.
 

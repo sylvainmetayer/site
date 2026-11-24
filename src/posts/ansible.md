@@ -12,7 +12,7 @@ date: "2018-09-15"
 
 [Consulter le site d'Ansible](https://www.ansible.com/)
 
-J'ai réalisé ce projet personnel afin de me familiariser avec Ansible et pouvoir recréer un serveur à l'identique sans intervention humaine.
+J'ai réalisé ce projet personnel afin de me familiariser avec Ansible et pouvoir [recréer un serveur à l'identique](/projets/#ansible-deployment) sans intervention humaine.
 
 Le choix d'Ansible m'a semblé intéressant car il ne nécessite pas l'installation d'un agent sur le serveur cible pour effectuer le déploiement. Seul Python est requis, et la plupart, pour ne pas dire la totalité des serveurs linux disposent de python de base. De plus, la syntaxe pour écrire les playbooks (jeu d'instructions) est du [YAML](http://yaml.org/), simple à lire et à écrire.
 

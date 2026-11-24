@@ -17,7 +17,7 @@ metaDesc: Je souhaitais utiliser FontAwesome sans pour autant intégrer toute la
 
 Je souhaitais utiliser [FontAwesome](http://fontawesome.com/) sans pour autant intégrer toute la librairie, assez lourde.
 
-J'ai donc cherché un moyen de n'inclure que les icônes utilisées, et c'est comme cela que je suis venu à chercher comment créer un plugin Jekyll.
+J'ai donc cherché un moyen de n'inclure que les icônes utilisées, et c'est comme cela que je suis venu à chercher comment [créer un plugin Jekyll](/projets/#jekyll-fontawesome-svg).
 
 [La documentation](https://jekyllrb.com/docs/plugins/your-first-plugin/) est assez bien fournie, ce qui m'a permis de rapidement prendre en main Jekyll.
 

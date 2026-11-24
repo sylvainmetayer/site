@@ -10,7 +10,7 @@ excerpt: "J'ai eu l'occasion de faire mon premier meetup le 1er février sur You
 date: '2022-02-05'
 ---
 
-J'ai eu l'occasion de faire mon premier meetup live avec onepoint le 1er février sur YouTube. Le sujet était : 'Terraform, REX d'un développeur'. Pour celles et ceux qui souhaiteraient le regarder, je vous invite à le visionner en replay ici : [Lien YouTube](https://www.youtube.com/watch?v=GR_YJIfo8jg&list=PLm-YYS9h2JhWiAZ5QuuJD6jyghWjkK09q&index=27).
+J'ai eu l'occasion de faire [mon premier meetup live](/talks/#terraform-rex-d-un-developpeur) avec onepoint le 1er février sur YouTube. Le sujet était : 'Terraform, REX d'un développeur'. Pour celles et ceux qui souhaiteraient le regarder, je vous invite à le visionner en replay ici : [Lien YouTube](https://www.youtube.com/watch?v=GR_YJIfo8jg&list=PLm-YYS9h2JhWiAZ5QuuJD6jyghWjkK09q&index=27).
 
 {% youtube "GR_YJIfo8jg", "Terraform, REX d'un développeur", 3010 %}
 

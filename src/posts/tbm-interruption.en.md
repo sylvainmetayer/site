@@ -12,7 +12,7 @@ date: '2018-02-14'
 
 [Source code (GitHub)](https://github.com/sylvainmetayer/tbm_interruption_tracker) [Twitter account: @tbm_issues_bot](https://twitter.com/tbm_issues_bot)
 
-I built this bot to keep track of service interruptions on the Bordeaux tramway.
+I built this bot to [keep track of service interruptions on the Bordeaux tramway](/en/projects/#tbm-interruption-tracker).
 
 The information comes from the official Twitter accounts of TBM (the Bordeaux public transport network): the bot looks for keywords in their tweets to count the days without interruptions.
 
