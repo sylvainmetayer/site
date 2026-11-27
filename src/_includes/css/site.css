@@ -1317,6 +1317,13 @@ abbr[title] {
   border-radius: var(--radius);
 }
 
+/* 88x31-style club badges on /green/, side by side at their own size */
+.prose .badges img {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 0;
+}
+
 .prose figure img {
   margin-inline: auto;
 }
