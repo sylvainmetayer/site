@@ -132,7 +132,7 @@ export default async function parseTransform(value, outputPath) {
 
     const document = DOM.window.document;
     // The thumbnails of {% youtube %} are already optimised
-    const notOptimised = image => !image.closest('.youtube');
+    const notOptimised = image => !image.closest('.youtube, .badges');
     const articleImages = [...document.querySelectorAll('main article img, .intro img')].filter(notOptimised);
     const articleEmbeds = [...document.querySelectorAll('main article iframe')];
 

@@ -19,4 +19,8 @@ A visit to the home page emits about **{{ carbon }}** of CO₂, according to the
 - **Fonts** served from the site, with no call to a third party.
 - **No tracker or third-party script**, apart from audience measurement without cookies.
 
+The site is a member of two clubs:
+
+<p class="badges"><a href="https://512kb.club/"><img src="/images/badges/512kb-club-orange.svg" alt="512KB Club, orange team" width="247" height="30"></a> <a href="https://darktheme.club/"><img src="/images/badges/darktheme-club.webp" alt="Darktheme Club" width="88" height="31"></a></p>
+
 The technical details are [under the hood](/en/under-the-hood/).
