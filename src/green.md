@@ -21,6 +21,6 @@ Une visite de la page d'accueil émet environ **{{ carbon }}** de CO₂, d'aprè
 
 Le site fait partie de deux clubs :
 
-<p class="badges"><a href="https://512kb.club/"><img src="/images/badges/512kb-club-orange.svg" alt="512KB Club, équipe orange" width="247" height="30"></a> <a href="https://darktheme.club/"><img src="/images/badges/darktheme-club.webp" alt="Darktheme Club" width="88" height="31"></a></p>
+<p class="badges"><a href="https://512kb.club/"><img src="/images/clubs/512kb-club-orange.svg" alt="512KB Club, équipe orange" width="247" height="30"></a> <a href="https://darktheme.club/"><img src="/images/clubs/darktheme-club.webp" alt="Darktheme Club" width="88" height="31"></a></p>
 
 Le détail technique est [sous le capot](/sous-le-capot/).
