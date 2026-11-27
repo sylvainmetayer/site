@@ -3,7 +3,7 @@ title: Now
 permalink: /en/now/
 layout: layouts/page.njk
 translationKey: now
-updated: 2026-10-29
+updated: 2026-11-27
 metaDesc: "What Sylvain MÉTAYER is working on right now: work, side projects, homelab."
 ---
 
@@ -15,7 +15,7 @@ Developer at onepoint in Bordeaux since 2017, on backend, DevOps, CI and infrast
 
 ## Side projects
 
-- **[planning-equipes](https://github.com/sylvainmetayer/planning-equipes)**: a project trying to make scheduling simpler for events.
+- **[planning-equipes](https://planning.sylvain.dev/en/)**: a project trying to make scheduling simpler for events.
 - **[kdrive-version-cleaner](https://github.com/sylvainmetayer/kdrive-version-cleaner)**: a terminal UI to browse and clean up old file versions on a kDrive.
 
 I am also still describing [my homelab](https://github.com/sylvainmetayer/homelab) as code: Proxmox, OpenTofu, Pangolin.
