@@ -69,3 +69,7 @@
 {# The webmention.io account domain, without scheme: mentions are received on it #}
 <link rel="webmention" href="https://webmention.io/{{ site.webmentionDomain }}/webmention" />
 <link rel="pingback" href="https://webmention.io/{{ site.webmentionDomain }}/xmlrpc" />
+{# IndieAuth delegated to indiekey.id: metadata for current clients, endpoints for legacy ones #}
+<link rel="indieauth-metadata" href="https://indiekey.id/.well-known/oauth-authorization-server/s/pnh6k4ezwrtnhy0f" />
+<link rel="authorization_endpoint" href="https://indiekey.id/s/pnh6k4ezwrtnhy0f/auth" />
+<link rel="token_endpoint" href="https://indiekey.id/token" />
